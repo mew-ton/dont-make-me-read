@@ -7,6 +7,7 @@ description: >
   Also applies when another skill needs the description-writing or skill-length
   rules. DO NOT use for non-skill documentation, or to run a general repo
   review pass.
+user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools: []
 ---

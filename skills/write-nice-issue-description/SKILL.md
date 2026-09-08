@@ -8,6 +8,7 @@ description: >
   existing issue readable" — or when breaking a task down into several issues. DO
   NOT use for a PR review finding, for a persistent doc's general rationale-vs-process rule, or for
   auditing an issue that is already written against these same conditions.
+user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools: []
 ---

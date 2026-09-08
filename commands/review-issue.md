@@ -1,0 +1,12 @@
+---
+description: Audit an issue body — could an implementer act on it without asking for more?
+argument-hint: "[issue number or URL, or the body text itself]"
+---
+
+If an issue number or URL is given, fetch the body first. Then hand the body text — and nothing
+else — to the `review-nice-issues` skill.
+
+That skill has no tools by design: it must judge from the same text a reader holds, so fetching is
+this command's job and nothing you know beyond the body may reach it.
+
+$ARGUMENTS

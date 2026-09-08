@@ -11,6 +11,7 @@ description: >
   fine to you. DO NOT use for a GitHub issue body (that is write-nice-issue-description), for a
   skill's description or size budget (that is write-nice-skills), or for deciding which background
   context a persistent document carries (that is avoid-unverifiable-context).
+user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools: []
 ---

@@ -9,6 +9,7 @@ description: >
   or any text that points elsewhere to be understood. DO NOT use when the target does not exist or
   cannot be reached at all (that is avoid-unverifiable-context), or for the same content repeated
   twice inside one document (that is write-nice-issue-description's Gate 2).
+user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools: []
 ---

@@ -4,14 +4,12 @@ description: >
   Text-self-containment pass over a pull request's description and every code comment it adds or
   changes: checks each one for a reader with none of the writer's context — no conversation, no
   issue, no surrounding diff — against three conditions: time-closure, referenceability,
-  reference-scope closure. Invoked by a caller such as a PR-review skill for its own
-  text-self-containment axis; also invocable directly by name to self-check a PR description,
-  issue body, or code comment you just wrote before it ships — "self-check this with
-  review-self-contained-docs", "does this comment read without the surrounding context". DO NOT
-  invoke it as a general-purpose "review this PR" entry point, and do not expect it to judge issue
+  reference-scope closure. Run it as one axis of a larger PR review, as an authoring skill's own
+  final pass over a PR description, issue body, or code comment just written, or from the
+  /review-text command. DO NOT run it as a general-purpose "review this PR" entry point, and do not expect it to judge issue
   conformance, scope, or design — that is the caller's job, not this skill's.
-disable-model-invocation: true
-argument-hint: "[<pr-url-or-number>] [--repo <owner/repo>] [--worktree <path>] [--comment]"
+user-invocable: false           # entry points are commands/, never the / menu
+disable-model-invocation: false
 allowed-tools:
   - Read
   - Grep
@@ -36,9 +34,9 @@ and referenceability (that pair is `avoid-unverifiable-context`'s), and referenc
   reader: the unit's own text, and for a code comment, the code it annotates. Nothing else you
   know about the PR, the issue, or this conversation counts as evidence.
 
-## Usage
+## Inputs
 
-`/review-self-contained-docs [<pr>] [--repo <owner/repo>] [--worktree <path>] [--comment]`
+The caller supplies these; the `/review-text` command owns the user-facing signature.
 
 | Argument | Meaning | Required |
 |---|---|---|

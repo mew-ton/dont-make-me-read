@@ -10,6 +10,7 @@ description: >
   use for a reference the reader genuinely can reach but should not have been sent to (that is
   avoid-reference-detours), for an issue body's sections and criteria (that is
   write-nice-issue-description), or for ephemeral chat replies and working notes.
+user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools: []
 ---
