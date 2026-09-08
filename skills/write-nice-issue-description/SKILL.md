@@ -4,8 +4,8 @@ description: >
   Write a GitHub issue body that an implementer can act on without needing to ask for anything
   more: a determinable problem, checkable acceptance criteria, and an out-of-scope boundary, with
   no implementation method smuggled in and no content duplicated across sections. Apply when
-  writing or revising an issue body — "write an issue", "issue を書いて", "この issue のドラフトを
-  推敲して", "既存の issue を読みやすくして" — or when breaking a task down into several issues. DO
+  writing or revising an issue body — "write an issue", "polish this issue draft", "make this
+  existing issue readable" — or when breaking a task down into several issues. DO
   NOT use for a PR review finding, for a persistent doc's general rationale-vs-process rule, or for
   auditing an issue that is already written against these same conditions.
 disable-model-invocation: false
@@ -28,6 +28,18 @@ project-context explanation is not a license to let session/process context back
 an issue is exactly where that context is least excusable, since the reader is never a participant.
 
 Two gates below govern every section.
+
+## Language
+
+Write the issue in the language its implementer already reads — the language of the repository, its
+existing issues, and its code review. Both gates below are about the issue's **shape**, and the
+sections, the two gates, and the template apply the same way whichever language you write in. The
+examples here are in English because this skill is; they are not a request to file issues in
+English.
+
+One issue, one language. A second-language restatement of the same content is Gate 2 duplication,
+not accessibility — see the exception under Gate 2, which covers differing presentation forms and
+not differing languages.
 
 ## Gate 1: determinacy
 
@@ -310,7 +322,9 @@ section entirely when nothing blocks starting.
    conform to
 9. Check that Goal covers every Acceptance criteria item. An item Goal doesn't reach is a second
    problem bundled into this issue — split it out
-10. Run `review-nice-issues` against the result before treating it as done — do not rely on
+10. Check the draft is in one language — the one this repository's issues already use — with no
+    second-language restatement of the same content (Gate 2)
+11. Run `review-nice-issues` against the result before treating it as done — do not rely on
     steps 1-9 alone. You wrote this draft with the problem already in your head, which is exactly
     what that skill's judgment has to route around.
 

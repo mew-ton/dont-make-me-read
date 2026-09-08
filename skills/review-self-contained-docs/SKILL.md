@@ -6,8 +6,8 @@ description: >
   issue, no surrounding diff — against three conditions: time-closure, referenceability,
   reference-scope closure. Invoked by a caller such as a PR-review skill for its own
   text-self-containment axis; also invocable directly by name to self-check a PR description,
-  issue body, or code comment you just wrote before it ships ("review-self-contained-docsを使って
-  自己チェックして", "自分が書いたこのコメント/PR説明、文脈がなくても伝わるか確認して"). DO NOT
+  issue body, or code comment you just wrote before it ships — "self-check this with
+  review-self-contained-docs", "does this comment read without the surrounding context". DO NOT
   invoke it as a general-purpose "review this PR" entry point, and do not expect it to judge issue
   conformance, scope, or design — that is the caller's job (e.g. ghdd-review-pr-against-issue),
   not this skill's.
@@ -187,6 +187,10 @@ skill owns the finding's shape and how firmly the remedy is stated; don't invent
   about the PR is the one failure mode this whole skill exists to catch in yourself.
 - Never post findings unless `--comment` was explicitly given, and never post at all when running
   as another skill's subroutine.
+- The language a unit is written in is never a finding. All three conditions are about what context
+  the text carries, so judge each unit in whatever language it is written in — the examples in this
+  skill are English only because the skill is. A unit restating the same content in a second
+  language is a finding, but as duplication, not as a language choice.
 - A unit that fails condition 1 or 2 does not also get checked against condition 3 — stop at the
   first failure; do not invent a condition-3 verdict for a unit that already failed earlier.
 

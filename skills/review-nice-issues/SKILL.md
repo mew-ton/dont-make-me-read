@@ -6,8 +6,8 @@ description: >
   criteria, a clear out-of-scope boundary, no implementation method smuggled in, and no content
   duplicated across sections. Invoked by a caller such as an issue-implementability review for
   its own determinacy/duplication axis; also invocable directly by name to self-check an issue
-  body you just wrote before it ships ("review-nice-issuesを使って自己チェックして", "この
-  issue、このまま実装に着手できるか確認して"). DO NOT invoke it as a general-purpose "review this
+  body you just wrote before it ships — "self-check this with review-nice-issues", "is this issue
+  ready to start implementing as it stands". DO NOT invoke it as a general-purpose "review this
   issue" entry point, and do not expect it to judge repo-groundedness or dependency closure — that
   is the caller's job (e.g. ghdd-review-issue-implementability), not this skill's.
 disable-model-invocation: true
@@ -124,6 +124,10 @@ larger report.
   own definition.
 - Whether a referenced file or symbol actually exists is out of scope here — that is repo-
   groundedness, a job for a skill that is actually allowed to look.
+- The language the issue is written in is never a finding. Both gates are about the body's shape, so
+  judge it in whatever language it is written in — the examples in `write-nice-issue-description`
+  are English only because that skill is. The one language-related finding is Gate 2's: the same
+  content restated in a second language.
 - Never post anything from inside this skill. Posting, if wanted, is the caller's action with the
   caller's own tools.
 

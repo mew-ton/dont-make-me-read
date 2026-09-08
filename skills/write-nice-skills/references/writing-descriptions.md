@@ -32,10 +32,15 @@ want this skill — and put it near the start, where it does its invocation work
   prompts, docs, and code — not invented labels that merely *sound* like keywords.
 - **One trigger per branch**: name each distinct situation once; synonyms that
   rename the same branch are duplication.
-- **Japanese triggers**: you prompt in Japanese but write the description in
-  English, so embed the Japanese phrases you would really type as quoted examples
-  inside the English sentence (as the `ghdd-*` skills do). Do not keep a separate
-  Japanese keyword list — it bloats the description and drifts out of sync.
+- **Language of the trigger**: the description is English (rule 4), so the shared
+  word has to be one that survives into your prompt whichever language you prompt
+  in — a file name, a tool name, a proper noun, a term of art you type as-is
+  (`SKILL.md`, `issue`, `PR`, `description`). A skill that never leaves a
+  single-language team may *additionally* embed the phrases that team really types,
+  as quoted examples inside the English sentence. A skill you publish must not: it
+  cannot know which language its users prompt in, and a second-language keyword list
+  only bloats the description and drifts out of sync. That is why none of the
+  descriptions in this plugin carry one.
 - **Cut body identity**: keep the description to triggers plus a reach clause;
   anything the body already explains does not belong here.
 
@@ -48,19 +53,26 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-**Good** — leading word first, what + when, Japanese triggers woven in, no steps:
+**Good** — leading word first, what + when, no steps:
 
 ```text
 SKILL.md authoring — write a skill's description and body so it fires reliably
-and stays lean. Use when writing, editing, or reviewing a skill or its
-description (「スキルを書きたい」「SKILL.md をレビューして」).
+and stays lean. Use when writing, editing, or reviewing a skill, a SKILL.md, or
+its description.
 ```
 
 ## 4. English
 
-Write the description in English. Japanese trigger phrases embedded as quoted
-examples (rule 3) are fine — they are examples *inside* the English sentence, not a
-switch to writing the description in Japanese.
+Write the description in English, even when you prompt in another language. English
+terms are the ones that survive into a prompt regardless — file names, tool names,
+library names — and a published skill cannot know which language its users type in.
+
+Three languages get decided separately, and only the first is settled here: the
+**description** (English, always), the **body** (English too for a skill that ships
+beyond one team, since the agent reads it), and the **output the skill produces** —
+an issue, a finding, a doc — which belongs in the language *its* readers already
+use. Each writing skill states that last rule for itself; do not carry this file's
+English down into what a skill tells the agent to write.
 
 ## Size
 

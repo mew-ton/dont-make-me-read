@@ -1,8 +1,8 @@
 # How firmly to state the remedy
 
-Read this before writing 概要's fix. Pick one of three, by what you can actually defend. This is the
-axis generated text gets wrong: it reaches for a flat menu of options in all three cases, which reads
-as balanced and leaves the reader to do the deciding.
+Read this before writing Summary's fix. Pick one of three, by what you can actually defend. This is
+the axis generated text gets wrong: it reaches for a flat menu of options in all three cases, which
+reads as balanced and leaves the reader to do the deciding.
 
 | What you have | How to write it | What not to do |
 |---|---|---|
@@ -40,46 +40,50 @@ Strength is **orthogonal to severity**: `critical` / `major` / `minor` / `nit` s
 finding blocks the merge, strength says how firmly the remedy is stated. A `major` can have no known
 fix (row 3), and a `nit` can have exactly one (row 1).
 
+The examples below are in English because this file is. Strength is a property of what you assert,
+not of the language you assert it in — write the finding in the language the repository's reviews
+already use, and keep the same three rows.
+
 ## Row 1 — a fix you can defend
 
 ### Bad: the fix is known, but written as a menu
 
 ```markdown
-このPR全体としては良さそうです、お疲れさまでした！ キャッシュキーについて1点——もう少し安定した
-キーにできないか検討する価値があるかもしれません。いくつか選択肢があります。組み立て済みのクエリ
-をキーにする、復元されたフォームを正規化する、fetchする前に両者を比較する、あるいはこのままにして
-挙動をドキュメント化する、などです。どれもおそらく機能するでしょう。また、テストももう少し
-カバーできる余地があるかもしれません。
+This PR looks good overall, nice work! One thing about the cache key — it might be worth
+considering whether it could be made a bit more stable. There are a few options: key on the
+assembled query, normalize the restored form, compare the two before fetching, or leave it as is
+and document the behaviour. Any of them would probably work. The tests might also have a little
+more room to cover.
 ```
 
-表題 is an assessment rather than a fact. The four options are not equally good and the writer knows
+Title is an assessment rather than a fact. The four options are not equally good and the writer knows
 it. The hedge leaves it unclear whether anything must change. A second instruction about tests is
 bundled into the same finding. And the whole thing is prose, so none of that is countable.
 
 ### Good: one fix asserted, the rejected option kept as a constraint
 
 ```markdown
-**minor** — キャッシュキーが、表現している組み立て済みクエリではなく生のフィルタフォームから
-導出されている
+**minor** — the cache key is derived from the raw filter form rather than from the assembled query
+it represents
 
-- `app/composables/foo/useFetchFoo.ts:23` は `useAsyncData` のキーを生のフィルタフォーム
-  にしている: モーダルとURL復元は同じ条件を2通りの形でシリアライズする。
-- そのため、1つの条件が `payload.data` に2つのエントリとして登録される。
-- 代わりに組み立て済みのクエリをキーにする: `JSON.stringify(buildFooListQuery({ ... }))`。
+- `app/composables/foo/useFetchFoo.ts:23` keys `useAsyncData` on the raw filter form: the modal and
+  the URL restore serialize the same conditions in two different shapes.
+- One set of conditions therefore lands in `payload.data` as two entries.
+- Key on the assembled query instead: `JSON.stringify(buildFooListQuery({ ... }))`.
 
-2つの表記が異なるのは、モーダルが `"all"` を示す値も含めて全キーを送信するのに対し、URL復元は
-絞り込みに使うキーのみを保存するためである。今日時点で目に見える不具合はない——どちらも同一の
-`/v1/foo` リクエストを発行している。今のうちに直す価値があるのは、2つ目の一覧画面が同じ
-URL復元パターンを採用しつつあり、`useFooFilterUrlState.isSameForm` が既に両フォームを等しい
-ものとして扱っているため、キャッシュキーだけが両者の食い違う唯一の箇所になっているからである。
+The two shapes differ because the modal sends every key, including the ones whose value means
+"all", while the URL restore stores only the keys it actually filters on. Nothing is visibly broken
+today — both issue the identical `/v1/foo` request. Fixing it now is worth it because a second list
+screen is adopting the same URL-restore pattern, and `useFooFilterUrlState.isSameForm` already
+treats both forms as equal, which leaves the cache key as the only place the two disagree.
 
-復元されたフォームを正規化する方は行わないこと。`readFromQuery` は、等価な条件のフォームを
-ダイアログが送信した形のまま意図的に残している。等価なオブジェクトへの再代入であっても
-`shallowRef` への書き込みには変わりなく、fetchのwatcherを再トリガーしてしまうためで、これが
-このリストを3回の `/v1/foo` 呼び出しから1回に減らした理由である。
+Do not take the normalize-the-restored-form route. `readFromQuery` deliberately leaves an
+equivalent-conditions form in the shape the dialog submitted: reassigning even an equivalent object
+is still a write to a `shallowRef` and re-triggers the fetch watcher, which is what took this list
+from three `/v1/foo` calls down to one.
 
-このcomposableの他の利用箇所（`pages/bar/index.vue` と `asBarView: true` のパス）は
-新しいキー文字列を目にすることになるため、両方ともregressionのカバーが必要である。
+The composable's other callers (`pages/bar/index.vue` and the `asBarView: true` path) will both see
+the new key string, so both need regression coverage.
 ```
 
 **Listing rejected options and stating constraints are different things.** The middle paragraph is not
@@ -91,10 +95,10 @@ local fix. One asserted fix, plus the constraints that make it the fix.
 ### Good: flat, unweighted, and short
 
 ```markdown
-**nit** — `path/to/config.ts:41` がconfigキーごとに1行ログを出している
+**nit** — `path/to/config.ts:41` emits one log line per config key
 
-- 次のいずれでも構わない: キーごとのログを削除する、`trace` レベルに落とす、あるいはキー件数を
-  持つ1行のサマリーログに置き換える。
+- Any of these is fine: drop the per-key logging, lower it to `trace`, or replace it with a single
+  summary line carrying the key count.
 ```
 
 If you would be mildly disappointed by one of the three, you are in row 1 and should say which. Row 2
@@ -103,11 +107,10 @@ is for the case where you genuinely would not review the choice.
 ### Bad: the comment reads as correct, so the code is asserted as the thing to fix
 
 ```markdown
-**major** — `useBarSender.ts:8` のヘッダーコメントには送信失敗時に1回リトライしてから
-破棄すると書かれているが、`sendBar()` にリトライは実装されておらず、失敗すると即座に送信内容が
-破棄される
+**major** — the header comment at `useBarSender.ts:8` says a failed send is retried once and then
+dropped, but `sendBar()` implements no retry and discards the payload immediately on failure
 
-- `sendBar()` のコメントが説明しているリトライを実装する。
+- Implement the retry that `sendBar()`'s comment describes.
 ```
 
 The comment reads as the more deliberate, more complete side, so it gets asserted as ground truth — but
@@ -117,15 +120,14 @@ plan the code already moved past.
 ### Good: the disclosure is what moves it to row 2
 
 ```markdown
-**major** — ヘッダーコメントとそれが説明しているコードとで、リトライ挙動の記述が食い違っている
+**major** — the header comment and the code it describes disagree about the retry behaviour
 
-- `useBarSender.ts:8` のヘッダーコメントには送信失敗時に1回リトライしてから破棄すると
-  書かれているが、`sendBar()` にリトライは実装されておらず、失敗すると即座に送信内容が破棄される。
-- PR本文自身の「Seams」セクションでは、リトライ処理はqueueベースのsenderに委ねる（フォロー
-  アップのチケット行き）としており、このPRでまだリトライが求められているとはどこにも書かれて
-  いない。
-- リトライを実装するか、コメントを「まだリトライされない」旨に修正しフォローアップチケットへの
-  リンクを添えるか、どちらかは既に作者が決めている通りにする。
+- The header comment at `useBarSender.ts:8` says a failed send is retried once and then dropped,
+  but `sendBar()` implements no retry and discards the payload immediately on failure.
+- The PR body's own "Seams" section defers retry handling to the queue-based sender (a follow-up
+  ticket), and nothing states that a retry is still expected in this PR.
+- Either implement the retry, or correct the comment to say retries are not in place yet and link
+  the follow-up ticket — whichever the author has already decided.
 ```
 
 Nothing available here says which side is the bug: the comment could be a stale plan, or this PR could
@@ -145,31 +147,34 @@ not lost. Two shapes, by where you are writing.
 ### Good: in a PR review — open an issue and link it from the code
 
 ```markdown
-**major** — `pages/foo/[id].vue:24` が `useAsyncData` の `error` を握りつぶしている
+**major** — `pages/foo/[id].vue:24` swallows `useAsyncData`'s `error`
 
-- 失敗時に本文が空でレンダリングされ、読者には文章のない記事が表示される。
-- このPRに含めるべき修正はない。先に2点を決める必要がある。
-- 両方を含むissueを起票し、fetch箇所の `TODO(#N)` からリンクする。
+- On failure the body renders empty, and the reader is shown an article with no text in it.
+- There is no fix to include in this PR. Two things have to be decided first.
+- Open an issue covering both and link it from a `TODO(#N)` at the fetch site.
 
-`fooBlocks` は `[]` に、`isLocked` は `false` にフォールバックするため、失敗はUIにもDOMにも
-現れない。ここで直せない理由は2つある。失敗時の文言はどのspecにも定義がなく、実装すると実装者
-がユーザー向け文言の作者になってしまう。また、このページは記事一覧・検索結果・外部リンクなど
-複数の経路からそれぞれ異なるレイアウトでマウントされており、「失敗時のUIはこのレイアウトが持つ」
-と決め打ちできる根拠がない。失敗をどこでレンダリングするかは未解決の設計課題である。
+`fooBlocks` falls back to `[]` and `isLocked` to `false`, so the failure shows up neither in the UI
+nor in the DOM. There are two reasons it cannot be fixed here. No spec defines the failure copy, so
+implementing it would make the implementer the author of user-facing text. And this page is mounted
+from several routes — the article list, search results, external links — each with a different
+layout, so there is no basis for deciding that the failure UI belongs to this one. Where the failure
+renders is an open design question.
 ```
 
 The finding is not softened into "maybe consider handling the error", and it is not dropped for being
-unsolvable. The 概要 carries the fact and the instruction; the reasons a fix cannot be named are 詳細.
+unsolvable. The Summary carries the fact and the instruction; the reasons a fix cannot be named are
+Details.
 
 ### Registering the problem when the fix opens a new issue
 
 ```markdown
-**major** — STG環境バッジは `#ff2a1f` 上に白文字を描画しており、コントラスト比3.75:1で、
-16px boldに適用される4.5:1のAA基準を下回っている
+**major** — the STG environment badge renders white text on `#ff2a1f`, a contrast ratio of 3.75:1,
+below the 4.5:1 AA threshold that applies to 16px bold
 
-- このPRに含めるべき修正はない。アクセシブルな配色は実装の詳細ではなくデザイン上の決定事項である。
-- 測定済みの代替案と決めるべき事項を添えたissueを起票し、
-  `path/to/resolveEnvironmentBadge.ts` の `stg` エントリのコメントからリンクする。
+- There is no fix to include in this PR. An accessible color pairing is a design decision, not an
+  implementation detail.
+- Open an issue carrying the measured alternatives and what has to be decided, and link it from a
+  comment on the `stg` entry in `path/to/resolveEnvironmentBadge.ts`.
 ```
 
 "Investigation is needed" on its own is not row 3 — it is row 3 with the work left out. The linked

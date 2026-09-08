@@ -14,8 +14,9 @@ versus a reference, or when you are wondering whether to split one skill into tw
 ### Measuring the token half of that budget
 
 Line count is a weak proxy: 5000 tokens buys around 250 lines of English prose but
-only around 150 of Japanese, so a body can sit inside 500 lines and still cost
-several times the budget. Measure instead of estimating:
+only around 150 in a non-Latin script such as Japanese or Chinese, so a body can sit
+inside 500 lines and still cost several times the budget. Measure instead of
+estimating:
 
 ```bash
 bash ~/.claude/skills/write-nice-skills/scripts/count-tokens.sh path/to/SKILL.md
@@ -25,8 +26,9 @@ It diffs the input-side token count of two runs against whichever model is
 currently default, so no API key is needed and nothing is pinned to a model
 generation. Each file costs one round trip, and it exits non-zero over budget.
 
-For a free pre-check use `wc -c`, not `wc -m` — bytes per token barely move
-between English and Japanese, where characters per token nearly double. **Under
+For a free pre-check use `wc -c`, not `wc -m` — bytes per token barely move between
+scripts, where characters per token nearly double between a Latin script and a
+non-Latin one. **Under
 about 12 KB is a safe stand-in for 5000 tokens today.** The script's closing line
 re-derives that figure from your own run; recompute it there rather than trusting
 this number once the default model has moved on.

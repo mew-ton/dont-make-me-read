@@ -1,4 +1,5 @@
-<!-- Write this whole issue in one language; do not restate content in a second language. -->
+<!-- Write this whole issue in the language its implementer already reads (the repository's, the
+     tracker's). One language throughout; do not restate content in a second language. -->
 Refs #
 
 ## Background / Why

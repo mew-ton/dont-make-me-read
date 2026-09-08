@@ -20,6 +20,14 @@ direct entry points — invoke them to write something. `review-self-contained-d
 `review-nice-issues` are primarily invoked by a caller as one axis of a larger review, but can also
 be invoked directly by name to self-check a draft before it ships.
 
+## Language
+
+The skills are written in English, and so are their triggers and worked examples — a published
+skill cannot know which language its users prompt in. What they tell you to *write* is a separate
+question: each writing skill says to produce the issue, the finding, or the doc in the language its
+readers already use, and to write it in one language only. The rules fix the text's shape and the
+context it carries, not the language it carries them in.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

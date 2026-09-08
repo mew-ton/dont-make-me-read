@@ -1,28 +1,30 @@
 # Avoid negating the request as the fact
 
-Read this whenever 表題 reads like the request with a "not" inserted.
+Read this whenever Title reads like the request with a "not" inserted.
 
 "Extract this to a named computed" rewritten as "not extracted to a named computed" is checkable,
-but it is still the request wearing 表題's shape — it names the absence of what was asked for, and
+but it is still the request wearing Title's shape — it names the absence of what was asked for, and
 carries no more information than the ask itself. The fact sits upstream of the request: what is
 happening today, in the code, that the request is a response to?
 
-### Bad: 表題 only negates the request
+### Bad: Title only negates the request
 
 ```markdown
-`FooDetail.vue:140` で複合条件を `v-if` に直接埋め込んでいる（named computed 化されていない）
+`FooDetail.vue:140` embeds a compound condition directly in `v-if` (not extracted into a named
+computed)
 ```
 
-表題 is the request ("named computed として切り出す") with the polarity flipped, not an observation
-— "〜化されていない" restates what the fix would do, in reverse, and carries no more information
-than the ask itself. (It also fuses in the one file that happened to trigger it — a second,
-independent problem that [`avoid-fusing-the-instance-into-the-title.md`](avoid-fusing-the-instance-into-the-title.md)
+Title is the request ("extract it into a named computed") with the polarity flipped, not an
+observation — "not extracted into…" restates what the fix would do, in reverse, and carries no more
+information than the ask itself. (It also fuses in the one file that happened to trigger it — a
+second, independent problem that
+[`avoid-fusing-the-instance-into-the-title.md`](avoid-fusing-the-instance-into-the-title.md)
 covers; fixing one does not excuse the other.)
 
-### Good: 表題 names the behaviour the request responds to
+### Good: Title names the behaviour the request responds to
 
 ```markdown
-複合条件・複雑な条件式が template に直接書かれている
+Compound and complex conditional expressions are written directly in the template
 ```
 
 The fact is upstream of the request: what the template is actually doing today (a condition written

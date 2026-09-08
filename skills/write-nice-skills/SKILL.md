@@ -2,8 +2,8 @@
 name: write-nice-skills
 description: >
   SKILL.md authoring — how to write a skill's description and body so it fires
-  reliably and stays lean. Use when writing, editing, or reviewing a skill or its
-  description and frontmatter (「スキルを書きたい」「SKILL.md をレビューして」「description を書く」).
+  reliably and stays lean. Use when writing, editing, or reviewing a skill, a
+  SKILL.md, or its description and frontmatter.
   Also applies when another skill needs the description-writing or skill-length
   rules. DO NOT use for non-skill documentation, or to run a general repo
   review pass.
@@ -56,7 +56,9 @@ Everything under "Writing the description" follows from this one fact.
    sentence. One trigger per branch (no synonym padding); embed the Japanese
    phrases you would really type as quoted examples; cut identity the body
    already carries.
-4. **English.** Write the description in English.
+4. **English.** Write the description in English, whichever language you prompt in,
+   and do not pad it with a second-language keyword list. What the skill *tells the
+   agent to write* is a separate question each writing skill answers for itself.
 
 **Body** (details + criteria:
 [`references/structuring-skills.md`](references/structuring-skills.md)):

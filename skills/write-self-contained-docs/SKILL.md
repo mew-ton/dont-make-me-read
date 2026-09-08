@@ -33,7 +33,8 @@ These three failure modes — time-closure, referenceability, reference-scope cl
 5. **If the process must be preserved, put it in the right place**: A PR description's "Background" section or an ADR. Keep it out of source code, user-facing docs, and API references
 6. **Deprecation notes are fine when the implementation still exists**: Mark a parameter, endpoint, or function as deprecated when it is still part of the current shape that the reader can observe in code, types, or schemas. If the implementation is fully removed, the note has nothing to refer to and should be dropped
 7. **Keep information where it is used, even if it is written elsewhere too**: If a reader has to leave the sentence they are on to open another section, file, or docstring to make sense of it, that information belongs at the point of use. Restate it briefly rather than pointing to it, even when the reference itself is completely valid and reachable — reachable is not the same as in scope
-8. **Self-check: can it be read with no prior context?**: Imagine handing the document to someone with zero context. Look for proper nouns or premises that appear without introduction. To run this same check automatically — on a PR, or on text you just wrote — use `review-self-contained-docs` rather than relying only on your own read of it
+8. **Write in the reader's language**: Use the language the artifact's readers already use — the repository's language for a code comment or PR description, the tracker's language for an issue, the audience's language for a design doc. The rules above are about *what context the text carries*, not which language carries it, and they apply unchanged in any language. Never restate the same content in a second language: the translation is a second copy that ages independently of the first, and a reader cannot tell which one is current
+9. **Self-check: can it be read with no prior context?**: Imagine handing the document to someone with zero context. Look for proper nouns or premises that appear without introduction. To run this same check automatically — on a PR, or on text you just wrote — use `review-self-contained-docs` rather than relying only on your own read of it
 
 ## Common Rationalizations
 
@@ -47,6 +48,8 @@ The most common failure is not applying this skill at all, because the artifact 
 | "I'll list the alternatives we rejected so it's transparent." | Discarded options are writer-only context. Omit them unless the reader genuinely must know why not. |
 | "This PR description can assume the reader saw the thread." | A persistent doc outlives the thread. Write it for someone opening it cold, months later. |
 | "It's reachable, so pointing to it is fine." | Reachability is not the whole test. If the reader has to leave this comment or section to make sense of it, restate it here — a reference being valid does not mean the reference belongs at this position. |
+| "The examples in this skill are in English, so the doc should be." | The examples are in English because the skill is. Write in the language the readers of *that* artifact already use — every rule here is about what context the text carries, not which language it carries it in. |
+| "Adding a translation alongside makes it accessible to more readers." | It makes two documents that drift apart, and no reader can tell which one is current. Pick the language the readers actually use, and write it once. |
 
 ## Examples
 
