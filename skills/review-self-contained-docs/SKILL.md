@@ -22,16 +22,17 @@ allowed-tools:
 
 ## Purpose
 
-`write-self-contained-docs` says what to write. This skill checks what was actually written,
-against the same three conditions from the reader's side: time-closure, referenceability, and
-reference-scope closure (defined below). It runs in two situations:
+`avoid-unverifiable-context` and `avoid-reference-detours` say what to write. This skill checks
+what was actually written, against the same three conditions from the reader's side: time-closure
+and referenceability (that pair is `avoid-unverifiable-context`'s), and reference-scope closure
+(`avoid-reference-detours`'). It runs in two situations:
 
 - **Reviewing a PR**: check its description and every comment the diff adds or changes.
 - **Self-checking text you just wrote**: before a PR description, issue body, or code comment
   ships, run it through this same judgment explicitly, rather than trusting your first read of
   it — you wrote it with all the context already in your head, which is exactly the thing this
-  check has to route around. Imagine the exact reader `write-self-contained-docs`'s self-check
-  describes — someone opening this with zero context — and judge only what is in front of that
+  check has to route around. Imagine the exact reader those two skills' self-checks
+  describe — someone opening this with zero context — and judge only what is in front of that
   reader: the unit's own text, and for a code comment, the code it annotates. Nothing else you
   know about the PR, the issue, or this conversation counts as evidence.
 
@@ -100,8 +101,8 @@ body being self-checked works the same way — one unit, no code attached.
 For every surviving unit, judge it against the three conditions below using **only** that unit's
 text and (for code comments) its attached code block. Treat anything not in front of you as
 absent for the real reader too — do not fill in what the surrounding file or PR "probably" says.
-This is the same self-check `write-self-contained-docs` asks a writer to run on themselves; here
-it is run explicitly and per-unit rather than trusted to a single read-through.
+This is the same self-check the two authoring skills ask a writer to run on themselves; here it is
+run explicitly and per-unit rather than trusted to a single read-through.
 
 Judge them in order; each later condition assumes the earlier ones passed, so stop at the first
 failure. Record which condition each unit failed, or that it passed all three — see
@@ -206,8 +207,9 @@ before starting, so the excuse is already answered when it occurs to you.
 
 ## Related skills
 
-- `write-self-contained-docs` — the authoring-time guidance this skill checks compliance with.
-  Read it if a finding here is confusing; it explains the same three conditions from the writer's
-  side, with more examples.
+- `avoid-unverifiable-context` — the authoring-time guidance behind conditions 1 and 2. Read it if
+  a finding on either is confusing; it explains them from the writer's side, with more examples.
+- `avoid-reference-detours` — the authoring-time guidance behind condition 3, including why its fix
+  restates rather than deletes.
 - `write-nice-instructions` — owns the finding template and how firmly a remedy is stated;
   this skill hands it facts (step 4), never a rendered shape.

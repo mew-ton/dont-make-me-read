@@ -14,8 +14,8 @@ Every rule in every skill here follows from these.
    it is missing, so it reads short to you, and only to you.
 
 The second is why this is a set of skills and not advice. Each skill carries a Common
-Rationalizations table for the excuses that arrive while writing, and two of the six exist only to
-be run against text you just wrote.
+Rationalizations table for the excuses that arrive while writing, and two of the seven exist only
+to be run against text you just wrote.
 
 ## One test
 
@@ -37,15 +37,23 @@ fail together: each leaves the reader something to resolve before they can act.
 |---|---|
 | [`write-nice-issue-description`](skills/write-nice-issue-description/SKILL.md) | Write a GitHub issue body an implementer can act on alone: a determinable problem, checkable acceptance criteria, an out-of-scope boundary. |
 | [`write-nice-instructions`](skills/write-nice-instructions/SKILL.md) | Shape a PR review finding: one fixed template (title / summary / details), and how firmly to state the remedy. |
-| [`write-self-contained-docs`](skills/write-self-contained-docs/SKILL.md) | Write any persisting text — issues, PR descriptions, code comments, design docs — assuming the reader shares none of your context. |
+| [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | Keep out of persisting text what its reader cannot go and check: the conversation, the review thread, a past state the code no longer shows. |
+| [`avoid-reference-detours`](skills/avoid-reference-detours/SKILL.md) | Stop sending the reader somewhere reachable to understand the sentence in front of them. State it at the point of use; the original stays put. |
 | [`write-nice-skills`](skills/write-nice-skills/SKILL.md) | Write and review a `SKILL.md`'s description and body so it fires reliably and stays lean. |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to. Also usable directly to self-check an issue draft. |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and comments for self-containment (time-closure, referenceability, reference-scope closure). Also usable directly to self-check text you just wrote. |
 
-The four `write-*` skills are direct entry points — invoke them to write something. The two
-`review-*` skills are primarily invoked by a caller as one axis of a larger review, but can also be
-invoked directly by name to self-check a draft before it ships. That pairing is proposition 2 made
-operational: the writing skill states the conditions, the review skill applies them to you.
+The `write-*` and `avoid-*` skills are direct entry points — invoke them to write something. The
+two `review-*` skills are primarily invoked by a caller as one axis of a larger review, but can
+also be invoked directly by name to self-check a draft before it ships. That pairing is proposition
+2 made operational: the authoring skill states the conditions, the review skill applies them to you.
+
+The verb says which direction the skill subtracts in. A `write-*` skill fixes the shape of a whole
+artifact — an issue, a finding, a `SKILL.md`. An `avoid-*` skill names one thing that puts reading
+between the reader and acting, wherever the text lives. `avoid-unverifiable-context` and
+`avoid-reference-detours` are the two halves of one question: the first is what the reader cannot
+reach at all and the fix is to delete, the second is what they *can* reach and were made to travel
+to, where the fix is to restate it here and leave the original where it is.
 
 `write-nice-skills` is the odd one out only in its reader — a `SKILL.md` is read by an agent
 deciding whether to load it, on the same terms a person decides whether to keep reading.

@@ -10,7 +10,7 @@ description: >
   review comment, or a code-review remark — and especially when you wrote it yourself and it reads
   fine to you. DO NOT use for a GitHub issue body (that is write-nice-issue-description), for a
   skill's description or size budget (that is write-nice-skills), or for deciding which background
-  context a persistent document carries (that is write-self-contained-docs).
+  context a persistent document carries (that is avoid-unverifiable-context).
 disable-model-invocation: false
 allowed-tools: []
 ---
@@ -25,12 +25,13 @@ A GitHub issue body is a different artifact — a problem statement plus a compl
 by an implementer who can read the repository — and is `write-nice-issue-description`'s scope, not
 this skill's.
 
-Two neighbours own different axes, and both can apply to one PR review finding:
+Neighbouring skills own different axes, and several can apply to one PR review finding:
 
 | Question | Skill |
 |---|---|
 | Is the instruction in the fixed shape, and is its remedy stated at the right strength? | this skill |
-| Does the reader have the background to judge it (rationale kept, process dropped)? | `write-self-contained-docs` |
+| Can the reader check what it claims (rationale kept, process dropped)? | `avoid-unverifiable-context` |
+| Was the reader sent somewhere reachable to understand it? | `avoid-reference-detours` |
 | Will this `SKILL.md` fire, and is it lean enough to load? | `write-nice-skills` |
 
 A skill body is instruction text too, so this skill still governs the asks inside one; what it hands

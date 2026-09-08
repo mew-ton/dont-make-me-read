@@ -18,11 +18,11 @@ An issue is not a design document; it is a problem statement plus a completion c
 this once per issue body, whether drafting a new one or revising an existing one.
 
 The reader is the implementer, and they can read the repository. So this issue does not need to
-explain project context the way `write-self-contained-docs` asks of persistent docs generally —
+explain project context the way `avoid-reference-detours` asks of persistent text generally —
 pointing at a location is enough where prose would otherwise explain it, and prose that explains it
 both grows the issue and encroaches on the implementer's own judgment.
 
-What that skill actually guards against still applies in full: no conversation log, no discarded
+What `avoid-unverifiable-context` guards against still applies in full: no conversation log, no discarded
 alternatives, no residue that only the people in this session could reconstruct. Dropping the
 project-context explanation is not a license to let session/process context back in — if anything,
 an issue is exactly where that context is least excusable, since the reader is never a participant.
@@ -352,5 +352,8 @@ Worked examples of each gate, and a full passing issue body: [`references/exampl
   from a reader's-eye view.
 - `write-nice-instructions` — the finding/instruction template and remedy strength; applies
   to PR review comments, not issue bodies.
-- `write-self-contained-docs` — the rationale-vs-process rule this skill's Background guidance
+- `avoid-unverifiable-context` — the rationale-vs-process rule this skill's Background guidance
   draws its "keep the why" half from.
+- `avoid-reference-detours` — the same subtraction across documents, where Gate 2 covers repetition
+  inside one: a reader reads an issue in order, so a second copy is a re-read, while a fact kept in
+  another file costs them a trip.
