@@ -48,12 +48,13 @@ existing implementation, how to branch, etc.) — that is a choice, not a criter
 An "all ___" item's set is exactly what its subject's path names — or, when Background states a
 table of requirements, the table itself ("every row in the table above now holds," not one checkbox
 per row).
+Last item: this repository's own lint / type-check / test commands, with the target directory
+named. Substitute the commands this repository actually runs — do not carry another project's over.
 -->
 
 - [ ]
 - [ ]
-- [ ] `pnpm type-check` / `pnpm test` / `pnpm exec biome check .` / `pnpm lint:eslint` passes
-      (`<target directory>`)
+- [ ] `<this repository's lint / type-check / test commands>` pass (`<target directory>`)
 
 ## Affected areas
 

@@ -19,8 +19,13 @@ inside 500 lines and still cost several times the budget. Measure instead of
 estimating:
 
 ```bash
-bash ~/.claude/skills/write-nice-skills/scripts/count-tokens.sh path/to/SKILL.md
+bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md
 ```
+
+"This skill's directory" is wherever this file was loaded from — a plugin's
+install path, `~/.claude/skills/write-nice-skills/`, or a repository's
+`.claude/skills/write-nice-skills/`. There is no one absolute path to hard-code,
+so resolve it from where you read this file rather than assuming a location.
 
 It diffs the input-side token count of two runs against whichever model is
 currently default, so no API key is needed and nothing is pinned to a model

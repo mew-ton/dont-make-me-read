@@ -407,7 +407,7 @@ reappearing.
 - [ ] Returns 410 when the foo was published in the past and is now unpublished or closed.
 - [ ] Returns 404 when no foo with that ID has ever existed.
 - [ ] An existing endpoint's error response shape does not change for any other status.
-- [ ] `pnpm type-check` / `pnpm test` passes (`path/to/foo`).
+- [ ] `<this repository's lint / type-check / test commands>` pass (`path/to/foo`).
 
 ## Affected areas
 
@@ -421,3 +421,9 @@ depends on #1784
 No Design / Approach, no Out of scope, no Verification — every sentence still true after the issue
 closes, every checkbox in domain vocabulary, and the one boundary (the endpoint's other statuses
 are unaffected) stated once, as a criterion rather than a caveat bolted onto Background.
+
+The last checkbox is the one placeholder left standing in this example: in a real issue it names
+the commands that repository actually runs. Every other value here (`path/to/getFoo.ts`, `#1784`,
+`GET /v1/foo/{id}`) is a stand-in for the specifics of whatever issue you are writing, but the
+verification commands are a stand-in for something you must go and read out of the repository, not
+invent.

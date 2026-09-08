@@ -236,9 +236,10 @@ something Goal doesn't point at, the issue is bundling more than one problem —
 Do not put a verification means in Goal. An executable verification command belongs in Acceptance
 criteria's last item, not here.
 
-- Don't write (Goal): "Conforms to `architecture.md`, which `make lint-arch` enforces."
+- Don't write (Goal): "Conforms to `architecture.md`, which the architecture lint enforces."
 - Write (Goal, conformance only): "Conforms to the structure `architecture.md` states."
-- Write (Acceptance criteria, verification): "`make lint-arch` passes."
+- Write (Acceptance criteria, verification): "The architecture lint passes" — naming the command
+  this repository actually runs for it.
 
 ### Acceptance criteria
 
@@ -266,7 +267,9 @@ depends on — a response's fields, a `ViewModel` — write a short criterion po
 the shape its own block right here, rather than either omitting it as a "choice" or squeezing a
 multi-field interface into one checkbox line.
 
-Put lint / type-check / test as the last item, with the target directory named.
+Put lint / type-check / test as the last item, with the target directory named. The commands are
+whatever this repository actually runs — read them out of its own scripts or docs rather than
+assuming a toolchain.
 
 ### Affected areas
 
