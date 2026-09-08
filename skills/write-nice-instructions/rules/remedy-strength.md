@@ -145,7 +145,7 @@ not lost. Two shapes, by where you are writing.
 ### Good: in a PR review — open an issue and link it from the code
 
 ```markdown
-**major** — `ArticleBody.server.vue:31` が `useAsyncData` の `error` を握りつぶしている
+**major** — `pages/contents/[id].vue:24` が `useAsyncData` の `error` を握りつぶしている
 
 - 失敗時に本文が空でレンダリングされ、読者には文章のない記事が表示される。
 - このPRに含めるべき修正はない。先に2点を決める必要がある。
@@ -153,9 +153,9 @@ not lost. Two shapes, by where you are writing.
 
 `descriptionBlocks` は `[]` に、`isRestricted` は `false` にフォールバックするため、失敗はUIにもDOMにも
 現れない。ここで直せない理由は2つある。失敗時の文言はどのspecにも定義がなく、実装すると実装者
-がユーザー向け文言の作者になってしまう。また、このIslandは自身でfetchする `.server.vue` である
-ため、それをマウントするページ側は決してこのエラーを受け取れず、「失敗時のUIはページが持つ」
-という現状の前提は成り立たない。失敗をどこでレンダリングするかは未解決の設計課題である。
+がユーザー向け文言の作者になってしまう。また、このページは記事一覧・検索結果・外部リンクなど
+複数の経路からそれぞれ異なるレイアウトでマウントされており、「失敗時のUIはこのレイアウトが持つ」
+と決め打ちできる根拠がない。失敗をどこでレンダリングするかは未解決の設計課題である。
 ```
 
 The finding is not softened into "maybe consider handling the error", and it is not dropped for being
