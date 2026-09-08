@@ -113,4 +113,4 @@ issue／指摘／ドキュメントを、その読者がすでに使っている
 
 ## License
 
-MIT — [LICENSE](LICENSE) を参照。
+MIT — [LICENSE](../LICENSE) を参照。
