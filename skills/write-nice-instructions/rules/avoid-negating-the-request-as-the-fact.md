@@ -10,8 +10,8 @@ happening today, in the code, that the request is a response to?
 ### Bad: Title only negates the request
 
 ```markdown
-`FooDetail.vue:140` embeds a compound condition directly in `v-if` (not extracted into a named
-computed)
+**minor** — `FooDetail.vue:140` embeds a compound condition directly in `v-if` (not extracted into
+a named computed)
 ```
 
 Title is the request ("extract it into a named computed") with the polarity flipped, not an
@@ -24,7 +24,7 @@ covers; fixing one does not excuse the other.)
 ### Good: Title names the behaviour the request responds to
 
 ```markdown
-Compound and complex conditional expressions are written directly in the template
+**minor** — compound and complex conditional expressions are written directly in the template
 ```
 
 The fact is upstream of the request: what the template is actually doing today (a condition written

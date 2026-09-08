@@ -10,7 +10,7 @@ and belong in Summary as separate bullets — where, then why, then the fix.
 ### Bad: the rule and its one instance fused into Title
 
 ```markdown
-The comment attached to `FooDetail.vue:4-16` is too long
+**minor** — the comment attached to `FooDetail.vue:4-16` is too long
 
 - It carries the related issue and incident history, all for a change that only adjusts a width.
 - The same tendency shows up in various other places.
@@ -26,7 +26,7 @@ still naming just the one file a missed abstraction, not a lack of awareness. Th
 ### Good: Title names the rule the instance broke
 
 ```markdown
-Comments are too long
+**minor** — comments are too long
 
 - An LLM tends to write verbose, flat comments that run to three lines or more.
 - Even a supplementary comment becomes text the reader has to stop and work through once that

@@ -113,12 +113,14 @@ another document, not stated here.
 ### Good: the same dependency, stated so the reader can stop without opening it
 
 ```markdown
-depends on #1784
-
 ## Background / Why
 
 A foo card shown in an article can be in one of these states: closed, the foo no longer exists, or
 fetch failed.
+
+## Dependencies
+
+depends on #1784
 ```
 
 "Depends on #1784" tells the reader everything they need to decide whether to keep reading this
@@ -414,6 +416,8 @@ reappearing.
 - `path/to/getFoo.ts`
 - `path/to/error-handler.ts` (an existing `GoneError` → 410 mapping for
   `GET /v1/bar/{id}`)
+
+## Dependencies
 
 depends on #1784
 ```
