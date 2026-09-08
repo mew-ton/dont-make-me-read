@@ -1,9 +1,9 @@
 ---
 name: dont-make-me-read
 description: >
-  Text someone else has to act on — a GitHub issue, a PR description, a review comment, a code
-  comment, a design doc, a SKILL.md — is measured by whether its reader decides correctly from
-  it, not by how thorough or careful it reads. Noise costs a wrong decision, not just time, and
+  Text someone else has to act on, whatever it is — a GitHub issue, a PR description, a review
+  comment, an explanatory code comment, a JSDoc block, a design doc, a SKILL.md — is measured by
+  whether its reader decides correctly from it, not by how thorough or careful it reads. Noise costs a wrong decision, not just time, and
   whatever the decision depends on has to be there however much it costs to read. Use before
   writing or revising any of those, to get that test and to reach the rules for the artifact in
   hand. DO NOT use it instead of those rules — it carries no template, no budget, and no section
@@ -71,22 +71,29 @@ is not, and why a skill's `references/` has a depth rule and no size rule.
 
 ## Which skill owns what
 
-Load the one that matches the artifact. This skill holds the test, not the rules.
+Most of what this applies to has no template and needs none — an explanatory code comment, a
+JSDoc block, a PR description, a design doc, a commit message. For those the test above, plus two
+failure modes, is the whole of it:
+
+- `avoid-unverifiable-context` — the text carries something the reader cannot go and check.
+- `avoid-reference-detours` — the text sends the reader somewhere reachable in order to be
+  understood.
+
+Both hold whatever the artifact is, so they also apply on top of everything below.
+
+A few artifacts have enough fixed shape to earn rules of their own. Load the one that matches;
+this skill holds the test, not those rules.
 
 | Writing | Skill |
 |---|---|
 | A GitHub issue body | `write-nice-issue-description` |
 | A PR review finding, or any comment telling a person what to change | `write-nice-instructions` |
 | A `SKILL.md` | `write-nice-skills` |
-| Any of those, plus a code comment, docstring, PR description, or design doc | `avoid-unverifiable-context` and `avoid-reference-detours` — two failure modes that hold whatever the artifact is |
 
 | Checking what is already written | Skill |
 |---|---|
 | An issue body | `review-nice-issues` |
 | A PR's description and every comment its diff changes | `review-self-contained-docs` |
-
-A PR description has no template of its own yet. The two `avoid-*` skills and
-`review-self-contained-docs` are what govern one today.
 
 ## Common Rationalizations
 

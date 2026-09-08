@@ -62,14 +62,12 @@ by hand.
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
 
 They sit in three layers. **`dont-make-me-read` is the entry**: it carries the two propositions
-and the test, and routes to the skill that owns the artifact. It holds no template and no budget,
-so reading it is never a substitute for loading what it points at. **One skill per artifact** —
-an issue body, a review finding, a `SKILL.md` — carries that artifact's sections, budgets, and
-worked examples. **The two `avoid-*` skills** hold failure modes that apply whatever the artifact
-is, which is why they have the broadest triggers in the set.
-
-A PR description has no skill of its own yet: today the `avoid-*` pair and
-`review-self-contained-docs` are all that govern one.
+and the test, and routes to whatever else applies. It holds no template and no budget, so reading
+it is never a substitute for loading what it points at. **The two `avoid-*` skills** carry failure
+modes that hold whatever the text is — a code comment, a JSDoc block, a PR description, a commit
+message — which is why they have the broadest triggers here and why most writing needs nothing
+beyond them. **A few artifacts have enough fixed shape to earn rules of their own**: an issue
+body, a review finding, a `SKILL.md`, each with its own sections, budgets, and worked examples.
 
 The two `review-*` skills are proposition 2 made operational: the authoring skill states the
 conditions, the review skill applies them to text already written, per unit, instead of trusting a
