@@ -14,7 +14,7 @@ Every rule in every skill here follows from these.
    it is missing, so it reads short to you, and only to you.
 
 The second is why this is a set of skills and not advice. Each skill carries a Common
-Rationalizations table for the excuses that arrive while writing, and two of the seven exist only
+Rationalizations table for the excuses that arrive while writing, and two of the eight exist only
 to be run against text you just wrote.
 
 ## One test
@@ -52,6 +52,7 @@ by hand.
 
 | Skill | Role |
 |---|---|
+| [`dont-make-me-read`](skills/dont-make-me-read/SKILL.md) | The entry: the test above, what may never be cut for it, where the length cap applies, and which skill owns the artifact in hand. |
 | [`write-nice-issue-description`](skills/write-nice-issue-description/SKILL.md) | Write a GitHub issue body an implementer can act on alone: a determinable problem, checkable acceptance criteria, an out-of-scope boundary. |
 | [`write-nice-instructions`](skills/write-nice-instructions/SKILL.md) | Shape a PR review finding: one fixed template (title / summary / details), and how firmly to state the remedy. |
 | [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | Keep out of persisting text what its reader cannot go and check: the conversation, the review thread, a past state the code no longer shows. |
@@ -59,6 +60,16 @@ by hand.
 | [`write-nice-skills`](skills/write-nice-skills/SKILL.md) | Write and review a `SKILL.md`'s description and body so it fires reliably and stays lean. |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to, from the text alone. |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
+
+They sit in three layers. **`dont-make-me-read` is the entry**: it carries the two propositions
+and the test, and routes to the skill that owns the artifact. It holds no template and no budget,
+so reading it is never a substitute for loading what it points at. **One skill per artifact** —
+an issue body, a review finding, a `SKILL.md` — carries that artifact's sections, budgets, and
+worked examples. **The two `avoid-*` skills** hold failure modes that apply whatever the artifact
+is, which is why they have the broadest triggers in the set.
+
+A PR description has no skill of its own yet: today the `avoid-*` pair and
+`review-self-contained-docs` are all that govern one.
 
 The two `review-*` skills are proposition 2 made operational: the authoring skill states the
 conditions, the review skill applies them to text already written, per unit, instead of trusting a
