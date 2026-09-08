@@ -1,0 +1,145 @@
+# Structuring and splitting a skill
+
+Read this when the body is growing, when you are deciding what goes in `SKILL.md`
+versus a reference, or when you are wondering whether to split one skill into two.
+
+## The body budget
+
+- Keep `SKILL.md` within about **500 lines / 5000 tokens**. It is loaded in full
+  every time the skill fires, so every line spends context that could otherwise
+  speed up the session.
+- References sit **one level deep** — a flat `references/` directory (and,
+  optionally, a sibling `GLOSSARY.md`). Do not nest references inside references.
+
+### Measuring the token half of that budget
+
+Line count is a weak proxy: 5000 tokens buys around 250 lines of English prose but
+only around 150 of Japanese, so a body can sit inside 500 lines and still cost
+several times the budget. Measure instead of estimating:
+
+```bash
+bash ~/.claude/skills/write-nice-skills/scripts/count-tokens.sh path/to/SKILL.md
+```
+
+It diffs the input-side token count of two runs against whichever model is
+currently default, so no API key is needed and nothing is pinned to a model
+generation. Each file costs one round trip, and it exits non-zero over budget.
+
+For a free pre-check use `wc -c`, not `wc -m` — bytes per token barely move
+between English and Japanese, where characters per token nearly double. **Under
+about 12 KB is a safe stand-in for 5000 tokens today.** The script's closing line
+re-derives that figure from your own run; recompute it there rather than trusting
+this number once the default model has moved on.
+
+## Progressive disclosure: what to inline, what to disclose
+
+- **Inline** in `SKILL.md` what **every path needs**: scope, the core principles in
+  brief, and the Common Rationalizations guard.
+- **Disclose** behind a context pointer what **only some branches reach**: deep
+  detail, long examples, per-branch procedure.
+
+A context pointer names the condition and the file: "For writing a description, see
+`references/writing-descriptions.md`." The reference loads only when that branch is
+actually taken.
+
+## When to split
+
+Split only when the cut earns its cost. Three cuts justify it — the first two from
+mattpocock's `writing-great-skills`:
+
+1. **By trigger word** — a distinct situation has its *own* leading word you
+   actually type. That word can invoke a separate model-invoked skill (or, within
+   one skill, gate a separate reference).
+2. **By sequence** — a run of steps whose *post-completion* steps should be hidden.
+   Isolating that run in its own context clears what follows, so it does not
+   distract the work that comes after.
+3. **By delegation** — a phase that should run in a *different execution
+   environment*: its own model, its own tool set, its own context. The cut is not
+   about what the reader types, nor about what comes after; it is about who should
+   do the work. Detail: [By delegation](#by-delegation), below.
+
+If no cut applies, keep it inline. Splitting for its own sake multiplies either
+context load (more skills the agent must weigh on every turn) or cognitive load
+(more files an author must hold) and buys nothing.
+
+## By delegation
+
+`By sequence` decides **whether one skill becomes two**. `By delegation` decides
+**whether a phase leaves this execution environment**. A delegated phase is still
+this skill's work — it just runs somewhere cheaper and narrower, and hands back a
+conclusion instead of the material it was derived from.
+
+### What may be delegated, and what may not
+
+**Delegate mechanical, read-only gathering, enumeration, and parsing** — anything
+whose output collapses into a conclusion. Fetching a PR's comments, listing changed
+files, walking a package registry, grounding a design in the repository: the parent
+needs the answer, not the transcript that produced it.
+
+**Never delegate judgment** — deciding good/bad, enough/not enough, which finding is
+worth raising. Put a review's substance in a subagent and the grounds for each
+finding never reach the main thread, so nobody can review the review. When context
+is the problem, split the **session**, not the judgment.
+
+### Naming
+
+`<parent-skill-name>-<role>`: the parent's name, **one** hyphen, the role the child
+plays — `-change-inventory`, `-repo-grounding`, `-version-lookup`.
+
+That shape is what the publishing naming rule allows: lowercase alphanumerics and
+hyphens only, 1–64 characters, no leading or trailing hyphen, **no consecutive
+hyphens**, and the frontmatter `name` must equal the parent directory name. So do
+not reach for `--` to mark the boundary; a single hyphen is the only separator
+available.
+
+The name is not what hides the child. Keeping it out of the user's `/` menu is
+`user-invocable`'s job, below.
+
+### The child's frontmatter
+
+```yaml
+user-invocable: false           # hide it from the user's / menu
+disable-model-invocation: false # true would cut off the parent — which is a model
+context: fork                   # this skill *is* the subagent; no conversation history is carried in
+agent: Explore                  # picks the tool set. Explore and Plan are read-only
+model: haiku                    # gathering only = haiku; gathering + light normalization = sonnet
+background: false               # required when the conclusion is used in the same turn (default: true)
+```
+
+`disable-model-invocation: true` is the field that looks right and is wrong. The
+caller here **is** a model, so `true` severs the only path into the child. Hiding it
+from the human is `user-invocable: false`, and that is the whole requirement.
+
+`context: fork` is what makes the child an execution environment rather than a
+stretch of the parent's turn. Without it, `model` applies to the remainder of the
+current turn — the main conversation — and not to anything the skill delegates.
+
+### Passing input
+
+Pass the whole input as **`$ARGUMENTS`**. Indexed and named arguments go through
+shell-like quote parsing, so a multi-line free-form brief cannot survive as a single
+argument.
+
+### Two motives, and how each picks `model`
+
+| Motive | What the fork buys | `model` | `background` |
+|---|---|---|---|
+| **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
+| **Independence** — two workers must not see each other's output | `context: fork` carries in no conversation history, so the isolation is structural rather than requested | `sonnet`: the work is design-quality, so narrow it with `effort` rather than by dropping the model | leave unset when the workers should run in parallel |
+
+The second row also replaces prose. "Do not show either subagent the other's output"
+is a prohibition the reader can violate; `context: fork` not carrying conversation
+history is a property they cannot.
+
+## This skill as the worked example
+
+`write-nice-skills` teaches "don't write everything; push branch detail one level
+down," so it splits along its own branches:
+
+- the always-needed core stays in `SKILL.md`;
+- the two branches an author is actually on — *writing a description* and
+  *structuring a skill* — each get one reference;
+- shared vocabulary goes in `GLOSSARY.md`.
+
+A single-file version would contradict the rule it teaches. That is the test: a
+skill about structure should be structured the way it prescribes.
