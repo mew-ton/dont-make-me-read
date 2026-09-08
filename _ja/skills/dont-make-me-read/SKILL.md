@@ -93,8 +93,8 @@ allowed-tools: []
 ## Which skill owns what（どのスキルが何を所有するか）
 
 これが該当するもののほとんどはテンプレートを持たず、必要ともしない — 説明的なコードコメント、JSDoc
-ブロック、PR説明文、設計ドキュメント、コミットメッセージ。それらについては上記のテストと、二つの失敗
-モードで全部である：
+ブロック、PR説明文、コミットメッセージ。それらについては上記のテストと、二つの失敗モードで全部で
+ある：
 
 - `avoid-unverifiable-context` — 読み手が確認しに行けないものをテキストが担っている。
 - `avoid-reference-detours` — 理解されるために、テキストが読み手を到達可能などこかへ送っている。
@@ -109,6 +109,7 @@ allowed-tools: []
 | GitHub issue 本文 | `write-nice-issue-description` |
 | PRレビュー指摘、または人に何を変えるか伝えるあらゆるコメント | `write-nice-instructions` |
 | `SKILL.md` | `write-nice-skills` |
+| 設計ドキュメント — `DESIGN.md`、ADR、アーキテクチャノート | `write-nice-design-md` |
 
 | すでに書かれたものをチェックする | Skill |
 |---|---|
