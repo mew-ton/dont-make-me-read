@@ -4,11 +4,11 @@ description: >
   Determinacy-and-duplication pass over a GitHub issue body: checks whether an implementer could
   act on it without asking for anything more — a determinable problem, checkable acceptance
   criteria, a clear out-of-scope boundary, no implementation method smuggled in, and no content
-  duplicated across sections. Run it as the determinacy/duplication axis of a larger issue review,
-  as a final pass over a draft just written, or from the /review-issue command. DO NOT run it as a
-  general-purpose "review this issue" entry point, and do not expect it to judge repo-groundedness
-  or dependency closure — that is the caller's job, not this skill's.
-user-invocable: false           # entry points are commands/, never the / menu
+  duplicated across sections. Apply to an issue body that is already written — someone else's, or
+  a draft of your own. DO NOT use it as a general-purpose "review this issue" entry point, and do
+  not expect it to judge repo-groundedness or dependency closure — that is the caller's job, not
+  this skill's.
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---
@@ -28,7 +28,8 @@ the same footing as the reader Gate 1 describes. Do not add `gh` or `Read` to th
 "more convenient"; that would let it quietly verify a claim against outside knowledge, which is
 exactly the failure mode a real implementer-with-no-extra-context can't fall into either.
 
-It runs in two situations:
+Callers reach it as the determinacy/duplication axis of a larger issue review, or through the
+`/review-issue` command. It runs in two situations:
 
 - **Reviewing an issue that already exists on GitHub**: the body text must be fetched *before*
   this skill runs, by whatever is doing the fetching — the `/review-issue` command, or another

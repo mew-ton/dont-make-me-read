@@ -7,15 +7,12 @@ description: >
   は問題なく読めるときに。DO NOT GitHub issue 本文には使わない（それは write-nice-issue-description）。
   スキルの description やサイズ予算にも使わない（それは write-nice-skills）。残り続ける文書がどの
   背景文脈を担うかを決めるのにも使わない（それは avoid-unverifiable-context）。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # 呼び出し元の会話を一切持たずに走るので、それが成果物に届かない
-background: false               # 呼び出し元が同じターンで結果を見せる
+context: fork
+background: false
 allowed-tools: []
 ---
-
-> 【訳注】原文のこの description は 1 行が 146 文字あり、ファイル全体の 100 桁折り返しから外れている
-> （`skills/write-nice-instructions/SKILL.md:7`）。
 
 ## Scope（範囲）
 
@@ -33,10 +30,6 @@ GitHub issue 本文は別の成果物 — 問題の記述＋完了条件であ�
 | 指示は固定された形になっているか、そして対処は正しい強さで述べられているか？ | このスキル |
 | 読み手はそれが主張することを確認できるか（根拠は残り、プロセスは落ちているか）？ | `avoid-unverifiable-context` |
 | 読み手は、それを理解するために到達可能などこかへ送られたか？ | `avoid-reference-detours` |
-| この `SKILL.md` は発火するか、そしてロードするに足るほど軽いか？ | `write-nice-skills` |
-
-> 【訳注】この表は「一つのPRレビュー指摘に複数が該当しうる軸」の表だが、最後の行（`SKILL.md` が
-> 発火するか）はPRレビュー指摘の軸ではない。
 
 スキルの本文も指示テキストなので、このスキルはその中の依頼文も引き続き統べる。`write-nice-skills` に
 引き渡すのは description とサイズ予算である。

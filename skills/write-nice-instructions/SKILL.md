@@ -8,10 +8,10 @@ description: >
   body (that is write-nice-issue-description), for a skill's description or size budget (that is
   write-nice-skills), or for deciding which background context a persistent document carries
   (that is avoid-unverifiable-context).
-user-invocable: false           # entry points are commands/, never the / menu
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # runs with none of the caller's conversation
-background: false               # the caller shows the result in the same turn
+context: fork
+background: false
 allowed-tools: []
 ---
 

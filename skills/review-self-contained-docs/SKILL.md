@@ -4,12 +4,10 @@ description: >
   Text-self-containment pass over a pull request's description and every code comment it adds or
   changes: checks each one for a reader with none of the writer's context — no conversation, no
   issue, no surrounding diff — against three conditions: time-closure, referenceability,
-  reference-scope closure. Run it as one axis of a larger PR review, as an authoring skill's own
-  final pass over a PR description, issue body, or code comment just written, or from the
-  /review-text command. DO NOT run it as a general-purpose "review this PR" entry point, and do
-  not expect it to judge issue conformance, scope, or design — that is the caller's job, not this
-  skill's.
-user-invocable: false           # entry points are commands/, never the / menu
+  reference-scope closure. Apply to text that is already written — a PR under review, or a draft
+  of your own. DO NOT use it as a general-purpose "review this PR" entry point, and do not expect
+  it to judge issue conformance, scope, or design — that is the caller's job, not this skill's.
+user-invocable: false
 disable-model-invocation: false
 allowed-tools:
   - Read
@@ -24,7 +22,9 @@ allowed-tools:
 `avoid-unverifiable-context` and `avoid-reference-detours` say what to write. This skill checks
 what was actually written, against the same three conditions from the reader's side: time-closure
 and referenceability (that pair is `avoid-unverifiable-context`'s), and reference-scope closure
-(`avoid-reference-detours`'). It runs in two situations:
+(`avoid-reference-detours`'). Callers reach it as one axis of a larger PR review, as a final pass
+over a PR description, issue body, or code comment just written, or through the `/review-text`
+command. It runs in two situations:
 
 - **Reviewing a PR**: check its description and every comment the diff adds or changes.
 - **Self-checking text you just wrote**: before a PR description, issue body, or code comment

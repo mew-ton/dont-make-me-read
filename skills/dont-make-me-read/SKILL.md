@@ -10,7 +10,7 @@ description: >
   and to reach the rules for the artifact in hand. DO NOT use it instead of those rules — it
   carries no template, no budget, and no section list — or for ephemeral chat replies,
   scratchpads, and working notes nobody acts on later.
-user-invocable: false           # entry points are commands/, never the / menu
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---

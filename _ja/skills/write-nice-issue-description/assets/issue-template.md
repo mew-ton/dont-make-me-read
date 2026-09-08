@@ -76,8 +76,3 @@ Acceptance criteria の全項目をカバーする — 届かない項目があ�
 -->
 
 depends on #
-
-> 【訳注】このテンプレートは `depends on #` を `## Dependencies` 見出しの下に置いている。一方
-> `references/examples.md` では、Gate 1 — references の例が `depends on #1784` を先頭の `Refs #` の
-> 位置に置き、「A full passing issue」の例は `## Dependencies` 見出しなしで末尾にベタ書きしている。
-> 一つのスキル内で配置が3通りある。
