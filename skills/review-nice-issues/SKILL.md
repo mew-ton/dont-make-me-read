@@ -4,11 +4,10 @@ description: >
   Determinacy-and-duplication pass over a GitHub issue body: checks whether an implementer could
   act on it without asking for anything more — a determinable problem, checkable acceptance
   criteria, a clear out-of-scope boundary, no implementation method smuggled in, and no content
-  duplicated across sections. Invoked by a caller such as an issue-implementability review for
-  its own determinacy/duplication axis, as write-nice-issue-description's own final pass over a
-  draft just written, or from the /review-issue command. DO NOT run it as a general-purpose "review
-  this issue" entry point, and do not expect it to judge repo-groundedness or dependency closure — that
-  is the caller's job, not this skill's.
+  duplicated across sections. Run it as the determinacy/duplication axis of a larger issue review,
+  as a final pass over a draft just written, or from the /review-issue command. DO NOT run it as a
+  general-purpose "review this issue" entry point, and do not expect it to judge repo-groundedness
+  or dependency closure — that is the caller's job, not this skill's.
 user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools: []

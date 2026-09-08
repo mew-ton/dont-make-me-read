@@ -125,7 +125,8 @@ Add a new `POST /items/bulk` endpoint. The request body accepts `{ items: Item[]
 Single creation (`POST /items`) and bulk creation have different responsibilities (different transaction boundaries, different partial-failure semantics, and different rate-limit units), so the endpoints are kept separate.
 ```
 
-The Background section carries the rationale — a domain-level difference in responsibilities, verifiable by a reader who was never in the original review.
+The Background section carries the rationale — a domain-level difference in responsibilities,
+verifiable by a reader who was never in the original review.
 
 ### Bad: documenting a deprecation that no longer exists in the implementation
 ```markdown

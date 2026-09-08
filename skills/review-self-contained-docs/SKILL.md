@@ -6,8 +6,9 @@ description: >
   issue, no surrounding diff — against three conditions: time-closure, referenceability,
   reference-scope closure. Run it as one axis of a larger PR review, as an authoring skill's own
   final pass over a PR description, issue body, or code comment just written, or from the
-  /review-text command. DO NOT run it as a general-purpose "review this PR" entry point, and do not expect it to judge issue
-  conformance, scope, or design — that is the caller's job, not this skill's.
+  /review-text command. DO NOT run it as a general-purpose "review this PR" entry point, and do
+  not expect it to judge issue conformance, scope, or design — that is the caller's job, not this
+  skill's.
 user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
 allowed-tools:

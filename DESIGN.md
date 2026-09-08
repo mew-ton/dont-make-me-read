@@ -76,7 +76,12 @@ Every skill here, without exception:
 ```yaml
 user-invocable: false           # no skill is in the / menu; entry points live in commands/
 disable-model-invocation: false # the model decides when a skill applies
+allowed-tools: []               # declared on every skill; empty unless it must reach outside
 ```
+
+`allowed-tools` is empty on seven of the eight. `review-nice-issues`' emptiness is a
+property its judgment depends on, which is why it has a section of its own above;
+`review-self-contained-docs` is the one skill that lists tools.
 
 A skill that produces an artifact from a brief adds:
 
@@ -97,5 +102,9 @@ Before committing a `SKILL.md`:
 bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
 ```
 
-Non-zero means a body is over 5000 tokens. Push branch-only detail into that skill's
-`references/` until it passes; references have a depth rule and no size rule.
+Only exit 1 is about a budget: a body came back over 5000 tokens, or a file you named
+was not there. Exit 2 means the machine cannot run the check at all (no `claude` or no
+`jq` on PATH), and exit 3 that a measurement failed and no count came back — neither is
+a pass, so fix the setup or rerun rather than reading the silence as one. For a body
+that is genuinely over, push branch-only detail into that skill's `references/` until it
+passes; references have a depth rule and no size rule.
