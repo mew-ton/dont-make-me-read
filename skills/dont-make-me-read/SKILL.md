@@ -3,7 +3,8 @@ name: dont-make-me-read
 description: >
   Text someone else has to act on, whatever it is — a GitHub issue, a PR description, a review
   comment, an explanatory code comment, a JSDoc block, a design doc, a SKILL.md — is measured by
-  whether its reader decides correctly from it, not by how thorough or careful it reads. Noise costs a wrong decision, not just time, and
+  whether its reader — a person or an agent, since both pay to gather it and both act on what
+  they end up with — decides correctly from it, not by how thorough or careful it reads. Noise costs a wrong decision, not just time, and
   whatever the decision depends on has to be there however much it costs to read. Use before
   writing or revising any of those, to get that test and to reach the rules for the artifact in
   hand. DO NOT use it instead of those rules — it carries no template, no budget, and no section
@@ -24,6 +25,21 @@ Two propositions. Every rule in this plugin follows from them.
 
 The second is why these are skills and not advice, and why two of them exist only to be run
 against text you have already written.
+
+## Who the reader is
+
+A person or an agent, always both. Collecting and holding a long, scattered instruction costs each
+of them something, and each acts on whatever they end up holding, so nothing here is written for
+only one of them.
+
+They do not fail the same way, and that is worth holding on to while judging a draft. A list of the
+paths you happened to sample reads to a person as "at least these, and probably others like them";
+a coding agent takes it as the complete set to touch, and stops there. Same text, same noise, two
+different wrong decisions.
+
+Where a skill in this set names one of them — `write-nice-instructions` sets its budgets by the
+human reader, `write-nice-skills` by the agent deciding whether to load a file — it is saying which
+reader sets the bar for that artifact, not which one is the audience.
 
 ## The test
 

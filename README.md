@@ -9,7 +9,9 @@ without wading through it.
 Every rule in every skill here follows from these.
 
 1. **Nobody wants to read a lot of text to work out what to do.** Not beautiful text, not thorough
-   text, not polite text. What is measured is how much a reader gets through before they can act.
+   text, not polite text. What is measured is how much a reader gets through before they can act —
+   and the reader is a person or an agent, since both pay to collect it and both act on what they
+   end up holding.
 2. **The writer cannot tell how much that is.** You read your own draft while supplying the context
    it is missing, so it reads short to you, and only to you.
 
@@ -88,8 +90,10 @@ between the reader and acting, wherever the text lives. `avoid-unverifiable-cont
 reach at all and the fix is to delete, the second is what they *can* reach and were made to travel
 to, where the fix is to restate it here and leave the original where it is.
 
-`write-nice-skills` is the odd one out only in its reader — a `SKILL.md` is read by an agent
-deciding whether to load it, on the same terms a person decides whether to keep reading.
+Which reader sets the bar differs by artifact — `write-nice-instructions` is pitched at the person
+who decides within a few lines whether to act or skim, `write-nice-skills` at the agent deciding
+whether to load a file — but every artifact here is read by both, and the two reach different wrong
+conclusions from the same noise.
 
 ## Language
 
