@@ -42,7 +42,7 @@ Commands are the whole user-facing surface. Type one when you want something wri
 | `/write-issue` | Draft or revise a GitHub issue body, then audit the result. |
 | `/write-review-comment` | Draft or revise a PR review finding. |
 | `/write-skill` | Write or review a `SKILL.md`. |
-| `/write-design` | Write or revise a design doc. |
+| `/write-architecture` | Write or revise an architecture doc. |
 | `/review-issue` | Audit an existing issue body. |
 | `/review-text` | Audit a PR's description and the code comments it changes. |
 
@@ -68,7 +68,7 @@ by hand.
 | [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | Keep out of persisting text what its reader cannot go and check: the conversation, the review thread, a past state the code no longer shows. |
 | [`avoid-reference-detours`](skills/avoid-reference-detours/SKILL.md) | Stop sending the reader somewhere reachable to understand the sentence in front of them. State it at the point of use; the original stays put. |
 | [`write-nice-skills`](skills/write-nice-skills/SKILL.md) | Write and review a `SKILL.md`'s description and body so it fires reliably and stays lean. |
-| [`write-nice-design-md`](skills/write-nice-design-md/SKILL.md) | Carry the criteria a contributor decides by, so they can decide with the implementation closed. |
+| [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | Carry the criteria a contributor decides by, so they can decide with the implementation closed. |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to, from the text alone. |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
 
@@ -78,8 +78,8 @@ it is never a substitute for loading what it points at. **The two `avoid-*` skil
 modes that hold whatever the text is — a code comment, a JSDoc block, a PR description, a commit
 message — which is why they have the broadest triggers here and why most writing needs nothing
 beyond them. **A few artifacts have enough fixed shape to earn rules of their own**: an issue
-body, a review finding, a `SKILL.md`, a design doc — each with its own sections, budgets, and
-worked examples.
+body, a review finding, a `SKILL.md`, an architecture doc — each with its own sections, budgets,
+and worked examples.
 
 The two `review-*` skills are proposition 2 made operational: the authoring skill states the
 conditions, the review skill applies them to text already written, per unit, instead of trusting a
@@ -87,8 +87,9 @@ read-through. They have no tools beyond reading, and `review-nice-issues` has no
 judge from the same text a reader holds, so its caller does any fetching.
 
 The verb says which direction the skill subtracts in. A `write-*` skill fixes the shape of a whole
-artifact — an issue, a finding, a `SKILL.md`, a design doc. An `avoid-*` skill names one thing that
-puts reading between the reader and acting, wherever the text lives. `avoid-unverifiable-context` and
+artifact — an issue, a finding, a `SKILL.md`, an architecture doc. An `avoid-*` skill names one
+thing that puts reading between the reader and acting, wherever the text lives.
+`avoid-unverifiable-context` and
 `avoid-reference-detours` are the two halves of one question: the first is what the reader cannot
 reach at all and the fix is to delete, the second is what they *can* reach and were made to travel
 to, where the fix is to restate it here and leave the original where it is.
@@ -106,11 +107,11 @@ question: each writing skill says to produce the issue, the finding, or the doc 
 readers already use, and to write it in one language only. The rules fix the text's shape and the
 context it carries, not the language it carries them in.
 
-## Design
+## Architecture
 
-Why the layers are wired this way — what a command does that a skill must not, and why
-the writing skills run with none of the conversation that reached them —
-is in [`DESIGN.md`](DESIGN.md), along with the frontmatter contract for adding one.
+What settles a decision about this plugin's own shape — where a new entry point goes, what context
+a skill runs in, what tools it gets — is in [`ARCHITECTURE.md`](ARCHITECTURE.md), along with the
+frontmatter contract that follows from it.
 
 ## License
 

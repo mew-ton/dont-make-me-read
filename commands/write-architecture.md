@@ -1,10 +1,10 @@
 ---
-description: Write or revise a design doc — the criteria a contributor decides by.
-argument-hint: "[a path to a design doc, or the decision it should settle]"
+description: Write or revise an architecture doc — the criteria a contributor decides by.
+argument-hint: "[a path to an architecture doc, or the decision it should settle]"
 ---
 
 You are the instruction layer. Work out which decisions the doc has to settle, then hand a single
-consolidated brief to the `write-nice-design-md` skill and show what comes back.
+consolidated brief to the `write-nice-architecture-docs` skill and show what comes back.
 
 Settle these here, before handing over:
 

@@ -47,7 +47,7 @@ fork は会話履歴を一切持ち込まないので、会話を見たことの
 
 | 走る場所 | スキル |
 |---|---|
-| fork | `write-nice-issue-description`、`write-nice-instructions`、`write-nice-skills`、`write-nice-design-md` |
+| fork | `write-nice-issue-description`、`write-nice-instructions`、`write-nice-skills`、`write-nice-architecture-docs` |
 | メインスレッド | `dont-make-me-read`、`avoid-unverifiable-context`、`avoid-reference-detours`、`review-nice-issues`、`review-self-contained-docs` |
 
 これが frontmatter を決める。ここのすべてのスキル：
@@ -104,7 +104,7 @@ frontmatter は `SKILL.md` の中で唯一、読まれるのではなくパー�
 `dont-make-me-read` のテストと二つの `avoid-*` スキルで足りる。この二つがここで最も広いトリガーを持つのは
 そのためである。
 
-issue 本文、レビュー指摘、`SKILL.md`、設計ドキュメントの4つはその基準を超え、それぞれ一つの `write-*`
+issue 本文、レビュー指摘、`SKILL.md`、アーキテクチャドキュメントの4つはその基準を超え、それぞれ一つの `write-*`
 スキルを得た。新しい成果物の種類はそれを超えるか超えないかのどちらかであり、超えないものにスキルを足すと、
 判断すべき description がもう一つ増えた重みを以後のすべてのターンが払う。
 

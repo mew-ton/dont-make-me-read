@@ -45,7 +45,7 @@ Common Rationalizations（よくある自己正当化）の表を持っており
 | `/write-issue` | GitHub issue の本文を起草または改稿し、その結果を監査する。 |
 | `/write-review-comment` | PRレビュー指摘を起草または改稿する。 |
 | `/write-skill` | `SKILL.md` を書く、またはレビューする。 |
-| `/write-design` | 設計ドキュメントを書く、または改稿する。 |
+| `/write-architecture` | アーキテクチャドキュメントを書く、または改稿する。 |
 | `/review-issue` | 既存の issue 本文を監査する。 |
 | `/review-text` | PRの説明文と、そのPRが変更するコードコメントを監査する。 |
 
@@ -69,7 +69,7 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 | [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | 読み手が確認しに行けないものを、残り続けるテキストから締め出す。会話、レビュースレッド、コードにもう現れない過去の状態。 |
 | [`avoid-reference-detours`](skills/avoid-reference-detours/SKILL.md) | 目の前の文を理解するために、到達可能などこかへ読み手を送るのをやめる。使用箇所で述べよ。原典はその場に残る。 |
 | [`write-nice-skills`](skills/write-nice-skills/SKILL.md) | `SKILL.md` の description と本文を、確実に発火し、かつ軽く保たれるように書く／レビューする。 |
-| [`write-nice-design-md`](skills/write-nice-design-md/SKILL.md) | 貢献者が判断に使う基準を担い、実装を閉じたまま判断できるようにする。 |
+| [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | 貢献者が判断に使う基準を担い、実装を閉じたまま判断できるようにする。 |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | `write-nice-issue-description` が書くときに満たす条件と同じもので、issue 本文をテキストだけから監査する。 |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | PRの説明文と、そのPRが変更するすべてのコメントを自己完結性（time-closure、referenceability、reference-scope closure）で監査する。 |
 
@@ -78,7 +78,8 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 ロードすることの代わりにはならない。**二つの `avoid-*` スキル**は、テキストが何であれ成立する失敗
 モードを担う — コードコメント、JSDocブロック、PR説明文、コミットメッセージ。だからここで最も広い
 トリガーを持ち、たいていの書き物はこの二つ以上を必要としない。**いくつかの成果物は、固有のルールを
-持つに足る固定された形を持っている** — issue 本文、レビュー指摘、`SKILL.md`、設計ドキュメント。それぞれが
+持つに足る固定された形を持っている** — issue 本文、レビュー指摘、`SKILL.md`、アーキテクチャドキュメント。
+それぞれが
 独自のセクション、予算、実例を持つ。
 
 二つの `review-*` スキルは、命題2を実運用に落としたもの。authoring スキルが条件を述べ、review スキルが
@@ -91,7 +92,7 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 > コメントを **POST** する。read ではない。
 
 動詞は、そのスキルがどちらの方向に引き算するかを示す。`write-*` スキルは成果物全体の形を固定する —
-issue、指摘、`SKILL.md`、設計ドキュメント。`avoid-*` スキルは、読み手と行動のあいだに「読むこと」を割り込ませるものを
+issue、指摘、`SKILL.md`、アーキテクチャドキュメント。`avoid-*` スキルは、読み手と行動のあいだに「読むこと」を割り込ませるものを
 一つ名指しする。テキストがどこにあろうと関係なく。`avoid-unverifiable-context` と
 `avoid-reference-detours` は一つの問いの二つの半分で、前者は読み手がそもそも到達できないもので、直し方は
 削除。後者は読み手が**到達できる**のに行かされたもので、直し方はここで言い直し、原典はその場に残すこと。
@@ -107,11 +108,11 @@ issue、指摘、`SKILL.md`、設計ドキュメント。`avoid-*` スキルは�
 issue／指摘／ドキュメントを、その読者がすでに使っている言語で、かつ**一つの言語だけで**書けと言っている。
 ルールが固定するのはテキストの形と、それが担う文脈であって、それを担う言語ではない。
 
-## Design
+## Architecture
 
-なぜ層がこう配線されているのか — コマンドがやってスキルがやってはいけないことは何か、なぜ writing
-スキルはそこに至った会話を一切持たずに走るのか — は [`DESIGN.md`](DESIGN.md) にあり、スキルを追加する
-ときの frontmatter の契約もそこにある。
+このプラグイン自身の形についての判断を何が決めるか — 新しい入口をどこに置くか、スキルがどの文脈で走るか、
+どのツールを持つか — は [`ARCHITECTURE.md`](ARCHITECTURE.md) にあり、そこから導かれる frontmatter の
+契約もそこにある。
 
 ## License
 

@@ -1,12 +1,13 @@
 ---
-name: write-nice-design-md
+name: write-nice-architecture-docs
 description: >
-  A design doc — DESIGN.md, an ADR, an architecture note — carries the criteria a contributor
-  decides by: what settles which shape a new thing takes, what it may assume, and what it owes the
-  parts already there. Apply when writing or revising one, and when a decision you just made by
-  reading the code is one the next contributor will have to make again. DO NOT use for a GitHub
-  issue body (that is write-nice-issue-description), for a SKILL.md (that is write-nice-skills),
-  or for a changelog, a tour of the code, or a record of who decided what when.
+  An architecture doc — ARCHITECTURE.md, an ADR, a decision record — carries the criteria a
+  contributor decides by: what settles which shape a new thing takes, what it may assume, and what
+  it owes the parts already there. Apply when writing or revising one, and when a decision you just
+  made by reading the code is one the next contributor will have to make again. DO NOT use for a
+  GitHub issue body (that is write-nice-issue-description), for a SKILL.md (that is
+  write-nice-skills), or for a changelog, a tour of the code, or a record of who decided what
+  when.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -16,17 +17,17 @@ allowed-tools: []
 
 ## Scope
 
-A design doc is read by someone about to add or change something in the codebase it describes. It
-earns its place by letting them decide correctly **without reading the existing implementation
-first**. That is the whole job.
+An architecture doc is read by someone about to add or change something in the codebase it
+describes. It earns its place by letting them decide correctly **without reading the existing
+implementation first**. That is the whole job.
 
 The code already shows what is there, and git already shows when it changed. What neither shows is
-what would settle the next decision — which is why a design doc that narrates the current shape
-has no reader: everything in it is available faster somewhere else.
+what would settle the next decision — which is why an architecture doc that narrates the current
+shape has no reader: everything in it is available faster somewhere else.
 
 An issue is a problem plus a completion condition (`write-nice-issue-description`). A `SKILL.md` is
-an instruction to an agent (`write-nice-skills`). A design doc is neither: it is the standing
-answer to "how do I decide this here", read long after whoever wrote it has stopped being
+an instruction to an agent (`write-nice-skills`). An architecture doc is neither: it is the
+standing answer to "how do I decide this here", read long after whoever wrote it has stopped being
 available.
 
 ## The test
@@ -106,7 +107,8 @@ Index by decision, not by component. A contributor arrives with one question; th
 are what they scan to find it, so a heading that names a decision is reachable and a heading that
 names a part is not.
 
-A design doc sits on the mandatory path for anyone changing the repository, so what is capped is
+An architecture doc sits on the mandatory path for anyone changing the repository, so what is
+capped is
 **the distance to the decision they came for** — not the file's total length. A long file whose
 headings are decisions is cheaper than a short one they must read end to end.
 
@@ -134,5 +136,5 @@ because this skill is.
 - `avoid-unverifiable-context` — what keeps deliberation out while the rationale stays.
 - `avoid-reference-detours` — what to restate at the point of use, which condition 4 narrows for
   the definitions another file owns.
-- `write-nice-skills` — a `SKILL.md` is an instruction to an agent, not a design doc; this skill
-  stops where that one starts.
+- `write-nice-skills` — a `SKILL.md` is an instruction to an agent, not an architecture doc; this
+  skill stops where that one starts.

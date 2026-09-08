@@ -54,7 +54,7 @@ All nine, by that criterion:
 
 | Runs in | Skills |
 |---|---|
-| A fork | `write-nice-issue-description`, `write-nice-instructions`, `write-nice-skills`, `write-nice-design-md` |
+| A fork | `write-nice-issue-description`, `write-nice-instructions`, `write-nice-skills`, `write-nice-architecture-docs` |
 | The main thread | `dont-make-me-read`, `avoid-unverifiable-context`, `avoid-reference-detours`, `review-nice-issues`, `review-self-contained-docs` |
 
 Which settles the frontmatter. Every skill here:
@@ -114,7 +114,8 @@ Most writing has no such shape — a code comment, a commit message, a PR descri
 served by the test in `dont-make-me-read` plus the two `avoid-*` skills, which is why those two
 carry the broadest triggers here.
 
-An issue body, a review finding, a `SKILL.md` and a design doc each cleared that bar, and each got
+An issue body, a review finding, a `SKILL.md` and an architecture doc each cleared that bar, and
+each got
 one `write-*` skill. A new artifact type clears it or it does not; adding a skill for one that does
 not costs every future turn the weight of another description to judge.
 

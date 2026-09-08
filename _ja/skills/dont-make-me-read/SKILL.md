@@ -2,7 +2,7 @@
 name: dont-make-me-read
 description: >
   誰かが読んで行動しなければならないテキストは、それが何であれ — GitHub issue、PR説明文、レビュー
-  コメント、説明的なコードコメント、JSDocブロック、設計ドキュメント、SKILL.md — その読み手が
+  コメント、説明的なコードコメント、JSDocブロック、アーキテクチャドキュメント、SKILL.md — その読み手が
   — 人間かエージェントか、どちらもそれを集めるコストを払い、どちらも最終的に手元に残ったものに
   基づいて行動するので — そこから正しく判断できるかで測られるのであって、どれだけ網羅的か／丁寧に
   読めるかでは測られない。ノイズが払わせるのは時間だけでなく誤った判断であり、判断が依存している
@@ -109,7 +109,7 @@ allowed-tools: []
 | GitHub issue 本文 | `write-nice-issue-description` |
 | PRレビュー指摘、または人に何を変えるか伝えるあらゆるコメント | `write-nice-instructions` |
 | `SKILL.md` | `write-nice-skills` |
-| 設計ドキュメント — `DESIGN.md`、ADR、アーキテクチャノート | `write-nice-design-md` |
+| アーキテクチャドキュメント — `ARCHITECTURE.md`、ADR、決定記録 | `write-nice-architecture-docs` |
 
 | すでに書かれたものをチェックする | Skill |
 |---|---|

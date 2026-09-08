@@ -2,7 +2,8 @@
 name: dont-make-me-read
 description: >
   Text someone else has to act on, whatever it is — a GitHub issue, a PR description, a review
-  comment, an explanatory code comment, a JSDoc block, a design doc, a SKILL.md — is measured by
+  comment, an explanatory code comment, a JSDoc block, an architecture doc, a SKILL.md — is
+  measured by
   whether its reader — a person or an agent, since both pay to gather it and both act on what
   they end up with — decides correctly from it, not by how thorough or careful it reads. Noise
   costs a wrong decision, not just time, and whatever the decision depends on has to be there
@@ -106,7 +107,7 @@ this skill holds the test, not those rules.
 | A GitHub issue body | `write-nice-issue-description` |
 | A PR review finding, or any comment telling a person what to change | `write-nice-instructions` |
 | A `SKILL.md` | `write-nice-skills` |
-| A design doc — `DESIGN.md`, an ADR, an architecture note | `write-nice-design-md` |
+| An architecture doc — `ARCHITECTURE.md`, an ADR, a decision record | `write-nice-architecture-docs` |
 
 | Checking what is already written | Skill |
 |---|---|

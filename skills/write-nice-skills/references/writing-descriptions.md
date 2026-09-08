@@ -99,4 +99,4 @@ of it is loaded on every fire. A trailing `#` on `user-invocable: false` explain
 field to nobody who was going to be confused by it, and every reader pays for it
 forever — the same size argument that pushes branch detail into `references/`, one
 level up. A field that genuinely needs explaining needs it in prose an author can
-argue with: the body, or the repository's own design doc.
+argue with: the body, or the repository's own architecture doc.
