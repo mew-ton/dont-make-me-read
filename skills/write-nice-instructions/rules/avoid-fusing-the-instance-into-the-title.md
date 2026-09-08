@@ -10,7 +10,7 @@ and belong in 概要 as separate bullets — where, then why, then the fix.
 ### Bad: the rule and its one instance fused into 表題
 
 ```markdown
-`MemberRequirementDetail.vue:4-16` に付随するコメントが長すぎる
+`PlanEligibilityDetail.vue:4-16` に付随するコメントが長すぎる
 
 - width サイズを変更するためだけに、関連する issue, インシデント等の情報を含んでいます。
 - その他各所でも同様の傾向が見られます

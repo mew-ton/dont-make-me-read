@@ -145,13 +145,13 @@ not lost. Two shapes, by where you are writing.
 ### Good: in a PR review — open an issue and link it from the code
 
 ```markdown
-**major** — `ContentsArticleBody.server.vue:31` が `useAsyncData` の `error` を握りつぶしている
+**major** — `ArticleBody.server.vue:31` が `useAsyncData` の `error` を握りつぶしている
 
 - 失敗時に本文が空でレンダリングされ、読者には文章のない記事が表示される。
 - このPRに含めるべき修正はない。先に2点を決める必要がある。
 - 両方を含むissueを起票し、fetch箇所の `TODO(#N)` からリンクする。
 
-`openBlocks` は `[]` に、`isGated` は `false` にフォールバックするため、失敗はUIにもDOMにも
+`descriptionBlocks` は `[]` に、`isRestricted` は `false` にフォールバックするため、失敗はUIにもDOMにも
 現れない。ここで直せない理由は2つある。失敗時の文言はどのspecにも定義がなく、実装すると実装者
 がユーザー向け文言の作者になってしまう。また、このIslandは自身でfetchする `.server.vue` である
 ため、それをマウントするページ側は決してこのエラーを受け取れず、「失敗時のUIはページが持つ」

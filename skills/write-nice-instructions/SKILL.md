@@ -45,7 +45,7 @@ The template applies **once per instruction** — never once per document contai
 |---|---|---|---|---|
 | PR review | **one per finding** | the finding's lead line (`**<severity>** — <fact>`) | the finding's opening | only when the summary does not carry the how / why |
 
-Read [`references/rules/one-instruction-one-application.md`](references/rules/one-instruction-one-application.md)
+Read [`rules/one-instruction-one-application.md`](rules/one-instruction-one-application.md)
 before writing 詳細 — it holds the four tells that a draft is already two applications under one 表題,
 the overflow signal that catches the same thing later, and a worked example. Split on any of those,
 before writing 詳細.
@@ -61,12 +61,12 @@ before writing 詳細.
 Before writing 表題, read the three rules below — each holds one worked example, not a survey of
 every way 表題 can go wrong:
 
-- [`references/rules/avoid-negating-the-request-as-the-fact.md`](references/rules/avoid-negating-the-request-as-the-fact.md)
+- [`rules/avoid-negating-the-request-as-the-fact.md`](rules/avoid-negating-the-request-as-the-fact.md)
   — a negated request is not an observation.
-- [`references/rules/avoid-fusing-the-instance-into-the-title.md`](references/rules/avoid-fusing-the-instance-into-the-title.md)
+- [`rules/avoid-fusing-the-instance-into-the-title.md`](rules/avoid-fusing-the-instance-into-the-title.md)
   — the swap test for telling the rule from the one instance that broke it, and the exception where a
   path is genuinely the fact.
-- [`references/rules/avoid-naming-sampled-paths-as-the-fix.md`](references/rules/avoid-naming-sampled-paths-as-the-fix.md)
+- [`rules/avoid-naming-sampled-paths-as-the-fix.md`](rules/avoid-naming-sampled-paths-as-the-fix.md)
   — when the property behind a finding is mechanically checkable, state the check itself.
 
 **概要 is a list, not a paragraph.** Write each statement as its own bullet, and keep each to one
@@ -84,7 +84,7 @@ excluded — a table, list, or sub-heading inside 詳細 counts as written lines
 nothing. 表題 is counted in sentences, since a title does not wrap by choice — a long 表題 is usually
 two facts. Same remedy for both: the second belongs in 概要. Different remedy: it is a **second
 application**, not a longer 概要
-([`references/rules/one-instruction-one-application.md`](references/rules/one-instruction-one-application.md)).
+([`rules/one-instruction-one-application.md`](rules/one-instruction-one-application.md)).
 
 ## How firmly to state the remedy
 
@@ -100,13 +100,13 @@ Strength is **orthogonal to severity**: `critical` / `major` / `minor` / `nit` s
 finding blocks the merge, strength says how firmly the remedy is stated. A `major` can have no known
 fix (row 3), and a `nit` can have exactly one (row 1).
 
-Read [`references/rules/remedy-strength.md`](references/rules/remedy-strength.md) before writing 概要's
+Read [`rules/remedy-strength.md`](rules/remedy-strength.md) before writing 概要's
 fix — it holds how to choose between the three rows, the caveat for a comment-vs-code contradiction
 (not automatically row 1), and worked examples of each row.
 
 ## Fitting the budget
 
-Read [`references/rules/fitting-the-budget.md`](references/rules/fitting-the-budget.md) before
+Read [`rules/fitting-the-budget.md`](rules/fitting-the-budget.md) before
 trimming a draft — it holds what to cut and why, and the one exception (bulky evidence in a code
 block sits outside the budget).
 

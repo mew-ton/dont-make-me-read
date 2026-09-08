@@ -32,9 +32,9 @@ greenのままになる。別件として、5階層のbreadcrumbが実際にレ�
 
 ### mutationが失敗しない理由
 
-`useListingFilterSummary.spec.ts:100-113` は `districtSlug` を非空に設定するため、隣接する
-`regionIdsRequest` のfetchが即座に開始し、削除された `await amenities` と同じゲートでブロック
-していた。`amenities` を `Promise.all` から外しても、そのfetchは変わらずpendingのままになるため、
+`useCatalogFilterSummary.spec.ts:100-113` は `categorySlug` を非空に設定するため、隣接する
+`brandIdsRequest` のfetchが即座に開始し、削除された `await attributes` と同じゲートでブロック
+していた。`attributes` を `Promise.all` から外しても、そのfetchは変わらずpendingのままになるため、
 assertionは通り続ける。
 
 ### どのテストもカバーしていないもの
@@ -50,15 +50,15 @@ for different remedies: one is fixed by editing the test, the other has no fix t
 ## Good: split by remedy, not by subject
 
 ```markdown
-**major** — `useListingFilterSummary.spec.ts:100-113` は `amenities` を `Promise.all` から外しても
+**major** — `useCatalogFilterSummary.spec.ts:100-113` は `attributes` を `Promise.all` から外しても
 greenのままになる
 
-- :108/:113 のassertionは実際には隣接する `regionIdsRequest` のfetchによってガードされており、
-  `amenities` によるものではない — `amenities` を待機リストから外してもこのテストはredにならない。
+- :108/:113 のassertionは実際には隣接する `brandIdsRequest` のfetchによってガードされており、
+  `attributes` によるものではない — `attributes` を待機リストから外してもこのテストはredにならない。
 - テストとそのコメントの名前を、実際にガードしている内容に合わせて変更し、このテストがカバーする
-  と主張していたmutationリストから `amenities` を外す。
-- `Promise.all` 自体から `amenities` を外してはならない — そこにある `Promise<unknown>[]` の型
-  注釈は、将来 `useFetchAmenities` の戻り値の型が狭まった際に検知する役割を持っており、外すと
+  と主張していたmutationリストから `attributes` を外す。
+- `Promise.all` 自体から `attributes` を外してはならない — そこにある `Promise<unknown>[]` の型
+  注釈は、将来 `useFetchAttributes` の戻り値の型が狭まった際に検知する役割を持っており、外すと
   それが失われる。
 ```
 
