@@ -114,10 +114,17 @@ The name is not what hides the child. Keeping it out of the user's `/` menu is
 user-invocable: false           # hide it from the user's / menu
 disable-model-invocation: false # true would cut off the parent — which is a model
 context: fork                   # this skill *is* the subagent; no conversation history is carried in
-agent: Explore                  # picks the tool set. Explore and Plan are read-only
-model: haiku                    # gathering only = haiku; gathering + light normalization = sonnet
+agent: Explore                  # optional. Picks the tool set; Explore and Plan are read-only
+model: haiku                    # optional. Gathering only = haiku; + light normalization = sonnet
 background: false               # required when the conclusion is used in the same turn (default: true)
 ```
+
+`agent` and `model` are the two to leave out unless you can say why. They narrow a
+child to what a gathering run needs, and narrowing is wrong for a fork that produces
+the artifact itself: a read-only tool set cannot write, and the cheapest model that
+can enumerate files is not the one you want drafting the thing a person will act on.
+Omit both and the fork inherits, which is the right default for the `Cleanliness`
+motive below.
 
 `disable-model-invocation: true` is the field that looks right and is wrong. The
 caller here **is** a model, so `true` severs the only path into the child. Hiding it
