@@ -89,8 +89,8 @@ is not, and why a skill's `references/` has a depth rule and no size rule.
 ## Which skill owns what
 
 Most of what this applies to has no template and needs none — an explanatory code comment, a
-JSDoc block, a PR description, a design doc, a commit message. For those the test above, plus two
-failure modes, is the whole of it:
+JSDoc block, a PR description, a commit message. For those the test above, plus two failure modes,
+is the whole of it:
 
 - `avoid-unverifiable-context` — the text carries something the reader cannot go and check.
 - `avoid-reference-detours` — the text sends the reader somewhere reachable in order to be
@@ -106,6 +106,7 @@ this skill holds the test, not those rules.
 | A GitHub issue body | `write-nice-issue-description` |
 | A PR review finding, or any comment telling a person what to change | `write-nice-instructions` |
 | A `SKILL.md` | `write-nice-skills` |
+| A design doc — `DESIGN.md`, an ADR, an architecture note | `write-nice-design-md` |
 
 | Checking what is already written | Skill |
 |---|---|

@@ -1,119 +1,132 @@
 # Design
 
-Why the parts of this plugin are wired the way they are, and the contract that follows
-from it. What the skills are *for* is in [`README.md`](README.md).
+What settles a decision about this plugin's own shape, so you can make one without reading the
+eight skills first. What the skills are *for* is in [`README.md`](README.md); what each one says is
+in its own `SKILL.md`.
 
-## Three layers
+Every heading below is a decision a contributor actually faces. If yours is not here, that is a gap
+in this file, not a licence to induce the answer from what happens to be in `skills/`.
 
-| Layer | Where | The context it runs in |
-|---|---|---|
-| Instruction | `commands/` | the messy one — fetching, asking, working out what is even wanted |
-| Principle and routing | `skills/dont-make-me-read` | the main thread |
-| An artifact's own rules | `skills/write-nice-*` | a fork, carrying none of the above |
+## Where a new entry point goes
 
-Every boundary below exists to keep something out of the layer beneath it.
+**A person decides to invoke it → `commands/`. It has to reach work already underway → a skill.**
 
-## No skill is in the `/` menu
+The rules have to land on a code comment written halfway through some other task. Nobody stops
+there to name a writing skill, so anything that fires only when named would miss the moment it is
+most needed. That is what model invocation buys, and it is why every skill here is hidden from the
+`/` menu: a skill in the menu invites being typed, and being typed is the case `commands/` already
+serves better.
 
-The rules have to reach a code comment written halfway through some other task. Nobody
-stops there to name a writing skill, so a skill that fires only when named would never
-run at the moment it is most needed. Every skill is therefore model-invoked
-(`disable-model-invocation: false`) and hidden from the menu (`user-invocable: false`).
+So the two routes are not alternatives for the same thing. A command is what a person types once
+they have decided for themselves that they want something written or checked. A skill is what
+reaches them when they have decided nothing.
 
-That leaves the explicit route to `commands/`, which is what a person types when they
-have decided for themselves that they want something written or checked.
+## What a command owes the skill it calls
 
-## A command is not an alias for a skill
+**Everything unsettled gets settled in the command. What crosses is one brief.**
 
-The same request arrives in several shapes. For an issue: the content is already
-written; or an issue exists and needs fetching and improving; or nothing is settled and
-what the issue should even be is still a conversation.
+The same request arrives in several shapes — for an issue: the content is already written; or an
+issue exists and needs fetching; or what the issue should even be is still a conversation. Sorting
+that out is real work, and all of it is conversation: half-formed asks, fetched material, options
+raised and dropped.
 
-Sorting that out is real work, and all of it is conversation — half-formed asks,
-fetched material, questions and answers, options raised and dropped. A command does it,
-then hands over one consolidated brief.
+A command that hands the skill its raw conversation has put that conversation into the context the
+artifact gets written in, and it surfaces in the artifact. Consolidating first is what keeps it
+out — and `context: fork` below is what makes that structural rather than remembered.
 
-If the skill were the entry point, that whole conversation would sit in the context the
-artifact is written in, and it would surface in the artifact. That is the residue
-`avoid-unverifiable-context` exists to keep out.
+## What context a skill runs in
 
-## The writing skills fork; nothing else does
+**It produces an artifact from a brief → a fork. It acts on work already in front of the model →
+the main thread.**
 
-"Do not write what only this conversation's participants could reconstruct" is a rule a
-writer can break. `context: fork` carries in no conversation history, so a skill that
-never saw the conversation cannot write from it. The prohibition becomes a property —
-the same move `structuring-skills.md` already makes to keep two subagents from seeing
-each other's output.
+A fork carries in no conversation history, so a skill that never saw the conversation cannot write
+from it. "Do not write what only this conversation's participants could reconstruct" stops being a
+rule a writer can break and becomes a property they cannot —
+`structuring-skills.md` makes the same move to keep two subagents from seeing each other's output.
 
-The other skills stay on the main thread because a fork would cut them off from what
-they act on:
+The criterion cuts the other way just as hard: forking a skill that acts on work already present
+would cut it off from the thing it acts on. Routing needs the work in front of it. Constraining
+writing has to happen where the writing happens. And a review returns findings, which are worth
+nothing without their grounds attached — put a review behind a fork and nobody can review the
+review.
 
-- `dont-make-me-read` routes. Routing is a decision about the work in front of you.
-- `avoid-unverifiable-context` and `avoid-reference-detours` constrain writing as it
-  happens, wherever it happens.
-- The two `review-*` skills return findings, and a finding is only worth anything with
-  its grounds attached. Putting a review behind a fork is the case
-  `structuring-skills.md` names outright: nobody can then review the review.
+All nine, by that criterion:
 
-## `review-nice-issues` has no tools at all
+| Runs in | Skills |
+|---|---|
+| A fork | `write-nice-issue-description`, `write-nice-instructions`, `write-nice-skills`, `write-nice-design-md` |
+| The main thread | `dont-make-me-read`, `avoid-unverifiable-context`, `avoid-reference-detours`, `review-nice-issues`, `review-self-contained-docs` |
 
-Its whole value is judging an issue body the way an implementer holding only that text
-would. `allowed-tools: []` is that stated as a property rather than as a discipline it
-has to remember: it cannot resolve a reference, cannot check the repository, cannot
-confirm a claim the real reader could not confirm either.
-
-Fetching is therefore the caller's job — `/review-issue` reads the issue and hands over
-the body, and nothing else it learned goes with it.
-
-## Adding a skill
-
-Which layer it belongs to decides its frontmatter. Two questions settle that: does it
-produce an artifact from a brief, or does it act on work already in front of the model —
-and if it reports findings, do the grounds come back with them.
-
-Frontmatter carries no comments. It is the one part of a `SKILL.md` that is parsed
-rather than read, every line of it is loaded on every fire, and what each field is for
-belongs here instead — where it can be argued rather than restated in eight files.
-
-Every skill here, without exception:
+Which settles the frontmatter. Every skill here:
 
 ```yaml
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
 ```
 
-The first two are the menu decision above: no skill is in the `/` menu, and the model
-decides when one applies. `allowed-tools` is declared on all eight and empty on seven.
-`review-nice-issues`' emptiness is a property its judgment depends on, which is why it
-has a section of its own above; `review-self-contained-docs` is the one skill that lists
-tools.
-
-A skill that produces an artifact from a brief adds:
+and a fork adds:
 
 ```yaml
 context: fork
 background: false
 ```
 
-`context: fork` is what carries in none of the caller's conversation; `background: false`
-is what lets the caller show the result in the same turn.
+`background: false` because the caller shows the result in the same turn. Leave `agent` and `model`
+unset: both narrow a fork to what a *gathering* run needs, and a read-only tool set cannot write
+the artifact the fork exists to produce.
 
-Leave `agent` and `model` unset. Both narrow a fork to what a gathering run needs: a
-read-only tool set cannot write, and the cheapest model that can enumerate files is not
-the one to draft something a person will act on.
+## What tools a skill gets
 
-A user-facing entry is a file in `commands/`, never a skill.
+**Whatever its own job needs — minus anything that would let it confirm what its reader could
+not.**
 
-Before committing a `SKILL.md`:
+The subtraction is the part that is easy to miss. `review-nice-issues` judges an issue body the way
+an implementer holding only that text would, so `allowed-tools: []` is not thrift: it is that
+footing made structural. It cannot resolve a reference or check the repository, which is exactly
+the position its reader is in. Granting it `gh` "for convenience" would remove the one property
+that makes its verdict mean anything, and fetching therefore belongs to whoever calls it.
+
+Where no such subtraction applies, the skill takes what the job needs — `review-self-contained-docs`
+reads the pull request it is judging.
+
+## Where an explanation goes
+
+**By who has to hold it, and how often.**
+
+| The explanation is | It goes |
+|---|---|
+| what a contributor decides by | here |
+| what every path through a skill needs | that skill's body |
+| what only some branches reach | that skill's `references/` |
+| what a field means | nowhere in frontmatter |
+
+Frontmatter is the one part of a `SKILL.md` that is parsed rather than read, and all of it loads on
+every fire. A trailing `#` there explains the field to nobody who was going to be confused by it,
+and every reader pays for it forever. That is the same argument that pushes branch detail down into
+`references/`, one level up.
+
+## When an artifact earns rules of its own
+
+**When its shape is fixed enough that a general rule cannot supply it: named sections, a budget, a
+template.**
+
+Most writing has no such shape — a code comment, a commit message, a PR description. Those are
+served by the test in `dont-make-me-read` plus the two `avoid-*` skills, which is why those two
+carry the broadest triggers here.
+
+An issue body, a review finding, a `SKILL.md` and a design doc each cleared that bar, and each got
+one `write-*` skill. A new artifact type clears it or it does not; adding a skill for one that does
+not costs every future turn the weight of another description to judge.
+
+## What to do when a body is over budget
+
+**Push what only some branches reach into that skill's `references/`, until it passes.**
 
 ```bash
 bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
 ```
 
-Only exit 1 is about a budget: a body came back over 5000 tokens, or a file you named
-was not there. Exit 2 means the machine cannot run the check at all (no `claude` or no
-`jq` on PATH), and exit 3 that a measurement failed and no count came back — neither is
-a pass, so fix the setup or rerun rather than reading the silence as one. For a body
-that is genuinely over, push branch-only detail into that skill's `references/` until it
-passes; references have a depth rule and no size rule.
+Non-zero means do not commit it yet. Which code means what is in the script's own header, and only
+one of them is about the budget — the others say the check did not run, which is not a pass.
+References have a depth rule and no size rule, so the material is not deleted, only moved off the
+path every fire pays for.
