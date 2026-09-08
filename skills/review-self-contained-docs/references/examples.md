@@ -130,11 +130,10 @@ That absence is not a gap to fill; it is the best outcome this skill judges towa
 comment restating what `return n % 2 === 0` already says (`// return true if n is even`) would
 pass all three conditions and still be worse than nothing: the reader pays to read it and learns
 nothing they didn't already see in the code. Judging whether an *existing* comment is
-self-contained is this skill's job; judging whether an inline comment like that should exist at
-all is `avoid-obvious-code-comments`'s (a declaration-level doc comment on an exported function
-like this one is a separate call, `write-doc-comments-generously`'s — it may permit some
-restatement, since callers read it on hover instead of opening the source). No finding either
-way.
+self-contained is this skill's job; whether an inline comment like that should exist at all is a
+separate question, and this skill does not answer it. A declaration-level doc comment on an
+exported function is a separate question again — some restatement can be warranted there, since
+callers read it on hover instead of opening the source. No finding either way.
 
 ## Extraction edge case 1: a changed line redirects an unchanged one
 

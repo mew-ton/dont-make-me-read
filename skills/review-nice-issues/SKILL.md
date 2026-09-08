@@ -9,7 +9,7 @@ description: >
   body you just wrote before it ships — "self-check this with review-nice-issues", "is this issue
   ready to start implementing as it stands". DO NOT invoke it as a general-purpose "review this
   issue" entry point, and do not expect it to judge repo-groundedness or dependency closure — that
-  is the caller's job (e.g. ghdd-review-issue-implementability), not this skill's.
+  is the caller's job, not this skill's.
 disable-model-invocation: true
 allowed-tools: []
 ---
@@ -148,5 +148,3 @@ larger report.
   with more examples.
 - `write-nice-instructions` — owns the finding template and how firmly a remedy is stated;
   this skill hands it facts (step 4), never a rendered shape.
-- `ghdd-review-issue-implementability` — reviews an issue's repo-groundedness and dependency
-  closure; this skill has no opinion on those axes.

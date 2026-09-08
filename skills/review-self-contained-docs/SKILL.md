@@ -9,8 +9,7 @@ description: >
   issue body, or code comment you just wrote before it ships — "self-check this with
   review-self-contained-docs", "does this comment read without the surrounding context". DO NOT
   invoke it as a general-purpose "review this PR" entry point, and do not expect it to judge issue
-  conformance, scope, or design — that is the caller's job (e.g. ghdd-review-pr-against-issue),
-  not this skill's.
+  conformance, scope, or design — that is the caller's job, not this skill's.
 disable-model-invocation: true
 argument-hint: "[<pr-url-or-number>] [--repo <owner/repo>] [--worktree <path>] [--comment]"
 allowed-tools:
@@ -65,8 +64,8 @@ lines around a hunk might be stale relative to the file's head.
   branch, so no separate `git diff` permission is needed.
 - Otherwise, run `gh pr diff <pr>` for the diff, and fetch each file's content at the PR's head
   SHA via `gh api repos/<owner>/<repo>/contents/<path>?ref=<head-sha>` (base64-decode the
-  response). Do not judge from `gh pr diff` hunks alone — that is the diff-only mistake
-  `ghdd-review-pr-against-issue` guards against for the same reason.
+  response). Do not judge from `gh pr diff` hunks alone: a hunk's context lines are whatever the
+  file looked like around that change, not the head this condition has to be checked against.
 
 ### 2. Extract candidate units
 
@@ -175,7 +174,7 @@ skill owns the finding's shape and how firmly the remedy is stated; don't invent
   `gh api repos/<owner>/<repo>/pulls/<pr>/comments`, passing that unit's `commit_id` (the PR's
   head SHA), `path`, `line`, and the rendered finding as `body`. A plain `gh pr comment` lands on
   the conversation tab, not at the line — it does not satisfy `--comment`.
-- **When invoked as a step inside another skill** (e.g. `ghdd-review-pr-against-issue`'s
+- **When invoked as a step inside another skill** (a broader PR review calling this as its
   text-self-containment axis), never post — return the findings and let the caller fold them into
   its own comment. Posting from both places would duplicate the same finding twice.
 
@@ -212,5 +211,3 @@ before starting, so the excuse is already answered when it occurs to you.
   side, with more examples.
 - `write-nice-instructions` — owns the finding template and how firmly a remedy is stated;
   this skill hands it facts (step 4), never a rendered shape.
-- `ghdd-review-pr-against-issue` — calls this skill for its "Text self-containment" axis as one
-  part of a full PR review; this skill has no opinion on the other axes.
