@@ -3,11 +3,12 @@
 Shared vocabulary for talking about skill authoring. `SKILL.md` and both reference
 files use these terms precisely.
 
-**Leading word** — the term you actually type when you want a skill, which also
-appears in the skill's `description`. That shared word is what links your prompt to
-the skill and makes it fire, so it is front-loaded in the description. *Avoid:*
-"keyword" in the SEO sense (stuffing terms nobody types), and slash-separated tag
-lists.
+**Leading word** — the term that shows up when a skill is needed, and which also
+appears in the skill's `description`: what a person types when they ask for it, or —
+for a skill that fires mid-task with no prompt — what the work itself already calls
+the thing. That shared word is what links the two and makes the skill fire, so it is
+front-loaded in the description. *Avoid:* "keyword" in the SEO sense (stuffing terms
+nobody uses), and slash-separated tag lists.
 
 **Trigger** — a condition that should invoke the skill, phrased as "use when …".
 One trigger per branch; synonyms that rename the same branch are duplication, not

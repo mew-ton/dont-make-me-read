@@ -33,10 +33,10 @@ generation. Each file costs one round trip, and it exits non-zero over budget.
 
 For a free pre-check use `wc -c`, not `wc -m` — bytes per token barely move between
 scripts, where characters per token nearly double between a Latin script and a
-non-Latin one. **Under
-about 12 KB is a safe stand-in for 5000 tokens today.** The script's closing line
-re-derives that figure from your own run; recompute it there rather than trusting
-this number once the default model has moved on.
+non-Latin one. **Under about 15 KB is a safe stand-in for 5000 tokens today.** The
+script's closing line re-derives that figure from your own run; recompute it there
+rather than trusting this number once the default model has moved on — a stale
+figure that is too low sends you splitting files that were never over budget.
 
 ## Progressive disclosure: what to inline, what to disclose
 

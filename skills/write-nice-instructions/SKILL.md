@@ -1,14 +1,10 @@
 ---
 name: write-nice-instructions
 description: >
-  Instruction text a person will read and act on — a PR review finding — gets one fixed shape: a
-  title that states the observed fact, a short summary of that fact and the fix, and bounded
-  details for the how and why. It is applied once per finding. It also fixes **how firmly the
-  remedy is stated**, so a fix you can defend is asserted as the one to make instead of being
-  diluted into a menu of alternatives, and a problem you have no fix for is registered as one
-  rather than dressed up as a suggestion. Apply when drafting or revising a PR review finding, a
-  review comment, or a code-review remark — and especially when you wrote it yourself and it reads
-  fine to you. DO NOT use for a GitHub issue body (that is write-nice-issue-description), for a
+  Instruction text a person will read and act on — a PR review finding — gets one fixed shape,
+  applied once per finding, and one decision about how firmly its remedy is stated. Apply when
+  drafting or revising a PR review finding, a review comment, or a code-review remark — and
+  especially when you wrote it yourself and it reads fine to you. DO NOT use for a GitHub issue body (that is write-nice-issue-description), for a
   skill's description or size budget (that is write-nice-skills), or for deciding which background
   context a persistent document carries (that is avoid-unverifiable-context).
 user-invocable: false           # entry points are commands/, never the / menu

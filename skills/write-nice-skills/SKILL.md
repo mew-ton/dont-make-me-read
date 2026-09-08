@@ -50,13 +50,13 @@ Everything under "Writing the description" follows from this one fact.
    so it can be judged from the description alone.
 2. **No procedure.** Never put step-by-step instructions in the description; steps
    live in the body.
-3. **Front-load the leading word.** Put the term you *actually type* when you want
-   this skill near the start — the shared word between your prompt and the
-   description is what links them and fires the skill. Not a slash-separated tag
-   list, not a dressed-up request sentence: a leading word inside a natural
-   sentence. One trigger per branch (no synonym padding); embed the Japanese
-   phrases you would really type as quoted examples; cut identity the body
-   already carries.
+3. **Front-load the leading word.** Put the term that shows up when this skill is
+   needed near the start — the shared word between the description and whatever the
+   agent is working from is what links them and fires the skill. That is a prompt
+   when a person asks; for a skill hidden from the `/` menu it is the work itself.
+   Not a slash-separated tag list, not a dressed-up request sentence: a leading word
+   inside a natural sentence. One trigger per branch (no synonym padding); cut
+   identity the body already carries.
 4. **English.** Write the description in English, whichever language you prompt in,
    and do not pad it with a second-language keyword list. What the skill *tells the
    agent to write* is a separate question each writing skill answers for itself.

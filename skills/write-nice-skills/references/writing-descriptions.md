@@ -21,9 +21,13 @@ so the instructions the skill exists to deliver are skipped. State *what* and
 
 ## 3. Front-load the leading word
 
-The skill fires when a word in your prompt matches a word in the description. So
-seed the description with the **leading word** — the term you actually type when you
-want this skill — and put it near the start, where it does its invocation work.
+The skill fires when a word in the description matches a word in whatever the agent
+is working from. Sometimes that is a prompt. Often it is not: a skill hidden from the
+`/` menu (`user-invocable: false`) fires mid-task, and the only words available are
+the ones in the work itself — the file being edited, the artifact being written, the
+term the code already uses. So seed the description with the **leading word** — the
+term that shows up when this skill is needed, whatever produces it — and put it near
+the start, where it does its invocation work.
 
 - **Form**: a leading word inside a natural sentence. Not a slash-separated tag list
   (`Skill / SKILL.md / description —`), and not a full request sentence dressed up
@@ -33,8 +37,8 @@ want this skill — and put it near the start, where it does its invocation work
 - **One trigger per branch**: name each distinct situation once; synonyms that
   rename the same branch are duplication.
 - **Language of the trigger**: the description is English (rule 4), so the shared
-  word has to be one that survives into your prompt whichever language you prompt
-  in — a file name, a tool name, a proper noun, a term of art you type as-is
+  word has to be one that survives into whatever the agent is reading, whichever
+  language that is in — a file name, a tool name, a proper noun, a term of art you type as-is
   (`SKILL.md`, `issue`, `PR`, `description`). A skill that never leaves a
   single-language team may *additionally* embed the phrases that team really types,
   as quoted examples inside the English sentence. A skill you publish must not: it
