@@ -99,6 +99,12 @@ question: each writing skill says to produce the issue, the finding, or the doc 
 readers already use, and to write it in one language only. The rules fix the text's shape and the
 context it carries, not the language it carries them in.
 
+## Design
+
+Why the layers are wired this way — what a command does that a skill must not, and why
+the writing skills run with none of the conversation that reached them —
+is in [`DESIGN.md`](DESIGN.md), along with the frontmatter contract for adding one.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
