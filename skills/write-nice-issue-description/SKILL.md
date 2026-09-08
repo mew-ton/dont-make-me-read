@@ -143,7 +143,7 @@ hold without it? Whether the fact is derivable by reading code is not the test �
 existing behavior *is* the problem, and skip it when the existing behavior is only a lead toward
 the fix (its whereabouts is enough, in Affected areas' parenthetical).
 
-- Write (a problem): "`GET /v1/jobs/{id}` returns the same 404 whether the job was deleted, never
+- Write (a problem): "`GET /v1/foo/{id}` returns the same 404 whether the foo was deleted, never
   published, or closed, and does not distinguish why."
 - Skip (a lead): "The messaging feature already has a structure for showing a substitute view when
   something is unpublished."
@@ -268,9 +268,9 @@ confirming it is the implementer's first step, not the writer's.
 A parenthetical names only what is there, never what to do to it — naming what to do is the
 implementation method creeping back in.
 
-- Don't write: `` `createContentsBlockResolver.ts` (add a preview flag) ``
-- Write: `` `shared/types/contents/block.ts` (an existing discriminated-union example is
-  `OgpResolution` in `_internals/ogp/ogpResolution.ts`) ``
+- Don't write: `` `createFooResolver.ts` (add a preview flag) ``
+- Write: `` `path/to/types.ts` (an existing discriminated-union example is
+  `FooResolution` in `_internals/foo/fooResolution.ts`) ``
 
 A note describing where something will move to in the future is what-to-do dressed as
 what-is-there — it commits the reader to a plan, not an observation.

@@ -6,7 +6,7 @@ as balanced and leaves the reader to do the deciding.
 
 | What you have | How to write it | What not to do |
 |---|---|---|
-| **A fix you can defend** | Assert it as the one to make: "fix it with `ValidationError`, as `src/order/validate.ts:22` does". A rejected option may appear **only as the constraint that rules it out** — the wall the reader would otherwise walk into — never as an option offered to them. | Do not present the alternatives you rejected as choices, and do not hedge the one you chose ("it might be worth considering…"). Both hand your decision back to the reader. |
+| **A fix you can defend** | Assert it as the one to make: "fix it with `ValidationError`, as `path/to/validate.ts:22` does". A rejected option may appear **only as the constraint that rules it out** — the wall the reader would otherwise walk into — never as an option offered to them. | Do not present the alternatives you rejected as choices, and do not hedge the one you chose ("it might be worth considering…"). Both hand your decision back to the reader. |
 | **Several fixes, and any of them is genuinely fine** | List them flat, with no weighting. | Do not smuggle in a preference through ordering, length, or wording. If you have a preference, you are in row 1 — say so. |
 | **No fix you can name** | Switch the goal to **registering the problem**: open an issue and link it from a comment at that code. | Do not invent a vague suggestion to fill the slot, and do not drop the finding because you cannot solve it. |
 
@@ -62,23 +62,23 @@ bundled into the same finding. And the whole thing is prose, so none of that is 
 **minor** — キャッシュキーが、表現している組み立て済みクエリではなく生のフィルタフォームから
 導出されている
 
-- `app/composables/product/useFetchProducts.ts:23` は `useAsyncData` のキーを生のフィルタフォーム
+- `app/composables/foo/useFetchFoo.ts:23` は `useAsyncData` のキーを生のフィルタフォーム
   にしている: モーダルとURL復元は同じ条件を2通りの形でシリアライズする。
 - そのため、1つの条件が `payload.data` に2つのエントリとして登録される。
-- 代わりに組み立て済みのクエリをキーにする: `JSON.stringify(buildProductListQuery({ ... }))`。
+- 代わりに組み立て済みのクエリをキーにする: `JSON.stringify(buildFooListQuery({ ... }))`。
 
 2つの表記が異なるのは、モーダルが `"all"` を示す値も含めて全キーを送信するのに対し、URL復元は
 絞り込みに使うキーのみを保存するためである。今日時点で目に見える不具合はない——どちらも同一の
-`/v1/products` リクエストを発行している。今のうちに直す価値があるのは、2つ目の一覧画面が同じ
-URL復元パターンを採用しつつあり、`useProductFilterUrlState.isSameForm` が既に両フォームを等しい
+`/v1/foo` リクエストを発行している。今のうちに直す価値があるのは、2つ目の一覧画面が同じ
+URL復元パターンを採用しつつあり、`useFooFilterUrlState.isSameForm` が既に両フォームを等しい
 ものとして扱っているため、キャッシュキーだけが両者の食い違う唯一の箇所になっているからである。
 
 復元されたフォームを正規化する方は行わないこと。`readFromQuery` は、等価な条件のフォームを
 ダイアログが送信した形のまま意図的に残している。等価なオブジェクトへの再代入であっても
 `shallowRef` への書き込みには変わりなく、fetchのwatcherを再トリガーしてしまうためで、これが
-このリストを3回の `/v1/products` 呼び出しから1回に減らした理由である。
+このリストを3回の `/v1/foo` 呼び出しから1回に減らした理由である。
 
-このcomposableの他の利用箇所（`pages/catalog/index.vue` と `asArchiveView: true` のパス）は
+このcomposableの他の利用箇所（`pages/bar/index.vue` と `asBarView: true` のパス）は
 新しいキー文字列を目にすることになるため、両方ともregressionのカバーが必要である。
 ```
 
@@ -91,7 +91,7 @@ local fix. One asserted fix, plus the constraints that make it the fix.
 ### Good: flat, unweighted, and short
 
 ```markdown
-**nit** — `src/config/load.ts:41` がconfigキーごとに1行ログを出している
+**nit** — `path/to/config.ts:41` がconfigキーごとに1行ログを出している
 
 - 次のいずれでも構わない: キーごとのログを削除する、`trace` レベルに落とす、あるいはキー件数を
   持つ1行のサマリーログに置き換える。
@@ -103,11 +103,11 @@ is for the case where you genuinely would not review the choice.
 ### Bad: the comment reads as correct, so the code is asserted as the thing to fix
 
 ```markdown
-**major** — `useNotificationDigest.ts:8` のヘッダーコメントには送信失敗時に1回リトライしてから
-破棄すると書かれているが、`sendDigest()` にリトライは実装されておらず、失敗すると即座にdigestが
+**major** — `useBarSender.ts:8` のヘッダーコメントには送信失敗時に1回リトライしてから
+破棄すると書かれているが、`sendBar()` にリトライは実装されておらず、失敗すると即座に送信内容が
 破棄される
 
-- `sendDigest()` のコメントが説明しているリトライを実装する。
+- `sendBar()` のコメントが説明しているリトライを実装する。
 ```
 
 The comment reads as the more deliberate, more complete side, so it gets asserted as ground truth — but
@@ -119,8 +119,8 @@ plan the code already moved past.
 ```markdown
 **major** — ヘッダーコメントとそれが説明しているコードとで、リトライ挙動の記述が食い違っている
 
-- `useNotificationDigest.ts:8` のヘッダーコメントには送信失敗時に1回リトライしてから破棄すると
-  書かれているが、`sendDigest()` にリトライは実装されておらず、失敗すると即座にdigestが破棄される。
+- `useBarSender.ts:8` のヘッダーコメントには送信失敗時に1回リトライしてから破棄すると
+  書かれているが、`sendBar()` にリトライは実装されておらず、失敗すると即座に送信内容が破棄される。
 - PR本文自身の「Seams」セクションでは、リトライ処理はqueueベースのsenderに委ねる（フォロー
   アップのチケット行き）としており、このPRでまだリトライが求められているとはどこにも書かれて
   いない。
@@ -145,13 +145,13 @@ not lost. Two shapes, by where you are writing.
 ### Good: in a PR review — open an issue and link it from the code
 
 ```markdown
-**major** — `pages/contents/[id].vue:24` が `useAsyncData` の `error` を握りつぶしている
+**major** — `pages/foo/[id].vue:24` が `useAsyncData` の `error` を握りつぶしている
 
 - 失敗時に本文が空でレンダリングされ、読者には文章のない記事が表示される。
 - このPRに含めるべき修正はない。先に2点を決める必要がある。
 - 両方を含むissueを起票し、fetch箇所の `TODO(#N)` からリンクする。
 
-`descriptionBlocks` は `[]` に、`isRestricted` は `false` にフォールバックするため、失敗はUIにもDOMにも
+`fooBlocks` は `[]` に、`isLocked` は `false` にフォールバックするため、失敗はUIにもDOMにも
 現れない。ここで直せない理由は2つある。失敗時の文言はどのspecにも定義がなく、実装すると実装者
 がユーザー向け文言の作者になってしまう。また、このページは記事一覧・検索結果・外部リンクなど
 複数の経路からそれぞれ異なるレイアウトでマウントされており、「失敗時のUIはこのレイアウトが持つ」
@@ -169,7 +169,7 @@ unsolvable. The 概要 carries the fact and the instruction; the reasons a fix c
 
 - このPRに含めるべき修正はない。アクセシブルな配色は実装の詳細ではなくデザイン上の決定事項である。
 - 測定済みの代替案と決めるべき事項を添えたissueを起票し、
-  `app/utils/environment/resolveEnvironmentBadge.ts` の `stg` エントリのコメントからリンクする。
+  `path/to/resolveEnvironmentBadge.ts` の `stg` エントリのコメントからリンクする。
 ```
 
 "Investigation is needed" on its own is not row 3 — it is row 3 with the work left out. The linked

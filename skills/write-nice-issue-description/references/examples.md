@@ -10,8 +10,8 @@ one part of Gate 1 or Gate 2 from `SKILL.md`.
 ```markdown
 ## Affected areas
 
-- `shared/types/contents/block.ts` (extend the discriminated union with a `previewOnly` variant,
-  and update `createContentsBlockResolver.ts` to branch on it)
+- `path/to/types.ts` (extend the discriminated union with a `previewOnly` variant,
+  and update `createFooResolver.ts` to branch on it)
 ```
 
 Whether to extend the union or branch on a separate boolean field still satisfies whatever the
@@ -23,8 +23,8 @@ implementer's job for them.
 ```markdown
 ## Affected areas
 
-- `shared/types/contents/block.ts` (an existing discriminated-union example is `OgpResolution` in
-  `_internals/ogp/ogpResolution.ts`)
+- `path/to/types.ts` (an existing discriminated-union example is `FooResolution` in
+  `_internals/foo/fooResolution.ts`)
 ```
 
 The parenthetical names what already exists at that location — a lead — and leaves how to model
@@ -37,10 +37,10 @@ the new state to whoever implements it against the current shape of the file.
 ```markdown
 ## Affected areas
 
-- `packages/web/src/jobs/JobCardViewModel.ts` (the job card's response shape)
+- `path/to/FooViewModel.ts` (the foo card's response shape)
 ```
 
-The rendering component in another repo was already built against a specific `JobCardViewModel`
+The rendering component in another repo was already built against a specific `FooViewModel`
 shape — a prior design step fixed it, and a consumer already depends on it. Leaving it out of
 Acceptance criteria and filing it as a mere lead treats a settled fact as though it were still open
 for whoever implements this.
@@ -50,10 +50,10 @@ for whoever implements this.
 ```markdown
 ## Acceptance criteria
 
-- [ ] The response conforms to the `JobCardViewModel` shape below.
+- [ ] The response conforms to the `FooViewModel` shape below.
 
   ```ts
-  type JobCardViewModel =
+  type FooViewModel =
     | { status: "open"; title: string; company: string }
     | { status: "closed" | "not_found" | "fetch_error" };
   ```
@@ -83,8 +83,8 @@ Design / Approach section: once one reason is inline, the next constraint's reas
 ```markdown
 ## Background / Why
 
-Two exhausted-listing paths already return `GoneError` (`GET /v1/jobs/{id}`,
-`GET /v1/companies/{id}`), each with the same OpenAPI shape. A third ad-hoc 410 shape would leave
+Two exhausted-listing paths already return `GoneError` (`GET /v1/foo/{id}`,
+`GET /v1/bar/{id}`), each with the same OpenAPI shape. A third ad-hoc 410 shape would leave
 API consumers handling three different bodies for the same status.
 
 ## Acceptance criteria
@@ -104,7 +104,7 @@ Refs #1784
 
 ## Background / Why
 
-#1784 makes the article body's job link return a 4-state view model.
+#1784 makes the article body's foo link return a 4-state view model.
 ```
 
 A reader who cannot open #1784 cannot finish this sentence — the fact itself is deferred to
@@ -117,7 +117,7 @@ depends on #1784
 
 ## Background / Why
 
-A job card shown in an article can be in one of these states: closed, the job no longer exists, or
+A foo card shown in an article can be in one of these states: closed, the foo no longer exists, or
 fetch failed.
 ```
 
@@ -275,9 +275,9 @@ same issue.
 
 ## Acceptance criteria
 
-- [ ] Returns 410 when the job was published in the past and is now unpublished or closed.
-- [ ] Returns 404 when no job with that ID has ever existed.
-- [ ] The job list endpoint's response now includes a `lastCheckedAt` timestamp.
+- [ ] Returns 410 when the foo was published in the past and is now unpublished or closed.
+- [ ] Returns 404 when no foo with that ID has ever existed.
+- [ ] The foo list endpoint's response now includes a `lastCheckedAt` timestamp.
 ```
 
 The third item has nothing to do with 404/410 semantics — it is a second, unrelated problem riding
@@ -292,8 +292,8 @@ along on the same issue, and Goal gives the reader no way to see that it belongs
 
 ## Acceptance criteria
 
-- [ ] Returns 410 when the job was published in the past and is now unpublished or closed.
-- [ ] Returns 404 when no job with that ID has ever existed.
+- [ ] Returns 410 when the foo was published in the past and is now unpublished or closed.
+- [ ] Returns 404 when no foo with that ID has ever existed.
 ```
 
 The `lastCheckedAt` addition becomes its own issue, with its own Goal.
@@ -350,7 +350,7 @@ something, which is exactly the kind of decision Affected areas is not supposed 
 ```markdown
 ## Background / Why
 
-`GET /v1/jobs/{id}` returns the same 404 whether the job was deleted, never published, or closed.
+`GET /v1/foo/{id}` returns the same 404 whether the foo was deleted, never published, or closed.
 
 ## Design / Approach
 
@@ -359,7 +359,7 @@ Add a `status` discriminant to the response and have the backend resolve it.
 ## Out of scope
 
 - Updating the rendering component to show per-status copy (tracked separately).
-- Adding a `status` filter to the jobs list endpoint.
+- Adding a `status` filter to the foo list endpoint.
 ```
 
 The first Out-of-scope bullet is the same fact as "this task covers the backend; the rendering
@@ -372,7 +372,7 @@ task, not a boundary this issue is drawing.
 ```markdown
 ## Background / Why
 
-`GET /v1/jobs/{id}` returns the same 404 whether the job was deleted, never published, or closed,
+`GET /v1/foo/{id}` returns the same 404 whether the foo was deleted, never published, or closed,
 and does not distinguish why.
 
 This task covers the backend response shape. Reflecting the new states in the rendering component
@@ -380,7 +380,7 @@ is #1851's.
 
 ## Acceptance criteria
 
-- [ ] `GET /v1/jobs/{id}` returns a `status` field distinguishing deleted / unpublished / closed.
+- [ ] `GET /v1/foo/{id}` returns a `status` field distinguishing deleted / unpublished / closed.
 ```
 
 One statement of scope, in the one place a scope statement belongs. Nothing survives to duplicate
@@ -393,9 +393,9 @@ Refs #1558
 
 ## Background / Why
 
-`GET /v1/jobs/{id}` returns the same 404 whether the job was deleted, never published, or closed,
-and does not distinguish why. A job card shown in an article can currently only render "not
-found," which reads as permanently gone even when the job is a temporary fetch error away from
+`GET /v1/foo/{id}` returns the same 404 whether the foo was deleted, never published, or closed,
+and does not distinguish why. A foo card shown in an article can currently only render "not
+found," which reads as permanently gone even when the foo is a temporary fetch error away from
 reappearing.
 
 ## Goal
@@ -404,16 +404,16 @@ reappearing.
 
 ## Acceptance criteria
 
-- [ ] Returns 410 when the job was published in the past and is now unpublished or closed.
-- [ ] Returns 404 when no job with that ID has ever existed.
+- [ ] Returns 410 when the foo was published in the past and is now unpublished or closed.
+- [ ] Returns 404 when no foo with that ID has ever existed.
 - [ ] An existing endpoint's error response shape does not change for any other status.
-- [ ] `pnpm type-check` / `pnpm test` passes (`packages/api/src/jobs`).
+- [ ] `pnpm type-check` / `pnpm test` passes (`path/to/foo`).
 
 ## Affected areas
 
-- `packages/api/src/jobs/getJob.ts`
-- `packages/api/src/http/error-handler.ts` (an existing `GoneError` → 410 mapping for
-  `GET /v1/companies/{id}`)
+- `path/to/getFoo.ts`
+- `path/to/error-handler.ts` (an existing `GoneError` → 410 mapping for
+  `GET /v1/bar/{id}`)
 
 depends on #1784
 ```

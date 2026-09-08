@@ -10,7 +10,7 @@ happening today, in the code, that the request is a response to?
 ### Bad: 表題 only negates the request
 
 ```markdown
-`PlanEligibilityDetail.vue:140` で複合条件を `v-if` に直接埋め込んでいる（named computed 化されていない）
+`FooDetail.vue:140` で複合条件を `v-if` に直接埋め込んでいる（named computed 化されていない）
 ```
 
 表題 is the request ("named computed として切り出す") with the polarity flipped, not an observation

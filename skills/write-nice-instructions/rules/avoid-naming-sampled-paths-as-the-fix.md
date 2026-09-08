@@ -14,7 +14,7 @@ scope 表題 already claims, instead of naming the paths that happened to be sam
 ```markdown
 **minor** — 複数箇所でコメントがファイルの大部分を占めている
 
-`shared/types/catalog/detail.ts` はコメント行が79%（52/66）、`app/view-model/catalog-detail/type.ts`
+`path/to/types.ts` はコメント行が79%（52/66）、`path/to/view-model.ts`
 は73%（55/75）で、他にも同様のファイルが2件ある。これらを宣言ごとに短く事実のみを述べる意図
 ラベル1行に圧縮し、フィールドごとの理由付けは削る。
 ```
