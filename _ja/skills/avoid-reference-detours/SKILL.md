@@ -9,7 +9,7 @@ description: >
   適用する。DO NOT 対象がそもそも存在しない／まったく到達できない場合には使わない（それは
   avoid-unverifiable-context）。また一つの文書の中で同じ内容が二度書かれている場合にも使わない
   （それは write-nice-issue-description の Gate 2）。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---

@@ -4,13 +4,14 @@ description: >
   Instruction text a person will read and act on — a PR review finding — gets one fixed shape,
   applied once per finding, and one decision about how firmly its remedy is stated. Apply when
   drafting or revising a PR review finding, a review comment, or a code-review remark — and
-  especially when you wrote it yourself and it reads fine to you. DO NOT use for a GitHub issue body (that is write-nice-issue-description), for a
-  skill's description or size budget (that is write-nice-skills), or for deciding which background
-  context a persistent document carries (that is avoid-unverifiable-context).
-user-invocable: false           # entry points are commands/, never the / menu
+  especially when you wrote it yourself and it reads fine to you. DO NOT use for a GitHub issue
+  body (that is write-nice-issue-description), for a skill's description or size budget (that is
+  write-nice-skills), or for deciding which background context a persistent document carries
+  (that is avoid-unverifiable-context).
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # runs with none of the caller's conversation, so none of it reaches the artifact
-background: false               # the caller shows the result in the same turn
+context: fork
+background: false
 allowed-tools: []
 ---
 
@@ -31,7 +32,6 @@ Neighbouring skills own different axes, and several can apply to one PR review f
 | Is the instruction in the fixed shape, and is its remedy stated at the right strength? | this skill |
 | Can the reader check what it claims (rationale kept, process dropped)? | `avoid-unverifiable-context` |
 | Was the reader sent somewhere reachable to understand it? | `avoid-reference-detours` |
-| Will this `SKILL.md` fire, and is it lean enough to load? | `write-nice-skills` |
 
 A skill body is instruction text too, so this skill still governs the asks inside one; what it hands
 to `write-nice-skills` is the description and the size budget.

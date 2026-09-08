@@ -10,15 +10,14 @@ description: >
   前に、そのテストを得るため、そして手元の成果物のためのルールに到達するために使うこと。
   DO NOT それらのルールの代わりに使ってはならない — これはテンプレートも予算もセクション一覧も
   持たない — また、後で誰も行動しない一過性のチャット返信、スクラッチパッド、作業メモには使わない。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---
 
-> 【訳注】原文のこの description は 1 行が 139 文字あり、ファイル全体の 100 桁折り返しから外れている
-> （`skills/dont-make-me-read/SKILL.md:7`）。また "measured by whether its reader … decides correctly
-> from it"（正しく判断できるかで測る）は、`README.md:12` の「読み手が行動できるまでにどれだけの量を
-> 通過させられるかで測る」とは別の測定基準になっている。
+> 【訳注】description の「reader … decides correctly from it（正しく判断できるかで測る）」は、
+> `README.md:12` の「読み手が行動できるまでにどれだけの量を通過させられるかで測る」とは別の測定基準の
+> まま。どちらの issue にも入れていないので未解決。
 
 ## Why this exists（なぜこれが存在するか）
 
@@ -51,11 +50,7 @@ allowed-tools: []
 
 あらゆる粒度で — 単語、文、節、ファイル：
 
-> **これは、読み手がまさに下そうとしている判断を変えるか、あるいは守るか？**
-
-> 【訳注】ここが `README.md:26` と `avoid-reference-detours/SKILL.md:49` の
-> 「**これは読み手が次に取る行動を変えるか？**」と別の文になっている。READMEは「One test（一つの
-> テスト）」と謳い、この入口スキルがそれを担うと書いている。
+> **これは読み手が次に取る行動を変えるか？**
 
 変えない：削る。変える、かつ欠けている：足す。短くすることも長くすることも、どちらも結果であって
 目的ではない。

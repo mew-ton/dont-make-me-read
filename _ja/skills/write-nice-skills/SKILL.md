@@ -5,10 +5,10 @@ description: >
   書く方法。スキル、SKILL.md、その description や frontmatter を書く／編集する／レビューするときに
   使う。別のスキルが description の書き方やスキルの長さのルールを必要とするときにも該当する。
   DO NOT スキル以外のドキュメントには使わない。汎用のリポジトリレビューのパスを走らせるのにも使わない。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # 呼び出し元の会話を一切持たずに走るので、それが成果物に届かない
-background: false               # 呼び出し元が同じターンで結果を見せる
+context: fork
+background: false
 allowed-tools: []
 ---
 

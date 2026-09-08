@@ -10,7 +10,7 @@ Title は一つの誠実な事実でありながら、なお誤った水準に�
 ### Bad: ルールと、その一つの事例が Title に融合している
 
 ```markdown
-The comment attached to `FooDetail.vue:4-16` is too long
+**minor** — the comment attached to `FooDetail.vue:4-16` is too long
 
 - It carries the related issue and incident history, all for a change that only adjusts a width.
 - The same tendency shows up in various other places.
@@ -19,9 +19,6 @@ The comment attached to `FooDetail.vue:4-16` is too long
 （訳：Title＝「`FooDetail.vue:4-16` に付いたコメントが長すぎる」／①幅を調整するだけの変更のために、
 関連 issue とインシデントの経緯を担っている ②同じ傾向が他の様々な箇所にも現れている ③コメントを
 見直してください）
-
-> 【訳注】この例の Title にも `**<severity>** — ` の先頭句が付いていない（Bad/Good どちらも）。
-> `SKILL.md` のテンプレート表の定義と食い違う。
 
 ファイルを差し替えると文が壊れる — このバグについての話ではなくなり、別のバグについての話になってしまう。
 つまりファイルは証拠であって、Title が述べるべき事実ではない — そして Summary 自身がそう言っている
@@ -32,7 +29,7 @@ The comment attached to `FooDetail.vue:4-16` is too long
 ### Good: Title が、その事例が破ったルールを名指しする
 
 ```markdown
-Comments are too long
+**minor** — comments are too long
 
 - An LLM tends to write verbose, flat comments that run to three lines or more.
 - Even a supplementary comment becomes text the reader has to stop and work through once that

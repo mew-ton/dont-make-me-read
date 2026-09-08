@@ -7,10 +7,10 @@ description: >
   Also applies when another skill needs the description-writing or skill-length
   rules. DO NOT use for non-skill documentation, or to run a general repo
   review pass.
-user-invocable: false           # entry points are commands/, never the / menu
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # runs with none of the caller's conversation, so none of it reaches the artifact
-background: false               # the caller shows the result in the same turn
+context: fork
+background: false
 allowed-tools: []
 ---
 

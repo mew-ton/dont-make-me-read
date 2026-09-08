@@ -3,7 +3,7 @@
 Read this when you are writing or reviewing a skill's `description` or frontmatter.
 The `description` is the only text loaded when the agent decides whether to fire the
 skill, so it must be judge-able on its own and must not leak the procedure. Four
-rules, then a size limit.
+rules, a size limit, then one rule for the fields around it.
 
 ## 1. Third person, what + when
 
@@ -18,6 +18,13 @@ Never put step-by-step instructions in the description. If the steps are there, 
 agent believes it can act straight from the description and never loads the body —
 so the instructions the skill exists to deliver are skipped. State *what* and
 *when*; keep *how* in the body.
+
+**Which skill hands off to which is procedure.** "Run it as one axis of a larger
+review, or from the `/x` command" reads like context and is not: it tells the agent
+how this skill gets used, which is exactly the kind of line that makes the body look
+optional. Name the callers and the hand-offs in the body, where the steps that
+depend on them live. The reach clause in rule 1 is the one thing that stays — it
+says *when* this skill applies, never who runs it or in what order.
 
 ## 3. Front-load the leading word
 
@@ -84,3 +91,12 @@ The `description` has a hard budget of **1024 characters**. If what + when +
 triggers will not fit, the skill is usually doing too much — split it (see
 [`structuring-skills.md`](structuring-skills.md)) rather than padding or truncating
 the description.
+
+## No comments in the frontmatter
+
+Frontmatter is the one part of a `SKILL.md` that is parsed rather than read, and all
+of it is loaded on every fire. A trailing `#` on `user-invocable: false` explains the
+field to nobody who was going to be confused by it, and every reader pays for it
+forever — the same size argument that pushes branch detail into `references/`, one
+level up. A field that genuinely needs explaining needs it in prose an author can
+argue with: the body, or the repository's own design doc.

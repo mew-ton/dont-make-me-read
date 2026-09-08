@@ -111,13 +111,24 @@ The name is not what hides the child. Keeping it out of the user's `/` menu is
 ### The child's frontmatter
 
 ```yaml
-user-invocable: false           # hide it from the user's / menu
-disable-model-invocation: false # true would cut off the parent — which is a model
-context: fork                   # this skill *is* the subagent; no conversation history is carried in
-agent: Explore                  # optional. Picks the tool set; Explore and Plan are read-only
-model: haiku                    # optional. Gathering only = haiku; + light normalization = sonnet
-background: false               # required when the conclusion is used in the same turn (default: true)
+user-invocable: false
+disable-model-invocation: false
+context: fork
+agent: Explore
+model: haiku
+background: false
 ```
+
+Write frontmatter without comments. It is the one part of a `SKILL.md` that is parsed
+rather than read, it is loaded on every fire, and a field that needs explaining needs it
+in prose the author can argue with — as below — not in a trailing `#` that every future
+reader pays for.
+
+`user-invocable: false` hides the child from the user's `/` menu. `background: false` is
+required when the conclusion is used in the same turn; it defaults to `true`. `agent` and
+`model` are optional: `agent` picks the tool set (`Explore` and `Plan` are read-only), and
+`model` trades cost against capability — gathering only is `haiku`, gathering plus light
+normalization is `sonnet`.
 
 `agent` and `model` are the two to leave out unless you can say why. They narrow a
 child to what a gathering run needs, and narrowing is wrong for a fork that produces

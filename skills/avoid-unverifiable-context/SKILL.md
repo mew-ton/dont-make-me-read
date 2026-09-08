@@ -10,7 +10,7 @@ description: >
   use for a reference the reader genuinely can reach but should not have been sent to (that is
   avoid-reference-detours), for an issue body's sections and criteria (that is
   write-nice-issue-description), or for ephemeral chat replies and working notes.
-user-invocable: false           # entry points are commands/, never the / menu
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---
@@ -125,7 +125,8 @@ Add a new `POST /items/bulk` endpoint. The request body accepts `{ items: Item[]
 Single creation (`POST /items`) and bulk creation have different responsibilities (different transaction boundaries, different partial-failure semantics, and different rate-limit units), so the endpoints are kept separate.
 ```
 
-The Background section carries the rationale — a domain-level difference in responsibilities, verifiable by a reader who was never in the original review.
+The Background section carries the rationale — a domain-level difference in responsibilities,
+verifiable by a reader who was never in the original review.
 
 ### Bad: documenting a deprecation that no longer exists in the implementation
 ```markdown

@@ -95,13 +95,22 @@ context pointer は条件とファイルを名指しする：「For writing a de
 ### The child's frontmatter（子の frontmatter）
 
 ```yaml
-user-invocable: false           # ユーザーの / メニューから隠す
-disable-model-invocation: false # true にすると親（＝モデル）が断ち切られる
-context: fork                   # このスキル *が* サブエージェントである。会話履歴は持ち込まれない
-agent: Explore                  # 任意。ツールセットを選ぶ。Explore と Plan は読み取り専用
-model: haiku                    # 任意。収集のみ = haiku。軽い正規化まで含む = sonnet
-background: false               # 結論を同じターンで使うときは必須（既定: true）
+user-invocable: false
+disable-model-invocation: false
+context: fork
+agent: Explore
+model: haiku
+background: false
 ```
+
+frontmatter はコメントなしで書く。そこは `SKILL.md` の中で唯一、読まれるのではなくパースされる部分であり、
+発火のたびにロードされる。説明を要するフィールドは、著者が議論できる散文での説明を — 下記のように —
+要するのであって、以後のすべての読み手がコストを払う末尾の `#` を要するのではない。
+
+`user-invocable: false` は子をユーザーの `/` メニューから隠す。`background: false` は結論を同じターンで
+使うときに必須で、既定は `true` である。`agent` と `model` は任意：`agent` はツールセットを選び
+（`Explore` と `Plan` は読み取り専用）、`model` はコストと能力を天秤にかける — 収集のみなら `haiku`、
+収集に軽い正規化が加わるなら `sonnet`。
 
 `agent` と `model` は、理由を言えない限り**外しておく**二つである。どちらも子を「情報収集の実行が必要と
 するもの」まで狭めてしまい、成果物そのものを生み出す fork にとって狭めることは誤りである：読み取り専用の

@@ -7,10 +7,10 @@ description: >
   整えて」「この既存 issue を読めるようにして」 — あるいはタスクを複数の issue に分解するとき。
   DO NOT PRレビュー指摘には使わない。残り続けるドキュメント一般の「根拠 vs プロセス」ルールにも
   使わない。すでに書かれた issue を同じ条件で監査するのにも使わない。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # 呼び出し元の会話を一切持たずに走るので、それが成果物に届かない
-background: false               # 呼び出し元が同じターンで結果を見せる
+context: fork
+background: false
 allowed-tools: []
 ---
 

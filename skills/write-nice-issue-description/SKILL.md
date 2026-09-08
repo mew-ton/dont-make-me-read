@@ -8,10 +8,10 @@ description: >
   existing issue readable" — or when breaking a task down into several issues. DO
   NOT use for a PR review finding, for a persistent doc's general rationale-vs-process rule, or for
   auditing an issue that is already written against these same conditions.
-user-invocable: false           # entry points are commands/, never the / menu
+user-invocable: false
 disable-model-invocation: false
-context: fork                   # runs with none of the caller's conversation, so none of it reaches the artifact
-background: false               # the caller shows the result in the same turn
+context: fork
+background: false
 allowed-tools: []
 ---
 
@@ -187,7 +187,8 @@ what the draft already contains that should not be there. Read
 
 ## Examples
 
-Worked examples of each gate, and a full passing issue body: [`references/examples.md`](references/examples.md).
+Worked examples of each gate, and a full passing issue body:
+[`references/examples.md`](references/examples.md).
 
 ## Related skills
 

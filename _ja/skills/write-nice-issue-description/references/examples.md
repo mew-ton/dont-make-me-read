@@ -125,22 +125,20 @@ Refs #1784
 ### Good: 同じ依存を、開かなくても読み手が止まれる形で述べる
 
 ```markdown
-depends on #1784
-
 ## Background / Why
 
 A foo card shown in an article can be in one of these states: closed, the foo no longer exists, or
 fetch failed.
+
+## Dependencies
+
+depends on #1784
 ```
 （訳：「記事内に表示される foo カードは、クローズ／foo がもう存在しない／取得失敗、のいずれかの状態を
 取りうる。」）
 
 「depends on #1784」は、今この issue を読み続けるかどうかを決めるのに必要なすべてを、それを開かせることなく
 読み手に伝えている。issue が実際に扱っている事実は、ここに、一度だけ、それ自体として述べられている。
-
-> 【訳注】ここでは `depends on #1784` が**先頭の `Refs #` の位置**に置かれている。
-> `assets/issue-template.md` はそれを `## Dependencies` 見出しの下に置いており、下の
-> 「A full passing issue」ではさらに別の置き方（見出しなしで末尾）をしている。
 
 ## Background — 実体が文書やコードであるときは主語がパスになる
 
@@ -455,12 +453,10 @@ reappearing.
 - `path/to/error-handler.ts` (an existing `GoneError` → 410 mapping for
   `GET /v1/bar/{id}`)
 
+## Dependencies
+
 depends on #1784
 ```
-
-> 【訳注】この例には `## Dependencies` 見出しがなく、`depends on #1784` が末尾にベタ書きされている。
-> `SKILL.md` は「セクションは Refs / Background / Goal / Acceptance criteria / Affected areas /
-> Dependencies だけ」と述べ、`assets/issue-template.md` は見出しの下に置いている。
 
 Design / Approach なし、Out of scope なし、Verification なし — すべての文が issue のクローズ後も真であり
 続け、すべてのチェックボックスがドメインの語彙で書かれ、唯一の境界（このエンドポイントの他のステータスは

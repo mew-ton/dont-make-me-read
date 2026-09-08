@@ -21,7 +21,9 @@ One kind of problem with more than one requirement the current state fails to me
 requirement only: keep the sentence.
 -->
 
-<!-- Scope statement (the one place this issue itself may be the subject). Declare what this issue owns and what a follow-up owns. Omit this line entirely when there is no follow-up to hand off. -->
+<!-- Scope statement (the one place this issue itself may be the subject). Declare what this issue
+     owns and what a follow-up owns. Omit this line entirely when there is no follow-up to hand
+     off. -->
 This task covers ____. #____ covers ____.
 
 ## Goal

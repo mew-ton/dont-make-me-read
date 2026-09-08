@@ -71,19 +71,33 @@ Which layer it belongs to decides its frontmatter. Two questions settle that: do
 produce an artifact from a brief, or does it act on work already in front of the model —
 and if it reports findings, do the grounds come back with them.
 
+Frontmatter carries no comments. It is the one part of a `SKILL.md` that is parsed
+rather than read, every line of it is loaded on every fire, and what each field is for
+belongs here instead — where it can be argued rather than restated in eight files.
+
 Every skill here, without exception:
 
 ```yaml
-user-invocable: false           # no skill is in the / menu; entry points live in commands/
-disable-model-invocation: false # the model decides when a skill applies
+user-invocable: false
+disable-model-invocation: false
+allowed-tools: []
 ```
+
+The first two are the menu decision above: no skill is in the `/` menu, and the model
+decides when one applies. `allowed-tools` is declared on all eight and empty on seven.
+`review-nice-issues`' emptiness is a property its judgment depends on, which is why it
+has a section of its own above; `review-self-contained-docs` is the one skill that lists
+tools.
 
 A skill that produces an artifact from a brief adds:
 
 ```yaml
-context: fork                   # runs with none of the caller's conversation
-background: false               # the caller shows the result in the same turn
+context: fork
+background: false
 ```
+
+`context: fork` is what carries in none of the caller's conversation; `background: false`
+is what lets the caller show the result in the same turn.
 
 Leave `agent` and `model` unset. Both narrow a fork to what a gathering run needs: a
 read-only tool set cannot write, and the cheapest model that can enumerate files is not
@@ -97,5 +111,9 @@ Before committing a `SKILL.md`:
 bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
 ```
 
-Non-zero means a body is over 5000 tokens. Push branch-only detail into that skill's
-`references/` until it passes; references have a depth rule and no size rule.
+Only exit 1 is about a budget: a body came back over 5000 tokens, or a file you named
+was not there. Exit 2 means the machine cannot run the check at all (no `claude` or no
+`jq` on PATH), and exit 3 that a measurement failed and no count came back — neither is
+a pass, so fix the setup or rerun rather than reading the silence as one. For a body
+that is genuinely over, push branch-only detail into that skill's `references/` until it
+passes; references have a depth rule and no size rule.

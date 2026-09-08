@@ -9,7 +9,7 @@ description: >
   適用する。DO NOT 読み手が本当に到達できるのに送られるべきでなかった参照には使わない（それは
   avoid-reference-detours）。issue 本文のセクションと基準にも使わない（それは
   write-nice-issue-description）。一過性のチャット返信や作業メモにも使わない。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---

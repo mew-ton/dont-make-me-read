@@ -10,16 +10,11 @@ Title が、依頼に「〜でない」を差し込んだだけのものに読�
 ### Bad: Title が依頼を否定しているだけ
 
 ```markdown
-`FooDetail.vue:140` embeds a compound condition directly in `v-if` (not extracted into a named
-computed)
+**minor** — `FooDetail.vue:140` embeds a compound condition directly in `v-if` (not extracted into
+a named computed)
 ```
 （訳：「`FooDetail.vue:140` は複合条件を `v-if` に直接埋め込んでいる（名前付きの computed に抽出されて
 いない）」）
-
-> 【訳注】この例の Title には `**<severity>** — ` の先頭句が付いていない。`SKILL.md` のテンプレート表は
-> Title を「その指摘の先頭行（`**<severity>** — <fact>`）」と定義しており、`remedy-strength.md` /
-> `avoid-naming-sampled-paths-as-the-fix.md` / `one-instruction-one-application.md` の例はすべて
-> 付けている。
 
 Title は依頼（「名前付きの computed に抽出せよ」）の極性を反転させたものであって、観測ではない —
 「〜に抽出されていない」は修正が何をするかを逆向きに述べ直しているだけで、依頼そのもの以上の情報を担って
@@ -30,7 +25,7 @@ Title は依頼（「名前付きの computed に抽出せよ」）の極性を�
 ### Good: Title が、依頼が応答している振る舞いを名指しする
 
 ```markdown
-Compound and complex conditional expressions are written directly in the template
+**minor** — compound and complex conditional expressions are written directly in the template
 ```
 （訳：「複合的で複雑な条件式がテンプレートに直接書かれている」）
 

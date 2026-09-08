@@ -38,10 +38,10 @@ makes the reader resolve which file it means; a path is already resolved.
 
 This states an existing fact about that entity — it is not an instruction to go look there. Telling
 the reader which file to open to find an answer is a different thing, an implementation step (see
-Decision vs. choice in [`SKILL.md`](../SKILL.md)), and only applies to an entity that stays put for the issue's
-lifetime — a standing rule set, a schema, a convention doc. Not a guess about where in the code a
-fix will land; that guess is Affected areas' job, and its paths are expected to move before work
-starts.
+Decision vs. choice in [`SKILL.md`](../SKILL.md)), and only applies to an entity that stays put for
+the issue's lifetime — a standing rule set, a schema, a convention doc. Not a guess about where in
+the code a fix will land; that guess is Affected areas' job, and its paths are expected to move
+before work starts.
 
 The one exception is the scope statement, where the issue itself may be the subject — declare what
 this issue owns and what a follow-up owns.

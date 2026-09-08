@@ -4,12 +4,13 @@ description: >
   Text someone else has to act on, whatever it is — a GitHub issue, a PR description, a review
   comment, an explanatory code comment, a JSDoc block, a design doc, a SKILL.md — is measured by
   whether its reader — a person or an agent, since both pay to gather it and both act on what
-  they end up with — decides correctly from it, not by how thorough or careful it reads. Noise costs a wrong decision, not just time, and
-  whatever the decision depends on has to be there however much it costs to read. Use before
-  writing or revising any of those, to get that test and to reach the rules for the artifact in
-  hand. DO NOT use it instead of those rules — it carries no template, no budget, and no section
-  list — or for ephemeral chat replies, scratchpads, and working notes nobody acts on later.
-user-invocable: false           # entry points are commands/, never the / menu
+  they end up with — decides correctly from it, not by how thorough or careful it reads. Noise
+  costs a wrong decision, not just time, and whatever the decision depends on has to be there
+  however much it costs to read. Use before writing or revising any of those, to get that test
+  and to reach the rules for the artifact in hand. DO NOT use it instead of those rules — it
+  carries no template, no budget, and no section list — or for ephemeral chat replies,
+  scratchpads, and working notes nobody acts on later.
+user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---
@@ -45,7 +46,7 @@ reader sets the bar for that artifact, not which one is the audience.
 
 At every granularity — a word, a sentence, a section, a file:
 
-> **Does this change, or protect, the decision the reader is about to make?**
+> **Does this change what the reader does next?**
 
 No: cut it. Yes, and it is missing: add it. Shorter and longer are both outcomes, never goals.
 

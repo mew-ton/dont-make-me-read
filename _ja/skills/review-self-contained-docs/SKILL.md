@@ -4,11 +4,10 @@ description: >
   プルリクエストの説明文と、それが追加または変更するすべてのコードコメントに対する、テキスト自己完結性の
   パス：書き手の文脈を一切持たない読み手 — 会話なし、issue なし、周囲の差分なし — にとってどうかを、
   三つの条件（time-closure、referenceability、reference-scope closure）に照らして一つずつ確認する。
-  より大きなPRレビューの一つの軸として、authoring スキルが書き上げたばかりのPR説明文・issue 本文・
-  コードコメントに対する最終パスとして、あるいは /review-text コマンドから走らせる。DO NOT 汎用の
-  「このPRをレビューして」の入口として走らせない。issue への適合、スコープ、設計を判断することを
+  すでに書かれたテキストに適用する — レビュー中のPRでも、自分の下書きでも。DO NOT 汎用の
+  「このPRをレビューして」の入口として使わない。issue への適合、スコープ、設計を判断することを
   期待しない — それは呼び出し元の仕事であって、このスキルのものではない。
-user-invocable: false           # 入口は commands/ であって / メニューではない
+user-invocable: false
 disable-model-invocation: false
 allowed-tools:
   - Read
@@ -28,7 +27,9 @@ allowed-tools:
 `avoid-unverifiable-context` と `avoid-reference-detours` は**何を書くか**を述べる。このスキルは実際に
 書かれたものを、同じ三つの条件に照らして読み手の側からチェックする：time-closure と referenceability
 （この対は `avoid-unverifiable-context` のもの）、そして reference-scope closure（`avoid-reference-detours`
-のもの）。二つの状況で走る：
+のもの）。呼び出し元は、より大きなPRレビューの一つの軸として、書き上げたばかりのPR説明文・issue 本文・
+コードコメントに対する最終パスとして、あるいは `/review-text` コマンドを通じてこれに到達する。二つの状況で
+走る：
 
 - **PRをレビューする**：その説明文と、差分が追加または変更するすべてのコメントを確認する。
 - **書き上げたばかりのテキストを自己チェックする**：PR説明文、issue 本文、コードコメントが出荷される前に、
