@@ -83,10 +83,16 @@ whose output collapses into a conclusion. Fetching a PR's comments, listing chan
 files, walking a package registry, grounding a design in the repository: the parent
 needs the answer, not the transcript that produced it.
 
-**Never delegate judgment** — deciding good/bad, enough/not enough, which finding is
-worth raising. Put a review's substance in a subagent and the grounds for each
-finding never reach the main thread, so nobody can review the review. When context
-is the problem, split the **session**, not the judgment.
+**Never delegate work whose grounds would not come back with it** — a review that
+returns verdicts, a call that returns only its answer. Put a review's substance in a
+subagent and the grounds for each finding never reach the main thread, so nobody can
+review the review. When context is the problem there, split the **session**, not the
+judgment.
+
+The test is not judgment versus gathering. It is whether the caller receives
+everything needed to check the work. A skill that *writes an artifact* passes it: the
+artifact comes back whole and the reader judges the thing itself, so nothing is
+distilled away behind the fork.
 
 ### Naming
 
@@ -133,10 +139,20 @@ argument.
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
 | **Independence** — two workers must not see each other's output | `context: fork` carries in no conversation history, so the isolation is structural rather than requested | `sonnet`: the work is design-quality, so narrow it with `effort` rather than by dropping the model | leave unset when the workers should run in parallel |
+| **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
-The second row also replaces prose. "Do not show either subagent the other's output"
-is a prohibition the reader can violate; `context: fork` not carrying conversation
-history is a property they cannot.
+The last two rows replace prose. "Do not show either subagent the other's output" is
+a prohibition the reader can violate; `context: fork` not carrying conversation
+history is a property they cannot. The same move applies one axis over: "do not write
+what only this conversation's participants could reconstruct" is
+`avoid-unverifiable-context`'s rule and a writer can break it, but a skill that never
+saw the conversation cannot.
+
+That is why the writing skills in this plugin fork and the entry does not. A command
+does the messy part — fetching, asking, working out what the issue even is — and
+hands over one brief; the skill writes from the brief alone. The entry
+(`dont-make-me-read`) and the two `avoid-*` skills stay on the main thread, because
+routing and constraining happen where the writing happens.
 
 ## This skill as the worked example
 

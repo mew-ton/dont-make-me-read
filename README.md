@@ -43,6 +43,13 @@ Commands are the whole user-facing surface. Type one when you want something wri
 | `/review-issue` | Audit an existing issue body. |
 | `/review-text` | Audit a PR's description and the code comments it changes. |
 
+A writing command is the instruction layer, not an alias for a skill. It does the messy part —
+fetching an existing issue, asking about what is not yet settled, working out what the finding even
+is — and hands one consolidated brief to the skill that owns the artifact. That skill runs with
+none of this conversation (`context: fork`), so nothing that produced the brief can surface in what
+it writes: `avoid-unverifiable-context`'s rule, enforced by structure instead of by asking the
+writer to remember it.
+
 ## Skills
 
 No skill appears in the `/` menu. They load on the model's own judgment while it writes, and the

@@ -10,6 +10,8 @@ description: >
   auditing an issue that is already written against these same conditions.
 user-invocable: false           # entry points are commands/, never the / menu
 disable-model-invocation: false
+context: fork                   # runs with none of the caller's conversation, so none of it reaches the artifact
+background: false               # the caller shows the result in the same turn
 allowed-tools: []
 ---
 
