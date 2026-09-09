@@ -50,13 +50,20 @@ Three sections, in this order.
 | **Codemap** | The coarse-grained modules and how they relate — "a map of a country, not an atlas of maps of its states". It answers *where is the thing that does X* and *what does the thing I am looking at do*. |
 | **Cross-cutting concerns and invariants** | What holds across modules, and the boundaries between layers and systems. Its own section, not scattered through the other two. |
 
-Three standing rules come with them:
+Five standing rules come with them, three of them matklad's:
 
 - **Keep it short, and specify only what is unlikely to change.** Every recurring contributor reads
   it. Do not try to keep it synchronised with the code; revisit it a couple of times a year.
 - **Name important files, modules and types; do not link into them.** Links go stale, and a stale
   link is worse than a name the reader can search for. Naming an entity and letting symbol search
   find it survives every rename that matters.
+- **A criterion carries a reason only where the reason places a case the criterion alone does
+  not.** Stating the rule and then explaining it is how these files get long, and length is itself
+  the failure: the reader came for one decision and pays for the argument that convinced you.
+  Compress until every remaining sentence would change somebody's next move.
+- **Name roles, not instances.** An architectural role — the entry point, the thing that holds the
+  standard — is stable and worth naming. The component that currently fills it is not: name it and
+  the file needs an edit every time the tree changes, which is the coupling this doc exists above.
 - **Never defer the substance to another document.** "The rest is in `README.md`" hands the reader
   a trip in place of the thing they came for, and it is the failure `avoid-reference-detours`
   exists to stop — so a doc that commits it has broken the rule its own project is built on. Naming
