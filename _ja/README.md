@@ -72,6 +72,7 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 | [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | 貢献者が判断に使う基準を担い、実装を閉じたまま判断できるようにする。 |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | `write-nice-issue-description` が書くときに満たす条件と同じもので、issue 本文をテキストだけから監査する。 |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | PRの説明文と、そのPRが変更するすべてのコメントを自己完結性（time-closure、referenceability、reference-scope closure）で監査する。 |
+| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | そのドキュメントが何のために書き換えられねばならなくなるか — 名前、員数、写した定義、パス — を洗い出し、判定は呼び出し元に委ねる。 |
 
 重みを担うのは二つである。**`dont-make-me-read` が入口**で、二つの命題とテストを担い、他に該当するものへ
 ルーティングする。テンプレートも予算も持たないので、これを読むことが、それが指し示す先をロードすることの
@@ -85,6 +86,9 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 実運用に落としたものである：authoring スキルが条件を述べ、書き手は自分の下書きを judge できない。これらは
 読む以上のツールを持たず、`review-nice-issues` に至っては一つも持たない — 読み手が手にするのと同じテキスト
 だけから判断しなければならないので、取得は呼び出し元の仕事になる。
+
+**`find-*`** スキルは判定ではなく材料を返す。判定するパスが、judge する対象を持てるようにするためである —
+findings は根拠の価値以上のものにはならないからだ。
 
 動詞は、そのどれを見ているのか、そしてどちらの方向に引き算するのかを示す。`avoid-unverifiable-context` と
 `avoid-reference-detours` は一つの問いの二つの半分で、前者は読み手がそもそも到達できないもので直し方は削除、

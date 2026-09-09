@@ -7,9 +7,9 @@ that cost — they read their own draft while supplying what it is missing. This
 that follow, arranged to reach the writing rather than wait to be consulted.
 
 `dont-make-me-read` is the entry: it installs the disposition and routes. Behind it, one best
-practice per artifact whose shape is fixed enough to have one. Everything else serves those — the
-rules that hold whatever the text is, and the same conditions run backwards over text already
-written.
+practice per artifact whose shape is fixed enough to have one. Everything else is whatever a best
+practice needs in order to be applied and to be checked, and takes whatever shape that job wants —
+only the best practices are fixed here.
 
 A best practice is held by a skill, so that skill is insulated from what it judges: run it inside
 the session that has been arguing about the artifact and the standard bends toward what was just
