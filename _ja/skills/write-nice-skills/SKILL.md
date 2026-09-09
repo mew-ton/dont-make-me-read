@@ -49,17 +49,25 @@ allowed-tools: []
    エージェントが取り組んでいるものとの間で共有される語こそが、両者を結びつけてスキルを発火させる。人が
    頼むときはそれがプロンプトであり、`/` メニューから隠されたスキルにとっては**作業そのもの**である。
    スラッシュ区切りのタグ列でもなく、飾り立てた依頼文でもなく、自然な文の中にある leading word。枝ごとに
-   トリガーを一つ（同義語の水増しはしない）。本文がすでに担っている素性は削る。
+   トリガーを一つ（同義語の水増しはしない）。本文がすでに担っている素性は削る。ある活動のあいだ効き
+   続けねばならないスキルには共有すべき語が無い — 活動を名指しし、それが何でないかで境界を引く。
 4. **英語。** どの言語でプロンプトを打とうと description は英語で書き、第二言語のキーワード列で水増ししない。
    スキルが**エージェントに何を書けと指示するか**は別の問いであり、各 writing スキルが自分で答える。
 
 **Body**（詳細＋基準：
 [`references/structuring-skills.md`](references/structuring-skills.md)）：
 
-5. **全部書かない。** 本文をサイズ予算の中に保ち、枝に固有の詳細は本文が指すファイルへ一段押し下げる。
+5. **全部書かない。** 本文をサイズ予算の中に保ち — 予算は同時に立つスキルの集合に属し、ある活動の
+   あいだ効き続けるスキルに対して最も厳しい — 枝に固有の詳細は本文が指すファイルへ一段押し下げる。
    すべての経路が必要とするものをインラインにし、一部の枝しか到達しないものはポインタの後ろに置く。
 6. **Common Rationalizations を足す。** エージェントが手を抜きそうなスキルには、その言い訳を先回りして
    封じる（下の表を参照）。
+7. **効き続けねばならないなら、効き続けると述べる。** ある活動のあいだ効き続けるスキルは一度ロード
+   されたあと、その後に来るすべてと競合する。まだ効力があると決して言わない本文は、すでに与えられた
+   助言として読まれる。
+8. **構造がすでに決着させていることは書かない。** スキルは自分の分類も、誰が呼ぶかも、どこに座って
+   いるかも知る必要がない — frontmatter と呼び出し元がそれらをすべて確立しており、それを述べる一文は
+   そのスキルがすることを何も変えない。呼び出し元の名前が変わった日に、そのスキルを誤りにもする。
 
 上で使った用語（leading word、trigger、branch、progressive disclosure、context pointer）は
 [`GLOSSARY.md`](GLOSSARY.md) で定義されている。
@@ -80,8 +88,8 @@ allowed-tools: []
 
 - **description / frontmatter** を書く／直す →
   [`references/writing-descriptions.md`](references/writing-descriptions.md)
-- **本文のサイズ、references、いつ分割するか**を決める →
-  [`references/structuring-skills.md`](references/structuring-skills.md)
+- **本文のサイズ、references、いつ分割するか**、あるいは活動をまたいで**スキルを効かせ続ける**ことを
+  決める → [`references/structuring-skills.md`](references/structuring-skills.md)
 - ファイルの実際の**トークンコスト**と、目指すべきバイト閾値を測る →
   [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget)
   （[`scripts/count-tokens.sh`](scripts/count-tokens.sh.md) を実行する）

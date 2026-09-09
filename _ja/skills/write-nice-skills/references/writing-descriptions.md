@@ -62,6 +62,18 @@ and stays lean. Use when writing, editing, or reviewing a skill, a SKILL.md, or
 its description.
 ```
 
+### スキルがある活動のあいだ効き続けねばならない場合
+
+語では到達されないスキルもある。誰かがコードを書いているあいだ、あるいは誰かが行動の対象にする
+ものを書いているあいだ効いていなければならないルールは、まさにその作業がそれを名指ししないときに
+最も必要とされる — 共有すべき leading word が無い。作業は依頼ではなく、diff とファイルだからで
+ある。代わりに **活動** を `when` として、その作業が行われる動詞で名指しし（"writing, revising,
+reviewing, or designing code"）、それが何でないかで境界を引く（"DO NOT use for non-coding
+requests"）。活動のトリガーがあらゆるものに発火するのを止めるのは、この境界である。
+
+これで一度は中に入る。その活動のあいだ中に留め続けるのは本文の仕事であり、本文はそう述べない限り
+それができない — [`structuring-skills.md`](structuring-skills.md#staying-in-force) を参照。
+
 ## 4. 英語
 
 別の言語でプロンプトを打つときでも、description は英語で書く。英語の用語は、いずれにせよプロンプトに生き

@@ -55,6 +55,20 @@ the start, where it does its invocation work.
 - **Cut body identity**: keep the description to triggers plus a reach clause;
   anything the body already explains does not belong here.
 
+### When the skill has to be on for a whole activity
+
+Some skills are not reached by a word at all. A rule that has to hold while someone
+writes code, or writes anything another person acts on, is needed most exactly when
+the work never names it — there is no leading word to share, because the work is a
+diff and a file, not a request. Name the **activity** as the `when` instead, in the
+verbs the work is done in ("writing, revising, reviewing, or designing code"), and
+bound it with what it is not ("DO NOT use for non-coding requests"): the bound is
+what stops an activity trigger from firing on everything.
+
+That gets the skill in once. Keeping it in for the rest of the activity is the
+body's job, and the body cannot do it unless it says so — see
+[`structuring-skills.md`](structuring-skills.md#staying-in-force).
+
 ### Bad → Good
 
 **Bad** — tag list up front, invented keywords, and a step leaking in:

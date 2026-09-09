@@ -5,8 +5,9 @@ description: >
   — a doc comment that says "the format rules at the top of this file", a note that says "same as
   the config", a section that defers to another section of the same document. Restate what this
   reader needs at the point they need it, and leave the original where it is: the round trip is
-  what costs them, not the fact. Apply when writing a code comment, a docstring, a PR description,
-  or any text that points elsewhere to be understood. DO NOT use when the target does not exist or
+  what costs them, not the fact. In code the same detour inverts: knowledge a module holds about
+  its callers is taken out, not brought in. Apply when writing a code comment, a docstring, a PR
+  description, or any text or code that points elsewhere to be understood. DO NOT use when the target does not exist or
   cannot be reached at all (that is avoid-unverifiable-context), or for the same content repeated
   twice inside one document (that is write-nice-issue-description's Gate 2).
 user-invocable: false
@@ -58,14 +59,32 @@ one rule, not two:
 | The fact is already in front of them (the diff, the code on the next line) | a re-read | nothing; point at `path:line` if it needs naming at all |
 
 `write-nice-instructions`' "the reader has it — point at `path:line` instead" is the second row.
-Both rows subtract from what the reader gets through.
+
+## In code the fix inverts
+
+Restating works because text does not execute: the original stays authoritative, and the reader
+stops travelling. A module that restates what its callers know copies nothing — it takes on a
+dependency on them. A shared fetch that branches on which page called it holds both pages in its
+range, and every page added after that lands there too, so the module changes every time a caller
+is added. The detour is real; the fix is to take the knowledge out — the caller passes what differs
+— never to bring it in.
+
+The signal is in the name. A parameter you can rewrite in the domain's own vocabulary (`scope`,
+`currency`) is the callee's own; one that can only be said as the caller's identity (`from:
+'pageA' | 'pageB'`, `isDetailPage`) is knowledge that crossed.
 
 ## Where this ends and duplication begins
 
 Inside one document a reader reads in order, so a second statement of the same content is a
-re-read — that is `write-nice-issue-description`'s Gate 2, and it forbids it. Across documents,
-files, or sections a reader has to travel, and the trip costs more than the restatement. This skill
-governs the second case only; a repeated paragraph two sections down is Gate 2's, not this skill's.
+re-read — that is `write-nice-issue-description`'s Gate 2. Across documents, files, or sections a
+reader has to travel, and the trip costs more than the restatement. This skill governs the second
+case only.
+
+## Persistence
+
+In force for every response once it is loaded, not only the one that loaded it. Still in force
+while you are unsure whether the pointer you are about to write is one the reader could have done
+without. Released when the work turns to what nobody reads to act on, or when you are told to stop.
 
 ## Language
 
@@ -79,47 +98,13 @@ where a fact sits, not which language states it.
 | "It's reachable, so pointing to it is fine." | Reachability was never the problem; being sent there was. If the reader has to leave this comment or section to make sense of it, state it here. |
 | "Restating it duplicates the source of truth." | The source of truth does not move — it stays where it is and stays authoritative. What comes here is the part this reader needs to act, not a second copy of the whole. |
 | "More context at the point of use is always safer." | Only when it removes a trip. A line that repeats what the code beside it already shows adds reading and saves nothing. Run the test on every line you add, not only on the ones you cut. |
+| "A flag on the shared function is smaller than changing both callers." | It is smaller today. The flag puts both callers in the callee's range, and the next caller too, so the shared function is edited every time one is added — the diff you avoided arrives once per caller instead. |
 | "It reads fine to me." | You already know what is at the other end of the pointer, so the trip costs you nothing. The reader is the one paying for it. |
 
 ## Examples
 
-### Bad: sending the reader to the top of the file
-```typescript
-/** Discount codes are 5-8 uppercase alphanumeric characters, optional campaign-tag prefix. */
-
-export function validateDiscountCode(code: string): boolean {
-  // Validation here follows the format rules described at the top of this file.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-The file-level docstring is real and it is in the same file, so nothing here is unreachable. It
-still fails: a reader checking `validateDiscountCode` has to go open the header to find out what
-the pattern accepts.
-
-### Good: state it at the point of use
-```typescript
-export function validateDiscountCode(code: string): boolean {
-  // Discount codes: 5-8 uppercase alphanumeric characters, optional campaign-tag prefix.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-The rule now sits where it is used, and it is shorter to read than the version with the pointer.
-The file-level docstring is untouched.
-
-### Bad: a cross-issue note in prose
-```markdown
-The retry path is being handled in another issue and is not implemented yet.
-```
-
-### Good: a note that names what to read, at the code it concerns
-```typescript
-// TODO(#456): retries for combined promo codes are not implemented yet.
-```
-
-A `TODO(#456)` states the boundary at the point the reader hits it, and needs no trip to be acted
-on — the reader knows to stop here whether or not they open #456.
+Bad/Good pairs for a doc comment deferring to its file header, and for a cross-issue note in
+prose: [`references/examples.md`](references/examples.md).
 
 ## Related skills
 

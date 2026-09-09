@@ -5,8 +5,9 @@ description: >
   である — 「このファイル冒頭のフォーマット規則」と書くドキュメントコメント、「config と同じ」と書く
   注記、同じ文書の別セクションに委ねるセクション。この読み手が必要とするものを、必要とする地点で
   言い直し、原典はその場に残すこと。彼らにコストを払わせているのは往復であって、事実ではない。
-  コードコメント、docstring、PR説明文、あるいは理解されるために他所を指すあらゆるテキストを書くときに
-  適用する。DO NOT 対象がそもそも存在しない／まったく到達できない場合には使わない（それは
+  コードでは同じ越境が逆向きになる：モジュールが呼び出し元について持っている知識は、持ち込むのではなく
+  外へ出す。コードコメント、docstring、PR説明文、あるいは理解されるために他所を指すあらゆるテキストや
+  コードを書くときに適用する。DO NOT 対象がそもそも存在しない／まったく到達できない場合には使わない（それは
   avoid-unverifiable-context）。また一つの文書の中で同じ内容が二度書かれている場合にも使わない
   （それは write-nice-issue-description の Gate 2）。
 user-invocable: false
@@ -54,7 +55,18 @@ allowed-tools: []
 | 事実がすでに目の前にある（差分、次の行のコード） | 再読 | 何も。名指しが必要なら `path:line` を指す |
 
 `write-nice-instructions` の「読み手はそれを持っている — 代わりに `path:line` を指せ」は二行目のほう。
-どちらの行も、読み手が通過する量から引き算している。
+
+## In code the fix inverts（コードでは直し方が逆になる）
+
+述べ直しが成立するのは、テキストが実行されないからである：原典は権威のまま残り、読み手は移動をやめる。
+呼び出し元が知っていることを述べ直すモジュールは何も複製していない — 呼び出し元への依存を引き受ける。
+どのページから呼ばれたかで分岐する共通の fetch は、両方のページを自分の範囲に抱えており、以後に加わる
+ページもそこに入る。だからそのモジュールは呼び出し元が増えるたびに変更される。越境は実在する。直し方は
+知識を外へ出すこと — 差分は呼び出し元が渡す — であって、持ち込むことでは決してない。
+
+兆候は名前に出る。ドメインの言葉に書き直せる引数（`scope`、`currency`）は callee 自身のものである。
+呼び出し元の同一性としてしか言えない引数（`from: 'pageA' | 'pageB'`、`isDetailPage`）は、越境した知識で
+ある。
 
 ## Where this ends and duplication begins（これがどこで終わり、重複がどこから始まるか）
 
@@ -62,6 +74,12 @@ allowed-tools: []
 `write-nice-issue-description` の Gate 2 であり、そこで禁じられている。文書、ファイル、セクションを
 またぐ場合は読み手が移動しなければならず、その往復は言い直しよりコストが高い。このスキルが統べるのは
 二つ目のケースだけ。2セクション下で繰り返される段落は Gate 2 のものであって、このスキルのものではない。
+
+## Persistence（効力の持続）
+
+ロードされたあとは、それをロードしたレスポンスだけでなく、すべてのレスポンスで効力を持つ。これから書く
+ポインタが読み手にとって無くても済むものかどうか迷っているあいだも、効力は残る。解除されるのは、作業が
+誰も行動のために読まないものへ移ったとき、または止めるよう言われたときである。
 
 ## Language（言語）
 
@@ -75,48 +93,13 @@ allowed-tools: []
 | 「到達できるのだから、そこを指すので十分だ。」 | 到達可能性はもともと問題ではなかった。そこへ送られたことが問題だった。読み手がこのコメントやセクションを離れないと意味が取れないなら、ここで述べよ。 |
 | 「言い直すと信頼できる唯一の情報源が重複する。」 | 唯一の情報源は動かない — その場に留まり、権威であり続ける。ここに来るのはこの読み手が行動するために必要な部分であって、全体の二つ目のコピーではない。 |
 | 「使用地点の文脈は多いほうが常に安全だ。」 | それが往復を取り除くときだけ。隣のコードがすでに示していることを繰り返す行は、読む量を足して何も節約しない。削る行だけでなく、足すすべての行にテストを走らせよ。 |
+| 「共通関数にフラグを一つ足すほうが、呼び出し元を両方直すより小さい。」 | 小さいのは今日だけである。そのフラグは両方の呼び出し元を callee の範囲に入れ、次の呼び出し元も入れる。だから共通関数は呼び出し元が増えるたびに編集される — 避けたはずの差分が、呼び出し元一つにつき一度ずつ届く。 |
 | 「自分には問題なく読める。」 | あなたはポインタの先に何があるかすでに知っているので、その往復はあなたには無料である。それを払うのは読み手のほうだ。 |
 
 ## Examples（実例）
 
-### Bad: ファイル冒頭へ読み手を送る
-```typescript
-/** Discount codes are 5-8 uppercase alphanumeric characters, optional campaign-tag prefix. */
-
-export function validateDiscountCode(code: string): boolean {
-  // Validation here follows the format rules described at the top of this file.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-ファイルレベルの docstring は実在し、同じファイルの中にあるので、到達不能なものは何もない。それでも
-不合格である。`validateDiscountCode` を確認している読み手は、パターンが何を受け付けるのかを知るために
-ヘッダを開きに行かねばならない。
-
-### Good: 使用地点で述べる
-```typescript
-export function validateDiscountCode(code: string): boolean {
-  // Discount codes: 5-8 uppercase alphanumeric characters, optional campaign-tag prefix.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-ルールは使われている場所に座り、ポインタ付きの版より読むのが短い。ファイルレベルの docstring は
-そのまま。
-
-### Bad: 散文で書かれた issue 横断の注記
-```markdown
-The retry path is being handled in another issue and is not implemented yet.
-```
-（訳：リトライ経路は別の issue で対応中で、まだ実装されていない。）
-
-### Good: 何を読めばよいかを名指しする注記を、それが関わるコードのところに
-```typescript
-// TODO(#456): retries for combined promo codes are not implemented yet.
-```
-
-`TODO(#456)` は読み手がぶつかる地点で境界を述べており、行動するのに往復を要しない — 読み手は #456 を
-開こうと開くまいと、ここで止まると分かる。
+ファイル先頭の記述に委ねている doc コメントと、散文で書かれた issue 横断の注記についての Bad/Good の
+対：[`references/examples.md`](references/examples.md)。
 
 ## Related skills（関連スキル）
 

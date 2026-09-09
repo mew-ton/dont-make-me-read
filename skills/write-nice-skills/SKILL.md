@@ -58,7 +58,8 @@ Everything under "Writing the description" follows from this one fact.
    when a person asks; for a skill hidden from the `/` menu it is the work itself.
    Not a slash-separated tag list, not a dressed-up request sentence: a leading word
    inside a natural sentence. One trigger per branch (no synonym padding); cut
-   identity the body already carries.
+   identity the body already carries. A skill that has to be on for a whole activity
+   has no word to share — name the activity, and bound it with what it is not.
 4. **English.** Write the description in English, whichever language you prompt in,
    and do not pad it with a second-language keyword list. What the skill *tells the
    agent to write* is a separate question each writing skill answers for itself.
@@ -66,12 +67,17 @@ Everything under "Writing the description" follows from this one fact.
 **Body** (details + criteria:
 [`references/structuring-skills.md`](references/structuring-skills.md)):
 
-5. **Don't write everything.** Keep the body within the size budget and push
-   branch-specific detail one level down into a file the body points at. Inline what every
-   path needs; put behind a pointer what only some branches reach.
+5. **Don't write everything.** Keep the body within the size budget — which belongs
+   to the set of skills that stand together, and is tightest for a skill that is on
+   for a whole activity — and push branch-specific detail one level down into a file
+   the body points at. Inline what every path needs; put behind a pointer what only
+   some branches reach.
 6. **Add Common Rationalizations.** For any skill an agent might cut corners on,
    pre-empt the excuses (see the table below).
-7. **Leave out what the structure already settles.** A skill does not need to know
+7. **Say it stays in force, when it has to.** A skill that is on for a whole
+   activity is loaded once and then competes with everything after it; a body that
+   never says it is still in force reads as advice already given.
+8. **Leave out what the structure already settles.** A skill does not need to know
    its own category, who calls it, or where it sits — the frontmatter and the
    callers establish all of that, and a sentence saying it changes nothing the
    skill does. It also makes the skill wrong the day a caller is renamed.
@@ -95,7 +101,8 @@ The agent will look for reasons to skip this skill. Close them off:
 
 - Writing or fixing a **description / frontmatter** →
   [`references/writing-descriptions.md`](references/writing-descriptions.md)
-- Deciding **body size, references, or when to split** →
+- Deciding **body size, references, or when to split**, or **keeping a skill in
+  force** across an activity →
   [`references/structuring-skills.md`](references/structuring-skills.md)
 - Measuring a file's real **token cost**, and the byte threshold to aim for →
   [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget)

@@ -8,11 +8,12 @@ to understand it, and the writer cannot feel that range: they read their own dra
 what it is missing. This plugin is the rules that follow, arranged to reach the writing rather than
 wait to be consulted.
 
-Two layers. `dont-make-me-read` is the standing one — the test, and the ways a range goes wrong. It
-names no artifact and hands off to nothing, which is what holds it to a fixed size however many
-activities exist. On top of it, one skill per activity, carrying what that activity's range does
-that the test alone cannot supply. Several stand at once and nothing arbitrates between them, so
-their size is the only thing keeping the pile affordable.
+Two layers. The standing one is `dont-make-me-read` — the test, and the ways a range goes wrong —
+together with the rules that hold whatever is being written. It carries no inventory of what else
+exists, which is what holds it to a fixed size however many activities there are. On top of it, one
+skill per activity, carrying what that activity's range does that the test alone cannot supply.
+Several stand at once and nothing arbitrates between them, so their size is the only thing keeping
+the pile affordable.
 
 A best practice is held by a skill, so that skill is insulated from what it judges: run it inside
 the session that has been arguing about the artifact and the standard bends toward what was just
@@ -36,9 +37,9 @@ and what arrangement removes the need.
 
 - **Nothing is reachable by being named from a menu.** The rules have to land mid-task, and nobody
   stops mid-task to name one.
-- **The standing layer names no artifact and points at no skill.** An inventory is a second place to
-  update, and it grows with what it lists — and this is the one file that has to stay a fixed size.
-  A skill is reached by its own description or not at all.
+- **The standing layer holds no inventory of what else exists.** A table of artifacts and the skills
+  that own them is a second place to update, and it grows with what it lists — and this is the layer
+  that has to stay a fixed size. A skill is reached by its own description or not at all.
 - **A skill that produces an artifact never sees the conversation that reached it.** That keeps out
   both the residue a reader could not check and the session's pull on the standard.
 - **A skill never holds a tool that would let it confirm what its reader could not.** Where the

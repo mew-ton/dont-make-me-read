@@ -1,19 +1,19 @@
 # dont-make-me-read
 
-A [Claude Code](https://claude.com/claude-code) plugin: skills for writing text someone else has to
-act on — a GitHub issue, a PR review finding, a persistent doc, a `SKILL.md` — so they can act on it
-without wading through it.
+A [Claude Code](https://claude.com/claude-code) plugin: skills for writing what someone else has to
+read before they can act — a GitHub issue, a PR review finding, a persistent doc, a `SKILL.md`, a
+comment, the code itself — so they can act on it without wading through it.
 
 ## Two propositions
 
 Every rule in every skill here follows from these.
 
-1. **Nobody wants to read a lot of text to work out what to do.** Not beautiful text, not thorough
-   text, not polite text. What is measured is how much a reader gets through before they can act —
-   and the reader is a person or an agent, since both pay to collect it and both act on what they
-   end up holding.
+1. **Nobody wants to hold a lot in their head to work out what to do.** Not for beautiful text,
+   not for thorough text, not for polite text. What is measured is the range a reader has to hold
+   to understand what is in front of them — and the reader is a person or an agent, since both pay
+   to collect it and both act on what they end up holding.
 2. **The writer cannot tell how much that is.** You read your own draft while supplying the context
-   it is missing, so it reads short to you, and only to you.
+   it is missing, so the range reads small to you, and only to you.
 
 The second is why this is a set of skills and not advice. Each skill carries a Common
 Rationalizations table for the excuses that arrive while writing, and some of them exist only to
@@ -62,7 +62,7 @@ by hand.
 
 | Skill | Role |
 |---|---|
-| [`dont-make-me-read`](skills/dont-make-me-read/SKILL.md) | The entry: the test above, what may never be cut for it, where the length cap applies, and which skill owns the artifact in hand. |
+| [`dont-make-me-read`](skills/dont-make-me-read/SKILL.md) | The standing layer: the range a reader has to hold, the three ways it goes wrong, the test above, and what may never be cut for it. |
 | [`write-nice-issue-description`](skills/write-nice-issue-description/SKILL.md) | Write a GitHub issue body an implementer can act on alone: a determinable problem, checkable acceptance criteria, an out-of-scope boundary. |
 | [`write-nice-instructions`](skills/write-nice-instructions/SKILL.md) | Shape a PR review finding: one fixed template (title / summary / details), and how firmly to state the remedy. |
 | [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | Keep out of persisting text what its reader cannot go and check: the conversation, the review thread, a past state the code no longer shows. |
@@ -73,11 +73,12 @@ by hand.
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
 | [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | Surface what a document would have to be rewritten for, as a graph of what is pinned to what and which end has to move — weak where the pin is a location, strong where it is content — and leave the verdict to its caller. |
 
-Two of them carry the weight. **`dont-make-me-read` is the entry**: it carries the two propositions
-and the test, and routes to whatever else applies. It holds no template and no budget, so reading
-it is never a substitute for loading what it points at. **A `write-*` skill holds the best practice
-for one artifact** — its sections, its budgets, the conditions it has to satisfy — for the artifacts
-whose shape is fixed enough to have one.
+Two of them carry the weight. **`dont-make-me-read` is the standing layer**: the two propositions,
+the range, and the test. It names no artifact and points at no skill, which is what holds it to a
+fixed size however many activities exist — and it holds no template and no budget, so having it in
+force is never a substitute for loading the rules for the artifact in hand. **A `write-*` skill
+holds the best practice for one activity** — its sections, its budgets, the conditions it has to
+satisfy.
 
 The rest serve that second job rather than standing beside it. An **`avoid-*`** skill names one
 failure mode that holds whatever the text is — a code comment, a JSDoc block, a PR description, a
