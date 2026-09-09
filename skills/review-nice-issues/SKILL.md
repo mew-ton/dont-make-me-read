@@ -31,16 +31,7 @@ disallowed-tools:
 written, against the same two gates from the reader's side: determinacy and duplication (defined
 below).
 
-This skill runs with **the outward-looking tools taken away, by design**: its `disallowed-tools`
-removes them from the pool, so while it judges it cannot run `gh`, cannot read the repository,
-cannot delegate the lookup to a subagent, and cannot post anything back. That is not a discipline
-to remember while judging — the removal is what makes the judgment below use only the text it was
-actually handed, the same footing as the reader Gate 1 describes. An empty `allowed-tools` supplies
-none of this: that field pre-approves what is already in reach and never takes anything out of it.
-
-The removal is released by the user's next message, not by this skill's own return, so it reaches
-the rest of the turn that invoked it. Fetching therefore happens **before** the hand-off or not at
-all — which is the same order this skill's Inputs already require, now arriving as a mechanism.
+Judge only the text you were handed, on the same footing as the reader Gate 1 describes.
 
 It runs in two situations:
 
@@ -53,8 +44,8 @@ It runs in two situations:
 
 ## Inputs
 
-The issue body text — nothing else. This skill never asks for an issue number or a repo, because it
-has no way to act on either; fetching is the caller's job.
+The issue body text — nothing else. This skill never asks for an issue number or a repo; fetching
+is the caller's job.
 
 ## Workflow
 
@@ -118,20 +109,15 @@ skill owns the finding's shape and how firmly the remedy is stated; don't invent
 
 ### 5. Report
 
-Return the findings as text. That is the whole output — this skill has no way to post a comment
-or edit the issue, and does not try to. Whoever invoked it (a person, or another skill that does
-have `gh` access) decides what to do with the findings: show them, post them, fold them into a
-larger report.
+Return the findings as text. That is the whole output. Whoever invoked it (a person, or another
+skill that does have `gh` access) decides what to do with the findings: show them, post them, fold
+them into a larger report.
 
 ## Guardrails
 
 - Never bring outside knowledge into step 2 or 3 — judge the body from only its own text, exactly
   as the reader Gate 1 describes would encounter it. Reaching for what you already know about the
   requirement is the one failure mode this whole skill exists to catch in yourself.
-- Keep the `disallowed-tools` list whole. This skill's entire value is that it cannot see the issue
-  tracker or the codebase while it judges — taking a tool back out of that list "just for
-  convenience" removes the one property that makes its judgment trustworthy, and moving it to
-  `allowed-tools` instead removes it just the same.
 - `Affected areas` never counts toward the boundary bullet in step 2, and never excuses a missing
   fact in `Background` — it is a hunch, with no binding force, by `write-nice-issue-description`'
   own definition.
