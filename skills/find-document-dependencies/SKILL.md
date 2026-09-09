@@ -77,6 +77,39 @@ dependencies" is claiming completeness it cannot have.
 | "This one is obviously fine, so I will leave it out." | Obviously fine is a verdict. Report it and let the caller agree with you. |
 | "I will note that the rest of the document is clean." | You checked what you checked. A completeness claim is itself a dependency — on your own thoroughness, which nobody can verify later. |
 
+## Example: the strong dependency nobody sees until it has already broken
+
+An architecture doc, describing where the code lives:
+
+```markdown
+## Layers
+
+The parsing layer is `lexer` and `parser`. The analysis layer is `resolver` and `typeck`.
+```
+
+Every one of those four modules is now in a strong dependency with this file: rename one and the
+file is wrong. So is the fifth, the day somebody writes it — it will simply be missing, and the
+section will go on reading like a complete answer.
+
+Nothing here links, so nothing checks it. The sentence stays grammatical, stays confident, and
+gives no sign at all. The way it gets found is that a contributor believes it and puts something in
+the wrong place — which is to say, after it has already cost what it was going to cost.
+
+**Reported as:** the span above; pinned to the membership of two layers; breaks when any module is
+added, removed, or renamed; strong; pinned to instances, not to roles — every name in it is a
+filler.
+
+The same section with nothing pinned:
+
+```markdown
+## Layers
+
+A module is in the parsing layer if it turns text into a tree without resolving a name, and in the
+analysis layer if it resolves names against a tree it did not build.
+```
+
+A new module now places itself, and the file is as right the day after it lands as the day before.
+
 ## Related skills
 
 - `avoid-reference-detours` — the reader's side of a pointer: the trip they were made to take. This
