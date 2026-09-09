@@ -97,9 +97,8 @@ background: false
 
 ## Before a skill is committed（スキルをコミットする前に）
 
-```bash
-bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
-```
+**本文は予算に対して計測する。見積もらない。**`SKILL.md` のベストプラクティスが、予算とそれを計測する
+カウンタの両方を担っている。非ゼロならまだコミットしてはならない。
 
 ---
 

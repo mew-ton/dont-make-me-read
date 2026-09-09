@@ -100,9 +100,8 @@ adds a description every future turn has to judge.
 
 ## Before a skill is committed
 
-```bash
-bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
-```
+**Its body is measured against its budget, never estimated.** The best practice for a `SKILL.md`
+carries both the budget and the counter that measures it; non-zero means do not commit it yet.
 
 ---
 
