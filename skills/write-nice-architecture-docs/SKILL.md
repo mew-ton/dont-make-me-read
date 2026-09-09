@@ -147,7 +147,9 @@ them all.
 ### 4. Restate what the decision needs; never re-derive a definition another file owns
 
 Exit codes belong to the script that returns them. Frontmatter fields belong to the platform that
-parses them. The list of what exists belongs to the directory that holds it.
+parses them. The list of what exists belongs to the directory that holds it. And how an artifact is
+arranged internally belongs to that artifact's own rules — a doc that says which artifacts have
+rules has already said enough.
 
 `avoid-reference-detours` already settles whether you may repeat something: bring the part **this
 reader needs in order to act**, in the shortest form that does the job. What this narrows is

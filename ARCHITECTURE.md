@@ -89,14 +89,8 @@ subtraction bites only where that footing is the product; then fetching belongs 
 
 ## Where an explanation goes
 
-| The explanation is | It goes |
-|---|---|
-| what a contributor decides by | here |
-| what every path through a skill needs | that skill's body |
-| what only some branches reach | a file beside its `SKILL.md`, pointed at from it |
-| what a field means | nowhere in frontmatter |
-
-Frontmatter is parsed rather than read, and all of it loads on every fire.
+**What a contributor decides by goes here. What a reader of one artifact needs goes with that
+artifact, and that artifact's own rules say where within it.**
 
 ## When an artifact earns rules of its own
 
@@ -104,16 +98,11 @@ Frontmatter is parsed rather than read, and all of it loads on every fire.
 template.** Below that bar the entry's test and the always-on rules serve it, and another skill only
 adds a description every future turn has to judge.
 
-## What to do when a body is over budget
-
-**Push what only some branches reach into a file beside that `SKILL.md`.**
+## Before a skill is committed
 
 ```bash
 bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
 ```
-
-Non-zero means do not commit yet. The script's header says which code is the budget and which mean
-the check did not run. What the body points at has a depth rule and no size rule.
 
 ---
 
