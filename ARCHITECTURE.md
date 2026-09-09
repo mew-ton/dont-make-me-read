@@ -107,6 +107,10 @@ artifact gets neither.
 **What the job needs, minus anything that would let it confirm what its reader could not.** The
 subtraction bites only where that footing is the product; then fetching belongs to the caller.
 
+Writing back is not confirming, so the subtraction never reaches it. What survives the subtraction
+decides whether a skill can post its own output at all, and an explicit ask from the caller decides
+whether it does — never a default, and never while running as another skill's step.
+
 ## Where an explanation goes
 
 **What a contributor decides by goes here. What a reader of one artifact needs goes with that

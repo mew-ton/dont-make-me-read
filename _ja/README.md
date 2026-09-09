@@ -43,7 +43,7 @@ Common Rationalizations（よくある自己正当化）の表を持っており
 | `/write-skill` | `SKILL.md` を書く、またはレビューする。 |
 | `/write-architecture` | アーキテクチャドキュメントを書く、または改稿する。 |
 | `/review-issue` | 既存の issue 本文を監査する。 |
-| `/review-text` | PRの説明文と、そのPRが変更するコードコメントを監査する。 |
+| `/review-text` | PRの説明文と、そのPRが変更するコードコメントを監査し、求められればその指摘をPRに投稿する。 |
 
 writing コマンドは instruction レイヤーであって、スキルのエイリアスではない。散らかった部分 — 既存の
 issue の取得、まだ決まっていないことの質問、そもそも指摘が何なのかを突き止めること — をコマンドが担い、
