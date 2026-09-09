@@ -72,27 +72,26 @@ by hand.
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to, from the text alone. |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
 
-They sit in three layers. **`dont-make-me-read` is the entry**: it carries the two propositions
+Two of them carry the weight. **`dont-make-me-read` is the entry**: it carries the two propositions
 and the test, and routes to whatever else applies. It holds no template and no budget, so reading
-it is never a substitute for loading what it points at. **The two `avoid-*` skills** carry failure
-modes that hold whatever the text is — a code comment, a JSDoc block, a PR description, a commit
-message — which is why they have the broadest triggers here and why most writing needs nothing
-beyond them. **A few artifacts have enough fixed shape to earn rules of their own**: an issue
-body, a review finding, a `SKILL.md`, an architecture doc — each with its own sections, budgets,
-and worked examples.
+it is never a substitute for loading what it points at. **A `write-*` skill holds the best practice
+for one artifact** — its sections, its budgets, the conditions it has to satisfy — for the artifacts
+whose shape is fixed enough to have one.
 
-The two `review-*` skills are proposition 2 made operational: the authoring skill states the
-conditions, the review skill applies them to text already written, per unit, instead of trusting a
-read-through. They have no tools beyond reading, and `review-nice-issues` has none at all — it must
-judge from the same text a reader holds, so its caller does any fetching.
+The rest serve that second job rather than standing beside it. An **`avoid-*`** skill names one
+failure mode that holds whatever the text is — a code comment, a JSDoc block, a PR description, a
+commit message — so it applies underneath every artifact, which is why these carry the broadest
+triggers here and why most writing needs nothing more. A **`review-*`** skill runs the same
+conditions backwards over text already written, per unit, which is proposition 2 made operational:
+the authoring skill states them, and a writer cannot judge their own draft. They have no tools
+beyond reading, and `review-nice-issues` has none at all — it must judge from the same text a reader
+holds, so its caller does any fetching.
 
-The verb says which direction the skill subtracts in. A `write-*` skill fixes the shape of a whole
-artifact — an issue, a finding, a `SKILL.md`, an architecture doc. An `avoid-*` skill names one
-thing that puts reading between the reader and acting, wherever the text lives.
-`avoid-unverifiable-context` and
-`avoid-reference-detours` are the two halves of one question: the first is what the reader cannot
-reach at all and the fix is to delete, the second is what they *can* reach and were made to travel
-to, where the fix is to restate it here and leave the original where it is.
+The verb tells you which of those you are looking at, and the direction it subtracts in.
+`avoid-unverifiable-context` and `avoid-reference-detours` are the two halves of one question: the
+first is what the reader cannot reach at all and the fix is to delete, the second is what they *can*
+reach and were made to travel to, where the fix is to restate it here and leave the original where
+it is.
 
 Which reader sets the bar differs by artifact — `write-nice-instructions` is pitched at the person
 who decides within a few lines whether to act or skim, `write-nice-skills` at the agent deciding
