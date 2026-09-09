@@ -2,14 +2,18 @@
 
 ## Bird's eye view
 
-Text someone else has to act on costs its reader before they can act, and the writer cannot feel
-that cost — they read their own draft while supplying what it is missing. This plugin is the rules
-that follow, arranged to reach the writing rather than wait to be consulted.
+Anything someone else has to read before they can act — an issue, a review finding, an architecture
+doc, a `SKILL.md`, a comment, the code itself — is paid for in the range they have to hold in order
+to understand it, and the writer cannot feel that range: they read their own draft while supplying
+what it is missing. This plugin is the rules that follow, arranged to reach the writing rather than
+wait to be consulted.
 
-`dont-make-me-read` is the entry: it installs the disposition and routes. Behind it, one best
-practice per artifact whose shape is fixed enough to have one. Everything else is whatever a best
-practice needs in order to be applied and to be checked, and takes whatever shape that job wants —
-only the best practices are fixed here.
+Two layers. The standing one is `dont-make-me-read` — the test, and the ways a range goes wrong —
+together with the rules that hold whatever is being written. It carries no inventory of what else
+exists, which is what holds it to a fixed size however many activities there are. On top of it, one
+skill per activity, carrying what that activity's range does that the test alone cannot supply.
+Several stand at once and nothing arbitrates between them, so their size is the only thing keeping
+the pile affordable.
 
 A best practice is held by a skill, so that skill is insulated from what it judges: run it inside
 the session that has been arguing about the artifact and the standard bends toward what was just
@@ -33,6 +37,9 @@ and what arrangement removes the need.
 
 - **Nothing is reachable by being named from a menu.** The rules have to land mid-task, and nobody
   stops mid-task to name one.
+- **The standing layer holds no inventory of what else exists.** A table of artifacts and the skills
+  that own them is a second place to update, and it grows with what it lists — and this is the layer
+  that has to stay a fixed size. A skill is reached by its own description or not at all.
 - **A skill that produces an artifact never sees the conversation that reached it.** That keeps out
   both the residue a reader could not check and the session's pull on the standard.
 - **A skill never holds a tool that would let it confirm what its reader could not.** Where the
@@ -49,7 +56,20 @@ and what arrangement removes the need.
 ## Where a new entry point goes
 
 **A person decides to invoke it → something they type. It has to reach work already underway → a
-skill.**
+skill.** A rule that has to hold for a whole activity is still the second one: what makes it
+always-on lives inside the skill, never in a mechanism beside it.
+
+## How a rule stays on
+
+**The description gets it in; the body keeps it in.** The description is the only text read before
+loading, so a skill that has to be on for an activity states that activity as its `when` — not a
+word the work happens to contain, because the work that needs the rule most is the work that never
+names it. Once loaded, a body that does not say it is still in force drifts back out of force
+inside the same turn.
+
+The golden rule wants a property and this is not one: it is a judgment, retaken every turn. What
+the mechanism does allow is an asymmetric default — in force while unsure, released only on an
+explicit word — so the cheap failure is the one that keeps the rule on.
 
 ## What a command owes the skill it calls
 
@@ -92,16 +112,22 @@ subtraction bites only where that footing is the product; then fetching belongs 
 **What a contributor decides by goes here. What a reader of one artifact needs goes with that
 artifact, and that artifact's own rules say where within it.**
 
-## When an artifact earns rules of its own
+## When an activity earns rules of its own
 
-**When its shape is fixed enough that a general rule cannot supply it: named sections, a budget, a
-template.** Below that bar the entry's test and the always-on rules serve it, and another skill only
-adds a description every future turn has to judge.
+**One per activity, and every activity gets one.** The bar this replaces — a shape fixed enough to
+need named sections, a budget, a template — was set while the standing layer routed, when one skill
+loaded at a time and each new one was weighed against the menu it joined. What decides membership
+now is whether someone doing this is doing something different, not whether what they produce has a
+template. Writing code and writing an issue break the range in opposite directions, so they are
+two, and the one with no template is not the one to drop.
 
 ## Before a skill is committed
 
-**Its body is measured against its budget, never estimated.** The best practice for a `SKILL.md`
-carries both the budget and the counter that measures it; non-zero means do not commit it yet.
+**Its body is measured against its budget, never estimated — and the budget belongs to the set that
+stands together, not to the file.** Skills no longer arrive one at a time: a file inside its own
+limit can still put an activity over. The standing layer is held tightest of all, being resident
+whatever the activity is. The best practice for a `SKILL.md` carries the figures and the counter
+that measures them; non-zero means do not commit it yet.
 
 ---
 

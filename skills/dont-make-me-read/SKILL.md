@@ -1,16 +1,14 @@
 ---
 name: dont-make-me-read
 description: >
-  Text someone else has to act on, whatever it is — a GitHub issue, a PR description, a review
-  comment, an explanatory code comment, a JSDoc block, an architecture doc, a SKILL.md — is
-  measured by
-  whether its reader — a person or an agent, since both pay to gather it and both act on what
-  they end up with — decides correctly from it, not by how thorough or careful it reads. Noise
-  costs a wrong decision, not just time, and whatever the decision depends on has to be there
-  however much it costs to read. Use before writing or revising any of those, to get that test
-  and to reach the rules for the artifact in hand. DO NOT use it instead of those rules — it
-  carries no template, no budget, and no section list — or for ephemeral chat replies,
-  scratchpads, and working notes nobody acts on later.
+  Anything someone else has to read before they can act costs them the range they have to hold in
+  order to understand it, and the writer cannot feel that range — you read your own draft while
+  supplying what it is missing, so it reads small to you and only to you. Use while writing or
+  revising anything another person or an agent reads in order to act: drafting, documenting,
+  commenting, specifying, explaining, reviewing, or writing the code itself. It stays in force for
+  the rest of that work. DO NOT use it in place of the rules that own the artifact in hand — it
+  carries no template, no budget, and no section list — or for ephemeral chat replies, scratchpads,
+  and working notes nobody acts on later.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
@@ -20,32 +18,36 @@ allowed-tools: []
 
 Two propositions. Every rule in this plugin follows from them.
 
-1. **Nobody wants to read a lot of text to work out what to do.** Not beautiful text, not
-   thorough text, not polite text.
+1. **Nobody wants to hold a lot in their head to work out what to do.** Not for beautiful text, not
+   for thorough text, not for polite text.
 2. **The writer cannot tell how much that is.** You read your own draft while supplying the
-   context it is missing, so it reads short to you, and only to you.
+   context it is missing, so the range reads small to you, and only to you.
 
 The second is why these are skills and not advice, and why some of them exist only to be run
-against text you have already written.
+against what you have already written.
 
-## Who the reader is
+## The range
 
-A person or an agent, always both. Collecting and holding a long, scattered instruction costs each
-of them something, and each acts on whatever they end up holding, so nothing here is written for
-only one of them.
+The range is everything the reader has to hold in order to act on what is in front of them. It is
+not the length of what they are reading: a short paragraph that only means something once you have
+opened two other files has a wide range.
 
-They do not fail the same way, and that is worth holding on to while judging a draft. A list of the
-paths you happened to sample reads to a person as "at least these, and probably others like them";
-a coding agent takes it as the complete set to touch, and stops there. Same text, same noise, two
-different wrong decisions.
+It goes wrong in three ways.
 
-Where a skill in this set names one of them — `write-nice-instructions` sets its budgets by the
-human reader, `write-nice-skills` by the agent deciding whether to load a file — it is saying which
-reader sets the bar for that artifact, not which one is the audience.
+| What went wrong | What the reader pays | The fix |
+|---|---|---|
+| Something in the range does not bear on the decision | reads it, and decides confidently on it | cut it |
+| The range reaches something this reader cannot get to at all | a dead end | cut it |
+| The range reaches something they can get to, and they have to go | a round trip | state the part they need, here |
+
+The third inverts in code. Text can restate a fact and leave the original authoritative, because
+nothing executes: the reader stops travelling and the original stays where it is. A module that
+restates what its callers know copies nothing — it takes on a dependency on them, and every caller
+after that is inside its range. There the fix is to take the knowledge out, not to bring it in.
 
 ## The test
 
-At every granularity — a word, a sentence, a section, a file:
+Inside the range, at every granularity — a word, a sentence, a section, a file:
 
 > **Does this change what the reader does next?**
 
@@ -60,6 +62,13 @@ What noise costs is not reading time. It is a **wrong decision, made confidently
 | "handle this appropriately" | that the spec is complete |
 | The implementation method, in an issue | that the shape you saw while writing is still the shape today |
 
+## Who the reader is
+
+A person or an agent, always both, and they do not fail the same way. A list of the paths you
+happened to sample reads to a person as "at least these, and probably others like them"; a coding
+agent takes it as the complete set to touch, and stops there. Same text, same range, two different
+wrong decisions.
+
 ## What must never be cut
 
 Whatever the decision depends on and the reader cannot reconstruct:
@@ -70,9 +79,9 @@ Whatever the decision depends on and the reader cannot reconstruct:
   rather than as an option offered to them
 - the fact that makes the ask defensible at all
 
-Cutting one of these does not make the text lean. It hands a decision to someone with less to
-decide on, which is the failure this whole set exists to prevent. A line that is expensive to read
-and that the decision needs, stays.
+Cutting one of these does not narrow the range. It hands a decision to someone with less to decide
+on, which is the failure this whole set exists to prevent. A line that is expensive to read and
+that the decision needs, stays.
 
 ## Where the length cap applies
 
@@ -84,41 +93,19 @@ needs it and is not capped.
 | The mandatory path | yes | everyone pays for it, every time |
 | Backing material — worked examples, evidence, the original a pointer leads to | no | only the reader who needs it pays |
 
-That is why a review finding's details are capped at 20 lines while its evidence in a code block
-is not, and why what a `SKILL.md` points at has a depth rule and no size rule.
+## Persistence
 
-## Which skill owns what
-
-Most of what this applies to has no template and needs none — an explanatory code comment, a
-JSDoc block, a PR description, a commit message. For those the test above, plus two failure modes,
-is the whole of it:
-
-- `avoid-unverifiable-context` — the text carries something the reader cannot go and check.
-- `avoid-reference-detours` — the text sends the reader somewhere reachable in order to be
-  understood.
-
-Both hold whatever the artifact is, so they also apply on top of everything below.
-
-A few artifacts have enough fixed shape to earn rules of their own. Load the one that matches;
-this skill holds the test, not those rules.
-
-| Writing | Skill |
-|---|---|
-| A GitHub issue body | `write-nice-issue-description` |
-| A PR review finding, or any comment telling a person what to change | `write-nice-instructions` |
-| A `SKILL.md` | `write-nice-skills` |
-| An architecture doc — `ARCHITECTURE.md`, an ADR, a decision record | `write-nice-architecture-docs` |
-
-| Checking what is already written | Skill |
-|---|---|
-| An issue body | `review-nice-issues` |
-| A PR's description and every comment its diff changes | `review-self-contained-docs` |
+In force for every response once it is loaded, not only the one that loaded it. Still in force
+while you are unsure whether what you are about to write counts as something someone acts on.
+Released when the work turns to what nobody reads to act on, or when you are told to stop.
 
 ## Common Rationalizations
 
 | Rationalization | Reality |
 |---|---|
-| "I have the principle now, so I can write the issue without loading that skill." | The principle does not carry the section list, the budgets, or the gates. It says what to aim at, never what the artifact must contain. Loading this is not a substitute for loading that one. |
+| "I have the principle now, so I can write this without the rules for the artifact." | The principle does not carry the section list, the budgets, or the gates. It says what to aim at, never what the artifact must contain. Having this in force is not a substitute for loading that. |
 | "Shorter is better, so cut it." | Shorter is a result, never the goal. A line the decision depends on stays however much it costs to read. |
-| "More context is safer." | Context the decision does not use is exactly what makes a reader confident about the wrong thing. Safety is the second list above, not volume. |
+| "More context is safer." | Context the decision does not use is exactly what makes a reader confident about the wrong thing. Safety is the list above, not volume. |
+| "This is code, not text, so the range is not my problem." | Code is read before it is changed, by someone who has to hold whatever it depends on. The range is the same measure; only the third row's fix inverts. |
 | "It reads fine to me." | You are supplying the intent the text is missing as you read it. Judge it as someone holding only the text — that is the whole failure mode. |
+| "This has been in force a while, so it has done its job." | It is retaken every response. The turn where it lapses is the turn you write the paragraph nobody can act on. |

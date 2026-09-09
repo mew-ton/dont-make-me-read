@@ -5,9 +5,22 @@ versus a reference, or when you are wondering whether to split one skill into tw
 
 ## The body budget
 
-- Keep `SKILL.md` within about **500 lines / 5000 tokens**. It is loaded in full
-  every time the skill fires, so every line spends context that could otherwise
-  speed up the session.
+The budget belongs to the **set of skills that stand together**, not to one file.
+Skills do not arrive one at a time: a rule that is on for a whole activity is
+resident while another skill fires for the artifact in hand, and the reader pays for
+both. A file inside its own limit can still put the activity over.
+
+| The skill | Budget | Because |
+|---|---|---|
+| On for a whole activity — it is resident whatever the reader is doing | **2000 tokens** | every turn of every activity pays for it |
+| Reached for one artifact or one branch | **5000 tokens / 500 lines** | only the reader who needs it pays |
+
+The set to check is every skill that will be standing at once: the ones on for this
+activity, plus whichever is reached for the artifact in hand. Its ceiling is the sum
+of theirs. Measure the set, not the file you happen to be editing.
+
+- What the body points at sits **one level deep**. Do not nest a reference inside a
+  reference: the second hop is one the reader did not agree to.
 - What the body points at sits **one level deep**. Do not nest a reference inside a
   reference: the second hop is one the reader did not agree to.
 - A supporting file is found by being referenced from `SKILL.md`, so its name and
@@ -24,7 +37,10 @@ estimating:
 
 ```bash
 bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md
+TARGET=2000 bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
 ```
+
+The second line is the always-on budget; sum the reported figures to check the set.
 
 "This skill's directory" is wherever this file was loaded from — a plugin's
 install path, `~/.claude/skills/write-nice-skills/`, or a repository's
@@ -37,10 +53,26 @@ generation. Each file costs one round trip, and it exits non-zero over budget.
 
 For a free pre-check use `wc -c`, not `wc -m` — bytes per token barely move between
 scripts, where characters per token nearly double between a Latin script and a
-non-Latin one. **Under about 15 KB is a safe stand-in for 5000 tokens today.** The
+non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for
+2000.** The
 script's closing line re-derives that figure from your own run; recompute it there
 rather than trusting this number once the default model has moved on — a stale
 figure that is too low sends you splitting files that were never over budget.
+
+## Staying in force
+
+A skill that has to be on for a whole activity is loaded once and then competes with
+everything that arrives after it. A body that never says it is still in force reads
+as advice already given, and the work drifts back to what it was doing.
+
+Say it, in the body, in three parts: it is in force every response and not only the
+one that loaded it; it stays in force while you are unsure whether the case in front
+of you counts; it is released only on an explicit condition — the work turning to
+something the skill does not cover, or being told to stop.
+
+The default is asymmetric on purpose. This is a judgment retaken every response
+rather than a property of the system, so the cheap failure has to be the one that
+leaves the rule on.
 
 ## Progressive disclosure: what to inline, what to disclose
 

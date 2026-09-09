@@ -8,7 +8,8 @@ description: >
   コードコメント、docstring、PR説明文、あるいは理解されるために他所を指すあらゆるテキストを書くときに
   適用する。DO NOT 対象がそもそも存在しない／まったく到達できない場合には使わない（それは
   avoid-unverifiable-context）。また一つの文書の中で同じ内容が二度書かれている場合にも使わない
-  （それは write-nice-issue-description の Gate 2）。
+  （それは write-nice-issue-description の Gate 2）。どの呼び出し元から呼ばれたかを知っている
+  モジュールにも使わない（それは avoid-caller-knowledge）。
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
@@ -54,14 +55,18 @@ allowed-tools: []
 | 事実がすでに目の前にある（差分、次の行のコード） | 再読 | 何も。名指しが必要なら `path:line` を指す |
 
 `write-nice-instructions` の「読み手はそれを持っている — 代わりに `path:line` を指せ」は二行目のほう。
-どちらの行も、読み手が通過する量から引き算している。
 
 ## Where this ends and duplication begins（これがどこで終わり、重複がどこから始まるか）
 
-一つの文書の中では読み手は順に読むので、同じ内容の二度目の記述は**再読**である — それは
-`write-nice-issue-description` の Gate 2 であり、そこで禁じられている。文書、ファイル、セクションを
-またぐ場合は読み手が移動しなければならず、その往復は言い直しよりコストが高い。このスキルが統べるのは
-二つ目のケースだけ。2セクション下で繰り返される段落は Gate 2 のものであって、このスキルのものではない。
+一つの文書の中では読み手は順に読むので、同じ内容の二度目の記述は再読である — それが
+`write-nice-issue-description` の Gate 2 である。文書・ファイル・セクションをまたぐと読み手は移動せねば
+ならず、その往復は言い直しより高くつく。このスキルは二つ目のケースだけを扱う。
+
+## Persistence（効力の持続）
+
+ロードされたあとは、それをロードしたレスポンスだけでなく、すべてのレスポンスで効力を持つ。これから書く
+ポインタが読み手にとって無くても済むものかどうか迷っているあいだも、効力は残る。解除されるのは、作業が
+誰も行動のために読まないものへ移ったとき、または止めるよう言われたときである。
 
 ## Language（言語）
 
@@ -79,48 +84,14 @@ allowed-tools: []
 
 ## Examples（実例）
 
-### Bad: ファイル冒頭へ読み手を送る
-```typescript
-/** Discount codes are 5-8 uppercase alphanumeric characters, optional campaign-tag prefix. */
-
-export function validateDiscountCode(code: string): boolean {
-  // Validation here follows the format rules described at the top of this file.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-ファイルレベルの docstring は実在し、同じファイルの中にあるので、到達不能なものは何もない。それでも
-不合格である。`validateDiscountCode` を確認している読み手は、パターンが何を受け付けるのかを知るために
-ヘッダを開きに行かねばならない。
-
-### Good: 使用地点で述べる
-```typescript
-export function validateDiscountCode(code: string): boolean {
-  // Discount codes: 5-8 uppercase alphanumeric characters, optional campaign-tag prefix.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-ルールは使われている場所に座り、ポインタ付きの版より読むのが短い。ファイルレベルの docstring は
-そのまま。
-
-### Bad: 散文で書かれた issue 横断の注記
-```markdown
-The retry path is being handled in another issue and is not implemented yet.
-```
-（訳：リトライ経路は別の issue で対応中で、まだ実装されていない。）
-
-### Good: 何を読めばよいかを名指しする注記を、それが関わるコードのところに
-```typescript
-// TODO(#456): retries for combined promo codes are not implemented yet.
-```
-
-`TODO(#456)` は読み手がぶつかる地点で境界を述べており、行動するのに往復を要しない — 読み手は #456 を
-開こうと開くまいと、ここで止まると分かる。
+ファイル先頭の記述に委ねている doc コメントと、散文で書かれた issue 横断の注記についての Bad/Good の
+対：[`references/examples.md`](references/examples.md)。
 
 ## Related skills（関連スキル）
 
 - `avoid-unverifiable-context` — 同じ分割のもう半分。対象がこの読み手にとってそもそも存在しないので、
   直し方は言い直しではなく削除。
+- `avoid-caller-knowledge` — コードにおける同じ範囲の失敗。そこでは言い直すことが依存を作るので、直し方が
+  逆になる — 知識のほうが外へ出る。
 - `write-nice-issue-description` — Gate 2 が一つの文書の**内部**の繰り返しを所有する。
 - `review-self-contained-docs` — 書かれたテキストを、読み手の側から、単位ごとに両方に照らして監査する。

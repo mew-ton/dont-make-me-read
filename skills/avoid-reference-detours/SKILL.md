@@ -7,8 +7,9 @@ description: >
   reader needs at the point they need it, and leave the original where it is: the round trip is
   what costs them, not the fact. Apply when writing a code comment, a docstring, a PR description,
   or any text that points elsewhere to be understood. DO NOT use when the target does not exist or
-  cannot be reached at all (that is avoid-unverifiable-context), or for the same content repeated
-  twice inside one document (that is write-nice-issue-description's Gate 2).
+  cannot be reached at all (that is avoid-unverifiable-context), for the same content repeated
+  twice inside one document (that is write-nice-issue-description's Gate 2), or for a module that
+  knows which caller invoked it (that is avoid-caller-knowledge).
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
@@ -58,14 +59,19 @@ one rule, not two:
 | The fact is already in front of them (the diff, the code on the next line) | a re-read | nothing; point at `path:line` if it needs naming at all |
 
 `write-nice-instructions`' "the reader has it — point at `path:line` instead" is the second row.
-Both rows subtract from what the reader gets through.
 
 ## Where this ends and duplication begins
 
 Inside one document a reader reads in order, so a second statement of the same content is a
-re-read — that is `write-nice-issue-description`'s Gate 2, and it forbids it. Across documents,
-files, or sections a reader has to travel, and the trip costs more than the restatement. This skill
-governs the second case only; a repeated paragraph two sections down is Gate 2's, not this skill's.
+re-read — that is `write-nice-issue-description`'s Gate 2. Across documents, files, or sections a
+reader has to travel, and the trip costs more than the restatement. This skill governs the second
+case only.
+
+## Persistence
+
+In force for every response once it is loaded, not only the one that loaded it. Still in force
+while you are unsure whether the pointer you are about to write is one the reader could have done
+without. Released when the work turns to what nobody reads to act on, or when you are told to stop.
 
 ## Language
 
@@ -83,47 +89,14 @@ where a fact sits, not which language states it.
 
 ## Examples
 
-### Bad: sending the reader to the top of the file
-```typescript
-/** Discount codes are 5-8 uppercase alphanumeric characters, optional campaign-tag prefix. */
-
-export function validateDiscountCode(code: string): boolean {
-  // Validation here follows the format rules described at the top of this file.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-The file-level docstring is real and it is in the same file, so nothing here is unreachable. It
-still fails: a reader checking `validateDiscountCode` has to go open the header to find out what
-the pattern accepts.
-
-### Good: state it at the point of use
-```typescript
-export function validateDiscountCode(code: string): boolean {
-  // Discount codes: 5-8 uppercase alphanumeric characters, optional campaign-tag prefix.
-  return DISCOUNT_CODE_PATTERN.test(code);
-}
-```
-
-The rule now sits where it is used, and it is shorter to read than the version with the pointer.
-The file-level docstring is untouched.
-
-### Bad: a cross-issue note in prose
-```markdown
-The retry path is being handled in another issue and is not implemented yet.
-```
-
-### Good: a note that names what to read, at the code it concerns
-```typescript
-// TODO(#456): retries for combined promo codes are not implemented yet.
-```
-
-A `TODO(#456)` states the boundary at the point the reader hits it, and needs no trip to be acted
-on — the reader knows to stop here whether or not they open #456.
+Bad/Good pairs for a doc comment deferring to its file header, and for a cross-issue note in
+prose: [`references/examples.md`](references/examples.md).
 
 ## Related skills
 
 - `avoid-unverifiable-context` — the other half of the same split: the target does not exist for
   this reader at all, so the fix is to delete rather than restate.
+- `avoid-caller-knowledge` — the same range failure in code, where restating is what creates the
+  dependency, so the fix inverts: the knowledge comes out.
 - `write-nice-issue-description` — Gate 2 owns repetition *inside* one document.
 - `review-self-contained-docs` — audits written text against both, per unit, from the reader's side.
