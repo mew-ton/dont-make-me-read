@@ -25,7 +25,7 @@ Two propositions. Every rule in this plugin follows from them.
 2. **The writer cannot tell how much that is.** You read your own draft while supplying the
    context it is missing, so it reads short to you, and only to you.
 
-The second is why these are skills and not advice, and why two of them exist only to be run
+The second is why these are skills and not advice, and why some of them exist only to be run
 against text you have already written.
 
 ## Who the reader is

@@ -170,11 +170,9 @@ what only this conversation's participants could reconstruct" is
 `avoid-unverifiable-context`'s rule and a writer can break it, but a skill that never
 saw the conversation cannot.
 
-That is why the writing skills in this plugin fork and the entry does not. A command
-does the messy part — fetching, asking, working out what the issue even is — and
-hands over one brief; the skill writes from the brief alone. The entry
-(`dont-make-me-read`) and the two `avoid-*` skills stay on the main thread, because
-routing and constraining happen where the writing happens.
+So a skill that writes an artifact forks and is handed one brief, while a skill that
+routes or constrains stays on the main thread: both need the property, and only the
+first can have it without losing the work it acts on.
 
 ## This skill as the worked example
 

@@ -76,8 +76,8 @@ context: fork
 background: false
 ```
 
-`agent` と `model` は未設定のままにする — どちらも fork を情報収集の実行が必要とするものまで狭め、読み取り
-専用のツールセットでは書けない。
+`agent` と `model` を設定するのは、収集そのものが仕事のすべてである fork に限る。成果物を生み出す fork は
+どちらも持たない。
 
 ## What tools a skill gets（スキルがどのツールを持つか）
 

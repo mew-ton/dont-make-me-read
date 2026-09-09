@@ -79,8 +79,8 @@ context: fork
 background: false
 ```
 
-Leave `agent` and `model` unset — both narrow a fork to what a gathering run needs, and a read-only
-tool set cannot write.
+`agent` and `model` are set only on a fork whose whole job is gathering. One that produces the
+artifact gets neither.
 
 ## What tools a skill gets
 

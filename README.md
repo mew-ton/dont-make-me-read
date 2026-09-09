@@ -16,8 +16,8 @@ Every rule in every skill here follows from these.
    it is missing, so it reads short to you, and only to you.
 
 The second is why this is a set of skills and not advice. Each skill carries a Common
-Rationalizations table for the excuses that arrive while writing, and two of the nine exist only
-to be run against text already written.
+Rationalizations table for the excuses that arrive while writing, and some of them exist only to
+be run against text already written.
 
 ## One test
 
@@ -71,7 +71,7 @@ by hand.
 | [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | Carry the criteria a contributor decides by, so they can decide with the implementation closed. |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to, from the text alone. |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
-| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | Surface what a document would have to be rewritten for, weak (a pointer a tool already finds) or strong (a name or explanation in prose, which only reading finds), and leave the verdict to its caller. |
+| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | Surface what a document would have to be rewritten for, as a graph of what is pinned to what and which end has to move — weak where the pin is a location, strong where it is content — and leave the verdict to its caller. |
 
 Two of them carry the weight. **`dont-make-me-read` is the entry**: it carries the two propositions
 and the test, and routes to whatever else applies. It holds no template and no budget, so reading
@@ -84,9 +84,9 @@ failure mode that holds whatever the text is — a code comment, a JSDoc block, 
 commit message — so it applies underneath every artifact, which is why these carry the broadest
 triggers here and why most writing needs nothing more. A **`review-*`** skill runs the same
 conditions backwards over text already written, per unit, which is proposition 2 made operational:
-the authoring skill states them, and a writer cannot judge their own draft. They have no tools
-beyond reading, and `review-nice-issues` has none at all — it must judge from the same text a reader
-holds, so its caller does any fetching.
+the authoring skill states them, and a writer cannot judge their own draft. None of them holds a
+tool that would let it confirm what its reader could not; where standing on that same footing is
+the whole product, the skill holds no tools at all and its caller does any fetching.
 
 A **`find-*`** skill returns material rather than a verdict, so a pass that does judge has
 something to judge from — because a finding is only worth what its grounds are worth.
