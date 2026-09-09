@@ -52,14 +52,21 @@ the pass on them: whatever checks links is already better at it than you are.
 | A claim about how something is arranged | that arrangement | it is restructured | strong |
 | A translation, mirror, or second copy | the whole original | any part of the original changes | strong |
 
-One more axis costs nothing and changes what a strong dependency is worth: **role or instance.** A
-name for an architectural role outlives whatever currently fills it; a name for the filler does
-not. Same sentence, different upkeep, and the caller cannot tell them apart from the span alone.
+## Which end has to move
+
+A dependency is one-way: fixing A obliges fixing B, and fixing B leaves A alone. The document is on
+one end or the other, and the shape of the span does not say which.
+
+Downstream, it describes: the other thing moves and the text is wrong. Upstream, it defines: the
+other thing has to conform, and the day it changes, it was the thing that had to give. Same
+sentence, opposite upkeep. For a name that is the whole difference between a role the document
+defines and the instance currently filling it — and it decides whether the entry is worth the
+caller's attention at all.
 
 ## What to return
 
-Per dependency: the span, what it is pinned to, what change breaks it, its strength, and — for a
-strong one — whether it is pinned to a role or an instance. Lead with the strong ones. Quote the
+Per dependency: the span, what it is pinned to, what change breaks it, its strength, and which end
+the document is on. Lead with the strong ones. Quote the
 span rather than describing it: the caller has to weigh the actual sentence, and a paraphrase is a
 second copy with its own dependency.
 
@@ -96,8 +103,8 @@ gives no sign at all. The way it gets found is that a contributor believes it an
 the wrong place — which is to say, after it has already cost what it was going to cost.
 
 **Reported as:** the span above; pinned to the membership of two layers; breaks when any module is
-added, removed, or renamed; strong; pinned to instances, not to roles — every name in it is a
-filler.
+added, removed, or renamed; strong; the document is downstream — every name in it is a filler the
+tree owns.
 
 The same section with nothing pinned:
 
@@ -108,7 +115,8 @@ A module is in the parsing layer if it turns text into a tree without resolving 
 analysis layer if it resolves names against a tree it did not build.
 ```
 
-A new module now places itself, and the file is as right the day after it lands as the day before.
+A new module now places itself, and the obligation has changed ends: the file says what a layer is,
+and a module that fits neither definition is the thing that has to give.
 
 ## Related skills
 

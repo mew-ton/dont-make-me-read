@@ -40,6 +40,11 @@ The code already shows what is there and git already shows when it changed. What
 what would settle the next decision — which is why a section that narrates the current shape has no
 reader: everything in it is available faster somewhere else.
 
+The same test from the maintenance side: **a change to the implementation must never make this file
+wrong.** The obligation runs one way — this file moves and the code follows; the code moves and
+this file does not. A sentence that reverses it has put the doc downstream of the tree, where it
+goes stale in silence, and every contributor who trusted it was misplaced before anyone noticed.
+
 ## The shape, from matklad
 
 Three sections, in this order.
@@ -63,7 +68,7 @@ Five standing rules come with them, three of them matklad's:
   Compress until every remaining sentence would change somebody's next move.
 - **Name roles, not instances.** An architectural role — the entry point, the thing that holds the
   standard — is stable and worth naming. The component that currently fills it is not: name it and
-  the file needs an edit every time the tree changes, which is the coupling this doc exists above.
+  the tree moves this file every time it changes — the obligation running backwards.
 - **Never defer the substance to another document.** "The rest is in `README.md`" hands the reader
   a trip in place of the thing they came for, and it is the failure `avoid-reference-detours`
   exists to stop — so a doc that commits it has broken the rule its own project is built on. Naming
@@ -160,9 +165,9 @@ reader needs in order to act**, in the shortest form that does the job. What thi
 | The reader must decide something now | the part that settles it — "non-zero means do not commit it yet" |
 | Another file defines the thing | the entity's name, not the enumeration — the script's own header lists which code means what |
 
-The test: **if the other file changes, does this doc become wrong?** If yes, you copied a
-definition. If no, you restated an input. This is matklad's staleness rule one step in: a
-definition you copied goes stale exactly the way a link does.
+The direction test, narrowed to a definition: **if the other file changes, does this doc become
+wrong?** If yes, you copied a definition. If no, you restated an input. This is matklad's staleness
+rule one step in: a definition you copied goes stale exactly the way a link does.
 
 ## Organising the file
 
