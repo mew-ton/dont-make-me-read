@@ -50,13 +50,19 @@ Three sections, in this order.
 | **Codemap** | The coarse-grained modules and how they relate — "a map of a country, not an atlas of maps of its states". It answers *where is the thing that does X* and *what does the thing I am looking at do*. |
 | **Cross-cutting concerns and invariants** | What holds across modules, and the boundaries between layers and systems. Its own section, not scattered through the other two. |
 
-Two standing rules come with them, and both are about what the file costs a year from now:
+Three standing rules come with them:
 
 - **Keep it short, and specify only what is unlikely to change.** Every recurring contributor reads
   it. Do not try to keep it synchronised with the code; revisit it a couple of times a year.
 - **Name important files, modules and types; do not link into them.** Links go stale, and a stale
   link is worse than a name the reader can search for. Naming an entity and letting symbol search
   find it survives every rename that matters.
+- **Never defer the substance to another document.** "The rest is in `README.md`" hands the reader
+  a trip in place of the thing they came for, and it is the failure `avoid-reference-detours`
+  exists to stop — so a doc that commits it has broken the rule its own project is built on. Naming
+  another file so the reader knows it exists is fine; making them go there to finish the sentence
+  in front of them is not. Keeping it short means writing less, never relocating what a contributor
+  needs.
 
 Writing the codemap is also the cheapest chance you get to notice that the physical structure of
 the code and its logical architecture have come apart.
@@ -76,11 +82,18 @@ The codemap is the section where this is easiest to lose: a list of directories 
 each is a description, and becomes a codemap the moment each entry says what belongs there — which
 is what lets a reader place a new file rather than only find an old one.
 
-### 2. An invariant is a criterion; a list of prohibitions is not
+### 2. Lead the invariants with the rule that generates them
 
-matklad is right that **invariants are often expressed as absence**, and that stating them is the
-highest-value part of the file — an absence is exactly what no amount of reading the code reveals.
-That is not the same as a doc built out of Don'ts, and the difference is testable:
+The top of that section is the **golden rule**: the thinking every other decision in the project
+follows from. Without it a reader has a list of constraints to obey; with it they can derive the
+one nobody wrote down. It is the highest-leverage sentence in the file, and it is the one matklad's
+"call out your invariants" leaves implicit — an invariant is worth far more when the reader can see
+what it is an instance of.
+
+Then the invariants themselves. matklad is right that **invariants are often expressed as absence**,
+and that stating them is the highest-value part of the file — an absence is exactly what no amount
+of reading the code reveals. That is not the same as a doc built out of Don'ts, and the difference
+is testable:
 
 > **Does it place a case the doc has never seen?**
 
@@ -89,11 +102,17 @@ That is not the same as a doc built out of Don'ts, and the difference is testabl
 - "The parser does not call the type checker" is an absence and *not* a criterion: it is one fact
   about two modules that exist, and it settles nothing about a third.
 
-The second becomes the first by being raised to the rule it was an instance of. Where you cannot
-raise it — the absence really is about those two — keep it in the invariants section, where a
-reader looking for constraints will find it, rather than as a heading. **A heading that names a
-prohibition announces a section of Don'ts**; the same section titled by its decision forces the
-criterion into the body. Counting negated headings is the cheap check.
+The second becomes the first by being raised to the rule it was an instance of.
+
+**Where it cannot be raised, the level it may take is a list — never a section.** A flat *out of
+scope* list is worth its lines: it tells a contributor what the project deliberately does not do,
+which is the absence they would otherwise spend a day rediscovering. Turning the same content into
+chapters is what fails, because a chapter is where a criterion should have been and a reader
+reading the table of contents now sees a project defined by what it refuses.
+
+So: no single refusal gets a section of its own. One heading over a flat list is the level they are
+allowed, and the headings that remain go to the golden rule and the invariants. Counting negated
+headings is the cheap check.
 
 ### 3. A classification covers everything it claims to classify
 
@@ -142,7 +161,9 @@ because this skill is.
 
 | Rationalization | Reality |
 |---|---|
+| "The README already covers that, so I will point at it." | Then the reader arrives here, gets sent away, and comes back having paid for a trip. Short is achieved by writing less, not by relocating what the contributor came for. Bring the part the decision needs; name the other file only so they know it exists. |
 | "Explaining what we currently do *is* the architecture." | The code shows what you currently do, faster and without drifting. What it cannot show is the invariant and what would settle the next decision — that is the only thing this file adds. |
+| "A section per thing we refuse is honest about our boundaries." | A table of contents made of refusals tells a reader what the project will not do and nothing about what it will. Give the refusals a flat out-of-scope list, which is cheap and genuinely useful, and keep the headings for the rule that generates them. |
 | "The prohibition is the real content; the criterion is obvious." | It is obvious to you, because you already hold the criterion you derived it from. The reader gets one closed path and an unmapped space. Raise it to the rule it was an instance of, and check that the rule places a case you have not seen. |
 | "matklad says to call out what is deliberately absent, so a list of absences is the doc." | He says an invariant is often an absence, not that an absence is always an invariant. "No layer imports upward" places everything; "the parser does not call the type checker" places nothing. Keep both, but only the first can carry a section. |
 | "The table only lists the interesting cases." | Then say so in the table's own words. Presented as the classification, a partial table teaches the reader it cannot be trusted to place anything — including the thing they came to place. |

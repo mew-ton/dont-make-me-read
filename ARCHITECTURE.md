@@ -8,8 +8,9 @@ plugin is the rules that follow, packaged so they reach the writing rather than 
 consulted: skills the model loads on its own judgment mid-task, and commands a person types when
 they have decided for themselves that they want something written or checked.
 
-What each rule *is* lives in `README.md`. This file is what settles a decision about the plugin's
-own shape, so you can make one without reading the nine skills first.
+Nine skills carry the rules and six commands are the surface a person types. This file is what
+settles a decision about that shape — where a new part goes, what context it runs in, what it may
+hold — so you can make one without reading the nine first.
 
 ## Codemap
 
@@ -28,21 +29,47 @@ in this file, not a licence to induce the answer from what happens to be in `ski
 
 ## Cross-cutting concerns and invariants
 
-**No skill is reachable from the `/` menu, and that is a property rather than a preference.** The
-rules have to land on a code comment written halfway through some other task. Anything that fires
-only when named would miss the moment it is most needed, so the menu is closed and model invocation
-is what carries them there.
+### The golden rule
 
-**A skill never sees the conversation that reached it, when it writes an artifact.** `context: fork`
+**A rule that has to be remembered will be broken, so build the machinery that makes it a property
+instead — and put that machinery where the writing already happens, not where someone would have
+to go and fetch it.**
+
+Every decision below is an instance of it. When a new one arrives and this file does not name it,
+derive it from here: ask what would have to be remembered, and what arrangement would make
+remembering unnecessary.
+
+### The invariants it generates
+
+**No skill is reachable from the `/` menu.** The rules have to land on a code comment written
+halfway through some other task. Anything that fires only when named would miss the moment it is
+most needed, so the menu is closed and model invocation is what carries them there.
+
+**A skill that writes an artifact never sees the conversation that reached it.** `context: fork`
 carries in no history, which turns "do not write what only this conversation's participants could
 reconstruct" from a rule a writer can break into a property they cannot.
 
 **A skill never holds a tool that would let it confirm what its reader could not.** The clearest
-case is `review-nice-issues`, whose whole verdict is worth something only because it judges from
-the same text an implementer holds.
+case is `review-nice-issues`, whose verdict is worth something only because it judges from the same
+text an implementer holds. Granting it more would leave the judgment sound only as long as someone
+remembered not to use it.
 
-**Nothing in `_ja/` is loaded, referenced, or depended on by anything outside it.** It is a mirror,
-and a mirror that something reads becomes a second source of truth.
+**Nothing outside `_ja/` loads, references, or depends on anything inside it.** A mirror that
+something reads becomes a second source of truth, and then staying correct is a thing to remember.
+
+### Out of scope
+
+Deliberately absent, so a contributor does not spend a day rediscovering it:
+
+- No skill judges repo-groundedness, dependency closure, scope, or design — those belong to
+  whatever calls one.
+- No skill is a general-purpose "review this PR" or "review this issue" entry point.
+- No toolchain, package manager, or install path is assumed. A skill that needs a command says to
+  read it out of the repository it is running in.
+- No description carries a second-language keyword list; a published skill cannot know which
+  language its users prompt in.
+- No child skills ship here. `write-nice-skills` documents how to write one, which is not the same
+  as this plugin having any.
 
 ## Where a new entry point goes
 
