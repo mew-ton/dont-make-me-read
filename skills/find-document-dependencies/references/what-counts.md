@@ -15,6 +15,7 @@ the section after them is how the strong ones surface, since nothing extracts th
 | A definition or plan copied from wherever it is owned | the owner | the owner changes and this copy does not | strong |
 | A claim about how something is arranged | that arrangement | it is restructured | strong |
 | A translation, mirror, or second copy | the whole original | any part of the original changes | strong |
+| A declaration about the file it sits in | what the rest of that file says | the body gains or loses something the declaration has to cover | strong |
 
 The list is not closed. A shape that is not here still counts if fixing the other end obliges a fix
 here — that definition is the test, and the table is only the part of it that recurs.
@@ -34,10 +35,13 @@ They do not announce themselves, so read for the shape of the sentence rather th
   copied definition. If writing it required reading the source, keeping it true will too.
 - **Every "as described in", "per", "same as".** The pointer is weak; what the sentence asserts
   around the pointer usually is not.
+- **Both ends can be in the same file.** A header declares, a body describes, and editing the body
+  can leave the header saying something the file no longer does. Nothing crossed a file boundary,
+  so nothing external will ever flag it — and the header is the part least likely to be re-read
+  while the body is being changed.
 
 ## What is not a dependency
 
 - Vocabulary the whole field shares. Naming HTTP, or a merge conflict, pins nothing.
-- A statement about this document's own contents.
-- A example invented for the page, which nothing outside it owns — which is also why an example
+- An example invented for the page, which nothing outside it owns — which is also why an example
   written against the tree you are documenting is worth more scrutiny than one that is not.

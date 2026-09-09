@@ -1,6 +1,7 @@
 # Worked examples
 
-Two, one per direction case: a one-way arrow running the wrong way, and a both-ways pair.
+A one-way arrow running the wrong way, a both-ways pair, and an edge with both ends inside one
+file.
 
 ## A one-way arrow, pointing at the doc instead of away from it
 
@@ -79,3 +80,34 @@ weak, same span: the link to the page — still resolving long after the two dis
 The pair is the finding. Reported as two one-way edges it reads as two small inconsistencies to
 tidy; reported as a pair it is what it is — one plan with two owners, and a caller who now has to
 decide which place holds it.
+
+## An edge with both ends in one file
+
+A skill declares the tools it may use in its frontmatter, and says what it does in its body.
+
+```yaml
+allowed-tools: []
+```
+
+```markdown
+## The pass
+
+1. **Read for candidates.** Work through the document with `references/what-counts.md` — the
+   shapes a dependency takes, and how the strong ones surface.
+```
+
+The declaration was true when it was written: the pass judged only what the caller handed over.
+Then a step was added that opens a file, and the line at the top of the same file went stale in the
+commit that made it false.
+
+**Reported as** one edge:
+
+```
+the body → the frontmatter   strong   allowed-tools
+  fires on: a step being added that needs a tool the declaration does not list
+  span:     "allowed-tools: []"
+```
+
+Nothing crossed a file boundary, so nothing outside will ever flag it: no link went stale, and a
+reviewer reading the diff sees a body change. A declaration is the part of a file least likely to
+be re-read while the body is being edited, which is exactly what earns it an edge.

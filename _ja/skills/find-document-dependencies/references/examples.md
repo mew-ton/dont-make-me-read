@@ -1,6 +1,6 @@
 # Worked examples（実例）
 
-二つ。向きのケースごとに一つずつ：逆向きに走っている片方向の矢印と、両方向の対。
+逆向きに走っている片方向の矢印、両方向の対、そして両端が一つのファイルの中にある辺。
 
 ## ドキュメントから出ていくのではなく、ドキュメントへ刺さっている片方向の矢印
 
@@ -89,3 +89,36 @@ weak, same span: the link to the page — still resolving long after the two dis
 対であることが findings である。片方向の辺を二本として報告すれば、片付けるべき小さな不整合が二つあると
 読まれる。対として報告すれば、それが実際にそうであるもの — 一つの計画に所有者が二人いる状態 — として
 読まれ、どちらの場所がそれを保持するのかを呼び出し元が決めることになる。
+
+## 両端が一つのファイルの中にある辺
+
+スキルは、使ってよいツールを frontmatter で宣言し、何をするかを本文で述べる。
+
+```yaml
+allowed-tools: []
+```
+
+```markdown
+## The pass
+
+1. **Read for candidates.** Work through the document with `references/what-counts.md` — the
+   shapes a dependency takes, and how the strong ones surface.
+```
+
+（訳：候補を読み出す。`references/what-counts.md` — 依存が取る形と、強いものがどう表に出てくるか — を
+手にドキュメントを通す。）
+
+この宣言は、書かれた時点では真だった：パスは呼び出し元が渡したものだけを判定していた。そこにファイルを
+開くステップが加わり、同じファイルの先頭にある行は、それを偽にしたコミットの中で古びた。
+
+**報告の形は一本の辺：**
+
+```
+the body → the frontmatter   strong   allowed-tools
+  fires on: a step being added that needs a tool the declaration does not list
+  span:     "allowed-tools: []"
+```
+
+ファイル境界を何も越えていないので、外部の何もそれを指摘しない：古びたリンクはなく、差分を読むレビュアー
+の目には本文の変更が映るだけである。宣言とは、本文をいじっている最中に読み返される見込みが最も低い部分
+であり、それこそが辺に値する理由である。
