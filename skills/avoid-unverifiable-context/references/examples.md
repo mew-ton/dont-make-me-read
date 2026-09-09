@@ -1,8 +1,5 @@
 # Worked examples
 
-The examples below are in English because this skill is. Write the artifact in the language its
-own readers already use.
-
 Read this when you want the contrast for a case you are looking at: a code comment, an issue
 body, or a deprecation note. `SKILL.md` carries the rule; this holds the Bad/Good pairs.
 

@@ -5,11 +5,11 @@ description: >
   — a doc comment that says "the format rules at the top of this file", a note that says "same as
   the config", a section that defers to another section of the same document. Restate what this
   reader needs at the point they need it, and leave the original where it is: the round trip is
-  what costs them, not the fact. In code the same detour inverts: knowledge a module holds about
-  its callers is taken out, not brought in. Apply when writing a code comment, a docstring, a PR
-  description, or any text or code that points elsewhere to be understood. DO NOT use when the target does not exist or
-  cannot be reached at all (that is avoid-unverifiable-context), or for the same content repeated
-  twice inside one document (that is write-nice-issue-description's Gate 2).
+  what costs them, not the fact. Apply when writing a code comment, a docstring, a PR description,
+  or any text that points elsewhere to be understood. DO NOT use when the target does not exist or
+  cannot be reached at all (that is avoid-unverifiable-context), for the same content repeated
+  twice inside one document (that is write-nice-issue-description's Gate 2), or for a module that
+  knows which caller invoked it (that is avoid-caller-knowledge).
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
@@ -60,19 +60,6 @@ one rule, not two:
 
 `write-nice-instructions`' "the reader has it — point at `path:line` instead" is the second row.
 
-## In code the fix inverts
-
-Restating works because text does not execute: the original stays authoritative, and the reader
-stops travelling. A module that restates what its callers know copies nothing — it takes on a
-dependency on them. A shared fetch that branches on which page called it holds both pages in its
-range, and every page added after that lands there too, so the module changes every time a caller
-is added. The detour is real; the fix is to take the knowledge out — the caller passes what differs
-— never to bring it in.
-
-The signal is in the name. A parameter you can rewrite in the domain's own vocabulary (`scope`,
-`currency`) is the callee's own; one that can only be said as the caller's identity (`from:
-'pageA' | 'pageB'`, `isDetailPage`) is knowledge that crossed.
-
 ## Where this ends and duplication begins
 
 Inside one document a reader reads in order, so a second statement of the same content is a
@@ -98,7 +85,6 @@ where a fact sits, not which language states it.
 | "It's reachable, so pointing to it is fine." | Reachability was never the problem; being sent there was. If the reader has to leave this comment or section to make sense of it, state it here. |
 | "Restating it duplicates the source of truth." | The source of truth does not move — it stays where it is and stays authoritative. What comes here is the part this reader needs to act, not a second copy of the whole. |
 | "More context at the point of use is always safer." | Only when it removes a trip. A line that repeats what the code beside it already shows adds reading and saves nothing. Run the test on every line you add, not only on the ones you cut. |
-| "A flag on the shared function is smaller than changing both callers." | It is smaller today. The flag puts both callers in the callee's range, and the next caller too, so the shared function is edited every time one is added — the diff you avoided arrives once per caller instead. |
 | "It reads fine to me." | You already know what is at the other end of the pointer, so the trip costs you nothing. The reader is the one paying for it. |
 
 ## Examples
@@ -110,5 +96,7 @@ prose: [`references/examples.md`](references/examples.md).
 
 - `avoid-unverifiable-context` — the other half of the same split: the target does not exist for
   this reader at all, so the fix is to delete rather than restate.
+- `avoid-caller-knowledge` — the same range failure in code, where restating is what creates the
+  dependency, so the fix inverts: the knowledge comes out.
 - `write-nice-issue-description` — Gate 2 owns repetition *inside* one document.
 - `review-self-contained-docs` — audits written text against both, per unit, from the reader's side.

@@ -3,8 +3,6 @@
 目の前のケース — コードコメント、issue 本文、実装より長く残った deprecation の注記 — の対比が欲しい
 ときに読む。ルールは `SKILL.md` が持ち、ここは Bad/Good の対を持つ。
 
-下の例が英語なのは、このスキルが英語だからである。成果物はその読み手がすでに使っている言語で書くこと。
-
 ### Bad: 変更の背後にあるプロセスを引きずり込んだコードコメント
 ```typescript
 // Validation used to be inline, but reviewers asked to extract it.

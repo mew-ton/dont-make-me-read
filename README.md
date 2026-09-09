@@ -67,6 +67,7 @@ by hand.
 | [`write-nice-instructions`](skills/write-nice-instructions/SKILL.md) | Shape a PR review finding: one fixed template (title / summary / details), and how firmly to state the remedy. |
 | [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | Keep out of persisting text what its reader cannot go and check: the conversation, the review thread, a past state the code no longer shows. |
 | [`avoid-reference-detours`](skills/avoid-reference-detours/SKILL.md) | Stop sending the reader somewhere reachable to understand the sentence in front of them. State it at the point of use; the original stays put. |
+| [`avoid-caller-knowledge`](skills/avoid-caller-knowledge/SKILL.md) | Keep a module from knowing which caller invoked it. The same range failure in code, where restating is what creates the dependency — so the knowledge comes out instead. |
 | [`write-nice-skills`](skills/write-nice-skills/SKILL.md) | Write and review a `SKILL.md`'s description and body so it fires reliably and stays lean. |
 | [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | Carry the criteria a contributor decides by, so they can decide with the implementation closed. |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to, from the text alone. |
@@ -81,9 +82,9 @@ holds the best practice for one activity** — its sections, its budgets, the co
 satisfy.
 
 The rest serve that second job rather than standing beside it. An **`avoid-*`** skill names one
-failure mode that holds whatever the text is — a code comment, a JSDoc block, a PR description, a
-commit message — so it applies underneath every artifact, which is why these carry the broadest
-triggers here and why most writing needs nothing more. A **`review-*`** skill runs the same
+failure mode that holds whatever the work is — a code comment, a JSDoc block, a PR description, a
+commit message, a module's interface — so it applies underneath every artifact, which is why these
+carry the broadest triggers here and why most writing needs nothing more. A **`review-*`** skill runs the same
 conditions backwards over text already written, per unit, which is proposition 2 made operational:
 the authoring skill states them, and a writer cannot judge their own draft. None of them holds a
 tool that would let it confirm what its reader could not; where standing on that same footing is
@@ -92,11 +93,12 @@ the whole product, the skill holds no tools at all and its caller does any fetch
 A **`find-*`** skill returns material rather than a verdict, so a pass that does judge has
 something to judge from — because a finding is only worth what its grounds are worth.
 
-The verb tells you which of those you are looking at, and the direction it subtracts in.
-`avoid-unverifiable-context` and `avoid-reference-detours` are the two halves of one question: the
-first is what the reader cannot reach at all and the fix is to delete, the second is what they *can*
-reach and were made to travel to, where the fix is to restate it here and leave the original where
-it is.
+The verb tells you which of those you are looking at, and the direction it subtracts in. The three
+`avoid-*` skills split one question — how far past the artifact does the reader's range reach.
+`avoid-unverifiable-context` is what they cannot reach at all, and the fix is to delete.
+`avoid-reference-detours` is what they *can* reach and were made to travel to, where the fix is to
+restate it here and leave the original where it is. `avoid-caller-knowledge` is that second case in
+code, where restating is what creates the dependency, so the knowledge comes out instead.
 
 Which reader sets the bar differs by artifact — `write-nice-instructions` is pitched at the person
 who decides within a few lines whether to act or skim, `write-nice-skills` at the agent deciding

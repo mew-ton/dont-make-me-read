@@ -15,9 +15,9 @@ both. A file inside its own limit can still put the activity over.
 | On for a whole activity — it is resident whatever the reader is doing | **2000 tokens** | every turn of every activity pays for it |
 | Reached for one artifact or one branch | **5000 tokens / 500 lines** | only the reader who needs it pays |
 
-The set to check is every always-on skill plus the one for the activity in hand —
-about 11000 tokens with three always-on skills. Measure the set, not the file you
-happen to be editing.
+The set to check is every skill that will be standing at once: the ones on for this
+activity, plus whichever is reached for the artifact in hand. Its ceiling is the sum
+of theirs. Measure the set, not the file you happen to be editing.
 
 - What the body points at sits **one level deep**. Do not nest a reference inside a
   reference: the second hop is one the reader did not agree to.
