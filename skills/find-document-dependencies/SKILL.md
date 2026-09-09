@@ -12,7 +12,8 @@ description: >
   asked.
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
+allowed-tools:
+  - Read
 ---
 
 ## Scope

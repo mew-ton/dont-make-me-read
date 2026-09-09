@@ -10,7 +10,8 @@ description: >
   期待しない — これはテキストが何に固定されているかを報告し、判断は依頼した側に委ねる。
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
+allowed-tools:
+  - Read
 ---
 
 ## Scope（範囲）
