@@ -171,8 +171,9 @@ may say.
 
 Revising is a different pass from drafting: instead of deciding what to write, you are hunting for
 what the draft already contains that should not be there. Read
-[`references/revising.md`](references/revising.md) — an ordered checklist that ends in a
-`review-nice-issues` run, because you wrote the draft with the problem already in your head.
+[`references/revising.md`](references/revising.md) — an ordered checklist of what to hunt for. It
+stops short of an audit on purpose: you wrote the draft with the problem already in your head, so
+the `review-nice-issues` run belongs to whoever called this skill, on either route.
 
 ## Common Rationalizations
 

@@ -160,8 +160,9 @@ Design / Approach、Out of scope、Verification はここではセクション�
 
 改稿は起草とは別のパスである。何を書くかを決めるのではなく、下書きが**すでに含んでいる、あってはならない
 もの**を狩り出す作業である。[`references/revising.md`](references/revising.md) を読むこと — 順序付きの
-チェックリストで、最後は `review-nice-issues` の実行で終わる。下書きは、問題をすでに頭の中に入れた状態で
-書かれているからだ。
+チェックリストで、何を狩り出すかを述べる。監査の手前で意図的に止まっている：下書きは、問題をすでに頭の中に
+入れた状態で書かれているので、`review-nice-issues` の実行は、どちらの経路であれ、このスキルを呼んだ側に
+属する。
 
 ## Common Rationalizations（よくある自己正当化）
 
