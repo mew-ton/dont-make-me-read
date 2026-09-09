@@ -3,10 +3,11 @@ name: find-document-dependencies
 description: >
   A document depends on whatever it would have to be rewritten for, and a link is the least of it:
   a name carried in prose, a count, a definition copied from the file that owns it, a claim about a
-  structure. Surfaces each with what it is pinned to, what breaks it, and whether it is weak — a
-  pointer a link checker already finds, which often survives — or strong, which always has to be
-  fixed and which nothing but reading finds. Apply when reviewing or revising a document, and
-  before writing a sentence that names something you do not own. DO NOT expect a verdict on whether
+  structure. Assembles them into a directed graph — which end has to move when the other changes,
+  one edge per direction — with each edge marked weak, a pointer a link checker already finds and
+  which often survives, or strong, which always has to be fixed and which nothing but reading
+  finds. Apply when reviewing or revising a document, and before writing a sentence that names
+  something you do not own. DO NOT expect a verdict on whether
   a dependency is stale, wrong, or worth keeping — this reports what the text is pinned to and
   leaves the judgement to whoever asked.
 user-invocable: false
@@ -54,24 +55,36 @@ the pass on them: whatever checks links is already better at it than you are.
 
 ## Which end has to move
 
-A dependency is one-way: fixing A obliges fixing B, and fixing B leaves A alone. The document is on
-one end or the other, and the shape of the span does not say which.
+Write it as an arrow: **A → B means fixing A obliges fixing B.** B is the end that has to move, and
+the shape of a span does not say which end that is.
 
-Downstream, it describes: the other thing moves and the text is wrong. Upstream, it defines: the
-other thing has to conform, and the day it changes, it was the thing that had to give. Same
-sentence, opposite upkeep. For a name that is the whole difference between a role the document
-defines and the instance currently filling it — and it decides whether the entry is worth the
-caller's attention at all.
+Between two texts the arrow can run either way, or both.
+
+- **One way.** A → B and not B → A. B describes A, and A is free to move without it. Most of what
+  you find is this, and the arrow is the whole finding: it says which of the two goes stale, and
+  therefore which one a reader can trust.
+- **Both ways.** A → B and B → A. Neither can be edited alone, so they are one thing wearing two
+  filenames — a different entry with a different fix, not two one-way edges reported side by side.
+
+For a name, the arrow's direction is the whole difference between a role the document defines and
+the instance currently filling it. Same sentence, opposite upkeep.
 
 ## What to return
 
-Per dependency: the span, what it is pinned to, what change breaks it, its strength, and which end
-the document is on. Lead with the strong ones. Quote the
-span rather than describing it: the caller has to weigh the actual sentence, and a paraphrase is a
-second copy with its own dependency.
+**A graph, not a list.** Nodes are the things: this document, and each file, section, or outside
+source it touches. Edges are `A → B`, one per direction. An edge carries the spans that create it,
+the change that fires it, and its strength.
 
-Return the ones you found and say nothing about the ones you did not. A pass that reports "no other
-dependencies" is claiming completeness it cannot have.
+Assemble it before reporting. Spans are the evidence; the graph is what the caller reads a shape
+off — which node everything points into, which pair points at each other, which node nothing points
+into at all. None of that is visible in a list of spans, and all of it is what decides the next
+move.
+
+Lead with the strong edges. Quote the spans rather than describing them: the caller has to weigh
+the actual sentence, and a paraphrase is a second copy with its own dependency.
+
+Return the edges you found and say nothing about the ones you did not. A pass that reports "no
+other dependencies" is claiming completeness it cannot have.
 
 ## Common Rationalizations
 
@@ -83,6 +96,7 @@ dependencies" is claiming completeness it cannot have.
 | "Listing this many would be noise." | The list is the finding. Whether an entry is worth acting on is the caller's call, and they cannot make it for the entries you filtered out. |
 | "This one is obviously fine, so I will leave it out." | Obviously fine is a verdict. Report it and let the caller agree with you. |
 | "I will note that the rest of the document is clean." | You checked what you checked. A completeness claim is itself a dependency — on your own thoroughness, which nobody can verify later. |
+| "The spans are all there; drawing the arrows is presentation." | The arrows are the finding. A span says two texts touch; only the direction says which of them is about to be wrong, and a caller cannot derive that from a list they were handed instead. |
 
 ## Example: the strong dependency nobody sees until it has already broken
 
@@ -102,9 +116,16 @@ Nothing here links, so nothing checks it. The sentence stays grammatical, stays 
 gives no sign at all. The way it gets found is that a contributor believes it and puts something in
 the wrong place — which is to say, after it has already cost what it was going to cost.
 
-**Reported as:** the span above; pinned to the membership of two layers; breaks when any module is
-added, removed, or renamed; strong; the document is downstream — every name in it is a filler the
-tree owns.
+**Reported as** one edge:
+
+```
+the modules → the doc   strong   §Layers
+  fires on: any module added, removed, or renamed
+  span:     "The parsing layer is `lexer` and `parser`. …"
+```
+
+An arrow pointing into the doc, from the thing the doc exists to govern. Whether that is allowed
+here is the caller's question; that it is there at all is this skill's answer.
 
 The same section with nothing pinned:
 
@@ -115,8 +136,8 @@ A module is in the parsing layer if it turns text into a tree without resolving 
 analysis layer if it resolves names against a tree it did not build.
 ```
 
-A new module now places itself, and the obligation has changed ends: the file says what a layer is,
-and a module that fits neither definition is the thing that has to give.
+The arrow now runs the other way — the doc → any module — and nothing runs back. A new module
+places itself, and one that fits neither definition is the thing that has to give.
 
 ## Related skills
 

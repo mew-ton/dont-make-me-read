@@ -40,10 +40,12 @@ The code already shows what is there and git already shows when it changed. What
 what would settle the next decision — which is why a section that narrates the current shape has no
 reader: everything in it is available faster somewhere else.
 
-The same test from the maintenance side: **a change to the implementation must never make this file
-wrong.** The obligation runs one way — this file moves and the code follows; the code moves and
-this file does not. A sentence that reverses it has put the doc downstream of the tree, where it
-goes stale in silence, and every contributor who trusted it was misplaced before anyone noticed.
+The same test from the maintenance side: **nothing may oblige a fix in this file.** Write a
+dependency as an arrow — A → B means fixing A obliges fixing B — and every arrow this file is on
+has to leave it: it moves and the tree follows, never the reverse. It does not matter what the
+arrow comes from, the code or another document; an arrow pointing in has put this file downstream
+of what it governs, where it goes stale in silence and every contributor who trusted it was
+misplaced before anyone noticed.
 
 ## The shape, from matklad
 
@@ -68,7 +70,7 @@ Five standing rules come with them, three of them matklad's:
   Compress until every remaining sentence would change somebody's next move.
 - **Name roles, not instances.** An architectural role — the entry point, the thing that holds the
   standard — is stable and worth naming. The component that currently fills it is not: name it and
-  the tree moves this file every time it changes — the obligation running backwards.
+  every rename in the tree points an arrow back into this file.
 - **Never defer the substance to another document.** "The rest is in `README.md`" hands the reader
   a trip in place of the thing they came for, and it is the failure `avoid-reference-detours`
   exists to stop — so a doc that commits it has broken the rule its own project is built on. Naming
@@ -206,5 +208,7 @@ because this skill is.
 - `avoid-unverifiable-context` — what keeps deliberation out while the rationale stays.
 - `avoid-reference-detours` — what to restate at the point of use, which condition 4 narrows for
   the definitions another file owns.
+- `find-document-dependencies` — draws the arrows, so the test above can be run rather than
+  eyeballed. Every arrow it finds pointing into this file is a finding here.
 - `write-nice-skills` — a `SKILL.md` is an instruction to an agent, not an architecture doc; this
   skill stops where that one starts.
