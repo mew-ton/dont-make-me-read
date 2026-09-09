@@ -111,6 +111,15 @@ Writing back is not confirming, so the subtraction never reaches it. What surviv
 decides whether a skill can post its own output at all, and an explicit ask from the caller decides
 whether it does — never a default, and never while running as another skill's step.
 
+Two frontmatter fields, and only one of them subtracts. `allowed-tools` pre-approves what is
+already in reach, so an empty list grants nothing and withholds nothing — a subtraction written
+there is not a subtraction at all. `disallowed-tools` is the removal, and it is released by the
+user's next message rather than by the skill's own return, so it reaches the rest of the turn that
+invoked it: a skill that subtracts is one whose caller has already finished needing what it takes.
+That is the hand-off rule arriving as a mechanism, and it is what a claim of structural footing has
+to be written in. Neither field decides whether one skill may invoke another; that crosses on its
+own.
+
 ## Where an explanation goes
 
 **What a contributor decides by goes here. What a reader of one artifact needs goes with that

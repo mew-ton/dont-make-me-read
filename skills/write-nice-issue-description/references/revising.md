@@ -29,6 +29,3 @@ order. Work the steps in sequence.
    problem bundled into this issue — split it out
 10. Check the draft is in one language — the one this repository's issues already use — with no
     second-language restatement of the same content (Gate 2)
-11. Run `review-nice-issues` against the result before treating it as done — do not rely on
-    steps 1-10 alone. You wrote this draft with the problem already in your head, which is exactly
-    what that skill's judgment has to route around.
