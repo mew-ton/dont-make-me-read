@@ -72,7 +72,7 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 | [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | 貢献者が判断に使う基準を担い、実装を閉じたまま判断できるようにする。 |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | `write-nice-issue-description` が書くときに満たす条件と同じもので、issue 本文をテキストだけから監査する。 |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | PRの説明文と、そのPRが変更するすべてのコメントを自己完結性（time-closure、referenceability、reference-scope closure）で監査する。 |
-| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | そのドキュメントが何のために書き換えられねばならなくなるか — 名前、員数、写した定義、パス — を洗い出し、判定は呼び出し元に委ねる。 |
+| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | そのドキュメントが何のために書き換えられねばならなくなるかを、弱（ツールがすでに見つけるポインタ）と強（散文中の名前や説明で、読むことでしか見つからない）に分けて洗い出し、判定は呼び出し元に委ねる。 |
 
 重みを担うのは二つである。**`dont-make-me-read` が入口**で、二つの命題とテストを担い、他に該当するものへ
 ルーティングする。テンプレートも予算も持たないので、これを読むことが、それが指し示す先をロードすることの

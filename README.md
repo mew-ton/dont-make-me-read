@@ -71,7 +71,7 @@ by hand.
 | [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | Carry the criteria a contributor decides by, so they can decide with the implementation closed. |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | Audit an issue body against the same conditions `write-nice-issue-description` writes to, from the text alone. |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | Audit a PR's description and every comment it changes for self-containment (time-closure, referenceability, reference-scope closure). |
-| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | Surface what a document would have to be rewritten for — a name, a count, a copied definition, a path — and leave the verdict to its caller. |
+| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | Surface what a document would have to be rewritten for, weak (a pointer a tool already finds) or strong (a name or explanation in prose, which only reading finds), and leave the verdict to its caller. |
 
 Two of them carry the weight. **`dont-make-me-read` is the entry**: it carries the two propositions
 and the test, and routes to whatever else applies. It holds no template and no budget, so reading
