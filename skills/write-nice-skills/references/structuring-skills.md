@@ -8,8 +8,12 @@ versus a reference, or when you are wondering whether to split one skill into tw
 - Keep `SKILL.md` within about **500 lines / 5000 tokens**. It is loaded in full
   every time the skill fires, so every line spends context that could otherwise
   speed up the session.
-- References sit **one level deep** — a flat `references/` directory (and,
-  optionally, a sibling `GLOSSARY.md`). Do not nest references inside references.
+- What the body points at sits **one level deep**. Do not nest a reference inside a
+  reference: the second hop is one the reader did not agree to.
+- A supporting file is found by being referenced from `SKILL.md`, so its name and
+  whether it sits in a directory at all are yours to pick. `references/`, `rules/`,
+  `scripts/` and `assets/` are conventions borrowed from example layouts, not
+  requirements — match whichever neighbour fits and spend no further thought on it.
 
 ### Measuring the token half of that budget
 
@@ -166,11 +170,9 @@ what only this conversation's participants could reconstruct" is
 `avoid-unverifiable-context`'s rule and a writer can break it, but a skill that never
 saw the conversation cannot.
 
-That is why the writing skills in this plugin fork and the entry does not. A command
-does the messy part — fetching, asking, working out what the issue even is — and
-hands over one brief; the skill writes from the brief alone. The entry
-(`dont-make-me-read`) and the two `avoid-*` skills stay on the main thread, because
-routing and constraining happen where the writing happens.
+So a skill that writes an artifact forks and is handed one brief, while a skill that
+routes or constrains stays on the main thread: both need the property, and only the
+first can have it without losing the work it acts on.
 
 ## This skill as the worked example
 

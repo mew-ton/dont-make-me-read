@@ -16,12 +16,8 @@
    なる。だから自分にとっては短く読める — 自分にとってだけ。
 
 二つ目が、これが助言ではなくスキル群である理由。各スキルは、書いている最中に湧いてくる言い訳のための
-Common Rationalizations（よくある自己正当化）の表を持っており、8つのうち2つは**書いたばかりのテキストに
-対して走らせるためだけに**存在する。
-
-> 【訳注】原文 `README.md:19` の "two of the eight exist only to be run against text you just wrote"。
-> 一方 `dont-make-me-read/SKILL.md:26` は "text you have already written"（すでに書かれたテキスト）。
-> `/review-issue` は他人の issue も監査するので、"you just wrote" は範囲が狭い。
+Common Rationalizations（よくある自己正当化）の表を持っており、そのうちのいくつかは**すでに書かれた
+テキストに対して走らせるためだけに**存在する。
 
 ## 一つのテスト
 
@@ -45,6 +41,7 @@ Common Rationalizations（よくある自己正当化）の表を持っており
 | `/write-issue` | GitHub issue の本文を起草または改稿し、その結果を監査する。 |
 | `/write-review-comment` | PRレビュー指摘を起草または改稿する。 |
 | `/write-skill` | `SKILL.md` を書く、またはレビューする。 |
+| `/write-architecture` | アーキテクチャドキュメントを書く、または改稿する。 |
 | `/review-issue` | 既存の issue 本文を監査する。 |
 | `/review-text` | PRの説明文と、そのPRが変更するコードコメントを監査する。 |
 
@@ -68,31 +65,30 @@ issue の取得、まだ決まっていないことの質問、そもそも指�
 | [`avoid-unverifiable-context`](skills/avoid-unverifiable-context/SKILL.md) | 読み手が確認しに行けないものを、残り続けるテキストから締め出す。会話、レビュースレッド、コードにもう現れない過去の状態。 |
 | [`avoid-reference-detours`](skills/avoid-reference-detours/SKILL.md) | 目の前の文を理解するために、到達可能などこかへ読み手を送るのをやめる。使用箇所で述べよ。原典はその場に残る。 |
 | [`write-nice-skills`](skills/write-nice-skills/SKILL.md) | `SKILL.md` の description と本文を、確実に発火し、かつ軽く保たれるように書く／レビューする。 |
+| [`write-nice-architecture-docs`](skills/write-nice-architecture-docs/SKILL.md) | 貢献者が判断に使う基準を担い、実装を閉じたまま判断できるようにする。 |
 | [`review-nice-issues`](skills/review-nice-issues/SKILL.md) | `write-nice-issue-description` が書くときに満たす条件と同じもので、issue 本文をテキストだけから監査する。 |
 | [`review-self-contained-docs`](skills/review-self-contained-docs/SKILL.md) | PRの説明文と、そのPRが変更するすべてのコメントを自己完結性（time-closure、referenceability、reference-scope closure）で監査する。 |
+| [`find-document-dependencies`](skills/find-document-dependencies/SKILL.md) | そのドキュメントが何のために書き換えられねばならなくなるかを、何が何に固定されどちら側が動かねばならないかのグラフとして洗い出す — 固定先が場所なら弱、内容なら強 — 判定は呼び出し元に委ねる。 |
 
-これらは3層に分かれている。**`dont-make-me-read` が入口**で、二つの命題とテストを担い、他に該当する
-ものへルーティングする。テンプレートも予算も持たないので、これを読むことが、それが指し示す先を
-ロードすることの代わりにはならない。**二つの `avoid-*` スキル**は、テキストが何であれ成立する失敗
-モードを担う — コードコメント、JSDocブロック、PR説明文、コミットメッセージ。だからここで最も広い
-トリガーを持ち、たいていの書き物はこの二つ以上を必要としない。**いくつかの成果物は、固有のルールを
-持つに足る固定された形を持っている** — issue 本文、レビュー指摘、`SKILL.md`。それぞれが独自のセクション、
-予算、実例を持つ。
+重みを担うのは二つである。**`dont-make-me-read` が入口**で、二つの命題とテストを担い、他に該当するものへ
+ルーティングする。テンプレートも予算も持たないので、これを読むことが、それが指し示す先をロードすることの
+代わりにはならない。**`write-*` スキルは一つの成果物のベストプラクティスを保持する** — そのセクション、予算、
+満たすべき条件 — 固有の形を持つに足るほど形が固定された成果物について。
 
-二つの `review-*` スキルは、命題2を実運用に落としたもの。authoring スキルが条件を述べ、review スキルが
-それを**すでに書かれたテキストに対して単位ごとに**適用する。通し読みを信用する代わりに。これらは
-**読む以上のツールを持たず**、`review-nice-issues` に至っては一つも持たない — 読み手が手にするのと
-同じテキストだけから判断しなければならないので、取得は呼び出し元の仕事になる。
+残りは、その二つ目に**仕える**のであって、横に並ぶのではない。**`avoid-*`** スキルは、テキストが何であろうと
+成立する失敗モードを一つ名指しする — コードコメント、JSDocブロック、PR説明文、コミットメッセージ — だから
+あらゆる成果物の下地として効き、ここで最も広いトリガーを持ち、たいていの書き物はこれ以上を必要としない。
+**`review-*`** スキルは、同じ条件をすでに書かれたテキストに対して単位ごとに逆向きに走らせる。これが命題2を
+実運用に落としたものである：authoring スキルが条件を述べ、書き手は自分の下書きを judge できない。これらは
+どれも、読み手が確認できないことを確認できてしまうツールを持たない。その同じ足場に立っていること自体が
+成果物である場合には、スキルはツールを一つも持たず、取得は呼び出し元の仕事になる。
 
-> 【訳注】「読む以上のツールを持たず」は原文 `README.md:83` の "They have no tools beyond reading"。
-> しかし `review-self-contained-docs` は `Bash(gh api:*)` を持ち、`--comment` で PR にインライン
-> コメントを **POST** する。read ではない。
+**`find-*`** スキルは判定ではなく材料を返す。判定するパスが、judge する対象を持てるようにするためである —
+findings は根拠の価値以上のものにはならないからだ。
 
-動詞は、そのスキルがどちらの方向に引き算するかを示す。`write-*` スキルは成果物全体の形を固定する —
-issue、指摘、`SKILL.md`。`avoid-*` スキルは、読み手と行動のあいだに「読むこと」を割り込ませるものを
-一つ名指しする。テキストがどこにあろうと関係なく。`avoid-unverifiable-context` と
-`avoid-reference-detours` は一つの問いの二つの半分で、前者は読み手がそもそも到達できないもので、直し方は
-削除。後者は読み手が**到達できる**のに行かされたもので、直し方はここで言い直し、原典はその場に残すこと。
+動詞は、そのどれを見ているのか、そしてどちらの方向に引き算するのかを示す。`avoid-unverifiable-context` と
+`avoid-reference-detours` は一つの問いの二つの半分で、前者は読み手がそもそも到達できないもので直し方は削除、
+後者は読み手が**到達できる**のに行かされたもので、直し方はここで言い直し、原典はその場に残すこと。
 
 どの読み手が基準を決めるかは成果物ごとに違う — `write-nice-instructions` は最初の数行で行動するか流し読み
 するかを決める人間に合わせ、`write-nice-skills` はファイルをロードするか判断するエージェントに合わせる —
@@ -105,11 +101,11 @@ issue、指摘、`SKILL.md`。`avoid-*` スキルは、読み手と行動のあ�
 issue／指摘／ドキュメントを、その読者がすでに使っている言語で、かつ**一つの言語だけで**書けと言っている。
 ルールが固定するのはテキストの形と、それが担う文脈であって、それを担う言語ではない。
 
-## Design
+## Architecture
 
-なぜ層がこう配線されているのか — コマンドがやってスキルがやってはいけないことは何か、なぜ writing
-スキルはそこに至った会話を一切持たずに走るのか — は [`DESIGN.md`](DESIGN.md) にあり、スキルを追加する
-ときの frontmatter の契約もそこにある。
+このプラグイン自身の形についての判断を何が決めるか — 新しい入口をどこに置くか、スキルがどの文脈で走るか、
+どのツールを持つか — は [`ARCHITECTURE.md`](ARCHITECTURE.md) にあり、そこから導かれる frontmatter の
+契約もそこにある。
 
 ## License
 

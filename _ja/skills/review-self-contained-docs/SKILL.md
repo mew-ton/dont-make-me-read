@@ -27,9 +27,7 @@ allowed-tools:
 `avoid-unverifiable-context` と `avoid-reference-detours` は**何を書くか**を述べる。このスキルは実際に
 書かれたものを、同じ三つの条件に照らして読み手の側からチェックする：time-closure と referenceability
 （この対は `avoid-unverifiable-context` のもの）、そして reference-scope closure（`avoid-reference-detours`
-のもの）。呼び出し元は、より大きなPRレビューの一つの軸として、書き上げたばかりのPR説明文・issue 本文・
-コードコメントに対する最終パスとして、あるいは `/review-text` コマンドを通じてこれに到達する。二つの状況で
-走る：
+のもの）。二つの状況で走る：
 
 - **PRをレビューする**：その説明文と、差分が追加または変更するすべてのコメントを確認する。
 - **書き上げたばかりのテキストを自己チェックする**：PR説明文、issue 本文、コードコメントが出荷される前に、
@@ -41,7 +39,7 @@ allowed-tools:
 
 ## Inputs（入力）
 
-これらは呼び出し元が供給する。ユーザーに面するシグネチャは `/review-text` コマンドが所有する。
+これらは呼び出し元が供給する。
 
 | 引数 | 意味 | 必須 |
 |---|---|---|

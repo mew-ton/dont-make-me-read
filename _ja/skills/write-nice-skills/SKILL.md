@@ -56,7 +56,7 @@ allowed-tools: []
 **Body**（詳細＋基準：
 [`references/structuring-skills.md`](references/structuring-skills.md)）：
 
-5. **全部書かない。** 本文をサイズ予算の中に保ち、枝に固有の詳細は `references/` へ一段押し下げる。
+5. **全部書かない。** 本文をサイズ予算の中に保ち、枝に固有の詳細は本文が指すファイルへ一段押し下げる。
    すべての経路が必要とするものをインラインにし、一部の枝しか到達しないものはポインタの後ろに置く。
 6. **Common Rationalizations を足す。** エージェントが手を抜きそうなスキルには、その言い訳を先回りして
    封じる（下の表を参照）。

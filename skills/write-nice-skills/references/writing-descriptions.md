@@ -97,6 +97,6 @@ the description.
 Frontmatter is the one part of a `SKILL.md` that is parsed rather than read, and all
 of it is loaded on every fire. A trailing `#` on `user-invocable: false` explains the
 field to nobody who was going to be confused by it, and every reader pays for it
-forever — the same size argument that pushes branch detail into `references/`, one
+forever — the same size argument that pushes branch detail one level down, one
 level up. A field that genuinely needs explaining needs it in prose an author can
-argue with: the body, or the repository's own design doc.
+argue with: the body, or the repository's own architecture doc.

@@ -28,8 +28,7 @@ the same footing as the reader Gate 1 describes. Do not add `gh` or `Read` to th
 "more convenient"; that would let it quietly verify a claim against outside knowledge, which is
 exactly the failure mode a real implementer-with-no-extra-context can't fall into either.
 
-Callers reach it as the determinacy/duplication axis of a larger issue review, or through the
-`/review-issue` command. It runs in two situations:
+It runs in two situations:
 
 - **Reviewing an issue that already exists on GitHub**: the body text must be fetched *before*
   this skill runs, by whatever is doing the fetching — the `/review-issue` command, or another

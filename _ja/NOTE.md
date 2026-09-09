@@ -23,7 +23,7 @@
 | 和訳 | 原文 |
 |---|---|
 | `_ja/README.md` | `README.md` |
-| `_ja/DESIGN.md` | `DESIGN.md` |
+| `_ja/ARCHITECTURE.md` | `ARCHITECTURE.md` |
 | `_ja/.claude-plugin/plugin.json.md` | `.claude-plugin/plugin.json` |
 | `_ja/commands/*.md` | `commands/*.md` |
 | `_ja/skills/<name>/SKILL.md` | `skills/<name>/SKILL.md` |

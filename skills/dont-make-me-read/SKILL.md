@@ -2,7 +2,8 @@
 name: dont-make-me-read
 description: >
   Text someone else has to act on, whatever it is — a GitHub issue, a PR description, a review
-  comment, an explanatory code comment, a JSDoc block, a design doc, a SKILL.md — is measured by
+  comment, an explanatory code comment, a JSDoc block, an architecture doc, a SKILL.md — is
+  measured by
   whether its reader — a person or an agent, since both pay to gather it and both act on what
   they end up with — decides correctly from it, not by how thorough or careful it reads. Noise
   costs a wrong decision, not just time, and whatever the decision depends on has to be there
@@ -24,7 +25,7 @@ Two propositions. Every rule in this plugin follows from them.
 2. **The writer cannot tell how much that is.** You read your own draft while supplying the
    context it is missing, so it reads short to you, and only to you.
 
-The second is why these are skills and not advice, and why two of them exist only to be run
+The second is why these are skills and not advice, and why some of them exist only to be run
 against text you have already written.
 
 ## Who the reader is
@@ -84,13 +85,13 @@ needs it and is not capped.
 | Backing material — worked examples, evidence, the original a pointer leads to | no | only the reader who needs it pays |
 
 That is why a review finding's details are capped at 20 lines while its evidence in a code block
-is not, and why a skill's `references/` has a depth rule and no size rule.
+is not, and why what a `SKILL.md` points at has a depth rule and no size rule.
 
 ## Which skill owns what
 
 Most of what this applies to has no template and needs none — an explanatory code comment, a
-JSDoc block, a PR description, a design doc, a commit message. For those the test above, plus two
-failure modes, is the whole of it:
+JSDoc block, a PR description, a commit message. For those the test above, plus two failure modes,
+is the whole of it:
 
 - `avoid-unverifiable-context` — the text carries something the reader cannot go and check.
 - `avoid-reference-detours` — the text sends the reader somewhere reachable in order to be
@@ -106,6 +107,7 @@ this skill holds the test, not those rules.
 | A GitHub issue body | `write-nice-issue-description` |
 | A PR review finding, or any comment telling a person what to change | `write-nice-instructions` |
 | A `SKILL.md` | `write-nice-skills` |
+| An architecture doc — `ARCHITECTURE.md`, an ADR, a decision record | `write-nice-architecture-docs` |
 
 | Checking what is already written | Skill |
 |---|---|
