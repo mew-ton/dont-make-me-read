@@ -85,7 +85,7 @@ needs it and is not capped.
 | Backing material — worked examples, evidence, the original a pointer leads to | no | only the reader who needs it pays |
 
 That is why a review finding's details are capped at 20 lines while its evidence in a code block
-is not, and why a skill's `references/` has a depth rule and no size rule.
+is not, and why what a `SKILL.md` points at has a depth rule and no size rule.
 
 ## Which skill owns what
 

@@ -67,7 +67,7 @@ Everything under "Writing the description" follows from this one fact.
 [`references/structuring-skills.md`](references/structuring-skills.md)):
 
 5. **Don't write everything.** Keep the body within the size budget and push
-   branch-specific detail one level down into `references/`. Inline what every
+   branch-specific detail one level down into a file the body points at. Inline what every
    path needs; put behind a pointer what only some branches reach.
 6. **Add Common Rationalizations.** For any skill an agent might cut corners on,
    pre-empt the excuses (see the table below).

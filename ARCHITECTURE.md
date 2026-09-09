@@ -17,11 +17,7 @@ hold — so you can make one without reading the nine first.
 | Where | What belongs there |
 |---|---|
 | `commands/` | One file per user-facing entry point. Instruction-layer work: fetching, asking, consolidating a brief. Anything a person decides to invoke. |
-| `skills/<name>/SKILL.md` | One skill. The frontmatter the model judges from, and the body every path through it needs. |
-| `skills/<name>/references/` | What only some branches of that skill reach — long examples, per-branch procedure. Flat, one level deep. |
-| `skills/write-nice-instructions/rules/` | The same idea under an older name: one file per rule, each with one worked example. |
-| `skills/write-nice-skills/scripts/` | The one executable here. `count-tokens.sh` measures a body against the token budget. |
-| `skills/write-nice-issue-description/assets/` | The issue template a skill hands to its reader whole, rather than describing. |
+| `skills/<name>/` | One skill. `SKILL.md` is the part that loads; everything else in the directory is there because `SKILL.md` points at it, and is reached no other way. |
 | `_ja/` | A temporary Japanese mirror of the tree, for reviewing content in a language the author reads faster. Deleted when the review it serves is done; nothing loads from it. |
 
 Every heading below is a decision a contributor actually faces. If yours is not here, that is a gap
@@ -148,13 +144,13 @@ reads the pull request it is judging.
 |---|---|
 | what a contributor decides by | here |
 | what every path through a skill needs | that skill's body |
-| what only some branches reach | that skill's `references/` |
+| what only some branches reach | a file beside that skill's `SKILL.md`, pointed at from it |
 | what a field means | nowhere in frontmatter |
 
 Frontmatter is the one part of a `SKILL.md` that is parsed rather than read, and all of it loads on
 every fire. A trailing `#` there explains the field to nobody who was going to be confused by it,
 and every reader pays for it forever — the same argument that pushes branch detail down into
-`references/`, one level up.
+a file the body points at, one level up.
 
 ## When an artifact earns rules of its own
 
@@ -171,7 +167,7 @@ future turn the weight of another description to judge.
 
 ## What to do when a body is over budget
 
-**Push what only some branches reach into that skill's `references/`, until it passes.**
+**Push what only some branches reach into a file beside that `SKILL.md`, until it passes.**
 
 ```bash
 bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
@@ -179,8 +175,14 @@ bash skills/write-nice-skills/scripts/count-tokens.sh skills/*/SKILL.md
 
 Non-zero means do not commit it yet. Which code means what is in the script's own header, and only
 one of them is about the budget — the others say the check did not run, which is not a pass.
-References have a depth rule and no size rule, so the material is not deleted, only moved off the
-path every fire pays for.
+What the body points at has a depth rule and no size rule, so the material is not deleted, only
+moved off the path every fire pays for.
+
+The names those files take are not settled here, because nothing settles them: a supporting file is
+found by being referenced from `SKILL.md`, and the platform requires no directory and no naming.
+`references/`, `rules/`, `scripts/` and `assets/` are what this tree happens to use. Match a
+neighbour when one fits and pick a name that reads when none does — neither choice is a decision
+this file has any business making for you.
 
 ---
 

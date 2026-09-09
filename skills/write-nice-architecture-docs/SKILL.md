@@ -104,9 +104,17 @@ is testable:
 
 The second becomes the first by being raised to the rule it was an instance of.
 
-**Where it cannot be raised, the level it may take is a list — never a section.** A flat *out of
-scope* list is worth its lines: it tells a contributor what the project deliberately does not do,
-which is the absence they would otherwise spend a day rediscovering. Turning the same content into
+**A convention is not an invariant, and writing it down as one manufactures a constraint nobody
+imposed.** Before stating a rule, ask what happens to someone who breaks it. If the answer is
+"nothing — everyone just does it this way, because the examples did", it is a habit. Say so, or say
+nothing: a doc that promotes the habit to a rule has spent the reader's trust to make a choice they
+were free to make, and every later contributor pays a decision they did not owe. The requirement
+underneath is usually a sentence away and worth stating instead — what the platform actually
+enforces, or what this project would break without.
+
+**Where an absence cannot be raised, the level it may take is a list — never a section.** A flat
+*out of scope* list is worth its lines: it tells a contributor what the project deliberately does
+not do, which is the absence they would otherwise spend a day rediscovering. Turning the same content into
 chapters is what fails, because a chapter is where a criterion should have been and a reader
 reading the table of contents now sees a project defined by what it refuses.
 
@@ -161,6 +169,7 @@ because this skill is.
 
 | Rationalization | Reality |
 |---|---|
+| "Everything here is laid out this way, so that is the convention and I will write it down." | Ask what breaks when someone does it differently. If the honest answer is "nothing", you are about to turn a habit into a rule, and the next contributor will spend real thought obeying something you invented while transcribing. State the requirement underneath it, or leave the choice where it was. |
 | "The README already covers that, so I will point at it." | Then the reader arrives here, gets sent away, and comes back having paid for a trip. Short is achieved by writing less, not by relocating what the contributor came for. Bring the part the decision needs; name the other file only so they know it exists. |
 | "Explaining what we currently do *is* the architecture." | The code shows what you currently do, faster and without drifting. What it cannot show is the invariant and what would settle the next decision — that is the only thing this file adds. |
 | "A section per thing we refuse is honest about our boundaries." | A table of contents made of refusals tells a reader what the project will not do and nothing about what it will. Give the refusals a flat out-of-scope list, which is cheap and genuinely useful, and keep the headings for the rule that generates them. |
