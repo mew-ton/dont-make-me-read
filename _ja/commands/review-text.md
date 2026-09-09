@@ -9,6 +9,3 @@ argument-hint: "[<pr-url-or-number>] [--repo <owner/repo>] [--worktree <path>] [
 引数なしなら、現在のブランチのPRをレビューする。
 
 $ARGUMENTS
-
-> 【訳注】`argument-hint` に `--comment`（PRへのインラインコメント投稿）が含まれている。
-> `README.md` のコマンド表はこの投稿機能に触れていない。

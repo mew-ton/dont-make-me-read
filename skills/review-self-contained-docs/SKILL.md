@@ -12,7 +12,9 @@ disable-model-invocation: false
 allowed-tools:
   - Read
   - Grep
-  - Bash(gh pr diff:*, gh pr view:*, gh api:*)
+  - Bash(gh pr diff:*)
+  - Bash(gh pr view:*)
+  - Bash(gh api:*)
 ---
 
 # review-self-contained-docs

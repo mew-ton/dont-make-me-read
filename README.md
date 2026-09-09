@@ -44,7 +44,7 @@ Commands are the whole user-facing surface. Type one when you want something wri
 | `/write-skill` | Write or review a `SKILL.md`. |
 | `/write-architecture` | Write or revise an architecture doc. |
 | `/review-issue` | Audit an existing issue body. |
-| `/review-text` | Audit a PR's description and the code comments it changes. |
+| `/review-text` | Audit a PR's description and the code comments it changes, and post the findings on the PR when asked. |
 
 A writing command is the instruction layer, not an alias for a skill. It does the messy part —
 fetching an existing issue, asking about what is not yet settled, working out what the finding even

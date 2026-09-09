@@ -12,13 +12,10 @@ disable-model-invocation: false
 allowed-tools:
   - Read
   - Grep
-  - Bash(gh pr diff:*, gh pr view:*, gh api:*)
+  - Bash(gh pr diff:*)
+  - Bash(gh pr view:*)
+  - Bash(gh api:*)
 ---
-
-> 【訳注】二点。①この `allowed-tools` は `README.md:83` の「review-* は読む以上のツールを持たない」と
-> 食い違う。手順5の `--comment` は `gh api ... /pulls/<pr>/comments` へ **POST** する。
-> ②`Bash(gh pr diff:*, gh pr view:*, gh api:*)` はカンマ区切りを一つの `Bash(...)` に詰めた書式で、
-> 通例は1エントリ1コマンド。このままだとマッチしない可能性がある。
 
 # review-self-contained-docs
 
