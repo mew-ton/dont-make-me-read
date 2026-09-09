@@ -91,5 +91,7 @@ allowed-tools: []
 
 - `avoid-unverifiable-context` — 同じ分割のもう半分。対象がこの読み手にとってそもそも存在しないので、
   直し方は言い直しではなく削除。
+- `avoid-caller-knowledge` — コードにおける同じ範囲の失敗。そこでは言い直すことが依存を作るので、直し方が
+  逆になる — 知識のほうが外へ出る。
 - `write-nice-issue-description` — Gate 2 が一つの文書の**内部**の繰り返しを所有する。
 - `review-self-contained-docs` — 書かれたテキストを、読み手の側から、単位ごとに両方に照らして監査する。
