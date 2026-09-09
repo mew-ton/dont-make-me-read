@@ -55,13 +55,6 @@ actual sentence, and a paraphrase is a second copy with its own dependency.
 Return the ones you found and say nothing about the ones you did not. A pass that reports "no other
 dependencies" is claiming completeness it cannot have.
 
-## Callers
-
-A review pass calls this to get the material its verdict needs; the verdict stays with the pass,
-because judging is what a review is and this is not one. A writer calls it before committing to a
-sentence that names something they do not own, where the cheapest moment to decide is before the
-name is in the file.
-
 ## Common Rationalizations
 
 | Rationalization | Reality |

@@ -71,6 +71,10 @@ Everything under "Writing the description" follows from this one fact.
    path needs; put behind a pointer what only some branches reach.
 6. **Add Common Rationalizations.** For any skill an agent might cut corners on,
    pre-empt the excuses (see the table below).
+7. **Leave out what the structure already settles.** A skill does not need to know
+   its own category, who calls it, or where it sits — the frontmatter and the
+   callers establish all of that, and a sentence saying it changes nothing the
+   skill does. It also makes the skill wrong the day a caller is renamed.
 
 Terms used above (leading word, trigger, branch, progressive disclosure, context
 pointer) are defined in [`GLOSSARY.md`](GLOSSARY.md).

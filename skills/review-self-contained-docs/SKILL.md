@@ -22,9 +22,7 @@ allowed-tools:
 `avoid-unverifiable-context` and `avoid-reference-detours` say what to write. This skill checks
 what was actually written, against the same three conditions from the reader's side: time-closure
 and referenceability (that pair is `avoid-unverifiable-context`'s), and reference-scope closure
-(`avoid-reference-detours`'). Callers reach it as one axis of a larger PR review, as a final pass
-over a PR description, issue body, or code comment just written, or through the `/review-text`
-command. It runs in two situations:
+(`avoid-reference-detours`'). It runs in two situations:
 
 - **Reviewing a PR**: check its description and every comment the diff adds or changes.
 - **Self-checking text you just wrote**: before a PR description, issue body, or code comment
@@ -37,7 +35,7 @@ command. It runs in two situations:
 
 ## Inputs
 
-The caller supplies these; the `/review-text` command owns the user-facing signature.
+The caller supplies these.
 
 | Argument | Meaning | Required |
 |---|---|---|
