@@ -71,25 +71,14 @@ it, so the inconsistency sits there without being acted on. Strong has neither p
 needs the fix, and nobody notices, because the sentence still parses, still reads well, and still
 looks exactly as true as the day it was written.
 
-## What counts
-
-| The text | Is pinned to | Breaks when | Strength |
-|---|---|---|---|
-| A link, a path, a line number | the location | it moves | weak |
-| An issue, ticket, or PR number | that item | it is closed, moved, or renumbered | weak |
-| A citation of an external source | someone else's decision | they revise it, or it goes away | weak |
-| A name carried in the prose | that definition | it is renamed, removed, or its meaning moves | strong |
-| A count, or a set claimed to be complete | the membership | anything joins or leaves | strong |
-| A definition or plan copied from wherever it is owned | the owner | the owner changes and this copy does not | strong |
-| A claim about how something is arranged | that arrangement | it is restructured | strong |
-| A translation, mirror, or second copy | the whole original | any part of the original changes | strong |
-
 ## The pass
 
-1. **Read for candidates.** Work through the document for the shapes above, and spend the reading
-   on the strong ones — whatever checks links is already better at the weak half than you are.
-   Report the weak ones you pass and do not go hunting for them; a span you are already reading
-   gets both grades, since it is the hunting that was not worth the time, not the grading.
+1. **Read for candidates.** Work through the document with
+   [`references/what-counts.md`](references/what-counts.md) — the shapes a dependency takes, and
+   how the strong ones surface. Spend the reading there: whatever checks links is already better at
+   the weak half than you are. Report the weak ones you pass and do not go hunting for them; a span
+   you are already reading gets both grades, since it is the hunting that was not worth the time,
+   not the grading.
 2. **Settle each arrow.** Say which end has to move, and check the opposite direction too: an edge
    running back is its own entry, not a duplicate of the one you just wrote.
 3. **Assemble the graph.** Nodes are the things: this document, and each file, section, or outside
@@ -98,53 +87,16 @@ looks exactly as true as the day it was written.
 4. **Report it, strong edges first.** Quote the spans rather than describing them: the caller has
    to weigh the actual sentence, and a paraphrase is a second copy with its own dependency.
 
-Assemble before reporting. Spans are the evidence; the graph is what the caller reads a shape off —
+Spans are the evidence; the graph is what the caller reads a shape off —
 which node everything points into, which pair points at each other, which node nothing points into
 at all. None of that is visible in a list of spans, and all of it is what decides the next move.
 
 Return the edges you found and say nothing about the ones you did not. A pass that reports "no
 other dependencies" is claiming completeness it cannot have.
 
-## Example: the strong dependency nobody sees until it has already broken
-
-An architecture doc, describing where the code lives:
-
-```markdown
-## Layers
-
-The parsing layer is `lexer` and `parser`. The analysis layer is `resolver` and `typeck`.
-```
-
-Every one of those four modules is now in a strong dependency with this file: rename one and the
-file is wrong. So is the fifth, the day somebody writes it — it will simply be missing, and the
-section will go on reading like a complete answer.
-
-Nothing here links, so nothing checks it. The sentence stays grammatical, stays confident, and
-gives no sign at all. The way it gets found is that a contributor believes it and puts something in
-the wrong place — which is to say, after it has already cost what it was going to cost.
-
-**Reported as** one edge:
-
-```
-the modules → the doc   strong   §Layers
-  fires on: any module added, removed, or renamed
-  span:     "The parsing layer is `lexer` and `parser`. …"
-```
-
-An arrow pointing into the doc, from the thing the doc exists to govern. Whether that is allowed
-here is the caller's question; that it is there at all is this skill's answer.
-
-The same section with nothing pinned:
-
-```markdown
-## Layers
-
-A module is in the parsing layer if it turns text into a tree without resolving a name, and in the
-analysis layer if it resolves names against a tree it did not build.
-```
-
-The arrow now runs the other way — the doc → any module — and nothing runs back. A new module
-places itself, and one that fits neither definition is the thing that has to give.
+For worked examples — an arrow running into an architecture doc instead of away from it, and a
+both-ways pair split across two systems — see
+[`references/examples.md`](references/examples.md).
 
 ## Common Rationalizations
 
