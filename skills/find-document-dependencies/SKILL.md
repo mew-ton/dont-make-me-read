@@ -44,6 +44,9 @@ Between two texts the arrow can run either way, or both.
   therefore which one a reader can trust.
 - **Both ways.** A → B and B → A. Neither can be edited alone, so they are one thing wearing two
   filenames — a different entry with a different fix, not two one-way edges reported side by side.
+  Two systems holding the same plan is the everyday case: the tracker the engineers work from and
+  the page the schedule is planned on, each restating the other. Edit either and the other is
+  wrong, and neither system can see that it happened.
 
 For a name, the arrow's direction is the whole difference between a role the document defines and
 the instance currently filling it. Same sentence, opposite upkeep.
@@ -52,14 +55,21 @@ the instance currently filling it. Same sentence, opposite upkeep.
 
 | | Weak | Strong |
 |---|---|---|
-| Shape | a pointer: a link, a path, an issue number, a citation | prose: a name, a description, an explanation of what the other end says |
-| Does it have to be fixed | not always — a pointer can survive the thing it points at changing | always — the sentence now says something untrue |
+| What is pinned | where the other end is | what the other end says |
+| Shape | a pointer: a link, a path, an issue number, a citation | prose: a name, a description, a restatement of what the other end holds |
+| It breaks when | the other end moves | the other end's content changes |
+| Fixing it | repoint it, and the reader could usually still get there anyway | rewrite it: the sentence now says something untrue |
 | How it is found | mechanically. A link checker finds every one of them | by reading. Nothing greps for "this paragraph describes something that moved" |
 
-The two properties invert, and that is the whole reason to look. Weak dependencies are cheap to
-find and often safe to leave. Strong ones always need the fix and nobody will notice them, because
-the sentence still parses, still reads well, and still looks exactly as true as the day it was
-written.
+**One span can carry both, and they are graded separately.** "See the rollout plan in Notion" is a
+pointer and nothing else. "The rollout is three phases, per the Notion plan" pins the location
+*and* the content: the link survives a rewrite of the plan, and the sentence does not.
+
+The columns invert, and that is the whole reason to look. Weak is the cheaper half twice over: a
+tool finds every one of them, and the far end is rarely in the same session as the text pointing at
+it, so the inconsistency sits there without being acted on. Strong has neither property. It always
+needs the fix, and nobody notices, because the sentence still parses, still reads well, and still
+looks exactly as true as the day it was written.
 
 ## What counts
 
@@ -70,7 +80,7 @@ written.
 | A citation of an external source | someone else's decision | they revise it, or it goes away | weak |
 | A name carried in the prose | that definition | it is renamed, removed, or its meaning moves | strong |
 | A count, or a set claimed to be complete | the membership | anything joins or leaves | strong |
-| A definition copied from the file that owns it | the owner | the owner changes and this copy does not | strong |
+| A definition or plan copied from wherever it is owned | the owner | the owner changes and this copy does not | strong |
 | A claim about how something is arranged | that arrangement | it is restructured | strong |
 | A translation, mirror, or second copy | the whole original | any part of the original changes | strong |
 
@@ -78,7 +88,8 @@ written.
 
 1. **Read for candidates.** Work through the document for the shapes above, and spend the reading
    on the strong ones — whatever checks links is already better at the weak half than you are.
-   Report the weak ones you pass; do not go hunting for them.
+   Report the weak ones you pass and do not go hunting for them; a span you are already reading
+   gets both grades, since it is the hunting that was not worth the time, not the grading.
 2. **Settle each arrow.** Say which end has to move, and check the opposite direction too: an edge
    running back is its own entry, not a duplicate of the one you just wrote.
 3. **Assemble the graph.** Nodes are the things: this document, and each file, section, or outside
@@ -140,6 +151,8 @@ places itself, and one that fits neither definition is the thing that has to giv
 | Rationalization | Reality |
 |---|---|
 | "Only links are dependencies; the rest is just prose." | A name is a link the reader cannot click and the maintainer cannot grep for. It breaks the same way and announces it less. |
+| "It is only a link, so it is weak." | The link is. What the sentence says *about* the other end is not, and the two sit in the same span. Grade them separately, or the strong half rides in unreported on the weak half's verdict. |
+| "The other end is somebody else's system, so it is not mine to worry about." | That is where a both-ways pair hides: two places restating one plan, each invisible to the other's tooling. It is the least likely thing to surface on its own, which is the argument for reporting it, not against. |
 | "The link check passed, so the document is fine." | It passed on the half that was never the problem. Every dependency a tool can find is one somebody would have found anyway; the ones that always need fixing are the ones only reading finds. |
 | "It is accurate right now, so it is fine." | Every dependency was accurate when it was written. What is being weighed is what happens on the day it stops being. |
 | "Listing this many would be noise." | The graph is the finding. Whether an entry is worth acting on is the caller's call, and they cannot make it for the entries you filtered out. |
