@@ -4,13 +4,33 @@
 
 Text that someone else has to act on costs its reader something before they can act, and the writer
 cannot feel that cost — they read their own draft while supplying the context it is missing. This
-plugin is the rules that follow, packaged so they reach the writing rather than waiting to be
-consulted: skills the model loads on its own judgment mid-task, and commands a person types when
-they have decided for themselves that they want something written or checked.
+plugin is the rules that follow from that, arranged so they reach the writing rather than waiting
+to be consulted.
 
-Nine skills carry the rules and six commands are the surface a person types. This file is what
-settles a decision about that shape — where a new part goes, what context it runs in, what it may
-hold — so you can make one without reading the nine first.
+The arrangement is one entry and three kinds behind it. `dont-make-me-read` is the entry, and what
+it installs is a disposition rather than a procedure: the test to apply, what may never be cut to
+satisfy it, and which of the kinds below the artifact in hand answers to. Everything else is one of:
+
+- **A grammar-level rule**, named `avoid-*` — one failure mode, stated at the level of the sentence,
+  holding whatever the text is. These carry the broadest triggers here because they are the ones a
+  code comment written mid-task still needs.
+- **An artifact's best practice**, named `write-*` — the shape one kind of artifact takes: its
+  sections, its budgets, the conditions it has to satisfy. One per artifact whose shape is fixed
+  enough to earn it.
+- **That same best practice, run backwards**, named `review-*` — the conditions applied to text
+  already written, per unit, because the writer cannot judge their own draft.
+
+The prefix is not decoration. It is how a reader knows, before opening anything, which kind they
+have and therefore how it is meant to be reached — so a skill whose verb disagrees with its kind
+misdirects every later contributor about the one thing this section exists to settle.
+
+**A best practice is held by the skill, so the skill has to be insulated from what it judges.**
+Running one inside the session that has been arguing about the artifact is not merely untidy: that
+session's context reaches the thing that is supposed to be holding the standard, and the standard
+bends toward whatever was just said. So an artifact is written from outside a working session — a
+person arrives through a command, an agent through a fork. That is what the fork is protecting, and
+it is why the naming is worth reading as a signal: the verb in a skill's name says which of the
+three kinds it is, and therefore how it is meant to be reached.
 
 ## Codemap
 
@@ -42,8 +62,9 @@ halfway through some other task. Anything that fires only when named would miss 
 most needed, so the menu is closed and model invocation is what carries them there.
 
 **A skill that writes an artifact never sees the conversation that reached it.** `context: fork`
-carries in no history, which turns "do not write what only this conversation's participants could
-reconstruct" from a rule a writer can break into a property they cannot.
+carries in no history. That keeps two things out at once: the residue a reader could never check,
+and the pressure that a session which has been arguing about the artifact puts on the standard
+meant to judge it. Both would otherwise be things someone had to remember to resist.
 
 **A skill never holds a tool that would let it confirm what its reader could not.** The clearest
 case is `review-nice-issues`, whose verdict is worth something only because it judges from the same
@@ -93,12 +114,13 @@ artifact gets written in, and it surfaces in the artifact. Consolidating first i
 **It produces an artifact from a brief → a fork. It acts on work already in front of the model →
 the main thread.**
 
-The criterion cuts both ways. Forking a skill that acts on work already present would cut it off
-from the thing it acts on: routing needs the work in front of it, constraining writing has to
-happen where the writing happens, and a review returns findings, which are worth nothing without
-their grounds attached — put a review behind a fork and nobody can review the review.
+The insulation argument above is one direction of this. The criterion cuts the other way just as
+hard: forking a skill that acts on work already present would cut it off from the thing it acts on.
+Routing needs the work in front of it. Constraining writing has to happen where the writing happens.
+A review returns findings, which are worth nothing without their grounds attached — put one behind a
+fork and nobody can review the review.
 
-All nine, by that criterion:
+Everything here, by that criterion:
 
 | Runs in | Skills |
 |---|---|

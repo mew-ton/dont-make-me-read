@@ -82,6 +82,11 @@ The codemap is the section where this is easiest to lose: a list of directories 
 each is a description, and becomes a codemap the moment each entry says what belongs there — which
 is what lets a reader place a new file rather than only find an old one.
 
+**A count is the purest form of the failure.** "Nine modules do X and six do Y" settles nothing, is
+wrong the next time somebody adds one, and reads as authority while carrying none. Say what the
+kinds are and what puts a thing in each; the reader can count for themselves, and their count will
+be right.
+
 ### 2. Lead the invariants with the rule that generates them
 
 The top of that section is the **golden rule**: the thinking every other decision in the project
@@ -114,7 +119,7 @@ enforces, or what this project would break without.
 
 **Where an absence cannot be raised, the level it may take is a list — never a section.** A flat
 *out of scope* list is worth its lines: it tells a contributor what the project deliberately does
-not do, which is the absence they would otherwise spend a day rediscovering. Turning the same content into
+not do, the absence they would otherwise spend a day rediscovering. Turning the same content into
 chapters is what fails, because a chapter is where a criterion should have been and a reader
 reading the table of contents now sees a project defined by what it refuses.
 
