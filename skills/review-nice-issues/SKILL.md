@@ -11,6 +11,16 @@ description: >
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
+disallowed-tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - Edit
+  - Write
+  - WebFetch
+  - WebSearch
+  - Agent
 ---
 
 # review-nice-issues
@@ -21,12 +31,16 @@ allowed-tools: []
 written, against the same two gates from the reader's side: determinacy and duplication (defined
 below).
 
-This skill has **no tools of its own, by design**: it cannot run `gh`, cannot read the repository,
-and cannot post anything back. That is not a discipline to remember while judging — it is a
-structural guarantee that the judgment below can only ever use the text it was actually handed,
-the same footing as the reader Gate 1 describes. Do not add `gh` or `Read` to this skill to make it
-"more convenient"; that would let it quietly verify a claim against outside knowledge, which is
-exactly the failure mode a real implementer-with-no-extra-context can't fall into either.
+This skill runs with **the outward-looking tools taken away, by design**: its `disallowed-tools`
+removes them from the pool, so while it judges it cannot run `gh`, cannot read the repository,
+cannot delegate the lookup to a subagent, and cannot post anything back. That is not a discipline
+to remember while judging — the removal is what makes the judgment below use only the text it was
+actually handed, the same footing as the reader Gate 1 describes. An empty `allowed-tools` supplies
+none of this: that field pre-approves what is already in reach and never takes anything out of it.
+
+The removal is released by the user's next message, not by this skill's own return, so it reaches
+the rest of the turn that invoked it. Fetching therefore happens **before** the hand-off or not at
+all — which is the same order this skill's Inputs already require, now arriving as a mechanism.
 
 It runs in two situations:
 
@@ -114,9 +128,10 @@ larger report.
 - Never bring outside knowledge into step 2 or 3 — judge the body from only its own text, exactly
   as the reader Gate 1 describes would encounter it. Reaching for what you already know about the
   requirement is the one failure mode this whole skill exists to catch in yourself.
-- Keep `allowed-tools` empty. This skill's entire value is that it structurally cannot see the
-  issue tracker or the codebase — granting it `gh` or `Read` "just for convenience" removes the one
-  property that makes its judgment trustworthy.
+- Keep the `disallowed-tools` list whole. This skill's entire value is that it cannot see the issue
+  tracker or the codebase while it judges — taking a tool back out of that list "just for
+  convenience" removes the one property that makes its judgment trustworthy, and moving it to
+  `allowed-tools` instead removes it just the same.
 - `Affected areas` never counts toward the boundary bullet in step 2, and never excuses a missing
   fact in `Background` — it is a hunch, with no binding force, by `write-nice-issue-description`'
   own definition.
