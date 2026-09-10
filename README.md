@@ -46,10 +46,8 @@ artifact. Nothing of the back-and-forth that produced the brief ends up in what 
 You never type a skill name. Skills load on the model's own judgment while it writes, and the
 commands above call the ones they need.
 
-A skill's name leads with a verb, and the verb is the direction it works in: what it supplies to
-your text, what it takes out, or what it gathers for something else to judge. Underneath all of
-them stands `dont-make-me-read`, which is on whenever anything is being written and carries what
-the reader has to hold and what it costs them.
+One skill is the foundation and the rest support it. Between them they hold the best practice for
+writing each thing well, and the rules for not writing what does not need to be there.
 
 ## Language
 
@@ -60,8 +58,8 @@ one language only.
 
 ## Architecture
 
-What settles a decision about this plugin's own shape — where a new entry point goes, what context
-a skill runs in, what tools it gets — is in [`ARCHITECTURE.md`](ARCHITECTURE.md).
+What settles a decision about this plugin's own shape is in
+[`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ## License
 
