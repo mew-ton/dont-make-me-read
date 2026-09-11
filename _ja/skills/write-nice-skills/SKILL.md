@@ -41,7 +41,7 @@ allowed-tools: []
 
 ## Principles（原則）
 
-**Description**（詳細＋Bad/Good の実例：
+**Description**（詳細：
 [`references/writing-descriptions.md`](references/writing-descriptions.md)）：
 
 1. **満たすべき：命令形、意図、when、英語、簡潔。** `Use this skill when …` — 三人称を使うのは、主語を
@@ -99,6 +99,8 @@ allowed-tools: []
 
 - **description / frontmatter** を書く／直す →
   [`references/writing-descriptions.md`](references/writing-descriptions.md)
+- description が**直る**ところを Bad → Good で見る、各対が何を修復しているかつき →
+  [`references/examples.md`](references/examples.md)
 - **本文のサイズ、references、いつ分割するか**、あるいは活動をまたいで**スキルを効かせ続ける**ことを
   決める → [`references/structuring-skills.md`](references/structuring-skills.md)
 - ファイルの実際の**トークンコスト**と、目指すべきバイト閾値を測る →

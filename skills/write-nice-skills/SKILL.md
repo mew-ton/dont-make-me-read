@@ -44,7 +44,7 @@ Everything under "Writing the description" follows from this one fact.
 
 ## Principles
 
-**Description** (details + Bad/Good examples:
+**Description** (details:
 [`references/writing-descriptions.md`](references/writing-descriptions.md)):
 
 1. **Must do: imperative, intent, when, English, short.** `Use this skill when …` —
@@ -110,6 +110,8 @@ The agent will look for reasons to skip this skill. Close them off:
 
 - Writing or fixing a **description / frontmatter** →
   [`references/writing-descriptions.md`](references/writing-descriptions.md)
+- Seeing a description **fixed**, Bad → Good, with what each pair repairs →
+  [`references/examples.md`](references/examples.md)
 - Deciding **body size, references, or when to split**, or **keeping a skill in
   force** across an activity →
   [`references/structuring-skills.md`](references/structuring-skills.md)

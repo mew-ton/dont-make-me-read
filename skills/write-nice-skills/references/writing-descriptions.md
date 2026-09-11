@@ -14,8 +14,7 @@ leaving it out would make the sentence read as a description of the work.
 ### 1.2 Show the intent the skill was created for
 
 What its author wanted enforced, in one clause and in their terms. For example,
-`keeps a callee from branching on which caller invoked it`. The test that finds such
-a callee is the body's.
+`keeps a callee from branching on which caller invoked it`.
 
 ### 1.3 Say when it applies
 
@@ -29,48 +28,35 @@ description alone — the body's language and the skill's output are decided els
 
 ### 1.5 Keep it short
 
-**1024 characters, hard.** If what + when + triggers will not fit, the skill is doing
-too much: split it (see [`structuring-skills.md`](structuring-skills.md)) rather than
-padding or truncating.
+**1024 characters, hard.** If the intent, the occasion and the triggers will not fit,
+the skill is doing too much: split it rather than padding or truncating.
 
 ## 2. What a description must never carry
 
-### 2.1 Procedure
+### 2.1 A summary of the skill's implementation
 
-Steps let the agent act from the description and never load the body. Which skill
-hands off to which counts too — for example, "run it as one axis of a larger review".
+Detailed rules and the steps of the work: put them in the description and the agent
+reads them as the skill, skipping the body it took them from. That covers the
+procedure, the criteria it applies — for example, "a determinable problem, checkable
+acceptance criteria, and an out-of-scope boundary" — and the argument, the cost and
+the remedy the body gives for each.
 
-### 2.2 The criteria the skill applies
-
-Listing what it checks for hands over the standard, and an agent holding the standard
-has no reason to load what qualifies it. For example, "a determinable problem,
-checkable acceptance criteria, and an out-of-scope boundary" belongs in the body.
-
-### 2.3 A name from elsewhere
-
-Another skill, another file, whoever calls this one. A concrete name reads as a
-routing table and stops the agent asking whether *this* artifact is the skill's — for
-example, `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`.
-It also costs characters, and costs them again the day that skill is renamed. Name
-the artifact, not its owner: a skill is reached by its own description or not at all.
-
-A reach clause stays — for example, "also applies when another skill needs …" —
-where another skill genuinely depends on this one. It names nobody.
-
-### 2.4 The identity the body already carries
-
-The argument, the cost, the remedy. An agent handed those has been handed the skill.
 Recognisable terms stay, because those are what fires: a `variant` named after a
 screen is what the work looks like.
 
+### 2.2 An explanation of concepts that are not this skill's
+
+What a callee is, what a pull request is, why coupling costs anything. Noise: the
+agent knows, and the characters come out of the intent.
+
 ## 3. Wording that works
 
-### 3.1 Decide which of what and when leads
+### 3.1 Decide which of intent and occasion leads
 
 **Does the work name the artifact?** — the same question, from the other side, as
 whether the skill is finished when that artifact is.
 
-**It does → lead with the when.** The work says the word and the word fires the
+**It does → lead with the occasion.** The work says the word and the word fires the
 skill. For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`:
 
 ```text
@@ -90,13 +76,13 @@ a PR description, or any text that points elsewhere to be understood. DO NOT use
 this skill when the target does not exist …
 ```
 
-The `when` still follows, named as an activity — for example, "writing, revising,
-reviewing, or designing code". Keeping the skill in force for the rest of it is the
-body's job: see [`structuring-skills.md`](structuring-skills.md#staying-in-force).
+The occasion still follows, named as an activity — for example, "writing, revising,
+reviewing, or designing code". Keeping the skill in force for the rest of that
+activity is the body's job.
 
 ### 3.2 State when it must not fire
 
-`DO NOT use this skill when …` — the description's own `when`, negated, so the pair
+`DO NOT use this skill when …` — the description's own occasion, negated, so the pair
 reads as one condition of use. In any other shape it reads as trivia.
 
 It also closes off what the skill will not **produce**, where that is what it gets
@@ -120,24 +106,22 @@ Put that word near the start, where it does its invocation work.
   phrases that team really types; a published one must not, since a second-language
   keyword list only bloats the description and drifts out of sync.
 
-### 3.4 Bad → Good
+### 3.4 Go easy on proper nouns and named references
 
-**Bad** — tag list up front, invented keywords, a step leaking in:
+Avoid another skill's name where you can. A concrete name reads as a routing table
+and stops the agent asking whether *this* artifact is the skill's, which is the
+question the bound exists for — for example, `DO NOT use for an architecture doc
+(that is write-nice-architecture-docs)`. It costs characters too, and costs them
+again the day that skill is renamed. The repository's invariant says the same: a
+skill is reached by its own description or not at all.
 
-```text
-Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
-each section, then check the frontmatter, for great skills and better writing.
-```
+Not a ban. A file name or a path is sometimes the occasion itself, and then it is the
+trigger. But placing the skill at the root of the subfolder or subpackage it governs
+often removes the need to name anything.
 
-**Good** — when first, carrying the leading word; intent in one clause; bounded; no
-steps; nobody else named:
-
-```text
-Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its
-description and frontmatter — how to write a skill's description and body so it
-fires reliably and stays lean. DO NOT use this skill when the documentation is
-not a skill's.
-```
+A reach clause is the one naming that earns its place — for example, "also applies
+when another skill needs …" — where another skill genuinely depends on this one. It
+names nobody.
 
 ## No comments in the frontmatter
 
