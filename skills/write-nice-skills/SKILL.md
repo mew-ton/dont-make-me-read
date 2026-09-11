@@ -48,22 +48,24 @@ Everything under "Writing the description" follows from this one fact.
 [`references/writing-descriptions.md`](references/writing-descriptions.md)):
 
 1. **Must do: third person, what, when, English.** Whatever the skill's shape forces
-   elsewhere, those four hold — they are all the agent has to decide on. The first
-   line carries whichever of *what* and *when* it cannot infer: lead with the when
-   where the work names the artifact (an issue, a README, a `SKILL.md`), and with
-   `Forces the X that Y.` where nothing in the work names the occasion, because an
-   occasion nobody names is one the agent forgets. Say `Use this skill when …`, not a
-   bare `Apply when …`.
+   elsewhere, those four hold — they are all the agent gets to decide on. Say what
+   the skill does in one clause, and name the occasion as the skill's own:
+   `Use this skill when …`, not a bare `Apply when …`, which leaves open whether the
+   sentence describes the work or instructs the reader.
 2. **Must not: procedure, criteria, or a name from elsewhere.** Steps let the agent
    act without the body; the criteria the skill applies do the same one level up. A
    sibling skill's name, a file, whoever calls this one: a concrete name reads as a
    routing table and stops the agent asking whether *this* artifact is the skill's,
    and it is spent again on the day it is renamed. Name the artifact, not the skill
    that owns it.
-3. **Wording that works.** Close with `DO NOT use this skill when …` — the same
-   grammar as the `when`, negated, so the pair reads as one condition of use; an
-   unbounded when fires on everything near it. Front-load the leading word, the term
-   the work itself supplies. One trigger per branch, no synonym padding.
+3. **Wording that works.** The first line carries whichever of *what* and *when* the
+   agent cannot infer, and one question decides which: does the work name the
+   artifact? It does — an issue, a README, a `SKILL.md` — so lead with the when. It
+   does not, because the rule holds while someone writes code or a comment, so lead
+   with the stance: `Forces the X that Y.`, since an occasion nobody names is one the
+   agent forgets. Close with `DO NOT use this skill when …`, the same `when` negated,
+   so the pair reads as one condition of use. Front-load the leading word, the term
+   the work itself supplies; one trigger per branch, no synonym padding.
 4. **Leave the body's identity in the body.** Not the argument for the rule, not the
    cost of breaking it, not the remedy — an agent handed those has been handed the
    skill. The recognisable terms stay: those are what fires.

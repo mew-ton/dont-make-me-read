@@ -10,17 +10,108 @@ that makes the difference. Then a size limit, and one rule for the fields around
 ## 1. What every description must do
 
 Some skills are shaped so that no wording satisfies section 3 cleanly. These four
-hold anyway:
+hold anyway, and together they are all the agent gets to decide on.
 
-- **Third person.**
-- **Say what the skill does.**
-- **Say when it applies.**
-- **Write it in English.**
+### 1.1 Write in the third person
 
-Together the first three let the agent decide from the description alone, which is
-all it has. The rest of this section is how to get them into one paragraph.
+The description is read by an agent deciding whether to load the skill, not by
+someone being addressed. Write about the skill — not as it ("I check your issue for
+…"), and not at the reader ("you are an expert at …"). A statement can be judged
+against the work in hand; an address cannot.
 
-### 1.1 The first line carries whichever the agent cannot infer
+The one imperative that stays is the `Use this skill when …` of section 1.3, and it
+stays because it names the subject the third person would otherwise leave out.
+
+### 1.2 Say what the skill does
+
+One clause, and one clause is also the budget. The agent needs to know what it is
+choosing, not how the choice is carried out: "keeps a callee from branching on which
+caller invoked it" decides the question; the test that finds such a callee does not,
+and belongs in the body.
+
+### 1.3 Say when it applies
+
+Name the occasion — the artifact being written, or the activity underway.
+
+Name it as the skill's own: `Use this skill when …`, not a bare `Apply when …`. The
+bare form leaves the subject to be inferred, and the one thing a description cannot
+afford to leave open is whether the sentence describes the work or instructs the
+reader about the skill. Three words buy that.
+
+### 1.4 Write it in English
+
+Write the description in English, even when you prompt in another language. English
+terms are the ones that survive into a prompt regardless — file names, tool names,
+library names — and a published skill cannot know which language its users type in.
+
+Three languages get decided separately, and only the first is settled here: the
+**description** (English, always), the **body** (English too for a skill that ships
+beyond one team, since the agent reads it), and the **output the skill produces** —
+an issue, a finding, a doc — which belongs in the language *its* readers already
+use. Each writing skill states that last rule for itself; do not carry this file's
+English down into what a skill tells the agent to write.
+
+## 2. What a description must never carry
+
+Again whatever the skill's shape forces elsewhere, never these four.
+
+### 2.1 Procedure
+
+Never put step-by-step instructions in the description. If the steps are there, the
+agent believes it can act straight from the description and never loads the body —
+so the instructions the skill exists to deliver are skipped. State *what* and
+*when*; keep *how* in the body.
+
+**Which skill hands off to which is procedure too.** "Run it as one axis of a larger
+review, or from the `/x` command" reads like context and is not: it tells the agent
+how this skill gets used, which is exactly the kind of line that makes the body look
+optional. Name callers and hand-offs in the body, where the steps that depend on
+them live.
+
+### 2.2 The criteria the skill applies
+
+A description that lists what the skill checks for — "a determinable problem,
+checkable acceptance criteria, and an out-of-scope boundary" — hands the agent the
+standard, and an agent holding the standard has no reason to load the body that
+qualifies it. Say what the skill is a pass over; keep what it passes on in the body.
+
+This is the failure a `Forces the X that Y.` line walks into most easily. It carries
+the stance, and stops there: the criteria the stance is applied by are the body's.
+
+### 2.3 A name from elsewhere
+
+Another skill, another file, whoever calls this one. Two costs, and the first is the
+one that surprises people.
+
+**A concrete name narrows what the agent will infer.** `DO NOT use for an
+architecture doc (that is write-nice-architecture-docs)` reads as a routing table,
+and an agent that has been handed one stops asking the question the bound was for —
+whether *this* artifact is the skill's. Name the artifact, which is the condition;
+not the skill that owns it, which is a fact about the shelf.
+
+**The second is size.** Every name spends characters from the 1024, and spends them
+again on the day it is renamed, in every description that carried it. The
+repository's own invariant is the same: a skill is reached by its own description or
+not at all.
+
+The one thing that stays is a reach clause — "also applies when another skill needs
+…" — and only when another skill genuinely depends on this one. It says *when* this
+skill applies and names nobody.
+
+### 2.4 The identity the body already carries
+
+Not the argument for the rule, not the cost of breaking it, not the remedy. Those
+read as helpful and are the same failure as a leaked step — an agent that has the
+argument and the remedy has been given the skill, and loads the body to confirm what
+it already believes, if at all.
+
+The recognisable terms stay, because those are triggers: a `variant` named after a
+screen is what the work looks like. Why that costs the reader anything is the body's
+to say; only the first fires.
+
+## 3. Wording that works
+
+### 3.1 Decide which of what and when leads, and give that line force
 
 The first line is the one the agent weighs first, so it goes to whichever of *what*
 and *when* it cannot get for itself. One question decides which: **does the work name
@@ -39,100 +130,30 @@ architecture doc, reference documentation, a tutorial, or a changelog.
 
 **It does not → lead with what the skill forces.** A rule that has to hold while
 someone writes code, or writes a comment, is needed most exactly when the work never
-names it — and an occasion nobody names is an occasion the agent forgets mid-diff.
-Naming it is not enough there; the description has to state the stance the skill
-imposes, so that what survives into the next turn is the rule and not a label. That
-wording is section 3.1's.
+names it: the work is a diff and a file, not a request, so there is no word to share
+and nothing asks for the rule. An occasion nobody names is an occasion the agent
+forgets mid-diff, so naming it is not enough. State the stance the skill imposes,
+in the form `Forces the X that Y.` — one clause, pitched so that it says what the
+skill makes you do and still leaves the reader unable to do it:
+
+```text
+Forces the fact restated at the point of use over the pointer that sends the
+reader away to get it … Use this skill when writing a code comment, a docstring,
+a PR description, or any text that points elsewhere to be understood. DO NOT use
+this skill when the target does not exist …
+```
+
+The `when` still follows, named as an **activity** in the verbs the work is done in
+("writing, revising, reviewing, or designing code"), and section 3.2's bound is doing
+the most work here: an activity reaches everything inside itself until the `DO NOT`
+stops it.
+
+That gets the skill in once. Keeping it in for the rest of the activity is the
+body's job, and the body cannot do it unless it says so — see
+[`structuring-skills.md`](structuring-skills.md#staying-in-force).
 
 If you cannot tell which of the two you are writing, settle that before the first
 line: it decides the body as well.
-
-### 1.2 Name the occasion as the skill's own
-
-Say `Use this skill when …`, not a bare `Apply when …`. The bare form leaves the
-subject to be inferred, and the one thing a description cannot afford to leave open
-is whether the sentence describes the work or instructs the reader about the skill.
-Three words buy that.
-
-### 1.3 English, and the two other languages it does not settle
-
-Write the description in English, even when you prompt in another language. English
-terms are the ones that survive into a prompt regardless — file names, tool names,
-library names — and a published skill cannot know which language its users type in.
-
-Three languages get decided separately, and only the first is settled here: the
-**description** (English, always), the **body** (English too for a skill that ships
-beyond one team, since the agent reads it), and the **output the skill produces** —
-an issue, a finding, a doc — which belongs in the language *its* readers already
-use. Each writing skill states that last rule for itself; do not carry this file's
-English down into what a skill tells the agent to write.
-
-## 2. What a description must never carry
-
-Again whatever the skill's shape forces elsewhere, never these:
-
-- **Procedure.** The agent then decides it can act from the description alone, and
-  never loads the body.
-- **The criteria the skill applies.** Same failure, one level up.
-- **A name from elsewhere** — another skill, another file, whoever calls this one.
-
-### 2.1 Procedure, and the criteria that are procedure
-
-Never put step-by-step instructions in the description. If the steps are there, the
-agent believes it can act straight from the description and never loads the body —
-so the instructions the skill exists to deliver are skipped. State *what* and
-*when*; keep *how* in the body.
-
-**The criteria the skill applies are procedure too.** A description that lists what
-the skill checks for — "a determinable problem, checkable acceptance criteria, and an
-out-of-scope boundary" — hands the agent the standard, and an agent holding the
-standard has no reason to load the body that qualifies it. Say what the skill is a
-pass over; keep what it passes on in the body.
-
-A `Forces` line (section 3.1) fails this the moment it starts listing criteria. It
-carries the stance, never the criteria the stance is applied by.
-
-### 2.2 A name from elsewhere
-
-Two costs, and the first is the one that surprises people. **A concrete name narrows
-what the agent will infer.** `DO NOT use for an architecture doc (that is
-write-nice-architecture-docs)` reads as a routing table, and an agent that has been
-handed one stops asking the question the bound was for — whether *this* artifact is
-the skill's. Name the artifact, which is the condition; not the skill that owns it,
-which is a fact about the shelf.
-
-**The second is size.** Every name spends characters from the 1024, and spends them
-again on the day it is renamed, in every description that carried it.
-
-The repository's own invariant is the same: a skill is reached by its own
-description or not at all. Which skill hands off to which is procedure by section 2.1
-as well — "run it as one axis of a larger review, or from the `/x` command" reads
-like context and is not; it tells the agent how this skill gets used, which is
-exactly the kind of line that makes the body look optional. Name callers and
-hand-offs in the body, where the steps that depend on them live.
-
-The one thing that stays is a reach clause — "also applies when another skill needs
-…" — and only when another skill genuinely depends on this one. It says *when* this
-skill applies and names nobody.
-
-### 2.3 The identity the body already carries
-
-Anything the body explains does not belong here: not the argument for the rule, not
-the cost of breaking it, not the remedy. Those read as helpful and are the same
-failure as a leaked step — an agent that has the argument and the remedy has been
-given the skill, and loads the body to confirm what it already believes, if at all.
-
-The recognisable terms stay, because those are triggers: a `variant` named after a
-screen is what the work looks like. Why that costs the reader anything is the body's
-to say; only the first fires.
-
-## 3. Wording that works
-
-### 3.1 Give the line force
-
-Where section 1.1 puts the stance first, the form is `Forces the X that Y.` — one
-clause, pitched so that it says what the skill makes you do and still leaves the
-reader unable to do it.
 
 ### 3.2 State when it must not fire
 
@@ -140,10 +161,10 @@ An unbounded when fires on everything near it, so close the description with
 `DO NOT use this skill when …` and the condition that rules it out: the artifacts
 this skill is mistaken for, the cases that look like its own and are not.
 
-It is one sentence with the `when` of section 1.1, negated — the same grammar, so
-read them together and the pair is the whole condition of use. A `DO NOT` that drifts
-into a different shape (`DO NOT use for …`, a bare list) stops reading as the other
-half of the trigger and starts reading as trivia.
+It is the description's own `when`, negated — the same grammar, so read the pair
+together and it is the whole condition of use. A `DO NOT` that drifts into a
+different shape (`DO NOT use for …`, a bare list) stops reading as the other half of
+the trigger and starts reading as trivia.
 
 A `DO NOT` also closes off what the skill will not **produce**, where that is what it
 gets reached for by mistake — `DO NOT use this skill when what is wanted is a verdict
@@ -160,11 +181,10 @@ term the code already uses. So seed the description with the **leading word** �
 term that shows up when this skill is needed, whatever produces it — and put it near
 the start, where it does its invocation work.
 
-Where section 1.1 leads with the when, that is the same position and one clause
-carries both: the words the work supplies are the words that say on what occasion the
-skill applies. Where it leads with `Forces` instead, there was no such word to share
-— which is what put the stance first — and the leading word waits for the when a
-sentence later.
+Where the when leads, that is the same position and one clause carries both: the
+words the work supplies are the words that say on what occasion the skill applies.
+Where the stance leads, there was no such word to share — which is what put the
+stance first — and the leading word waits for the when a sentence later.
 
 - **Form**: a leading word inside a natural sentence. Not a slash-separated tag list
   (`Skill / SKILL.md / description —`), and not a full request sentence dressed up
@@ -173,30 +193,15 @@ sentence later.
   prompts, docs, and code — not invented labels that merely *sound* like keywords.
 - **One trigger per branch**: name each distinct situation once; synonyms that
   rename the same branch are duplication.
-- **Language of the trigger**: the description is English (section 1.3), so the
-  shared word has to be one that survives into whatever the agent is reading,
-  whichever language that is in — a file name, a tool name, a proper noun, a term of
-  art you type as-is (`SKILL.md`, `issue`, `PR`, `description`). A skill that never
-  leaves a single-language team may *additionally* embed the phrases that team really
-  types, as quoted examples inside the English sentence. A skill you publish must
-  not: it cannot know which language its users prompt in, and a second-language
-  keyword list only bloats the description and drifts out of sync. That is why none
-  of the descriptions in this plugin carry one.
-
-#### When the skill has to be on for a whole activity
-
-Some skills are not reached by a word at all. A rule that has to hold while someone
-writes code, or writes anything another person acts on, is needed most exactly when
-the work never names it — there is no leading word to share, because the work is a
-diff and a file, not a request. Name the **activity** as the `when` instead, in the
-verbs the work is done in ("writing, revising, reviewing, or designing code"). This
-is the case that leads with `Forces`, and the bound of section 3.2 is doing the most
-work here: an activity named as the `when` reaches everything inside that activity
-until the `DO NOT` stops it.
-
-That gets the skill in once. Keeping it in for the rest of the activity is the
-body's job, and the body cannot do it unless it says so — see
-[`structuring-skills.md`](structuring-skills.md#staying-in-force).
+- **Language of the trigger**: the description is English, so the shared word has to
+  be one that survives into whatever the agent is reading, whichever language that is
+  in — a file name, a tool name, a proper noun, a term of art you type as-is
+  (`SKILL.md`, `issue`, `PR`, `description`). A skill that never leaves a
+  single-language team may *additionally* embed the phrases that team really types,
+  as quoted examples inside the English sentence. A skill you publish must not: it
+  cannot know which language its users prompt in, and a second-language keyword list
+  only bloats the description and drifts out of sync. That is why none of the
+  descriptions in this plugin carry one.
 
 ### 3.4 Bad → Good
 
