@@ -47,11 +47,10 @@ Everything under "Writing the description" follows from this one fact.
 **Description** (details + Bad/Good examples:
 [`references/writing-descriptions.md`](references/writing-descriptions.md)):
 
-1. **Must do: third person, what, when, English.** Whatever the skill's shape forces
-   elsewhere, those four hold — they are all the agent gets to decide on. Say what
-   the skill does in one clause, and name the occasion as the skill's own:
-   `Use this skill when …`, not a bare `Apply when …`, which leaves open whether the
-   sentence describes the work or instructs the reader.
+1. **Must do: imperative, intent, when, English, short.** `Use this skill when …` —
+   third person only where leaving the subject out would make the sentence read as a
+   description of the work. Show in one clause what the skill's author wanted
+   enforced, name the occasion, and keep the whole inside 1024 characters.
 2. **Must not: procedure, criteria, or a name from elsewhere.** Steps let the agent
    act without the body; the criteria the skill applies do the same one level up. A
    sibling skill's name, a file, whoever calls this one: a concrete name reads as a
