@@ -1,11 +1,11 @@
 ---
 name: write-nice-issue-description
 description: >
-  このスキルは、GitHub issue 本文を書く、または改稿するときに使う —「issue を書いて」「この issue の下書きを
-  整えて」「この既存の issue を読めるようにして」— タスクを複数の issue に分解するときも同じ。DO NOT PR
-  レビューの指摘には使わない（それは write-nice-instructions）。永続ドキュメント一般の rationale と
-  process の切り分け（それは avoid-unverifiable-context）、およびすでに書かれた issue の監査
-  （それは review-nice-issues）にも使わない。
+  このスキルは、GitHub issue 本文を書く、または改稿するときに使う —「issue を書いて」「この issue の
+  下書きを整えて」「この既存の issue を読めるようにして」— タスクを複数の issue に分解するときも同じ。
+  DO NOT 成果物が PR レビューの指摘であるとき、問題が永続ドキュメント一般の rationale と process の
+  切り分けであるとき、あるいはその issue がすでに書かれていて求められているのがその監査であるときは、
+  このスキルを使わない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

@@ -2,9 +2,8 @@
 name: write-nice-readme
 description: >
   このスキルは、README を書く、または改稿するときに使う。すでにある README に節を足すときも同じ。
-  DO NOT アーキテクチャドキュメントには使わない（それは write-nice-architecture-docs）。`SKILL.md`
-  （それは write-nice-skills）、issue 本文（それは write-nice-issue-description）、およびリファレンス、
-  チュートリアル、変更履歴にも使わない。
+  DO NOT 成果物がアーキテクチャドキュメント、`SKILL.md`、issue 本文、リファレンス、チュートリアル、
+  変更履歴であるときは、このスキルを使わない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

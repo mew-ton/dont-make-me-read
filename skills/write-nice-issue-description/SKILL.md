@@ -3,9 +3,9 @@ name: write-nice-issue-description
 description: >
   Use this skill when writing or revising a GitHub issue body — "write an issue", "polish this
   issue draft", "make this existing issue readable" — or when breaking a task down into several
-  issues. DO NOT use for a PR review finding (that is write-nice-instructions), for a persistent
-  doc's general rationale-vs-process rule (that is avoid-unverifiable-context), or for auditing an
-  issue that is already written (that is review-nice-issues).
+  issues. DO NOT use this skill when the artifact is a PR review finding, when the question is a
+  persistent doc's general rationale-vs-process rule, or when the issue is already written and
+  what is wanted is an audit of it.
 user-invocable: false
 disable-model-invocation: false
 context: fork

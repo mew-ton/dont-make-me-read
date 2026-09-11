@@ -5,9 +5,9 @@ description: >
   can still trace, never the conversation that produced it, the review feedback, the discarded
   alternatives, or a past state the current code no longer shows. Use this skill when writing an
   issue, a PR description, a code comment, an API or design doc, or any text or code that will be
-  read later. DO NOT use for a reference the reader genuinely can reach but should not have been
-  sent to (that is avoid-reference-detours), for an issue body's sections and criteria (that is
-  write-nice-issue-description), or for ephemeral chat replies and working notes.
+  read later. DO NOT use this skill when the reader genuinely can reach the reference but should
+  not have been sent to it, when the question is an issue body's sections and criteria, or when
+  the text is an ephemeral chat reply or a working note.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

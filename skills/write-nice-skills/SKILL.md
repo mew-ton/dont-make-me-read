@@ -4,7 +4,7 @@ description: >
   Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its description and
   frontmatter — how to write a skill's description and body so it fires reliably and stays lean.
   Also applies when another skill needs the description-writing or skill-length rules. DO NOT use
-  for non-skill documentation, or to run a general repo review pass.
+  this skill when the documentation is not a skill's, or to run a general repo review pass.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -47,30 +47,26 @@ Everything under "Writing the description" follows from this one fact.
 **Description** (details + Bad/Good examples:
 [`references/writing-descriptions.md`](references/writing-descriptions.md)):
 
-1. **The first line carries whichever the agent cannot infer.** Does the work name
-   the artifact — an issue, a README, a `SKILL.md`? Lead with the when. Does it not,
-   because the rule has to hold while someone writes code or a comment? An occasion
-   nobody names is one the agent forgets, so lead with what the skill forces:
-   `Forces the X that Y.` Either way name it as the skill's own occasion
-   (`Use this skill when …`, not a bare `Apply when …`), and let the last line say
-   when it does not apply (`DO NOT use for …`) — an unbounded when fires on
-   everything near it.
-2. **No procedure.** Never put step-by-step instructions in the description, nor the
-   criteria the skill applies; both live in the body. An agent handed the standard
-   has no reason to load what qualifies it.
-3. **Front-load the leading word.** Put the term that shows up when this skill is
-   needed near the start — the shared word between the description and whatever the
-   agent is working from is what links them and fires the skill. That is a prompt
-   when a person asks; for a skill hidden from the `/` menu it is the work itself.
-   Not a slash-separated tag list, not a dressed-up request sentence: a leading word
-   inside a natural sentence. Where rule 1 leads with the when, that is the same
-   position and one clause carries both; where it leads with `Forces`, there was no
-   shared word to front-load and the leading word waits for the when. One trigger per
-   branch (no synonym padding); cut the identity the body carries — the argument, the
-   cost, the remedy — and keep only the terms the work itself supplies.
-4. **English.** Write the description in English, whichever language you prompt in,
-   and do not pad it with a second-language keyword list. What the skill *tells the
-   agent to write* is a separate question each writing skill answers for itself.
+1. **Must do: third person, what, when, English.** Whatever the skill's shape forces
+   elsewhere, those four hold — they are all the agent has to decide on. The first
+   line carries whichever of *what* and *when* it cannot infer: lead with the when
+   where the work names the artifact (an issue, a README, a `SKILL.md`), and with
+   `Forces the X that Y.` where nothing in the work names the occasion, because an
+   occasion nobody names is one the agent forgets. Say `Use this skill when …`, not a
+   bare `Apply when …`.
+2. **Must not: procedure, criteria, or a name from elsewhere.** Steps let the agent
+   act without the body; the criteria the skill applies do the same one level up. A
+   sibling skill's name, a file, whoever calls this one: a concrete name reads as a
+   routing table and stops the agent asking whether *this* artifact is the skill's,
+   and it is spent again on the day it is renamed. Name the artifact, not the skill
+   that owns it.
+3. **Wording that works.** Close with `DO NOT use this skill when …` — the same
+   grammar as the `when`, negated, so the pair reads as one condition of use; an
+   unbounded when fires on everything near it. Front-load the leading word, the term
+   the work itself supplies. One trigger per branch, no synonym padding.
+4. **Leave the body's identity in the body.** Not the argument for the rule, not the
+   cost of breaking it, not the remedy — an agent handed those has been handed the
+   skill. The recognisable terms stay: those are what fires.
 
 **Body** (details + criteria:
 [`references/structuring-skills.md`](references/structuring-skills.md)):
@@ -89,9 +85,7 @@ Everything under "Writing the description" follows from this one fact.
    its own category, who calls it, or where it sits — the frontmatter and the
    callers establish all of that, and a sentence saying it changes nothing the
    skill does. It also makes the skill wrong the day a caller is renamed. The
-   sibling named inside a `DO NOT` is the one exception: it is bounding this skill's
-   own trigger, not recording its position, and it pays for the rename risk by
-   stopping a fire that would otherwise land here.
+   description is held to this too, by principle 2.
 
 Terms used above (leading word, trigger, branch, progressive disclosure, context
 pointer) are defined in [`GLOSSARY.md`](GLOSSARY.md).
@@ -106,6 +100,7 @@ The agent will look for reasons to skip this skill. Close them off:
 | "I'll put the steps in the description so it's self-explanatory." | Then the agent acts from the description and never loads the body — the steps you wrote get skipped. Keep procedure in the body. |
 | "The description should explain why the rule matters, or nobody will take it seriously." | The argument, the cost and the remedy are the skill. Put them where they are read before the body loads and the agent has been given the skill already — it acts on the summary and confirms nothing. Keep the terms the work supplies; move the reasoning down. |
 | "Stating when *not* to use it is negative and wastes budget." | A `when` with no bound fires on every neighbouring artifact, and each wrong fire costs the whole body. The `DO NOT` is the cheaper half of the condition. |
+| "Naming the sibling that owns the other artifact helps the agent route." | It stops the agent asking whether *this* artifact is yours, which is the question the bound exists for, and it comes due again the day that skill is renamed. Name the artifact you are ruling out; a skill is reached by its own description or not at all. |
 | "One file is simpler than splitting." | A bloated `SKILL.md` is loaded *every* time the skill fires and drags the whole context. Push branch-only detail behind a pointer. |
 | "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. Cut to the budget as you write. |
 | "This description reads well to me." | You are not the trigger. Check it against the words a *user* types, not against your own summary. |

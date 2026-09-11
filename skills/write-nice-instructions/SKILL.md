@@ -3,10 +3,9 @@ name: write-nice-instructions
 description: >
   Use this skill when drafting or revising a PR review finding, a review comment, or a code-review
   remark — instruction text a person will read and act on — and especially when you wrote it
-  yourself and it reads fine to you. DO NOT use for a GitHub issue body (that is
-  write-nice-issue-description), for a skill's description or size budget (that is
-  write-nice-skills), or for deciding which background context a persistent document carries (that
-  is avoid-unverifiable-context).
+  yourself and it reads fine to you. DO NOT use this skill when the artifact is a GitHub issue
+  body or a skill's description and size budget, or when the question is which background context
+  a persistent document carries.
 user-invocable: false
 disable-model-invocation: false
 context: fork
