@@ -5,12 +5,38 @@ The `description` is the only text loaded when the agent decides whether to fire
 skill, so it must be judge-able on its own and must not leak the procedure. Four
 rules, a size limit, then one rule for the fields around it.
 
-## 1. Third person, what + when
+## 1. The first line says when it applies
 
 Write in the third person and cover both **what the skill does** and **when to
-apply it**, so the agent can decide from the description alone. Add a reach clause
-("also applies when another skill needs …") only when another skill genuinely
-depends on this one.
+apply it**, so the agent can decide from the description alone. The **first line
+carries the when**: it is the line the agent weighs first, and for most skills it is
+the only one that decides the question.
+
+Spell the condition out there whenever applicability is not obvious — whenever
+either of these is true:
+
+- **The occasion is not self-evident.** A rule that has to hold while someone writes
+  code is needed most exactly when the work never names it, so nothing in the work
+  asks for it. Name the activity instead, in the verbs the work is done in.
+- **The occasion does not follow from what the skill is for.** `avoid-caller-knowledge`
+  sounds like a refactoring rule and also governs reviewing and designing; the reader
+  cannot get that from the purpose, so the first line says it.
+
+Where the name and the purpose already settle it — a skill for READMEs, applied when
+writing a README — the when is a short clause and nothing more is owed.
+
+**The last line says when it does not apply.** An unbounded when fires on everything
+near it, so close it with a `DO NOT use for …`: the artifacts this skill is mistaken
+for, and where relevant the sibling that owns each one (`DO NOT use for a SKILL.md
+(that is write-nice-skills)`). Naming the sibling costs an edit the day it is
+renamed; firing on every neighbouring artifact costs more.
+
+A `DO NOT` also closes off what the skill will not produce, where that is what it
+gets reached for by mistake — `DO NOT expect a verdict on whether a dependency is
+worth keeping`. That is still a condition of use, not a description of the output.
+
+Add a reach clause ("also applies when another skill needs …") only when another
+skill genuinely depends on this one.
 
 ## 2. No procedure in the description
 
@@ -23,8 +49,16 @@ so the instructions the skill exists to deliver are skipped. State *what* and
 review, or from the `/x` command" reads like context and is not: it tells the agent
 how this skill gets used, which is exactly the kind of line that makes the body look
 optional. Name the callers and the hand-offs in the body, where the steps that
-depend on them live. The reach clause in rule 1 is the one thing that stays — it
-says *when* this skill applies, never who runs it or in what order.
+depend on them live. Two things in rule 1 stay, because both are conditions of use
+rather than order of use: the reach clause, and the sibling named inside a `DO NOT`.
+Neither says who runs this skill — "that is the caller's job" does, so it goes to the
+body.
+
+**The criteria the skill applies are procedure too.** A description that lists what
+the skill checks for — "a determinable problem, checkable acceptance criteria, and an
+out-of-scope boundary" — hands the agent the standard, and an agent holding the
+standard has no reason to load the body that qualifies it. Say what the skill is a
+pass over; keep what it passes on in the body.
 
 ## 3. Front-load the leading word
 
@@ -34,7 +68,9 @@ is working from. Sometimes that is a prompt. Often it is not: a skill hidden fro
 the ones in the work itself — the file being edited, the artifact being written, the
 term the code already uses. So seed the description with the **leading word** — the
 term that shows up when this skill is needed, whatever produces it — and put it near
-the start, where it does its invocation work.
+the start, where it does its invocation work. That is the same place rule 1 puts the
+`when`, and not a coincidence: the words the work supplies are the words that say on
+what occasion the skill applies, so the first line carries both.
 
 - **Form**: a leading word inside a natural sentence. Not a slash-separated tag list
   (`Skill / SKILL.md / description —`), and not a full request sentence dressed up
@@ -52,8 +88,14 @@ the start, where it does its invocation work.
   cannot know which language its users prompt in, and a second-language keyword list
   only bloats the description and drifts out of sync. That is why none of the
   descriptions in this plugin carry one.
-- **Cut body identity**: keep the description to triggers plus a reach clause;
-  anything the body already explains does not belong here.
+- **Cut body identity**: keep the description to the when, the bound, and a reach
+  clause. Anything the body already explains does not belong here — not the argument
+  for the rule, not the cost of breaking it, not the remedy. Those read as helpful
+  and are the same failure as a leaked step: an agent that has the argument and the
+  remedy has been given the skill, and loads the body to confirm what it already
+  believes, if at all. The recognisable terms stay, because those are triggers: a
+  `variant` named after a screen is what the work looks like, while "reading it means
+  holding every caller" is why that matters, and only the first fires anything.
 
 ### When the skill has to be on for a whole activity
 
@@ -61,9 +103,10 @@ Some skills are not reached by a word at all. A rule that has to hold while some
 writes code, or writes anything another person acts on, is needed most exactly when
 the work never names it — there is no leading word to share, because the work is a
 diff and a file, not a request. Name the **activity** as the `when` instead, in the
-verbs the work is done in ("writing, revising, reviewing, or designing code"), and
-bound it with what it is not ("DO NOT use for non-coding requests"): the bound is
-what stops an activity trigger from firing on everything.
+verbs the work is done in ("writing, revising, reviewing, or designing code"). This
+is the first of rule 1's two cases, and the bound it asks for is doing the most work
+here: an activity named as the `when` reaches everything inside that activity until
+the `DO NOT` stops it.
 
 That gets the skill in once. Keeping it in for the rest of the activity is the
 body's job, and the body cannot do it unless it says so — see
@@ -78,12 +121,13 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-**Good** — leading word first, what + when, no steps:
+**Good** — when first, carrying the leading word; what in one clause; bounded; no
+steps:
 
 ```text
-SKILL.md authoring — write a skill's description and body so it fires reliably
-and stays lean. Use when writing, editing, or reviewing a skill, a SKILL.md, or
-its description.
+Use when writing, editing, or reviewing a skill, a SKILL.md, or its description
+and frontmatter — how to write a skill's description and body so it fires
+reliably and stays lean. DO NOT use for non-skill documentation.
 ```
 
 ## 4. English

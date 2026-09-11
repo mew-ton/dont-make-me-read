@@ -1,13 +1,10 @@
 ---
 name: write-nice-readme
 description: >
-  README は、そのプロジェクトを使うとまだ決めていない者に読まれる。だから何かを説明する前に、これが
-  自分のためのものかと、最初の一歩は何かを決着させねばならない。そしてこのファイルは、ツリーの中で最も
-  速く古びる — 他のすべてを記述しているのがこれだからである。README を書く、または改稿するときに適用する。
-  すでにある README に節を足すときも同じ。DO NOT アーキテクチャドキュメントには使わない
-  （それは write-nice-architecture-docs）。`SKILL.md`（write-nice-skills）、issue 本文
-  （write-nice-issue-description）、およびリファレンス、チュートリアル、変更履歴にも使わない —
-  それらは、すでに決めた者に読まれる。
+  README を書く、または改稿するときに適用する。すでにある README に節を足すときも同じ。
+  DO NOT アーキテクチャドキュメントには使わない（それは write-nice-architecture-docs）。`SKILL.md`
+  （それは write-nice-skills）、issue 本文（それは write-nice-issue-description）、およびリファレンス、
+  チュートリアル、変更履歴にも使わない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

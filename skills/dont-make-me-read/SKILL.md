@@ -1,14 +1,11 @@
 ---
 name: dont-make-me-read
 description: >
-  Anything someone else has to read before they can act costs them the range they have to hold in
-  order to understand it, and the writer cannot feel that range — you read your own draft while
-  supplying what it is missing, so it reads small to you and only to you. Use while writing or
-  revising anything another person or an agent reads in order to act: drafting, documenting,
-  commenting, specifying, explaining, reviewing, or writing the code itself. It stays in force for
-  the rest of that work. DO NOT use it in place of the rules that own the artifact in hand — it
-  carries no template, no budget, and no section list — or for ephemeral chat replies, scratchpads,
-  and working notes nobody acts on later.
+  Use while writing or revising anything another person or an agent reads in order to act:
+  drafting, documenting, commenting, specifying, explaining, reviewing, or writing the code itself.
+  It stays in force for the rest of that work. DO NOT use it in place of the rules that own the
+  artifact in hand — it carries no template, no budget, and no section list — or for ephemeral chat
+  replies, scratchpads, and working notes nobody acts on later.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

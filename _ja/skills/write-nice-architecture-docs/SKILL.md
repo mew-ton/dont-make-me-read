@@ -1,12 +1,10 @@
 ---
 name: write-nice-architecture-docs
 description: >
-  アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — は、貢献者に俯瞰・コードマップ・
-  不変条件を与える。しかも、そのドキュメントが見たことのないものを彼らが置けるように書かれた形で。
-  それを書く／改稿するときに適用する。また、コードを読んで今下した判断を、次の貢献者がもう一度下す
-  ことになるときにも。DO NOT GitHub issue 本文には使わない（それは write-nice-issue-description）。
-  SKILL.md にも使わない（それは write-nice-skills）。変更履歴、コードの案内、誰がいつ何を決めたかの
-  記録にも使わない。
+  アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書く、または改稿するときに適用する。
+  コードを読んで今しがた下した判断が、次の貢献者も下し直すことになるものであるときにも適用する。
+  DO NOT GitHub issue 本文には使わない（それは write-nice-issue-description）。`SKILL.md`
+  （それは write-nice-skills）、および変更履歴、コードの案内、誰がいつ何を決めたかの記録にも使わない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

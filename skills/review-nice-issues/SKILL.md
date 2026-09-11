@@ -1,13 +1,10 @@
 ---
 name: review-nice-issues
 description: >
-  Determinacy-and-duplication pass over a GitHub issue body: checks whether an implementer could
-  act on it without asking for anything more — a determinable problem, checkable acceptance
-  criteria, a clear out-of-scope boundary, no implementation method smuggled in, and no content
-  duplicated across sections. Apply to an issue body that is already written — someone else's, or
-  a draft of your own. DO NOT use it as a general-purpose "review this issue" entry point, and do
-  not expect it to judge repo-groundedness or dependency closure — that is the caller's job, not
-  this skill's.
+  Apply to a GitHub issue body that is already written — someone else's, or a draft of your own —
+  for a determinacy-and-duplication pass over its text. DO NOT use it as a general-purpose "review
+  this issue" entry point, to write or revise an issue (that is write-nice-issue-description), or to
+  judge repo-groundedness, dependency closure, or scope.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

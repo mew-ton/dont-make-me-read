@@ -1,12 +1,10 @@
 ---
 name: write-nice-skills
 description: >
-  SKILL.md authoring — how to write a skill's description and body so it fires
-  reliably and stays lean. Use when writing, editing, or reviewing a skill, a
-  SKILL.md, or its description and frontmatter.
-  Also applies when another skill needs the description-writing or skill-length
-  rules. DO NOT use for non-skill documentation, or to run a general repo
-  review pass.
+  Use when writing, editing, or reviewing a skill, a SKILL.md, or its description and frontmatter —
+  how to write a skill's description and body so it fires reliably and stays lean. Also applies when
+  another skill needs the description-writing or skill-length rules. DO NOT use for non-skill
+  documentation, or to run a general repo review pass.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -48,18 +46,23 @@ Everything under "Writing the description" follows from this one fact.
 **Description** (details + Bad/Good examples:
 [`references/writing-descriptions.md`](references/writing-descriptions.md)):
 
-1. **Third person, what + when.** State what the skill does and when to apply it,
-   so it can be judged from the description alone.
-2. **No procedure.** Never put step-by-step instructions in the description; steps
-   live in the body.
+1. **The first line says when it applies.** It is the line the agent weighs first,
+   so put the occasion there — spelled out whenever it is not self-evident, or does
+   not follow from what the skill is for. The last line says when it does not
+   (`DO NOT use for …`), because an unbounded when fires on everything near it.
+2. **No procedure.** Never put step-by-step instructions in the description, nor the
+   criteria the skill applies; both live in the body. An agent handed the standard
+   has no reason to load what qualifies it.
 3. **Front-load the leading word.** Put the term that shows up when this skill is
    needed near the start — the shared word between the description and whatever the
    agent is working from is what links them and fires the skill. That is a prompt
    when a person asks; for a skill hidden from the `/` menu it is the work itself.
    Not a slash-separated tag list, not a dressed-up request sentence: a leading word
-   inside a natural sentence. One trigger per branch (no synonym padding); cut
-   identity the body already carries. A skill that has to be on for a whole activity
-   has no word to share — name the activity, and bound it with what it is not.
+   inside a natural sentence. That is where rule 1 already puts the `when`, so the
+   first line carries both. One trigger per branch (no synonym padding); cut the
+   identity the body carries — the argument, the cost, the remedy — and keep only the
+   terms the work itself supplies. A skill that has to be on for a whole activity has
+   no word to share: name the activity.
 4. **English.** Write the description in English, whichever language you prompt in,
    and do not pad it with a second-language keyword list. What the skill *tells the
    agent to write* is a separate question each writing skill answers for itself.
@@ -80,7 +83,10 @@ Everything under "Writing the description" follows from this one fact.
 8. **Leave out what the structure already settles.** A skill does not need to know
    its own category, who calls it, or where it sits — the frontmatter and the
    callers establish all of that, and a sentence saying it changes nothing the
-   skill does. It also makes the skill wrong the day a caller is renamed.
+   skill does. It also makes the skill wrong the day a caller is renamed. The
+   sibling named inside a `DO NOT` is the one exception: it is bounding this skill's
+   own trigger, not recording its position, and it pays for the rename risk by
+   stopping a fire that would otherwise land here.
 
 Terms used above (leading word, trigger, branch, progressive disclosure, context
 pointer) are defined in [`GLOSSARY.md`](GLOSSARY.md).
@@ -93,6 +99,8 @@ The agent will look for reasons to skip this skill. Close them off:
 |---|---|
 | "A shorter description fires more reliably." | It fires on a *shared word*, not on brevity. With no leading word the prompt shares, it never links — length is not the lever. |
 | "I'll put the steps in the description so it's self-explanatory." | Then the agent acts from the description and never loads the body — the steps you wrote get skipped. Keep procedure in the body. |
+| "The description should explain why the rule matters, or nobody will take it seriously." | The argument, the cost and the remedy are the skill. Put them where they are read before the body loads and the agent has been given the skill already — it acts on the summary and confirms nothing. Keep the terms the work supplies; move the reasoning down. |
+| "Stating when *not* to use it is negative and wastes budget." | A `when` with no bound fires on every neighbouring artifact, and each wrong fire costs the whole body. The `DO NOT` is the cheaper half of the condition. |
 | "One file is simpler than splitting." | A bloated `SKILL.md` is loaded *every* time the skill fires and drags the whole context. Push branch-only detail behind a pointer. |
 | "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. Cut to the budget as you write. |
 | "This description reads well to me." | You are not the trigger. Check it against the words a *user* types, not against your own summary. |

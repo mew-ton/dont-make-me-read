@@ -1,21 +1,22 @@
 ---
 name: avoid-reference-detours
 description: >
-  A reference the reader can genuinely open is still a defect when following it was never optional
-  — a doc comment that says "the format rules at the top of this file", a note that says "same as
-  the config", a section that defers to another section of the same document. Restate what this
-  reader needs at the point they need it, and leave the original where it is: the round trip is
-  what costs them, not the fact. Apply when writing a code comment, a docstring, a PR description,
-  or any text that points elsewhere to be understood. DO NOT use when the target does not exist or
-  cannot be reached at all (that is avoid-unverifiable-context), for the same content repeated
-  twice inside one document (that is write-nice-issue-description's Gate 2), or for a module that
-  knows which caller invoked it (that is avoid-caller-knowledge).
+  Apply when writing a code comment, a docstring, a PR description, or any text that points
+  elsewhere to be understood — "the format rules at the top of this file", "same as the config", a
+  section that defers to another section of the same document. DO NOT use when the target does not
+  exist or cannot be reached at all (that is avoid-unverifiable-context), for the same content
+  repeated twice inside one document (that is write-nice-issue-description's Gate 2), or for a
+  module that knows which caller invoked it (that is avoid-caller-knowledge).
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []
 ---
 
 ## Scope
+
+A reference the reader can genuinely open is still a defect when following it was never optional.
+Restate what this reader needs at the point they need it, and leave the original where it is: the
+round trip is what costs them, not the fact.
 
 Reachability is not the whole test. A pointer can be completely valid — the file really does carry
 that rule at the top, the config really does say that — and still be the wrong thing to write,

@@ -1,12 +1,10 @@
 ---
 name: review-self-contained-docs
 description: >
-  Text-self-containment pass over a pull request's description and every code comment it adds or
-  changes: checks each one for a reader with none of the writer's context — no conversation, no
-  issue, no surrounding diff — against three conditions: time-closure, referenceability,
-  reference-scope closure. Apply to text that is already written — a PR under review, or a draft
-  of your own. DO NOT use it as a general-purpose "review this PR" entry point, and do not expect
-  it to judge issue conformance, scope, or design — that is the caller's job, not this skill's.
+  Apply to text that is already written — a pull request's description and every code comment its
+  diff adds or changes, or a draft of your own — for a self-containment pass against a reader with
+  none of the writer's context: no conversation, no issue, no surrounding diff. DO NOT use it as a
+  general-purpose "review this PR" entry point, or to judge issue conformance, scope, or design.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools:

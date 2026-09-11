@@ -1,12 +1,10 @@
 ---
 name: review-self-contained-docs
 description: >
-  プルリクエストの説明文と、それが追加または変更するすべてのコードコメントに対する、テキスト自己完結性の
-  パス：書き手の文脈を一切持たない読み手 — 会話なし、issue なし、周囲の差分なし — にとってどうかを、
-  三つの条件（time-closure、referenceability、reference-scope closure）に照らして一つずつ確認する。
-  すでに書かれたテキストに適用する — レビュー中のPRでも、自分の下書きでも。DO NOT 汎用の
-  「このPRをレビューして」の入口として使わない。issue への適合、スコープ、設計を判断することを
-  期待しない — それは呼び出し元の仕事であって、このスキルのものではない。
+  すでに書かれたテキスト — プルリクエストの説明と、その差分が追加または変更するすべてのコードコメント、
+  あるいは自分の下書き — に対し、書き手の文脈を何も持たない読み手を基準とした self-containment のパスとして
+  適用する：会話もなく、issue もなく、周囲の差分もない読み手。DO NOT 汎用の「この PR をレビューして」の
+  入口としては使わない。issue への適合、スコープ、設計を判定するのにも使わない。
 user-invocable: false
 disable-model-invocation: false
 allowed-tools:

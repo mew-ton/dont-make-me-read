@@ -1,12 +1,11 @@
 ---
 name: write-nice-issue-description
 description: >
-  実装者がこれ以上何も訊かずに行動できる GitHub issue 本文を書く。確定できる問題、チェック可能な
-  受け入れ基準、スコープ外の境界を備え、実装方法が紛れ込んでおらず、セクション間で内容が重複して
-  いないもの。issue 本文を書く／改稿するときに適用する — 「issue を書いて」「この issue の下書きを
-  整えて」「この既存 issue を読めるようにして」 — あるいはタスクを複数の issue に分解するとき。
-  DO NOT PRレビュー指摘には使わない。残り続けるドキュメント一般の「根拠 vs プロセス」ルールにも
-  使わない。すでに書かれた issue を同じ条件で監査するのにも使わない。
+  GitHub issue 本文を書く、または改稿するときに適用する —「issue を書いて」「この issue の下書きを
+  整えて」「この既存の issue を読めるようにして」— タスクを複数の issue に分解するときも同じ。DO NOT PR
+  レビューの指摘には使わない（それは write-nice-instructions）。永続ドキュメント一般の rationale と
+  process の切り分け（それは avoid-unverifiable-context）、およびすでに書かれた issue の監査
+  （それは review-nice-issues）にも使わない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

@@ -1,14 +1,12 @@
 ---
 name: avoid-caller-knowledge
 description: >
-  A module that branches on which caller invoked it is holding its callers' knowledge — a shared
-  fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag, a component with a
-  `variant` named after the screen it appears on. Reading it means holding every caller, and it is
-  edited again each time one is added. Take the knowledge out instead: the caller passes what
-  differs, named in the domain's own vocabulary. Use on any coding task — writing, refactoring,
-  extracting, reviewing, or designing a function, a module, a component, or the interface between
-  them. DO NOT use for prose or a comment that sends the reader elsewhere to be understood (that
-  is avoid-reference-detours), or for a branch on genuine domain data.
+  Use on any coding task — writing, refactoring, extracting, reviewing, or designing a function, a
+  module, a component, or the interface between them — where a callee branches on which caller
+  invoked it: a shared fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag,
+  a component with a `variant` named after the screen it appears on. DO NOT use for prose or a
+  comment that sends the reader elsewhere to be understood (that is avoid-reference-detours), or for
+  a branch on genuine domain data.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

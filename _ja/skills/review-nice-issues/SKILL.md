@@ -1,12 +1,10 @@
 ---
 name: review-nice-issues
 description: >
-  GitHub issue 本文に対する確定性・重複のパス：実装者がこれ以上何も訊かずに行動できるかを確認する —
-  確定できる問題、チェック可能な受け入れ基準、明確なスコープ外の境界、実装方法が紛れ込んでいないこと、
-  セクション間で内容が重複していないこと。すでに書かれた issue 本文に適用する — 他人のものでも、
-  自分の下書きでも。DO NOT 汎用の「この issue をレビューして」の入口として使わない。リポジトリ
-  接地性や依存の閉包を判断することを期待しない — それは呼び出し元の仕事であって、このスキルの
-  ものではない。
+  すでに書かれた GitHub issue 本文 — 他人のものでも、自分の下書きでも — に対し、その文面への
+  determinacy と duplication のパスとして適用する。DO NOT 汎用の「この issue をレビューして」の入口としては
+  使わない。issue を書く・改稿する（それは write-nice-issue-description）、リポジトリへの接地、依存の閉包、
+  スコープを判定するのにも使わない。
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

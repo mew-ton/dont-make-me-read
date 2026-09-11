@@ -1,12 +1,11 @@
 ---
 name: write-nice-instructions
 description: >
-  人が読んで行動することになる指示テキスト — PRレビュー指摘 — は、一つの固定された形を、指摘1つに
-  つき1回適用し、その対処をどれだけ強く言い切るかについて一つの判断を下す。PRレビュー指摘、レビュー
-  コメント、コードレビューの所見を起草または改稿するときに適用する — とりわけ、自分で書いていて自分に
-  は問題なく読めるときに。DO NOT GitHub issue 本文には使わない（それは write-nice-issue-description）。
-  スキルの description やサイズ予算にも使わない（それは write-nice-skills）。残り続ける文書がどの
-  背景文脈を担うかを決めるのにも使わない（それは avoid-unverifiable-context）。
+  PR レビューの指摘、レビューコメント、コードレビューの所見 — 人間が読んで行動する指示テキスト — を
+  起草または改稿するときに適用する。とりわけ、自分で書いて自分には十分に読めるときに。DO NOT GitHub issue
+  本文には使わない（それは write-nice-issue-description）。スキルの description やサイズ予算
+  （それは write-nice-skills）、および永続ドキュメントがどの背景文脈を担うかの判断
+  （それは avoid-unverifiable-context）にも使わない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

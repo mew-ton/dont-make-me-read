@@ -1,13 +1,11 @@
 ---
 name: write-nice-issue-description
 description: >
-  Write a GitHub issue body that an implementer can act on without needing to ask for anything
-  more: a determinable problem, checkable acceptance criteria, and an out-of-scope boundary, with
-  no implementation method smuggled in and no content duplicated across sections. Apply when
-  writing or revising an issue body — "write an issue", "polish this issue draft", "make this
-  existing issue readable" — or when breaking a task down into several issues. DO
-  NOT use for a PR review finding, for a persistent doc's general rationale-vs-process rule, or for
-  auditing an issue that is already written against these same conditions.
+  Apply when writing or revising a GitHub issue body — "write an issue", "polish this issue draft",
+  "make this existing issue readable" — or when breaking a task down into several issues. DO NOT use
+  for a PR review finding (that is write-nice-instructions), for a persistent doc's general
+  rationale-vs-process rule (that is avoid-unverifiable-context), or for auditing an issue that is
+  already written (that is review-nice-issues).
 user-invocable: false
 disable-model-invocation: false
 context: fork

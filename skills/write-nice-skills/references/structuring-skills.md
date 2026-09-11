@@ -21,8 +21,6 @@ of theirs. Measure the set, not the file you happen to be editing.
 
 - What the body points at sits **one level deep**. Do not nest a reference inside a
   reference: the second hop is one the reader did not agree to.
-- What the body points at sits **one level deep**. Do not nest a reference inside a
-  reference: the second hop is one the reader did not agree to.
 - A supporting file is found by being referenced from `SKILL.md`, so its name and
   whether it sits in a directory at all are yours to pick. `references/`, `rules/`,
   `scripts/` and `assets/` are conventions borrowed from example layouts, not

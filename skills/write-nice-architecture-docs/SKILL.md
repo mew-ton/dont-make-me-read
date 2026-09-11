@@ -1,12 +1,11 @@
 ---
 name: write-nice-architecture-docs
 description: >
-  An architecture doc — ARCHITECTURE.md, an ADR, a decision record — gives a contributor the
-  bird's eye view, the codemap, and the invariants, written so they can also place something the
-  doc has never seen. Apply when writing or revising one, and when a decision you just made by
-  reading the code is one the next contributor will have to make again. DO NOT use for a GitHub
-  issue body (that is write-nice-issue-description), for a SKILL.md (that is write-nice-skills),
-  or for a changelog, a tour of the code, or a record of who decided what when.
+  Apply when writing or revising an architecture doc — ARCHITECTURE.md, an ADR, a decision record —
+  and when a decision you just made by reading the code is one the next contributor will have to
+  make again. DO NOT use for a GitHub issue body (that is write-nice-issue-description), for a
+  SKILL.md (that is write-nice-skills), or for a changelog, a tour of the code, or a record of who
+  decided what when.
 user-invocable: false
 disable-model-invocation: false
 context: fork
