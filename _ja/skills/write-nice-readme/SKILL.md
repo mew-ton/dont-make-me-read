@@ -1,7 +1,7 @@
 ---
 name: write-nice-readme
 description: >
-  README を書く、または改稿するときに適用する。すでにある README に節を足すときも同じ。
+  このスキルは、README を書く、または改稿するときに使う。すでにある README に節を足すときも同じ。
   DO NOT アーキテクチャドキュメントには使わない（それは write-nice-architecture-docs）。`SKILL.md`
   （それは write-nice-skills）、issue 本文（それは write-nice-issue-description）、およびリファレンス、
   チュートリアル、変更履歴にも使わない。

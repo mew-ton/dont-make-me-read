@@ -1,10 +1,10 @@
 ---
 name: write-nice-readme
 description: >
-  Apply when writing or revising a README, and when adding a section to one that already exists. DO
-  NOT use for an architecture doc (that is write-nice-architecture-docs), a SKILL.md (that is
-  write-nice-skills), an issue body (that is write-nice-issue-description), or for reference
-  documentation, a tutorial, or a changelog.
+  Use this skill when writing or revising a README, and when adding a section to one that already
+  exists. DO NOT use for an architecture doc (that is write-nice-architecture-docs), a SKILL.md
+  (that is write-nice-skills), an issue body (that is write-nice-issue-description), or for
+  reference documentation, a tutorial, or a changelog.
 user-invocable: false
 disable-model-invocation: false
 context: fork

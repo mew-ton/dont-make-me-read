@@ -1,7 +1,7 @@
 ---
 name: write-nice-issue-description
 description: >
-  GitHub issue 本文を書く、または改稿するときに適用する —「issue を書いて」「この issue の下書きを
+  このスキルは、GitHub issue 本文を書く、または改稿するときに使う —「issue を書いて」「この issue の下書きを
   整えて」「この既存の issue を読めるようにして」— タスクを複数の issue に分解するときも同じ。DO NOT PR
   レビューの指摘には使わない（それは write-nice-instructions）。永続ドキュメント一般の rationale と
   process の切り分け（それは avoid-unverifiable-context）、およびすでに書かれた issue の監査

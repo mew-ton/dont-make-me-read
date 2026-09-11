@@ -1,12 +1,12 @@
 ---
 name: avoid-reference-detours
 description: >
-  Apply when writing a code comment, a docstring, a PR description, or any text that points
-  elsewhere to be understood — "the format rules at the top of this file", "same as the config", a
-  section that defers to another section of the same document. DO NOT use when the target does not
-  exist or cannot be reached at all (that is avoid-unverifiable-context), for the same content
-  repeated twice inside one document (that is write-nice-issue-description's Gate 2), or for a
-  module that knows which caller invoked it (that is avoid-caller-knowledge).
+  Use this skill when writing a code comment, a docstring, a PR description, or any text that
+  points elsewhere to be understood — "the format rules at the top of this file", "same as the
+  config", a section that defers to another section of the same document. DO NOT use when the
+  target does not exist or cannot be reached at all (that is avoid-unverifiable-context), for the
+  same content repeated twice inside one document (that is write-nice-issue-description's Gate 2),
+  or for a module that knows which caller invoked it (that is avoid-caller-knowledge).
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

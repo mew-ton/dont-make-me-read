@@ -1,8 +1,8 @@
 ---
 name: write-nice-instructions
 description: >
-  PR レビューの指摘、レビューコメント、コードレビューの所見 — 人間が読んで行動する指示テキスト — を
-  起草または改稿するときに適用する。とりわけ、自分で書いて自分には十分に読めるときに。DO NOT GitHub issue
+  このスキルは、PR レビューの指摘、レビューコメント、コードレビューの所見 — 人間が読んで行動する指示
+  テキスト — を起草または改稿するときに使う。とりわけ、自分で書いて自分には十分に読めるときに。DO NOT GitHub issue
   本文には使わない（それは write-nice-issue-description）。スキルの description やサイズ予算
   （それは write-nice-skills）、および永続ドキュメントがどの背景文脈を担うかの判断
   （それは avoid-unverifiable-context）にも使わない。

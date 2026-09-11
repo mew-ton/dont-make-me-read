@@ -25,6 +25,12 @@ either of these is true:
 Where the name and the purpose already settle it — a skill for READMEs, applied when
 writing a README — the when is a short clause and nothing more is owed.
 
+**Say whose occasion it is: `Use this skill when …`.** A bare `Apply when …` leaves
+the subject to be inferred, and the one thing a description cannot afford to leave
+open is whether the sentence describes the work or instructs the reader about the
+skill. Three words buy that, and the leading word still lands inside the first
+clause.
+
 **The last line says when it does not apply.** An unbounded when fires on everything
 near it, so close it with a `DO NOT use for …`: the artifacts this skill is mistaken
 for, and where relevant the sibling that owns each one (`DO NOT use for a SKILL.md
@@ -125,9 +131,9 @@ each section, then check the frontmatter, for great skills and better writing.
 steps:
 
 ```text
-Use when writing, editing, or reviewing a skill, a SKILL.md, or its description
-and frontmatter — how to write a skill's description and body so it fires
-reliably and stays lean. DO NOT use for non-skill documentation.
+Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its
+description and frontmatter — how to write a skill's description and body so it
+fires reliably and stays lean. DO NOT use for non-skill documentation.
 ```
 
 ## 4. English

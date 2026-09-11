@@ -23,6 +23,10 @@
 名前と用途がすでに決着させている場合 — README のためのスキルを、README を書くときに適用する — は、`when`
 は短い節で足り、それ以上は負っていない。
 
+**誰の機会なのかを述べる：`Use this skill when …`。** 主語のない `Apply when …` は主語を推測に委ねるが、
+description が開いたままにできない唯一のものが、その文が作業を記述しているのか、それともそのスキルについて
+読み手に指示しているのか、である。三語でそれが買える。leading word は依然として最初の節の中に収まる。
+
 **最後の1行が、いつ適用されないかを述べる。** 境界のない when はその近くにあるものすべてに発火するので、
 `DO NOT use for …` で閉じること：このスキルと取り違えられる成果物と、関係するなら各々を所有する兄弟スキル
 （`DO NOT use for a SKILL.md (that is write-nice-skills)`）。兄弟を名指しすることは、それが改名された日の
@@ -107,9 +111,9 @@ each section, then check the frontmatter, for great skills and better writing.
 **Good** — when が先頭で leading word を担い、what は一節、境界あり、手順なし：
 
 ```text
-Use when writing, editing, or reviewing a skill, a SKILL.md, or its description
-and frontmatter — how to write a skill's description and body so it fires
-reliably and stays lean. DO NOT use for non-skill documentation.
+Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its
+description and frontmatter — how to write a skill's description and body so it
+fires reliably and stays lean. DO NOT use for non-skill documentation.
 ```
 
 ## 4. 英語

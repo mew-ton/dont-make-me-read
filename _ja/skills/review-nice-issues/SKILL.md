@@ -1,7 +1,7 @@
 ---
 name: review-nice-issues
 description: >
-  すでに書かれた GitHub issue 本文 — 他人のものでも、自分の下書きでも — に対し、その文面への
+  このスキルは、すでに書かれた GitHub issue 本文 — 他人のものでも、自分の下書きでも — に対し、その文面への
   determinacy と duplication のパスとして適用する。DO NOT 汎用の「この issue をレビューして」の入口としては
   使わない。issue を書く・改稿する（それは write-nice-issue-description）、リポジトリへの接地、依存の閉包、
   スコープを判定するのにも使わない。

@@ -1,11 +1,11 @@
 ---
 name: write-nice-issue-description
 description: >
-  Apply when writing or revising a GitHub issue body — "write an issue", "polish this issue draft",
-  "make this existing issue readable" — or when breaking a task down into several issues. DO NOT use
-  for a PR review finding (that is write-nice-instructions), for a persistent doc's general
-  rationale-vs-process rule (that is avoid-unverifiable-context), or for auditing an issue that is
-  already written (that is review-nice-issues).
+  Use this skill when writing or revising a GitHub issue body — "write an issue", "polish this
+  issue draft", "make this existing issue readable" — or when breaking a task down into several
+  issues. DO NOT use for a PR review finding (that is write-nice-instructions), for a persistent
+  doc's general rationale-vs-process rule (that is avoid-unverifiable-context), or for auditing an
+  issue that is already written (that is review-nice-issues).
 user-invocable: false
 disable-model-invocation: false
 context: fork

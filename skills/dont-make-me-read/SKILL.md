@@ -1,11 +1,11 @@
 ---
 name: dont-make-me-read
 description: >
-  Use while writing or revising anything another person or an agent reads in order to act:
-  drafting, documenting, commenting, specifying, explaining, reviewing, or writing the code itself.
-  It stays in force for the rest of that work. DO NOT use it in place of the rules that own the
-  artifact in hand — it carries no template, no budget, and no section list — or for ephemeral chat
-  replies, scratchpads, and working notes nobody acts on later.
+  Use this skill while writing or revising anything another person or an agent reads in order to
+  act: drafting, documenting, commenting, specifying, explaining, reviewing, or writing the code
+  itself. It stays in force for the rest of that work. DO NOT use it in place of the rules that
+  own the artifact in hand — it carries no template, no budget, and no section list — or for
+  ephemeral chat replies, scratchpads, and working notes nobody acts on later.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

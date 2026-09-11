@@ -1,7 +1,8 @@
 ---
 name: write-nice-architecture-docs
 description: >
-  アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書く、または改稿するときに適用する。
+  このスキルは、アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書く、または改稿する
+  ときに使う。
   コードを読んで今しがた下した判断が、次の貢献者も下し直すことになるものであるときにも適用する。
   DO NOT GitHub issue 本文には使わない（それは write-nice-issue-description）。`SKILL.md`
   （それは write-nice-skills）、および変更履歴、コードの案内、誰がいつ何を決めたかの記録にも使わない。

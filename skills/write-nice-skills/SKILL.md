@@ -1,10 +1,10 @@
 ---
 name: write-nice-skills
 description: >
-  Use when writing, editing, or reviewing a skill, a SKILL.md, or its description and frontmatter —
-  how to write a skill's description and body so it fires reliably and stays lean. Also applies when
-  another skill needs the description-writing or skill-length rules. DO NOT use for non-skill
-  documentation, or to run a general repo review pass.
+  Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its description and
+  frontmatter — how to write a skill's description and body so it fires reliably and stays lean.
+  Also applies when another skill needs the description-writing or skill-length rules. DO NOT use
+  for non-skill documentation, or to run a general repo review pass.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -48,8 +48,10 @@ Everything under "Writing the description" follows from this one fact.
 
 1. **The first line says when it applies.** It is the line the agent weighs first,
    so put the occasion there — spelled out whenever it is not self-evident, or does
-   not follow from what the skill is for. The last line says when it does not
-   (`DO NOT use for …`), because an unbounded when fires on everything near it.
+   not follow from what the skill is for, and named as the skill's own occasion —
+   `Use this skill when …`, not a bare `Apply when …`. The last line says when it
+   does not (`DO NOT use for …`), because an unbounded when fires on everything
+   near it.
 2. **No procedure.** Never put step-by-step instructions in the description, nor the
    criteria the skill applies; both live in the body. An agent handed the standard
    has no reason to load what qualifies it.
