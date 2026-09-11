@@ -4,13 +4,13 @@ Read this when you are writing or reviewing a skill's `description` or frontmatt
 The `description` is the only text loaded when the agent decides whether to fire the
 skill, so it must be judge-able on its own and must not leak the procedure.
 
-Three sections: what every description must do, what none may carry, and the wording
-that makes the difference. Then a size limit, and one rule for the fields around it.
+What every description must do, what none of them may carry, and the wording that
+makes the difference — then a size limit, and the frontmatter it sits in.
 
 ## 1. What every description must do
 
-Some skills are shaped so that no wording satisfies section 3 cleanly. These four
-hold anyway, and together they are all the agent gets to decide on.
+Some skills are shaped so that no wording satisfies section 3 cleanly. What follows
+holds anyway, and it is all the agent gets to decide on.
 
 ### 1.1 Write in the third person
 
@@ -19,8 +19,8 @@ someone being addressed. Write about the skill — not as it ("I check your issu
 …"), and not at the reader ("you are an expert at …"). A statement can be judged
 against the work in hand; an address cannot.
 
-The one imperative that stays is the `Use this skill when …` of section 1.3, and it
-stays because it names the subject the third person would otherwise leave out.
+The imperative that stays is the `Use this skill when …` of section 1.3, and it stays
+because it names the subject the third person would otherwise leave out.
 
 ### 1.2 Say what the skill does
 
@@ -36,7 +36,7 @@ Name the occasion — the artifact being written, or the activity underway.
 Name it as the skill's own: `Use this skill when …`, not a bare `Apply when …`. The
 bare form leaves the subject to be inferred, and the one thing a description cannot
 afford to leave open is whether the sentence describes the work or instructs the
-reader about the skill. Three words buy that.
+reader about the skill. Naming the subject buys that.
 
 ### 1.4 Write it in English
 
@@ -44,16 +44,16 @@ Write the description in English, even when you prompt in another language. Engl
 terms are the ones that survive into a prompt regardless — file names, tool names,
 library names — and a published skill cannot know which language its users type in.
 
-Three languages get decided separately, and only the first is settled here: the
-**description** (English, always), the **body** (English too for a skill that ships
-beyond one team, since the agent reads it), and the **output the skill produces** —
-an issue, a finding, a doc — which belongs in the language *its* readers already
-use. Each writing skill states that last rule for itself; do not carry this file's
-English down into what a skill tells the agent to write.
+The description's language is settled here and nowhere else's. The **body** is
+English too for a skill that ships beyond one team, since the agent reads it. The
+**output the skill produces** — an issue, a finding, a doc — belongs in the language
+*its* readers already use, and each writing skill states that for itself; do not
+carry this file's English down into what a skill tells the agent to write.
 
 ## 2. What a description must never carry
 
-Again whatever the skill's shape forces elsewhere, never these four.
+Again whatever the skill's shape forces elsewhere: none of what follows belongs in a
+description.
 
 ### 2.1 Procedure
 
@@ -80,8 +80,7 @@ the stance, and stops there: the criteria the stance is applied by are the body'
 
 ### 2.3 A name from elsewhere
 
-Another skill, another file, whoever calls this one. Two costs, and the first is the
-one that surprises people.
+Another skill, another file, whoever calls this one.
 
 **A concrete name narrows what the agent will infer.** `DO NOT use for an
 architecture doc (that is write-nice-architecture-docs)` reads as a routing table,
@@ -89,12 +88,12 @@ and an agent that has been handed one stops asking the question the bound was fo
 whether *this* artifact is the skill's. Name the artifact, which is the condition;
 not the skill that owns it, which is a fact about the shelf.
 
-**The second is size.** Every name spends characters from the 1024, and spends them
+**It also costs size.** Every name spends characters from the 1024, and spends them
 again on the day it is renamed, in every description that carried it. The
 repository's own invariant is the same: a skill is reached by its own description or
 not at all.
 
-The one thing that stays is a reach clause — "also applies when another skill needs
+What stays is a reach clause — "also applies when another skill needs
 …" — and only when another skill genuinely depends on this one. It says *when* this
 skill applies and names nobody.
 
@@ -152,8 +151,8 @@ That gets the skill in once. Keeping it in for the rest of the activity is the
 body's job, and the body cannot do it unless it says so — see
 [`structuring-skills.md`](structuring-skills.md#staying-in-force).
 
-If you cannot tell which of the two you are writing, settle that before the first
-line: it decides the body as well.
+If you cannot tell which you are writing, settle that before the first line: it
+decides the body as well.
 
 ### 3.2 State when it must not fire
 
