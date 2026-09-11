@@ -46,12 +46,14 @@ Everything under "Writing the description" follows from this one fact.
 **Description** (details + Bad/Good examples:
 [`references/writing-descriptions.md`](references/writing-descriptions.md)):
 
-1. **The first line says when it applies.** It is the line the agent weighs first,
-   so put the occasion there — spelled out whenever it is not self-evident, or does
-   not follow from what the skill is for, and named as the skill's own occasion —
-   `Use this skill when …`, not a bare `Apply when …`. The last line says when it
-   does not (`DO NOT use for …`), because an unbounded when fires on everything
-   near it.
+1. **The first line carries whichever the agent cannot infer.** Does the work name
+   the artifact — an issue, a README, a `SKILL.md`? Lead with the when. Does it not,
+   because the rule has to hold while someone writes code or a comment? An occasion
+   nobody names is one the agent forgets, so lead with what the skill forces:
+   `Forces the X that Y.` Either way name it as the skill's own occasion
+   (`Use this skill when …`, not a bare `Apply when …`), and let the last line say
+   when it does not apply (`DO NOT use for …`) — an unbounded when fires on
+   everything near it.
 2. **No procedure.** Never put step-by-step instructions in the description, nor the
    criteria the skill applies; both live in the body. An agent handed the standard
    has no reason to load what qualifies it.

@@ -5,31 +5,51 @@ The `description` is the only text loaded when the agent decides whether to fire
 skill, so it must be judge-able on its own and must not leak the procedure. Four
 rules, a size limit, then one rule for the fields around it.
 
-## 1. The first line says when it applies
+## 1. The first line carries whichever the agent cannot infer
 
 Write in the third person and cover both **what the skill does** and **when to
-apply it**, so the agent can decide from the description alone. The **first line
-carries the when**: it is the line the agent weighs first, and for most skills it is
-the only one that decides the question.
+apply it**, so the agent can decide from the description alone. The first line is
+the one the agent weighs first, so it goes to whichever of the two it cannot get
+for itself. Which that is depends on one thing: **does the work name the artifact?**
 
-Spell the condition out there whenever applicability is not obvious — whenever
-either of these is true:
+**It does → lead with the when.** An issue, a README, an `ARCHITECTURE.md`, a
+`SKILL.md`, a pull request: the work says the word, the word fires the skill, and
+what the skill then does is the body's to explain. Name the occasion and stop.
 
-- **The occasion is not self-evident.** A rule that has to hold while someone writes
-  code is needed most exactly when the work never names it, so nothing in the work
-  asks for it. Name the activity instead, in the verbs the work is done in.
-- **The occasion does not follow from what the skill is for.** `avoid-caller-knowledge`
-  sounds like a refactoring rule and also governs reviewing and designing; the reader
-  cannot get that from the purpose, so the first line says it.
+```text
+Use this skill when writing or revising a README, and when adding a section to
+one that already exists. DO NOT use for an architecture doc (that is
+write-nice-architecture-docs) …
+```
 
-Where the name and the purpose already settle it — a skill for READMEs, applied when
-writing a README — the when is a short clause and nothing more is owed.
+**It does not → lead with what the skill forces.** A rule that has to hold while
+someone writes code, or writes a comment, is needed most exactly when the work never
+names it — and an occasion nobody names is an occasion the agent forgets mid-diff.
+Naming it is not enough there; the description has to state the stance the skill
+imposes, so that what survives into the next turn is the rule and not a label:
 
-**Say whose occasion it is: `Use this skill when …`.** A bare `Apply when …` leaves
-the subject to be inferred, and the one thing a description cannot afford to leave
-open is whether the sentence describes the work or instructs the reader about the
-skill. Three words buy that, and the leading word still lands inside the first
-clause.
+```text
+Forces the fact restated at the point of use over the pointer that sends the
+reader away to get it … Use this skill when writing a code comment, a docstring,
+a PR description, or any text that points elsewhere to be understood. DO NOT use
+when the target does not exist …
+```
+
+The form is `Forces the X that Y.` — one clause, at the altitude of "the laziest
+solution that actually works": what the skill makes you do, never the criteria it
+does it by. Those are rule 2's, and a `Forces` line that starts listing them has
+handed over the body.
+
+Which lead a skill takes is not a fresh judgment. The skills that lead with `Forces`
+are the ones whose bodies say they stay in force
+([`structuring-skills.md`](structuring-skills.md#staying-in-force)); a skill reached
+for one artifact leads with its when. If you cannot tell which you are writing, that
+is the question to settle first.
+
+**Either way, say whose occasion it is: `Use this skill when …`.** A bare `Apply
+when …` leaves the subject to be inferred, and the one thing a description cannot
+afford to leave open is whether the sentence describes the work or instructs the
+reader about the skill. Three words buy that.
 
 **The last line says when it does not apply.** An unbounded when fires on everything
 near it, so close it with a `DO NOT use for …`: the artifacts this skill is mistaken

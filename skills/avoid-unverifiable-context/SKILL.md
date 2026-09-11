@@ -1,13 +1,13 @@
 ---
 name: avoid-unverifiable-context
 description: >
-  Use this skill when writing an issue, a PR description, a code comment, an API or design doc, or
-  any text or code that will be read later, and it carries what its reader cannot go and check:
-  the conversation that produced it, review feedback, discarded alternatives, a past state the
-  current code no longer shows. DO NOT use for a reference the reader genuinely can reach but
-  should not have been sent to (that is avoid-reference-detours), for an issue body's sections and
-  criteria (that is write-nice-issue-description), or for ephemeral chat replies and working
-  notes.
+  Forces the text a stranger can go and check: the rationale a reader who was never in the room
+  can still trace, never the conversation that produced it, the review feedback, the discarded
+  alternatives, or a past state the current code no longer shows. Use this skill when writing an
+  issue, a PR description, a code comment, an API or design doc, or any text or code that will be
+  read later. DO NOT use for a reference the reader genuinely can reach but should not have been
+  sent to (that is avoid-reference-detours), for an issue body's sections and criteria (that is
+  write-nice-issue-description), or for ephemeral chat replies and working notes.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

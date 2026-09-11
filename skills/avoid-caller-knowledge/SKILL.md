@@ -1,10 +1,11 @@
 ---
 name: avoid-caller-knowledge
 description: >
-  Use this skill on any coding task — writing, refactoring, extracting, reviewing, or designing a
-  function, a module, a component, or the interface between them — where a callee branches on
-  which caller invoked it: a shared fetch taking `from: 'pageA' | 'pageB'`, a helper with an
-  `isDetailPage` flag, a component with a `variant` named after the screen it appears on. DO NOT
+  Forces the caller-agnostic callee that takes what differs as data, named in the domain's own
+  vocabulary, over one that branches on who called it — a shared fetch taking `from: 'pageA' |
+  'pageB'`, a helper with an `isDetailPage` flag, a component with a `variant` named after the
+  screen it appears on. Use this skill on any coding task: writing, refactoring, extracting,
+  reviewing, or designing a function, a module, a component, or the interface between them. DO NOT
   use for prose or a comment that sends the reader elsewhere to be understood (that is
   avoid-reference-detours), or for a branch on genuine domain data.
 user-invocable: false
