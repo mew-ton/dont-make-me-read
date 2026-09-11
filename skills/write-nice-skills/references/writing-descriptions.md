@@ -9,8 +9,10 @@ rules, a size limit, then one rule for the fields around it.
 
 Write in the third person and cover both **what the skill does** and **when to
 apply it**, so the agent can decide from the description alone. The first line is
-the one the agent weighs first, so it goes to whichever of the two it cannot get
-for itself. Which that is depends on one thing: **does the work name the artifact?**
+the one the agent weighs first, so it goes to whichever of the two it cannot get for
+itself. One question decides which: **does the work name the artifact?** — the same
+question, from the other side, as whether the skill is finished when that artifact is
+or has to hold after the turn that loaded it.
 
 **It does → lead with the when.** An issue, a README, an `ARCHITECTURE.md`, a
 `SKILL.md`, a pull request: the work says the word, the word fires the skill, and
@@ -41,11 +43,8 @@ criteria the stance is applied by. A `Forces` line that starts listing criteria 
 handed the agent the standard, and an agent holding the standard has no reason to
 load the body that qualifies it.
 
-Which lead a skill takes is not a fresh judgment: it is the same question as whether
-the skill has to hold after the turn that loaded it. One that does leads with
-`Forces`. One reached for a single artifact, and finished when that artifact is,
-leads with its when. If you cannot tell which you are writing, settle that first —
-it decides the body as well as the first line.
+If you cannot tell which of the two you are writing, settle that before the first
+line: it decides the body as well.
 
 **Either way, say whose occasion it is: `Use this skill when …`.** A bare `Apply
 when …` leaves the subject to be inferred, and the one thing a description cannot
