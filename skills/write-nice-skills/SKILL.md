@@ -21,8 +21,9 @@ editing an existing one.
 
 It is **not** a general repo review pass — running a checklist over a PR is a
 separate job. It is **not** a publish/frontmatter policy document either. And
-it is not for non-skill documentation. This skill is the always-on authoring
-judgment that sits above those.
+it is not for non-skill documentation. It is reached by the `SKILL.md` in front
+of you and is finished when that file is, which is why it carries no persistence
+clause and leads its own description with a `when`.
 
 The detail lives one level down (see [References](#references)); this file holds
 what every author needs no matter which branch they are on.
@@ -62,11 +63,11 @@ Everything under "Writing the description" follows from this one fact.
    agent is working from is what links them and fires the skill. That is a prompt
    when a person asks; for a skill hidden from the `/` menu it is the work itself.
    Not a slash-separated tag list, not a dressed-up request sentence: a leading word
-   inside a natural sentence. That is where rule 1 already puts the `when`, so the
-   first line carries both. One trigger per branch (no synonym padding); cut the
-   identity the body carries — the argument, the cost, the remedy — and keep only the
-   terms the work itself supplies. A skill that has to be on for a whole activity has
-   no word to share: name the activity.
+   inside a natural sentence. Where rule 1 leads with the when, that is the same
+   position and one clause carries both; where it leads with `Forces`, there was no
+   shared word to front-load and the leading word waits for the when. One trigger per
+   branch (no synonym padding); cut the identity the body carries — the argument, the
+   cost, the remedy — and keep only the terms the work itself supplies.
 4. **English.** Write the description in English, whichever language you prompt in,
    and do not pad it with a second-language keyword list. What the skill *tells the
    agent to write* is a separate question each writing skill answers for itself.

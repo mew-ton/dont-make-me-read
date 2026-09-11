@@ -35,16 +35,17 @@ a PR description, or any text that points elsewhere to be understood. DO NOT use
 when the target does not exist …
 ```
 
-The form is `Forces the X that Y.` — one clause, at the altitude of "the laziest
-solution that actually works": what the skill makes you do, never the criteria it
-does it by. Those are rule 2's, and a `Forces` line that starts listing them has
-handed over the body.
+The form is `Forces the X that Y.` — one clause, pitched so that it says what the
+skill makes you do and still leaves the reader unable to do it: the stance, never the
+criteria the stance is applied by. A `Forces` line that starts listing criteria has
+handed the agent the standard, and an agent holding the standard has no reason to
+load the body that qualifies it.
 
-Which lead a skill takes is not a fresh judgment. The skills that lead with `Forces`
-are the ones whose bodies say they stay in force
-([`structuring-skills.md`](structuring-skills.md#staying-in-force)); a skill reached
-for one artifact leads with its when. If you cannot tell which you are writing, that
-is the question to settle first.
+Which lead a skill takes is not a fresh judgment: it is the same question as whether
+the skill has to hold after the turn that loaded it. One that does leads with
+`Forces`. One reached for a single artifact, and finished when that artifact is,
+leads with its when. If you cannot tell which you are writing, settle that first —
+it decides the body as well as the first line.
 
 **Either way, say whose occasion it is: `Use this skill when …`.** A bare `Apply
 when …` leaves the subject to be inferred, and the one thing a description cannot
@@ -94,9 +95,11 @@ is working from. Sometimes that is a prompt. Often it is not: a skill hidden fro
 the ones in the work itself — the file being edited, the artifact being written, the
 term the code already uses. So seed the description with the **leading word** — the
 term that shows up when this skill is needed, whatever produces it — and put it near
-the start, where it does its invocation work. That is the same place rule 1 puts the
-`when`, and not a coincidence: the words the work supplies are the words that say on
-what occasion the skill applies, so the first line carries both.
+the start, where it does its invocation work. Where rule 1 leads with the when, that
+is the same position and not a coincidence: the words the work supplies are the words
+that say on what occasion the skill applies, so one clause carries both. Where rule 1
+leads with `Forces` instead, there was no such word to share — which is what put the
+stance first — and the leading word waits for the when a sentence later.
 
 - **Form**: a leading word inside a natural sentence. Not a slash-separated tag list
   (`Skill / SKILL.md / description —`), and not a full request sentence dressed up
@@ -114,14 +117,14 @@ what occasion the skill applies, so the first line carries both.
   cannot know which language its users prompt in, and a second-language keyword list
   only bloats the description and drifts out of sync. That is why none of the
   descriptions in this plugin carry one.
-- **Cut body identity**: keep the description to the when, the bound, and a reach
-  clause. Anything the body already explains does not belong here — not the argument
+- **Cut body identity**: keep the description to the lead rule 1 picks, the bound,
+  and a reach clause. Anything the body already explains does not belong here — not the argument
   for the rule, not the cost of breaking it, not the remedy. Those read as helpful
   and are the same failure as a leaked step: an agent that has the argument and the
   remedy has been given the skill, and loads the body to confirm what it already
   believes, if at all. The recognisable terms stay, because those are triggers: a
-  `variant` named after a screen is what the work looks like, while "reading it means
-  holding every caller" is why that matters, and only the first fires anything.
+  `variant` named after a screen is what the work looks like. Why that costs the
+  reader anything is the body's to say; only the first fires.
 
 ### When the skill has to be on for a whole activity
 
@@ -130,9 +133,9 @@ writes code, or writes anything another person acts on, is needed most exactly w
 the work never names it — there is no leading word to share, because the work is a
 diff and a file, not a request. Name the **activity** as the `when` instead, in the
 verbs the work is done in ("writing, revising, reviewing, or designing code"). This
-is the first of rule 1's two cases, and the bound it asks for is doing the most work
-here: an activity named as the `when` reaches everything inside that activity until
-the `DO NOT` stops it.
+is the case where rule 1 leads with `Forces`, and the bound it asks for is doing the
+most work here: an activity named as the `when` reaches everything inside that
+activity until the `DO NOT` stops it.
 
 That gets the skill in once. Keeping it in for the rest of the activity is the
 body's job, and the body cannot do it unless it says so — see
