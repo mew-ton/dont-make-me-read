@@ -1,12 +1,12 @@
 ---
 name: find-document-dependencies
 description: >
-  Use this skill when reviewing or revising a document, and before writing a sentence that names
-  something you do not own: reports what that document would have to be rewritten for — a link, a
-  name carried in prose, a count, a definition copied from the file that owns it, a claim about a
-  structure — as a directed graph of weak and strong edges. DO NOT use this skill when what is
-  wanted is a verdict on whether a dependency is stale, wrong, or worth keeping, or a judgement of
-  the document itself.
+  Reports what a document would have to be rewritten for — a link, a name carried in prose, a count,
+  a definition copied from the file that owns it, a claim about a structure — as a directed graph of
+  weak and strong edges. Applies when reviewing or revising a document, and before writing a
+  sentence that names something the writer does not own. Does not apply when what is wanted is a
+  verdict on whether a dependency is stale, wrong, or worth keeping, or a judgement of the document
+  itself.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools:

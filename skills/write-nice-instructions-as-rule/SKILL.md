@@ -1,11 +1,10 @@
 ---
 name: write-nice-instructions-as-rule
 description: >
-  Use this skill when writing or revising rules that stay in force — a guideline, a convention, a
-  policy, a checklist, or the rules inside a skill body or a reference file — so each one reads as
-  an instruction the reader can act on rather than an explanation they can agree with. DO NOT use
-  this skill when the text is a one-off instruction to one reader about one change, or when the
-  document states no rules.
+  Writes and revises rules that stay in force — a guideline, a convention, a policy, a checklist, or
+  the rules inside a skill body or a reference file — so each one reads as an instruction the reader
+  can act on rather than an explanation they can agree with. Does not apply when the text is a
+  one-off instruction to one reader about one change, or when the document states no rules.
 user-invocable: false
 disable-model-invocation: false
 context: fork

@@ -1,14 +1,13 @@
 ---
 name: dont-make-me-read
 description: >
-  Forces the narrowest range a reader has to hold before they can act — the range the writer
-  cannot feel, because you read your own draft while supplying what it is missing, so it reads
-  small to you and only to you. Use this skill while writing or revising anything another person
-  or an agent reads in order to act: drafting, documenting, commenting, specifying, explaining,
-  reviewing, or writing the code itself; it stays in force for the rest of that work. DO NOT use
-  this skill in place of the rules that own the artifact in hand — it carries no template, no
-  budget, and no section list — or when nobody acts on the text later: chat replies, scratchpads,
-  working notes.
+  Forces the narrowest range a reader has to hold before they can act — the range its writer cannot
+  feel, since a writer reads their own draft while supplying what it is missing, so it reads small
+  to them and only to them. Applies while writing or revising anything another person or an agent
+  reads in order to act: drafting, documenting, commenting, specifying, explaining, reviewing, or
+  writing the code itself, and it stays in force for the rest of that work. Does not apply in place
+  of the rules that own the artifact in hand — it carries no template, no budget, and no section
+  list — nor when nobody acts on the text later: chat replies, scratchpads, working notes.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

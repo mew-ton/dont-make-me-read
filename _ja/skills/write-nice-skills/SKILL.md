@@ -1,11 +1,10 @@
 ---
 name: write-nice-skills
 description: >
-  このスキルは、スキル、`SKILL.md`、あるいはその description と frontmatter を書く、編集する、
-  レビューするときに使う — スキルの description と本文を、確実に発火し、かつ軽量であり続けるように書く
-  方法。別のスキルが description の書き方やスキルの長さの規則を必要とするときにも適用される。
-  DO NOT 対象がスキル以外のドキュメントであるとき、あるいはリポジトリ全体のレビューパスを走らせるために
-  このスキルを使わない。
+  スキル、`SKILL.md`、あるいはその description と frontmatter を書き、編集し、レビューする — スキルの
+  description と本文を、確実に発火し、かつ軽量であり続けるように書く方法。別のスキルが description の
+  書き方やスキルの長さの規則を必要とするときにも適用される。対象がスキル以外のドキュメントであるとき、
+  あるいはリポジトリ全体のレビューパスであるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

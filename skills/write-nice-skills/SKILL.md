@@ -1,10 +1,10 @@
 ---
 name: write-nice-skills
 description: >
-  Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its description and
-  frontmatter — how to write a skill's description and body so it fires reliably and stays lean.
-  Also applies when another skill needs the description-writing or skill-length rules. DO NOT use
-  this skill when the documentation is not a skill's, or to run a general repo review pass.
+  Writes, edits and reviews a skill, a SKILL.md, or its description and frontmatter — how to write a
+  skill's description and body so it fires reliably and stays lean. Also applies when another skill
+  needs the description-writing or skill-length rules. Does not apply when the documentation is not
+  a skill's, or to a general repo review pass.
 user-invocable: false
 disable-model-invocation: false
 context: fork

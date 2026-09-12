@@ -1,10 +1,9 @@
 ---
 name: write-nice-architecture-docs
 description: >
-  このスキルは、アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書く、または改稿する
-  ときに使う。コードを読んで今しがた下した判断が、次の貢献者も下し直すことになるものであるときにも使う。
-  DO NOT 成果物が GitHub issue 本文、`SKILL.md`、変更履歴、コードの案内、誰がいつ何を決めたかの記録で
-  あるときは、このスキルを使わない。
+  アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書き、改稿する。コードを読んで今しがた
+  下した判断が、次の貢献者も下し直すことになるものであるときも含む。成果物が GitHub issue 本文、
+  `SKILL.md`、変更履歴、コードの案内、誰がいつ何を決めたかの記録であるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

@@ -23,6 +23,9 @@
 
 ### Anthropic の best practices
 
+- **常に三人称**：「description はシステムプロンプトに注入されるので、視点が揺れると発見の問題を起こしうる」。
+  ここの description は、これを読むまですべて命令形だった。`Applies when …` と `Does not apply when …` が、
+  その対のなれの果てである。
 - 硬い上限：`name` は64文字以内、小文字・数字・ハイフンのみ、XMLタグ不可、予約語 `anthropic` と `claude`
   は不可。`description` は空でなく、1,024文字以内、XMLタグ不可。`quick_validate.py` が同じ数値を強制する。
 - description が何のためにあるか：「Claude はそれを使って、100個以上ありうるスキルの中から正しいものを
@@ -89,19 +92,15 @@
   いう枠、そして推定ではなく計測する `scripts/count-tokens.sh`。5000トークンという数字は agentskills.io の
   specification のものであり、他の出典は行数で数える。
 - **`Forces the X that Y.`** を、作業が何も名指ししないスキルの先頭に置き、成果物を名指しするスキルには
-  `Use this skill when …` を置くこと。この形は Dietrich Gebert の `ponytail` のものだが、どちらを使うかを
+  `Writes and revises …` と `Applies when …` を置くこと。この形は Dietrich Gebert の `ponytail` のものだが、どちらを使うかを
   「そのスキルが成果物より長生きするか」から導く規則はうちのものである。
-- **`DO NOT use this skill when …`** という境界の固定形。
+- **`Does not apply when …`** という境界の固定形：機会を否定したもの。
 - **delegation** による切断、および子スキルの frontmatter と命名。
 - **Staying in force** — 自分をロードしたターンを越えて生き延びる必要があるスキルのために。
 - description が同じことを言っていても、本文がそのスキル自身の説明を担うという規則。
 
 ## このリポジトリが承知のうえで違えているところ
 
-- **三人称。** best practices はこう警告している：「常に三人称で書くこと。description はシステムプロンプトに
-  注入されるので、視点が揺れると発見の問題を起こしうる」。避けるべき例として `You can use this to process
-  Excel files` が挙がっている。ここの description はすべて命令形 — `Use this skill when …` である。
-  **未決着**：この逸脱は意図的だが未検証であり、決着させるのは `run_loop.py` である。
 - **否定。** `writing-for-agents` は否定を刈り取り、肯定の目標を促す。このリポジトリは2箇所で意図的に否定を
   使う：誤発火を止めるために存在する境界と、禁止を裏返しで述べると弱く届く DON'T リストである。
 - **frontmatter。** ここのスキルはすべて `user-invocable`、`disable-model-invocation`、`context`、

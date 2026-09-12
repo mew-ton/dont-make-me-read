@@ -23,6 +23,10 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 
 ### Anthropic's best practices
 
+- **Third person, always**: "The description is injected into the system prompt, and
+  inconsistent point-of-view can cause discovery problems." Every description here was
+  imperative until that was read; `Applies when …` and `Does not apply when …` are what the
+  pair became.
 - The hard limits: `name` at most 64 characters, lowercase letters, numbers and hyphens,
   no XML tags, and not the reserved words `anthropic` or `claude`; `description` non-empty,
   at most 1,024 characters, no XML tags. `quick_validate.py` enforces the same numbers.
@@ -102,10 +106,10 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
   `scripts/count-tokens.sh`, which measures rather than estimates. The 5000-token figure
   is the agentskills.io specification's; the other sources count lines.
 - **`Forces the X that Y.`** as the lead for a skill nothing in the work names, against
-  `Use this skill when …` for one an artifact names. The form is Dietrich Gebert's
+  `Writes and revises …`, plus `Applies when …`, for one an artifact names. The form is Dietrich Gebert's
   `ponytail`; the rule that derives which to use from whether the skill outlives its
   artifact is ours.
-- **`DO NOT use this skill when …`** as the bound's fixed shape.
+- **`Does not apply when …`** as the bound's fixed shape: the occasion negated.
 - The split by **delegation**, and the child skill's frontmatter and naming.
 - **Staying in force**, for a skill that has to survive the turn that loaded it.
 - The rule that the body carries the skill's own explanation even where the description
@@ -113,11 +117,6 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 
 ## Where this repository knowingly differs
 
-- **Third person.** The best practices warn: "Always write in third person. The description
-  is injected into the system prompt, and inconsistent point-of-view can cause discovery
-  problems", and give `You can use this to process Excel files` as what to avoid. Every
-  description here is imperative — `Use this skill when …`. **Unsettled**: the divergence is
-  deliberate but untested, and `run_loop.py` is what would settle it.
 - **Negation.** `writing-for-agents` prunes negation and prompts the positive target.
   This repository uses negation in two places on purpose: the bound, which exists to stop a
   wrong firing, and the DON'T list, where a prohibition stated as its own inverse arrives

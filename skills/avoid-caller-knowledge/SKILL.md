@@ -2,12 +2,12 @@
 name: avoid-caller-knowledge
 description: >
   Forces the caller-agnostic callee that takes what differs as data, named in the domain's own
-  vocabulary, over one that branches on who called it — a shared fetch taking `from: 'pageA' |
-  'pageB'`, a helper with an `isDetailPage` flag, a component with a `variant` named after the
-  screen it appears on. Use this skill on any coding task: writing, refactoring, extracting,
-  reviewing, or designing a function, a module, a component, or the interface between them. DO NOT
-  use this skill when the subject is prose, or a comment that sends its reader elsewhere to be
-  understood, or when the branch is on genuine domain data.
+  vocabulary, over one that branches on who called it — a shared fetch taking
+  `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag, a component with a `variant`
+  named after the screen it appears on. Applies to any coding task: writing, refactoring,
+  extracting, reviewing, or designing a function, a module, a component, or the interface between
+  them. Does not apply when the subject is prose, or a comment that sends its reader elsewhere to
+  be understood, or when the branch is on genuine domain data.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

@@ -1,12 +1,12 @@
 ---
 name: write-nice-instructions-as-comment
 description: >
-  Use this skill when drafting or revising an instruction written as a comment — a PR review
-  finding, a reply proposing a change, a remark asking someone to fix something — text one person
-  reads, acts on, and can answer back to, and especially when you wrote it yourself and it reads
-  fine to you. DO NOT use this skill when the instruction is a standing rule the reader will meet
-  again, a GitHub issue body, or a skill's description and size budget, or when the question is
-  which background context a persistent document carries.
+  Drafts and revises an instruction written as a comment — a PR review finding, a reply proposing a
+  change, a remark asking someone to fix something — text one person reads, acts on, and can answer
+  back to, and it applies especially to an instruction that reads fine to whoever wrote it. Does not
+  apply when the instruction is a standing rule the reader will meet again, a GitHub issue body, or
+  a skill's description and size budget, nor when the question is which background context a
+  persistent document carries.
 user-invocable: false
 disable-model-invocation: false
 context: fork

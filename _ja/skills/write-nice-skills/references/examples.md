@@ -18,10 +18,9 @@ each section, then check the frontmatter, for great skills and better writing.
 **Good**
 
 ```text
-Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its
-description and frontmatter — how to write a skill's description and body so it
-fires reliably and stays lean. DO NOT use this skill when the documentation is
-not a skill's.
+Writes, edits and reviews a skill, a SKILL.md, or its description and
+frontmatter — how to write a skill's description and body so it fires reliably
+and stays lean. Does not apply when the documentation is not a skill's.
 ```
 
 機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は機会を否定したもの。
@@ -45,9 +44,9 @@ differs. Use on any coding task.
 ```text
 Forces the caller-agnostic callee that takes what differs as data, named in the
 domain's own vocabulary, over one that branches on who called it — a shared fetch
-taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Use this
-skill on any coding task: writing, refactoring, extracting, reviewing, or
-designing a function, a module, a component, or the interface between them.
+taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Applies to
+any coding task: writing, refactoring, extracting, reviewing, or designing a
+function, a module, a component, or the interface between them.
 ```
 
 diff の中にこの規則を名指しするものが何も無いので、姿勢が先頭に立つ。`from:`、`isDetailPage` は残る —
@@ -69,8 +68,8 @@ write-nice-issue-description), or for reference documentation.
 **Good**
 
 ```text
-DO NOT use this skill when the artifact is an architecture doc, a SKILL.md, an
-issue body, reference documentation, a tutorial, or a changelog.
+Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
+body, reference documentation, a tutorial, or a changelog.
 ```
 
 条件は成果物である。どのスキルが所有するかは棚についての事実であり、それは各スキルが自分の機会の中で述べる。
@@ -92,8 +91,8 @@ implementation method smuggled in, and no content duplicated across sections.
 **Good**
 
 ```text
-Use this skill on a GitHub issue body that is already written — someone else's,
-or a draft of your own — for a determinacy-and-duplication pass over its text.
+Runs a determinacy-and-duplication pass over the text of a GitHub issue body
+that is already written — someone else's, or the author's own draft.
 ```
 
 何に対するパスであるかであって、何を通すかではない。

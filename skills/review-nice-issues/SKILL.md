@@ -1,11 +1,10 @@
 ---
 name: review-nice-issues
 description: >
-  Use this skill on a GitHub issue body that is already written — someone else's, or a draft of
-  your own — for a determinacy-and-duplication pass over its text. DO NOT use this skill as a
-  general-purpose "review this issue" entry point, when the issue is still being written or
-  revised, or when what is wanted is a judgement of repo-groundedness, dependency closure, or
-  scope.
+  Runs a determinacy-and-duplication pass over the text of a GitHub issue body that is already
+  written — someone else's, or the author's own draft. Does not apply as a general-purpose "review
+  this issue" entry point, when the issue is still being written or revised, or when what is wanted
+  is a judgement of repo-groundedness, dependency closure, or scope.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

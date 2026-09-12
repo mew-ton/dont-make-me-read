@@ -3,11 +3,10 @@ name: avoid-reference-detours
 description: >
   Forces the fact restated at the point of use over the pointer that sends the reader away to get
   it — "the format rules at the top of this file", "same as the config", a section that defers to
-  another section — leaving the original where it is and authoritative. Use this skill when
-  writing a code comment, a docstring, a PR description, or any text that points elsewhere to be
-  understood. DO NOT use this skill when the target does not exist or cannot be reached at all,
-  when the same content is repeated twice inside one document, or when a module branches on which
-  caller invoked it.
+  another section — leaving the original where it is and authoritative. Applies when writing a code
+  comment, a docstring, a PR description, or any text that points elsewhere to be understood. Does
+  not apply when the target does not exist or cannot be reached at all, when the same content is
+  repeated twice inside one document, or when a module branches on which caller invoked it.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

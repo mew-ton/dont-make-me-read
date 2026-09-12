@@ -5,14 +5,14 @@
 
 ## DO
 
-- **命令形で書くこと。** `Use this skill when …` — `I check your issue for …` でも
-  `you are an expert at …` でもない。主語が現れるのは、それを落とすとその文が作業の記述として読まれてしまう
-  場合だけである。
+- **三人称で書くこと。** `Writes and revises a README` — `I check your issue for …` でも
+  `you are an expert at …` でもない。description はシステムプロンプトに注入されるので、スキルごとに視点が
+  揺れると、選択の精度を落とす。
 - **スキルが作られたユーザーの意図を示すこと** — その著者が何を強制したかったのかを、一節で、著者の言葉で。
   たとえば `keeps a callee from branching on which caller invoked it`。
 - **機会を名指しすること**：書かれつつある成果物か、進行中の活動か。
-- **発火しない条件を、その機会を否定した形で書くこと**：`DO NOT use this skill when …`。そうすれば対で一つの
-  使用条件として読まれる。他の形では境界が雑学として読まれる。
+- **発火しない条件を、その機会を否定した形で、同じ人称で書くこと**：`Does not apply when …`。そうすれば対で
+  一つの使用条件として読まれる。他の形では境界が雑学として読まれる。
 - **英語で書くこと。** 英語の用語こそが、どの言語で打たれようとプロンプトに生き残るものであり、公開する
   スキルは利用者がどれを打つか知り得ない。ここで決着するのは description だけで、本文の言語とスキルの出力は
   別に決まる。
@@ -55,9 +55,9 @@
 `ARCHITECTURE.md`、`SKILL.md`：
 
 ```text
-Use this skill when writing or revising a README, and when adding a section to
-one that already exists. DO NOT use this skill when the artifact is an
-architecture doc, reference documentation, a tutorial, or a changelog.
+Writes and revises a README, including adding a section to one that already
+exists. Does not apply when the artifact is an architecture doc, reference
+documentation, a tutorial, or a changelog.
 ```
 
 **名指ししない → 姿勢を先頭に、`Forces the X that Y.`** 誰かがコードやコメントを書いているあいだ効いて
@@ -66,9 +66,9 @@ architecture doc, reference documentation, a tutorial, or a changelog.
 
 ```text
 Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it … Use this skill when writing a code comment, a docstring,
-a PR description, or any text that points elsewhere to be understood. DO NOT use
-this skill when the target does not exist …
+reader away to get it … Applies when writing a code comment, a docstring, a PR
+description, or any text that points elsewhere to be understood. Does not apply
+when the target does not exist …
 ```
 
 機会はそのあとに続き、活動として名指しされる — たとえば "writing, revising, reviewing, or designing code"。

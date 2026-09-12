@@ -18,10 +18,9 @@ loads the body. "great skills and better writing" names no occasion.
 **Good**
 
 ```text
-Use this skill when writing, editing, or reviewing a skill, a SKILL.md, or its
-description and frontmatter — how to write a skill's description and body so it
-fires reliably and stays lean. DO NOT use this skill when the documentation is
-not a skill's.
+Writes, edits and reviews a skill, a SKILL.md, or its description and
+frontmatter — how to write a skill's description and body so it fires reliably
+and stays lean. Does not apply when the documentation is not a skill's.
 ```
 
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
@@ -47,9 +46,9 @@ all. The occasion arrives last, in four words.
 ```text
 Forces the caller-agnostic callee that takes what differs as data, named in the
 domain's own vocabulary, over one that branches on who called it — a shared fetch
-taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Use this
-skill on any coding task: writing, refactoring, extracting, reviewing, or
-designing a function, a module, a component, or the interface between them.
+taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Applies to
+any coding task: writing, refactoring, extracting, reviewing, or designing a
+function, a module, a component, or the interface between them.
 ```
 
 The stance leads, because nothing in a diff names this rule. `from:`,
@@ -72,8 +71,8 @@ of asking whether this artifact is the skill's.
 **Good**
 
 ```text
-DO NOT use this skill when the artifact is an architecture doc, a SKILL.md, an
-issue body, reference documentation, a tutorial, or a changelog.
+Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
+body, reference documentation, a tutorial, or a changelog.
 ```
 
 The artifact is the condition. Which skill owns it is a fact about the shelf, and
@@ -96,8 +95,8 @@ reason to load the body that qualifies it.
 **Good**
 
 ```text
-Use this skill on a GitHub issue body that is already written — someone else's,
-or a draft of your own — for a determinacy-and-duplication pass over its text.
+Runs a determinacy-and-duplication pass over the text of a GitHub issue body
+that is already written — someone else's, or the author's own draft.
 ```
 
 What it is a pass over, not what it passes on.

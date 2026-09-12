@@ -1,10 +1,10 @@
 ---
 name: review-nice-issues
 description: >
-  このスキルは、すでに書かれた GitHub issue 本文 — 他人のものでも、自分の下書きでも — に対し、その文面への
-  determinacy と duplication のパスとして使う。DO NOT 汎用の「この issue をレビューして」の入口としては
-  使わない。その issue がまだ書かれている・改稿されている途中であるとき、あるいは求められているものが
-  リポジトリへの接地・依存の閉包・スコープの判定であるときも使わない。
+  すでに書かれた GitHub issue 本文 — 他人のものでも、著者自身の下書きでも — の文面に対して、determinacy
+  と duplication のパスを走らせる。汎用の「この issue をレビューして」の入口としては適用しない。その issue
+  がまだ書かれている・改稿されている途中であるとき、あるいは求められているものがリポジトリへの接地・依存の
+  閉包・スコープの判定であるときも適用しない。
 user-invocable: false
 disable-model-invocation: false
 allowed-tools: []

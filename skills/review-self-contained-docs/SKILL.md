@@ -1,11 +1,10 @@
 ---
 name: review-self-contained-docs
 description: >
-  Use this skill on text that is already written — a pull request's description and every code
-  comment its diff adds or changes, or a draft of your own — for a self-containment pass against a
-  reader with none of the writer's context: no conversation, no issue, no surrounding diff. DO NOT
-  use this skill as a general-purpose "review this PR" entry point, or when what is wanted is a
-  judgement of issue conformance, scope, or design.
+  Runs a self-containment pass over text that is already written — a pull request's description and
+  every code comment its diff adds or changes — against a reader with none of the writer's context:
+  no conversation, no issue, no surrounding diff. Does not apply as a general-purpose "review this
+  PR" entry point, or when what is wanted is a judgement of issue conformance, scope, or design.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools:

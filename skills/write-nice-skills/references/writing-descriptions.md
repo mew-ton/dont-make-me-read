@@ -5,16 +5,16 @@ skill. It must be judge-able on its own, and must not leak the procedure.
 
 ## DO
 
-- **Write it in the imperative.** `Use this skill when …` — not `I check your issue for
-  …`, not `you are an expert at …`. A subject appears only where leaving it out would make
-  the sentence read as a description of the work.
+- **Write it in the third person.** `Writes and revises a README` — not `I check your
+  issue for …`, not `you are an expert at …`. The description is injected into the system
+  prompt, where a point of view that shifts between skills costs the selector accuracy.
 - **Show the intent the skill was created for** — what its author wanted enforced, in one
   clause and in their terms. For example, `keeps a callee from branching on which caller
   invoked it`.
 - **Name the occasion**: the artifact being written, or the activity underway.
-- **State when it must not fire**, as that occasion negated: `DO NOT use this skill when
-  …`. The pair then reads as one condition of use; in any other shape the bound reads as
-  trivia.
+- **State when it must not fire**, as that occasion negated and in the same person:
+  `Does not apply when …`. The pair then reads as one condition of use; in any other shape
+  the bound reads as trivia.
 - **Write it in English.** English terms are the ones that survive into a prompt whatever
   language it is typed in, and a published skill cannot know which its users type. This
   settles the description alone — the body's language and the skill's output are decided
@@ -62,9 +62,9 @@ the skill is finished when that artifact is.
 For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`:
 
 ```text
-Use this skill when writing or revising a README, and when adding a section to
-one that already exists. DO NOT use this skill when the artifact is an
-architecture doc, reference documentation, a tutorial, or a changelog.
+Writes and revises a README, including adding a section to one that already
+exists. Does not apply when the artifact is an architecture doc, reference
+documentation, a tutorial, or a changelog.
 ```
 
 **It does not → lead with the stance, `Forces the X that Y.`** A rule that holds while
@@ -73,9 +73,9 @@ the agent forgets mid-diff:
 
 ```text
 Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it … Use this skill when writing a code comment, a docstring,
-a PR description, or any text that points elsewhere to be understood. DO NOT use
-this skill when the target does not exist …
+reader away to get it … Applies when writing a code comment, a docstring, a PR
+description, or any text that points elsewhere to be understood. Does not apply
+when the target does not exist …
 ```
 
 The occasion still follows, named as an activity — for example, "writing, revising,
