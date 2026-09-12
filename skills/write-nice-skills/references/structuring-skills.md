@@ -98,20 +98,22 @@ The skill's own name: lowercase letters, digits and hyphens; at most 64 characte
 leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
 name. `anthropic` and `claude` are reserved and may not appear in it.
 
-**A standing role of the skill has a fixed name at its root.** There are only so many of
-these, every skill's sit at the same path, and the set is greppable:
+**A section the skill itself fixes keeps a fixed name at its root**, so every skill's sits
+at the same path and the set is greppable. There are two, and neither is required — the
+name is fixed only for the skill that has one:
 
-| File | What it holds | Loaded |
-|---|---|---|
-| `README.md` | the skill, explained to a person | never — nothing references it |
-| `SOURCES.md` | where each rule came from | never — nothing references it |
-| `GLOSSARY.md` | the terms the rules use | routed from `SKILL.md` |
-| `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist | routed from `SKILL.md` |
+| File | What it holds |
+|---|---|
+| `GLOSSARY.md` | the terms the rules use |
+| `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist |
 
-**Everything else is branch material, and its name is yours.** `references/`, `scripts/`,
-`workflows/`, `assets/`, or a bare file beside `SKILL.md`: these are conventions borrowed
-from example layouts, not requirements. Match whichever neighbour fits and spend no further
-thought on it.
+**Everything else the agent loads is branch material, and its name is yours.**
+`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`: these
+are conventions borrowed from example layouts, not requirements. Match whichever neighbour
+fits and spend no further thought on it.
+
+**A file the agent never loads is outside all of this.** Whether one exists and what it is
+called belong to whoever writes it, not to the skill's structure.
 
 ## Staying in force
 
@@ -149,10 +151,10 @@ leaves the rule on.
   body, one level up.
 - **Disclose** behind a context pointer what **only some branches reach**: deep
   detail, long examples, per-branch procedure.
-- **Move out of the skill entirely** what no branch reaches: a `README.md` beside
-  `SKILL.md` is not referenced from it, so nothing loads it and it costs the agent nothing.
-  Put one there when a person needs this skill explained; what it owes that person is the
-  README rules' business, not this file's.
+- **Move out of the skill entirely** what no branch reaches: a file beside `SKILL.md` that
+  nothing references is never loaded, so it costs the agent nothing at all — the design
+  rationale, the skill explained to a person, where its rules came from. What such a file
+  owes its reader is that reader's rules' business, not this file's.
 
 A context pointer names the **condition**, not the subject: "Read
 `references/api-errors.md` when the API returns a non-200 status" is reachable, and "see
@@ -160,8 +162,8 @@ A context pointer names the **condition**, not the subject: "Read
 
 A rule's *operative* half never moves out, however little context the agent has to spare.
 "You are supplying the intent the text is missing as you read it" belongs in Common
-Rationalizations, where it refutes the excuse at the moment it is reached for; in a README it
-would be read once and agreed with, which is not the same as being applied.
+Rationalizations, where it refutes the excuse at the moment it is reached for; in a file
+nothing loads it would be read once and agreed with, which is not the same as being applied.
 
 ## Guard it three ways
 
