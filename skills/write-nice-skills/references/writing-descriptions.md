@@ -122,10 +122,3 @@ often removes the need to name anything.
 A reach clause is the one naming that earns its place — for example, "also applies
 when another skill needs …" — where another skill genuinely depends on this one. It
 names nobody.
-
-## No comments in the frontmatter
-
-Frontmatter is parsed rather than read, and all of it loads on every fire. A trailing
-`#` on `user-invocable: false` explains the field to nobody who was going to be
-confused by it, and every reader pays for it forever. A field that genuinely needs
-explaining needs prose an author can argue with: the body, or the architecture doc.

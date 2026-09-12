@@ -20,8 +20,8 @@ enough to be worth loading. It applies whether you are creating a new skill or
 editing an existing one.
 
 It is **not** a general repo review pass — running a checklist over a PR is a
-separate job. It is **not** a publish/frontmatter policy document either. And
-it is not for non-skill documentation. It is reached by the `SKILL.md` in front
+separate job. It does not decide which frontmatter fields a skill sets, beyond
+keeping comments out of them. And it is not for non-skill documentation. It is reached by the `SKILL.md` in front
 of you and is finished when that file is, which is why it carries no persistence
 clause and leads its own description with a `when`.
 
@@ -87,6 +87,10 @@ Everything under "Writing the description" follows from this one fact.
    callers establish all of that, and a sentence saying it changes nothing the
    skill does. It also makes the skill wrong the day a caller is renamed. The
    description is held to this too, by principle 2.
+9. **Write frontmatter without comments.** It is the part of a `SKILL.md` that is
+   parsed rather than read, and all of it loads on every fire. A field that genuinely
+   needs explaining needs prose an author can argue with — the body, or the
+   architecture doc — not a trailing `#` every future reader pays for.
 
 Terms used above (leading word, trigger, branch, progressive disclosure, context
 pointer) are defined in [`GLOSSARY.md`](GLOSSARY.md).

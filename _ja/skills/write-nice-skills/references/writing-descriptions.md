@@ -111,9 +111,3 @@ this skill when the target does not exist …
 
 名指しとして唯一その場を得るのは到達節である — たとえば「also applies when another skill needs …」— 別の
 スキルが本当にこれに依存している場合。それは誰も名指ししない。
-
-## No comments in the frontmatter（frontmatter にコメントを書かない）
-
-frontmatter は読まれるのではなくパースされ、そのすべてが発火のたびにロードされる。`user-invocable: false` の
-末尾につけた `#` は、それがなければ混乱したはずの誰にも説明しておらず、すべての読み手が永久にその代金を払う。
-本当に説明を要するフィールドは、著者が反論できる散文での説明を要する：本文か、アーキテクチャドキュメントで。

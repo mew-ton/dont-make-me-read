@@ -153,11 +153,6 @@ model: haiku
 background: false
 ```
 
-Write frontmatter without comments. It is the one part of a `SKILL.md` that is parsed
-rather than read, it is loaded on every fire, and a field that needs explaining needs it
-in prose the author can argue with — as below — not in a trailing `#` that every future
-reader pays for.
-
 `user-invocable: false` hides the child from the user's `/` menu. `background: false` is
 required when the conclusion is used in the same turn; it defaults to `true`. `agent` and
 `model` are optional: `agent` picks the tool set (`Explore` and `Plan` are read-only), and
