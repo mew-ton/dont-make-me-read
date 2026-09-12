@@ -111,6 +111,19 @@ both-ways pair split across two systems — see
 | "I will note that the rest of the document is clean." | You checked what you checked. A completeness claim is itself a dependency — on your own thoroughness, which nobody can verify later. |
 | "The spans are all there; drawing the arrows is presentation." | The arrows are the finding. A span says two texts touch; only the direction says which of them is about to be wrong, and a caller cannot derive that from a list they were handed instead. |
 
+## Red Flags
+
+- A report that says "no other dependencies" — completeness it cannot have.
+- Spans paraphrased instead of quoted.
+- A verdict — "this is stale", "drop it" — where an edge belongs.
+- Links only, when most of what pins a document is prose.
+
+## Verification
+
+- [ ] Every edge names which end has to move, and the opposite direction was checked too.
+- [ ] Every edge carries the span that creates it, quoted.
+- [ ] Strong edges come first, and nothing is claimed about what was not found.
+
 ## Related skills
 
 - `avoid-reference-detours` — the reader's side of a pointer: the trip they were made to take. This

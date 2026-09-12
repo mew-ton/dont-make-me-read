@@ -96,3 +96,17 @@ Released when the work turns to what nobody reads to act on, or when you are tol
 | "This is code, not text, so the range is not my problem." | Code is read before it is changed, by someone who has to hold whatever it depends on. The range is the same measure; only the third row's fix inverts. |
 | "It reads fine to me." | You are supplying the intent the text is missing as you read it. Judge it as someone holding only the text — that is the whole failure mode. |
 | "This has been in force a while, so it has done its job." | It is retaken every response. The turn where it lapses is the turn you write the paragraph nobody can act on. |
+
+## Red Flags
+
+- A sentence that only means something with another file open, and nothing brought the fact back.
+- A paragraph kept because it is true rather than because it changes what the reader does next.
+- A constraint offered as an option — "you could also…" — instead of as the wall they would walk into.
+- A draft that got shorter by losing the rationale, the constraint, or the fact that makes the ask
+  defensible.
+
+## Verification
+
+- [ ] Every section on the mandatory path changes what the reader does next.
+- [ ] Nothing the decision depends on, and the reader cannot reconstruct, was cut.
+- [ ] Backing material is reachable rather than inlined; only the mandatory path is capped.

@@ -150,6 +150,21 @@ settles it.
 | "It's internal, everyone here already knows what this does." | The one who needs it is the one who does not — the new hire, the neighbouring team, you in a year. What an internal reader can skip is the pitch, not the way in. |
 | "It reads fine to me." | You knew what the project was before you opened the file. That is the one thing your reader does not have, and the only thing this file exists to give them. |
 
+## Red Flags
+
+- Philosophy, history, badges or a table of contents above the point where the reader can decide.
+- A paragraph per kind, or a count of them.
+- A list of everything the project contains, which the reader will never pick from.
+- Install steps that were true before the project changed.
+
+## Verification
+
+- [ ] A reader who has not decided can settle that, and run the first command, without reading
+      further.
+- [ ] Every list is a choice, each entry written as the condition under which the reader picks it.
+- [ ] Nothing here becomes wrong when the file that owns it is reworded.
+- [ ] The commands were run, in the order they appear.
+
 ## Related skills
 
 - `dont-make-me-read` — the test this one sharpens, and why the writer cannot feel the range they

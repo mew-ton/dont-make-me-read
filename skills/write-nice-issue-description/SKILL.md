@@ -185,6 +185,20 @@ the `review-nice-issues` run belongs to whoever called this skill, on either rou
 | "I should sketch a couple of implementation options so the reader has context." | Either one satisfies the acceptance criteria, which makes both a choice you should not have surfaced, or you have a real constraint — which belongs in Acceptance criteria with its reason in Background, not as a menu in the body. |
 | "These bullets are all about the same file or system, so they're one problem." | Sharing a subject is not sharing a problem — the test is how many kinds of problem the bullets sort into, not what they touch. If you can't write the one-sentence reason they belong together, split into separate issues instead of forcing a shared heading. |
 
+## Red Flags
+
+- `Background` whose subject is an issue number or "this task" rather than a domain entity.
+- `Goal` stating your own fix, or a means of verification.
+- Acceptance criteria in implementation vocabulary rather than the domain's.
+- `Affected areas` telling the implementer what to do to a path.
+
+## Verification
+
+- [ ] Every `Background` sentence is one the issue's necessity fails without.
+- [ ] Every acceptance criterion is a state to satisfy, checkable in the domain's vocabulary.
+- [ ] No section repeats what another already settled.
+- [ ] `Dependencies` holds only what blocks starting, or is gone.
+
 ## Examples
 
 Worked examples of each gate, and a full passing issue body:

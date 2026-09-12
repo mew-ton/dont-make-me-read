@@ -38,27 +38,20 @@ deleted — the fact is restated at the point of use, which is a different findi
 
 ## Guidance
 
-1. **Keep the rationale.** Write down why the spec or design exists. That is decision-making
-   material for the reader
-2. **Drop the process.** Avoid "review feedback led to", "the policy changed", "originally we went
-   with X" — phrasing that depends on a timeline only participants can follow
-3. **Watch contrastive phrasing.** "Not A but B", "A is deprecated", "A was removed" all assume the
+1. **Keep the rationale, drop the process.** Why the spec or design exists is decision-making
+   material; "review feedback led to", "the policy changed", "originally we went with X" depend on
+   a timeline only participants can follow
+2. **Watch contrastive phrasing.** "Not A but B", "A is deprecated", "A was removed" all assume the
    reader knows A. If they do not, describe B on its own
-4. **Confine cross-issue references to short `TODO(#123): ...` notes.** A `TODO(#123)` names
-   exactly what to read and where, which is what makes it the one reachable form of this; "handled
-   in another issue" in prose or an API description is not
-5. **Deprecation notes are fine while the implementation exists.** Mark a parameter, endpoint, or
-   function deprecated when it is still part of the shape the reader can observe. Once the
-   implementation is gone, the note refers to nothing and goes with it
-6. **If the process must be kept, put it where process belongs.** A PR description's Background
+3. **Confine cross-issue references to short `TODO(#123): ...` notes.** That names exactly what to
+   read and where, which is what makes it the one reachable form; "handled in another issue" is not
+4. **Deprecation notes are fine while the implementation exists** — it is still part of the shape
+   the reader can observe. Once it is gone, the note refers to nothing and goes with it
+5. **If the process must be kept, put it where process belongs.** A PR description's Background
    section, or an ADR. Not source code, not user-facing docs, not an API reference
-7. **Write in the reader's language.** Use the language the artifact's readers already use — the
-   repository's for a code comment or PR description, the tracker's for an issue. This skill is
-   about what context the text carries, not which language carries it. Never restate the same
-   content in a second language: the translation ages independently and no reader can tell which
-   copy is current
-8. **Self-check against a reader with nothing.** Hand the text to someone with zero context and
-   look for proper nouns or premises that arrive unintroduced
+6. **Write in the reader's language** — the repository's for a code comment or PR description, the
+   tracker's for an issue. Never restate the same content in a second language: the translation
+   ages independently and no reader can tell which copy is current
 
 ## Common Rationalizations
 
@@ -73,6 +66,20 @@ The most common failure is not applying this at all, because the artifact did no
 | "The review asked for this change, so I'll record that." | Review feedback is process. State the resulting decision, not that a review requested it. |
 | "I'll list the alternatives we rejected so it's transparent." | Discarded options are writer-only context. Omit them unless the reader genuinely must know why not. |
 | "This PR description can assume the reader saw the thread." | A persistent doc outlives the thread. Write it for someone opening it cold, months later. |
+
+## Red Flags
+
+- "As discussed", "we originally went with", "per review feedback": a timeline only participants
+  can follow.
+- A contrast that assumes the reader knows the other side — "not A but B", "A was removed".
+- A bare `issue: 1234`, or a link into a workspace this reader may not have.
+
+## Verification
+
+- [ ] Every claim is checkable from the current code, types, schemas, or a stated external rule.
+- [ ] No sentence depends on when it was written or who was in the room.
+- [ ] Cross-issue references are `TODO(#123): …`, naming what to read.
+- [ ] A reader with zero context meets no proper noun or premise that arrives unintroduced.
 
 ## Persistence
 

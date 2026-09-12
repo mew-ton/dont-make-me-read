@@ -66,3 +66,17 @@ is skipped with everything else:
 | "One file is simpler than splitting." | A bloated `SKILL.md` loads *every* time the skill fires and drags the whole context. |
 | "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. |
 | "This reads well to me." | You are not the reader who decides. Check it against the words the work supplies and the number the script reports. |
+
+## Red Flags
+
+- A rule settled from `SKILL.md` alone, with the reference it came from never opened.
+- A description carrying the steps, the criteria it applies, or another skill's name.
+- A reference reached from another reference.
+- A body that opens on what the skill is not.
+
+## Verification
+
+- [ ] `count-tokens.sh` exits zero for this skill and for the set it stands with.
+- [ ] The description names the occasion and the bound, in the third person, inside 1024 characters.
+- [ ] Every reference is reached directly from `SKILL.md`, under a stated condition.
+- [ ] The cases that should reach the skill were run against it.

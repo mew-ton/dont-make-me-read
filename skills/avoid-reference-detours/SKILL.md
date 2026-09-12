@@ -85,6 +85,18 @@ where a fact sits, not which language states it.
 | "More context at the point of use is always safer." | Only when it removes a trip. A line that repeats what the code beside it already shows adds reading and saves nothing. Run the test on every line you add, not only on the ones you cut. |
 | "It reads fine to me." | You already know what is at the other end of the pointer, so the trip costs you nothing. The reader is the one paying for it. |
 
+## Red Flags
+
+- "See above", "same as the config", "as described in X" standing where the fact itself would fit.
+- A restatement that adds a line and removes no trip, because the code beside it already showed it.
+- The whole original copied to the point of use, instead of the part this reader needs.
+
+## Verification
+
+- [ ] Every remaining pointer is one the reader may decline to follow and still act.
+- [ ] Each restatement removes a trip, never a re-read.
+- [ ] The original is still in place and still authoritative.
+
 ## Examples
 
 Bad/Good pairs for a doc comment deferring to its file header, and for a cross-issue note in

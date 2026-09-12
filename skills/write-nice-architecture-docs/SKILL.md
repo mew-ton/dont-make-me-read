@@ -197,6 +197,19 @@ because this skill is.
 | "Recording why we chose this over the alternative is useful history." | The rationale stays; the deliberation goes (`avoid-unverifiable-context`). Write the constraint that rules the alternative out, as a wall the reader would hit — not the account of the two of you weighing it. |
 | "It reads fine to me." | You are supplying the criteria you already hold. Judge it as someone who has the file open and the implementation closed — that is the whole failure mode. |
 
+## Red Flags
+
+- A section that narrates the current shape, which the code shows faster.
+- An invariant that places no case the doc has never seen.
+- A definition re-derived from the file that owns it.
+- A classification with a case that falls outside every class it claims to cover.
+
+## Verification
+
+- [ ] Every section settles a decision somebody faces, with the implementation closed.
+- [ ] Each invariant leads with the rule that generates it.
+- [ ] Nothing here becomes wrong when a file it describes is reworded.
+
 ## Related skills
 
 - `dont-make-me-read` — the test this one sharpens, and the rule that a constraint is stated as the

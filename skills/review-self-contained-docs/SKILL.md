@@ -202,6 +202,19 @@ before starting, so the excuse is already answered when it occurs to you.
 | 3 | "There are too many surviving units to judge each one individually in one pass." | Five survivors and five hundred survivors are the same task repeated — volume is never a signal to sample, batch, or skim. Record a verdict for every surviving unit before moving to step 4. |
 | 3 | "Most of this comment reads as legitimate, checkable justification, so the whole unit passes." | One clause that fails a condition fails the whole unit, even when the rest of the same comment is present-tense and checkable. A good surrounding explanation is not amnesty for the one clause that isn't — judge every clause, not the unit's overall impression (see `references/examples.md`'s second Condition 1 example). |
 
+## Red Flags
+
+- Condition 1 judged from a diff hunk, without the file's current content.
+- A unit that already failed condition 1 or 2 carrying a condition-3 verdict anyway.
+- A finding whose ground is the PR context you happen to hold.
+- A language choice reported as a finding.
+
+## Verification
+
+- [ ] Every unit was judged from its own text and the code attached to it.
+- [ ] Each failing unit stops at its first failed condition.
+- [ ] Nothing was posted unless `--comment` was given.
+
 ## Related skills
 
 - `avoid-unverifiable-context` — the authoring-time guidance behind conditions 1 and 2. Read it if

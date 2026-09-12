@@ -11,7 +11,7 @@
 - Staying in force（効力を持ち続ける）
 - Write the description and the body for different purposes
 - Progressive disclosure: 何をインラインにし、何を開示するか
-- Add Common Rationalizations
+- Guard it three ways（三方向から守る）
 - Leave out what the structure already settles
 - Sharpen the bound before you split a sequence（sequence を分割する前に境界を鋭くする）
 - When to split（いつ分割するか）
@@ -135,12 +135,23 @@ context pointer が名指しするのは主題ではなく**条件**である：
 テキストに欠けている意図を自分で補っている」は Common Rationalizations に属する。そこにあれば、その言い訳に
 手が伸びた瞬間に反駁する。README に置けば一度読まれて同意されるだけであり、それは適用されることとは違う。
 
-## Add Common Rationalizations（Common Rationalizations を足す）
+## Guard it three ways（三方向から守る）
 
-エージェントが手を抜きそうなスキルには、その言い訳を先回りして封じること：飛ばす理由としてエージェントが
-見つけるものの表と、それぞれを反駁する実際のところ。これをインラインに置くのは、ポインタの後ろにあるガードは
-他のすべてと一緒に飛ばされるからである。埋めるのはエージェントが実際に口にしたものから — 反論する羽目に
-なった言い訳を、その最初の一回で足すこと。
+スキルは、作業の前に言いくるめられ、作業の途中で削られ、作業のあとで「終わった」と宣言される。それぞれに
+ガードを一つずつ、三つともインラインに置く。ポインタの後ろにあるガードは、他のすべてと一緒に飛ばされるから
+である。
+
+| セクション | 何を捕まえるか | 形 |
+|---|---|---|
+| **Common Rationalizations** | 手順が飛ばされる**前**の言い訳 | `Rationalization` と `Reality` の表 |
+| **Red Flags** | 出力に現れた**あと**の症状 | 箇条書き：どう見えるか、そしてそれが実際には何であるか |
+| **Verification** | その作業が終わっているかどうか | どのチェックボックスも成果物から答えられるチェックリスト |
+
+Common Rationalizations を埋めるのはエージェントが実際に口にしたものから — 反論する羽目になった言い訳を、
+その最初の一回で足すこと。Red Flag は規則の言い直しではなく**観察できるもの**である：「1メッセージに3問：
+それはインタビューではなくバッチ処理である」はエージェントに何を見ればよいかを告げるが、「質問をまとめるな」
+はすでに持っている規則を繰り返すだけである。成果物から誰も答えられない Verification の項目は、検査ではなく
+願望である。
 
 **まっとうな前提を裏切る事実**も、同じ理由でインラインに残る。`/health` エンドポイントがデータベースの停止中
 でも応答することを知らないエージェントは、それが書いてあるファイルをロードさせる条件を認識できない。

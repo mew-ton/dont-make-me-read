@@ -72,6 +72,19 @@ turns to something other than code, or when you are told to stop.
 | "The caller would have to pass a lot of arguments otherwise." | That list is what the difference actually is. A long parameter list is legible; a caller-shaped flag hides the same information where the reader cannot see it. |
 | "I'll pass the caller's identity and branch just this once." | The second time is what makes it a pattern, and the second time always arrives — that is what a shared module is for. |
 
+## Red Flags
+
+- A parameter whose only honest name is a caller's: `isDetailPage`, `from: 'pageA'`, a `variant`
+  named after a screen.
+- The shared function is edited every time a caller is added.
+- A branch a reader can only evaluate by opening the callers.
+
+## Verification
+
+- [ ] Every parameter survives renaming into the vocabulary of what the callee does.
+- [ ] Adding a caller needs no edit inside the callee.
+- [ ] Each remaining branch is on domain data, not on who called.
+
 ## Related skills
 
 - `avoid-reference-detours` — the same range failure in text, where the fix is to restate the fact

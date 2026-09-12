@@ -58,6 +58,19 @@ that needed it, so each entry has to work where the eye lands rather than where 
 | "Numbering makes the rules citable." | Until one is inserted, and every citation points one rule off. The entry's own words are the citable part, and they stay right. |
 | "It reads clearly to me." | You knew which action you meant before you read the sentence. That is the one thing the reader does not have. |
 
+## Red Flags
+
+- An entry that explains the constraint and leaves the action to be inferred.
+- A DO entry with a prohibition buried inside it.
+- Numbered rules in a list that will be inserted into.
+- An entry nobody can fail.
+
+## Verification
+
+- [ ] Every entry opens with an imperative.
+- [ ] Every constraint or exception sits on the line of the entry it narrows.
+- [ ] Every entry carries its cost, or the reader can see why it exists.
+
 ## Related skills
 
 - `dont-make-me-read` — the test this one sharpens: what the reader has to hold before they can

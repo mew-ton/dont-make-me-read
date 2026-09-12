@@ -147,6 +147,20 @@ block sits outside the budget).
 | "The comment/spec describes the intended behaviour, so making the code match it is the fix." | Reading as the more confident or complete side is not evidence it is the current one — the comment can just as easily be the stale half. If the PR or issue discloses the gap as a deliberate scope split, forcing the code to catch up decides a scope question that belongs to the author, not the reviewer. That is row 2 unless you have independent evidence — a grep, an explicit statement that one side is stale — that actually favors one side. |
 | "The examples in this skill are in English, so the finding should be too." | The examples are in English because the skill is. Post in the language the repository's reviews already use — the shape is what this skill fixes, not the language. |
 
+## Red Flags
+
+- A Title carrying the path or identifier that is evidence for the rule, rather than the rule.
+- A Title that is a request, an assessment, or how it made you feel.
+- A Summary paragraph with its instruction inside a subordinate clause.
+- Options offered where you have a fix you can defend.
+
+## Verification
+
+- [ ] Title is one sentence, and stays true pointed at another instance of the same rule.
+- [ ] Summary is at most three short statements, one fact or one instruction each.
+- [ ] Details is inside 20 lines, code blocks excluded — or absent.
+- [ ] The remedy's strength matches what you can actually defend.
+
 ## Related skills
 
 - `dont-make-me-read` — the test this one sharpens: the finding is judged by what its reader has to

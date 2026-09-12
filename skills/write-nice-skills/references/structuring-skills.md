@@ -11,7 +11,7 @@ versus a reference, or when you are wondering whether to split one skill into tw
 - Staying in force
 - Write the description and the body for different purposes
 - Progressive disclosure: what to inline, what to disclose
-- Add Common Rationalizations
+- Guard it three ways
 - Leave out what the structure already settles
 - Sharpen the bound before you split a sequence
 - When to split
@@ -150,12 +150,23 @@ A rule's *operative* half never moves out, however little context the agent has 
 Rationalizations, where it refutes the excuse at the moment it is reached for; in a README it
 would be read once and agreed with, which is not the same as being applied.
 
-## Add Common Rationalizations
+## Guard it three ways
 
-For any skill an agent might cut corners on, pre-empt the excuses: a table of the
-reasons it will find for skipping, each paired with the reality that refutes it. It is
-inline because a guard behind a pointer is skipped along with everything else. Fill it from
-what the agent has actually said — add each excuse the first time you have to answer it.
+A skill is talked out of before the work, cut during it, and declared done after it. One
+guard for each, all three inline, because a guard behind a pointer is skipped along with
+everything else.
+
+| Section | What it catches | Shape |
+|---|---|---|
+| **Common Rationalizations** | the excuse, before the step is skipped | a table of `Rationalization` against `Reality` |
+| **Red Flags** | the symptom, once it is in the output | bullets: what it looks like, and what it actually is |
+| **Verification** | whether the work is finished | a checklist whose every box is answerable from the artifact |
+
+Fill Common Rationalizations from what the agent has actually said — add each excuse the
+first time you have to answer it. A Red Flag is observable rather than a restatement of the
+rule: "three questions in one message: that's batching, not interviewing" tells the agent
+what to look at, where "do not batch questions" only repeats the rule it already has. A
+Verification box nobody can answer from the artifact is a wish, not a check.
 
 A fact that defies a reasonable assumption stays inline for the same reason. An agent that
 does not know the `/health` endpoint answers while the database is down cannot recognise

@@ -137,6 +137,20 @@ them into a larger report.
 | "I wrote this issue myself an hour ago, I know what it means." | You are supplying the intent the text is missing as you read it. Judge it as someone holding only the text — that is the whole failure mode. |
 | "Giving this skill `gh` access would save a step." | It would also let it quietly resolve a reference or confirm a fact the reader in front of the real text can't — and that reader's inability to do so is exactly what step 2 is checking. The step saved is the one thing this skill is for. |
 
+## Red Flags
+
+- A finding that leans on what you already know about the requirement — the failure this skill
+  exists to catch in yourself.
+- `Affected areas` counted as the out-of-scope boundary.
+- A finding about repo-groundedness, scope, or the language the issue is written in.
+- A rewrite of the issue where a finding belongs.
+
+## Verification
+
+- [ ] Every finding names the section or sentence of the body it came from.
+- [ ] Every finding is a Gate 1 or Gate 2 failure, and says which.
+- [ ] Nothing was posted from inside this skill.
+
 ## Related skills
 
 - `write-nice-issue-description` — the authoring-time guidance this skill checks compliance with.
