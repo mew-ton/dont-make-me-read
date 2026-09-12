@@ -178,6 +178,12 @@ own — steps to run, a script, an expected output to compare against. Keep it i
 it is a checklist: three to five boxes cost less inline than the pointer plus the load that
 follows it.
 
+When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**, not into
+`references/`. A shouted name at the root is what this repository already uses for a file
+that holds one standing role for the whole skill, as `GLOSSARY.md` does, and `references/`
+is for the branch only some readers take. One fixed name also makes the set greppable:
+every skill's checks are at the same path.
+
 A fact that defies a reasonable assumption stays inline for the same reason. An agent that
 does not know the `/health` endpoint answers while the database is down cannot recognise
 the condition that would have loaded the file saying so.
