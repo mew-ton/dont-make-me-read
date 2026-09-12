@@ -82,7 +82,7 @@ write-nice-issue-description), or for reference documentation.
 
 ```text
 Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
-body, reference documentation, a tutorial, or a changelog.
+body, or reference documentation.
 ```
 
 条件は成果物である。どのスキルがどの成果物を所有するかは、それぞれのスキルが自分の description の中で決着させる。

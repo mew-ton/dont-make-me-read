@@ -33,7 +33,7 @@ effect, and one that is reached and then skimmed past has none either.
 | What the `description` must do, must never do, how to lead it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
 | What a body may cost, which sections it carries, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call its files, whether its frontmatter may carry comments | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| Whether a phase should run as a child skill, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
+| Whether a phase should run as a child skill, what to call it, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 
 ## Common Rationalizations
@@ -46,7 +46,7 @@ The agent will look for reasons to skip this skill:
 | "I'll put the steps in the description so it's self-explanatory." | Then the agent acts from the description and never loads the body — the steps you wrote get skipped. |
 | "The description should explain why the rule matters, or nobody will take it seriously." | What the skill forces belongs in the description; *why* forcing it is right — the argument, the cost, the alternatives — is the body's. An agent handed both acts from the description and never loads the body. |
 | "Stating when *not* to use it is negative and wastes budget." | A description that names only when it applies fires on every neighbouring artifact too, and each wrong fire costs the whole body. |
-| "Naming the skill that owns a neighbouring artifact helps the agent route." | It answers "is this artifact mine?" for the agent, which is the one question the description exists to make it ask. It also puts another skill's name in your description, where renaming that skill silently makes yours wrong. |
+| "Naming the skill that owns a neighbouring artifact helps the agent route." | It answers "is this artifact mine?" so the agent stops asking — and that is the one question the description exists to make it ask. It also puts another skill's name in your description, where renaming that skill silently makes yours wrong. |
 | "One file is simpler than splitting." | A bloated `SKILL.md` loads *every* time the skill fires and drags the whole context. |
 | "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. |
 | "This reads well to me." | You are supplying the intent the text is missing as you read it. Check it against the words the work supplies and the number the script reports. |

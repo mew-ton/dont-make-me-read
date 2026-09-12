@@ -53,10 +53,9 @@ disable-model-invocation: false
 context: fork
 ```
 
-`user-invocable: false` hides the child from the user's `/` menu. `background` is left out of
-the block above because the three motives do not all want the same value: set it to `false`
-when the conclusion is used in the same turn, and leave it unset — it defaults to `true` — when
-two children should run in parallel.
+`user-invocable: false` hides the child from the user's `/` menu. `background` is left out of the
+block above because the three motives do not all want the same value; the table's last column says
+which value each wants.
 
 Two optional fields narrow the child further, and are the two to leave out unless you can
 say why: `agent` picks the tool set (`Explore` and `Plan` are read-only) and `model` trades

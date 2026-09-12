@@ -80,7 +80,7 @@ bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
 The script sends each file to whichever model is currently default and subtracts a baseline
 request without it, so the figure is that model's own count and stays correct as models change.
 Each file costs one round trip. It prints a count and a bytes-per-token ratio per file, and exits non-zero when any one file is
-over `TARGET`, which defaults to 5000 — so the first command checks an artifact-reached file
+over `TARGET` — an environment variable, defaulting to 5000 — so the first command checks an artifact-reached file
 outright. The always-on figure is a total, which no per-file exit code can test: run the
 second line and add the counts up yourself.
 
@@ -137,8 +137,7 @@ reading the list — steps in a fixed order, an expected output to compare each 
 inline while every box is answered by looking or by one command: three to five of those cost
 less inline than the pointer plus the load that follows it.
 
-When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**, under a name fixed for
-every skill's checks.
+When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
 ## Naming
 

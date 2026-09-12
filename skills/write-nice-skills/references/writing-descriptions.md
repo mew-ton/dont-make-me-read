@@ -47,7 +47,7 @@ it must not carry the procedure the body holds.
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
 - **Name another skill.** Wanting to name one usually means you are routing — telling the agent
-  which skill owns what — and a routing table is the body's to hold, if anyone's, so the name
+  which skill owns what — and a routing table is the body's to hold, so the name
   carries the body out into the description. A name also reads as a routing table, which
   stops the agent asking whether *this* artifact is the skill's: for example,
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach
@@ -84,25 +84,29 @@ exists. Does not apply when the artifact is an architecture doc, a SKILL.md,
 an issue body, reference documentation, a tutorial, or a changelog.
 ```
 
+The verb carries the intent here: what its author wanted enforced *is* that a README gets written
+and revised, so no separate intent clause is needed.
+
 **It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
 and, where there is one, the thing that thing displaces. A rule that holds while
 someone writes code or a comment has no word in the prompt to share, and an occasion nobody names
 is one the agent forgets mid-diff. Here the lead comes first, then the occasion, then the bound:
 
 ```text
-Forces the narrowest range a reader has to hold before they can act — the
-range its writer cannot feel, since a writer reads their own draft while
-supplying what it is missing, so it reads small to them and only to them.
-Applies while writing or revising anything another person or an agent reads in
-order to act: drafting, documenting, commenting, specifying, explaining,
-reviewing, or writing the code itself, and it stays in force for the rest of
-that work. Does not apply when nobody acts on the text later: chat replies,
-scratchpads, working notes.
+Forces the caller-agnostic callee that takes what differs as data, named in the
+domain's own vocabulary, over one that branches on who called it — a shared
+fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag.
+Applies to any coding task: writing, refactoring, extracting, reviewing, or
+designing a function, a module, a component, or the interface between them.
+Does not apply when the subject is prose, or when the branch is on genuine
+domain data.
 ```
 
-The occasion still follows, named as an activity — for example, "writing, revising, reviewing, or
-designing code". The description names that activity; keeping the skill in force for the rest of
-it is the body's job.
+Both halves of the lead are there — the callee it insists on, and the one it displaces — and then
+the occasion, named as an activity: "any coding task: writing, refactoring, extracting,
+reviewing, or designing". The description names that activity; keeping the skill in force for the
+rest of it is the body's job, and the description says nothing about why branching on the caller
+costs anything.
 
 ## The description and the body serve different readers
 

@@ -84,7 +84,7 @@ of asking whether this artifact is the skill's.
 
 ```text
 Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
-body, reference documentation, a tutorial, or a changelog.
+body, or reference documentation.
 ```
 
 The artifact is the condition. Which skill owns which artifact is settled by each of

@@ -41,7 +41,7 @@
 - **このスキルのものではない概念を説明すること** — callee とは何か、プルリクエストとは何か、なぜ結合が代償を
   伴うのか。ノイズである：エージェントは知っているし、その文字数は意図から差し引かれる。
 - **他のスキルを名指しすること。** 名指ししたくなるのは、たいていそれが振り分けだからである — どのスキルが
-  何を所有するかをエージェントに告げること。そしてルーティング表は、誰かのものであるなら本文のものである —
+  何を所有するかをエージェントに告げること。そしてルーティング表は本文のものである —
   だからその名指しは、本文を description の外へ運び出す。さらにそれはルーティング表としても読まれ、
   *この*成果物は自分のものかという問いをエージェントに問わせなくする：たとえば
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`。到達節はその例外である。
@@ -76,24 +76,28 @@ exists. Does not apply when the artifact is an architecture doc, a SKILL.md,
 an issue body, reference documentation, a tutorial, or a changelog.
 ```
 
+ここでは動詞が意図を担っている：著者が強制したかったのは、まさに README が書かれ、改訂されることである。
+だから意図のための独立した節は要らない。
+
 **名指ししない → 何を強制するかを先頭に、`Forces …` で始める。** そのスキルが押し通すもの、そして押し
 のける相手があるならそれを。誰かがコードやコメントを書いているあいだ効いていなければならない規則には、
 プロンプトの中に共有すべき語が無く、誰も名指ししない機会は、エージェントが diff の途中で忘れる機会である。ここでは先頭が来て、
 次に機会、最後に境界が来る：
 
 ```text
-Forces the narrowest range a reader has to hold before they can act — the
-range its writer cannot feel, since a writer reads their own draft while
-supplying what it is missing, so it reads small to them and only to them.
-Applies while writing or revising anything another person or an agent reads in
-order to act: drafting, documenting, commenting, specifying, explaining,
-reviewing, or writing the code itself, and it stays in force for the rest of
-that work. Does not apply when nobody acts on the text later: chat replies,
-scratchpads, working notes.
+Forces the caller-agnostic callee that takes what differs as data, named in the
+domain's own vocabulary, over one that branches on who called it — a shared
+fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag.
+Applies to any coding task: writing, refactoring, extracting, reviewing, or
+designing a function, a module, a component, or the interface between them.
+Does not apply when the subject is prose, or when the branch is on genuine
+domain data.
 ```
 
-機会はそのあとに続き、活動として名指しされる — たとえば "writing, revising, reviewing, or designing code"。
-description はその活動を名指しする。残りのあいだスキルを効かせ続けるのは本文の仕事である。
+先頭の両半分がそろっている — 押し通す callee と、それが押しのけるほう — そして次に機会が、活動として
+名指しされる："any coding task: writing, refactoring, extracting, reviewing, or designing"。
+description はその活動を名指しする。残りのあいだスキルを効かせ続けるのは本文の仕事であり、呼び出し元で
+分岐することが何を払わせるのかについて、description は何も言っていない。
 
 ## The description and the body serve different readers（description と本文は読み手が違う）
 
