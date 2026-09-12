@@ -63,8 +63,8 @@ when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
-diff の中にこの規則を名指しするものが何も無いので、先頭がそのスキルの強制するものを述べる。`from:`、`isDetailPage` は残る —
-それが作業の見え方であり、発火させるものだからである。それが読み手に何を払わせるかは本文のもの。
+diff の中にこの**規則そのもの**を名指しする語が無いので、先頭がそのスキルの強制するものを述べる。diff が
+実際に担っている語は残る — `from:`、`isDetailPage` — それが作業の見え方であり、発火させるものだからである。それが読み手に何を払わせるかは本文のもの。
 
 ## 境界がルーティング表になっている
 

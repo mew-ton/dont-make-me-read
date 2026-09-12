@@ -31,7 +31,7 @@ allowed-tools: []
 |---|---|
 | `description` が何をしなければならないか、何を決してしてはならないか、どう先頭を決めるか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がいくらまで許されるか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、ファイルを何と呼ぶか、frontmatter にコメントを入れてよいか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| 本文がいくらまで許されるか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter にコメントを入れてよいか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 
@@ -46,7 +46,7 @@ allowed-tools: []
 | 「なぜその規則が重要かを description が説明しないと、誰も本気で受け取らない。」 | そのスキルが**何を**強制するかは description に属する。それを強制するのが*なぜ*正しいのか — 論拠、代償、代替案 — は本文のものである。両方を手渡されたエージェントは description から行動し、本文を決してロードしない。 |
 | 「使わない場合を述べるのは否定的で、予算の無駄だ。」 | 適用される場合しか名指ししない description は、隣接する成果物にも発火し、誤った発火は毎回、本文まるごとを支払わせる。 |
 | 「隣接する成果物を所有するスキルを名指しすれば、振り分けを助けられる。」 | それは「この成果物は自分のものか」に答えてしまい、エージェントはもう問わなくなる — そしてそれは、description がそもそも問わせるために存在する唯一の問いである。さらに他のスキルの名前を自分の description に書き込むことになり、相手が改名された日に、こちらが黙って誤りになる。 |
-| 「1ファイルのほうが分割より単純だ。」 | 肥大した `SKILL.md` は、そのスキルが発火する*たびに*ロードされ、文脈全体を引きずる。 |
+| 「1ファイルのほうが複数より単純だ。」 | 肥大した `SKILL.md` は、そのスキルが発火する*たびに*ロードされ、文脈全体を引きずる。reference はそれを必要とする枝でだけ読まれる。 |
 | 「今フルのガイドを書いて、後で削る。」 | 削らない。長すぎるスキルは長すぎるまま出荷される。 |
 | 「これは自分には良く読める。」 | あなたは読みながら、テキストに欠けている意図を自分で補っている。作業が供給する語と、スクリプトが報告する数字に照らして確認せよ。 |
 
@@ -60,5 +60,5 @@ allowed-tools: []
 ## Verification（検証）
 
 - [ ] いま書いているスキルと、それが並び立つ集合について、トークン数が `references/structuring-skills.md` の予算の内側にある。
-- [ ] description が `references/writing-descriptions.md` の DO の各項目を満たし、DON'T のどれにも当たらない。
+- [ ] description が機会と境界を、三人称で、1024文字以内で名指ししている。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。

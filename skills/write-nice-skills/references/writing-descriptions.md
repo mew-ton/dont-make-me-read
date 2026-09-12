@@ -63,8 +63,9 @@ it must not carry the procedure the body holds.
 ## The leading word
 
 The skill fires on a word shared between the description and whatever the agent is working
-from: a prompt, or — for a skill that fires mid-task with no prompt — the work itself. Put that word
-near the start, where it does its invocation work.
+from: a prompt, or — for a skill that fires mid-task with no prompt — the work itself. Put it where
+the agent meets it: at the start when the prompt supplies it, and inside the clause that shows what
+the work looks like when the work supplies it.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
 - **One per branch**: synonyms that rename the same branch are duplication.
@@ -89,9 +90,11 @@ The verb carries the intent here: what its author wanted enforced *is* that a RE
 and revised, so no separate intent clause is needed.
 
 **It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
-and, where there is one, the thing that thing displaces. A rule that holds while
-someone writes code or a comment has no word in the prompt to share, and an occasion nobody names
-is one the agent forgets mid-diff. Here the lead comes first, then the occasion, then the bound:
+and, where there is one, the thing that thing displaces. Nothing in the work names a rule like
+this — no prompt says "caller knowledge" and no diff line does either — so there is no occasion to
+lead with, and an occasion nobody names is one the agent forgets mid-diff. What the work *does*
+supply is the shape the rule catches, and those words go in the lead's own examples. Here the lead
+comes first, then the occasion, then the bound:
 
 ```text
 Forces the caller-agnostic callee that takes what differs as data, named in the

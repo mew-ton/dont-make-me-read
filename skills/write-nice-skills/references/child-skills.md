@@ -57,19 +57,19 @@ background: false
 of the three motives want, since the parent uses the result in the same turn; leave it out — it
 defaults to `true` — only for the `Independence` row, where the children run in parallel.
 
-Two optional fields narrow the child further, and are the two to leave out unless you can
-say why: `agent` picks the tool set (`Explore` and `Plan` are read-only) and `model` trades
-cost against capability, per the table above. Narrowing is wrong for a fork that produces
+Two optional fields narrow the child further. `model` trades cost against capability: set it
+from the table above. `agent` picks the tool set (`Explore` and `Plan` are read-only), and is the
+one to leave out unless you can say why. Narrowing is wrong for a fork that produces
 the artifact itself — a read-only tool set cannot write, and the cheapest model that can
 enumerate files is not the one you want drafting what a person will act on. Omit both and
 the fork inherits, which is right for the `Cleanliness` row.
 
-Leave `disable-model-invocation` at `false`: the caller here **is** a model, so `true`
-severs the only path into the child.
+`disable-model-invocation: false` is what keeps the model's path into the child open, and the
+caller here **is** a model.
 
 `context: fork` is what makes the child an execution environment rather than a stretch of
 the parent's turn. Without it, `model` applies to the remainder of the current turn — the
-main conversation — and not to anything the skill delegates.
+main conversation.
 
 ## Passing input
 

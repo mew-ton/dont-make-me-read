@@ -32,7 +32,7 @@ effect, and one that is reached and then skimmed past has none either.
 |---|---|
 | What the `description` must do, must never do, how to lead it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| What a body may cost, which sections it carries, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call its files, whether its frontmatter may carry comments | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| What a body may cost, which sections it carries, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, whether its frontmatter may carry comments | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | Whether a phase should run as a child skill, what to call it, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 
@@ -47,7 +47,7 @@ The agent will look for reasons to skip this skill:
 | "The description should explain why the rule matters, or nobody will take it seriously." | What the skill forces belongs in the description; *why* forcing it is right — the argument, the cost, the alternatives — is the body's. An agent handed both acts from the description and never loads the body. |
 | "Stating when *not* to use it is negative and wastes budget." | A description that names only when it applies fires on every neighbouring artifact too, and each wrong fire costs the whole body. |
 | "Naming the skill that owns a neighbouring artifact helps the agent route." | It answers "is this artifact mine?" so the agent stops asking — and that is the one question the description exists to make it ask. It also puts another skill's name in your description, where renaming that skill silently makes yours wrong. |
-| "One file is simpler than splitting." | A bloated `SKILL.md` loads *every* time the skill fires and drags the whole context. |
+| "One file is simpler than several." | A bloated `SKILL.md` loads *every* time the skill fires and drags the whole context, where a reference is read only on the branch that needs it. |
 | "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. |
 | "This reads well to me." | You are supplying the intent the text is missing as you read it. Check it against the words the work supplies and the number the script reports. |
 
@@ -61,5 +61,5 @@ The agent will look for reasons to skip this skill:
 ## Verification
 
 - [ ] The token counts are inside the budgets in `references/structuring-skills.md`, for the skill you are writing and for the set it will stand alongside.
-- [ ] The description meets every entry in `references/writing-descriptions.md`'s DO list, and none in its DON'T list.
+- [ ] The description names the occasion and the bound, in the third person, inside 1024 characters.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition or question.

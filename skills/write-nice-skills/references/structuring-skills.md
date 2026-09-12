@@ -13,7 +13,8 @@ once it has loaded, or whether to split one skill into two.
 - Open with what the skill is
 - Guard it three ways
 - Naming
-- Progressive disclosure: what to inline, what to disclose
+- Progressive disclosure: inline, disclosed, or unlinked
+- How a reference is reached
 - Comments in the frontmatter
 - Leave out what changes nothing
 - When to split
@@ -131,8 +132,8 @@ file. Red Flags has to be in its head while it writes, which is before any revie
 **Verification may be disclosed**, because "before calling the artifact done" is a condition an
 agent recognises, which is all the pointer that discloses it needs. Disclose it once running it takes more than
 reading the list — steps in a fixed order, an expected output to compare each against. Keep it
-inline while every box is answered by looking or by one command: three to five of those cost
-less inline than the pointer plus the load that follows it.
+inline while every box is answered by looking or by one command: three to five of those are
+cheaper to read where they are than to go and fetch.
 
 When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
@@ -156,19 +157,21 @@ Neither is required. The name is fixed for a skill that has one.
 `references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Use whatever
 the skill's other folders already use, and spend no further thought on it.
 
-## Progressive disclosure: what to inline, what to disclose
+## Progressive disclosure: inline, disclosed, or unlinked
 
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
-  condition that routes to each reference, and the Common Rationalizations and Red Flags
-  guards. Leave the
+  condition that routes to each reference, and all three guards — Common Rationalizations, Red
+  Flags, and Verification while it is still a checklist. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
   `SKILL.md` will not open the file it came from.
 - **Disclose** behind a context pointer what **only some branches reach**: deep
   detail, long examples, per-branch procedure.
-- **Move out of the skill entirely** what no branch reaches: a file beside `SKILL.md` that
+- **Leave unlinked** what no branch reaches: a file beside `SKILL.md` that
   nothing references is never loaded, so it costs the agent nothing at all — the design
   rationale, the skill explained to a person, where its rules came from. Whether such a file
   exists, and what it is called, belong to whoever writes it.
+
+## How a reference is reached
 
 What the body points at sits **one level deep**. A reference reached from another reference
 is read *partially* — the agent previews it with something like `head -100` instead of
@@ -199,12 +202,13 @@ future reader pays for.
 
 ## Leave out what changes nothing
 
-Leave out the sentence that restates the frontmatter's mechanics fields, or names whichever skill
-happens to invoke this one — "this is a model-invoked skill, called by `x` during review". It
-changes nothing the skill does, and it is wrong the day `x` is renamed.
+Leave out the sentence that restates what the frontmatter already sets — `context: fork`,
+`user-invocable: false` — or that names whichever skill happens to invoke this one — "this is a
+model-invoked skill, called during review by the skill that owns PR comments". It changes nothing
+the skill does, and it is wrong the day that skill is renamed.
 
-Leave out the no-op, too — the instruction the model already follows unprompted. It reads as
-thoroughness and costs a reader the same as a rule that changes something.
+Leave out the no-op, too. It reads as thoroughness and costs a reader the same as a rule that
+changes something.
 
 ## When to split
 

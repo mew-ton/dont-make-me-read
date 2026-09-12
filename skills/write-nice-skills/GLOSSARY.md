@@ -15,6 +15,9 @@ what brings the skill in.
 **Reach clause** — the part of a `description` that admits a second way in, by naming a need
 another skill has for the rules this one holds.
 
+**Always-on skill** — a skill whose body keeps it in force past the response that loaded it, so it
+is resident for a whole activity rather than for one artifact.
+
 **Branch** — one distinct situation the skill handles. Different branches read different parts of
 the skill.
 

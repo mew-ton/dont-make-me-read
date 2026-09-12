@@ -64,8 +64,9 @@ when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
-The lead states what the skill forces, because nothing in a diff names this rule. `from:`,
-`isDetailPage` stay — those are what the work looks like, so those are what fires.
+The lead states what the skill forces, because no word in a diff names the rule itself. The words
+a diff does carry stay — `from:`, `isDetailPage` — because those are what the work looks like, and
+those are what fires.
 Why it costs the reader anything is the body's.
 
 ## A routing table in the bound
