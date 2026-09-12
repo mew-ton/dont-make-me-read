@@ -39,7 +39,7 @@ misplaced before anyone noticed.
 
 ## The shape, from matklad
 
-Three sections, in this order.
+In this order.
 
 | Section | What goes in it |
 |---|---|
@@ -47,7 +47,7 @@ Three sections, in this order.
 | **Codemap** | The coarse-grained modules and how they relate — "a map of a country, not an atlas of maps of its states". It answers *where is the thing that does X* and *what does the thing I am looking at do*. |
 | **Cross-cutting concerns and invariants** | What holds across modules, and the boundaries between layers and systems. Its own section, not scattered through the other two. |
 
-Five standing rules come with them, three of them matklad's:
+Standing rules come with them, the first three matklad's:
 
 - **Keep it short, and specify only what is unlikely to change.** Every recurring contributor reads
   it. Do not try to keep it synchronised with the code; revisit it a couple of times a year.
@@ -73,10 +73,10 @@ the code and its logical architecture have come apart.
 
 ## What this adds
 
-Four conditions on *how* those three sections are written. Name them when reviewing, so a finding
-says which one failed.
+Conditions on *how* those sections are written. Name them when reviewing, so a finding says which
+one failed.
 
-### 1. Every section settles a decision somebody faces
+### Every section settles a decision somebody faces
 
 Start from the decisions, not from the parts. "Which layer does this belong in", "does this fork",
 "where does this entry point live" are decisions. "What the layers are" is a description, and
@@ -91,7 +91,7 @@ wrong the next time somebody adds one, and reads as authority while carrying non
 kinds are and what puts a thing in each; the reader can count for themselves, and their count will
 be right.
 
-### 2. Lead the invariants with the rule that generates them
+### Lead the invariants with the rule that generates them
 
 The top of that section is the **golden rule**: the thinking every other decision in the project
 follows from. Without it a reader has a list of constraints to obey; with it they can derive the
@@ -131,7 +131,7 @@ So: no single refusal gets a section of its own. One heading over a flat list is
 allowed, and the headings that remain go to the golden rule and the invariants. Counting negated
 headings is the cheap check.
 
-### 3. A classification covers everything it claims to classify
+### A classification covers everything it claims to classify
 
 When the doc partitions what exists — layers, kinds, categories — every existing thing lands in
 exactly one bucket, and a reader can place a new thing by the same partition.
@@ -141,7 +141,7 @@ stop using it to decide. Either widen it until it is total, or narrow what it cl
 *three examples* is honest and useful; a table presented as *the layers* is not, unless it holds
 them all.
 
-### 4. Restate what the decision needs; never re-derive a definition another file owns
+### Restate what the decision needs; never re-derive a definition another file owns
 
 Exit codes belong to the script that returns them. Frontmatter fields belong to the platform that
 parses them. The list of what exists belongs to the directory that holds it. And how an artifact is
@@ -172,9 +172,7 @@ whose headings are decisions stays cheap as it grows; one that must be read end 
 
 ## Language
 
-Write it in the language its contributors already use — the repository's. The conditions above are
-about what the doc settles, not which language settles it. The examples here are in English only
-because this skill is.
+Write it in the language its contributors already use — the repository's.
 
 ## Common Rationalizations
 
@@ -209,8 +207,8 @@ because this skill is.
 - `dont-make-me-read` — the test this one sharpens, and the rule that a constraint is stated as the
   wall the reader would walk into.
 - `avoid-unverifiable-context` — what keeps deliberation out while the rationale stays.
-- `avoid-reference-detours` — what to restate at the point of use, which condition 4 narrows for
-  the definitions another file owns.
+- `avoid-reference-detours` — what to restate at the point of use, which the last condition above
+  narrows for the definitions another file owns.
 - `find-document-dependencies` — draws the arrows, so the test above can be run rather than
   eyeballed. Every arrow it finds pointing into this file is a finding here.
 - `write-nice-skills` — a `SKILL.md` is an instruction to an agent, not an architecture doc; this
