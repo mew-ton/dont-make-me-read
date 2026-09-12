@@ -15,21 +15,16 @@ allowed-tools: []
 
 ## Overview
 
-An issue is not a design document; it is a problem statement plus a completion condition, written
-once per issue body whether it is a new draft or an existing one. Two gates below govern every
-section.
+An issue is a problem statement plus a completion condition, written once per issue body whether
+it is a new draft or an existing one. The gates below govern every section.
 
 ## Language
 
 Write the issue in the language its implementer already reads — the language of the repository, its
-existing issues, and its code review. Both gates below are about the issue's **shape**, and the
-sections, the two gates, and the template apply the same way whichever language you write in. The
-examples here are in English because this skill is; they are not a request to file issues in
-English.
+existing issues, and its code review. The gates, the sections and the template are about the
+issue's **shape**, and apply the same way whichever language you write in.
 
-One issue, one language. A second-language restatement of the same content is Gate 2 duplication,
-not accessibility — see the exception under Gate 2, which covers differing presentation forms and
-not differing languages.
+One issue, one language. A second-language restatement of the same content is Gate 2 duplication.
 
 ## What the implementer already has
 
@@ -139,8 +134,8 @@ State the same content twice when the readers differ — a screenshot for a huma
 copy table for a reader who can only read text. When Goal points at an external reference, also
 give a text alternative.
 
-This exception is about differing presentation forms, not differing languages. Write the whole
-issue in one language; do not restate the same content in a second language.
+Write the whole issue in one language: a second copy in another language is duplication rather
+than a second presentation form.
 
 ## Sections
 
