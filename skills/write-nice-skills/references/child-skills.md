@@ -26,17 +26,17 @@ answer, not the transcript that produced it.
 its substance in a child and the verdicts come back without what each one rests on, so
 nobody can review the review.
 
-The test is whether the caller receives everything it needs to check the work. A skill that
-*writes an artifact* passes it — the artifact comes back whole and the reader judges the
-thing itself — so a skill that writes forks and is handed one brief, while a skill that
-routes or constrains stays on the main thread.
+The test is whether the caller receives everything it needs to check the work. A phase that
+*produces an artifact* passes it — the artifact comes back whole and the reader judges the
+thing itself — so that phase is delegated and handed one brief. A phase whose only product is
+a judgment fails it, and stays where its grounds stay.
 
 ## What the fork buys, and what `model` and `background` each case wants
 
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
-| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so the isolation is structural rather than requested | `sonnet`, since the work is design-quality | leave unset when they should run in parallel |
+| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since the work is design-quality | leave unset when they should run in parallel |
 | **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
 ## Naming
@@ -51,12 +51,12 @@ together in a directory listing.
 user-invocable: false
 disable-model-invocation: false
 context: fork
-background: false
 ```
 
-`user-invocable: false` hides the child from the user's `/` menu. `background: false` is
-required when the conclusion is used in the same turn, and left unset when two children should
-run in parallel; it defaults to `true`.
+`user-invocable: false` hides the child from the user's `/` menu. `background` is left out of
+the block above because each of the three motives wants a different value: set it to `false`
+when the conclusion is used in the same turn, and leave it unset — it defaults to `true` — when
+two children should run in parallel.
 
 Two optional fields narrow the child further, and are the two to leave out unless you can
 say why: `agent` picks the tool set (`Explore` and `Plan` are read-only) and `model` trades

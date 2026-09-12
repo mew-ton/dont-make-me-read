@@ -25,16 +25,16 @@
 - **発火してはならない条件を、その機会を否定した形で、同じ人称で書くこと**：`Does not apply when …`。
   そうすれば対で一つの使用条件として読まれる。
 - **`description` は英語で書くこと。** 本文とスキルの出力が何語であろうと。英語の用語こそが、どの言語で
-  打たれようとプロンプトに生き残るものであり、公開するスキルは利用者がどれを打つか知り得ない。
+  打たれようとプロンプトに生き残るものであり、他人がインストールするスキルは、利用者がどの言語を打つか
+  知り得ない。一つのチームから決して出ないスキルなら、そのチームが実際に打つフレーズを足してよい。
 - **1024文字以内に収めること、厳守。** 意図と機会と境界が収まらないなら、そのスキルは仕事を抱えすぎている：
   水増しや切り詰めではなく分割せよ。
 
 ## DON'T
 
-- **スキルの実装を要約すること** — 手順、適用する判定基準（たとえば「決定可能な問題、検査可能な受け入れ
-  条件、スコープ外の境界」）、そして本文がそれぞれに与える論拠・代償・処方。ここに書くと、エージェントはそれを
-  スキルそのものとして読み、元になった本文を読み飛ばす。見分けのつく用語は残る。発火させるのはそれだから
-  である：画面の名前がついた `variant` は作業がどう見えるかである。
+- **スキルの実装を要約すること** — 手順、適用する判定基準、そして本文がそれぞれに与える論拠・代償・処方。
+  ここに書くと、エージェントはそれをスキルそのものとして読み、元になった本文を読み飛ばす。作業そのものが
+  使う語は残る。発火させるのはそれだからである：ファイル名、フラグ名、そのまま打ち込む専門用語。
 - **このスキルのものではない概念を説明すること** — callee とは何か、プルリクエストとは何か、なぜ結合が代償を
   伴うのか。ノイズである：エージェントは知っているし、その文字数は意図から差し引かれる。
 - **他のスキルを名指しすること。** 名指ししたくなるのは、たいていそのスキルがオーケストレーションを含んで
@@ -43,18 +43,16 @@
   *この*成果物は自分のものかという問いをエージェントに問わせなくする：たとえば
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`。到達節はその例外である。
   誰も名指ししないからである：「also applies when another skill needs …」。ファイル名やパスが機会そのもので
-  ある場合、それがトリガーである。
+  ある場合、それが leading word である。
 - **タグ列や、キーワードを詰めた依頼文を書くこと。** `Skill / SKILL.md / description —` は誰が打つものにも
   一致しない。
 - **山括弧を入れること。** `<` と `>` はそのまま拒否されるので、タグや `<placeholder>` を担った description は
   そもそもロードされない。
-- **第二言語のキーワードを引用すること。** 単一チームのスキルは、そのチームが実際に打つフレーズを追加して
-  よいが、公開するスキルはそうしてはならない。その列は description を膨らませ、同期がずれていくだけである。
 
 ## The leading word（leading word）
 
 スキルは、description と、エージェントが手がかりにしているものとの間で共有された語によって発火する：
-プロンプトか、`/` メニューから隠されたスキルなら作業そのものである。その語を、起動の仕事をする先頭付近に
+プロンプトか、プロンプト無しで作業の途中に発火するスキルなら作業そのものである。その語を、起動の仕事をする先頭付近に
 置くこと。
 
 - **実在の語**：自分のプロンプト、ドキュメント、コードに現れる用語。
@@ -72,8 +70,8 @@
 
 ```text
 Writes and revises a README, including adding a section to one that already
-exists. Does not apply when the artifact is an architecture doc, reference
-documentation, a tutorial, or a changelog.
+exists. Does not apply when the artifact is an architecture doc, a SKILL.md,
+an issue body, reference documentation, a tutorial, or a changelog.
 ```
 
 **名指ししない → 何を強制するかを先頭に、`Forces …` で始める。** そのスキルが押し通すもの、そして押し
@@ -83,9 +81,13 @@ documentation, a tutorial, or a changelog.
 
 ```text
 Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it … Applies when writing a code comment, a docstring, a PR
-description, or any text that points elsewhere to be understood. Does not apply
-when the target does not exist …
+reader away to get it — "the format rules at the top of this file", "same as
+the config", a section that defers to another section — leaving the original
+where it is and authoritative. Applies when writing a code comment, a
+docstring, a PR description, or any text that points elsewhere to be
+understood. Does not apply when the target does not exist or cannot be reached
+at all, when the same content is repeated twice inside one document, or when a
+module branches on which caller invoked it.
 ```
 
 機会はそのあとに続き、活動として名指しされる — たとえば "writing, revising, reviewing, or designing code"。

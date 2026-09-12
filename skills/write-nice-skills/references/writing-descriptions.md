@@ -29,18 +29,17 @@ it must not carry the procedure the body holds.
   `Does not apply when …`, so the pair reads as one condition of use.
 - **Write the `description` in English**, whatever language the body and the skill's output
   are in. English terms are the ones that survive into a prompt whatever language it is typed
-  in, and a published skill cannot know which its users type.
+  in, and a skill other people install cannot know which language its users type. A skill that
+  will never leave one team may add the phrases that team really types.
 - **Keep it inside 1024 characters, hard.** If the intent, the occasion and the bound will
   not fit, the skill is doing too much: split it rather than padding or truncating.
 
 ## DON'T
 
-- **Summarise the skill's implementation** — the steps, the criteria it applies (for
-  example, "a determinable problem, checkable acceptance criteria, and an out-of-scope
-  boundary"), and the argument, the cost and the remedy the body gives for each. Put them
-  here and the agent reads them as the skill, skipping the body it took them from.
-  Recognisable terms stay, because those are what fires: a `variant` named after a screen
-  is what the work looks like.
+- **Summarise the skill's implementation** — the steps, the criteria it applies, and the
+  argument, the cost and the remedy the body gives for each. Put them here and the agent reads
+  them as the skill, skipping the body it took them from. The words the work itself uses stay,
+  because those are what fires: a file name, a flag name, a term of art typed as-is.
 - **Explain concepts that are not this skill's** — what a callee is, what a pull request
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
@@ -50,19 +49,16 @@ it must not carry the procedure the body holds.
   stops the agent asking whether *this* artifact is the skill's: for example,
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach
   clause is the exception, since it names nobody: "also applies when another skill needs
-  …". A file name or a path can be the occasion itself, and then it is the trigger.
+  …". A file name or a path can be the occasion itself, and then it is the leading word.
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —`
   matches nothing anyone types.
 - **Put an angle bracket in it.** `<` and `>` are rejected outright, so a description
   carrying a tag or a `<placeholder>` does not load at all.
-- **Quote keywords in a second language.** A single-team skill may add the phrases that
-  team really types; a published one must not, since the list only bloats the description
-  and drifts out of sync.
 
 ## The leading word
 
 The skill fires on a word shared between the description and whatever the agent is working
-from: a prompt, or — for a skill hidden from the `/` menu — the work itself. Put that word
+from: a prompt, or — for a skill that fires mid-task with no prompt — the work itself. Put that word
 near the start, where it does its invocation work.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
@@ -80,8 +76,8 @@ For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`:
 
 ```text
 Writes and revises a README, including adding a section to one that already
-exists. Does not apply when the artifact is an architecture doc, reference
-documentation, a tutorial, or a changelog.
+exists. Does not apply when the artifact is an architecture doc, a SKILL.md,
+an issue body, reference documentation, a tutorial, or a changelog.
 ```
 
 **It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
@@ -91,9 +87,13 @@ the agent forgets mid-diff:
 
 ```text
 Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it … Applies when writing a code comment, a docstring, a PR
-description, or any text that points elsewhere to be understood. Does not apply
-when the target does not exist …
+reader away to get it — "the format rules at the top of this file", "same as
+the config", a section that defers to another section — leaving the original
+where it is and authoritative. Applies when writing a code comment, a
+docstring, a PR description, or any text that points elsewhere to be
+understood. Does not apply when the target does not exist or cannot be reached
+at all, when the same content is repeated twice inside one document, or when a
+module branches on which caller invoked it.
 ```
 
 The occasion still follows, named as an activity — for example, "writing, revising,

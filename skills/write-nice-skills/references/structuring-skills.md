@@ -9,10 +9,10 @@ to split one skill into two.
 - What is free and what is not
 - The body budget
   - Measuring the token half of that budget
-- Naming
 - Staying in force
 - Open with what it is, then when it applies
 - Guard it three ways
+- Naming
 - Progressive disclosure: what to inline, what to disclose
 - Leave out what the structure already settles
 - When to split
@@ -36,7 +36,7 @@ both. A file inside its own limit can still put the activity over.
 
 | The skill | Budget | Because |
 |---|---|---|
-| On for a whole activity — it is resident whatever the reader is doing | **2000 tokens for all of them together** | every turn of every activity pays for them |
+| Always on for a whole activity — resident whatever the reader is doing | **2000 tokens for all of them together** | every turn of every activity pays for them |
 | Reached for one artifact or one branch | **5000 tokens each** | only the reader who needs it pays |
 
 So the set to check is every skill that will be standing at once: the ones on for this
@@ -60,9 +60,9 @@ The second line is the always-on budget; sum the reported figures to check the s
 install path, `~/.claude/skills/write-nice-skills/`, or a repository's
 `.claude/skills/write-nice-skills/`. Resolve it from where you read this file: there is no one absolute path to hard-code.
 
-It diffs the input-side token count of two runs against whichever model is currently
-default, so it stays correct as models change. Each file costs one round trip, and it exits
-non-zero over budget.
+It sends the file to whichever model is currently default and subtracts a baseline request
+without it, so the figure is that model's own count and stays correct as models change. Each
+file costs one round trip, and it exits non-zero over budget.
 
 For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
 writing systems, where characters per token nearly double between a Latin one and a
@@ -71,28 +71,6 @@ closing line re-derives that figure from your own run; recompute it there once t
 model has moved on, since a stale figure that is too low sends you splitting files that were
 never over budget.
 
-
-## Naming
-
-The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
-leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
-name. `anthropic` and `claude` are reserved and may not appear in it.
-
-**A section the skill itself fixes keeps a fixed name at its root**, so every skill's sits
-at the same path and the set is greppable. Neither file is required; the name is fixed for
-the skill that has one:
-
-| File | What it holds |
-|---|---|
-| `GLOSSARY.md` | the terms the rules use |
-| `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist |
-
-**Everything else the agent loads is branch material, and its name is yours.**
-`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Match
-whichever neighbour fits and spend no further thought on it.
-
-**A file the agent never loads is outside all of this** — whether one exists at all, and what
-it is called, belong to whoever writes it.
 
 ## Staying in force
 
@@ -117,7 +95,7 @@ whether the reader is in it. The rules, the procedure and the guards come after.
 The second half — whether the reader is in it — earns its place only where the fire is fuzzy: a
 standing rule the work never names, or an artifact with a near neighbour. A skill whose next
 section is already its inputs or its routing has answered it, and a section that repeats the
-description there is a **no-op** — an entry the reader would have satisfied without it.
+description there is a **no-op**.
 
 Whatever argument does not fit those two sentences is either operative — and belongs in the rule
 it defends, or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
@@ -131,25 +109,48 @@ guard for each.
 |---|---|---|
 | **Common Rationalizations** | the excuse, before the step is skipped | a table of `Rationalization` against `Reality` |
 | **Red Flags** | the symptom, once it is in the output | bullets: what it looks like, and what it actually is |
-| **Verification** | whether the work is finished | a checklist whose every box is answerable from the artifact |
+| **Verification** | whether the work is finished | a checklist whose every box is settled by looking at the artifact, or by running one check against it |
 
 Fill Common Rationalizations from what the agent has actually said — add each excuse the
 first time you have to answer it. A Red Flag names something observable in the output — "three questions in one message" —
 so the agent can look for it, where a restatement of the rule gives it nothing new to look
-at. Every Verification box is answerable from the artifact itself.
+at.
 
 **Two of the three stay inline.** Common Rationalizations is reached in the state where the
 agent is hunting for a reason to skip, and an agent in that state does not stop to open a
 file. Red Flags has to be in its head while it writes, which is before any review.
 
 **Verification can**, because "before calling the artifact done" is a condition an agent
-recognises, which is all a context pointer needs. Disclose it once it is a procedure of its
-own — steps to run, a script, an expected output to compare against. Keep it inline while
-it is a checklist: three to five boxes cost less inline than the pointer plus the load that
-follows it.
+recognises, which is all a context pointer needs. Disclose it once running it takes more than
+reading the list — steps in a fixed order, an expected output to compare each against. Keep it
+inline while every box is answered by looking or by one command: three to five of those cost
+less inline than the pointer plus the load that follows it.
 
 When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**: a standing role of
 the skill, under the fixed name every skill's checks share.
+
+## Naming
+
+The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
+leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
+name. `anthropic` and `claude` are reserved and may not appear in it.
+
+**Two files carry a standing role of the skill, and their names are fixed**, so every skill's
+sits at the same path and the set is greppable:
+
+| File | What it holds |
+|---|---|
+| `GLOSSARY.md` | the terms the rules use |
+| `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist |
+
+Neither is required. The name is fixed for a skill that has one.
+
+**Everything else the agent loads is branch material, and its name is yours.**
+`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Match
+whichever neighbour fits and spend no further thought on it.
+
+**A file the agent never loads is outside all of this** — whether one exists at all, and what
+it is called, belong to whoever writes it.
 
 ## Progressive disclosure: what to inline, what to disclose
 
@@ -161,8 +162,7 @@ the skill, under the fixed name every skill's checks share.
   detail, long examples, per-branch procedure.
 - **Move out of the skill entirely** what no branch reaches: a file beside `SKILL.md` that
   nothing references is never loaded, so it costs the agent nothing at all — the design
-  rationale, the skill explained to a person, where its rules came from. What such a file
-  owes its reader is that reader's rules' business, not this file's.
+  rationale, the skill explained to a person, where its rules came from.
 
 What the body points at sits **one level deep**. A reference reached from another reference
 is read *partially* — the agent previews it with something like `head -100` instead of
@@ -171,9 +171,9 @@ supporting file links directly from `SKILL.md`, and is found that way; what it i
 settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
 headings**, for the same reason: a partial read still shows what the file contains.
 
-A context pointer names the **condition** that reaches the file: "Read
-`references/api-errors.md` when the API returns a non-200 status". The reference loads only
-when that condition is met.
+A context pointer names the **condition or the question** that reaches the file: "Read
+`references/api-errors.md` when the API returns a non-200 status", or "What an error code
+means". The reference loads only when the reader is in that case.
 
 A fact that defies a reasonable assumption stays inline as well: an agent that does not know a
 health endpoint answers while its database is down cannot recognise the condition that would have
@@ -203,7 +203,7 @@ result is one unit; adding database administration makes it two.
 
 Then split only when the cut earns its cost. Three cuts justify it:
 
-1. **By trigger word** — a distinct situation has its *own* leading word you
+1. **By leading word** — a distinct situation has its *own* leading word you
    actually type. That word can invoke a separate model-invoked skill (or, within
    one skill, gate a separate reference).
 2. **By sequence** — a run of steps whose *post-completion* steps should be hidden.
@@ -215,7 +215,7 @@ Then split only when the cut earns its cost. Three cuts justify it:
 3. **By delegation** — a phase that should run in a *different execution
    environment*: its own model, its own tool set, its own context. This cut is about
    who should do the work, where the first two are about what the reader types and
-   what comes after.
+   what comes after. It has a reference of its own, and `SKILL.md` routes to it.
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an
@@ -228,8 +228,9 @@ This skill splits along its own branches, as it asks every skill to:
 
 - the always-needed core stays in `SKILL.md`;
 - the branches an author is actually on — *writing a description*, *structuring a
-  skill*, *delegating a phase* — each get one reference, and the worked Bad → Good
-  pairs a fourth;
+  skill*, *delegating a phase* — each get one reference, and the worked Bad → Good pairs a
+  fourth, because writing a description and measuring one against a worked pair are reached at
+  different moments;
 - shared vocabulary goes in `GLOSSARY.md`.
 
 That is the test: a skill about structure is structured the way it prescribes.
