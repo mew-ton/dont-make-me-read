@@ -42,9 +42,8 @@ review the review.
 
 `<parent-skill-name>-<role>`: the parent's name, a hyphen, then the role the child plays —
 `-change-inventory`, `-repo-grounding`, `-version-lookup`. The prefix is what keeps the pair
-together in a directory listing. The parent's name goes in the directory name and nowhere else —
-renaming the pair is one edit you own, where a parent's name inside a `description` is an edit
-somebody else triggers.
+together in a directory listing. Renaming the pair is an edit you own on both halves,
+where a parent's name inside a `description` is an edit somebody else triggers.
 
 ## The child's frontmatter
 

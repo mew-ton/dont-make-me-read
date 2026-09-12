@@ -39,15 +39,16 @@ it must not carry the procedure the body holds.
 ## DON'T
 
 - **Summarise the skill's implementation** — the steps, the criteria it applies, and the
-  argument, the cost and the remedy the body gives for each. Put them here and the agent reads
-  them as the skill, skipping the body it took them from. The words the work itself uses stay,
-  because those are what fires.
+  argument the body makes for each: why the rule is right, what ignoring it costs, what the
+  alternatives were. Put them here and the agent reads them as the skill, skipping the body it
+  took them from. What the skill *forces* stays, since that is the intent, and so do the words
+  the work itself uses, since those are what fires.
 - **Explain concepts that are not this skill's** — what a callee is, what a pull request
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
-- **Name another skill.** Wanting to name one usually means this skill calls that one as a step, and
-  which steps a skill runs is the body's to state, so the name carries the body out into the
-  description. A name also reads as a routing table, which
+- **Name another skill.** Wanting to name one usually means you are routing — telling the agent
+  which skill owns what — and a routing table is the body's to hold, if anyone's, so the name
+  carries the body out into the description. A name also reads as a routing table, which
   stops the agent asking whether *this* artifact is the skill's: for example,
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach
   clause is the exception, since it names nobody: "also applies when another skill needs
@@ -71,8 +72,7 @@ near the start, where it does its invocation work.
 
 ## Choosing the lead
 
-**Does the work name the artifact?** Each worked description below is shown for what it puts
-first and how it closes; what it happens to be a skill about is incidental.
+**Does the work name the artifact?**
 
 **It does → lead with the occasion.** The work says the word and the word fires the skill.
 For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. Here the lead *is* the
@@ -86,8 +86,8 @@ an issue body, reference documentation, a tutorial, or a changelog.
 
 **It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
 and, where there is one, the thing that thing displaces. A rule that holds while
-someone writes code or a comment has no word to share, and an occasion nobody names is one
-the agent forgets mid-diff. Here the lead comes first, then the occasion, then the bound:
+someone writes code or a comment has no word in the prompt to share, and an occasion nobody names
+is one the agent forgets mid-diff. Here the lead comes first, then the occasion, then the bound:
 
 ```text
 Forces the narrowest range a reader has to hold before they can act — the
@@ -101,8 +101,8 @@ scratchpads, working notes.
 ```
 
 The occasion still follows, named as an activity — for example, "writing, revising, reviewing, or
-designing code". Saying in the description that the skill stays in force names the activity it
-stays in force for; making it actually hold for the rest of that activity is the body's job.
+designing code". The description names that activity; keeping the skill in force for the rest of
+it is the body's job.
 
 ## The description and the body serve different readers
 

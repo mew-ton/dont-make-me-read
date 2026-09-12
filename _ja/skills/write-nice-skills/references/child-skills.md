@@ -39,8 +39,7 @@
 ## Naming（命名）
 
 `<parent-skill-name>-<role>`：親の名前、ハイフン、そして子が演じる役割 — `-change-inventory`、
-`-repo-grounding`、`-version-lookup`。この接頭辞が、ディレクトリ一覧で親子を隣に並べる。親の名前が入るのは
-ディレクトリ名だけで、他のどこにも入らない — 対を改名するのは自分が所有する一回の編集であり、`description` の
+`-repo-grounding`、`-version-lookup`。この接頭辞が、ディレクトリ一覧で親子を隣に並べる。対を改名するのは、両方とも自分が所有する編集であり、`description` の
 中に書いた親の名前は、他人が引き起こす編集である。
 
 ## The child's frontmatter（子の frontmatter）

@@ -6,7 +6,7 @@ Each pair names what it is fixing.
 ## Contents
 
 - A tag list, keywords nobody types, and a leaked step
-- The thesis in front of the occasion
+- The argument in front of the occasion
 - A routing table in the bound
 - The criteria, handed over
 
@@ -36,7 +36,7 @@ a skill's.
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
 one clause. The bound is the occasion negated, and the reach clause names nobody.
 
-## The thesis in front of the occasion
+## The argument in front of the occasion
 
 **Bad**
 
@@ -47,7 +47,7 @@ time one is added. Take the knowledge out instead: the caller passes what
 differs. Use on any coding task.
 ```
 
-The argument, the cost and the remedy are all here, which is the skill. An agent with
+The argument for the rule is all here — what it costs to read such a module, and what to do instead — which is the body's. An agent with
 them acts on the summary; the body confirms what it already believes, if it loads at
 all. The occasion arrives last, in four words.
 

@@ -29,5 +29,3 @@ reaches it: the reference is not loaded until the reader is in that case.
 
 **No-op** — an instruction the model already follows unprompted.
 
-**Common Rationalizations** — a table of the excuses an agent uses to skip a skill, each paired
-with the reality that refutes it.
