@@ -153,8 +153,7 @@ would be read once and agreed with, which is not the same as being applied.
 ## Guard it three ways
 
 A skill is talked out of before the work, cut during it, and declared done after it. One
-guard for each, all three inline, because a guard behind a pointer is skipped along with
-everything else.
+guard for each.
 
 | Section | What it catches | Shape |
 |---|---|---|
@@ -167,6 +166,17 @@ first time you have to answer it. A Red Flag is observable rather than a restate
 rule: "three questions in one message: that's batching, not interviewing" tells the agent
 what to look at, where "do not batch questions" only repeats the rule it already has. A
 Verification box nobody can answer from the artifact is a wish, not a check.
+
+**Two of the three cannot be disclosed.** Common Rationalizations is reached in the state
+where the agent is hunting for a reason to skip, and an agent in that state does not stop
+to open a file. Red Flags has to be in its head while it writes, not only when it comes
+back to review.
+
+**Verification can**, because "before calling the artifact done" is a condition an agent
+recognises, which is all a context pointer needs. Disclose it once it is a procedure of its
+own — steps to run, a script, an expected output to compare against. Keep it inline while
+it is a checklist: three to five boxes cost less inline than the pointer plus the load that
+follows it.
 
 A fact that defies a reasonable assumption stays inline for the same reason. An agent that
 does not know the `/health` endpoint answers while the database is down cannot recognise
