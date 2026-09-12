@@ -44,6 +44,12 @@ The examples below are in English because this file is. Strength is a property o
 not of the language you assert it in — write the finding in the language the repository's reviews
 already use, and keep the same three rows.
 
+## Contents
+
+- Row 1 — a fix you can defend
+- Row 2 — options that are genuinely interchangeable
+- Row 3 — no fix you can name
+
 ## Row 1 — a fix you can defend
 
 ### Bad: the fix is known, but written as a menu

@@ -3,6 +3,21 @@
 実際の issue 本文を起草／改稿しようとしているときに読むこと。各例は `SKILL.md` の Gate 1 または Gate 2 の
 一部分を示している。
 
+## Contents
+
+- Gate 1 — decision vs. choice
+- Gate 1 — 固定された形は選択ではなく制約である
+- Gate 1 — 制約と、その理由を正しい場所に
+- Gate 1 — references
+- Background — 実体が文書やコードであるときは主語がパスになる
+- Background — 複数の問題を章立てする
+- Background — 同じ形の要件は、繰り返しの散文ではなく表に
+- Goal — Acceptance criteria の全項目をカバーする
+- Acceptance criteria — 「すべての」主張にはパスで範囲づけられた主語が要る
+- Affected areas — 将来の配置に関する注記は依然として実装方法である
+- Gate 2 — duplication
+- A full passing issue（通過する issue の全体像）
+
 ## Gate 1 — decision vs. choice
 
 ### Bad: 実装方法が書き込まれている

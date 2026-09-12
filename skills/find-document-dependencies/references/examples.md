@@ -3,6 +3,12 @@
 A one-way arrow running the wrong way, a both-ways pair, and an edge with both ends inside one
 file.
 
+## Contents
+
+- A one-way arrow, pointing at the doc instead of away from it
+- A both-ways pair, split across two systems
+- An edge with both ends in one file
+
 ## A one-way arrow, pointing at the doc instead of away from it
 
 An architecture doc, describing where the code lives:
