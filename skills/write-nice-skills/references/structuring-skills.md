@@ -72,6 +72,14 @@ The default is asymmetric on purpose. This is a judgment retaken every response
 rather than a property of the system, so the cheap failure has to be the one that
 leaves the rule on.
 
+## Write the description and the body for different purposes
+
+- Write the `description` as material for one judgment: whether to fire. That is what the agent
+  decides on, and that decision is all the field is for.
+- Explain the skill in the body, for the reader who has to understand it once it has fired.
+- Keep both, even where they say the same thing. The purposes differ, so the overlap is intended —
+  never cut either because the other already carries it.
+
 ## Progressive disclosure: what to inline, what to disclose
 
 - **Inline** in `SKILL.md` what **every path needs**: why the skill exists, how to
@@ -85,11 +93,6 @@ leaves the rule on.
   `SKILL.md` is not referenced from it, so nothing loads it and it costs the agent nothing.
   Put one there when a person needs this skill explained; what it owes that person is the
   README rules' business, not this file's.
-
-The body carries the skill's own explanation, and the `description` restating part of it is not
-duplication to remove. That text is written for one judgment — whether to fire — so it is no
-substitute for a body a reader can understand the skill from. A body trimmed because "the
-description already says it" is how one ends up opening on a boundary with the purpose nowhere.
 
 A context pointer names the condition and the file: "For writing a description, see
 `references/writing-descriptions.md`." The reference loads only when that branch is
