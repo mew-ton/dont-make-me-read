@@ -74,14 +74,29 @@ leaves the rule on.
 
 ## Progressive disclosure: what to inline, what to disclose
 
-- **Inline** in `SKILL.md` what **every path needs**: scope, the core principles in
-  brief, and the Common Rationalizations guard.
+- **Inline** in `SKILL.md` what **every path needs**: why the skill exists, how to
+  work, the condition that routes to each reference, and the Common Rationalizations
+  guard. Not the rules themselves — an author who can settle one from `SKILL.md` will
+  not open the reference it came from, which is what a leaked description does to a
+  body, one level up.
 - **Disclose** behind a context pointer what **only some branches reach**: deep
   detail, long examples, per-branch procedure.
 
 A context pointer names the condition and the file: "For writing a description, see
 `references/writing-descriptions.md`." The reference loads only when that branch is
 actually taken.
+
+## Add Common Rationalizations
+
+For any skill an agent might cut corners on, pre-empt the excuses: a table of the
+reasons it will find for skipping, each paired with the reality that refutes it. It is
+inline because a guard behind a pointer is skipped along with everything else.
+
+## Leave out what the structure already settles
+
+A skill does not need to state its own category, who calls it, or where it sits. The
+frontmatter and the callers establish all of that, a sentence saying it changes nothing
+the skill does, and it makes the skill wrong the day a caller is renamed.
 
 ## When to split
 

@@ -66,13 +66,27 @@ TARGET=2000 bash <this skill's directory>/scripts/count-tokens.sh <常時効く 
 
 ## Progressive disclosure: 何をインラインにし、何を開示するか
 
-- **インライン**にする（`SKILL.md` に）：**すべての経路が必要とするもの** — scope、中核の原則の要約、
-  Common Rationalizations のガード。
+- **インライン**にする（`SKILL.md` に）：**すべての経路が必要とするもの** — なぜそのスキルが存在するのか、
+  どう進めるか、どの reference へ振り分けるかの条件、そして Common Rationalizations のガード。規則そのもの
+  ではない — `SKILL.md` だけで規則を決着させられる著者は、その元になった reference を開かない。それは
+  description が本文に対して行う漏洩を、一段上でやっているのと同じである。
 - **開示**する（context pointer の後ろに）：**一部の枝しか到達しないもの** — 深い詳細、長い実例、枝ごとの
   手順。
 
 context pointer は条件とファイルを名指しする：「For writing a description, see
 `references/writing-descriptions.md`」。その枝が実際に取られたときにだけ reference がロードされる。
+
+## Add Common Rationalizations（Common Rationalizations を足す）
+
+エージェントが手を抜きそうなスキルには、その言い訳を先回りして封じること：飛ばす理由としてエージェントが
+見つけるものの表と、それぞれを反駁する実際のところ。これをインラインに置くのは、ポインタの後ろにあるガードは
+他のすべてと一緒に飛ばされるからである。
+
+## Leave out what the structure already settles（構造がすでに決着させていることは書かない）
+
+スキルは自分の分類も、誰が呼ぶかも、どこに座っているかも述べる必要がない。frontmatter と呼び出し元がそれらを
+すべて確立しており、それを述べる一文はそのスキルがすることを何も変えず、そして呼び出し元の名前が変わった日に
+そのスキルを誤りにする。
 
 ## When to split（いつ分割するか）
 
