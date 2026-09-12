@@ -3,8 +3,8 @@ name: write-nice-skills
 description: >
   Writes, edits and reviews a skill, a SKILL.md, or its description and frontmatter — how to write a
   skill's description and body so it fires reliably and stays lean. Also applies when another skill
-  needs the description-writing or skill-length rules. Does not apply when the documentation is not
-  a skill's, or to a general repo review pass.
+  needs the rules for writing a description or for sizing a body. Does not apply when the
+  documentation is not a skill's.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -14,33 +14,34 @@ allowed-tools: []
 
 ## Overview
 
-A skill that never fires has no effect, and one that fires and then gets skipped has none either —
-both decided by text its author cannot feel. So the rules are not here: they are in the references
-this file routes to.
+This settles how a skill is written: its `description`, so the skill fires when the work needs it,
+and its body, so the rules survive the fire. A skill that never fires has no effect, and one that
+fires and gets skipped has none either — both decided by text its author cannot feel, having read
+the skill already.
 
 ## How to work
 
-- **Check the description against the work**, in the words the work supplies, not against
-  your own summary of the skill.
-- **Measure with `scripts/count-tokens.sh`.** Bytes and lines drift with the model.
-- **Open the reference the table sends you to**, and settle the rule there.
+- **Judge the `description` against the work**, in the words the work supplies: you know what the
+  skill says and the agent that must reach it does not.
+- **Count tokens with this skill's `scripts/count-tokens.sh`.** Line counts drift between
+  writing systems, and the budgets are in tokens.
+- **Settle each rule in the reference that owns it**, per the table below.
 
 ## Where each decision is settled
 
-| What you are deciding | Read |
+| The question | Read |
 |---|---|
-| The `description` — what to do, what never to do, and how to choose its lead | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
-| Whether a description is actually fixed — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| Body size, what goes in a reference, when to split, how a skill stays in force | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| Whether a phase should run as a child skill, and how to write one | [`references/child-skills.md`](references/child-skills.md) |
-| What a file really costs the model that loads it | [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget), which runs [`scripts/count-tokens.sh`](scripts/count-tokens.sh) |
-| What a term here means — leading word, trigger, branch, progressive disclosure, context pointer | [`GLOSSARY.md`](GLOSSARY.md) |
+| What the `description` must do, must never do, and how to lead it | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
+| What a body may cost, what goes in a reference, when to split, how a skill stays in force, what to call its files | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| Whether a phase should run as a child skill, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
+| What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 
-## Frontmatter
+## Comments in the frontmatter
 
-Write it without comments. All of it loads on every fire, and a field that needs
-explaining needs prose an author can argue with — the body — rather than a trailing `#`
-every future reader pays for.
+Write the frontmatter without comments. All of it loads on every fire, and a field that needs explaining needs
+prose an author can argue with — the body — rather than a trailing `#` every future reader pays
+for.
 
 ## Common Rationalizations
 
@@ -49,7 +50,7 @@ is skipped with everything else:
 
 | Rationalization | Reality |
 |---|---|
-| "A shorter description fires more reliably." | It fires on a *shared word*, not on brevity. With no leading word the work supplies, it never links — length is not the lever. |
+| "A shorter description fires more reliably." | It fires on a leading word shared with the work. With none, nothing links it to the task, whatever its length. |
 | "I'll put the steps in the description so it's self-explanatory." | Then the agent acts from the description and never loads the body — the steps you wrote get skipped. |
 | "The description should explain why the rule matters, or nobody will take it seriously." | The argument, the cost and the remedy are the skill. Put them where they are read before the body loads and the agent has been handed it already. |
 | "Stating when *not* to use it is negative and wastes budget." | A `when` with no bound fires on every neighbouring artifact, and each wrong fire costs the whole body. |
@@ -67,7 +68,7 @@ is skipped with everything else:
 
 ## Verification
 
-- [ ] `count-tokens.sh` exits zero for this skill and for the set it stands with.
-- [ ] The description names the occasion and the bound, in the third person, inside 1024 characters.
+- [ ] `count-tokens.sh` puts this skill inside its budget, and the always-on skills inside theirs once summed.
+- [ ] The description names when the skill applies and when it does not, in the third person, inside 1024 characters.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition.
 - [ ] The cases that should reach the skill were run against it.

@@ -3,8 +3,8 @@ name: write-nice-skills
 description: >
   スキル、`SKILL.md`、あるいはその description と frontmatter を書き、編集し、レビューする — スキルの
   description と本文を、確実に発火し、かつ軽量であり続けるように書く方法。別のスキルが description の
-  書き方やスキルの長さの規則を必要とするときにも適用される。対象がスキル以外のドキュメントであるとき、
-  あるいはリポジトリ全体のレビューパスであるときは適用しない。
+  書き方や本文のサイズ決めの規則を必要とするときにも適用される。対象がスキル以外のドキュメントであるとき
+  は適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -14,30 +14,32 @@ allowed-tools: []
 
 ## Overview（概要）
 
-一度も発火しないスキルには効果がなく、発火したうえで読み飛ばされるスキルにも効果はない — そのどちらも、
-著者には感じ取れないテキストによって決まる。だから規則はここに無い：このファイルが振り分ける先の reference
-にある。
+ここで決着するのは、スキルをどう書くかである。`description` は、作業がそれを必要としたときに発火する
+ように。本文は、発火のあとも規則が生き残るように。一度も発火しないスキルには効果がなく、発火したうえで
+読み飛ばされるスキルにも効果はない — そのどちらも、すでにスキルを読み終えている著者には感じ取れない
+テキストによって決まる。
 
 ## How to work（どう進めるか）
 
-- **description は作業に照らして確認する。** 自分のスキル要約ではなく、作業が供給する語で。
-- **`scripts/count-tokens.sh` で計測する。** バイト数も行数もモデルとともにずれる。
-- **表が送る先の reference を開き**、規則はそこで決着させる。
+- **`description` は作業に照らして判断する。** 作業が供給する語で判断すること：スキルに何が書いてあるかを
+  知っているのはあなたで、そこへ到達しなければならないエージェントは知らない。
+- **このスキルの `scripts/count-tokens.sh` でトークンを数える。** 行数は文字体系によってずれるし、予算は
+  トークンで定められている。
+- **各規則は、それを所有する reference で決着させる** — 下の表のとおりに。
 
 ## Where each decision is settled（どの判断がどこで決着するか）
 
-| 何を決めているか | 読むもの |
+| 問い | 読むもの |
 |---|---|
-| `description` — 何をすべきか、何を決してしてはならないか、どちらを先頭にするか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
-| description が本当に直ったか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文のサイズ、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| ある段階を子スキルとして走らせるべきか、そしてその書き方 | [`references/child-skills.md`](references/child-skills.md) |
-| ファイルが、それをロードするモデルに実際いくら課すのか | [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget)（[`scripts/count-tokens.sh`](scripts/count-tokens.sh) を走らせる） |
-| ここでの用語の意味 — leading word、trigger、branch、progressive disclosure、context pointer | [`GLOSSARY.md`](GLOSSARY.md) |
+| `description` が何をしなければならないか、何を決してしてはならないか、どう先頭を決めるか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
+| 本文がいくらまで許されるか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、ファイルを何と呼ぶか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| ある段階を子スキルとして走らせるべきか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
+| ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 
-## Frontmatter
+## Comments in the frontmatter（frontmatter のコメント）
 
-コメントなしで書くこと。そのすべてが発火のたびにロードされる。本当に説明を要するフィールドが要するのは、
+frontmatter はコメントなしで書くこと。そのすべてが発火のたびにロードされる。説明を要するフィールドが要するのは、
 著者が反論できる散文 — 本文 — であって、将来のすべての読み手が代金を払う末尾の `#` ではない。
 
 ## Common Rationalizations（よくある自己正当化）
@@ -46,7 +48,7 @@ allowed-tools: []
 
 | 自己正当化 | 実際のところ |
 |---|---|
-| 「description は短いほうが確実に発火する。」 | 発火するのは*共有された語*によってであって、簡潔さによってではない。作業が供給する leading word がなければ決して結びつかない — 長さはレバーではない。 |
+| 「description は短いほうが確実に発火する。」 | 発火は作業と共有された leading word によって起きる。それが無ければ、長さがどうであろうと、そのスキルを作業に結びつけるものは何もない。 |
 | 「自己説明的になるよう、手順を description に入れておく。」 | するとエージェントは description から行動し、本文を決してロードしない — あなたが書いた手順は飛ばされる。 |
 | 「なぜその規則が重要かを description が説明しないと、誰も本気で受け取らない。」 | 論拠と代償と処方こそがそのスキルである。本文がロードされる前に読まれる場所に置けば、エージェントはすでにそれを手渡されている。 |
 | 「使わない場合を述べるのは否定的で、予算の無駄だ。」 | 境界のない `when` は隣接する成果物すべてに発火し、誤った発火は毎回、本文まるごとを支払わせる。 |
@@ -64,7 +66,7 @@ allowed-tools: []
 
 ## Verification（検証）
 
-- [ ] `count-tokens.sh` が、そのスキルと、それが同時に立つ集合について0で終了する。
-- [ ] description が機会と境界を、三人称で、1024文字以内で名指ししている。
+- [ ] `count-tokens.sh` が、このスキルを自分の予算の内側に、常時効くスキル群を合計して予算の内側に置いている。
+- [ ] description が、適用されるときと適用されないときを、三人称で、1024文字以内で名指ししている。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件のもとで到達される。
 - [ ] そのスキルに到達すべきケースを、実際に走らせた。

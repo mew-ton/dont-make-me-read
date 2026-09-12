@@ -1,6 +1,7 @@
 # Bad → Good descriptions
 
-Worked pairs. Each names what it is fixing.
+Read this when a description needs fixing and you want a worked pair to measure it against.
+Each pair names what it is fixing.
 
 ## Contents
 
@@ -27,11 +28,13 @@ loads the body. "great skills and better writing" names no occasion.
 ```text
 Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
-and stays lean. Does not apply when the documentation is not a skill's.
+and stays lean. Also applies when another skill needs the rules for writing a
+description or for sizing a body. Does not apply when the documentation is not
+a skill's.
 ```
 
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
-one clause. The bound is the occasion negated.
+one clause. The bound is the occasion negated, and the reach clause names nobody.
 
 ## The thesis in front of the occasion
 
@@ -82,8 +85,8 @@ Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
 body, reference documentation, a tutorial, or a changelog.
 ```
 
-The artifact is the condition. Which skill owns it is a fact about the shelf, and
-each of those skills says so in its own occasion.
+The artifact is the condition. Which skill owns which artifact is settled by each of
+those skills, in its own description.
 
 ## The criteria, handed over
 

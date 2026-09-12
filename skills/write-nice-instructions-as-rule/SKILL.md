@@ -42,6 +42,11 @@ so each entry has to work where the eye lands rather than where it was written.
   own opening words are one that does not.
 - **Put a rule's reason somewhere other than the rule.** A reason behind a pointer is read by
   nobody at the moment the rule is being broken.
+- **Close an instruction with the road not taken.** "Use `$ARGUMENTS`, not the indexed form",
+  "call the API, don't shell out" — the instruction was finished at the comma, and the clause
+  after it hands the reader a second thing to hold plus an option to weigh that you had already
+  discarded. Where a reader really would reach for the other thing, it is its own DON'T entry,
+  with its own cost.
 - **Deny an assumption the reader had no reason to hold.** "The name is not what hides it", "no
   API key is needed", "these are not requirements" — each reads only to someone who already made
   that mistake, and tells everyone else what to start worrying about. State the positive
@@ -65,6 +70,7 @@ so each entry has to work where the eye lands rather than where it was written.
 - An entry that explains the constraint and leaves the action to be inferred.
 - A DO entry with a prohibition buried inside it.
 - Numbered rules in a list that will be inserted into.
+- An instruction whose second clause names something the reader was not about to do.
 - An entry nobody can fail.
 
 ## Verification

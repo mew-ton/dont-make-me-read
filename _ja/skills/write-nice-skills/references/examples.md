@@ -1,6 +1,7 @@
 # Bad → Good な description
 
-対になった実例。それぞれ、何を直しているのかを述べる。
+description を直す必要があり、それを照らし合わせる実例が欲しいときに読むこと。それぞれの対が、何を
+直しているのかを述べる。
 
 ## Contents（目次）
 
@@ -27,10 +28,13 @@ each section, then check the frontmatter, for great skills and better writing.
 ```text
 Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
-and stays lean. Does not apply when the documentation is not a skill's.
+and stays lean. Also applies when another skill needs the rules for writing a
+description or for sizing a body. Does not apply when the documentation is not
+a skill's.
 ```
 
-機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は機会を否定したもの。
+機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は機会を否定したもので、
+到達節は誰も名指ししていない。
 
 ## 機会の前に主張が来ている
 
@@ -79,7 +83,7 @@ Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
 body, reference documentation, a tutorial, or a changelog.
 ```
 
-条件は成果物である。どのスキルが所有するかは棚についての事実であり、それは各スキルが自分の機会の中で述べる。
+条件は成果物である。どのスキルがどの成果物を所有するかは、それぞれのスキルが自分の description の中で決着させる。
 
 ## 判定基準を手渡してしまっている
 

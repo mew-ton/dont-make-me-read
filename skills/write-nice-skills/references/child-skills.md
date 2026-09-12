@@ -6,33 +6,32 @@ tool set, its own context.
 ## Contents
 
 - What may be delegated, and what may not
-- What the fork buys, and how each case picks `model`
+- What the fork buys, and what `model` and `background` each case wants
 - Naming
 - The child's frontmatter
 - Passing input
 
 ## What may be delegated, and what may not
 
-Splitting by sequence decides **whether one skill becomes two**. Delegation decides
-**whether a phase leaves this execution environment**. A delegated phase is still the
-parent's work — it just runs somewhere cheaper and narrower, and hands back a conclusion
-instead of the material it was derived from.
+Delegation decides **whether a phase leaves this execution environment**. A delegated phase is
+still the parent's work; it runs somewhere cheaper and narrower, and hands back what the parent
+needs instead of the material that produced it.
 
 **Delegate mechanical, read-only gathering, enumeration, and parsing** — anything whose
 output collapses into a conclusion. Fetching a PR's comments, listing changed files,
 walking a package registry, grounding a design in the repository: the parent needs the
 answer, not the transcript that produced it.
 
-**Delegate only work whose grounds come back with it.** Never a review that returns
-verdicts, nor a call that returns only its answer: put a review's substance in a child and
-the grounds for each finding never reach the main thread, so nobody can review the review.
+**Never delegate work whose grounds would not survive the trip.** A review is the case: put
+its substance in a child and the verdicts come back without what each one rests on, so
+nobody can review the review.
 
 The test is whether the caller receives everything it needs to check the work. A skill that
 *writes an artifact* passes it — the artifact comes back whole and the reader judges the
 thing itself — so a skill that writes forks and is handed one brief, while a skill that
 routes or constrains stays on the main thread.
 
-## What the fork buys, and how each case picks `model`
+## What the fork buys, and what `model` and `background` each case wants
 
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
@@ -40,15 +39,11 @@ routes or constrains stays on the main thread.
 | **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so the isolation is structural rather than requested | `sonnet`, since the work is design-quality | leave unset when they should run in parallel |
 | **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
-The last two rows replace prose with a property. "Do not show either child the other's
-output" is a prohibition the reader can violate; `context: fork` carrying no conversation
-history is a fact they cannot.
-
 ## Naming
 
-`<parent-skill-name>-<role>`: the parent's name, **one** hyphen, the role the child plays
-— `-change-inventory`, `-repo-grounding`, `-version-lookup`. A single hyphen is the only
-separator the naming rule leaves available.
+`<parent-skill-name>-<role>`: the parent's name, a hyphen, then the role the child plays —
+`-change-inventory`, `-repo-grounding`, `-version-lookup`. The prefix is what keeps the pair
+together in a directory listing.
 
 ## The child's frontmatter
 
@@ -56,22 +51,19 @@ separator the naming rule leaves available.
 user-invocable: false
 disable-model-invocation: false
 context: fork
-agent: Explore
-model: haiku
 background: false
 ```
 
 `user-invocable: false` hides the child from the user's `/` menu. `background: false` is
-required when the conclusion is used in the same turn; it defaults to `true`. `agent` and
-`model` are optional: `agent` picks the tool set (`Explore` and `Plan` are read-only), and
-`model` trades cost against capability — gathering only is `haiku`, gathering plus light
-normalization is `sonnet`.
+required when the conclusion is used in the same turn, and left unset when two children should
+run in parallel; it defaults to `true`.
 
-`agent` and `model` are the two to leave out unless you can say why. They narrow a child to
-what a gathering run needs, and narrowing is wrong for a fork that produces the artifact
-itself: a read-only tool set cannot write, and the cheapest model that can enumerate files
-is not the one you want drafting the thing a person will act on. Omit both and the fork
-inherits, which is the right default for the `Cleanliness` row above.
+Two optional fields narrow the child further, and are the two to leave out unless you can
+say why: `agent` picks the tool set (`Explore` and `Plan` are read-only) and `model` trades
+cost against capability, per the table above. Narrowing is wrong for a fork that produces
+the artifact itself — a read-only tool set cannot write, and the cheapest model that can
+enumerate files is not the one you want drafting what a person will act on. Omit both and
+the fork inherits, which is right for the `Cleanliness` row.
 
 Leave `disable-model-invocation` at `false`: the caller here **is** a model, so `true`
 severs the only path into the child. `user-invocable: false` is what hides it from the
@@ -83,6 +75,5 @@ main conversation — and not to anything the skill delegates.
 
 ## Passing input
 
-Pass the whole input as **`$ARGUMENTS`**. Indexed and named arguments go through
-shell-like quote parsing, so a multi-line free-form brief cannot survive as a single
-argument.
+Pass the whole input as **`$ARGUMENTS`**: a multi-line free-form brief survives there, and
+does not survive the shell-like quote parsing that indexed and named arguments go through.
