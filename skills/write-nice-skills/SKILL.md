@@ -37,7 +37,6 @@ So the rules are not here. They are in the references this file routes to.
 | The `description` — what it must do, what it must never carry, how to word it | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | Whether a description is actually fixed — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
 | Body size, what goes in a reference, when to split, how a skill stays in force, what belongs in a child skill | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| Where the skill's own explanation and design rationale go — the file the agent never loads | [`references/structuring-skills.md`](references/structuring-skills.md#what-goes-in-a-sibling-readme) |
 | What a file really costs the model that loads it | [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget), which runs [`scripts/count-tokens.sh`](scripts/count-tokens.sh) |
 | What a term here means — leading word, trigger, branch, progressive disclosure, context pointer | [`GLOSSARY.md`](GLOSSARY.md) |
 

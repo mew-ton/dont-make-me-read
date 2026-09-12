@@ -81,39 +81,19 @@ leaves the rule on.
   body, one level up.
 - **Disclose** behind a context pointer what **only some branches reach**: deep
   detail, long examples, per-branch procedure.
-- **Move out of the skill entirely** what no branch reaches: design rationale, and
-  anything written for whoever installs or maintains the skill rather than the agent. See
-  [What goes in a sibling README](#what-goes-in-a-sibling-readme).
+- **Move out of the skill entirely** what no branch reaches: a `README.md` beside
+  `SKILL.md` is not referenced from it, so nothing loads it and it costs the agent nothing.
+  Put one there when a person needs this skill explained; what it owes that person is the
+  README rules' business, not this file's.
 
 A context pointer names the condition and the file: "For writing a description, see
 `references/writing-descriptions.md`." The reference loads only when that branch is
 actually taken.
 
-## What goes in a sibling README
-
-There is a third destination, and it is free. A `README.md` beside `SKILL.md` is not
-referenced from it, so nothing loads it and it costs the agent nothing at all.
-
-Who opens that directory decides what goes in it.
-
-**A skill someone else installs** is adopted from that file, so it carries the skill's own
-explanation: what it forces, when it fires, how to invoke or configure it, and where the
-rest lives. `write-nice-readme` governs it — that reader is the one it is written for, and
-its bound excludes the `SKILL.md`, not the README beside it.
-
-**A skill only its own repository uses** has no such reader. Its maintainer already knows
-what the skill is for, so that detail is wasted and the design rationale is the whole
-file: the founding argument, why this is a skill rather than a style guide, which decision
-the shape came from. In a published skill the same rationale sits below the explanation,
-where someone who has already decided reaches it.
-
-Same test either way — does this change what the reader does next? For the agent, no. For
-the person opening the directory, yes.
-
-A rule's *operative* half is not rationale and does not move. "You are supplying the
-intent the text is missing as you read it" belongs in Common Rationalizations, where it
-refutes the excuse at the moment it is reached for; stated in a README as a proposition
-it would be read once and agreed with, which is not the same as being applied.
+A rule's *operative* half never moves out, however little context the agent has to spare.
+"You are supplying the intent the text is missing as you read it" belongs in Common
+Rationalizations, where it refutes the excuse at the moment it is reached for; in a README it
+would be read once and agreed with, which is not the same as being applied.
 
 ## Add Common Rationalizations
 

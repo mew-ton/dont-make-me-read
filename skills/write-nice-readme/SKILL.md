@@ -13,17 +13,35 @@ allowed-tools: []
 
 ## Scope
 
-A README is read by someone who has agreed to nothing. They have not installed it, do not know
-whether it solves their problem, and will leave the moment the file stops answering that. Every
-other document in a repository is read by someone who has already decided; this one is read while
-deciding.
-
-That reader is not the only one, but they are the one who sets the order: a maintainer looking up
-a flag can scroll, and a stranger deciding whether to keep reading cannot.
-
 An architecture doc is the standing answer to "how do I decide this here"
 (`write-nice-architecture-docs`). A README is the standing answer to **"is this mine, and what do
 I do first"**. Reference docs, tutorials and changelogs all answer a question that comes after.
+
+A skill's own `README.md` is one of these. Nothing loads it, so its reader is a person deciding
+whether to use that skill — this artifact, not the `SKILL.md` beside it.
+
+## Who reads it
+
+Every other document in a repository is read by someone who has already decided; this one is read
+while deciding. *How much* has been decided is what varies, and it is what settles the file's
+shape. The conditions below are written for a published README; the other cases say what relaxes.
+
+**Published.** The reader has agreed to nothing. They have not installed it, do not know whether
+it solves their problem, and will leave the moment the file stops answering that. Nothing about
+the project may be assumed and every condition below applies in full.
+
+**Internal to a team.** The reader has already agreed — they work here, and they can ask you.
+Adoption is settled before they arrive, so what they came for is the way in and the surface, and
+what this is may be stated in the team's own vocabulary. What does not relax: the way in stays
+executable, because walking over to ask is the cost this file exists to remove; and what the
+project deliberately does not do stays up front, because a teammate acts on a wrong assumption
+for a day before finding out, where a stranger would have left at the download.
+
+**Private, read by nobody but its author.** Out of scope. There is no reader whose context you
+are guessing at, which is the premise this skill runs on.
+
+Wherever there is a reader at all, that reader sets the order: a maintainer looking up a flag can
+scroll, and someone deciding whether to keep reading cannot.
 
 ## The test
 
@@ -133,6 +151,7 @@ settles it.
 | "The naming convention explains how the pieces fit together, so it belongs up front." | It is a design decision, owned wherever design decisions get settled, and it changes nothing the reader does next. Sharpen it there and this file silently becomes wrong — the arrow pointing in that nobody notices until a reader has already trusted it. |
 | "The README is where people look, so everything should be reachable from it." | Reachable, yes — by name. Reproduced, no. An index of the repository is a second copy of the repository, and only one of them is kept up to date. |
 | "I'll write the install steps once the packaging is sorted." | Then today's reader, who was ready to try it, has nothing to run. Ship the path that works now and replace it when the better one exists. |
+| "It's internal, everyone here already knows what this does." | The one who needs it is the one who does not — the new hire, the neighbouring team, you in a year. What an internal reader can skip is the pitch, not the way in. |
 | "It reads fine to me." | You knew what the project was before you opened the file. That is the one thing your reader does not have, and the only thing this file exists to give them. |
 
 ## Related skills
