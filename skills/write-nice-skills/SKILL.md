@@ -34,7 +34,7 @@ So the rules are not here. They are in the references this file routes to.
 
 | What you are deciding | Read |
 |---|---|
-| The `description` — what it must do, what it must never carry, how to word it | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| The `description` — what to do, what never to do, and how to choose its lead | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | Whether a description is actually fixed — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
 | Body size, what goes in a reference, when to split, how a skill stays in force, what belongs in a child skill | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | What a file really costs the model that loads it | [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget), which runs [`scripts/count-tokens.sh`](scripts/count-tokens.sh) |

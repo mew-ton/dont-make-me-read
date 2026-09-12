@@ -33,7 +33,7 @@ allowed-tools: []
 
 | 何を決めているか | 読むもの |
 |---|---|
-| `description` — 何を満たすべきか、何を決して担ってはならないか、どう言葉にするか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| `description` — 何をすべきか、何を決してしてはならないか、どちらを先頭にするか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | description が本当に直ったか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
 | 本文のサイズ、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、子スキルに何を任せるか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ファイルが、それをロードするモデルに実際いくら課すのか | [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget)（[`scripts/count-tokens.sh`](scripts/count-tokens.sh) を走らせる） |
