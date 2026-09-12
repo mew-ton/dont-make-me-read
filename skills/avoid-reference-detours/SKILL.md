@@ -15,8 +15,7 @@ allowed-tools: []
 ## Overview
 
 A reference the reader can genuinely open is still a defect when following it was never optional:
-the round trip is what costs them, not the fact. Reachability is not the test — a pointer can be
-completely valid and still be the wrong thing to write.
+the round trip is what costs them, not the fact.
 
 ## When it applies
 
@@ -34,12 +33,12 @@ of them?
 State it where it is used. Keep the original where it is.
 
 The original — the file-header docstring, the schema, the spec, the config — stays put and stays
-authoritative. What comes to the point of use is not a copy of it but **the part this reader needs
-in order to act**, in the shortest form that does the job. That is why this subtracts rather than
+authoritative. What comes to the point of use is **the part this reader needs in order to act**,
+in the shortest form that does the job. That is why this subtracts rather than
 adds: the reader stops making the trip, and the two lines that would have described the trip go
 with it.
 
-## This is not a licence to add
+## Restating earns its line only by removing a trip
 
 Restating earns its line only when it removes a trip. Before adding, run the same test everything
 else in this set runs:
@@ -55,12 +54,10 @@ one rule, not two:
 | The fact lives elsewhere and they must go get it | a round trip | the fact, here |
 | The fact is already in front of them (the diff, the code on the next line) | a re-read | nothing; point at `path:line` if it needs naming at all |
 
-`write-nice-instructions-as-comment`' "the reader has it — point at `path:line` instead" is the second row.
-
 ## Where this ends and duplication begins
 
 Inside one document a reader reads in order, so a second statement of the same content is a
-re-read — that is `write-nice-issue-description`'s Gate 2. Across documents, files, or sections a
+re-read, which `write-nice-issue-description` owns. Across documents, files, or sections a
 reader has to travel, and the trip costs more than the restatement. This skill governs the second
 case only.
 
@@ -72,8 +69,7 @@ without. Released when the work turns to what nobody reads to act on, or when yo
 
 ## Language
 
-Write the restated line in the language the artifact's readers already use. This skill is about
-where a fact sits, not which language states it.
+Write the restated line in the language the artifact's readers already use.
 
 ## Common Rationalizations
 

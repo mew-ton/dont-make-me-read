@@ -23,7 +23,7 @@ knowledge takes on a dependency, permanently.
 ## When it applies
 
 To any function, module or component with more than one caller — writing it, extracting it,
-reviewing it, or designing the interface between them. Not to it when:
+reviewing it, or designing the interface between them. It does not apply when:
 
 - The difference **is** domain data, and the domain word for it exists. Pass that.
 - The two callers were never doing the same thing. Then the extraction is what to undo, not the

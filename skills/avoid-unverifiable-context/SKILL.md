@@ -36,18 +36,24 @@ deleted — the fact is restated at the point of use, which is a different findi
 
 1. **Keep the rationale, drop the process.** Why the spec or design exists is decision-making
    material; "review feedback led to", "the policy changed", "originally we went with X" depend on
-   a timeline only participants can follow
+   a timeline only participants can follow.
 2. **Watch contrastive phrasing.** "Not A but B", "A is deprecated", "A was removed" all assume the
-   reader knows A. If they do not, describe B on its own
+   reader knows A. If they do not, describe B on its own.
 3. **Confine cross-issue references to short `TODO(#123): ...` notes.** That names exactly what to
-   read and where, which is what makes it the one reachable form; "handled in another issue" is not
+   read and where, which is what makes it the one reachable form; "handled in another issue" is not.
 4. **Deprecation notes are fine while the implementation exists** — it is still part of the shape
-   the reader can observe. Once it is gone, the note refers to nothing and goes with it
+   the reader can observe. Once it is gone, the note refers to nothing and goes with it.
 5. **If the process must be kept, put it where process belongs.** A PR description's Background
-   section, or an ADR. Not source code, not user-facing docs, not an API reference
+   section, or an ADR. Not source code, not user-facing docs, not an API reference.
 6. **Write in the reader's language** — the repository's for a code comment or PR description, the
    tracker's for an issue. Never restate the same content in a second language: the translation
-   ages independently and no reader can tell which copy is current
+   ages independently and no reader can tell which copy is current.
+
+## Persistence
+
+In force for every response once it is loaded, not only the one that loaded it. Still in force
+while you are unsure whether what you are writing will be read later. Released when the work turns
+to what nobody reads to act on, or when you are told to stop.
 
 ## Common Rationalizations
 
@@ -76,12 +82,6 @@ The most common failure is not applying this at all, because the artifact did no
 - [ ] No sentence depends on when it was written or who was in the room.
 - [ ] Cross-issue references are `TODO(#123): …`, naming what to read.
 - [ ] A reader with zero context meets no proper noun or premise that arrives unintroduced.
-
-## Persistence
-
-In force for every response once it is loaded, not only the one that loaded it. Still in force
-while you are unsure whether what you are writing will be read later. Released when the work turns
-to what nobody reads to act on, or when you are told to stop.
 
 ## Examples
 
