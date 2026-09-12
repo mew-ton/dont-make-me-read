@@ -14,18 +14,6 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Why this exists
-
-Two propositions. Every rule in this plugin follows from them.
-
-1. **Nobody wants to hold a lot in their head to work out what to do.** Not for beautiful text, not
-   for thorough text, not for polite text.
-2. **The writer cannot tell how much that is.** You read your own draft while supplying the
-   context it is missing, so the range reads small to you, and only to you.
-
-The second is why these are skills and not advice, and why some of them exist only to be run
-against what you have already written.
-
 ## The range
 
 The range is everything the reader has to hold in order to act on what is in front of them. It is

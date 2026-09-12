@@ -19,9 +19,7 @@ none either. Both are decided by text its author cannot feel: the `description` 
 judged before the body is in context, and the body is judged against whatever summary
 of it the author has already read.
 
-So the rules are not here. Stating them here is the same failure one level up — an
-author who can decide from this file alone has been handed the skill and will not open
-the reference it came from.
+So the rules are not here. They are in the references this file routes to.
 
 ## How to work
 

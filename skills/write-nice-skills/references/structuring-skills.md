@@ -81,10 +81,29 @@ leaves the rule on.
   body, one level up.
 - **Disclose** behind a context pointer what **only some branches reach**: deep
   detail, long examples, per-branch procedure.
+- **Move out of the skill entirely** what no branch reaches: design rationale and
+  anything written for the maintainer rather than the agent. See
+  [What goes in a sibling README](#what-goes-in-a-sibling-readme).
 
 A context pointer names the condition and the file: "For writing a description, see
 `references/writing-descriptions.md`." The reference loads only when that branch is
 actually taken.
+
+## What goes in a sibling README
+
+There is a third destination, and it is free. A `README.md` beside `SKILL.md` is not
+referenced from it, so nothing loads it and it costs the agent nothing at all.
+
+Put there what a maintainer opens the directory for and the agent never needs: the
+founding argument for the rule, why it is a skill rather than a style guide, which
+design decision the shape came from. Same test as everything else — does this change
+what the reader does next? For the agent, no. For the person editing the skill a year
+from now, yes.
+
+A rule's *operative* half is not rationale and does not move. "You are supplying the
+intent the text is missing as you read it" belongs in Common Rationalizations, where it
+refutes the excuse at the moment it is reached for; stated in a README as a proposition
+it would be read once and agreed with, which is not the same as being applied.
 
 ## Add Common Rationalizations
 
