@@ -21,8 +21,7 @@ The test is whether the caller receives everything it needs to check the work.
 
 **Delegate mechanical, read-only gathering, enumeration, and parsing** — fetching a PR's
 comments, listing changed files, walking a package registry, grounding a design in the
-repository. It passes because the answer was all the parent wanted; the transcript that produced
-it was never evidence for anything.
+repository. It passes because the answer was all the parent wanted, and the answer comes back whole.
 
 **Delegate a phase that produces an artifact**, handing it a single written brief. It passes
 because the artifact comes back whole and the reader judges the thing itself.
@@ -36,14 +35,16 @@ review the review.
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
-| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since the work needs more than counting | leave unset when they should run in parallel |
+| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since the work needs more than counting | leave unset — it defaults to `true` — so they run in parallel |
 | **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
 ## Naming
 
 `<parent-skill-name>-<role>`: the parent's name, a hyphen, then the role the child plays —
 `-change-inventory`, `-repo-grounding`, `-version-lookup`. The prefix is what keeps the pair
-together in a directory listing.
+together in a directory listing. The parent's name goes in the directory name and nowhere else —
+renaming the pair is one edit you own, where a parent's name inside a `description` is an edit
+somebody else triggers.
 
 ## The child's frontmatter
 
@@ -53,7 +54,6 @@ disable-model-invocation: false
 context: fork
 ```
 
-These fields say how the child runs; what makes it a child is that a parent invokes it.
 `user-invocable: false` hides the child from the user's `/` menu. `background` is left out of
 the block above because the three motives do not all want the same value: set it to `false`
 when the conclusion is used in the same turn, and leave it unset — it defaults to `true` — when

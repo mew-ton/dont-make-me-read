@@ -1,8 +1,8 @@
 # Structuring and splitting a skill
 
 Read this when the body is growing, when you are deciding what goes in `SKILL.md` versus a
-reference, what to call either, how to keep the skill in force once it has loaded, or whether
-to split one skill into two.
+reference, what to call either, what the frontmatter may carry, how to keep the skill in force
+once it has loaded, or whether to split one skill into two.
 
 ## Contents
 
@@ -14,7 +14,7 @@ to split one skill into two.
 - Guard it three ways
 - Naming
 - Progressive disclosure: what to inline, what to disclose
-- Frontmatter
+- Comments in the frontmatter
 - Leave out what changes nothing
 - When to split
 
@@ -38,8 +38,9 @@ loaded it; it stays in force while you are unsure whether the case in front of y
 it is released on an explicit condition — the work turning to something the skill does not
 cover, or being told to stop.
 
-Leaving it on too long and dropping it too early are not equal failures, and the judgment is
-retaken every response, so the cheap one has to be the one that leaves the rule on.
+Dropping it too early costs more than leaving it on too long — an extra paragraph of a rule that
+no longer applies against a whole response written without one — and the judgment is retaken every
+response, so let the cheap failure be the one that leaves the rule on.
 
 
 ## The body budget
@@ -76,8 +77,8 @@ bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
 
 The script sends each file to whichever model is currently default and subtracts a baseline
 request without it, so the figure is that model's own count and stays correct as models change.
-Each file costs one round trip. It prints a count per file and exits non-zero when any one file
-is over `TARGET`, which defaults to 5000 — so the first command checks an artifact-reached file
+Each file costs one round trip. It prints a count and a bytes-per-token ratio per file, and exits non-zero when any one file is
+over `TARGET`, which defaults to 5000 — so the first command checks an artifact-reached file
 outright. The always-on figure is a total, which no per-file exit code can test: run the
 second line and add the counts up yourself.
 
@@ -87,10 +88,9 @@ Resolve it from where you read this file: there is no one absolute path to hard-
 
 For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
 writing systems, where characters per token falls by more than half between a Latin one and a
-non-Latin one — which is why the English figure above buys 250 lines and the Japanese one 150. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Every run of the
-script prints the ratio it just measured; work the two KB figures out again from that whenever
-the default model changes, since a stale figure that is too low sends you splitting files that
-were never over budget.
+non-Latin one — which is why the English figure above buys 250 lines and the Japanese one 150. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Work those two figures
+out again from the ratio the script reports whenever the default model changes, since a stale
+figure that is too low sends you splitting files that were never over budget.
 
 
 ## Open with what the skill is
@@ -99,15 +99,15 @@ were never over budget.
 again what the description says is its job here — the description was material for the firing
 judgment, and this reader is past that and has to act.
 
-Then whether the reader is in it, which earns its place only where the fire is fuzzy: a standing
-rule the work never names, or an artifact with a near neighbour. A skill whose next section is
-already its routing or its first step has answered that, and a further section saying only when the
-skill applies is one the reader would have satisfied without it.
+Give the reader a second short section, saying whether they are in scope, only where that is hard
+to tell from the description alone: a standing rule the work never names, or an artifact with a
+near neighbour. Where the next section is already the routing or the first step, that section has
+answered it, and adding one is a line the reader would have got through without.
 
-The rules, the procedure and the guards come after.
+How to work, the rules and the guards come after.
 
-Whatever argument does not fit those two sentences is either operative — and belongs in the rule
-it defends, or in one of the guards below — or it is not, and it belongs outside the skill.
+Whatever argument does not fit those opening sentences either changes what the reader does — and
+belongs beside the rule it changes — or it does not, and belongs outside the skill.
 
 ## Guard it three ways
 
@@ -135,8 +135,8 @@ reading the list — steps in a fixed order, an expected output to compare each 
 inline while every box is answered by looking or by one command: three to five of those cost
 less inline than the pointer plus the load that follows it.
 
-When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**: a standing role of
-the skill, under the fixed name every skill's checks share.
+When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`** — one of the two fixed names
+settled under [Naming](#naming).
 
 ## Naming
 
@@ -150,13 +150,13 @@ sits at the same path and the set is greppable:
 | File | What it holds |
 |---|---|
 | `GLOSSARY.md` | the terms the rules use |
-| `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist |
+| `VERIFICATION.md` | the checks, once they are disclosed |
 
 Neither is required. The name is fixed for a skill that has one.
 
 **Everything else the agent loads is branch material, and its name is yours.**
-`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Match
-whichever neighbour fits and spend no further thought on it.
+`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Use whatever
+the skill's other folders already use, and spend no further thought on it.
 
 ## Progressive disclosure: what to inline, what to disclose
 
@@ -169,35 +169,35 @@ whichever neighbour fits and spend no further thought on it.
   detail, long examples, per-branch procedure.
 - **Move out of the skill entirely** what no branch reaches: a file beside `SKILL.md` that
   nothing references is never loaded, so it costs the agent nothing at all — the design
-  rationale, the skill explained to a person, where its rules came from. What such a file is
-  called is outside all of the above — that, and whether it exists at all, belong to whoever
-  writes it.
+  rationale, the skill explained to a person, where its rules came from. Whether such a file
+  exists, and what it is called, belong to whoever writes it.
 
 What the body points at sits **one level deep**. A reference reached from another reference
 is read *partially* — the agent previews it with something like `head -100` instead of
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every
 supporting file links directly from `SKILL.md`, and is found that way; what it is called is
 settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
-headings**, so a reader who lands in the middle of it, or sees only its first screen, still knows
-what else is in there.
+headings**: a file that long is read in pieces about as often as whole, and the list is what a
+piece shows.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
 means". The reference loads only when the reader is in that case.
 
-A fact that defies a reasonable assumption stays inline as well: an agent that does not know a
-health endpoint answers while its database is down cannot recognise the condition that would have
-loaded the file saying so.
+A fact that defies a reasonable assumption stays inline as well: an agent that does not know an
+angle bracket in a description stops the skill loading at all cannot recognise the condition that
+would have sent it to the file saying so.
 
-A rule's *operative* half stays inline, however little context the agent has to spare. The
+The half of a rule that changes what the agent does stays inline, however little context it has
+to spare. The
 excuse "it reads fine to me", answered with "you are supplying the intent the text is missing
 as you read it", belongs in Common Rationalizations, where the answer arrives at the moment the
 excuse is reached for; in a file nothing loads, it would be read once and agreed with, which is
 not the same as applied.
 
-## Frontmatter
+## Comments in the frontmatter
 
-Write it without comments. All of the frontmatter loads on every fire, and a field that needs
+Write the frontmatter without comments. All of the frontmatter loads on every fire, and a field that needs
 explaining needs prose an author can argue with — the body — rather than a trailing `#` every
 future reader pays for.
 
@@ -229,9 +229,9 @@ Then split only when the cut earns its cost. Three cuts justify it:
    like it needs a skill of its own usually has one vague condition instead, and the
    agent drifts past it rather than stopping.
 3. **By delegation** — a phase that should run in a *different execution
-   environment*: its own model, its own tool set, its own context. This cut turns on the
-   environment itself — a cheaper model, a narrower tool set — where cut 2 turns on what the
-   run leaves in the context behind it.
+   environment*: its own model, its own tool set, its own context. This cut moves the
+   phase out of this execution environment, where cut 2 keeps it here and clears what it
+   leaves behind.
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an

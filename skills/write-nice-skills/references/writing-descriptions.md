@@ -31,6 +31,8 @@ it must not carry the procedure the body holds.
   are in. English terms are the ones that survive into a prompt whatever language it is typed
   in, and a skill other people install cannot know which language its users type. A skill that
   will never leave one team may add the phrases that team really types.
+- **Add a reach clause** where another skill will need the rules this one holds: "also applies
+  when another skill needs …", naming the need rather than the skill.
 - **Keep it inside 1024 characters, hard.** If the intent, the occasion and the bound will
   not fit, the skill is doing too much: split it rather than padding or truncating.
 
@@ -43,8 +45,8 @@ it must not carry the procedure the body holds.
 - **Explain concepts that are not this skill's** — what a callee is, what a pull request
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
-- **Name another skill.** Wanting to name one usually means this skill orchestrates, and
-  what it orchestrates is the body's to state, so the name carries the body out into the
+- **Name another skill.** Wanting to name one usually means this skill calls that one as a step, and
+  which steps a skill runs is the body's to state, so the name carries the body out into the
   description. A name also reads as a routing table, which
   stops the agent asking whether *this* artifact is the skill's: for example,
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach
@@ -52,8 +54,9 @@ it must not carry the procedure the body holds.
   …".
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —`
   matches nothing anyone types.
-- **Put an angle bracket in it.** `<` and `>` are rejected outright, so a description
-  carrying a tag or a `<placeholder>` does not load at all.
+- **Put an angle bracket in the description's text.** `<` and `>` are rejected outright there,
+  so a description carrying a tag or a `<placeholder>` does not load at all. The `>` that opens a
+  YAML folded block is part of the frontmatter, not of the text, and is fine.
 
 ## The leading word
 
@@ -68,12 +71,12 @@ near the start, where it does its invocation work.
 
 ## Choosing the lead
 
-**Does the work name the artifact?**
+**Does the work name the artifact?** Each worked description below is shown for what it puts
+first and how it closes; what it happens to be a skill about is incidental.
 
 **It does → lead with the occasion.** The work says the word and the word fires the skill.
-For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. In both examples below, read
-the shape — what leads, then the occasion, then the bound — rather than the subject each one
-happens to govern:
+For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. Here the lead *is* the
+occasion, and the bound closes it:
 
 ```text
 Writes and revises a README, including adding a section to one that already
@@ -84,7 +87,7 @@ an issue body, reference documentation, a tutorial, or a changelog.
 **It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
 and, where there is one, the thing that thing displaces. A rule that holds while
 someone writes code or a comment has no word to share, and an occasion nobody names is one
-the agent forgets mid-diff:
+the agent forgets mid-diff. Here the lead comes first, then the occasion, then the bound:
 
 ```text
 Forces the narrowest range a reader has to hold before they can act — the
@@ -97,9 +100,9 @@ that work. Does not apply when nobody acts on the text later: chat replies,
 scratchpads, working notes.
 ```
 
-The occasion still follows, named as an activity — for example, "writing, revising,
-reviewing, or designing code". Keeping the skill in force for the rest of that activity is
-the body's job.
+The occasion still follows, named as an activity — for example, "writing, revising, reviewing, or
+designing code". Saying in the description that the skill stays in force names the activity it
+stays in force for; making it actually hold for the rest of that activity is the body's job.
 
 ## The description and the body serve different readers
 

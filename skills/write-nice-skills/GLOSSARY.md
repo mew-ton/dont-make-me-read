@@ -1,7 +1,7 @@
 # Glossary — write-nice-skills
 
-The terms `SKILL.md` and the files it routes to use precisely. Each entry says what the term
-means; the rule that uses it lives in the file that owns the rule.
+The terms used precisely by this skill's `SKILL.md` and the files it routes to. Each entry says
+what the term means; the rule that uses it lives in the file that owns the rule.
 
 **Leading word** — the term that shows up when a skill is needed and also appears in its
 `description`: what a person types when they ask for it, or — for a skill that fires mid-task with
@@ -12,8 +12,8 @@ what brings the skill in.
 
 **Bound** — the condition under which a skill must *not* fire.
 
-**Reach clause** — the part of a `description` that admits a second way in: another skill needing
-the rules this one holds, named as a need rather than as a skill.
+**Reach clause** — the part of a `description` that admits a second way in, by naming a need
+another skill has for the rules this one holds.
 
 **Branch** — one distinct situation the skill handles. Different branches read different parts of
 the skill.
@@ -24,11 +24,10 @@ the skill.
 **Progressive disclosure** — keeping the always-loaded core small by moving material out of
 `SKILL.md` and behind a context pointer.
 
-**Context pointer** — a line in `SKILL.md` that names a condition and a file: the reference is not
-loaded until that condition is met.
+**Context pointer** — a line in `SKILL.md` that names a file and the condition or question that
+reaches it: the reference is not loaded until the reader is in that case.
 
-**No-op** — an instruction the model already follows unprompted, which costs a reader as much as a
-rule that changes something.
+**No-op** — an instruction the model already follows unprompted.
 
 **Common Rationalizations** — a table of the excuses an agent uses to skip a skill, each paired
 with the reality that refutes it.
