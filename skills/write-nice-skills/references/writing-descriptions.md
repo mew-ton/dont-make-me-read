@@ -14,9 +14,7 @@ skill. It must be judge-able on its own, and must not leak the procedure.
 - **Name the occasion**: the artifact being written, or the activity underway.
 - **State when it must not fire**, as that occasion negated: `DO NOT use this skill when
   …`. The pair then reads as one condition of use; in any other shape the bound reads as
-  trivia. Close off what the skill will not **produce** where that is what gets it reached
-  for by mistake — for example, `DO NOT use this skill when what is wanted is a verdict on
-  whether a dependency is worth keeping`.
+  trivia.
 - **Write it in English.** English terms are the ones that survive into a prompt whatever
   language it is typed in, and a published skill cannot know which its users type. This
   settles the description alone — the body's language and the skill's output are decided
@@ -35,14 +33,14 @@ skill. It must be judge-able on its own, and must not leak the procedure.
 - **Explain concepts that are not this skill's** — what a callee is, what a pull request
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
-- **Name another skill.** A concrete name reads as a routing table and stops the agent
-  asking whether *this* artifact is the skill's, which is the question the bound exists for
-  — for example, `DO NOT use for an architecture doc (that is
-  write-nice-architecture-docs)`. It costs characters again the day that skill is renamed,
-  and the repository's invariant says the same: a skill is reached by its own description
-  or not at all. A file name or a path is sometimes the occasion itself, and then it is the
-  trigger rather than a routing table — though placing the skill at the root of the
-  subfolder it governs often removes the need to name anything.
+- **Name another skill.** Wanting to name one usually means this skill orchestrates, and
+  what it orchestrates is the body's to state — so the name is the leak above, one level
+  out. It also reads as a routing table, which stops the agent asking whether *this*
+  artifact is the skill's: for example, `DO NOT use for an architecture doc (that is
+  write-nice-architecture-docs)`. The repository's invariant says the same: a skill is
+  reached by its own description or not at all. A file name or a path that is the occasion
+  itself is the trigger rather than a routing table — and placing the skill at the root of
+  the subfolder it governs often removes the need to name anything.
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —`
   is not a sentence and matches nothing anyone types.
 - **Quote keywords in a second language.** A single-team skill may add the phrases that
