@@ -1,5 +1,5 @@
 ---
-name: write-instructions-as-comment
+name: write-nice-instructions-as-comment
 description: >
   このスキルは、コメントとして書かれる指示 — PR レビューの指摘、変更を提案する返信、修正を依頼する
   所見 — 一人の人間が読み、行動し、そして返答できるテキスト — を起草または改稿するときに使う。とりわけ、
@@ -147,5 +147,5 @@ Summary の修正を書く前に [`rules/remedy-strength.md`](rules/remedy-stren
   何を言い直してよいか。
 - `write-nice-issue-description` — 問題の記述＋完了条件であり、リポジトリを読める実装者に読まれるもの。
   このスキルはあちらが始まるところで終わる。
-- `write-instructions-as-rule` — その指示が効力を持ち続ける場合の、同じ要求：ガイドライン、規約、あるいはスキル本文の
+- `write-nice-instructions-as-rule` — その指示が効力を持ち続ける場合の、同じ要求：ガイドライン、規約、あるいはスキル本文の
   中の規則。それらは、その規則が捕まえた者によって順番どおりでなく読まれる。

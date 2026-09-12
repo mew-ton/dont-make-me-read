@@ -1,5 +1,5 @@
 ---
-name: write-instructions-as-comment
+name: write-nice-instructions-as-comment
 description: >
   Use this skill when drafting or revising an instruction written as a comment — a PR review
   finding, a reply proposing a change, a remark asking someone to fix something — text one person
@@ -157,5 +157,5 @@ block sits outside the budget).
   be restated at the point of use instead.
 - `write-nice-issue-description` — a problem statement plus a completion condition, read by an
   implementer who can read the repository; this skill stops where that one starts.
-- `write-instructions-as-rule` — the same demand where the instruction stays in force: a guideline, a
+- `write-nice-instructions-as-rule` — the same demand where the instruction stays in force: a guideline, a
   convention, or the rules inside a skill body, read out of order by whoever the rule catches.

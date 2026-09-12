@@ -1,5 +1,5 @@
 ---
-name: write-instructions-as-rule
+name: write-nice-instructions-as-rule
 description: >
   このスキルは、効力を持ち続ける規則を書く、または改稿するときに使う — ガイドライン、規約、ポリシー、
   チェックリスト、あるいはスキル本文や reference ファイルの中の規則 — その一つひとつが、読み手が同意
@@ -59,5 +59,5 @@ allowed-tools: []
 
 - `dont-make-me-read` — このスキルが研ぎ上げるテスト：読み手がその規則に従って行動する前に、何を抱えねば
   ならないか。
-- `write-instructions-as-comment` — 一人の人に、一つの変更について伝える一つの指示に対する同じ要求。そこでの形は
+- `write-nice-instructions-as-comment` — 一人の人に、一つの変更について伝える一つの指示に対する同じ要求。そこでの形は
   効力を持ち続けるリストではなく finding である。

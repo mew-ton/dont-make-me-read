@@ -44,7 +44,7 @@ allowed-tools: []
 | 事実が他所にあり、取りに行かねばならない | 往復 | その事実を、ここに |
 | 事実がすでに目の前にある（差分、次の行のコード） | 再読 | 何も。名指しが必要なら `path:line` を指す |
 
-`write-instructions-as-comment` の「読み手はそれを持っている — 代わりに `path:line` を指せ」は二行目のほう。
+`write-nice-instructions-as-comment` の「読み手はそれを持っている — 代わりに `path:line` を指せ」は二行目のほう。
 
 ## Where this ends and duplication begins（これがどこで終わり、重複がどこから始まるか）
 

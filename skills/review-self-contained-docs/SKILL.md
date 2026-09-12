@@ -151,7 +151,7 @@ neighboring line means, and a docstring describing a declaration other than the 
 
 ### 4. Assemble findings
 
-Hand each violation to `write-instructions-as-comment` as the fact(s) it needs to render — that
+Hand each violation to `write-nice-instructions-as-comment` as the fact(s) it needs to render — that
 skill owns the finding's shape and how firmly the remedy is stated; don't invent either here.
 
 - Condition 1 or 2 violation → **one fact**: the unit fails, and the fix is unambiguous — delete
@@ -209,5 +209,5 @@ before starting, so the excuse is already answered when it occurs to you.
   a finding on either is confusing; it explains them from the writer's side, with more examples.
 - `avoid-reference-detours` — the authoring-time guidance behind condition 3, including why its fix
   restates rather than deletes.
-- `write-instructions-as-comment` — owns the finding template and how firmly a remedy is stated;
+- `write-nice-instructions-as-comment` — owns the finding template and how firmly a remedy is stated;
   this skill hands it facts (step 4), never a rendered shape.
