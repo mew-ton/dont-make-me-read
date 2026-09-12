@@ -15,8 +15,9 @@ allowed-tools: []
 
 ## The range
 
-The range is everything the reader has to hold in order to act on what is in front of them. It is
-not the length of what they are reading: a short paragraph that only means something once you have
+Nobody wants to hold a lot in their head to work out what to do, and the writer is the one person
+who cannot tell how much that is. The range is everything the reader has to hold in order to act on
+what is in front of them. It is not the length of what they are reading: a short paragraph that only means something once you have
 opened two other files has a wide range.
 
 It goes wrong in three ways.
@@ -51,10 +52,9 @@ What noise costs is not reading time. It is a **wrong decision, made confidently
 
 ## Who the reader is
 
-A person or an agent, always both, and they do not fail the same way. A list of the paths you
-happened to sample reads to a person as "at least these, and probably others like them"; a coding
-agent takes it as the complete set to touch, and stops there. Same text, same range, two different
-wrong decisions.
+A person or an agent, always both, and they do not fail the same way. The sampled paths above read
+to a person as "at least these, and probably others like them", and to a coding agent as the
+complete set to touch — same text, same range, two different wrong decisions.
 
 ## What must never be cut
 

@@ -10,6 +10,7 @@ versus a reference, or when you are wondering whether to split one skill into tw
 - Naming
 - Staying in force
 - Write the description and the body for different purposes
+- Open with what it is, then when it applies
 - Progressive disclosure: what to inline, what to disclose
 - Guard it three ways
 - Leave out what the structure already settles
@@ -141,6 +142,15 @@ leaves the rule on.
 **DON'T**
 
 - Cut anything from either because the other already carries it.
+
+## Open with what it is, then when it applies
+
+The body's first two sections answer the reader's first two questions, in that order: what is this
+skill for, and am I in it? The rules, the procedure and the guards come after.
+
+The second one earns its place only where the fire is fuzzy — a standing rule the work never
+names, or an artifact with a near neighbour. A skill whose next section is already its inputs or
+its routing has answered it, and a section that repeats the description there is the no-op above.
 
 ## Progressive disclosure: what to inline, what to disclose
 

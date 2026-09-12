@@ -22,6 +22,17 @@ Reachability is not the whole test. A pointer can be completely valid — the fi
 that rule at the top, the config really does say that — and still be the wrong thing to write,
 because the reader had to leave to understand the sentence in front of them.
 
+## When it applies
+
+To any sentence that cannot be understood without going somewhere else: a comment, a docstring, a
+PR description, a section that defers to another section.
+
+This skill starts from a target the reader can reach. Where it does not exist for them at all — a
+conversation, a removed declaration, a Slack thread — there is nothing to restate and the fix is to
+delete, which is `avoid-unverifiable-context`'s finding and is asked first. What remains here is
+the second question only: should the reader have had to leave to understand the sentence in front
+of them?
+
 ## The rule
 
 State it where it is used. Keep the original where it is.
@@ -56,14 +67,6 @@ Inside one document a reader reads in order, so a second statement of the same c
 re-read — that is `write-nice-issue-description`'s Gate 2. Across documents, files, or sections a
 reader has to travel, and the trip costs more than the restatement. This skill governs the second
 case only.
-
-## When this is not the finding
-
-This skill starts from a target the reader can reach. Where it does not exist for them at all — a
-conversation, a removed declaration, a Slack thread — there is nothing to restate and the fix is to
-delete, which is `avoid-unverifiable-context`'s finding and is asked first. What remains here is
-the second question only: should the reader have had to leave to understand the sentence in front
-of them?
 
 ## Persistence
 

@@ -10,6 +10,7 @@
 - Naming（命名）
 - Staying in force（効力を持ち続ける）
 - Write the description and the body for different purposes
+- Open with what it is, then when it applies（何であるかを先に、いつ適用されるかを次に）
 - Progressive disclosure: 何をインラインにし、何を開示するか
 - Guard it three ways（三方向から守る）
 - Leave out what the structure already settles
@@ -129,6 +130,15 @@ frontmatter の `name` はディレクトリ名と一致すること。`anthropi
 **DON'T**
 
 - 一方にすでにあることを理由に、どちらかから何かを削ること。
+
+## Open with what it is, then when it applies（何であるかを先に、いつ適用されるかを次に）
+
+本文の最初の二つの節は、読み手の最初の二つの問いに、その順で答える：このスキルは何のためにあるのか、そして
+自分はその中にいるのか。規則も、手順も、ガードもそのあとに来る。
+
+二つ目が場所を得るのは、発火があいまいなときだけである — 作業が決して名指ししない定常的な規則か、近い隣人を
+持つ成果物か。次の節がすでに入力や振り分けであるスキルは、それに答え終わっている。そこに description を
+繰り返す節を置けば、それは上に書いた no-op である。
 
 ## Progressive disclosure: 何をインラインにし、何を開示するか
 

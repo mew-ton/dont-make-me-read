@@ -24,6 +24,17 @@ the point of use and leave the original authoritative, because nothing executes;
 takes on a caller's knowledge copies nothing — it takes on a dependency on that caller,
 permanently.
 
+## When it applies
+
+To any function, module or component with more than one caller — writing it, extracting it,
+reviewing it, or designing the interface between them. Not to it when:
+
+- The difference **is** domain data, and the domain word for it exists. Pass that.
+- The two callers were never doing the same thing. Then the extraction is what to undo, not the
+  parameter — two straightforward functions cost less to read than one that serves both.
+- The caller's identity is the subject matter: a logger's `source`, a metric's label, an audit
+  record's actor. Nothing branches on it; it is carried, not consulted.
+
 ## The rule
 
 **The knowledge goes out, not in.** What differs between callers is the callers' to state; the
@@ -47,14 +58,6 @@ it is the callee's own. If the only honest name is the caller's identity, the kn
 
 The test is the name, not the number of branches. A callee may branch all it likes on facts it
 owns.
-
-## When this is not the finding
-
-- The difference **is** domain data, and the domain word for it exists. Pass that.
-- The two callers were never doing the same thing. Then the extraction is what to undo, not the
-  parameter — two straightforward functions cost less to read than one that serves both.
-- The caller's identity is the subject matter: a logger's `source`, a metric's label, an audit
-  record's actor. Nothing branches on it; it is carried, not consulted.
 
 ## Persistence
 
