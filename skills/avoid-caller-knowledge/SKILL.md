@@ -13,16 +13,16 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
 
 Someone reading a function has to hold whatever it depends on before they can change it. A
 function that decides what to do from *who called it* puts every caller inside that range, and
 puts the next one there too.
 
-This is the same failure a reference detour is in prose, with the opposite fix. Text can restate
-what the reader needs at the point of use and leave the original authoritative, because nothing
-executes. Restating a caller's knowledge inside a callee copies nothing — it takes on a dependency
-on that caller, permanently.
+Code is the place where restating does not repair that. Text can repeat what the reader needs at
+the point of use and leave the original authoritative, because nothing executes; a callee that
+takes on a caller's knowledge copies nothing — it takes on a dependency on that caller,
+permanently.
 
 ## The rule
 

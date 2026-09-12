@@ -13,9 +13,10 @@ allowed-tools:
   - Read
 ---
 
-## Scope
+## Why this exists
 
-Point this at a document and it returns everything that document would have to be rewritten for,
+A dependency nobody drew is an edit somebody will be made to make, in a file they were not looking
+at. Point this at a document and it returns everything that document would have to be rewritten for,
 assembled into a graph: what is pinned to what, which end has to move, and how loudly it breaks.
 Links are in it, and are the least of it — most of what pins a document is prose.
 

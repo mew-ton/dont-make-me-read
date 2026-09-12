@@ -13,7 +13,7 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
 
 A reference the reader can genuinely open is still a defect when following it was never optional.
 Restate what this reader needs at the point they need it, and leave the original where it is: the
@@ -22,17 +22,6 @@ round trip is what costs them, not the fact.
 Reachability is not the whole test. A pointer can be completely valid — the file really does carry
 that rule at the top, the config really does say that — and still be the wrong thing to write,
 because the reader had to leave to understand the sentence in front of them.
-
-Two questions, and only the second is this skill's:
-
-| Question | Skill |
-|---|---|
-| Can the reader go and check what this refers to? | `avoid-unverifiable-context` |
-| Should the reader have had to leave here to understand it at all? | this skill |
-
-The first fails when the target does not exist for this reader — a conversation, a removed
-declaration, a Slack thread. There is nothing to restate, so the fix is to delete. This skill only
-applies once that question has been passed.
 
 ## The rule
 
@@ -68,6 +57,14 @@ Inside one document a reader reads in order, so a second statement of the same c
 re-read — that is `write-nice-issue-description`'s Gate 2. Across documents, files, or sections a
 reader has to travel, and the trip costs more than the restatement. This skill governs the second
 case only.
+
+## When this is not the finding
+
+This skill starts from a target the reader can reach. Where it does not exist for them at all — a
+conversation, a removed declaration, a Slack thread — there is nothing to restate and the fix is to
+delete, which is `avoid-unverifiable-context`'s finding and is asked first. What remains here is
+the second question only: should the reader have had to leave to understand the sentence in front
+of them?
 
 ## Persistence
 

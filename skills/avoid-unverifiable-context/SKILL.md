@@ -13,21 +13,9 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
 
-Text that persists is read by someone who was not there when it was written. This skill governs one
-question about that text: **can the reader go and check what it says?**
-
-- They can: business requirements, regulations, domain constraints, product decisions, and anything
-  still present in the current code, types, or schemas. Write it.
-- They cannot: the conversation, the review thread, the trial and error, the policy as it stood
-  before, an argument that was removed. Drop it.
-
-A reference the reader genuinely *can* open, but should not have been sent to, is a different
-defect — `avoid-reference-detours` owns it. Here the target does not exist for this reader at all,
-so there is nothing to restate and the fix is always the same: delete.
-
-## Why
+Text that persists is read by someone who was not there when it was written.
 
 - **Process only replays for participants.** "As pointed out in review", "we originally went with
   X", "the policy changed" rely on a timeline only the people in that discussion can reconstruct.
@@ -35,6 +23,18 @@ so there is nothing to restate and the fix is always the same: delete.
 - **An unreachable reference is the same failure.** A Notion page, a Slack thread, a decision made
   in this session, or a bare `issue: 1234` that does not say which system it belongs to: the reader
   ends up equally stuck whether the target never existed or merely cannot be got at from here
+
+## The rule
+
+One question about the text: **can the reader go and check what it says?**
+
+- They can: business requirements, regulations, domain constraints, product decisions, and anything
+  still present in the current code, types, or schemas. Write it.
+- They cannot: the conversation, the review thread, the trial and error, the policy as it stood
+  before, an argument that was removed. Drop it.
+
+Where the target *is* reachable and the reader should still not have been sent to it, nothing is
+deleted — the fact is restated at the point of use, which is a different finding.
 
 ## Guidance
 

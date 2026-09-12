@@ -13,20 +13,10 @@ background: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
 
 An issue is not a design document; it is a problem statement plus a completion condition. Apply
 this once per issue body, whether drafting a new one or revising an existing one.
-
-The reader is the implementer, and they can read the repository. So this issue does not need to
-explain project context the way `avoid-reference-detours` asks of persistent text generally —
-pointing at a location is enough where prose would otherwise explain it, and prose that explains it
-both grows the issue and encroaches on the implementer's own judgment.
-
-What `avoid-unverifiable-context` guards against still applies in full: no conversation log, no discarded
-alternatives, no residue that only the people in this session could reconstruct. Dropping the
-project-context explanation is not a license to let session/process context back in — if anything,
-an issue is exactly where that context is least excusable, since the reader is never a participant.
 
 Two gates below govern every section.
 
@@ -41,6 +31,17 @@ English.
 One issue, one language. A second-language restatement of the same content is Gate 2 duplication,
 not accessibility — see the exception under Gate 2, which covers differing presentation forms and
 not differing languages.
+
+## What the implementer already has
+
+The reader can read the repository, so this issue does not have to explain project context the way
+persistent text generally must: point at a location where prose would otherwise explain it. Prose
+that explains it both grows the issue and encroaches on the implementer's own judgment.
+
+Session and process context is the opposite case and stays out in full — no conversation log, no
+discarded alternatives, no residue only the people in this session could reconstruct. Dropping the
+project-context explanation is not a licence to let it back in; an issue is where it is least
+excusable, since its reader is never a participant.
 
 ## Gate 1: determinacy
 

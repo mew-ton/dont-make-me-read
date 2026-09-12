@@ -12,7 +12,10 @@ background: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
+
+An architecture doc is the standing answer to "how do I decide this here", read long after whoever
+wrote it has stopped being available.
 
 This extends **matklad's `ARCHITECTURE.md`** (Alex Kladov, 2021), which proposes the file and the
 shape it takes. Follow it: that part is settled, and the sections below are his.
@@ -22,11 +25,6 @@ the thing that does X?"; it does not answer "what shape should the thing I am ab
 take?", and a contributor who cannot answer the second induces it from whatever is already in the
 tree. The extension here is that each of his sections is written so it also **places a case the doc
 has never seen**.
-
-An issue is a problem plus a completion condition (`write-nice-issue-description`). A `SKILL.md` is
-an instruction to an agent (`write-nice-skills`). An architecture doc is neither: it is the
-standing answer to "how do I decide this here", read long after whoever wrote it has stopped being
-available.
 
 ## The test
 

@@ -86,6 +86,11 @@ leaves the rule on.
   Put one there when a person needs this skill explained; what it owes that person is the
   README rules' business, not this file's.
 
+The body carries the skill's own explanation, and the `description` restating part of it is not
+duplication to remove. That text is written for one judgment — whether to fire — so it is no
+substitute for a body a reader can understand the skill from. A body trimmed because "the
+description already says it" is how one ends up opening on a boundary with the purpose nowhere.
+
 A context pointer names the condition and the file: "For writing a description, see
 `references/writing-descriptions.md`." The reference loads only when that branch is
 actually taken.

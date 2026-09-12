@@ -13,26 +13,14 @@ background: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
 
 This skill governs **text that tells a person what to change**: a PR review finding. An agent
 reading the same text is served by the same shape, but **the bar is set by the human reader** —
 the budgets below exist because a person decides within the first few lines whether to act or skim.
 
-A GitHub issue body is a different artifact — a problem statement plus a completion condition, read
-by an implementer who can read the repository — and is `write-nice-issue-description`'s scope, not
-this skill's.
-
-Neighbouring skills own different axes, and several can apply to one PR review finding:
-
-| Question | Skill |
-|---|---|
-| Is the instruction in the fixed shape, and is its remedy stated at the right strength? | this skill |
-| Can the reader check what it claims (rationale kept, process dropped)? | `avoid-unverifiable-context` |
-| Was the reader sent somewhere reachable to understand it? | `avoid-reference-detours` |
-
-A skill body is instruction text too, so this skill still governs the asks inside one; what it hands
-to `write-nice-skills` is the description and the size budget.
+The asks inside a skill body are instruction text too, so this governs those as well. What it does
+not reach is that skill's own description or its size budget.
 
 ## Language
 
@@ -157,3 +145,16 @@ block sits outside the budget).
 | "Naming the file in Title is more precise." | Precision at the wrong altitude reads as evidence, not a rule. A reader needs to recognise the shape of the problem before they need its address — put the file in Summary's first bullet, and swap-test Title for whether it still reads true pointing elsewhere. |
 | "The comment/spec describes the intended behaviour, so making the code match it is the fix." | Reading as the more confident or complete side is not evidence it is the current one — the comment can just as easily be the stale half. If the PR or issue discloses the gap as a deliberate scope split, forcing the code to catch up decides a scope question that belongs to the author, not the reviewer. That is row 2 unless you have independent evidence — a grep, an explicit statement that one side is stale — that actually favors one side. |
 | "The examples in this skill are in English, so the finding should be too." | The examples are in English because the skill is. Post in the language the repository's reviews already use — the shape is what this skill fixes, not the language. |
+
+## Related skills
+
+- `dont-make-me-read` — the test this one sharpens: the finding is judged by what its reader has to
+  hold before they can act.
+- `avoid-unverifiable-context` — whether the reader can check what the finding claims: the
+  rationale stays, the process it came out of goes.
+- `avoid-reference-detours` — whether the reader was sent somewhere to understand it, and what may
+  be restated at the point of use instead.
+- `write-nice-issue-description` — a problem statement plus a completion condition, read by an
+  implementer who can read the repository; this skill stops where that one starts.
+- `write-nice-skills` — the asks inside a skill body are this skill's; that skill's are the
+  description and the size budget.

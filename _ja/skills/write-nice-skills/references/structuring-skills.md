@@ -76,6 +76,11 @@ TARGET=2000 bash <this skill's directory>/scripts/count-tokens.sh <常時効く 
   ので、何にもロードされず、エージェントの文脈を一切消費しない。人がこのスキルの説明を必要とするなら、そこに
   置くこと。それがその人に対して何を負うかは README の規則の領分であり、このファイルの領分ではない。
 
+本文はそのスキル自身の説明を担い、`description` がその一部を言い直していることは、取り除くべき重複では
+ない。あのテキストはただ一つの判断 — 発火させるか — のために書かれており、読み手がそこからスキルを理解
+できる本文の代わりにはならない。「description がもう言っているから」と本文を削るのが、境界から始まって
+目的がどこにも無い本文の作られ方である。
+
 context pointer は条件とファイルを名指しする：「For writing a description, see
 `references/writing-descriptions.md`」。その枝が実際に取られたときにだけ reference がロードされる。
 
