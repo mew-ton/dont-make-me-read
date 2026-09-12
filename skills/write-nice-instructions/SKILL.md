@@ -19,9 +19,6 @@ This skill governs **text that tells a person what to change**: a PR review find
 reading the same text is served by the same shape, but **the bar is set by the human reader** —
 the budgets below exist because a person decides within the first few lines whether to act or skim.
 
-The asks inside a skill body are instruction text too, so this governs those as well. What it does
-not reach is that skill's own description or its size budget.
-
 ## Language
 
 Write the finding in the language its readers already use — the language of the repository, the
@@ -156,5 +153,5 @@ block sits outside the budget).
   be restated at the point of use instead.
 - `write-nice-issue-description` — a problem statement plus a completion condition, read by an
   implementer who can read the repository; this skill stops where that one starts.
-- `write-nice-skills` — the asks inside a skill body are this skill's; that skill's are the
-  description and the size budget.
+- `write-nice-rules` — the same demand where the instruction stays in force: a guideline, a
+  convention, or the rules inside a skill body, read out of order by whoever the rule catches.
