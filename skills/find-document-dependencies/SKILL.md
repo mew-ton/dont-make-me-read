@@ -24,7 +24,7 @@ to what, which end has to move, how loudly it breaks — and judges none of it.
 ### Dependency
 
 Two texts are in a dependency when **fixing one obliges you to fix the other**, or they contradict.
-A link is one shape that takes; it is not the interesting one.
+A link is one shape it takes, and the cheapest one to find.
 
 ### Direction
 
@@ -71,8 +71,7 @@ looks exactly as true as the day it was written.
    [`references/what-counts.md`](references/what-counts.md) — the shapes a dependency takes, and
    how the strong ones surface. Spend the reading there: whatever checks links is already better at
    the weak half than you are. Report the weak ones you pass and do not go hunting for them; a span
-   you are already reading gets both grades, since it is the hunting that was not worth the time,
-   not the grading.
+   you are already reading gets both grades, since only the hunting was not worth the time.
 2. **Settle each arrow.** Say which end has to move, and check the opposite direction too: an edge
    running back is its own entry, not a duplicate of the one you just wrote.
 3. **Assemble the graph.** Nodes are the things: this document, and each file, section, or outside
