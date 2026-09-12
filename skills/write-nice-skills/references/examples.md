@@ -5,12 +5,12 @@ Each pair names what it is fixing.
 
 ## Contents
 
-- A tag list, keywords nobody types, and a leaked step
+- A tag list, a leaked step, and no occasion
 - The argument in front of the occasion
 - A routing table in the bound
 - The criteria, handed over
 
-## A tag list, keywords nobody types, and a leaked step
+## A tag list, a leaked step, and no occasion
 
 **Bad**
 
@@ -19,7 +19,8 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-The slash-separated head is not a sentence and matches nothing anyone types. "first
+The slash-separated head reads as a tag list, and a tag list matches nothing anyone writes —
+the words in it are fine, the punctuation between them is not. "first
 read … then rewrite … then check" is the procedure, so the agent acts on it and never
 loads the body. "great skills and better writing" names no occasion.
 
@@ -29,8 +30,8 @@ loads the body. "great skills and better writing" names no occasion.
 Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
 and stays lean. Also applies when another skill needs the rules for writing a
-description or for sizing a body. Does not apply when the documentation is not
-a skill's.
+description or for sizing a body. Does not apply when the artifact is not a
+skill.
 ```
 
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
@@ -63,7 +64,7 @@ when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
-The stance leads, because nothing in a diff names this rule. `from:`,
+The lead states what the skill forces, because nothing in a diff names this rule. `from:`,
 `isDetailPage` stay — those are what the work looks like, so those are what fires.
 Why it costs the reader anything is the body's.
 
@@ -74,7 +75,8 @@ Why it costs the reader anything is the body's.
 ```text
 DO NOT use for an architecture doc (that is write-nice-architecture-docs), a
 SKILL.md (that is write-nice-skills), an issue body (that is
-write-nice-issue-description), or for reference documentation.
+write-nice-issue-description), for reference documentation, a tutorial, or a
+changelog.
 ```
 
 Three names to maintain, three renames waiting, and an agent reading a table instead
@@ -84,7 +86,7 @@ of asking whether this artifact is the skill's.
 
 ```text
 Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
-body, or reference documentation.
+body, reference documentation, a tutorial, or a changelog.
 ```
 
 The artifact is the condition. Which skill owns which artifact is settled by each of

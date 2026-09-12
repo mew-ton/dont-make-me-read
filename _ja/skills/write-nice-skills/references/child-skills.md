@@ -39,8 +39,8 @@
 ## Naming（命名）
 
 `<parent-skill-name>-<role>`：親の名前、ハイフン、そして子が演じる役割 — `-change-inventory`、
-`-repo-grounding`、`-version-lookup`。この接頭辞が、ディレクトリ一覧で親子を隣に並べる。対を改名するのは、両方とも自分が所有する編集であり、`description` の
-中に書いた親の名前は、他人が引き起こす編集である。
+`-repo-grounding`、`-version-lookup`。この接頭辞が、ディレクトリ一覧で親子を隣に並べる。そして対の改名は、
+両方とも自分が所有する一回の編集である。
 
 ## The child's frontmatter（子の frontmatter）
 
@@ -48,10 +48,12 @@
 user-invocable: false
 disable-model-invocation: false
 context: fork
+background: false
 ```
 
-`user-invocable: false` は子をユーザーの `/` メニューから隠す。`background` を上のブロックに入れていないのは、
-三つの動機が同じ値を求めるわけではないからである。どの動機がどの値を求めるかは、表の最後の列が述べている。
+`user-invocable: false` は子をユーザーの `/` メニューから隠す。`background: false` は三つの動機のうち二つが
+求める値である。親が同じターンで結果を使うからである。これを外すのは — 既定は `true` — `Independence` の行
+だけで、そこでは子が並列に走る。
 
 任意のフィールドが二つ、子をさらに狭める。そしてこの二つこそ、理由を言えない限り外しておくものである：
 `agent` はツールセットを選び（`Explore` と `Plan` は読み取り専用）、`model` はコストと能力を天秤にかける

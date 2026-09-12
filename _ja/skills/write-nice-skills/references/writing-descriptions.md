@@ -22,8 +22,9 @@
 - **スキルが作られた意図を示すこと** — その著者が何を強制したかったのかを、一節で、著者の言葉で。
   たとえば `keeps a callee from branching on which caller invoked it`。
 - **機会を名指しすること**：書かれつつある成果物か、進行中の活動か。
-- **発火してはならない条件** — **bound（境界）** — **を、その機会を否定した形で、同じ人称で書くこと**：
-  `Does not apply when …`。そうすれば対で一つの使用条件として読まれる。
+- **発火してはならない条件** — **bound（境界）** — **を、同じ人称で、毎回同じ形で書くこと**：
+  `Does not apply when …`。これは、機会が巻き込んでしまうが巻き込むべきでないものを取り戻す — 隣接する
+  成果物か、機会の内側にありながら他の誰かに属するケースである。
 - **`description` は英語で書くこと。** 本文とスキルの出力が何語であろうと。英語の用語こそが、どの言語で
   打たれようとプロンプトに生き残るものであり、他人がインストールするスキルは、利用者がどの言語を打つか
   知り得ない。一つのチームから決して出ないスキルなら、そのチームが実際に打つフレーズを足してよい。
@@ -90,8 +91,8 @@ domain's own vocabulary, over one that branches on who called it — a shared
 fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag.
 Applies to any coding task: writing, refactoring, extracting, reviewing, or
 designing a function, a module, a component, or the interface between them.
-Does not apply when the subject is prose, or when the branch is on genuine
-domain data.
+Does not apply when the subject is prose, or a comment that sends its reader
+elsewhere to be understood, or when the branch is on genuine domain data.
 ```
 
 先頭の両半分がそろっている — 押し通す callee と、それが押しのけるほう — そして次に機会が、活動として

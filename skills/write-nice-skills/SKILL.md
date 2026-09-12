@@ -4,7 +4,7 @@ description: >
   Writes, edits and reviews a skill, a SKILL.md, or its description and frontmatter — how to write a
   skill's description and body so it fires reliably and stays lean. Also applies when another skill
   needs the rules for writing a description or for sizing a body. Does not apply when the
-  documentation is not a skill's.
+  artifact is not a skill.
 user-invocable: false
 disable-model-invocation: false
 context: fork

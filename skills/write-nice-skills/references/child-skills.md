@@ -42,8 +42,7 @@ review the review.
 
 `<parent-skill-name>-<role>`: the parent's name, a hyphen, then the role the child plays —
 `-change-inventory`, `-repo-grounding`, `-version-lookup`. The prefix is what keeps the pair
-together in a directory listing. Renaming the pair is an edit you own on both halves,
-where a parent's name inside a `description` is an edit somebody else triggers.
+together in a directory listing, and renaming the pair is one edit you own on both halves.
 
 ## The child's frontmatter
 
@@ -51,11 +50,12 @@ where a parent's name inside a `description` is an edit somebody else triggers.
 user-invocable: false
 disable-model-invocation: false
 context: fork
+background: false
 ```
 
-`user-invocable: false` hides the child from the user's `/` menu. `background` is left out of the
-block above because the three motives do not all want the same value; the table's last column says
-which value each wants.
+`user-invocable: false` hides the child from the user's `/` menu. `background: false` is what two
+of the three motives want, since the parent uses the result in the same turn; leave it out — it
+defaults to `true` — only for the `Independence` row, where the children run in parallel.
 
 Two optional fields narrow the child further, and are the two to leave out unless you can
 say why: `agent` picks the tool set (`Explore` and `Plan` are read-only) and `model` trades

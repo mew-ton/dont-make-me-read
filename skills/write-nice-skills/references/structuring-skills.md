@@ -33,8 +33,8 @@ A skill that has to be on for a whole activity is loaded once and then competes 
 everything that arrives after it. A body that never says it is still in force reads
 as advice already given, and the work drifts back to what it was doing.
 
-Say it, in the body, in three parts: it is in force every response after the one that
-loaded it; it stays in force while you are unsure whether the case in front of you counts;
+Say it in a `## Persistence` section of the body, in three parts: it is in force every response
+after the one that loaded it; it stays in force while you are unsure whether the case in front of you counts;
 it is released on an explicit condition — the work turning to something the skill does not
 cover, or being told to stop.
 
@@ -49,9 +49,6 @@ The budget belongs to the **set of skills that stand together**. Skills do not a
 at a time: a rule that is on for a whole activity is
 resident while another skill fires for the artifact in hand, and the reader pays for
 both. A file inside its own limit can still put the activity over.
-
-Each figure is measured over one file as it is loaded — a `SKILL.md`, or a reference once the
-branch that reaches it is taken:
 
 | The skill | Budget | Because |
 |---|---|---|
@@ -143,9 +140,7 @@ When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
 The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
 leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
-name. `anthropic` and `claude` are reserved and may not appear in it. A skill that runs as another
-skill's delegated phase takes a further rule on top of this one, in the reference that owns
-delegation.
+name. `anthropic` and `claude` are reserved and may not appear in it.
 
 **Two files carry a standing role of the skill, and their names are fixed**, so every skill's
 sits at the same path and the set is greppable:
@@ -190,12 +185,11 @@ means". The reference loads only when the reader is in that case.
 A fact that defies a reasonable assumption stays inline as well: an agent cannot recognise the
 condition that would have sent it to a file whose content it has no reason to expect.
 
-The half of a rule that changes what the agent does stays inline, however little context it has
+Whatever part of a rule changes what the agent does stays inline, however little context it has
 to spare. The
-excuse "it reads fine to me", answered with "you are supplying the intent the text is missing
-as you read it", belongs in Common Rationalizations, where the answer arrives at the moment the
-excuse is reached for; in a file nothing loads, it would be read once and agreed with, which is
-not the same as applied.
+excuse an agent reaches for at the moment it is about to skip belongs in Common Rationalizations,
+where the answer arrives with it; in a file the agent never loads, that answer is advice nobody
+applies.
 
 ## Comments in the frontmatter
 

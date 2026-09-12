@@ -5,12 +5,12 @@ description を直す必要があり、それを照らし合わせる実例が�
 
 ## Contents（目次）
 
-- タグ列、誰も打たないキーワード、漏れた手順
+- タグ列、漏れた手順、機会の不在
 - 機会の前に論拠が来ている
 - 境界がルーティング表になっている
 - 判定基準を手渡してしまっている
 
-## タグ列、誰も打たないキーワード、漏れた手順
+## タグ列、漏れた手順、機会の不在
 
 **Bad**
 
@@ -19,7 +19,8 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-スラッシュ区切りの冒頭は文ではなく、誰が打つ語とも合致しない。"first read … then rewrite … then check" は
+スラッシュ区切りの冒頭はタグ列として読まれ、タグ列は誰が書くものとも合致しない — 並んでいる語自体は
+問題なく、その間の記号が問題である。"first read … then rewrite … then check" は
 手順なので、エージェントはそれに基づいて行動し、本文を決してロードしない。"great skills and better writing"
 はどの機会も名指ししていない。
 
@@ -29,8 +30,8 @@ each section, then check the frontmatter, for great skills and better writing.
 Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
 and stays lean. Also applies when another skill needs the rules for writing a
-description or for sizing a body. Does not apply when the documentation is not
-a skill's.
+description or for sizing a body. Does not apply when the artifact is not a
+skill.
 ```
 
 機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は機会を否定したもので、
@@ -62,7 +63,7 @@ when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
-diff の中にこの規則を名指しするものが何も無いので、姿勢が先頭に立つ。`from:`、`isDetailPage` は残る —
+diff の中にこの規則を名指しするものが何も無いので、先頭がそのスキルの強制するものを述べる。`from:`、`isDetailPage` は残る —
 それが作業の見え方であり、発火させるものだからである。それが読み手に何を払わせるかは本文のもの。
 
 ## 境界がルーティング表になっている
@@ -72,7 +73,8 @@ diff の中にこの規則を名指しするものが何も無いので、姿勢
 ```text
 DO NOT use for an architecture doc (that is write-nice-architecture-docs), a
 SKILL.md (that is write-nice-skills), an issue body (that is
-write-nice-issue-description), or for reference documentation.
+write-nice-issue-description), for reference documentation, a tutorial, or a
+changelog.
 ```
 
 維持すべき名前が三つ、待ち構える改名が三つ。そしてエージェントは、この成果物は自分のものかと問う代わりに表を
@@ -82,7 +84,7 @@ write-nice-issue-description), or for reference documentation.
 
 ```text
 Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
-body, or reference documentation.
+body, reference documentation, a tutorial, or a changelog.
 ```
 
 条件は成果物である。どのスキルがどの成果物を所有するかは、それぞれのスキルが自分の description の中で決着させる。

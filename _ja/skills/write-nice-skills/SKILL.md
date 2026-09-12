@@ -3,8 +3,7 @@ name: write-nice-skills
 description: >
   スキル、`SKILL.md`、あるいはその description と frontmatter を書き、編集し、レビューする — スキルの
   description と本文を、確実に発火し、かつ軽量であり続けるように書く方法。別のスキルが description の
-  書き方や本文のサイズ決めの規則を必要とするときにも適用される。対象がスキル以外のドキュメントであるとき
-  は適用しない。
+  書き方や本文のサイズ決めの規則を必要とするときにも適用される。対象がスキルでないときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork

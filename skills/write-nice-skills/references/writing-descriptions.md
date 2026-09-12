@@ -25,8 +25,9 @@ it must not carry the procedure the body holds.
   clause and in their terms. For example, `keeps a callee from branching on which caller
   invoked it`.
 - **Name the occasion**: the artifact being written, or the activity underway.
-- **State when it must not fire** — the **bound** — as that occasion negated and in the same
-  person: `Does not apply when …`, so the pair reads as one condition of use.
+- **State when it must not fire** — the **bound** — in the same person and the same shape every
+  time: `Does not apply when …`. It takes back whatever the occasion sweeps in and should not: a
+  neighbouring artifact, or a case inside the occasion that belongs to someone else.
 - **Write the `description` in English**, whatever language the body and the skill's output
   are in. English terms are the ones that survive into a prompt whatever language it is typed
   in, and a skill other people install cannot know which language its users type. A skill that
@@ -98,8 +99,8 @@ domain's own vocabulary, over one that branches on who called it — a shared
 fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag.
 Applies to any coding task: writing, refactoring, extracting, reviewing, or
 designing a function, a module, a component, or the interface between them.
-Does not apply when the subject is prose, or when the branch is on genuine
-domain data.
+Does not apply when the subject is prose, or a comment that sends its reader
+elsewhere to be understood, or when the branch is on genuine domain data.
 ```
 
 Both halves of the lead are there — the callee it insists on, and the one it displaces — and then
