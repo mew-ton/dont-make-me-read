@@ -10,7 +10,7 @@ to split one skill into two.
 - Staying in force
 - The body budget
   - Measuring it
-- Open with what it is, then when it applies
+- Open with what the skill is
 - Guard it three ways
 - Naming
 - Progressive disclosure: what to inline, what to disclose
@@ -68,15 +68,17 @@ only around 150 in a non-Latin writing system such as Japanese or Chinese, so a 
 can look short by line count and still cost well over the budget. Measure it:
 
 ```bash
-bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md
+# one artifact-reached file, against 5000
+bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md path/to/reference.md
+# every always-on SKILL.md, to add up against 2000
 bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
 ```
 
 The script sends each file to whichever model is currently default and subtracts a baseline
 request without it, so the figure is that model's own count and stays correct as models change.
 Each file costs one round trip. It prints a count per file and exits non-zero when any one file
-is over `TARGET`, which defaults to 5000 — so the first line above checks an artifact-reached
-file outright. The always-on figure is a total, which no per-file exit code can test: run the
+is over `TARGET`, which defaults to 5000 — so the first command checks an artifact-reached file
+outright. The always-on figure is a total, which no per-file exit code can test: run the
 second line and add the counts up yourself.
 
 "This skill's directory" is wherever this file was loaded from — a plugin's install path,
@@ -84,14 +86,14 @@ second line and add the counts up yourself.
 Resolve it from where you read this file: there is no one absolute path to hard-code.
 
 For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
-writing systems, where characters per token nearly double between a Latin one and a
-non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Every run of the
+writing systems, where characters per token falls by more than half between a Latin one and a
+non-Latin one — which is why the English figure above buys 250 lines and the Japanese one 150. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Every run of the
 script prints the ratio it just measured; work the two KB figures out again from that whenever
 the default model changes, since a stale figure that is too low sends you splitting files that
 were never over budget.
 
 
-## Open with what it is, then when it applies
+## Open with what the skill is
 
 `## Overview` first: one or two sentences on what the skill does and why that matters. Saying
 again what the description says is its job here — the description was material for the firing
@@ -99,13 +101,13 @@ judgment, and this reader is past that and has to act.
 
 Then whether the reader is in it, which earns its place only where the fire is fuzzy: a standing
 rule the work never names, or an artifact with a near neighbour. A skill whose next section is
-already its inputs or its routing has answered that, and a further section saying only when the
+already its routing or its first step has answered that, and a further section saying only when the
 skill applies is one the reader would have satisfied without it.
 
 The rules, the procedure and the guards come after.
 
 Whatever argument does not fit those two sentences is either operative — and belongs in the rule
-it defends, or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
+it defends, or in one of the guards below — or it is not, and it belongs outside the skill.
 
 ## Guard it three ways
 
@@ -156,9 +158,6 @@ Neither is required. The name is fixed for a skill that has one.
 `references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Match
 whichever neighbour fits and spend no further thought on it.
 
-**A file the agent never loads is outside all of this** — whether one exists at all, and what
-it is called, belong to whoever writes it.
-
 ## Progressive disclosure: what to inline, what to disclose
 
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
@@ -170,7 +169,9 @@ it is called, belong to whoever writes it.
   detail, long examples, per-branch procedure.
 - **Move out of the skill entirely** what no branch reaches: a file beside `SKILL.md` that
   nothing references is never loaded, so it costs the agent nothing at all — the design
-  rationale, the skill explained to a person, where its rules came from.
+  rationale, the skill explained to a person, where its rules came from. What such a file is
+  called is outside all of the above — that, and whether it exists at all, belong to whoever
+  writes it.
 
 What the body points at sits **one level deep**. A reference reached from another reference
 is read *partially* — the agent previews it with something like `head -100` instead of
@@ -202,8 +203,9 @@ future reader pays for.
 
 ## Leave out what changes nothing
 
-The frontmatter and the callers already establish who calls a skill and where it sits. A sentence repeating any of that changes nothing the skill does, and makes
-the skill wrong the day a caller is renamed.
+Leave out the sentence that restates the frontmatter, or names whichever skill happens to invoke
+this one — "this is a model-invoked skill, called by `x` during review". It changes nothing the
+skill does, and it is wrong the day `x` is renamed.
 
 Leave out the no-op, too — the instruction the model already follows unprompted. It reads as
 thoroughness and costs a reader the same as a rule that changes something.
@@ -227,9 +229,9 @@ Then split only when the cut earns its cost. Three cuts justify it:
    like it needs a skill of its own usually has one vague condition instead, and the
    agent drifts past it rather than stopping.
 3. **By delegation** — a phase that should run in a *different execution
-   environment*: its own model, its own tool set, its own context. This cut is about
-   who should do the work, where the first two are about what the reader types and
-   what comes after.
+   environment*: its own model, its own tool set, its own context. This cut turns on the
+   environment itself — a cheaper model, a narrower tool set — where cut 2 turns on what the
+   run leaves in the context behind it.
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an

@@ -47,7 +47,7 @@ time one is added. Take the knowledge out instead: the caller passes what
 differs. Use on any coding task.
 ```
 
-The problem, the cost and the remedy are all here, which is the skill. An agent with
+The argument, the cost and the remedy are all here, which is the skill. An agent with
 them acts on the summary; the body confirms what it already believes, if it loads at
 all. The occasion arrives last, in four words.
 

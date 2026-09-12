@@ -53,9 +53,8 @@ disable-model-invocation: false
 context: fork
 ```
 
-These fields say how the child runs; what makes it a child is that a parent invokes it, and a
-parent's own frontmatter can carry the same three. `user-invocable: false` hides the child from
-the user's `/` menu. `background` is left out of
+These fields say how the child runs; what makes it a child is that a parent invokes it.
+`user-invocable: false` hides the child from the user's `/` menu. `background` is left out of
 the block above because the three motives do not all want the same value: set it to `false`
 when the conclusion is used in the same turn, and leave it unset — it defaults to `true` — when
 two children should run in parallel.
@@ -68,8 +67,7 @@ enumerate files is not the one you want drafting what a person will act on. Omit
 the fork inherits, which is right for the `Cleanliness` row.
 
 Leave `disable-model-invocation` at `false`: the caller here **is** a model, so `true`
-severs the only path into the child. `user-invocable: false` is what hides it from the
-human, and that is the whole requirement.
+severs the only path into the child.
 
 `context: fork` is what makes the child an execution environment rather than a stretch of
 the parent's turn. Without it, `model` applies to the remainder of the current turn — the

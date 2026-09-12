@@ -25,8 +25,8 @@ it must not carry the procedure the body holds.
   clause and in their terms. For example, `keeps a callee from branching on which caller
   invoked it`.
 - **Name the occasion**: the artifact being written, or the activity underway.
-- **State when it must not fire**, as that occasion negated and in the same person:
-  `Does not apply when …`, so the pair reads as one condition of use.
+- **State when it must not fire** — the **bound** — as that occasion negated and in the same
+  person: `Does not apply when …`, so the pair reads as one condition of use.
 - **Write the `description` in English**, whatever language the body and the skill's output
   are in. English terms are the ones that survive into a prompt whatever language it is typed
   in, and a skill other people install cannot know which language its users type. A skill that
@@ -71,7 +71,9 @@ near the start, where it does its invocation work.
 **Does the work name the artifact?**
 
 **It does → lead with the occasion.** The work says the word and the word fires the skill.
-For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`:
+For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. In both examples below, read
+the shape — what leads, then the occasion, then the bound — rather than the subject each one
+happens to govern:
 
 ```text
 Writes and revises a README, including adding a section to one that already

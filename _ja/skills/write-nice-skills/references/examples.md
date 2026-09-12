@@ -47,7 +47,7 @@ time one is added. Take the knowledge out instead: the caller passes what
 differs. Use on any coding task.
 ```
 
-問題、代償、処方がすべてここにある — それがスキルそのものである。それらを持ったエージェントは要約に基づいて
+論拠、代償、処方がすべてここにある — それがスキルそのものである。それらを持ったエージェントは要約に基づいて
 行動し、本文はロードするとしても、すでに信じていることを追認するために読む。機会は最後に、四語で来る。
 
 **Good**
