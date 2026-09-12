@@ -20,12 +20,10 @@ this file routes to.
 
 ## How to work
 
-- **Check the description against the work, not against your summary of the skill.**
-  You are not the trigger.
-- **Measure, do not estimate.** Bytes and lines are proxies that drift with the model;
-  `scripts/count-tokens.sh` does not.
-- **Open the reference.** If you find yourself settling a rule from this file, that is
-  the failure above, happening to you.
+- **Check the description against the work**, in the words the work supplies, not against
+  your own summary of the skill.
+- **Measure with `scripts/count-tokens.sh`.** Bytes and lines drift with the model.
+- **Open the reference the table sends you to**, and settle the rule there.
 
 ## Where each decision is settled
 
@@ -40,13 +38,9 @@ this file routes to.
 
 ## Frontmatter
 
-Write it without comments. It is the part of a `SKILL.md` that is parsed rather than
-read, and all of it loads on every fire. A field that genuinely needs explaining needs
-prose an author can argue with — the body, or the architecture doc — not a trailing `#`
+Write it without comments. All of it loads on every fire, and a field that needs
+explaining needs prose an author can argue with — the body — rather than a trailing `#`
 every future reader pays for.
-
-This is the one rule stated here rather than routed to: frontmatter has no reference of
-its own, and this is the whole of it.
 
 ## Common Rationalizations
 

@@ -114,6 +114,8 @@ them into a larger report.
   judge it in whatever language it is written in — the examples in `write-nice-issue-description`
   are English only because that skill is. The one language-related finding is Gate 2's: the same
   content restated in a second language.
+- Read every unit, and never search for a phrasing instead. A pattern search returns the wordings
+  you already thought of, and the defect is in the ones you did not.
 - Never post anything from inside this skill. Posting, if wanted, is the caller's action with the
   caller's own tools.
 

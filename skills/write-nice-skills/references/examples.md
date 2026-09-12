@@ -2,6 +2,13 @@
 
 Worked pairs. Each names what it is fixing.
 
+## Contents
+
+- A tag list, keywords nobody types, and a leaked step
+- The thesis in front of the occasion
+- A routing table in the bound
+- The criteria, handed over
+
 ## A tag list, keywords nobody types, and a leaked step
 
 **Bad**

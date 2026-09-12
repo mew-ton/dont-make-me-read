@@ -174,6 +174,8 @@ skill owns the finding's shape and how firmly the remedy is stated; don't invent
 - Never bring outside knowledge into step 3 — judge each unit from only its own text and directly
   attached code, exactly as the reader would encounter it. Reaching for what you already know
   about the PR is the one failure mode this whole skill exists to catch in yourself.
+- Read every unit, and never search for a phrasing instead. A pattern search returns the wordings
+  you already thought of, and the defect is in the ones you did not.
 - Never post findings unless `--comment` was explicitly given, and never post at all when running
   as another skill's subroutine.
 - The language a unit is written in is never a finding. All three conditions are about what context

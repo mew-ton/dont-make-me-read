@@ -6,16 +6,14 @@ versus a reference, or when you are wondering whether to split one skill into tw
 ## Contents
 
 - What is free and what is not
-- The body budget
+- The body budget — and measuring the token half of it
 - Naming
 - Staying in force
-- Write the description and the body for different purposes
 - Open with what it is, then when it applies
 - Progressive disclosure: what to inline, what to disclose
 - Guard it three ways
 - Leave out what the structure already settles
-- Sharpen the bound before you split a sequence
-- When to split
+- When to split — and sharpening a bound before you do
 - This skill as the worked example
 
 ## What is free and what is not
@@ -23,11 +21,9 @@ versus a reference, or when you are wondering whether to split one skill into tw
 Every installed skill's `name` and `description` are pre-loaded, on every turn, whether
 or not the skill is ever used. A bundled file costs nothing until it is read.
 
-That asymmetry settles most structural questions before they are asked. Moving a branch
-into a reference is free until the branch is taken. Moving the same branch into a second
-skill buys reach and pays a description on every turn, forever, for everyone who has it
-installed. So size alone is never a reason to split one skill into two — that is what a
-reference is for.
+Moving a branch into a reference is therefore free until the branch is taken, while moving
+it into a second skill pays a description on every turn, forever, for everyone who has it
+installed.
 
 ## The body budget
 
@@ -44,15 +40,6 @@ both. A file inside its own limit can still put the activity over.
 The set to check is every skill that will be standing at once: the ones on for this
 activity, plus whichever is reached for the artifact in hand. Its ceiling is the sum
 of theirs. Measure the set, not the file you happen to be editing.
-
-- What the body points at sits **one level deep**. A reference reached from another
-  reference is read *partially* — the agent previews it with something like `head -100`
-  instead of reading it whole — so a rule on line 150 of that second hop is a rule nobody
-  read. Every supporting file links directly from `SKILL.md`.
-- A reference over **100 lines opens with a list of its own headings**, for the same
-  reason: a partial read still shows what the file contains.
-- A supporting file is found by being referenced from `SKILL.md`, and nowhere else. What
-  it is called is settled under [Naming](#naming).
 
 ### Measuring the token half of that budget
 
@@ -85,13 +72,6 @@ script's closing line re-derives that figure from your own run; recompute it the
 rather than trusting this number once the default model has moved on — a stale
 figure that is too low sends you splitting files that were never over budget.
 
-### Measuring the other half: whether it fires
-
-Size says what the skill costs, never whether it is reached. Write the cases that should
-reach it before you write the body — a handful of prompts a user would really send — and
-run them against the models it will run under, with the skill installed and without. A
-skill the cases do not reach has a `description` problem, and no amount of rewriting the
-body fixes it.
 
 ## Naming
 
@@ -100,8 +80,8 @@ leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the
 name. `anthropic` and `claude` are reserved and may not appear in it.
 
 **A section the skill itself fixes keeps a fixed name at its root**, so every skill's sits
-at the same path and the set is greppable. There are two, and neither is required — the
-name is fixed only for the skill that has one:
+at the same path and the set is greppable. Neither file is required; the name is fixed for
+the skill that has one:
 
 | File | What it holds |
 |---|---|
@@ -109,9 +89,8 @@ name is fixed only for the skill that has one:
 | `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist |
 
 **Everything else the agent loads is branch material, and its name is yours.**
-`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`: these
-are conventions borrowed from example layouts, not requirements. Match whichever neighbour
-fits and spend no further thought on it.
+`references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Match
+whichever neighbour fits and spend no further thought on it.
 
 **A file the agent never loads is outside all of this.** Whether one exists and what it is
 called belong to whoever writes it, not to the skill's structure.
@@ -127,31 +106,17 @@ one that loaded it; it stays in force while you are unsure whether the case in f
 of you counts; it is released only on an explicit condition — the work turning to
 something the skill does not cover, or being told to stop.
 
-The default is asymmetric on purpose. This is a judgment retaken every response
-rather than a property of the system, so the cheap failure has to be the one that
-leaves the rule on.
+The asymmetry is deliberate: the judgment is retaken every response, so the cheap failure
+has to be the one that leaves the rule on.
 
-## Write the description and the body for different purposes
-
-**DO**
-
-- Write the `description` as material for one judgment: whether to fire.
-- Explain the skill in the body, for the reader who has to understand it once it has fired.
-- Let the two overlap; their purposes differ, so the overlap is intended.
-
-**DON'T**
-
-- Cut anything from either because the other already carries it.
 
 ## Open with what it is, then when it applies
 
 `## Overview` first: one or two sentences on what the skill does and why that matters. Then
 whether the reader is in it. The rules, the procedure and the guards come after.
 
-The heading is doing work. "Why this exists" invites the founding argument, which loads on every
-fire and changes nothing the agent does; "Overview" invites the two sentences that place the
-reader. Whatever argument does not fit is either operative — and belongs in the rule it defends,
-or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
+Whatever argument does not fit those two sentences is either operative — and belongs in the rule
+it defends, or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
 
 The second one earns its place only where the fire is fuzzy — a standing rule the work never
 names, or an artifact with a near neighbour. A skill whose next section is already its inputs or
@@ -169,6 +134,13 @@ its routing has answered it, and a section that repeats the description there is
   nothing references is never loaded, so it costs the agent nothing at all — the design
   rationale, the skill explained to a person, where its rules came from. What such a file
   owes its reader is that reader's rules' business, not this file's.
+
+What the body points at sits **one level deep**. A reference reached from another reference
+is read *partially* — the agent previews it with something like `head -100` instead of
+reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every
+supporting file links directly from `SKILL.md`, and is found that way; what it is called is
+settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
+headings**, for the same reason: a partial read still shows what the file contains.
 
 A context pointer names the **condition**, not the subject: "Read
 `references/api-errors.md` when the API returns a non-200 status" is reachable, and "see
@@ -207,11 +179,8 @@ own — steps to run, a script, an expected output to compare against. Keep it i
 it is a checklist: three to five boxes cost less inline than the pointer plus the load that
 follows it.
 
-When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**, not into
-`references/`. A shouted name at the root is what this repository already uses for a file
-that holds one standing role for the whole skill, as `GLOSSARY.md` does, and `references/`
-is for the branch only some readers take. One fixed name also makes the set greppable:
-every skill's checks are at the same path.
+When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**: a standing role of
+the skill, under the fixed name every skill's checks share.
 
 A fact that defies a reasonable assumption stays inline for the same reason. An agent that
 does not know the `/health` endpoint answers while the database is down cannot recognise
@@ -223,16 +192,8 @@ A skill does not need to state its own category, who calls it, or where it sits.
 frontmatter and the callers establish all of that, a sentence saying it changes nothing
 the skill does, and it makes the skill wrong the day a caller is renamed.
 
-Leave out what the model already does unprompted, too. It reads as thoroughness and costs
-a reader the same as a rule that changes something.
-
-## Sharpen the bound before you split a sequence
-
-Every step needs a condition that says it is finished, checkable and exhaustive — "the
-validator exits zero", not "the code is clean". A run of steps that looks like it needs a
-skill of its own usually has one vague bound instead, and the agent drifts past it rather
-than stopping. Sharpen the bound first, and split only if it is still a sequence
-afterwards.
+Leave out the **no-op**, too — the instruction the model already follows unprompted. It reads
+as thoroughness and costs a reader the same as a rule that changes something.
 
 ## When to split
 
@@ -255,11 +216,19 @@ the sequence cut from its own `## When to Split`, the trigger-word cut from the
 3. **By delegation** — a phase that should run in a *different execution
    environment*: its own model, its own tool set, its own context. The cut is not
    about what the reader types, nor about what comes after; it is about who should
-   do the work. For how, read [`child-skills.md`](child-skills.md).
+   do the work.
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an
 author must hold) and buys nothing.
+
+## Sharpen the bound before you split a sequence
+
+Every step needs a condition that says it is finished, checkable and exhaustive — "the
+validator exits zero", not "the code is clean". A run of steps that looks like it needs a
+skill of its own usually has one vague bound instead, and the agent drifts past it rather
+than stopping. Sharpen the bound first, and split only if it is still a sequence
+afterwards.
 
 ## This skill as the worked example
 

@@ -42,6 +42,11 @@ so each entry has to work where the eye lands rather than where it was written.
   own opening words are one that does not.
 - **Put a rule's reason somewhere other than the rule.** A reason behind a pointer is read by
   nobody at the moment the rule is being broken.
+- **Deny an assumption the reader had no reason to hold.** "The name is not what hides it", "no
+  API key is needed", "these are not requirements" — each reads only to someone who already made
+  that mistake, and tells everyone else what to start worrying about. State the positive
+  instruction. A denial belongs where the belief it denies is on the page beside it: the left
+  column of a Common Rationalizations row, or the Bad half of a pair.
 - **Keep an entry nobody can fail.** A rule with no way to violate it is a description of the
   status quo, and it dilutes the ones that can be broken.
 
@@ -67,6 +72,7 @@ so each entry has to work where the eye lands rather than where it was written.
 - [ ] Every entry opens with an imperative.
 - [ ] Every constraint or exception sits on the line of the entry it narrows.
 - [ ] Every entry carries its cost, or the reader can see why it exists.
+- [ ] No entry corrects a belief this document never gave the reader.
 
 ## Related skills
 

@@ -3,6 +3,15 @@
 The `description` is the only text loaded when the agent decides whether to fire the
 skill. It must be judge-able on its own, and must not leak the procedure.
 
+## Contents
+
+- DO
+- DON'T
+- The leading word
+- Choosing the lead
+- Write the description and the body for different purposes
+- Measuring whether it fires
+
 ## DO
 
 - **Write it in the third person.** `Writes and revises a README` — not `I check your
@@ -35,7 +44,8 @@ skill. It must be judge-able on its own, and must not leak the procedure.
   the intent.
 - **Name another skill.** Wanting to name one usually means this skill orchestrates, and
   what it orchestrates is the body's to state — so the name is the leak above, one level
-  out. It also reads as a routing table, which stops the agent asking whether *this*
+  out. A reach clause is the exception, because it names nobody: "also applies when
+  another skill needs …", where one genuinely depends on this. It also reads as a routing table, which stops the agent asking whether *this*
   artifact is the skill's: for example, `DO NOT use for an architecture doc (that is
   write-nice-architecture-docs)`. The repository's invariant says the same: a skill is
   reached by its own description or not at all. A file name or a path that is the occasion
@@ -49,9 +59,17 @@ skill. It must be judge-able on its own, and must not leak the procedure.
   team really types; a published one must not, since the list only bloats the description
   and drifts out of sync.
 
-The one naming that earns its place is a reach clause — for example, "also applies when
-another skill needs …" — where another skill genuinely depends on this one. It names
-nobody.
+## The leading word
+
+The skill fires on a word shared between the description and whatever the agent is working
+from: a prompt, or — for a skill hidden from the `/` menu — the work itself. Put that word
+near the start, where it does its invocation work.
+
+- **Real words**: terms that show up in your prompts, docs, and code, not labels that
+  merely sound like keywords.
+- **One per branch**: synonyms that rename the same branch are duplication.
+- **Survives translation**: a file name, a tool name, a term of art typed as-is — for
+  example, `SKILL.md`, `issue`, `PR`.
 
 ## Choosing the lead
 
@@ -82,14 +100,21 @@ The occasion still follows, named as an activity — for example, "writing, revi
 reviewing, or designing code". Keeping the skill in force for the rest of that activity is
 the body's job.
 
-## The leading word
+## Write the description and the body for different purposes
 
-The skill fires on a word shared between the description and whatever the agent is working
-from: a prompt, or — for a skill hidden from the `/` menu — the work itself. Put that word
-near the start, where it does its invocation work.
+**DO**
 
-- **Real words**: terms that show up in your prompts, docs, and code, not labels that
-  merely sound like keywords.
-- **One per branch**: synonyms that rename the same branch are duplication.
-- **Survives translation**: a file name, a tool name, a term of art typed as-is — for
-  example, `SKILL.md`, `issue`, `PR`.
+- Write the `description` as material for one judgment: whether to fire.
+- Explain the skill in the body, for the reader who has to understand it once it has fired.
+- Let the two overlap; their purposes differ, so the overlap is intended.
+
+**DON'T**
+
+- Cut anything from either because the other already carries it.
+
+## Measuring whether it fires
+
+Size says what a skill costs, never whether it is reached. Write the cases that should
+reach it — a handful of prompts a user would really send — and run them against the models
+it will run under, with the skill installed and without. A skill the cases do not reach has
+a `description` problem, and rewriting the body does not touch it.
