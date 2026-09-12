@@ -24,12 +24,11 @@ budgets below exist because a person decides that fast.
 ## Language
 
 Write the finding in the language its readers already use — the language of the repository, the
-review thread, and the surrounding comments. Every rule below is about the finding's **shape**, not
-its language: Title / Summary / Details, the budgets, and the three strength rows apply the same
-way whichever language you post in. The examples here are written in English only because this
-skill is; they are not a request to review in English.
+review thread, and the surrounding comments. Every rule below is about the finding's **shape**:
+Title / Summary / Details, the budgets, and the strength rows apply the same way whichever language
+you post in.
 
-Two consequences worth stating outright, since they are where a translated finding usually slips:
+Where a translated finding usually slips:
 
 - **Budgets are counted in the language you post in.** A Details section that fits 20 lines in one
   language and not in another is over budget in the second, and the remedy is the same as always —
@@ -46,7 +45,7 @@ The template applies **once per instruction** — never once per document contai
 | PR review | **one per finding** | the finding's lead line (`**<severity>** — <fact>`) | the finding's opening | only when the summary does not carry the how / why |
 
 Read [`rules/one-instruction-one-application.md`](rules/one-instruction-one-application.md)
-before writing Details — it holds the four tells that a draft is already two applications under one
+before writing Details — it holds the tells that a draft is already two applications under one
 Title, the overflow signal that catches the same thing later, and a worked example. Split on any of
 those, before writing Details.
 
@@ -58,8 +57,7 @@ those, before writing Details.
 | **Summary** | The fact, and what should be done about it. The reader can act from this alone. | **a list of at most 3 short statements** — one fact or one instruction each |
 | **Details** | The how and the why behind that fix. Omit it when the summary already carries them. | **20 lines**, code blocks excluded |
 
-Before writing Title, read the three rules below — each holds one worked example, not a survey of
-every way Title can go wrong:
+Before writing Title, read the rules below — each holds one worked example:
 
 - [`rules/avoid-negating-the-request-as-the-fact.md`](rules/avoid-negating-the-request-as-the-fact.md)
   — a negated request is not an observation.
@@ -82,13 +80,13 @@ near 100 characters — so 20 lines is on the order of 2000 characters. Rewrappi
 not a fix: if it only fits at 200 characters a line, it does not fit. Only a **fenced code block** is
 excluded — a table, list, or sub-heading inside Details counts as written lines, so a table buys back
 nothing. Title is counted in sentences, since a title does not wrap by choice — a long Title is
-usually two facts. Same remedy for both: the second belongs in Summary. Different remedy: it is a
-**second application**, not a longer Summary
+usually two facts, and the second belongs in Summary. A Summary that will not fit in three
+statements is usually a **second application**
 ([`rules/one-instruction-one-application.md`](rules/one-instruction-one-application.md)).
 
 ## How firmly to state the remedy
 
-Pick one of three, by what you can actually defend:
+Pick one, by what you can actually defend:
 
 | What you have | How to write it |
 |---|---|
@@ -109,24 +107,6 @@ fix — it holds how to choose between the three rows, the caveat for a comment-
 Read [`rules/fitting-the-budget.md`](rules/fitting-the-budget.md) before
 trimming a draft — it holds what to cut and why, and the one exception (bulky evidence in a code
 block sits outside the budget).
-
-## Self-check
-
-1. **Budget**: Summary at most 3 bullets of one short sentence each, Details within 20 lines (code
-   blocks excluded), counted in the language you are posting in?
-2. **Title**: a fact the reader can verify, with no request or judgement mixed in — does it still read
-   true if the instance is swapped for a different file? If not, is the site genuinely the only
-   instance (the exception), rather than a pattern that could recur?
-3. **Strength**: row 1 asserted, with no hedge and no rejected option offered as a choice (a
-   constraint is fine); row 2 with no implicit weighting; row 3 registered as a problem rather than
-   softened into a suggestion?
-4. **Unit**: Title is one fact; an instance count shares one edit; every part sits in one strength
-   row; no sub-heading hides inside Details?
-5. **Delete-test**: every line that would not change what the reader does, removed?
-6. **Checkable property**: if the fix targets a mechanically checkable property, is it stated as the
-   check itself, rather than as the paths that happened to be sampled?
-7. **Language**: one language throughout, the one this repository's reviews already use — no
-   second-language restatement of the same finding?
 
 ## Common Rationalizations
 
@@ -154,10 +134,16 @@ block sits outside the budget).
 
 ## Verification
 
-- [ ] Title is one sentence, and stays true pointed at another instance of the same rule.
+- [ ] Title is one sentence carrying a fact, with no request, assessment or feeling in it.
+- [ ] Title stays true pointed at another instance of the same rule, or the site is genuinely the
+      only instance.
 - [ ] Summary is at most three short statements, one fact or one instruction each.
-- [ ] Details is inside 20 lines, code blocks excluded — or absent.
-- [ ] The remedy's strength matches what you can actually defend.
+- [ ] Details is inside 20 lines, code blocks excluded, counted in the language you post in — or absent.
+- [ ] The remedy is asserted with no hedge, listed flat with no weighting, or registered as a
+      problem, matching what you can actually defend.
+- [ ] One edit answers the whole finding, and every part of it sits in one strength row.
+- [ ] A mechanically checkable property is stated as the check, not as the paths you sampled.
+- [ ] Every line left would change what the reader does, and all of it is in one language.
 
 ## Related skills
 
