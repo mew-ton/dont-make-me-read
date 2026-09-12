@@ -83,6 +83,11 @@ leaves the reader to infer the action from it, and an explanation they can agree
 is not an instruction. Give the imperative first — "state the fact at the point of use" — then the
 bound that narrows it — "and leave the original where it is". Never the bound alone.
 
+**Where there are several of each, split them into a DO list and a DON'T list.** The polarity then
+sits in the structure instead of in one word the reader can skim past, and the count of each is
+visible without parsing prose. Keep a constraint that narrows one particular DO on that DO's own
+line; the DON'T list is for prohibitions that stand without one.
+
 For Details, a **line** is one written line at the width you are writing at — a GitHub comment wraps
 near 100 characters — so 20 lines is on the order of 2000 characters. Rewrapping to hit the count is
 not a fix: if it only fits at 200 characters a line, it does not fit. Only a **fenced code block** is

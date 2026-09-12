@@ -74,11 +74,15 @@ leaves the rule on.
 
 ## Write the description and the body for different purposes
 
-- Write the `description` as material for one judgment: whether to fire. That is what the agent
-  decides on, and that decision is all the field is for.
+**DO**
+
+- Write the `description` as material for one judgment: whether to fire.
 - Explain the skill in the body, for the reader who has to understand it once it has fired.
-- Keep both, even where they say the same thing. The purposes differ, so the overlap is intended —
-  never cut either because the other already carries it.
+- Let the two overlap; their purposes differ, so the overlap is intended.
+
+**DON'T**
+
+- Cut anything from either because the other already carries it.
 
 ## Progressive disclosure: what to inline, what to disclose
 
