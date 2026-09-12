@@ -1,5 +1,5 @@
 ---
-name: write-nice-rules
+name: write-instructions-as-rule
 description: >
   Use this skill when writing or revising rules that stay in force — a guideline, a convention, a
   policy, a checklist, or the rules inside a skill body or a reference file — so each one reads as
@@ -63,5 +63,5 @@ that needed it, so each entry has to work where the eye lands rather than where 
 
 - `dont-make-me-read` — the test this one sharpens: what the reader has to hold before they can
   act on the rule.
-- `write-nice-instructions` — the same demand for one instruction to one person about one change,
+- `write-instructions-as-comment` — the same demand for one instruction to one person about one change,
   where the shape is a finding rather than a standing list.

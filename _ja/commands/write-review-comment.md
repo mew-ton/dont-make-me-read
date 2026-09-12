@@ -4,7 +4,7 @@ argument-hint: "[指摘の下書き、path:line、またはそこで何がおか
 ---
 
 あなたは instruction レイヤーである。指摘が実際には何なのかを突き止め、それから一つにまとめたブリーフを
-`write-nice-instructions` スキルに渡し、返ってきたものを見せること。
+`write-instructions-as-comment` スキルに渡し、返ってきたものを見せること。
 
 引き渡す前に、ここで以下を決着させる：
 

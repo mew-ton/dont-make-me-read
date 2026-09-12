@@ -1,11 +1,12 @@
 ---
-name: write-nice-instructions
+name: write-instructions-as-comment
 description: >
-  Use this skill when drafting or revising a PR review finding, a review comment, or a code-review
-  remark — instruction text a person will read and act on — and especially when you wrote it
-  yourself and it reads fine to you. DO NOT use this skill when the artifact is a GitHub issue
-  body or a skill's description and size budget, or when the question is which background context
-  a persistent document carries.
+  Use this skill when drafting or revising an instruction written as a comment — a PR review
+  finding, a reply proposing a change, a remark asking someone to fix something — text one person
+  reads, acts on, and can answer back to, and especially when you wrote it yourself and it reads
+  fine to you. DO NOT use this skill when the instruction is a standing rule the reader will meet
+  again, a GitHub issue body, or a skill's description and size budget, or when the question is
+  which background context a persistent document carries.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -15,9 +16,12 @@ allowed-tools: []
 
 ## Why this exists
 
-This skill governs **text that tells a person what to change**: a PR review finding. An agent
-reading the same text is served by the same shape, but **the bar is set by the human reader** —
-the budgets below exist because a person decides within the first few lines whether to act or skim.
+This skill governs **an instruction written as a comment**: a PR review finding, a reply
+proposing a change, a remark asking for a fix. Its reader can answer back, which is what separates
+it from a rule — so within the first few lines they decide whether to act, skim, or argue.
+
+An agent reading the same text is served by the same shape, but **the bar is set by the human
+reader**: the budgets below exist because a person decides that fast.
 
 ## Language
 
@@ -153,5 +157,5 @@ block sits outside the budget).
   be restated at the point of use instead.
 - `write-nice-issue-description` — a problem statement plus a completion condition, read by an
   implementer who can read the repository; this skill stops where that one starts.
-- `write-nice-rules` — the same demand where the instruction stays in force: a guideline, a
+- `write-instructions-as-rule` — the same demand where the instruction stays in force: a guideline, a
   convention, or the rules inside a skill body, read out of order by whoever the rule catches.

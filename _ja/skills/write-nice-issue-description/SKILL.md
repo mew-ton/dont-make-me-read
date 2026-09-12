@@ -183,7 +183,7 @@ Design / Approach、Out of scope、Verification はここではセクション�
 
 - `review-nice-issues` — すでに起草された issue 本文を、同じ二つのゲートに照らして、読み手の目線から
   監査する。
-- `write-nice-instructions` — 指摘／指示のテンプレートと remedy strength。PRレビューコメントに適用され、
+- `write-instructions-as-comment` — 指摘／指示のテンプレートと remedy strength。PRレビューコメントに適用され、
   issue 本文には適用されない。
 - `avoid-unverifiable-context` — このスキルの Background 指針が「なぜを残す」半分を引いてきている、
   根拠 vs プロセスのルール。

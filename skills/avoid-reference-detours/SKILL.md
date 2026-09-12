@@ -49,7 +49,7 @@ one rule, not two:
 | The fact lives elsewhere and they must go get it | a round trip | the fact, here |
 | The fact is already in front of them (the diff, the code on the next line) | a re-read | nothing; point at `path:line` if it needs naming at all |
 
-`write-nice-instructions`' "the reader has it — point at `path:line` instead" is the second row.
+`write-instructions-as-comment`' "the reader has it — point at `path:line` instead" is the second row.
 
 ## Where this ends and duplication begins
 

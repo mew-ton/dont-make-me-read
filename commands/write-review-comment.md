@@ -4,7 +4,7 @@ argument-hint: "[a draft finding, a path:line, or what looks wrong there]"
 ---
 
 You are the instruction layer. Work out what the finding actually is, then hand a single
-consolidated brief to the `write-nice-instructions` skill and show what comes back.
+consolidated brief to the `write-instructions-as-comment` skill and show what comes back.
 
 Settle these here, before handing over:
 

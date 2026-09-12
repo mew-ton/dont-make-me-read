@@ -95,7 +95,7 @@ should not:
 
 ### 4. Assemble findings
 
-Hand each violation to `write-nice-instructions` as the fact(s) it needs to render — that
+Hand each violation to `write-instructions-as-comment` as the fact(s) it needs to render — that
 skill owns the finding's shape and how firmly the remedy is stated; don't invent either here.
 
 - A determinacy failure (problem, criteria, or boundary not fixed by the text alone) → state what
@@ -143,5 +143,5 @@ them into a larger report.
 - `write-nice-issue-description` — the authoring-time guidance this skill checks compliance with.
   Read it if a finding here is confusing; it explains the same two gates from the writer's side,
   with more examples.
-- `write-nice-instructions` — owns the finding template and how firmly a remedy is stated;
+- `write-instructions-as-comment` — owns the finding template and how firmly a remedy is stated;
   this skill hands it facts (step 4), never a rendered shape.

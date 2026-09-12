@@ -194,7 +194,7 @@ Worked examples of each gate, and a full passing issue body:
 
 - `review-nice-issues` — audits an already-drafted issue body against these same two gates,
   from a reader's-eye view.
-- `write-nice-instructions` — the finding/instruction template and remedy strength; applies
+- `write-instructions-as-comment` — the finding/instruction template and remedy strength; applies
   to PR review comments, not issue bodies.
 - `avoid-unverifiable-context` — the rationale-vs-process rule this skill's Background guidance
   draws its "keep the why" half from.

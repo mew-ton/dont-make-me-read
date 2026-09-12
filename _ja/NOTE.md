@@ -28,7 +28,7 @@
 | `_ja/commands/*.md` | `commands/*.md` |
 | `_ja/skills/<name>/SKILL.md` | `skills/<name>/SKILL.md` |
 | `_ja/skills/<name>/references/*.md` | `skills/<name>/references/*.md` |
-| `_ja/skills/write-nice-instructions/rules/*.md` | `skills/write-nice-instructions/rules/*.md` |
+| `_ja/skills/write-instructions-as-comment/rules/*.md` | `skills/write-instructions-as-comment/rules/*.md` |
 | `_ja/skills/write-nice-issue-description/assets/issue-template.md` | 同 `assets/issue-template.md` |
 | `_ja/skills/write-nice-skills/GLOSSARY.md` | `skills/write-nice-skills/GLOSSARY.md` |
 | `_ja/skills/write-nice-skills/scripts/count-tokens.sh.md` | `scripts/count-tokens.sh` のコメント部 |
