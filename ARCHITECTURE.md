@@ -125,6 +125,13 @@ own.
 **What a contributor decides by goes here. What a reader of one artifact needs goes with that
 artifact, and that artifact's own rules say where within it.**
 
+**A skill published from here explains itself at its own root.** These go out as a plugin, so each
+skill is read, installed and maintained as a unit; the explanation a person needs before adopting
+one belongs beside its `SKILL.md`, not in this file and not in the root README, which would carry
+thirteen of them and go stale one skill at a time. Nothing references it, so it costs the agent
+nothing. `write-nice-skills` deliberately does not ask for one — that is a publishing decision
+about this repository, not a rule about how skills are written.
+
 ## When an activity earns rules of its own
 
 **One per activity, and every activity gets one.** The bar this replaces — a shape fixed enough to
