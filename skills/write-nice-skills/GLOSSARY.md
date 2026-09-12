@@ -7,17 +7,16 @@ means; the rule that uses it lives in the file that owns the rule.
 `description`: what a person types when they ask for it, or — for a skill that fires mid-task with
 no prompt — what the work itself already calls the thing.
 
-**Bound** — the condition under which a skill must *not* fire, written as its occasion negated:
-"Does not apply when …".
+**Occasion** — the artifact being written or the activity underway, named in the `description` as
+what brings the skill in.
+
+**Bound** — the condition under which a skill must *not* fire.
 
 **Reach clause** — the part of a `description` that admits a second way in: another skill needing
 the rules this one holds, named as a need rather than as a skill.
 
-**Occasion** — the artifact being written or the activity underway, named in the `description` as
-what brings the skill in.
-
 **Branch** — one distinct situation the skill handles. Different branches read different parts of
-the skill; that difference is what licenses splitting a reference off.
+the skill.
 
 **Child skill** — a skill a parent invokes to run one phase in its own execution environment
 (`context: fork`), returning what the parent needs rather than the material it was derived from.

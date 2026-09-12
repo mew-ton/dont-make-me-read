@@ -85,14 +85,14 @@ someone writes code or a comment has no word to share, and an occasion nobody na
 the agent forgets mid-diff:
 
 ```text
-Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it — "the format rules at the top of this file", "same as
-the config", a section that defers to another section — leaving the original
-where it is and authoritative. Applies when writing a code comment, a
-docstring, a PR description, or any text that points elsewhere to be
-understood. Does not apply when the target does not exist or cannot be reached
-at all, when the same content is repeated twice inside one document, or when a
-module branches on which caller invoked it.
+Forces the narrowest range a reader has to hold before they can act — the
+range its writer cannot feel, since a writer reads their own draft while
+supplying what it is missing, so it reads small to them and only to them.
+Applies while writing or revising anything another person or an agent reads in
+order to act: drafting, documenting, commenting, specifying, explaining,
+reviewing, or writing the code itself, and it stays in force for the rest of
+that work. Does not apply when nobody acts on the text later: chat replies,
+scratchpads, working notes.
 ```
 
 The occasion still follows, named as an activity — for example, "writing, revising,
@@ -112,7 +112,8 @@ alone, because an agent handed those has what it needs to act and stops there.
 
 ## Measuring whether it fires
 
-Whether a skill is reached is its own measurement, separate from what it costs. Write the
-cases that should reach it — a handful of prompts a user would really send — and run them
-against the models it will run under, with the skill installed and without. A skill the
-cases do not reach has a `description` problem, and rewriting the body does not touch it.
+Whether a skill is reached is its own measurement. Write the cases that should reach it — a
+handful of prompts a user would really send — and run them against the models it will run under,
+first with the skill installed and then without, so you can tell a case its `description` reached
+from one the model would have handled anyway. A skill the cases do not reach has a `description`
+problem, and rewriting the body does not touch it.

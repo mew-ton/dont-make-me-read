@@ -17,26 +17,26 @@ Delegation decides **whether a phase leaves this execution environment**. A dele
 still the parent's work; it runs somewhere cheaper and narrower, and hands back what the parent
 needs instead of the material that produced it.
 
-**Delegate mechanical, read-only gathering, enumeration, and parsing** — anything whose
-output collapses into a conclusion. Fetching a PR's comments, listing changed files,
-walking a package registry, grounding a design in the repository: the parent needs the
-answer, not the transcript that produced it.
+The test is whether the caller receives everything it needs to check the work.
 
-**Never delegate work whose grounds would not survive the trip.** A review is the case: put
-its substance in a child and the verdicts come back without what each one rests on, so
-nobody can review the review.
+**Delegate mechanical, read-only gathering, enumeration, and parsing** — fetching a PR's
+comments, listing changed files, walking a package registry, grounding a design in the
+repository. It passes because the answer was all the parent wanted; the transcript that produced
+it was never evidence for anything.
 
-The test is whether the caller receives everything it needs to check the work. A phase that
-*produces an artifact* passes it — the artifact comes back whole and the reader judges the
-thing itself — so that phase is delegated and handed one brief. A phase whose only product is
-a judgment fails it, and stays where its grounds stay.
+**Delegate a phase that produces an artifact**, handing it a single written brief. It passes
+because the artifact comes back whole and the reader judges the thing itself.
+
+**Never delegate a phase whose only product is a verdict.** A review is the case: put its
+substance in a child and the verdicts come back without what each one rests on, so nobody can
+review the review.
 
 ## What the fork buys, and what `model` and `background` each case wants
 
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
-| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since each child is producing a judgment rather than counting | leave unset when they should run in parallel |
+| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since the work needs more than counting | leave unset when they should run in parallel |
 | **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
 ## Naming
@@ -53,7 +53,9 @@ disable-model-invocation: false
 context: fork
 ```
 
-`user-invocable: false` hides the child from the user's `/` menu. `background` is left out of
+These fields say how the child runs; what makes it a child is that a parent invokes it, and a
+parent's own frontmatter can carry the same three. `user-invocable: false` hides the child from
+the user's `/` menu. `background` is left out of
 the block above because the three motives do not all want the same value: set it to `false`
 when the conclusion is used in the same turn, and leave it unset — it defaults to `true` — when
 two children should run in parallel.

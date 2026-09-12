@@ -23,8 +23,8 @@ allowed-tools: []
 
 - **`description` は作業に照らして判断する。** 作業が供給する語で判断すること：スキルに何が書いてあるかを
   知っているのはあなたで、そこへ到達しなければならないエージェントは知らない。
-- **このスキルの `scripts/count-tokens.sh` でトークンを数える。** 行数は文字体系によってずれるし、予算は
-  トークンで定められている。
+- **このスキルの `scripts/count-tokens.sh` でトークンを数える。** 行数は文字体系によってずれるので、
+  本文の予算はトークンで定められている。
 - **各規則は、それを所有する reference で決着させる** — 下の表のとおりに。
 
 ## Where each decision is settled（どの判断がどこで決着するか）
@@ -33,14 +33,9 @@ allowed-tools: []
 |---|---|
 | `description` が何をしなければならないか、何を決してしてはならないか、どう先頭を決めるか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がいくらまで許されるか、どの章を持つか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、ファイルを何と呼ぶか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| 本文がいくらまで許されるか、どの章を持つか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、ファイルを何と呼ぶか、frontmatter に何を置いてよいか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
-
-## Comments in the frontmatter（frontmatter のコメント）
-
-frontmatter はコメントなしで書くこと。そのすべてが発火のたびにロードされる。説明を要するフィールドが
-要するのは、著者が反論できる散文 — 本文 — であって、将来のすべての読み手が代金を払う末尾の `#` ではない。
 
 ## Common Rationalizations（よくある自己正当化）
 
@@ -59,13 +54,13 @@ frontmatter はコメントなしで書くこと。そのすべてが発火の�
 
 ## Red Flags（危険信号）
 
-- reference がすでに所有している規則を `SKILL.md` が述べている。
+- `SKILL.md` だけで著者の問いが片づいてしまい、reference を開く必要がない。
 - description が手順、適用する判定基準、あるいは他のスキルの名前を担っている。
 - reference が別の reference から到達されている。
 - 本文の最初の一文が、そのスキルが何をするかを述べていない。
 
 ## Verification（検証）
 
-- [ ] `count-tokens.sh` が、いま書いているスキルを自分の予算の内側に、常時オンの集合を合計して2000の内側に置いている。
+- [ ] `count-tokens.sh` が、このスキルと、これが並び立つ集合について、`references/structuring-skills.md` の予算を満たしている。
 - [ ] description が、適用されるときと適用されないときを、三人称で、1024文字以内で名指ししている。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件のもとで到達される。

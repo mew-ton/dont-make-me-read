@@ -77,14 +77,14 @@ an issue body, reference documentation, a tutorial, or a changelog.
 忘れる機会である：
 
 ```text
-Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it — "the format rules at the top of this file", "same as
-the config", a section that defers to another section — leaving the original
-where it is and authoritative. Applies when writing a code comment, a
-docstring, a PR description, or any text that points elsewhere to be
-understood. Does not apply when the target does not exist or cannot be reached
-at all, when the same content is repeated twice inside one document, or when a
-module branches on which caller invoked it.
+Forces the narrowest range a reader has to hold before they can act — the
+range its writer cannot feel, since a writer reads their own draft while
+supplying what it is missing, so it reads small to them and only to them.
+Applies while writing or revising anything another person or an agent reads in
+order to act: drafting, documenting, commenting, specifying, explaining,
+reviewing, or writing the code itself, and it stays in force for the rest of
+that work. Does not apply when nobody acts on the text later: chat replies,
+scratchpads, working notes.
 ```
 
 機会はそのあとに続き、活動として名指しされる — たとえば "writing, revising, reviewing, or designing code"。
@@ -102,7 +102,8 @@ module branches on which caller invoked it.
 
 ## Measuring whether it fires（そもそも発火するかを測る）
 
-スキルに到達されるかどうかは、それがいくら課すかとは別の、それ自体の計測である。そこへ到達すべきケースを
-書き — 利用者が実際に送るであろうプロンプトをいくつか — そのスキルが走ることになるモデルに対して、
-インストールした状態としない状態で走らせること。ケースが到達しないスキルは `description` の問題であり、
-本文を書き直してもそこには触れない。
+スキルに到達されるかどうかは、それ自体の計測である。そこへ到達すべきケースを書き — 利用者が実際に送る
+であろうプロンプトをいくつか — そのスキルが走ることになるモデルに対して、まずインストールした状態で、次に
+しない状態で走らせること。そうすれば、`description` が到達させたケースと、モデルがもともと処理していた
+ケースとを見分けられる。ケースが到達しないスキルは `description` の問題であり、本文を書き直してもそこには
+触れない。

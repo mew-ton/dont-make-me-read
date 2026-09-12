@@ -24,7 +24,7 @@ the skill already.
 - **Judge the `description` against the work**, in the words the work supplies: you know what the
   skill says and the agent that must reach it does not.
 - **Count tokens with this skill's `scripts/count-tokens.sh`.** Line counts drift between
-  writing systems, and the budgets are in tokens.
+  writing systems, so a body's budget is set in tokens.
 - **Settle each rule in the reference that owns it**, per the table below.
 
 ## Where each decision is settled
@@ -33,15 +33,9 @@ the skill already.
 |---|---|
 | What the `description` must do, must never do, and how to lead it | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| What a body may cost, which sections it carries, what goes in a reference, when to split, how a skill stays in force, what to call its files | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| What a body may cost, which sections it carries, what goes in a reference, when to split, how a skill stays in force, what to call its files, what its frontmatter may hold | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | Whether a phase should run as a child skill, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
-
-## Comments in the frontmatter
-
-Write the frontmatter without comments. All of it loads on every fire, and a field that needs
-explaining needs prose an author can argue with — the body — rather than a trailing `#` every
-future reader pays for.
 
 ## Common Rationalizations
 
@@ -60,13 +54,13 @@ The agent will look for reasons to skip this skill:
 
 ## Red Flags
 
-- A rule stated in `SKILL.md` that a reference already owns.
+- A `SKILL.md` complete enough to settle an author's question without opening a reference.
 - A description carrying the steps, the criteria it applies, or another skill's name.
 - A reference reached from another reference.
 - A body whose opening sentence does not say what the skill does.
 
 ## Verification
 
-- [ ] `count-tokens.sh` puts the skill you are writing inside its budget, and the always-on set inside 2000 once summed.
+- [ ] `count-tokens.sh` meets the budgets in `references/structuring-skills.md`, for this skill and for the set it will stand alongside.
 - [ ] The description names when the skill applies and when it does not, in the third person, inside 1024 characters.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition.

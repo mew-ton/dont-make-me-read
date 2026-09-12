@@ -7,13 +7,14 @@ to split one skill into two.
 ## Contents
 
 - What is free and what is not
+- Staying in force
 - The body budget
   - Measuring it
-- Staying in force
 - Open with what it is, then when it applies
 - Guard it three ways
 - Naming
 - Progressive disclosure: what to inline, what to disclose
+- Frontmatter
 - Leave out what changes nothing
 - When to split
 
@@ -25,51 +26,6 @@ or not the skill is ever used. A bundled file costs nothing until it is read.
 Moving a branch into a reference is therefore free until the branch is taken, while moving
 it into a second skill pays a description on every turn, forever, for everyone who has it
 installed.
-
-## The body budget
-
-The budget belongs to the **set of skills that stand together**. Skills do not arrive one
-at a time: a rule that is on for a whole activity is
-resident while another skill fires for the artifact in hand, and the reader pays for
-both. A file inside its own limit can still put the activity over.
-
-| The skill | Budget | Because |
-|---|---|---|
-| Always on for a whole activity — its body keeps it in force, so it is resident whatever the reader is doing | **2000 tokens for all of them together** | every turn of every activity pays for them |
-| Reached for one artifact or one branch | **5000 tokens each** | only the reader who needs it pays |
-
-So the set to check is every skill that will be standing at once: the ones on for this
-activity, summed against the first figure, plus whichever is reached for the artifact in
-hand against the second. Measure the set, not the file you happen to be editing.
-
-### Measuring it
-
-Line count is a weak proxy: 5000 tokens buys around 250 lines of English prose but
-only around 150 in a non-Latin writing system such as Japanese or Chinese, so a body
-can look short by line count and still cost well over the budget. Measure it:
-
-```bash
-bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md
-TARGET=2000 bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
-```
-
-The second line is the always-on budget; sum the reported figures to check the set.
-
-"This skill's directory" is wherever this file was loaded from — a plugin's
-install path, `~/.claude/skills/write-nice-skills/`, or a repository's
-`.claude/skills/write-nice-skills/`. Resolve it from where you read this file: there is no one absolute path to hard-code.
-
-It sends the file to whichever model is currently default and subtracts a baseline request
-without it, so the figure is that model's own count and stays correct as models change. Each
-file costs one round trip, and it exits non-zero over budget.
-
-For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
-writing systems, where characters per token nearly double between a Latin one and a
-non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Every run of the
-script prints the ratio it just measured; work the two KB figures out again from that whenever
-the default model changes, since a stale figure that is too low sends you splitting files that
-were never over budget.
-
 
 ## Staying in force
 
@@ -86,17 +42,67 @@ Leaving it on too long and dropping it too early are not equal failures, and the
 retaken every response, so the cheap one has to be the one that leaves the rule on.
 
 
+## The body budget
+
+The budget belongs to the **set of skills that stand together**. Skills do not arrive one
+at a time: a rule that is on for a whole activity is
+resident while another skill fires for the artifact in hand, and the reader pays for
+both. A file inside its own limit can still put the activity over.
+
+Each figure is measured over one file as it is loaded — a `SKILL.md`, or a reference once the
+branch that reaches it is taken:
+
+| The skill | Budget | Because |
+|---|---|---|
+| Always on for a whole activity, by the `## Staying in force` section above | **2000 tokens for every such `SKILL.md` added up** | every turn of every activity pays for them |
+| Reached for one artifact or one branch | **5000 tokens per file** | only the reader who needs it pays |
+
+So the set to check is every skill that will be standing at once: the always-on ones summed
+against the first figure, plus whichever is reached for the artifact in hand against the second.
+Measure the set, not the file you happen to be editing.
+
+### Measuring it
+
+Line count is a weak proxy: 5000 tokens buys around 250 lines of English prose but
+only around 150 in a non-Latin writing system such as Japanese or Chinese, so a body
+can look short by line count and still cost well over the budget. Measure it:
+
+```bash
+bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md
+bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
+```
+
+The script sends each file to whichever model is currently default and subtracts a baseline
+request without it, so the figure is that model's own count and stays correct as models change.
+Each file costs one round trip. It prints a count per file and exits non-zero when any one file
+is over `TARGET`, which defaults to 5000 — so the first line above checks an artifact-reached
+file outright. The always-on figure is a total, which no per-file exit code can test: run the
+second line and add the counts up yourself.
+
+"This skill's directory" is wherever this file was loaded from — a plugin's install path,
+`~/.claude/skills/write-nice-skills/`, or a repository's `.claude/skills/write-nice-skills/`.
+Resolve it from where you read this file: there is no one absolute path to hard-code.
+
+For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
+writing systems, where characters per token nearly double between a Latin one and a
+non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Every run of the
+script prints the ratio it just measured; work the two KB figures out again from that whenever
+the default model changes, since a stale figure that is too low sends you splitting files that
+were never over budget.
+
+
 ## Open with what it is, then when it applies
 
-`## Overview` first: one or two sentences on what the skill does and why that matters. Then
-whether the reader is in it. The rules, the procedure and the guards come after.
+`## Overview` first: one or two sentences on what the skill does and why that matters. Saying
+again what the description says is its job here — the description was material for the firing
+judgment, and this reader is past that and has to act.
 
-The second half — whether the reader is in it — earns its place only where the fire is fuzzy: a
-standing rule the work never names, or an artifact with a near neighbour. A skill whose next
-section is already its inputs or its routing has answered it, and a further section saying only
-when the skill applies is one the reader would have satisfied without it. The `## Overview` is
-not that section: restating what the description says is its job, for a reader who is past the
-firing judgment and now has to act.
+Then whether the reader is in it, which earns its place only where the fire is fuzzy: a standing
+rule the work never names, or an artifact with a near neighbour. A skill whose next section is
+already its inputs or its routing has answered that, and a further section saying only when the
+skill applies is one the reader would have satisfied without it.
+
+The rules, the procedure and the guards come after.
 
 Whatever argument does not fit those two sentences is either operative — and belongs in the rule
 it defends, or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
@@ -113,7 +119,7 @@ guard for each.
 | **Verification** | whether the work is finished | a checklist whose every box is settled by looking at the artifact, or by running one check against it |
 
 Fill Common Rationalizations from what the agent has actually said — add each excuse the
-first time you have to answer it. A Red Flag names something observable in the output — "three questions in one message" —
+first time you have to answer it. A Red Flag names something observable in the output — "a description with a step in it" —
 so the agent can look for it, where a restatement of the rule gives it nothing new to look
 at.
 
@@ -171,8 +177,8 @@ is read *partially* — the agent previews it with something like `head -100` in
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every
 supporting file links directly from `SKILL.md`, and is found that way; what it is called is
 settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
-headings**: an agent that previews a long file rather than reading it whole still sees what the
-file contains.
+headings**, so a reader who lands in the middle of it, or sees only its first screen, still knows
+what else is in there.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
@@ -187,6 +193,12 @@ excuse "it reads fine to me", answered with "you are supplying the intent the te
 as you read it", belongs in Common Rationalizations, where the answer arrives at the moment the
 excuse is reached for; in a file nothing loads, it would be read once and agreed with, which is
 not the same as applied.
+
+## Frontmatter
+
+Write it without comments. All of the frontmatter loads on every fire, and a field that needs
+explaining needs prose an author can argue with — the body — rather than a trailing `#` every
+future reader pays for.
 
 ## Leave out what changes nothing
 
@@ -217,7 +229,7 @@ Then split only when the cut earns its cost. Three cuts justify it:
 3. **By delegation** — a phase that should run in a *different execution
    environment*: its own model, its own tool set, its own context. This cut is about
    who should do the work, where the first two are about what the reader types and
-   what comes after. It has a reference of its own, and `SKILL.md` routes to it.
+   what comes after.
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an
