@@ -20,8 +20,6 @@ disallowed-tools:
   - Agent
 ---
 
-# review-nice-issues
-
 ## Overview
 
 `write-nice-issue-description` says how to write an issue body; this skill checks what was actually
@@ -88,7 +86,7 @@ Hand each violation to `write-nice-instructions-as-comment` as the fact(s) it ne
 skill owns the finding's shape and how firmly the remedy is stated; don't invent either here.
 
 - A determinacy failure (problem, criteria, or boundary not fixed by the text alone) → state what
-  is missing and where it belongs, using `write-nice-issue-description`' section guidance.
+  is missing and where it belongs, using `write-nice-issue-description`'s section guidance.
 - A smuggled implementation, a misplaced constraint reason, or a stalling reference → the fix is
   usually unambiguous: state the choice/constraint/reference the way that skill's Gate 1 describes.
 - A duplication → point at the section with the destination; the fix is to fold the content there
@@ -106,14 +104,13 @@ them into a larger report.
   as the reader Gate 1 describes would encounter it. Reaching for what you already know about the
   requirement is the one failure mode this whole skill exists to catch in yourself.
 - `Affected areas` never counts toward the boundary bullet in step 2, and never excuses a missing
-  fact in `Background` — it is a hunch, with no binding force, by `write-nice-issue-description`'
-  own definition.
+  fact in `Background` — it is a hunch, with no binding force, by
+  `write-nice-issue-description`'s own definition.
 - Whether a referenced file or symbol actually exists is out of scope here — that is repo-
   groundedness, a job for a skill that is actually allowed to look.
 - The language the issue is written in is never a finding. Both gates are about the body's shape, so
-  judge it in whatever language it is written in — the examples in `write-nice-issue-description`
-  are English only because that skill is. The one language-related finding is Gate 2's: the same
-  content restated in a second language.
+  judge it in whatever language it is written in. The one language-related finding is Gate 2's: the
+  same content restated in a second language.
 - Read every unit, and never search for a phrasing instead. A pattern search returns the wordings
   you already thought of, and the defect is in the ones you did not.
 - Never post anything from inside this skill. Posting, if wanted, is the caller's action with the
@@ -148,5 +145,5 @@ them into a larger report.
 - `write-nice-issue-description` — the authoring-time guidance this skill checks compliance with.
   Read it if a finding here is confusing; it explains the same two gates from the writer's side,
   with more examples.
-- `write-nice-instructions-as-comment` — owns the finding template and how firmly a remedy is stated;
-  this skill hands it facts (step 4), never a rendered shape.
+- `write-nice-instructions-as-comment` — owns the finding template and how firmly a remedy is
+  stated; this skill hands it facts, never a rendered shape.

@@ -15,8 +15,6 @@ allowed-tools:
   - Bash(gh api:*)
 ---
 
-# review-self-contained-docs
-
 ## Overview
 
 `avoid-unverifiable-context` and `avoid-reference-detours` say what to write; this skill checks
@@ -111,8 +109,8 @@ there is nothing left for a reader to verify.
 
 #### Condition 2: referenceability
 
-The question is whether a reader could go check what the text refers to. Two things make a
-reference unreachable, and they get the same verdict because the reader ends up equally stuck:
+The question is whether a reader could go check what the text refers to. These make a reference
+unreachable, and they get the same verdict because the reader ends up equally stuck:
 
 - **Unidentifiable** — the words don't say what system the reference even belongs to ("issue:
   1234" with no system named: a Notion page ID? A GitHub issue? A Jira ticket?). This fails before
@@ -179,9 +177,8 @@ skill owns the finding's shape and how firmly the remedy is stated; don't invent
 - Never post findings unless `--comment` was explicitly given, and never post at all when running
   as another skill's subroutine.
 - The language a unit is written in is never a finding. All three conditions are about what context
-  the text carries, so judge each unit in whatever language it is written in — the examples in this
-  skill are English only because the skill is. A unit restating the same content in a second
-  language is a finding, but as duplication, not as a language choice.
+  the text carries, so judge each unit in whatever language it is written in. A unit restating the
+  same content in a second language is a finding, but as duplication, not as a language choice.
 - A unit that fails condition 1 or 2 does not also get checked against condition 3 — stop at the
   first failure; do not invent a condition-3 verdict for a unit that already failed earlier.
 
@@ -215,5 +212,5 @@ before starting, so the excuse is already answered when it occurs to you.
   a finding on either is confusing; it explains them from the writer's side, with more examples.
 - `avoid-reference-detours` — the authoring-time guidance behind condition 3, including why its fix
   restates rather than deletes.
-- `write-nice-instructions-as-comment` — owns the finding template and how firmly a remedy is stated;
-  this skill hands it facts (step 4), never a rendered shape.
+- `write-nice-instructions-as-comment` — owns the finding template and how firmly a remedy is
+  stated; this skill hands it facts, never a rendered shape.
