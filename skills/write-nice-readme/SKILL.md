@@ -11,20 +11,16 @@ background: false
 allowed-tools: []
 ---
 
-## Scope
+## Why this exists
 
-An architecture doc is the standing answer to "how do I decide this here"
-(`write-nice-architecture-docs`). A README is the standing answer to **"is this mine, and what do
-I do first"**. Reference docs, tutorials and changelogs all answer a question that comes after.
-
-A skill's own `README.md` is one of these. Nothing loads it, so its reader is a person deciding
-whether to use that skill — this artifact, not the `SKILL.md` beside it.
+A README is the standing answer to **"is this mine, and what do I do first"**. Every other
+document in a repository is read by someone who has already decided; this one is read while
+deciding.
 
 ## Who reads it
 
-Every other document in a repository is read by someone who has already decided; this one is read
-while deciding. *How much* has been decided is what varies, and it is what settles the file's
-shape. The conditions below are written for a published README; the other cases say what relaxes.
+*How much* has been decided is what varies, and it is what settles the file's shape. The
+conditions below are written for a published README; the other cases say what relaxes.
 
 **Published.** The reader has agreed to nothing. They have not installed it, do not know whether
 it solves their problem, and will leave the moment the file stops answering that. Nothing about
