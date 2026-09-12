@@ -1,9 +1,46 @@
-# write-nice-skills — why it is shaped this way
+# write-nice-skills
 
-For whoever maintains this skill. Nothing loads this file: it is not referenced from
-`SKILL.md`, so it costs the agent no context.
+Writes and reviews a skill — its `description`, so the skill fires when the work needs it,
+and its body, so the agent reads the rules instead of skipping them.
+
+A skill is reached by its `description` alone: the body is not in context when the agent
+decides. So its author judges that `description` against a skill they have already read,
+and cannot feel what it looks like to something that has not. The same failure runs one
+level down — a `SKILL.md` that restates its references is a `SKILL.md` whose references
+nobody opens.
+
+It does not review documentation that is not a skill's, and it is not a repo-wide review
+pass.
+
+## The way in
+
+Install the plugin as the [root README](../../README.md) describes. Then either:
+
+- type `/write-skill`, to write or revise one deliberately; or
+- edit a `SKILL.md` and let the skill fire on its own. It is model-invoked — you never type
+  its name.
+
+To measure what a skill costs, from this directory:
+
+```bash
+bash scripts/count-tokens.sh path/to/SKILL.md              # 5000-token budget
+TARGET=2000 bash scripts/count-tokens.sh path/to/SKILL.md   # a skill that is always on
+```
+
+It diffs input-side token counts against whichever model is currently default, so it needs
+no API key and nothing is pinned to a model generation. It exits non-zero over budget.
+
+## Where the rest lives
+
+`SKILL.md` routes each decision to the file that settles it: `references/writing-descriptions.md`
+for the `description`, `references/examples.md` for Bad → Good pairs,
+`references/structuring-skills.md` for the body's size and shape and for splitting one skill
+into two, `GLOSSARY.md` for the terms those use. Start there, not here.
 
 ## Why the rules are not in SKILL.md
+
+Nothing loads this file: it is not referenced from `SKILL.md`, so it costs the agent no
+context. What follows is the reasoning behind the shape, for whoever maintains the skill.
 
 Summarising a reference in `SKILL.md` skips that reference exactly the way summarising
 a body in the `description` skips the body. One mechanism, two levels:

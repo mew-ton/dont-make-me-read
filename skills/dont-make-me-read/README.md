@@ -1,9 +1,32 @@
-# dont-make-me-read — why it exists
+# dont-make-me-read
 
-For whoever maintains this skill. Nothing loads this file: it is not referenced from
-`SKILL.md`, so it costs the agent no context. That is what it is for.
+Holds any writing down to the range a reader has to hold in their head before they know
+what to do — and stays in force while you write, because the writer is the one person who
+cannot feel that range.
+
+It is the foundation the rest of this plugin sharpens: every other skill here applies this
+test to one artifact, and cites it rather than restating it.
+
+It does not judge style, length, or tone, and it does not decide what an artifact should
+contain — the skill that owns that artifact does.
+
+## The way in
+
+Install the plugin as the [root README](../../README.md) describes. There is nothing to
+type: this skill is model-invoked, it fires on any writing task, and it stays in force for
+the rest of that task rather than for the one response that loaded it.
+
+## Where the rest lives
+
+`SKILL.md` holds the range, how to apply it, and the guard against skipping it. The
+artifact-specific skills beside it — a README, an architecture doc, an issue body, a
+`SKILL.md`, a code comment — each name this one and narrow it to what their reader is
+deciding.
 
 ## The two propositions
+
+Nothing loads this file: it is not referenced from `SKILL.md`, so it costs the agent no
+context. What follows is why the skill exists, for whoever maintains it.
 
 Every rule in this plugin follows from them.
 
