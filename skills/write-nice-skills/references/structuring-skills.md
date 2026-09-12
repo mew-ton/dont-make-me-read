@@ -50,10 +50,8 @@ of theirs. Measure the set, not the file you happen to be editing.
   read. Every supporting file links directly from `SKILL.md`.
 - A reference over **100 lines opens with a list of its own headings**, for the same
   reason: a partial read still shows what the file contains.
-- A supporting file is found by being referenced from `SKILL.md`, so its name and
-  whether it sits in a directory at all are yours to pick. `references/`, `rules/`,
-  `scripts/` and `assets/` are conventions borrowed from example layouts, not
-  requirements — match whichever neighbour fits and spend no further thought on it.
+- A supporting file is found by being referenced from `SKILL.md`, and nowhere else. What
+  it is called is settled under [Naming](#naming).
 
 ### Measuring the token half of that budget
 
@@ -96,9 +94,24 @@ body fixes it.
 
 ## Naming
 
-Lowercase letters, digits and hyphens; at most 64 characters; no leading, trailing or
-consecutive hyphen; and the frontmatter `name` equal to the directory name. `anthropic`
-and `claude` are reserved and may not appear in it.
+The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
+leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
+name. `anthropic` and `claude` are reserved and may not appear in it.
+
+**A standing role of the skill has a fixed name at its root.** There are only so many of
+these, every skill's sit at the same path, and the set is greppable:
+
+| File | What it holds | Loaded |
+|---|---|---|
+| `README.md` | the skill, explained to a person | never — nothing references it |
+| `SOURCES.md` | where each rule came from | never — nothing references it |
+| `GLOSSARY.md` | the terms the rules use | routed from `SKILL.md` |
+| `VERIFICATION.md` | the checks, once they are a procedure rather than a checklist | routed from `SKILL.md` |
+
+**Everything else is branch material, and its name is yours.** `references/`, `scripts/`,
+`workflows/`, `assets/`, or a bare file beside `SKILL.md`: these are conventions borrowed
+from example layouts, not requirements. Match whichever neighbour fits and spend no further
+thought on it.
 
 ## Staying in force
 
