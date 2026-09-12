@@ -8,15 +8,14 @@ to split one skill into two.
 
 - What is free and what is not
 - The body budget
-  - Measuring the token half of that budget
+  - Measuring it
 - Staying in force
 - Open with what it is, then when it applies
 - Guard it three ways
 - Naming
 - Progressive disclosure: what to inline, what to disclose
-- Leave out what the structure already settles
+- Leave out what changes nothing
 - When to split
-- This skill as the worked example
 
 ## What is free and what is not
 
@@ -36,18 +35,18 @@ both. A file inside its own limit can still put the activity over.
 
 | The skill | Budget | Because |
 |---|---|---|
-| Always on for a whole activity — resident whatever the reader is doing | **2000 tokens for all of them together** | every turn of every activity pays for them |
+| Always on for a whole activity — its body keeps it in force, so it is resident whatever the reader is doing | **2000 tokens for all of them together** | every turn of every activity pays for them |
 | Reached for one artifact or one branch | **5000 tokens each** | only the reader who needs it pays |
 
 So the set to check is every skill that will be standing at once: the ones on for this
 activity, summed against the first figure, plus whichever is reached for the artifact in
 hand against the second. Measure the set, not the file you happen to be editing.
 
-### Measuring the token half of that budget
+### Measuring it
 
 Line count is a weak proxy: 5000 tokens buys around 250 lines of English prose but
 only around 150 in a non-Latin writing system such as Japanese or Chinese, so a body
-can look short by line count and still cost several times the budget. Measure it:
+can look short by line count and still cost well over the budget. Measure it:
 
 ```bash
 bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md
@@ -66,10 +65,10 @@ file costs one round trip, and it exits non-zero over budget.
 
 For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
 writing systems, where characters per token nearly double between a Latin one and a
-non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** The script's
-closing line re-derives that figure from your own run; recompute it there once the default
-model has moved on, since a stale figure that is too low sends you splitting files that were
-never over budget.
+non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Every run of the
+script prints the ratio it just measured; work the two KB figures out again from that whenever
+the default model changes, since a stale figure that is too low sends you splitting files that
+were never over budget.
 
 
 ## Staying in force
@@ -94,8 +93,10 @@ whether the reader is in it. The rules, the procedure and the guards come after.
 
 The second half — whether the reader is in it — earns its place only where the fire is fuzzy: a
 standing rule the work never names, or an artifact with a near neighbour. A skill whose next
-section is already its inputs or its routing has answered it, and a section that repeats the
-description there is a **no-op**.
+section is already its inputs or its routing has answered it, and a further section saying only
+when the skill applies is one the reader would have satisfied without it. The `## Overview` is
+not that section: restating what the description says is its job, for a reader who is past the
+firing judgment and now has to act.
 
 Whatever argument does not fit those two sentences is either operative — and belongs in the rule
 it defends, or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
@@ -155,7 +156,8 @@ it is called, belong to whoever writes it.
 ## Progressive disclosure: what to inline, what to disclose
 
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
-  condition that routes to each reference, and the Common Rationalizations guard. Leave the
+  condition that routes to each reference, and the Common Rationalizations and Red Flags
+  guards. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
   `SKILL.md` will not open the file it came from.
 - **Disclose** behind a context pointer what **only some branches reach**: deep
@@ -169,7 +171,8 @@ is read *partially* — the agent previews it with something like `head -100` in
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every
 supporting file links directly from `SKILL.md`, and is found that way; what it is called is
 settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
-headings**, for the same reason: a partial read still shows what the file contains.
+headings**: an agent that previews a long file rather than reading it whole still sees what the
+file contains.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
@@ -185,10 +188,9 @@ as you read it", belongs in Common Rationalizations, where the answer arrives at
 excuse is reached for; in a file nothing loads, it would be read once and agreed with, which is
 not the same as applied.
 
-## Leave out what the structure already settles
+## Leave out what changes nothing
 
-The frontmatter and the callers already establish a skill's category, who calls it and
-where it sits. A sentence repeating any of that changes nothing the skill does, and makes
+The frontmatter and the callers already establish who calls a skill and where it sits. A sentence repeating any of that changes nothing the skill does, and makes
 the skill wrong the day a caller is renamed.
 
 Leave out the no-op, too — the instruction the model already follows unprompted. It reads as
@@ -203,12 +205,12 @@ result is one unit; adding database administration makes it two.
 
 Then split only when the cut earns its cost. Three cuts justify it:
 
-1. **By leading word** — a distinct situation has its *own* leading word you
-   actually type. That word can invoke a separate model-invoked skill (or, within
+1. **By leading word** — a distinct situation has its *own* leading word, one the prompt or
+   the work actually supplies. That word can invoke a separate model-invoked skill (or, within
    one skill, gate a separate reference).
-2. **By sequence** — a run of steps whose *post-completion* steps should be hidden.
-   Isolating that run in its own context clears what follows, so it does not
-   distract the work that comes after. First give every step a completion condition
+2. **By sequence** — a run of steps whose working material should be hidden from whatever
+   comes after it. Isolating the run in its own context clears that material away, so it does
+   not distract the work that follows. First give every step a completion condition
    that is checkable and exhaustive: "the validator exits zero". A sequence that looks
    like it needs a skill of its own usually has one vague condition instead, and the
    agent drifts past it rather than stopping.
@@ -220,17 +222,3 @@ Then split only when the cut earns its cost. Three cuts justify it:
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an
 author must hold) and buys nothing.
-
-
-## This skill as the worked example
-
-This skill splits along its own branches, as it asks every skill to:
-
-- the always-needed core stays in `SKILL.md`;
-- the branches an author is actually on — *writing a description*, *structuring a
-  skill*, *delegating a phase* — each get one reference, and the worked Bad → Good pairs a
-  fourth, because writing a description and measuring one against a worked pair are reached at
-  different moments;
-- shared vocabulary goes in `GLOSSARY.md`.
-
-That is the test: a skill about structure is structured the way it prescribes.

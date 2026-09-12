@@ -7,8 +7,6 @@ means; the rule that uses it lives in the file that owns the rule.
 `description`: what a person types when they ask for it, or — for a skill that fires mid-task with
 no prompt — what the work itself already calls the thing.
 
-**Trigger** — a condition that should invoke the skill.
-
 **Bound** — the condition under which a skill must *not* fire, written as its occasion negated:
 "Does not apply when …".
 

@@ -39,17 +39,17 @@ it must not carry the procedure the body holds.
 - **Summarise the skill's implementation** — the steps, the criteria it applies, and the
   argument, the cost and the remedy the body gives for each. Put them here and the agent reads
   them as the skill, skipping the body it took them from. The words the work itself uses stay,
-  because those are what fires: a file name, a flag name, a term of art typed as-is.
+  because those are what fires.
 - **Explain concepts that are not this skill's** — what a callee is, what a pull request
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
 - **Name another skill.** Wanting to name one usually means this skill orchestrates, and
   what it orchestrates is the body's to state, so the name carries the body out into the
-  description — the item above, one level up. A name also reads as a routing table, which
+  description. A name also reads as a routing table, which
   stops the agent asking whether *this* artifact is the skill's: for example,
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach
   clause is the exception, since it names nobody: "also applies when another skill needs
-  …". A file name or a path can be the occasion itself, and then it is the leading word.
+  …".
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —`
   matches nothing anyone types.
 - **Put an angle bracket in it.** `<` and `>` are rejected outright, so a description
@@ -68,8 +68,7 @@ near the start, where it does its invocation work.
 
 ## Choosing the lead
 
-**Does the work name the artifact?** — which is also to ask whether the skill is finished
-when that artifact is.
+**Does the work name the artifact?**
 
 **It does → lead with the occasion.** The work says the word and the word fires the skill.
 For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`:

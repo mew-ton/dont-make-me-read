@@ -57,7 +57,9 @@ Forces the caller-agnostic callee that takes what differs as data, named in the
 domain's own vocabulary, over one that branches on who called it — a shared fetch
 taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Applies to
 any coding task: writing, refactoring, extracting, reviewing, or designing a
-function, a module, a component, or the interface between them.
+function, a module, a component, or the interface between them. Does not apply
+when the subject is prose, or a comment that sends its reader elsewhere to be
+understood, or when the branch is on genuine domain data.
 ```
 
 diff の中にこの規則を名指しするものが何も無いので、姿勢が先頭に立つ。`from:`、`isDetailPage` は残る —
@@ -103,7 +105,10 @@ implementation method smuggled in, and no content duplicated across sections.
 
 ```text
 Runs a determinacy-and-duplication pass over the text of a GitHub issue body
-that is already written — someone else's, or the author's own draft.
+that is already written — someone else's, or the author's own draft. Does not
+apply as a general-purpose "review this issue" entry point, when the issue is
+still being written or revised, or when what is wanted is a judgement of
+repo-groundedness, dependency closure, or scope.
 ```
 
 何に対するパスであるかであって、何を通すかではない。

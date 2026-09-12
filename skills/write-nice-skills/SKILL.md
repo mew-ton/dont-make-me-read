@@ -39,15 +39,13 @@ the skill already.
 
 ## Comments in the frontmatter
 
-Write the frontmatter without comments — the one rule settled here, because it is one sentence
-and no reference is about frontmatter as such. All of the frontmatter loads on every fire, and a
-field that needs explaining needs prose an author can argue with — the body — rather than a
-trailing `#` every future reader pays for.
+Write the frontmatter without comments. All of it loads on every fire, and a field that needs
+explaining needs prose an author can argue with — the body — rather than a trailing `#` every
+future reader pays for.
 
 ## Common Rationalizations
 
-The agent will look for reasons to skip this skill, and the guard has to be here or it
-is skipped with everything else:
+The agent will look for reasons to skip this skill:
 
 | Rationalization | Reality |
 |---|---|
@@ -58,18 +56,17 @@ is skipped with everything else:
 | "Naming the skill that owns a neighbouring artifact helps the agent route." | It stops the agent asking whether the artifact in front of it is this skill's, which is the question the bound exists for, and it comes due again the day the skill it names is renamed. |
 | "One file is simpler than splitting." | A bloated `SKILL.md` loads *every* time the skill fires and drags the whole context. |
 | "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. |
-| "This reads well to me." | You are not the reader who decides. Check it against the words the work supplies and the number the script reports. |
+| "This reads well to me." | You are supplying the intent the text is missing as you read it. Check it against the words the work supplies and the number the script reports. |
 
 ## Red Flags
 
-- A `SKILL.md` stating a rule where the condition that routes to it would do.
+- A rule stated in `SKILL.md` that a reference already owns.
 - A description carrying the steps, the criteria it applies, or another skill's name.
 - A reference reached from another reference.
 - A body whose opening sentence does not say what the skill does.
 
 ## Verification
 
-- [ ] `count-tokens.sh` puts this skill inside its budget, and the always-on skills inside theirs once summed.
+- [ ] `count-tokens.sh` puts the skill you are writing inside its budget, and the always-on set inside 2000 once summed.
 - [ ] The description names when the skill applies and when it does not, in the third person, inside 1024 characters.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition.
-- [ ] The cases that should reach the skill were run against it.

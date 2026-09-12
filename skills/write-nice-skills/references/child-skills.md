@@ -36,7 +36,7 @@ a judgment fails it, and stays where its grounds stay.
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
-| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since the work is design-quality | leave unset when they should run in parallel |
+| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since each child is producing a judgment rather than counting | leave unset when they should run in parallel |
 | **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
 ## Naming
@@ -54,7 +54,7 @@ context: fork
 ```
 
 `user-invocable: false` hides the child from the user's `/` menu. `background` is left out of
-the block above because each of the three motives wants a different value: set it to `false`
+the block above because the three motives do not all want the same value: set it to `false`
 when the conclusion is used in the same turn, and leave it unset — it defaults to `true` — when
 two children should run in parallel.
 
