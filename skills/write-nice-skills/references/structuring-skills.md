@@ -3,6 +3,31 @@
 Read this when the body is growing, when you are deciding what goes in `SKILL.md`
 versus a reference, or when you are wondering whether to split one skill into two.
 
+## Contents
+
+- What is free and what is not
+- The body budget
+- Naming
+- Staying in force
+- Write the description and the body for different purposes
+- Progressive disclosure: what to inline, what to disclose
+- Add Common Rationalizations
+- Leave out what the structure already settles
+- Sharpen the bound before you split a sequence
+- When to split
+- This skill as the worked example
+
+## What is free and what is not
+
+Every installed skill's `name` and `description` are pre-loaded, on every turn, whether
+or not the skill is ever used. A bundled file costs nothing until it is read.
+
+That asymmetry settles most structural questions before they are asked. Moving a branch
+into a reference is free until the branch is taken. Moving the same branch into a second
+skill buys reach and pays a description on every turn, forever, for everyone who has it
+installed. So size alone is never a reason to split one skill into two — that is what a
+reference is for.
+
 ## The body budget
 
 The budget belongs to the **set of skills that stand together**, not to one file.
@@ -19,8 +44,12 @@ The set to check is every skill that will be standing at once: the ones on for t
 activity, plus whichever is reached for the artifact in hand. Its ceiling is the sum
 of theirs. Measure the set, not the file you happen to be editing.
 
-- What the body points at sits **one level deep**. Do not nest a reference inside a
-  reference: the second hop is one the reader did not agree to.
+- What the body points at sits **one level deep**. A reference reached from another
+  reference is read *partially* — the agent previews it with something like `head -100`
+  instead of reading it whole — so a rule on line 150 of that second hop is a rule nobody
+  read. Every supporting file links directly from `SKILL.md`.
+- A reference over **100 lines opens with a list of its own headings**, for the same
+  reason: a partial read still shows what the file contains.
 - A supporting file is found by being referenced from `SKILL.md`, so its name and
   whether it sits in a directory at all are yours to pick. `references/`, `rules/`,
   `scripts/` and `assets/` are conventions borrowed from example layouts, not
@@ -56,6 +85,20 @@ non-Latin one. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for
 script's closing line re-derives that figure from your own run; recompute it there
 rather than trusting this number once the default model has moved on — a stale
 figure that is too low sends you splitting files that were never over budget.
+
+### Measuring the other half: whether it fires
+
+Size says what the skill costs, never whether it is reached. Write the cases that should
+reach it before you write the body — a handful of prompts a user would really send — and
+run them against the models it will run under, with the skill installed and without. A
+skill the cases do not reach has a `description` problem, and no amount of rewriting the
+body fixes it.
+
+## Naming
+
+Lowercase letters, digits and hyphens; at most 64 characters; no leading, trailing or
+consecutive hyphen; and the frontmatter `name` equal to the directory name. `anthropic`
+and `claude` are reserved and may not appear in it.
 
 ## Staying in force
 
@@ -98,9 +141,9 @@ leaves the rule on.
   Put one there when a person needs this skill explained; what it owes that person is the
   README rules' business, not this file's.
 
-A context pointer names the condition and the file: "For writing a description, see
-`references/writing-descriptions.md`." The reference loads only when that branch is
-actually taken.
+A context pointer names the **condition**, not the subject: "Read
+`references/api-errors.md` when the API returns a non-200 status" is reachable, and "see
+`references/` for details" is not. The reference loads only when that condition is met.
 
 A rule's *operative* half never moves out, however little context the agent has to spare.
 "You are supplying the intent the text is missing as you read it" belongs in Common
@@ -111,7 +154,12 @@ would be read once and agreed with, which is not the same as being applied.
 
 For any skill an agent might cut corners on, pre-empt the excuses: a table of the
 reasons it will find for skipping, each paired with the reality that refutes it. It is
-inline because a guard behind a pointer is skipped along with everything else.
+inline because a guard behind a pointer is skipped along with everything else. Fill it from
+what the agent has actually said — add each excuse the first time you have to answer it.
+
+A fact that defies a reasonable assumption stays inline for the same reason. An agent that
+does not know the `/health` endpoint answers while the database is down cannot recognise
+the condition that would have loaded the file saying so.
 
 ## Leave out what the structure already settles
 
@@ -119,10 +167,28 @@ A skill does not need to state its own category, who calls it, or where it sits.
 frontmatter and the callers establish all of that, a sentence saying it changes nothing
 the skill does, and it makes the skill wrong the day a caller is renamed.
 
+Leave out what the model already does unprompted, too. It reads as thoroughness and costs
+a reader the same as a rule that changes something.
+
+## Sharpen the bound before you split a sequence
+
+Every step needs a condition that says it is finished, checkable and exhaustive — "the
+validator exits zero", not "the code is clean". A run of steps that looks like it needs a
+skill of its own usually has one vague bound instead, and the agent drifts past it rather
+than stopping. Sharpen the bound first, and split only if it is still a sequence
+afterwards.
+
 ## When to split
 
-Split only when the cut earns its cost. Three cuts justify it — the first two from
-mattpocock's `writing-great-skills`:
+Scope first. A skill covers a coherent unit of work, the way a function does. Too narrow
+and one task loads several skills, each with instructions to reconcile against the others;
+too broad and nothing activates it precisely. Querying a database and formatting the
+result is one unit; adding database administration makes it two.
+
+Then split only when the cut earns its cost. Three cuts justify it. The first two come
+from mattpocock's `writing-for-agents` (`skills/productivity/` in `mattpocock/skills`) —
+the sequence cut from its own `## When to Split`, the trigger-word cut from the
+`SKILL-MECHANICS.md` it discloses:
 
 1. **By trigger word** — a distinct situation has its *own* leading word you
    actually type. That word can invoke a separate model-invoked skill (or, within
@@ -133,107 +199,11 @@ mattpocock's `writing-great-skills`:
 3. **By delegation** — a phase that should run in a *different execution
    environment*: its own model, its own tool set, its own context. The cut is not
    about what the reader types, nor about what comes after; it is about who should
-   do the work. Detail: [By delegation](#by-delegation), below.
+   do the work. For how, read [`child-skills.md`](child-skills.md).
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
-context load (more skills the agent must weigh on every turn) or cognitive load
-(more files an author must hold) and buys nothing.
-
-## By delegation
-
-`By sequence` decides **whether one skill becomes two**. `By delegation` decides
-**whether a phase leaves this execution environment**. A delegated phase is still
-this skill's work — it just runs somewhere cheaper and narrower, and hands back a
-conclusion instead of the material it was derived from.
-
-### What may be delegated, and what may not
-
-**Delegate mechanical, read-only gathering, enumeration, and parsing** — anything
-whose output collapses into a conclusion. Fetching a PR's comments, listing changed
-files, walking a package registry, grounding a design in the repository: the parent
-needs the answer, not the transcript that produced it.
-
-**Never delegate work whose grounds would not come back with it** — a review that
-returns verdicts, a call that returns only its answer. Put a review's substance in a
-subagent and the grounds for each finding never reach the main thread, so nobody can
-review the review. When context is the problem there, split the **session**, not the
-judgment.
-
-The test is not judgment versus gathering. It is whether the caller receives
-everything needed to check the work. A skill that *writes an artifact* passes it: the
-artifact comes back whole and the reader judges the thing itself, so nothing is
-distilled away behind the fork.
-
-### Naming
-
-`<parent-skill-name>-<role>`: the parent's name, **one** hyphen, the role the child
-plays — `-change-inventory`, `-repo-grounding`, `-version-lookup`.
-
-That shape is what the publishing naming rule allows: lowercase alphanumerics and
-hyphens only, 1–64 characters, no leading or trailing hyphen, **no consecutive
-hyphens**, and the frontmatter `name` must equal the parent directory name. So do
-not reach for `--` to mark the boundary; a single hyphen is the only separator
-available.
-
-The name is not what hides the child. Keeping it out of the user's `/` menu is
-`user-invocable`'s job, below.
-
-### The child's frontmatter
-
-```yaml
-user-invocable: false
-disable-model-invocation: false
-context: fork
-agent: Explore
-model: haiku
-background: false
-```
-
-`user-invocable: false` hides the child from the user's `/` menu. `background: false` is
-required when the conclusion is used in the same turn; it defaults to `true`. `agent` and
-`model` are optional: `agent` picks the tool set (`Explore` and `Plan` are read-only), and
-`model` trades cost against capability — gathering only is `haiku`, gathering plus light
-normalization is `sonnet`.
-
-`agent` and `model` are the two to leave out unless you can say why. They narrow a
-child to what a gathering run needs, and narrowing is wrong for a fork that produces
-the artifact itself: a read-only tool set cannot write, and the cheapest model that
-can enumerate files is not the one you want drafting the thing a person will act on.
-Omit both and the fork inherits, which is the right default for the `Cleanliness`
-motive below.
-
-`disable-model-invocation: true` is the field that looks right and is wrong. The
-caller here **is** a model, so `true` severs the only path into the child. Hiding it
-from the human is `user-invocable: false`, and that is the whole requirement.
-
-`context: fork` is what makes the child an execution environment rather than a
-stretch of the parent's turn. Without it, `model` applies to the remainder of the
-current turn — the main conversation — and not to anything the skill delegates.
-
-### Passing input
-
-Pass the whole input as **`$ARGUMENTS`**. Indexed and named arguments go through
-shell-like quote parsing, so a multi-line free-form brief cannot survive as a single
-argument.
-
-### Two motives, and how each picks `model`
-
-| Motive | What the fork buys | `model` | `background` |
-|---|---|---|---|
-| **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
-| **Independence** — two workers must not see each other's output | `context: fork` carries in no conversation history, so the isolation is structural rather than requested | `sonnet`: the work is design-quality, so narrow it with `effort` rather than by dropping the model | leave unset when the workers should run in parallel |
-| **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
-
-The last two rows replace prose. "Do not show either subagent the other's output" is
-a prohibition the reader can violate; `context: fork` not carrying conversation
-history is a property they cannot. The same move applies one axis over: "do not write
-what only this conversation's participants could reconstruct" is
-`avoid-unverifiable-context`'s rule and a writer can break it, but a skill that never
-saw the conversation cannot.
-
-So a skill that writes an artifact forks and is handed one brief, while a skill that
-routes or constrains stays on the main thread: both need the property, and only the
-first can have it without losing the work it acts on.
+context load (one more description on every turn) or cognitive load (more files an
+author must hold) and buys nothing.
 
 ## This skill as the worked example
 
@@ -241,8 +211,9 @@ first can have it without losing the work it acts on.
 down," so it splits along its own branches:
 
 - the always-needed core stays in `SKILL.md`;
-- the two branches an author is actually on — *writing a description* and
-  *structuring a skill* — each get one reference;
+- the branches an author is actually on — *writing a description*, *structuring a
+  skill*, *delegating a phase* — each get one reference, and the worked Bad → Good
+  pairs a fourth;
 - shared vocabulary goes in `GLOSSARY.md`.
 
 A single-file version would contradict the rule it teaches. That is the test: a

@@ -17,6 +17,7 @@
 | **`writing-for-agents`**（Matt Pocock） | <https://github.com/mattpocock/skills> の `skills/productivity/writing-for-agents/`、およびそこから開示される `SKILL-MECHANICS.md` |
 | **`agent-skills`**（Addy Osmani） | <https://github.com/addyosmani/agent-skills> の `docs/skill-anatomy.md` |
 | **`skill-creator`**（Anthropic） | Claude に同梱。`scripts/quick_validate.py` が仕様の機械可読な形である |
+| **Skill creation best practices**（agentskills.io） | <https://agentskills.io/skill-creation/best-practices>、およびそこがリンクする specification |
 
 ## それぞれが何を与えているか
 
@@ -44,8 +45,8 @@
   うちの `## When to split` の直接の出典である。
 - **trigger word** による切断は、開示先の `SKILL-MECHANICS.md`（`## Splitting by invocation`）から。そこには
   model-invoked と user-invoked の選択、そして **router skill** のパターンもある。
-- このスキルがまだ担っていない2つ：各ステップの**鋭い完了条件** — 曖昧な境界は、sequence を分割する前に
-  鋭くする — と **pruning**、すなわちモデルが放っておいても従う no-op を取り除くこと。
+- 各ステップの**鋭い完了条件**、およびそこから導かれる順序：曖昧な境界は、sequence を分割する前に鋭くする。
+- **pruning** — モデルが促されなくても従う no-op を取り除くこと。
 
 ### `agent-skills`
 
@@ -53,6 +54,25 @@
   埋め方の規則も：エージェントが実際に口にした言い訳を毎回捕まえ、それぞれに事実に基づく反論を付ける。
 - そのアナトミーのうち、このスキルが取っていない2節：**Red Flags**（そのスキルが破られている観察可能な兆候）
   と **Verification**（どのチェックボックスも証拠で答えられるチェックリスト）。
+
+### agentskills.io
+
+- **まとまりのある単位。** スキルは、関数がそうであるように一単位の作業を覆う。狭すぎれば一つの作業で複数の
+  スキルがロードされ、それぞれの指示を突き合わせる羽目になる。広すぎれば正確に起動できない。これは*いつ
+  分割しないか*に答える規則であり、他の出典はそこを暗黙にしている。
+- **詳細はほどほどに。** 「あらゆるエッジケースを網羅している自分に気づいたら、その大半はエージェント自身の
+  判断に任せたほうがよくないか考えること」。
+- 本文の予算の **5,000トークン**側。そこがリンクする specification のものであり、他の出典が与える500行と
+  並ぶ。
+- context pointer は**いつ**そのファイルをロードするかを述べる — 「APIが200以外を返したら
+  `references/api-errors.md` を読む」 — 何についてのファイルかではない。
+- **宣言ではなく手続きを。** 一つの事例に対して何を出力するかではなく、ある種類の問題にどう取り組むかを
+  教える。
+- **Gotchas** をインラインに：まっとうな前提を裏切る、その環境固有の事実。それを知らないエージェントは、
+  それが書いてあるファイルをロードさせる条件を認識できないからである。エージェントを訂正する羽目になった
+  たびに足すこと。
+- このスキルが担っていないパターン：出力テンプレート、進捗チェックリスト、検証ループ、
+  plan-validate-execute、そして同じロジックを毎回作り直しているのを見つけたらスクリプトを同梱すること。
 
 ### `skill-creator`
 
@@ -65,8 +85,9 @@
 
 ## このリポジトリ自身のもの
 
-- **トークン予算**とそれを測るスクリプト：活動全体でオンのスキルは2000トークン、成果物ごとに到達される
-  スキルは5000トークン、そして予算はファイルではなく同時に立つスキルの集合に属する。上流は行数で数える。
+- 活動全体でオンのスキルの **2000トークン予算**、予算がファイルではなく同時に立つスキルの集合に属すると
+  いう枠、そして推定ではなく計測する `scripts/count-tokens.sh`。5000トークンという数字は agentskills.io の
+  specification のものであり、他の出典は行数で数える。
 - **`Forces the X that Y.`** を、作業が何も名指ししないスキルの先頭に置き、成果物を名指しするスキルには
   `Use this skill when …` を置くこと。この形は Dietrich Gebert の `ponytail` のものだが、どちらを使うかを
   「そのスキルが成果物より長生きするか」から導く規則はうちのものである。
@@ -87,7 +108,8 @@
   `background` を設定している。これらは Claude Code プラグインのフィールドであり、公開スキルのバリデータは
   拒否する。これはプラグインなのでここでは正しく、そしてどこへも持ち出せない。
 
-## まだ読めていないもの
+## これらへの到達について
 
-`https://agentskills.io/skill-creation/best-practices` はこの環境の network egress proxy に遮断されており、
-ここには一切反映されていない。
+`agentskills.io` はこの環境の network egress proxy に遮断されている。その best practices がこのリポジトリに
+届いたのは、セッションに貼り付けられたテキストとしてであって、ここにいる誰かが取得できるページとしてでは
+ない。それ以外はすべて出典そのものから読んだ。

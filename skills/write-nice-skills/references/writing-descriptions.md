@@ -43,6 +43,8 @@ skill. It must be judge-able on its own, and must not leak the procedure.
   the subfolder it governs often removes the need to name anything.
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —`
   is not a sentence and matches nothing anyone types.
+- **Put an angle bracket in it.** `<` and `>` are rejected outright, so a description
+  carrying a tag or a `<placeholder>` does not load at all.
 - **Quote keywords in a second language.** A single-team skill may add the phrases that
   team really types; a published one must not, since the list only bloats the description
   and drifts out of sync.

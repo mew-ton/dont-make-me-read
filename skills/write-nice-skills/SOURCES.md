@@ -17,6 +17,7 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 | **`writing-for-agents`** (Matt Pocock) | `skills/productivity/writing-for-agents/` in <https://github.com/mattpocock/skills>, with its disclosed `SKILL-MECHANICS.md` |
 | **`agent-skills`** (Addy Osmani) | `docs/skill-anatomy.md` in <https://github.com/addyosmani/agent-skills> |
 | **`skill-creator`** (Anthropic) | ships with Claude; `scripts/quick_validate.py` is the machine-readable form of the spec |
+| **Skill creation best practices** (agentskills.io) | <https://agentskills.io/skill-creation/best-practices>, over the specification it links |
 
 ## What each one gives this skill
 
@@ -50,9 +51,9 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 - The split by **trigger word**, from the disclosed `SKILL-MECHANICS.md`
   (`## Splitting by invocation`), which also gives the model-invoked versus user-invoked
   choice and the **router skill** pattern.
-- Two rules this skill does not yet carry: a **sharp completion criterion** per step —
-  sharpen a vague bound before splitting a sequence — and **pruning**, which removes the
-  no-op, an instruction the model already follows by default.
+- A **sharp completion criterion** per step, and the order it implies: sharpen a vague
+  bound before splitting a sequence.
+- **Pruning** the no-op — an instruction the model already follows unprompted.
 
 ### `agent-skills`
 
@@ -62,6 +63,27 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 - Two sections of its anatomy this skill has not taken: **Red Flags**, the observable signs
   that the skill is being violated, and **Verification**, a checklist whose every box is
   answerable with evidence.
+
+### agentskills.io
+
+- **Coherent units.** A skill covers a unit of work the way a function does: scoped too
+  narrowly, several skills load for one task and their instructions have to be reconciled;
+  scoped too broadly, nothing activates it precisely. This is the rule that answers *when
+  not to split*, which the other sources leave implicit.
+- **Moderate detail.** "When you find yourself covering every edge case, consider whether
+  most are better handled by the agent's own judgment."
+- The **5,000-token** half of the body budget, from the specification it links, alongside
+  the 500 lines the other sources give.
+- A context pointer states **when** to load the file — "Read `references/api-errors.md` if
+  the API returns a non-200 status code" — not what it is about.
+- **Procedures over declarations**: teach how to approach a class of problems rather than
+  what to produce for one instance.
+- **Gotchas**, kept inline: environment-specific facts that defy a reasonable assumption,
+  because an agent that does not know one cannot recognise the condition that would load
+  the file holding it. Add to them every time you have to correct the agent.
+- Patterns this skill does not carry: output templates, progress checklists, validation
+  loops, plan-validate-execute, and bundling a script once the agent is seen reinventing
+  the same logic across runs.
 
 ### `skill-creator`
 
@@ -75,9 +97,10 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 
 ## What is this repository's own
 
-- The **token budgets** and the script that measures them: 2000 tokens for a skill that is
-  on for a whole activity, 5000 for one reached per artifact, and the budget belonging to
-  the set of skills standing together rather than to a file. Upstream counts lines.
+- The **2000-token budget** for a skill that is on for a whole activity, the budget
+  belonging to the set of skills standing together rather than to a file, and
+  `scripts/count-tokens.sh`, which measures rather than estimates. The 5000-token figure
+  is the agentskills.io specification's; the other sources count lines.
 - **`Forces the X that Y.`** as the lead for a skill nothing in the work names, against
   `Use this skill when …` for one an artifact names. The form is Dietrich Gebert's
   `ponytail`; the rule that derives which to use from whether the skill outlives its
@@ -103,7 +126,8 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
   `context` and `background`. Those are Claude Code plugin fields; the published-skill
   validator rejects them. This is a plugin, so that is correct here and portable nowhere.
 
-## Not yet read
+## A note on reaching these
 
-`https://agentskills.io/skill-creation/best-practices` is blocked by this environment's
-network egress proxy, so nothing here is drawn from it.
+`agentskills.io` is blocked by this environment's network egress proxy; its best practices
+reached this repository as text pasted into the session rather than as a page anyone here
+can fetch. Everything else above was read from its source.
