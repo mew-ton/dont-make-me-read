@@ -72,4 +72,5 @@ core principles in brief, and the Common Rationalizations guard", and nine of th
 skills grew a `## Scope` heading out of that one word. The three that ignored it —
 `dont-make-me-read`, `review-nice-issues`, `review-self-contained-docs` — opened with
 `## Why this exists` or `## Purpose` instead, and were the only three whose bodies said
-what the skill was for. The bullet now asks for why / how / routing.
+what the skill was for. Every body opens with `## Overview` now, bounded to the two
+sentences that place the reader; the bullet asks for overview / how / routing.

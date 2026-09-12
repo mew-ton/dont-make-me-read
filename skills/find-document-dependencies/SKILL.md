@@ -13,16 +13,11 @@ allowed-tools:
   - Read
 ---
 
-## Why this exists
+## Overview
 
 A dependency nobody drew is an edit somebody will be made to make, in a file they were not looking
-at. Point this at a document and it returns everything that document would have to be rewritten for,
-assembled into a graph: what is pinned to what, which end has to move, and how loudly it breaks.
-Links are in it, and are the least of it — most of what pins a document is prose.
-
-It does not judge. A dependency is not a defect; a document with none says nothing about anything.
-Whether one earns its upkeep is a question about what it buys, which the caller is holding and this
-skill is not.
+at. This returns everything a document would have to be rewritten for as a graph — what is pinned
+to what, which end has to move, how loudly it breaks — and judges none of it.
 
 ## Terms
 

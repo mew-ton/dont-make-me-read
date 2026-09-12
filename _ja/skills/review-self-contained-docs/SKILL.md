@@ -17,20 +17,13 @@ allowed-tools:
 
 # review-self-contained-docs
 
-## Purpose（目的）
+## Overview（概要）
 
-`avoid-unverifiable-context` と `avoid-reference-detours` は**何を書くか**を述べる。このスキルは実際に
-書かれたものを、同じ三つの条件に照らして読み手の側からチェックする：time-closure と referenceability
-（この対は `avoid-unverifiable-context` のもの）、そして reference-scope closure（`avoid-reference-detours`
-のもの）。二つの状況で走る：
-
-- **PRをレビューする**：その説明文と、差分が追加または変更するすべてのコメントを確認する。
-- **書き上げたばかりのテキストを自己チェックする**：PR説明文、issue 本文、コードコメントが出荷される前に、
-  自分の最初の一読を信用するのではなく、この同じ判断を明示的に通す — あなたはすべての文脈をすでに頭の中に
-  入れた状態でそれを書いており、まさにそれこそがこのチェックが迂回しなければならないものである。二つの
-  authoring スキルの自己チェックが記述する、まさにその読み手 — 文脈ゼロでこれを開く誰か — を想像し、その
-  読み手の目の前にあるものだけを判断せよ：その単位自身のテキストと、コードコメントならそれが注釈している
-  コード。PR、issue、この会話についてあなたが知っている他の何も、証拠として数えない。
+`avoid-unverifiable-context` と `avoid-reference-detours` が何を書くかを言う。このスキルは、実際に書かれた
+ものを、同じ三つの条件 — time-closure、referenceability、reference-scope closure — に対して読み手の側から
+検査する。各ユニットは、それ自身のテキストと、コードコメントならそれが注釈しているコードだけから判定する —
+PR について、issue について、この会話について自分が知っていることは証拠にならない。それこそがこれを走らせる
+理由である。
 
 ## Inputs（入力）
 

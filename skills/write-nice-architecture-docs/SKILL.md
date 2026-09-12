@@ -12,19 +12,13 @@ background: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
 An architecture doc is the standing answer to "how do I decide this here", read long after whoever
-wrote it has stopped being available.
-
-This extends **matklad's `ARCHITECTURE.md`** (Alex Kladov, 2021), which proposes the file and the
-shape it takes. Follow it: that part is settled, and the sections below are his.
-
-What it leaves open is the reader who is not navigating but *adding*. His codemap answers "where's
-the thing that does X?"; it does not answer "what shape should the thing I am about to write
-take?", and a contributor who cannot answer the second induces it from whatever is already in the
-tree. The extension here is that each of his sections is written so it also **places a case the doc
-has never seen**.
+wrote it has stopped being available. This extends **matklad's `ARCHITECTURE.md`** (Alex Kladov,
+2021) — his shape is settled, and the sections below are his — with the reader who is not
+navigating but *adding*: each section is written so it also **places a case the doc has never
+seen**.
 
 ## The test
 

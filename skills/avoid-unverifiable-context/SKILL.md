@@ -13,16 +13,12 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-Text that persists is read by someone who was not there when it was written.
-
-- **Process only replays for participants.** "As pointed out in review", "we originally went with
-  X", "the policy changed" rely on a timeline only the people in that discussion can reconstruct.
-  From outside, *when* and *whose* are undefined, and the text ages into noise
-- **An unreachable reference is the same failure.** A Notion page, a Slack thread, a decision made
-  in this session, or a bare `issue: 1234` that does not say which system it belongs to: the reader
-  ends up equally stuck whether the target never existed or merely cannot be got at from here
+Text that persists is read by someone who was not there when it was written, and process only
+replays for participants: "as pointed out in review", "we originally went with X" rely on a
+timeline they cannot reconstruct. An unreachable reference fails the same way — the reader is
+equally stuck whether the target never existed or merely cannot be got at from here.
 
 ## The rule
 

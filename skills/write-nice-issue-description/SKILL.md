@@ -13,12 +13,11 @@ background: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-An issue is not a design document; it is a problem statement plus a completion condition. Apply
-this once per issue body, whether drafting a new one or revising an existing one.
-
-Two gates below govern every section.
+An issue is not a design document; it is a problem statement plus a completion condition, written
+once per issue body whether it is a new draft or an existing one. Two gates below govern every
+section.
 
 ## Language
 

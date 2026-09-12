@@ -145,8 +145,13 @@ leaves the rule on.
 
 ## Open with what it is, then when it applies
 
-The body's first two sections answer the reader's first two questions, in that order: what is this
-skill for, and am I in it? The rules, the procedure and the guards come after.
+`## Overview` first: one or two sentences on what the skill does and why that matters. Then
+whether the reader is in it. The rules, the procedure and the guards come after.
+
+The heading is doing work. "Why this exists" invites the founding argument, which loads on every
+fire and changes nothing the agent does; "Overview" invites the two sentences that place the
+reader. Whatever argument does not fit is either operative — and belongs in the rule it defends,
+or in a Common Rationalizations row — or it is not, and it belongs outside the skill.
 
 The second one earns its place only where the fire is fuzzy — a standing rule the work never
 names, or an artifact with a near neighbour. A skill whose next section is already its inputs or
@@ -154,9 +159,8 @@ its routing has answered it, and a section that repeats the description there is
 
 ## Progressive disclosure: what to inline, what to disclose
 
-- **Inline** in `SKILL.md` what **every path needs**: why the skill exists, how to
-  work, the condition that routes to each reference, and the Common Rationalizations
-  guard. Not the rules themselves — an author who can settle one from `SKILL.md` will
+- **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
+  condition that routes to each reference, and the Common Rationalizations guard. Not the rules themselves — an author who can settle one from `SKILL.md` will
   not open the reference it came from, which is what a leaked description does to a
   body, one level up.
 - **Disclose** behind a context pointer what **only some branches reach**: deep

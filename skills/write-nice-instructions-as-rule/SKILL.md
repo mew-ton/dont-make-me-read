@@ -12,14 +12,11 @@ background: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-A rule the reader can agree with without acting is not a rule. Explaining the constraint and
-leaving the action to be inferred produces exactly that, and its author cannot feel it: they
-already know which action they mean, so the explanation reads complete to them.
-
-Standing rules are also read out of order. Nobody reads a guideline front to back before the edit
-that needed it, so each entry has to work where the eye lands rather than where it was written.
+A rule the reader can agree with without acting is not a rule, and its author cannot feel the
+difference — they already know which action they mean. Standing rules are also read out of order,
+so each entry has to work where the eye lands rather than where it was written.
 
 ## DO
 

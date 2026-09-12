@@ -13,16 +13,12 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-Someone reading a function has to hold whatever it depends on before they can change it. A
-function that decides what to do from *who called it* puts every caller inside that range, and
-puts the next one there too.
-
-Code is the place where restating does not repair that. Text can repeat what the reader needs at
-the point of use and leave the original authoritative, because nothing executes; a callee that
-takes on a caller's knowledge copies nothing — it takes on a dependency on that caller,
-permanently.
+Someone reading a function has to hold whatever it depends on before they can change it, and a
+function that decides what to do from *who called it* puts every caller inside that range — the
+next one included. Code is where restating does not repair that: a callee that takes on a caller's
+knowledge takes on a dependency, permanently.
 
 ## When it applies
 

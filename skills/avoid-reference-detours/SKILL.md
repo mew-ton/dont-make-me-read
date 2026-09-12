@@ -12,15 +12,11 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-A reference the reader can genuinely open is still a defect when following it was never optional.
-Restate what this reader needs at the point they need it, and leave the original where it is: the
-round trip is what costs them, not the fact.
-
-Reachability is not the whole test. A pointer can be completely valid — the file really does carry
-that rule at the top, the config really does say that — and still be the wrong thing to write,
-because the reader had to leave to understand the sentence in front of them.
+A reference the reader can genuinely open is still a defect when following it was never optional:
+the round trip is what costs them, not the fact. Reachability is not the test — a pointer can be
+completely valid and still be the wrong thing to write.
 
 ## When it applies
 

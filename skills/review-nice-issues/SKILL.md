@@ -22,22 +22,12 @@ disallowed-tools:
 
 # review-nice-issues
 
-## Purpose
+## Overview
 
-`write-nice-issue-description` says how to write an issue body. This skill checks what was actually
-written, against the same two gates from the reader's side: determinacy and duplication (defined
-below).
-
-Judge only the text you were handed, on the same footing as the reader Gate 1 describes.
-
-It runs in two situations:
-
-- **Reviewing an issue that already exists on GitHub**: the body text must be fetched *before*
-  this skill runs, by whatever is doing the fetching — the `/review-issue` command, or another
-  skill with `gh` access. Hand this skill only the resulting text.
-- **Self-checking a draft you just wrote**: hand this skill the drafted text directly, rather than
-  trusting your own first read of it — you wrote it with the problem and the implementation
-  already in your head, which is exactly the thing this check has to route around.
+`write-nice-issue-description` says how to write an issue body; this skill checks what was actually
+written, against the same two gates from the reader's side: determinacy and duplication, defined
+below. Judge only the text you were handed — a draft you wrote yourself reads fine to you, because
+you still hold the problem and the implementation it leaves out.
 
 ## Inputs
 

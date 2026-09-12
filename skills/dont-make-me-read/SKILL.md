@@ -13,11 +13,15 @@ disable-model-invocation: false
 allowed-tools: []
 ---
 
-## The range
+## Overview
 
 Nobody wants to hold a lot in their head to work out what to do, and the writer is the one person
-who cannot tell how much that is. The range is everything the reader has to hold in order to act on
-what is in front of them. It is not the length of what they are reading: a short paragraph that only means something once you have
+who cannot tell how much that is: you read your own draft while supplying what it leaves out.
+
+## The range
+
+The range is everything the reader has to hold in order to act on what is in front of them. It is
+not the length of what they are reading: a short paragraph that only means something once you have
 opened two other files has a wide range.
 
 It goes wrong in three ways.
@@ -72,13 +76,9 @@ that the decision needs, stays.
 
 ## Where the length cap applies
 
-Only to the path a reader must take to find out what to do. Backing material is fetched by whoever
-needs it and is not capped.
-
-| | Capped | Because |
-|---|---|---|
-| The mandatory path | yes | everyone pays for it, every time |
-| Backing material — worked examples, evidence, the original a pointer leads to | no | only the reader who needs it pays |
+Only to the path a reader must take to find out what to do: everyone pays for that, every time.
+Backing material — worked examples, evidence, the original a pointer leads to — is fetched by
+whoever needs it and is not capped.
 
 ## Persistence
 

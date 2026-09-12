@@ -12,14 +12,11 @@ background: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-A skill that never fires has no effect. A skill that fires and then gets skipped has
-none either. Both are decided by text its author cannot feel: the `description` is
-judged before the body is in context, and the body is judged against whatever summary
-of it the author has already read.
-
-So the rules are not here. They are in the references this file routes to.
+A skill that never fires has no effect, and one that fires and then gets skipped has none either —
+both decided by text its author cannot feel. So the rules are not here: they are in the references
+this file routes to.
 
 ## How to work
 

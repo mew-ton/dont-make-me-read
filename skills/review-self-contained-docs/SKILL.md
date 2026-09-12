@@ -17,21 +17,13 @@ allowed-tools:
 
 # review-self-contained-docs
 
-## Purpose
+## Overview
 
-`avoid-unverifiable-context` and `avoid-reference-detours` say what to write. This skill checks
-what was actually written, against the same three conditions from the reader's side: time-closure
-and referenceability (that pair is `avoid-unverifiable-context`'s), and reference-scope closure
-(`avoid-reference-detours`'). It runs in two situations:
-
-- **Reviewing a PR**: check its description and every comment the diff adds or changes.
-- **Self-checking text you just wrote**: before a PR description, issue body, or code comment
-  ships, run it through this same judgment explicitly, rather than trusting your first read of
-  it — you wrote it with all the context already in your head, which is exactly the thing this
-  check has to route around. Imagine the exact reader those two skills' self-checks
-  describe — someone opening this with zero context — and judge only what is in front of that
-  reader: the unit's own text, and for a code comment, the code it annotates. Nothing else you
-  know about the PR, the issue, or this conversation counts as evidence.
+`avoid-unverifiable-context` and `avoid-reference-detours` say what to write; this skill checks
+what was actually written, against the same three conditions from the reader's side: time-closure,
+referenceability, and reference-scope closure. Judge each unit from its own text and, for a code
+comment, the code it annotates — nothing you know about the PR, the issue, or this conversation
+counts as evidence, which is the whole reason for running it.
 
 ## Inputs
 

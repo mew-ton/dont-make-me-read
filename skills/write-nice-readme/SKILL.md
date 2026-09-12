@@ -11,7 +11,7 @@ background: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
 A README is the standing answer to **"is this mine, and what do I do first"**. Every other
 document in a repository is read by someone who has already decided; this one is read while

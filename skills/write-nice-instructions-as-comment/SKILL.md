@@ -14,14 +14,12 @@ background: false
 allowed-tools: []
 ---
 
-## Why this exists
+## Overview
 
-This skill governs **an instruction written as a comment**: a PR review finding, a reply
-proposing a change, a remark asking for a fix. Its reader can answer back, which is what separates
-it from a rule — so within the first few lines they decide whether to act, skim, or argue.
-
-An agent reading the same text is served by the same shape, but **the bar is set by the human
-reader**: the budgets below exist because a person decides that fast.
+An instruction written as a comment — a PR review finding, a reply proposing a change, a remark
+asking for a fix — has a reader who can answer back, which is what separates it from a rule. They
+decide within the first few lines whether to act, skim, or argue, and the bar is theirs: the
+budgets below exist because a person decides that fast.
 
 ## Language
 
