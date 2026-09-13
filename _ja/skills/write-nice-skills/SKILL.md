@@ -4,8 +4,6 @@ description: >
   スキル、`SKILL.md`、あるいはその description と frontmatter を書き、編集し、レビューする — スキルの description と本文を、確実に発火し、かつ軽量であり続けるように書く方法。別のスキルが description の書き方や本文のサイズ決めの規則を必要とするときにも適用される。対象がアーキテクチャドキュメント、issue 本文、README、API あるいはライブラリのリファレンスドキュメントであるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
-context: fork
-background: false
 ---
 
 ## Overview（概要）

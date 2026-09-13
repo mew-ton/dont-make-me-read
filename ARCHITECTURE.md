@@ -99,6 +99,11 @@ context: fork
 background: false
 ```
 
+The test is the pair at the top of this section, not whether a file comes out. `write-nice-skills`
+writes a `SKILL.md` and still stays in place: it judges a `description` against the work in front of
+the model, and it hands its rules to another skill that asks for them — neither survives being cut
+off from the session.
+
 `agent` and `model` are set only on a fork whose whole job is gathering. One that produces the
 artifact gets neither.
 

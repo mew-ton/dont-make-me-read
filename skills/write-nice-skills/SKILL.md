@@ -7,8 +7,6 @@ description: >
   is an architecture doc, an issue body, a README, or API or library reference documentation.
 user-invocable: false
 disable-model-invocation: false
-context: fork
-background: false
 ---
 
 ## Overview
