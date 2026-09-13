@@ -7,7 +7,7 @@ Each pair names what it is fixing.
 
 - A tag list, a leaked step, and no occasion
 - The argument in front of the occasion
-- A routing table in the bound
+- A routing table in the bound, and a second-person one
 - The criteria, handed over
 
 ## A tag list, a leaked step, and no occasion
@@ -19,8 +19,8 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-The slash-separated head reads as a tag list, and a tag list matches nothing anyone writes —
-the words in it are fine, the punctuation between them is not. "first
+The slash-separated head reads as a tag list, and a tag list matches nothing anyone writes — the
+words in the head are fine, the punctuation between them is not. "first
 read … then rewrite … then check" is the procedure, so the agent acts on it and never
 loads the body. "great skills and better writing" names no occasion.
 
@@ -71,7 +71,7 @@ a diff does carry stay — `from:`, `isDetailPage` — because those are what th
 those are what fires.
 Why it costs the reader anything is the body's.
 
-## A routing table in the bound
+## A routing table in the bound, and a second-person one
 
 **Bad**
 
@@ -119,4 +119,5 @@ still being written or revised, or when what is wanted is a judgement of
 repo-groundedness, dependency closure, or scope.
 ```
 
-What it is a pass over, not what it passes on.
+What it is a pass over, not what it passes on — and a bound, where the Bad had none, taking back
+the entry point and the judgements that are other skills'.

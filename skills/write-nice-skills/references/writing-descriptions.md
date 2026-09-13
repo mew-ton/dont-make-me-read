@@ -37,7 +37,8 @@ it must not carry the procedure the body holds.
 - **Add a reach clause** where another skill will need the rules this one holds: "also applies
   when another skill needs …", naming the need rather than the skill.
 - **Keep it inside 1024 characters** — the field's own limit, so it is enforced rather than advisory. If the intent, the occasion and the bound will
-  not fit, the skill is doing too much: split it rather than padding or truncating.
+  not fit, the skill's scope is too wide: narrow it, and let the cuts that own splitting decide
+  whether it becomes two.
 
 ## DON'T
 

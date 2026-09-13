@@ -47,7 +47,8 @@ gathering is usually `Context`, a phase that produces an artifact is usually `Cl
 `<parent-skill-name>-<role>`: the parent's name, a hyphen, then the role the child plays —
 `review-nice-issues-change-inventory`, `write-nice-architecture-docs-repo-grounding`. The prefix is
 what keeps the pair together in a directory listing, and a rename touches only files you own: the
-directory and the frontmatter `name`, on each half.
+directory and the frontmatter `name` on each half, and the parent's body where it invokes the child
+by name.
 
 ## The fields a child carries
 
@@ -60,11 +61,17 @@ context: fork
 background: false
 ```
 
-`user-invocable: false` hides the child from the user's `/` menu.
+**`context: fork` is what makes it a child.** It makes the child an execution environment of its own
+rather than a stretch of the parent's turn; without it, `model` applies to the remainder of the
+current turn — the main conversation.
 
-`background: false` is what keeps the parent's turn waiting for the answer. It defaults to `true`,
+**`background: false` holds the parent's turn** until the answer is back. It defaults to `true`,
 which hands the parent back its turn before the child has produced anything, and every motive above
 wants the answer inside the turn that asked for it.
+
+The other two are reachability choices any skill makes: `user-invocable: false` keeps the child out
+of the user's `/` menu, and `disable-model-invocation: false` lets the model in, which is the
+child's only caller.
 
 `model` trades cost against capability, and the table above chooses it. Omit it and the fork inherits
 the parent's, which is right for the `Cleanliness` row.
@@ -72,15 +79,7 @@ the parent's, which is right for the `Cleanliness` row.
 A fork taken for its **tool set** narrows it with `allowed-tools` and `disallowed-tools`, the same
 two fields any skill uses.
 
-`disable-model-invocation: false` is what the child's only caller needs. Written out, the block is
-the whole of what makes a child reachable, and nothing in it waits on a remembered default.
-
-`context: fork` is what makes the child an execution environment rather than a stretch of
-the parent's turn. Without it, `model` applies to the remainder of the current turn — the
-main conversation.
-
 ## Passing input
 
 The parent reaches the child the way it reaches any skill — by name, through the `Skill` tool. Put
-**`$ARGUMENTS`** in the child's body where the brief should land; the parent passes the brief as one
-blob, and a multi-line free-form brief reaches the child intact.
+**`$ARGUMENTS`** in the child's body where the brief should land, and pass the brief as one blob.

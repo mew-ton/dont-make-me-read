@@ -19,7 +19,8 @@ effect, and one that is reached and then skimmed past has none either.
 
 ## How to work
 
-- **Judge the `description` against the work**, in the words the work supplies: you know what the
+- **Judge the `description` against the work** — the diff, draft or task in hand, as distinct from
+  the prompt — in the words that work supplies: you know what the
   skill says and the agent that must reach it does not.
 - **Count tokens with this skill's `scripts/count-tokens.sh`.** A short-looking body can cost well
   over its budget, so the budget is set in tokens.
@@ -32,7 +33,7 @@ effect, and one that is reached and then skimmed past has none either.
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 | What the `description` must do, must never do, how to choose the word it fires on, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| What a body may cost and how to measure it, which sections it carries, which three guards it needs and which of them may move out, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, what its frontmatter carries | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| What a body may cost and how to measure it, which sections it carries, which of Common Rationalizations, Red Flags and Verification it needs and which may move out, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, what its frontmatter carries | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | Whether a phase should run as a child skill, what to call it, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations
@@ -54,7 +55,7 @@ The agent will look for reasons to skip this skill:
 
 - A `SKILL.md` an author could finish a skill from, with no reference opened.
 - A description carrying the steps, the criteria it applies, or another skill's name.
-- A description whose head is a slash-separated tag list.
+- A description whose head is a tag list or a run of keywords.
 - A reference reached from another reference.
 - A body whose opening sentence does not say what the skill does.
 
@@ -63,7 +64,8 @@ The agent will look for reasons to skip this skill:
 - [ ] `count-tokens.sh` exits zero over every file the skill you are writing loads for one artifact or one branch.
 - [ ] If it is always-on: `count-tokens.sh` over it and every always-on `SKILL.md` it ships alongside, the counts added up, under 2000.
 - [ ] The description names the intent — a verb that carries it counts — the occasion and the bound, in the third person, inside 1024 characters, with a reach clause where another skill will need these rules.
-- [ ] The description is in English — a single-team skill may add the phrases that team really types — and carries no `<` or `>` in its text.
+- [ ] The description is in English (a single-team skill may add its team's own phrases).
+- [ ] The description carries no `<` or `>` in its text.
 - [ ] The description shares a word with the prompts or with the work, and the cases that should reach the skill do — run with it installed and without, so a case the description reached is told apart from one the model would have handled anyway.
 - [ ] The body opens on what the skill does and carries Common Rationalizations, Red Flags and Verification — the last inline, or in `VERIFICATION.md` behind a pointer — plus `## When it applies` where the description does not settle scope, and `## Persistence` in three parts if the skill is always-on.
 - [ ] The frontmatter `name` equals the directory name, is inside the platform's limits, and is neither `anthropic` nor `claude`.

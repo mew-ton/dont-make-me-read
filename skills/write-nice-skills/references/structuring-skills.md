@@ -85,8 +85,8 @@ Resolve it from where you read this file: there is no one absolute path to hard-
 
 For a free pre-check, count bytes with `wc -c`: bytes per token is the stable ratio, which is why a
 byte figure stands in for a token budget at all. **Under about 15 KB stands in for 5000 tokens, and
-6 KB for 2000.** Work those two figures
-out again whenever the ratio the script reports differs from the 3 bytes per token they assume, since a stale
+6 KB for 2000.** Both come from the ratio the script last reported here, rounded to 3 bytes per
+token. Work them out again whenever it reports a ratio more than about half a byte from that, since a stale
 figure that is too low sends you splitting files that were never over budget.
 
 
@@ -98,8 +98,9 @@ judgment, and this reader is past that and has to act.
 
 Give the reader a second short section — `## When it applies` — only where being in scope is hard
 to tell from the description alone: a standing rule the work never names, or an artifact with a
-near neighbour. Where the next section is already the routing or the first step, that section has
-answered it, and adding one is a line the reader would have got through without.
+near neighbour — unless the routing conditions themselves name which cases are in scope, in which
+case they have answered it and a section of its own is a line the reader would have got through
+without.
 
 Everything else comes after: how to work, the condition that routes to each reference, the
 `## Persistence` section if the skill is always-on, and the three guards below.
@@ -118,9 +119,9 @@ that settles it.
 | File | What it holds |
 |---|---|
 | `GLOSSARY.md` | the terms the rules use |
-| `VERIFICATION.md` | the checks, once they are disclosed — see *Guard it three ways*, below |
+| `VERIFICATION.md` | the checks, once they are disclosed — see *Progressive disclosure*, below |
 
-Neither is required. The name is fixed for a skill that has one.
+The name is fixed for a skill that has one.
 
 **Everything else the agent loads is branch material, and its name is yours.**
 `references/`, `scripts/`, `workflows/`, `assets/`, or a bare file beside `SKILL.md`. Use whatever
@@ -131,8 +132,7 @@ the skill's other folders already use, and spend no further thought on it.
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
   condition that routes to each reference, the `## When it applies` section where the description
   does not settle scope, the `## Persistence` section if the skill is always-on,
-  and all three guards — Common Rationalizations, Red Flags, and Verification on the condition its
-  own section sets. Leave the
+  and all three guards — Common Rationalizations, Red Flags, and Verification. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
   `SKILL.md` will not open the file it came from.
 - **Disclose** behind a pointer that names the condition reaching it what **only some branches reach**: deep
@@ -145,7 +145,15 @@ Two things stay inline however little context the agent has to spare. **A fact t
 reasonable assumption**, because an agent cannot recognise the condition that would have sent it
 to a file whose content it has no reason to expect. And **the answer an agent needs at the very moment it is about to
 skip** — the Common Rationalizations row, the Red Flag — because in a file it never loads, that
-answer is advice nobody applies.
+answer is advice nobody applies, and a Red Flag has to be in the agent's head while it writes,
+before any review.
+
+**Verification is the guard that may move.** Disclose it once running it takes more than reading
+the list — steps in a fixed order, an expected output to compare each against — and it goes to
+**`VERIFICATION.md` beside `SKILL.md`**, reached by "before calling the artifact done", which is a
+condition an agent recognises and all such a pointer needs. Keep it inline while every box is
+answered by looking or by one command, and keep a box run once for the whole skill rather than once
+per artifact inline too, procedure and all: the reader meets it once.
 
 ## How a reference is reached
 
@@ -153,9 +161,12 @@ What the body points at sits **one level deep**. A reference reached from anothe
 is read *partially* — the agent previews it with something like `head -100` instead of
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every file the
 agent loads links directly from `SKILL.md`, and is found that way; what it is called is
-settled under [Naming](#naming). A reference over **100 lines — the figure the platform's own
-authoring guidance uses — opens with a list of its own headings**, so a reader who needs one of its
-sections can find it without reading the rest; a shorter one may carry the list too.
+settled under [Naming](#naming). A reference reached that way is read whole, on the branch that
+needed it, so a rule anywhere in it is a rule that was read.
+
+A reader comes back to a long reference for one section, though, and reading it whole again to find
+that section is the trip the file was meant to save. So a reference over **100 lines — this skill's
+figure — opens with a list of its own headings**; a shorter one may carry the list too.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
@@ -170,31 +181,17 @@ guard for each.
 |---|---|---|
 | **Common Rationalizations** | the excuse, before the step is skipped | a table of `Rationalization` against `Reality` |
 | **Red Flags** | the symptom, once it is in the output | bullets, each naming one thing visible in the output |
-| **Verification** | whether the work is finished | a checklist, inline while every box is settled by looking at the artifact or by running one check against it |
+| **Verification** | whether the work is finished | a checklist |
 
 Fill Common Rationalizations from what the agent has actually said — add each excuse the
 first time you have to answer it. A Red Flag names something observable in the output — "a description with a step in it" —
 so the agent can look for it, where a restatement of the rule gives it nothing new to look
 at.
 
-**Two of the three stay inline.** Common Rationalizations is reached in the state where the
-agent is hunting for a reason to skip, and an agent in that state does not stop to open a
-file. Red Flags has to be in its head while it writes, which is before any review.
-
-**Verification may be disclosed** — moved out of `SKILL.md` behind a pointer, as *Progressive
-disclosure* above sets out — because "before calling the artifact done" is a condition an agent
-recognises, which is all such a pointer needs. Disclose it once running it takes more than
-reading the list — steps in a fixed order, an expected output to compare each against. Keep it
-inline while every box is answered by looking or by one command: those are cheaper to read where
-they are than to go and fetch. A box run once for the whole skill rather than once per artifact
-stays inline too, procedure and all — the reader meets it once, and a pointer would cost as much.
-
 **A box earns its place when what it catches stops the skill working** — it does not load, it never
 fires, or it is reached and skimmed past — or when it is a budget. A Red Flag may name the same
 thing: one is read while writing, the other after. The rest of the rules are met by reading them
 where they live, and a checklist that enumerates all of them has become the rule set.
-
-When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
 ## The frontmatter
 
@@ -211,8 +208,9 @@ optional, and settles how the skill runs rather than whether it is found:
 The execution-environment fields are what a skill invoked as another skill's phase turns on, and
 `SKILL.md` routes to the reference that settles them.
 
-Write all of it without comments. The frontmatter loads whenever the skill fires, and a field
-that needs explaining needs prose an author can argue with — the body — rather than a trailing `#`.
+Write all of it without comments. The frontmatter loads whenever the skill fires, and a field whose
+*choice* needs arguing needs prose an author can argue with — the body — rather than a trailing `#`.
+A sentence that only restates the setting is covered under *Leave out what changes nothing*, below.
 
 ## Leave out what changes nothing
 

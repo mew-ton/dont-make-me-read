@@ -7,7 +7,7 @@ description を直す必要があり、それを照らし合わせる実例が�
 
 - タグ列、漏れた手順、機会の不在
 - 機会の前に論拠が来ている
-- 境界がルーティング表になっている
+- 境界がルーティング表になっている、そして二人称である
 - 判定基準を手渡してしまっている
 
 ## タグ列、漏れた手順、機会の不在
@@ -19,7 +19,7 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-スラッシュ区切りの冒頭はタグ列として読まれ、タグ列は誰が書くものとも合致しない — 並んでいる語自体は
+スラッシュ区切りの冒頭はタグ列として読まれ、タグ列は誰が書くものとも合致しない — 冒頭に並んでいる語自体は
 問題なく、その間の記号が問題である。"first read … then rewrite … then check" は
 手順なので、エージェントはそれに基づいて行動し、本文を決してロードしない。"great skills and better writing"
 はどの機会も名指ししていない。
@@ -67,7 +67,7 @@ understood, or when the branch is on genuine domain data.
 diff の中にこの**規則そのもの**を名指しする語が無いので、冒頭がそのスキルの強制するものを述べる。diff が
 実際に担っている語は残る — `from:`、`isDetailPage` — それが作業の見え方であり、発火させるものだからである。それが読み手に何を払わせるかは本文のもの。
 
-## 境界がルーティング表になっている
+## 境界がルーティング表になっている、そして二人称である
 
 **Bad**
 
@@ -113,4 +113,5 @@ still being written or revised, or when what is wanted is a judgement of
 repo-groundedness, dependency closure, or scope.
 ```
 
-何に対するパスであるかであって、何を通すかではない。
+何に対するパスであるかであって、何を通すかではない。そして Bad には無かった境界が、入口としての使い方と、
+他のスキルのものである判定とを取り戻している。

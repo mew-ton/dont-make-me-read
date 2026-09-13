@@ -16,7 +16,8 @@ background: false
 
 ## How to work（どう進めるか）
 
-- **`description` は作業に照らして判断する。** 作業が供給する語で判断すること：スキルに何が書いてあるかを
+- **`description` は作業に照らして判断する** — 手元の diff、下書き、タスクであり、プロンプトとは別のもので
+  ある。その作業が供給する語で判断すること：スキルに何が書いてあるかを
   知っているのはあなたで、そこへ到達しなければならないエージェントは知らない。
 - **このスキルの `scripts/count-tokens.sh` でトークンを数える。** 短く見える本文が予算を大きく超えることが
   あるので、予算はトークンで定められている。
@@ -29,7 +30,7 @@ background: false
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 | `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、三つのガードのどれが必要でどれが外へ出せるか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、Common Rationalizations・Red Flags・Verification のどれが必要でどれが外へ出せるか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations（よくある自己正当化）
@@ -51,7 +52,7 @@ background: false
 
 - reference を一つも開かずに、著者がスキルを仕上げられてしまう `SKILL.md`。
 - description が手順、適用する判定基準、あるいは他のスキルの名前を担っている。
-- description の頭がスラッシュ区切りのタグ列になっている。
+- description の頭がタグ列か、キーワードの羅列になっている。
 - reference が別の reference から到達されている。
 - 本文の最初の一文が、そのスキルが何をするかを述べていない。
 
@@ -60,7 +61,8 @@ background: false
 - [ ] いま書いているスキルが一つの成果物または一つの枝のためにロードするファイルすべてに対して、`count-tokens.sh` がゼロ終了する。
 - [ ] それが常時オンなら：それ自身と、一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
 - [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししており、別のスキルがこの規則を必要とするなら到達節を持っている。
-- [ ] description が英語で書かれている — 一つのチームから出ないスキルは、そのチームが実際に打つフレーズを足してよい — かつその本文のどこにも `<` も `>` も無い。
+- [ ] description が英語で書かれている（一つのチームから出ないスキルは、そのチーム自身のフレーズを足してよい）。
+- [ ] description の本文のどこにも `<` も `>` も無い。
 - [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
 - [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち（最後のものはインラインか、ポインタの後ろの `VERIFICATION.md`）、description が対象を決着させないなら `## When it applies` を、そのスキルが常時オンなら三部構成の `## Persistence` を持っている。
 - [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にあり、`anthropic` でも `claude` でもない。
