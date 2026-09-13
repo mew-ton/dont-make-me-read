@@ -8,6 +8,7 @@ description を直す必要があり、それを照らし合わせる実例が�
 - タグ列、漏れた手順、機会の不在
 - 機会の前に論拠が来ている
 - 境界がルーティング表になっている、そして二人称である
+- 何も取り戻さない境界
 - 判定基準を手渡してしまっている
 
 ## タグ列、漏れた手順、機会の不在
@@ -27,16 +28,15 @@ each section, then check the frontmatter, for great skills and better writing.
 **Good**
 
 ```text
-Writes, edits and reviews a skill, a SKILL.md, or its description and
-frontmatter — how to write a skill's description and body so it fires reliably
-and stays lean. Also applies when another skill needs the rules for writing a
-description or for sizing a body. Does not apply when the artifact is an
-architecture doc, an issue body, a README, or API or library reference
-documentation.
+Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
+its frontmatter. Applies the notation and rules that make the skill fire
+reliably when the model judges whether to use it, and that keep the agent from
+skipping steps once it has. Also applies when another skill needs the rules for
+writing a description or for sizing a body.
 ```
 
-機会が冒頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は、機会が放っておけば
-巻き込んでしまう隣接成果物を取り戻しており、到達節は誰も名指ししていない。
+機会が冒頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節で、到達節は誰も名指ししていない。
+境界は無い。機会 — スキル自身のファイル — が、取り戻すべき隣接成果物にそもそも届いていないからである。
 
 ## 機会の前に論拠が来ている
 
@@ -88,6 +88,31 @@ changelog, a tour of the code, or a record of who decided what when.
 ```
 
 条件は成果物である。どのスキルがどの成果物を所有するかは、それぞれのスキルが自分の description の中で決着させる。
+
+## 何も取り戻さない境界
+
+**Bad**
+
+```text
+Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
+its frontmatter. Does not apply when the artifact is an architecture doc, an
+issue body, a README, or API or library reference documentation.
+```
+
+この境界にあるものは、どれも初めから手の届く範囲に無い：スキル自身のファイルを名指しした機会は、
+アーキテクチャドキュメントや README を巻き込まない。だからこの節は、費やした文字を一つも取り戻していない。
+これはスキル名を抜いたルーティング表であり、description がそもそも問わせるために存在する一つの問いに
+答える前に、四つの成果物を抱えて排除する作業をエージェントに渡している。
+
+**Good**
+
+```text
+Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
+its frontmatter.
+```
+
+取り戻すものが無いので、境界も無い。境界が文字数に見合うのは、機会が隣人に届くほど広いときであり —
+「any coding task」「text that will be read later」 — そのとき境界は、実際に届いている隣人を名指しする。
 
 ## 判定基準を手渡してしまっている
 

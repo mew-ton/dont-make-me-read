@@ -8,6 +8,7 @@ Each pair names what it is fixing.
 - A tag list, a leaked step, and no occasion
 - The argument in front of the occasion
 - A routing table in the bound, and a second-person one
+- A bound that takes nothing back
 - The criteria, handed over
 
 ## A tag list, a leaked step, and no occasion
@@ -27,17 +28,16 @@ loads the body. "great skills and better writing" names no occasion.
 **Good**
 
 ```text
-Writes, edits and reviews a skill, a SKILL.md, or its description and
-frontmatter — how to write a skill's description and body so it fires reliably
-and stays lean. Also applies when another skill needs the rules for writing a
-description or for sizing a body. Does not apply when the artifact is an
-architecture doc, an issue body, a README, or API or library reference
-documentation.
+Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
+its frontmatter. Applies the notation and rules that make the skill fire
+reliably when the model judges whether to use it, and that keep the agent from
+skipping steps once it has. Also applies when another skill needs the rules for
+writing a description or for sizing a body.
 ```
 
-The occasion opens it and carries `SKILL.md`, the word the work supplies. The intent is
-one clause. The bound takes back the neighbouring artifacts the occasion would otherwise sweep in, and the
-reach clause names nobody.
+The occasion opens it and carries `SKILL.md`, the word the work supplies. The intent is one
+clause, and the reach clause names nobody. There is no bound, because the occasion — a skill's own
+files — reaches no neighbouring artifact to take back.
 
 ## The argument in front of the occasion
 
@@ -94,6 +94,32 @@ changelog, a tour of the code, or a record of who decided what when.
 
 The artifact is the condition. Which skill owns which artifact is settled by each of
 those skills, in its own description.
+
+## A bound that takes nothing back
+
+**Bad**
+
+```text
+Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
+its frontmatter. Does not apply when the artifact is an architecture doc, an
+issue body, a README, or API or library reference documentation.
+```
+
+Nothing in that bound was ever in reach: an occasion naming a skill's own files does not sweep in
+an architecture doc or a README, so the clause returns none of the characters it spends. It is a
+routing table with the skill names taken out, and it hands the agent four artifacts to hold and
+rule out before it can answer the one question the description exists to make it ask.
+
+**Good**
+
+```text
+Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
+its frontmatter.
+```
+
+No bound, because there is nothing to take back. A bound earns its characters where the occasion is
+wide enough to reach a neighbour — "any coding task", "text that will be read later" — and there it
+names the neighbour it actually reaches.
 
 ## The criteria, handed over
 

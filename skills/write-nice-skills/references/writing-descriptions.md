@@ -26,10 +26,12 @@ it must not carry the procedure the body holds.
   invoked it`. A verb that already carries it needs no separate clause: `Writes and revises a
   README` is the intent.
 - **Name the occasion**: the artifact being written, or the activity underway.
-- **State when it must not fire** — the **bound** — in the same person, opening the same way every
-  time: `Does not apply …`. It takes back whatever the occasion sweeps in and should not: a
-  neighbouring artifact, a mode of use that is somebody else's entry point, a case inside the
-  occasion that belongs to someone else, or a case where the rule has no purchase at all.
+- **State when it must not fire, where the occasion sweeps in something it should not** — the
+  **bound**, in the same person, opening the same way every time: `Does not apply …`. What it takes
+  back is a neighbouring artifact the occasion really does reach, a mode of use that is somebody
+  else's entry point, a case inside the occasion that belongs to someone else, or a case where the
+  rule has no purchase at all. An occasion narrow enough to sweep in nothing needs no bound:
+  artifacts it never reached are a routing table in prose, and the reader pays for each one.
 - **Write the `description` in English**, whatever language the body and the skill's output
   are in. English terms are the ones that survive into a prompt whatever language it is typed
   in, and a skill other people install cannot know which language its users type. A skill that
