@@ -72,5 +72,5 @@ The agent will look for reasons to skip this skill:
 - [ ] The description carries no `<` or `>` in its text.
 - [ ] The description shares a word with the prompts or with the work, and the cases that should reach the skill do — run with it installed and without, so a case the description reached is told apart from one the model would have handled anyway.
 - [ ] The body opens on what the skill does and carries Common Rationalizations, Red Flags and Verification — the last inline, or in `VERIFICATION.md` behind a pointer — plus `## When it applies` where the description does not settle scope, and `## Persistence` in three parts if the skill is always-on.
-- [ ] The frontmatter `name` equals the directory name, is inside the platform's limits, and is neither `anthropic` nor `claude`.
+- [ ] The frontmatter `name` equals the directory name and is inside the platform's limits.
 - [ ] Every file the skill loads is pointed at directly from `SKILL.md`, under a stated condition or question.

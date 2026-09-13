@@ -68,5 +68,5 @@ disable-model-invocation: false
 - [ ] description の本文のどこにも `<` も `>` も無い。
 - [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
 - [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち（最後のものはインラインか、ポインタの後ろの `VERIFICATION.md`）、description が対象を決着させないなら `## When it applies` を、そのスキルが常時オンなら三部構成の `## Persistence` を持っている。
-- [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にあり、`anthropic` でも `claude` でもない。
+- [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にある。
 - [ ] そのスキルがロードするどのファイルも、`SKILL.md` から直接、明示された条件または問いのもとで指されている。

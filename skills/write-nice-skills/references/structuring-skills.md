@@ -21,8 +21,8 @@ Measure.
 └ over →
     ├ only some branch needs the material → split it into a file
     └ nothing left that only some branch needs →
-        ├ one of the three cuts applies    → a second skill
-        └ none applies                     → keep it as one skill
+        ├ one of the three cuts applies    → split it into a sub-skill
+        └ none applies                     → revisit the fixed sections of `SKILL.md`
 ```
 
 ## Measuring it, and the figures
@@ -58,10 +58,6 @@ an environment variable, defaulting to 5000 — so the first command checks an a
 outright. The always-on figure is a total, which no per-file exit code can test: run the second line
 and add the counts up yourself.
 
-"This skill's directory" is wherever this file was loaded from — a plugin's install path,
-`~/.claude/skills/write-nice-skills/`, or a repository's `.claude/skills/write-nice-skills/`.
-Resolve it from where you read this file: there is no one absolute path to hard-code.
-
 For a free pre-check, count bytes with `wc -c`: bytes per token is the stable ratio, which is why a
 byte figure stands in for a token budget at all. **Under about 15 KB stands in for 5000 tokens, and
 6 KB for 2000.** Both come from the ratio the script last reported here, rounded to 3 bytes per
@@ -83,8 +79,11 @@ Each piece of material goes to one of three places.
   a person, where its rules came from.
 
 Two files carry a standing role of the skill and their names are fixed, both beside `SKILL.md`, so
-the same path holds each of them in every skill and one grep finds all of them: **`GLOSSARY.md`**
-for the terms the rules use, and **`VERIFICATION.md`** for the checks once they are moved out.
+the same path holds each of them in every skill and one grep finds all of them:
+
+- **`GLOSSARY.md`** — the terms the rules use
+- **`VERIFICATION.md`** — the checks, once they are moved out
+
 Neither is required; the name is fixed for a skill that has one.
 
 **Everything else the agent loads is branch material, and its name is yours.** `references/`,
@@ -126,27 +125,33 @@ database administration makes it two.
 
 Then split only when the cut earns its cost, and the cost is the one at the top of this file: a
 second skill pays a description on every turn, forever, for everyone who installs it. Three cuts
-justify that:
+justify that.
 
-- **By leading word** — a situation has its *own* leading word, and arrives without this skill
-  having fired first. A word that only ever turns up once the skill is already loaded gates a file
-  inside it, and buys nothing by becoming a second description on every turn.
-- **By sequence** — a run of steps a caller should be able to reach as one unit, whose intermediate
-  steps nothing after it needs to see. A sequence that looks like it needs a skill of its own
-  usually has one vague completion condition instead, and the agent drifts past it rather than
-  stopping — so sharpen each step's condition until it is checkable and leaves no part of the step
-  unaccounted for ("the validator exits zero"), and see whether the cut is still wanted.
-- **By delegation** — a phase that should run in a *different execution environment*: its own
-  model, its own tool set, its own context. This cut settles which execution environment the phase
-  runs in, where the sequence cut settles which skill the steps live in. Whether a given phase may
-  be delegated at all is a further test, and `SKILL.md` routes to the file that settles it.
+### By leading word
 
-The skill's own name sits inside the platform's limits: lowercase letters, digits and hyphens; at
-most 64 characters; no leading, trailing or consecutive hyphen; the frontmatter `name` equal to the
-directory name; and neither `anthropic` nor `claude` as the name. A skill invoked as another skill's
-phase carries a further naming rule on top of these, and `SKILL.md` routes to the file that settles
-it.
+A situation has its *own* leading word, and arrives without this skill having fired first. A word
+that only ever turns up once the skill is already loaded gates a file inside it, and buys nothing by
+becoming a second description on every turn.
 
-If no cut applies, keep it as one skill. Splitting for its own sake multiplies either context load
-(one more description on every turn) or cognitive load (more files an author must hold) and buys
-nothing.
+### By sequence
+
+A run of steps a caller should be able to reach as one unit, whose intermediate steps nothing after
+it needs to see. A sequence that looks like it needs a skill of its own usually has one vague
+completion condition instead, and the agent drifts past it rather than stopping — so sharpen each
+step's condition until it is checkable and leaves no part of the step unaccounted for ("the
+validator exits zero"), and see whether the cut is still wanted.
+
+### By delegation
+
+A phase that should run in a *different execution environment*: its own model, its own tool set, its
+own context. This cut settles which execution environment the phase runs in, where the sequence cut
+settles which skill the steps live in. Whether a given phase may be delegated at all is a further
+test, and `SKILL.md` routes to the file that settles it.
+
+### What the sub-skill is
+
+A skill like any other: write it to the rules this one holds.
+
+If no cut applies, keep it as one skill and revisit what `SKILL.md` itself is carrying. Splitting
+for its own sake multiplies either context load (one more description on every turn) or cognitive
+load (more files an author must hold) and buys nothing.

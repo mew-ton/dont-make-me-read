@@ -27,9 +27,9 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
   inconsistent point-of-view can cause discovery problems." Every description here was
   imperative until that was read; `Applies when …` and `Does not apply when …` are what the
   pair became.
-- The hard limits: `name` at most 64 characters, lowercase letters, numbers and hyphens,
-  no XML tags, and not the reserved words `anthropic` or `claude`; `description` non-empty,
-  at most 1,024 characters, no XML tags. `quick_validate.py` enforces the same numbers.
+- The hard limits on the `description`: non-empty, at most 1,024 characters, no XML tags.
+  `quick_validate.py` enforces the same numbers, and the ones on `name` this skill leaves
+  to the platform.
 - What the description is for: "Claude uses it to choose the right Skill from potentially
   100+ available Skills", so it carries what the skill does *and* when to use it, and the
   rest of `SKILL.md` carries the implementation.
