@@ -8,7 +8,7 @@ tool set, its own context.
 - What may be delegated, and what may not
 - What the fork buys, and what `model` and `background` each case wants
 - Naming
-- The child's frontmatter
+- The three fields every child carries
 - Passing input
 
 ## What may be delegated, and what may not
@@ -32,9 +32,9 @@ review the review.
 
 ## What the fork buys, and what `model` and `background` each case wants
 
-The motives below cut across those three verdicts: gathering is usually `Context`, a phase that
-produces an artifact is usually `Cleanliness`, and `Independence` is the case where a parent
-delegates the same phase twice and neither copy may see the other's answer.
+The motives below say what a fork buys, and they apply to the two delegable cases above:
+gathering is usually `Context`, a phase that produces an artifact is usually `Cleanliness`, and
+`Independence` is either of them delegated twice, where neither copy may see the other's answer.
 
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
@@ -48,18 +48,18 @@ delegates the same phase twice and neither copy may see the other's answer.
 `-change-inventory`, `-repo-grounding`, `-version-lookup`. The prefix is what keeps the pair
 together in a directory listing, and renaming the pair is one edit you own on both halves.
 
-## The child's frontmatter
+## The three fields every child carries
 
 ```yaml
 user-invocable: false
 disable-model-invocation: false
 context: fork
-background: false
 ```
 
-`user-invocable: false` hides the child from the user's `/` menu. `background: false` is what two
-of the three motives want, since the parent uses the result in the same turn; leave it out — it
-defaults to `true` — only for the `Independence` row, where the children run in parallel.
+`user-invocable: false` hides the child from the user's `/` menu.
+
+`background` is not in that block because its value follows the motive: the table's last column
+says which. It defaults to `true`, so `Context` and `Cleanliness` both have to set it to `false`.
 
 Two optional fields narrow the child further. `model` trades cost against capability: set it
 from the table above. `agent` picks the tool set (`Explore` and `Plan` are read-only), and is the

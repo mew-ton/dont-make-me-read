@@ -11,7 +11,7 @@ it must not carry the procedure the body holds.
 
 - DO
 - DON'T
-- The leading word
+- The word that fires it
 - Choosing the lead
 - The description and the body serve different readers
 - Measuring whether it fires
@@ -23,7 +23,8 @@ it must not carry the procedure the body holds.
   choosing among them.
 - **Show the intent the skill was created for** — what its author wanted enforced, in one
   clause and in their terms. For example, `keeps a callee from branching on which caller
-  invoked it`.
+  invoked it`. A verb that already carries it needs no separate clause: `Writes and revises a
+  README` is the intent.
 - **Name the occasion**: the artifact being written, or the activity underway.
 - **State when it must not fire** — the **bound** — in the same person and the same shape every
   time: `Does not apply when …`. It takes back whatever the occasion sweeps in and should not: a
@@ -58,7 +59,7 @@ it must not carry the procedure the body holds.
   so a description carrying a tag or a `<placeholder>` does not load at all. The `>` that opens a
   YAML folded block is part of the frontmatter, not of the text, and is fine.
 
-## The leading word
+## The word that fires it
 
 The skill fires on a word shared between the description and whatever the agent is working
 from: a prompt, or — for a skill that fires mid-task with no prompt — the work itself. Put it where
@@ -107,8 +108,9 @@ have been sent to it, or when the text is an ephemeral chat reply.
 
 Both halves of the lead are there — the text it insists on, and the four kinds it displaces — and
 then the occasion, named as an activity: "writing an issue, a PR description, a code comment …".
-The description names that activity; keeping the skill in force for the rest of it is the body's
-job, and it says nothing about *why* a stranger cannot replay a conversation.
+The bound then takes back two cases the occasion sweeps in: a reference the reader can actually
+reach, which is a different problem, and text nobody reads again. The description names the
+activity; keeping the skill in force for the rest of it is the body's job.
 
 ## The description and the body serve different readers
 
@@ -126,5 +128,6 @@ alone, because an agent handed those has what it needs to act and stops there.
 Whether a skill is reached is its own measurement. Write the cases that should reach it — a
 handful of prompts a user would really send — and run them against the models it will run under,
 first with the skill installed and then without, so you can tell a case its `description` reached
-from one the model would have handled anyway. A skill the cases do not reach has a `description`
-problem, and rewriting the body does not touch it.
+from one the model would have handled anyway. For a skill nothing in a prompt names, the cases are the work
+itself — a diff, a draft, a file — and the comparison is the same. A skill the cases do not reach
+has a `description` problem, and rewriting the body does not touch it.

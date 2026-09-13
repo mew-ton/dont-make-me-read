@@ -10,7 +10,7 @@ once it has loaded, or whether to split one skill into two.
 - Staying in force
 - The body budget
   - Measuring it
-- Open with what the skill is
+- The body's shape, and what opens it
 - Guard it three ways
 - Naming
 - Progressive disclosure: inline, disclosed, or unlinked
@@ -34,8 +34,7 @@ A skill that has to be on for a whole activity is loaded once and then competes 
 everything that arrives after it. A body that never says it is still in force reads
 as advice already given, and the work drifts back to what it was doing.
 
-Say it in a `## Persistence` section of the body, in three parts: it is in force every response
-after the one that loaded it; it stays in force while you are unsure whether the case in front of you counts;
+Say it in the body, in three parts: it is in force every response after the one that loaded it; it stays in force while you are unsure whether the case in front of you counts;
 it is released on an explicit condition — the work turning to something the skill does not
 cover, or being told to stop.
 
@@ -56,11 +55,10 @@ both. A file inside its own limit can still put the activity over.
 | Always on for a whole activity — its body keeps it in force past the response that loaded it | **2000 tokens for every such `SKILL.md` added up** | every turn of every activity pays for them |
 | Reached for one artifact or one branch | **5000 tokens per file** | only the reader who needs it pays |
 
-So the set to check is every skill that will be standing at once: the always-on ones summed
-against the first figure, plus whichever is reached for the artifact in hand against the second.
-Measure the set, not the file you happen to be editing. You cannot know what else a stranger
-installs alongside a published skill, so sum only the always-on skills you ship together, and
-treat 2000 as the ceiling for that.
+So the set to check is the always-on skills you ship together, summed against the first figure,
+plus whichever one is reached for the artifact in hand against the second. Measure that set, not
+the file you happen to be editing. What else a stranger installs beside them is not yours to
+measure.
 
 ### Measuring it
 
@@ -93,7 +91,7 @@ out again from the ratio the script reports whenever the default model changes, 
 figure that is too low sends you splitting files that were never over budget.
 
 
-## Open with what the skill is
+## The body's shape, and what opens it
 
 `## Overview` first: one or two sentences on what the skill does and why that matters. Saying
 again what the description says is its job here — the description was material for the firing
@@ -140,8 +138,8 @@ When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
 leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
 name. `anthropic` and `claude` are reserved and may not appear in it. A skill invoked as another
-skill's phase carries a required prefix on top of these; `SKILL.md` routes to the reference that
-settles it.
+skill's phase carries a further naming rule on top of these; `SKILL.md` routes to the reference
+that settles it.
 
 **Two files carry a standing role of the skill, and their names are fixed**, so the same path holds
 each of them in every skill and one grep finds all of them:
@@ -174,20 +172,18 @@ the skill's other folders already use, and spend no further thought on it.
 
 Two things stay inline however little context the agent has to spare. **A fact that defies a
 reasonable assumption**, because an agent cannot recognise the condition that would have sent it
-to a file whose content it has no reason to expect. And **whatever part of a rule changes what the
-agent does** — the excuse it reaches for at the moment it is about to skip belongs in Common
-Rationalizations, where the answer arrives with it; in a file the agent never loads, that answer
-is advice nobody applies.
+to a file whose content it has no reason to expect. And **the answer an agent needs at the very moment it is about to
+skip** — the Common Rationalizations row, the Red Flag — because in a file it never loads, that
+answer is advice nobody applies.
 
 ## How a reference is reached
 
 What the body points at sits **one level deep**. A reference reached from another reference
 is read *partially* — the agent previews it with something like `head -100` instead of
-reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every
-supporting file links directly from `SKILL.md`, and is found that way; what it is called is
+reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every file the
+agent loads links directly from `SKILL.md`, and is found that way; what it is called is
 settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
-headings**: a file that long is read in pieces about as often as whole, and the list is what a
-piece shows.
+headings**, so a reader who needs one of its sections can find it without reading the rest.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code

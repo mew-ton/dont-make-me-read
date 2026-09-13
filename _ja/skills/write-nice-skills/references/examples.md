@@ -30,12 +30,12 @@ each section, then check the frontmatter, for great skills and better writing.
 Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
 and stays lean. Also applies when another skill needs the rules for writing a
-description or for sizing a body. Does not apply when the artifact is not a
-skill.
+description or for sizing a body. Does not apply when the artifact is an
+architecture doc, an issue body, a README, or reference documentation.
 ```
 
 機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は、機会が放っておけば
-巻き込んでしまうものすべて — スキルのものでないドキュメント — を取り戻しており、到達節は誰も名指ししていない。
+巻き込んでしまう隣接成果物を取り戻しており、到達節は誰も名指ししていない。
 
 ## 機会の前に論拠が来ている
 

@@ -7,8 +7,9 @@ what the term means; the rule that uses it lives in the file that owns the rule.
 `description`: what a person types when they ask for it, or — for a skill that fires mid-task with
 no prompt — what the work itself already calls the thing.
 
-**The work** — whatever the agent is working from when the skill might fire: the prompt it was
-given, the diff or file in front of it, the activity it is part-way through.
+**The work** — the artifact and activity the agent is engaged in when the skill might fire: the
+diff or file in front of it, the task it is part-way through. The prompt it was given is separate,
+and either can supply the word a skill fires on.
 
 **Intent** — what the skill's author wanted enforced, in the terms they would use for it.
 
@@ -27,7 +28,7 @@ is resident for a whole activity rather than for one artifact.
 the skill.
 
 **Child skill** — a skill a parent invokes to run one phase in its own execution environment
-(`context: fork`), returning what the parent needs rather than the material it was derived from.
+(`context: fork`), returning what the parent needs.
 
 **Progressive disclosure** — keeping the always-loaded core small by moving material out of
 `SKILL.md` and behind a context pointer.

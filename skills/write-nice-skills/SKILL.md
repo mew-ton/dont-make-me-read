@@ -3,8 +3,8 @@ name: write-nice-skills
 description: >
   Writes, edits and reviews a skill, a SKILL.md, or its description and frontmatter — how to write a
   skill's description and body so it fires reliably and stays lean. Also applies when another skill
-  needs the rules for writing a description or for sizing a body. Does not apply when the
-  artifact is not a skill.
+  needs the rules for writing a description or for sizing a body. Does not apply when the artifact
+  is an architecture doc, an issue body, a README, or reference documentation.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -60,7 +60,7 @@ The agent will look for reasons to skip this skill:
 
 ## Verification
 
-- [ ] Every file this skill loads is inside the per-file budget.
+- [ ] Every file the skill you are writing loads is inside the per-file budget.
 - [ ] The always-on skills it ships alongside are inside their shared budget, summed.
 - [ ] The description names the intent, the occasion and the bound, in the third person, inside 1024 characters.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition or question.

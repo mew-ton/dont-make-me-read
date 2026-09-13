@@ -10,7 +10,7 @@
 
 - DO
 - DON'T
-- The leading word（leading word）
+- The word that fires it（発火させる語）
 - Choosing the lead（どちらを先頭にするか）
 - The description and the body serve different readers（description と本文は読み手が違う）
 - Measuring whether it fires（そもそも発火するかを測る）
@@ -20,7 +20,8 @@
 - **三人称で書くこと。** `Writes and revises a README` のように。description はシステムプロンプトに注入
   されるので、スキルごとに視点が揺れると、その中から選ぶ精度を落とす。
 - **スキルが作られた意図を示すこと** — その著者が何を強制したかったのかを、一節で、著者の言葉で。
-  たとえば `keeps a callee from branching on which caller invoked it`。
+  たとえば `keeps a callee from branching on which caller invoked it`。すでに動詞がそれを担っているなら、
+  独立した節は要らない：`Writes and revises a README` がその意図である。
 - **機会を名指しすること**：書かれつつある成果物か、進行中の活動か。
 - **発火してはならない条件** — **bound（境界）** — **を、同じ人称で、毎回同じ形で書くこと**：
   `Does not apply when …`。これは、機会が巻き込んでしまうが巻き込むべきでないものを取り戻す — 隣接する
@@ -52,7 +53,7 @@
   `<placeholder>` を担った description はそもそもロードされない。YAML の折りたたみブロックを開く `>` は
   frontmatter の一部であって本文ではないので、問題ない。
 
-## The leading word（leading word）
+## The word that fires it（発火させる語）
 
 スキルは、description と、エージェントが手がかりにしているものとの間で共有された語によって発火する：
 プロンプトか、プロンプト無しで作業の途中に発火するスキルなら作業そのものである。エージェントがそれに出会う
@@ -96,9 +97,9 @@ have been sent to it, or when the text is an ephemeral chat reply.
 ```
 
 先頭の両半分がそろっている — 押し通すテキストと、それが押しのける四種 — そして次に機会が、活動として
-名指しされる："writing an issue, a PR description, a code comment …"。description はその活動を名指しする。
-残りのあいだスキルを効かせ続けるのは本文の仕事であり、見知らぬ者が会話を再生できない*理由*について、
-description は何も言っていない。
+名指しされる："writing an issue, a PR description, a code comment …"。境界はそのあと、機会が巻き込む二つの
+ケースを取り戻す：読み手が実際に到達できる参照 — これは別の問題である — と、二度と読まれないテキスト。
+description はその活動を名指しする。残りのあいだスキルを効かせ続けるのは本文の仕事である。
 
 ## The description and the body serve different readers（description と本文は読み手が違う）
 
@@ -115,5 +116,6 @@ description は何も言っていない。
 スキルに到達されるかどうかは、それ自体の計測である。そこへ到達すべきケースを書き — 利用者が実際に送る
 であろうプロンプトをいくつか — そのスキルが走ることになるモデルに対して、まずインストールした状態で、次に
 しない状態で走らせること。そうすれば、`description` が到達させたケースと、モデルがもともと処理していた
-ケースとを見分けられる。ケースが到達しないスキルは `description` の問題であり、本文を書き直してもそこには
+ケースとを見分けられる。プロンプトの中に何もそれを名指ししないスキルなら、ケースは作業そのもの — diff、下書き、ファイル — であり、
+比べ方は同じである。ケースが到達しないスキルは `description` の問題であり、本文を書き直してもそこには
 触れない。

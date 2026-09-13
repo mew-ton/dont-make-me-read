@@ -7,7 +7,7 @@
 - 何を委譲してよく、何をしてはならないか
 - fork が何を買うのか、そして場合ごとに `model` と `background` が何を求めるか
 - Naming（命名）
-- The child's frontmatter（子の frontmatter）
+- The three fields every child carries（どの子も持つ三つのフィールド）
 - Passing input（入力の渡し方）
 
 ## 何を委譲してよく、何をしてはならないか
@@ -30,9 +30,9 @@
 
 ## fork が何を買うのか、そして場合ごとに `model` と `background` が何を求めるか
 
-以下の動機は、上の三つの判定を横断する：収集はたいてい `Context`、成果物を生み出すフェーズはたいてい
-`Cleanliness`、そして `Independence` は、親が同じフェーズを二回委譲し、どちらの写しも他方の答えを見ては
-ならない場合である。
+以下の動機は fork が何を買うのかを述べるもので、上の委譲してよい二つのケースに当てはまる：収集はたいてい
+`Context`、成果物を生み出すフェーズはたいてい `Cleanliness`、そして `Independence` はそのどちらかを二回委譲
+する場合で、どちらの写しも他方の答えを見てはならない。
 
 | 動機 | fork が買うもの | `model` | `background` |
 |---|---|---|---|
@@ -46,18 +46,18 @@
 `-repo-grounding`、`-version-lookup`。この接頭辞が、ディレクトリ一覧で親子を隣に並べる。そして対の改名は、
 両方とも自分が所有する一回の編集である。
 
-## The child's frontmatter（子の frontmatter）
+## The three fields every child carries（どの子も持つ三つのフィールド）
 
 ```yaml
 user-invocable: false
 disable-model-invocation: false
 context: fork
-background: false
 ```
 
-`user-invocable: false` は子をユーザーの `/` メニューから隠す。`background: false` は三つの動機のうち二つが
-求める値である。親が同じターンで結果を使うからである。これを外すのは — 既定は `true` — `Independence` の行
-だけで、そこでは子が並列に走る。
+`user-invocable: false` は子をユーザーの `/` メニューから隠す。
+
+`background` が上のブロックに無いのは、その値が動機に従うからである。どの動機がどの値かは表の最後の列が
+述べている。既定は `true` なので、`Context` と `Cleanliness` はどちらも `false` を設定する必要がある。
 
 任意のフィールドが二つ、子をさらに狭める。`model` はコストと能力を天秤にかける：上の表のとおりに設定する。
 `agent` はツールセットを選び（`Explore` と `Plan` は読み取り専用）、こちらが、理由を言えない限り外しておく

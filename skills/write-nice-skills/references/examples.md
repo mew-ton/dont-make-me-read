@@ -30,13 +30,13 @@ loads the body. "great skills and better writing" names no occasion.
 Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
 and stays lean. Also applies when another skill needs the rules for writing a
-description or for sizing a body. Does not apply when the artifact is not a
-skill.
+description or for sizing a body. Does not apply when the artifact is an
+architecture doc, an issue body, a README, or reference documentation.
 ```
 
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
-one clause. The bound takes back everything the occasion would otherwise sweep in — any
-documentation that is not a skill's — and the reach clause names nobody.
+one clause. The bound takes back the neighbouring artifacts the occasion would otherwise sweep in, and the
+reach clause names nobody.
 
 ## The argument in front of the occasion
 
