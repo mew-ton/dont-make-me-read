@@ -42,35 +42,6 @@ what keeps the pair together in a directory listing, and a rename touches only f
 directory and the frontmatter `name` on each half, and the parent's body where it invokes the child
 by name.
 
-## The fields a child carries
-
-Beyond the `name` and `description` every skill carries:
-
-```yaml
-user-invocable: false
-disable-model-invocation: false
-context: fork
-background: false
-```
-
-**`context: fork` is what makes it a child.** It makes the child an execution environment of its own
-rather than a stretch of the parent's turn; without it, `model` applies to the remainder of the
-current turn — the main conversation.
-
-**`background: false` holds the parent's turn** until the answer is back. It defaults to `true`,
-which hands the parent back its turn before the child has produced anything, and every motive above
-wants the answer inside the turn that asked for it.
-
-The other two are reachability choices any skill makes: `user-invocable: false` keeps the child out
-of the user's `/` menu, and `disable-model-invocation: false` lets the model in, which is the
-child's only caller.
-
-`model` trades cost against capability, and the table above chooses it. Omit it and the fork inherits
-the parent's, which is right for the `Cleanliness` row.
-
-A fork taken for its **tool set** narrows it with `allowed-tools` and `disallowed-tools`, the same
-two fields any skill uses.
-
 ## Passing input
 
 The parent reaches the child the way it reaches any skill — by name, through the `Skill` tool. Put

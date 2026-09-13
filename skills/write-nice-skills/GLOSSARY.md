@@ -34,7 +34,7 @@ the skill.
 material, whether it stays inline in `SKILL.md`, sits behind a context pointer, or is left unlinked.
 
 **Context pointer** — a line in `SKILL.md` that names a file and the condition or question that
-reaches it: the reference is not loaded until the reader is in that case.
+reaches it: the file is not loaded until the reader is in that case.
 
 **No-op** — an instruction the model already follows unprompted, or a setting that changes nothing.
 

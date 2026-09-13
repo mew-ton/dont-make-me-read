@@ -3,14 +3,6 @@
 Read this when a description needs fixing and you want a worked pair to measure it against.
 Each pair names what it is fixing.
 
-## Contents
-
-- A tag list, a leaked step, and no occasion
-- The argument in front of the occasion
-- A routing table in the bound, and a second-person one
-- A bound that takes nothing back
-- The criteria, handed over
-
 ## A tag list, a leaked step, and no occasion
 
 **Bad**

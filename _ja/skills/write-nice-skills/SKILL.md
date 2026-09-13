@@ -17,7 +17,7 @@ disable-model-invocation: false
 
 ## How to work（どう進めるか）
 
-- **description と本文は、このスキルが定める記法に沿って書く。** それぞれを所有する reference から取ること —
+- **description と本文は、このスキルが定める記法に沿って書く。** それぞれを所有するファイルから取ること —
   下の表のとおりに。
 - **スキル自身が消費するトークンを都度計測し**、重いスキルかどうかを都度判断する。重いスキルは分割ルールに
   則ってファイルを分割する。計測はこのスキルの `scripts/count-tokens.sh` で行う。
@@ -32,8 +32,9 @@ disable-model-invocation: false
 | `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
 | 本文がどの節をどの順で持つか、それぞれが何を担うか、スキルをどう効かせ続けるか、本文から何を落とすか | [`references/write-body.md`](references/write-body.md) |
-| 本文がいくらまで許されるか・それをどう測るか、何を reference に置くか・三つのガードのどれをそこへ出せるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか、いつ一つのスキルを二つに分けるか | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
+| スキルがいくらまで許されるか・それをどう測るか、何を同梱ファイルへ出すか・三つのガードのどれをそこへ出せるか、いつ一つのスキルを二つに分けるか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| frontmatter のどのフィールドを設定するか、それぞれが何を決めるか | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
+| ある段階を子スキルとして走らせるべきか、fork が何を買うのか、それを何と呼ぶか | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations（よくある自己正当化）
 
@@ -46,16 +47,16 @@ disable-model-invocation: false
 | 「なぜその規則が重要かを description が説明しないと、誰も本気で受け取らない。」 | そのスキルが**何を**強制するかは description に属する。それを強制するのが*なぜ*正しいのか — 論拠、代償、代替案 — は本文のものである。両方を手渡されたエージェントは description から行動し、本文を決してロードしない。 |
 | 「使わない場合を述べるのは否定的で、予算の無駄だ。」 | 適用される場合しか名指ししない description は、隣接する成果物にも発火し、誤った発火は毎回、本文まるごとを支払わせる。 |
 | 「隣接する成果物を所有するスキルを名指しすれば、振り分けを助けられる。」 | それは「この成果物は自分のものか」に答えてしまい、エージェントはもう問わなくなる — そしてそれは、description がそもそも問わせるために存在する唯一の問いである。さらに他のスキルの名前を自分の description に書き込むことになり、相手が改名された日に、こちらが黙って誤りになる。 |
-| 「1ファイルのほうが複数より単純だ。」 | 肥大した `SKILL.md` は、そのスキルが発火する*たびに*ロードされ、文脈全体を引きずる。reference はそれを必要とする枝でだけ読まれる。 |
+| 「1ファイルのほうが複数より単純だ。」 | 肥大した `SKILL.md` は、そのスキルが発火する*たびに*ロードされ、文脈全体を引きずる。同梱ファイルはそれを必要とする枝でだけ読まれる。 |
 | 「今フルのガイドを書いて、後で削る。」 | 削らない。長すぎるスキルは長すぎるまま出荷される。 |
 | 「これは自分には良く読める。」 | あなたは読みながら、テキストに欠けている意図を自分で補っている。作業が供給する語と、スクリプトが報告する数字に照らして確認せよ。 |
 
 ## Red Flags（危険信号）
 
-- reference を一つも開かずに、著者がスキルを仕上げられてしまう `SKILL.md`。
+- 他のファイルを一つも開かずに、著者がスキルを仕上げられてしまう `SKILL.md`。
 - description が手順、適用する判定基準、あるいは他のスキルの名前を担っている。
 - description の頭がタグ列か、キーワードの羅列になっている。
-- reference が別の reference から到達されている。
+- 同梱ファイルが別の同梱ファイルから到達されている。
 - 本文の最初の一文が、そのスキルが何をするかを述べていない。
 
 ## Verification（検証）
@@ -68,4 +69,4 @@ disable-model-invocation: false
 - [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
 - [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち（最後のものはインラインか、ポインタの後ろの `VERIFICATION.md`）、description が対象を決着させないなら `## When it applies` を、そのスキルが常時オンなら三部構成の `## Persistence` を持っている。
 - [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にあり、`anthropic` でも `claude` でもない。
-- [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。
+- [ ] そのスキルがロードするどのファイルも、`SKILL.md` から直接、明示された条件または問いのもとで指されている。

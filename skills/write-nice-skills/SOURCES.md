@@ -33,10 +33,9 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
 - What the description is for: "Claude uses it to choose the right Skill from potentially
   100+ available Skills", so it carries what the skill does *and* when to use it, and the
   rest of `SKILL.md` carries the implementation.
-- **References one level deep**, and the mechanism behind it: a nested reference is read
+- **Bundled files one level deep**, and the mechanism behind it: a nested file is read
   partially — "Claude might use commands like `head -100` to preview content rather than
   reading entire files".
-- A table of contents for a reference file over 100 lines, for the same reason.
 - `SKILL.md` under 500 lines.
 - What is free and what is not: only name and description are pre-loaded for every skill;
   a bundled file costs nothing until it is read.

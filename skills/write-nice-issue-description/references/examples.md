@@ -3,21 +3,6 @@
 Read this when you are about to draft or revise an actual issue body. Each example demonstrates
 one part of Gate 1 or Gate 2 from `SKILL.md`.
 
-## Contents
-
-- Gate 1 — decision vs. choice
-- Gate 1 — a fixed shape is a constraint, not a choice
-- Gate 1 — constraint, with its reason in the right place
-- Gate 1 — references
-- Background — subject is a path when the entity is a document or code
-- Background — chaptering multiple problems
-- Background — same-shape requirements: a table, not repeated prose
-- Goal — covers every Acceptance criteria item
-- Acceptance criteria — an "all" claim needs a path-scoped subject
-- Affected areas — a future-placement note is still an implementation method
-- Gate 2 — duplication
-- A full passing issue
-
 ## Gate 1 — decision vs. choice
 
 ### Bad: the implementation method is written in

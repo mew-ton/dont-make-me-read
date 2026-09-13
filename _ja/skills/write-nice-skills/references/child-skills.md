@@ -39,32 +39,6 @@
 ディレクトリ一覧で親子を隣に並べる。そして改名が触るのは自分が所有するファイルだけである：それぞれの半分の
 ディレクトリと frontmatter の `name`、そして親の本文で子を名前で起動している箇所。
 
-## The fields a child carries（子が持つフィールド）
-
-どのスキルも持つ `name` と `description` に加えて：
-
-```yaml
-user-invocable: false
-disable-model-invocation: false
-context: fork
-background: false
-```
-
-**`context: fork` こそが、それを子にするものである。** 子を、親のターンの延長ではなくそれ自身の実行環境に
-する。それがないと、`model` は現在のターンの残り — メインの会話 — に適用される。
-
-**`background: false` が、答えが返るまで親のターンを留める。** 既定は `true` で、それは子が何かを生み出す前に
-親へターンを返してしまう。そして上のどの動機も、求めたそのターンの内側で答えを欲しがっている。
-
-残る二つは、どのスキルでもする到達可能性の選択である：`user-invocable: false` は子をユーザーの `/` メニューの
-外に置き、`disable-model-invocation: false` はモデルを通す — それが子の唯一の呼び出し元である。
-
-`model` はコストと能力を天秤にかけ、それは上の表が選んでいる。省けば fork は親のものを継承し、それが
-`Cleanliness` の行にとって正しい。
-
-**ツールセット**のために取る fork は、それを `allowed-tools` と `disallowed-tools` で狭める。どのスキルでも
-使う、同じ二つのフィールドである。
-
 ## Passing input（入力の渡し方）
 
 親が子に到達する経路は、どのスキルに対しても同じ — 名前で、`Skill` ツール経由である。ブリーフが着地すべき

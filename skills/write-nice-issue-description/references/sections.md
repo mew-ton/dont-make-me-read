@@ -4,14 +4,6 @@ Read this before writing a section. `SKILL.md` carries what every section is for
 rules for getting each one right, and the contrast that shows the failure. Worked examples of the
 gates and a full passing issue body are in [`examples.md`](examples.md).
 
-## Contents
-
-- Background / Why
-- Goal
-- Acceptance criteria
-- Affected areas
-- Dependencies
-
 ## Background / Why
 
 Write the facts that make up the problem. Test each sentence: does the issue's necessity fail to

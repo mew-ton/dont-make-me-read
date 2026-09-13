@@ -6,18 +6,6 @@
 だけである：本文はまだ文脈に無い。だから `description` はそれ単体で判断可能でなければならず、本文が持つ
 手順を担ってはならない。
 
-## Contents（目次）
-
-- Principles（原則）
-- The description's shape（description の形）
-- The leading word（発火させる語）
-- Intent（意図）
-- Occasion（機会）
-- Bound（境界）
-- Reach clause（到達節）
-- The description and the body serve different readers（description と本文は読み手が違う）
-- Measuring whether it fires（そもそも発火するかを測る）
-
 ## Principles（原則）
 
 **DO**

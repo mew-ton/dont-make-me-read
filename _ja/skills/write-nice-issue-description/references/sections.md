@@ -4,14 +4,6 @@
 仕上げるためのルールと、失敗を示す対比を担う。ゲートの実例と通過する issue 本文の全体像は
 [`examples.md`](examples.md) にある。
 
-## Contents
-
-- Background / Why
-- Goal
-- Acceptance criteria
-- Affected areas
-- Dependencies
-
 ## Background / Why
 
 問題を構成する事実を書く。各文をテストせよ：それがなければ issue の必要性は成立しなくなるか？ その事実が

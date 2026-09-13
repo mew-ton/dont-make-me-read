@@ -4,15 +4,6 @@ Bad/Good pairs for each condition, a best case with no comment at all, and two e
 cases that need a diff to show. Read this when judging a unit and you want to check your
 reasoning against a known-good case.
 
-## Contents
-
-- Condition 1: time-closure
-- Condition 2: referenceability
-- Condition 3: reference-scope closure
-- Best: no comment, because none is needed
-- Extraction edge case 1: a changed line redirects an unchanged one
-- Extraction edge case 2: a docstring describes a different declaration than the one it sits on
-
 ## Condition 1: time-closure
 
 ### Bad: Narrating a completed migration

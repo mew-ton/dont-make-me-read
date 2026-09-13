@@ -7,18 +7,6 @@ A skill's `name` and `description` are all the agent has when it decides whether
 is not in context yet. So the `description` has to be judge-able on its own, and it must not carry
 the procedure the body holds.
 
-## Contents
-
-- Principles
-- The description's shape
-- The leading word
-- Intent
-- Occasion
-- Bound
-- Reach clause
-- The description and the body serve different readers
-- Measuring whether it fires
-
 ## Principles
 
 **DO**
