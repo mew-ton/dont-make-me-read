@@ -66,11 +66,14 @@ background: false
 which hands the parent back its turn before the child has produced anything, and every motive above
 wants the answer inside the turn that asked for it.
 
-`model` is the one field left to choose, and the table above chooses it. Omit it and the fork
-inherits the parent's, which is right for the `Cleanliness` row.
+`model` trades cost against capability, and the table above chooses it. Omit it and the fork inherits
+the parent's, which is right for the `Cleanliness` row.
 
-`disable-model-invocation: false` keeps the model's path into the child open, and the caller here
-**is** a model.
+A fork taken for its **tool set** narrows it with `allowed-tools` and `disallowed-tools`, the same
+two fields any skill uses.
+
+`disable-model-invocation: false` is what the child's only caller needs. Written out, the block is
+the whole of what makes a child reachable, and nothing in it waits on a remembered default.
 
 `context: fork` is what makes the child an execution environment rather than a stretch of
 the parent's turn. Without it, `model` applies to the remainder of the current turn — the
@@ -78,6 +81,6 @@ main conversation.
 
 ## Passing input
 
-The parent reaches the child the way it reaches any skill — by name, through the `Skill` tool — and
-what it passes arrives in the child's body as **`$ARGUMENTS`**. Write the brief there as one blob:
-a multi-line free-form brief reaches the child intact.
+The parent reaches the child the way it reaches any skill — by name, through the `Skill` tool. Put
+**`$ARGUMENTS`** in the child's body where the brief should land; the parent passes the brief as one
+blob, and a multi-line free-form brief reaches the child intact.

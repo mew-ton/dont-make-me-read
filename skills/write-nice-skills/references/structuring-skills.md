@@ -55,9 +55,10 @@ both. A file inside its own limit can still put the activity over.
 | Always on for a whole activity — its body keeps it in force past the response that loaded it | **2000 tokens for every such `SKILL.md` added up** | every turn of every activity pays for them |
 | Reached for one artifact or one branch | **5000 tokens per file** | only the reader who needs it pays |
 
-So the set to check is the always-on skills you ship together, summed against the first figure,
-plus whichever one is reached for the artifact in hand against the second. Measure that set, not
-the file you happen to be editing.
+So check the always-on skills you ship together — the ones you can measure — summed against the
+first figure, and each file reached for the artifact in hand against the second. Someone else's
+always-on skill may be resident too, which is why the first figure is a ceiling to stay under rather
+than one to fill. Both figures are this skill's own, set against what a turn can afford to carry.
 
 ### Measuring it
 
@@ -82,9 +83,9 @@ second line and add the counts up yourself.
 `~/.claude/skills/write-nice-skills/`, or a repository's `.claude/skills/write-nice-skills/`.
 Resolve it from where you read this file: there is no one absolute path to hard-code.
 
-For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
-writing systems, where characters per token falls sharply between a Latin one and a non-Latin
-one — which is what makes the same line count cost very different numbers of tokens. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Work those two figures
+For a free pre-check, count bytes with `wc -c`: bytes per token is the stable ratio, which is why a
+byte figure stands in for a token budget at all. **Under about 15 KB stands in for 5000 tokens, and
+6 KB for 2000.** Work those two figures
 out again whenever the ratio the script reports differs from the 3 bytes per token they assume, since a stale
 figure that is too low sends you splitting files that were never over budget.
 
@@ -107,12 +108,12 @@ Everything else comes after: how to work, the condition that routes to each refe
 
 The skill's own name, inside the platform's own limits on it: lowercase letters, digits and
 hyphens; at most 64 characters; no leading, trailing or consecutive hyphen; the frontmatter `name`
-equal to the directory name; and `anthropic` and `claude` reserved. A skill invoked as another
+equal to the directory name; and neither `anthropic` nor `claude` as the name. A skill invoked as another
 skill's phase carries a further naming rule on top of these; `SKILL.md` routes to the reference
 that settles it.
 
-**Two files carry a standing role of the skill, and their names are fixed**, so the same path holds
-each of them in every skill and one grep finds all of them:
+**Two files carry a standing role of the skill, and their names are fixed** — both beside
+`SKILL.md`, so the same path holds each of them in every skill and one grep finds all of them:
 
 | File | What it holds |
 |---|---|
@@ -152,9 +153,9 @@ What the body points at sits **one level deep**. A reference reached from anothe
 is read *partially* — the agent previews it with something like `head -100` instead of
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every file the
 agent loads links directly from `SKILL.md`, and is found that way; what it is called is
-settled under [Naming](#naming). A reference over **100 lines — past what that preview shows —
-opens with a list of its own headings**, so a reader who needs one of its sections can find it
-without reading the rest; a shorter one may carry the list too.
+settled under [Naming](#naming). A reference over **100 lines — the figure the platform's own
+authoring guidance uses — opens with a list of its own headings**, so a reader who needs one of its
+sections can find it without reading the rest; a shorter one may carry the list too.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
@@ -188,9 +189,10 @@ inline while every box is answered by looking or by one command: those are cheap
 they are than to go and fetch. A box run once for the whole skill rather than once per artifact
 stays inline too, procedure and all — the reader meets it once, and a pointer would cost as much.
 
-**A box earns its place when what it catches stops the skill working** — it does not load, or it
-never fires — or when it is a budget. The rest of the rules are met by reading them where they
-live, and a checklist that enumerates all of them has become the rule set.
+**A box earns its place when what it catches stops the skill working** — it does not load, it never
+fires, or it is reached and skimmed past — or when it is a budget. A Red Flag may name the same
+thing: one is read while writing, the other after. The rest of the rules are met by reading them
+where they live, and a checklist that enumerates all of them has become the rule set.
 
 When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
@@ -203,22 +205,21 @@ optional, and settles how the skill runs rather than whether it is found:
 |---|---|
 | `user-invocable`, `disable-model-invocation` | which caller can reach it — a person's `/` menu, the model, or both |
 | `context`, `background`, `model` | whether it runs as its own execution environment, and under what |
-| `allowed-tools` | what is pre-approved without a prompt |
-| `disallowed-tools` | what it may not reach for |
+| `allowed-tools` | what is pre-approved without a prompt, out of what is already in reach |
+| `disallowed-tools` | what it may not reach for — this is the field that takes a tool away |
 
-`allowed-tools` pre-approves what is already in reach; `disallowed-tools` is the field that takes a
-tool away. The execution-environment fields are what a skill invoked as another skill's phase turns
-on, and `SKILL.md` routes to the reference that settles them.
+The execution-environment fields are what a skill invoked as another skill's phase turns on, and
+`SKILL.md` routes to the reference that settles them.
 
 Write all of it without comments. The frontmatter loads whenever the skill fires, and a field
 that needs explaining needs prose an author can argue with — the body — rather than a trailing `#`.
 
 ## Leave out what changes nothing
 
-Leave out the sentence that restates what the frontmatter already sets — `context: fork`,
-`user-invocable: false` — or that names whichever skill happens to invoke this one — "this is a
-model-invoked skill, called during review by `write-nice-instructions-as-comment`". It changes
-nothing the skill does, and it is wrong the day that skill is renamed.
+Leave out of a body the sentence that restates what that skill's own frontmatter already sets —
+`context: fork`, `user-invocable: false` — or that names whichever skill happens to invoke it —
+"this is a model-invoked skill, called during review by `write-nice-instructions-as-comment`".
+Neither changes what the skill does, and the second is wrong the day that skill is renamed.
 
 Leave out the no-op, too. It reads as thoroughness and costs a reader the same as a rule that
 changes something.

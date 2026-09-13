@@ -62,6 +62,6 @@ background: false
 - [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししており、別のスキルがこの規則を必要とするなら到達節を持っている。
 - [ ] description が英語で書かれている — 一つのチームから出ないスキルは、そのチームが実際に打つフレーズを足してよい — かつその本文のどこにも `<` も `>` も無い。
 - [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
-- [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち、そのスキルが常時オンなら三部構成の `## Persistence` 節を持っている。
-- [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にあり、予約語をどちらも含まない。
+- [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち（最後のものはインラインか、ポインタの後ろの `VERIFICATION.md`）、description が対象を決着させないなら `## When it applies` を、そのスキルが常時オンなら三部構成の `## Persistence` を持っている。
+- [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にあり、`anthropic` でも `claude` でもない。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。

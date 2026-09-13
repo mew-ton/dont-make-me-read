@@ -29,8 +29,8 @@
 **Child skill（子スキル）** — 親スキルが、一つのフェーズを固有の実行環境（`context: fork`）で走らせる
 ために起動するスキル。親が必要とするものを返す。
 
-**Progressive disclosure（漸進的開示）** — `SKILL.md` から材料を出して — context pointer の後ろへ、あるいは未リンクのまま置いて —
-常時ロードされる中核を小さく保つこと。
+**Progressive disclosure（漸進的開示）** — 材料の一つ一つについて、`SKILL.md` にインラインで留めるか、
+context pointer の後ろに置くか、未リンクのままにするかを決めることで、常時ロードされる中核を小さく保つこと。
 
 **Context pointer（文脈ポインタ）** — `SKILL.md` の中の、ファイルと、そこへ到達する条件または問いを名指す
 一行。読み手がその場合に入るまで reference はロードされない。

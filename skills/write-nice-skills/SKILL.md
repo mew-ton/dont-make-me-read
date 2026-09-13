@@ -65,6 +65,6 @@ The agent will look for reasons to skip this skill:
 - [ ] The description names the intent — a verb that carries it counts — the occasion and the bound, in the third person, inside 1024 characters, with a reach clause where another skill will need these rules.
 - [ ] The description is in English — a single-team skill may add the phrases that team really types — and carries no `<` or `>` in its text.
 - [ ] The description shares a word with the prompts or with the work, and the cases that should reach the skill do — run with it installed and without, so a case the description reached is told apart from one the model would have handled anyway.
-- [ ] The body opens on what the skill does, carries Common Rationalizations, Red Flags and Verification, and — if the skill is always-on — a `## Persistence` section in three parts.
-- [ ] The frontmatter `name` equals the directory name, is inside the platform's limits, and carries neither reserved word.
+- [ ] The body opens on what the skill does and carries Common Rationalizations, Red Flags and Verification — the last inline, or in `VERIFICATION.md` behind a pointer — plus `## When it applies` where the description does not settle scope, and `## Persistence` in three parts if the skill is always-on.
+- [ ] The frontmatter `name` equals the directory name, is inside the platform's limits, and is neither `anthropic` nor `claude`.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition or question.

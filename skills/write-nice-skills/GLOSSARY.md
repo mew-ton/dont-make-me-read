@@ -30,8 +30,8 @@ the skill.
 **Child skill** — a skill a parent invokes to run one phase in its own execution environment
 (`context: fork`), returning what the parent needs.
 
-**Progressive disclosure** — keeping the always-loaded core small by moving material out of
-`SKILL.md`: behind a context pointer, or unlinked entirely.
+**Progressive disclosure** — keeping the always-loaded core small by deciding, for each piece of
+material, whether it stays inline in `SKILL.md`, sits behind a context pointer, or is left unlinked.
 
 **Context pointer** — a line in `SKILL.md` that names a file and the condition or question that
 reaches it: the reference is not loaded until the reader is in that case.

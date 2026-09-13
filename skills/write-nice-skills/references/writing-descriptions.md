@@ -28,15 +28,15 @@ it must not carry the procedure the body holds.
 - **Name the occasion**: the artifact being written, or the activity underway.
 - **State when it must not fire** — the **bound** — in the same person, opening the same way every
   time: `Does not apply …`. It takes back whatever the occasion sweeps in and should not: a
-  neighbouring artifact, a mode of use that is somebody else's entry point, or a case inside the
-  occasion that belongs to someone else.
+  neighbouring artifact, a mode of use that is somebody else's entry point, a case inside the
+  occasion that belongs to someone else, or a case where the rule has no purchase at all.
 - **Write the `description` in English**, whatever language the body and the skill's output
   are in. English terms are the ones that survive into a prompt whatever language it is typed
   in, and a skill other people install cannot know which language its users type. A skill that
   will never leave one team may add the phrases that team really types.
 - **Add a reach clause** where another skill will need the rules this one holds: "also applies
   when another skill needs …", naming the need rather than the skill.
-- **Keep it inside 1024 characters** — the field's own limit, so this one is hard. If the intent, the occasion and the bound will
+- **Keep it inside 1024 characters** — the field's own limit, so it is enforced rather than advisory. If the intent, the occasion and the bound will
   not fit, the skill is doing too much: split it rather than padding or truncating.
 
 ## DON'T
@@ -65,10 +65,13 @@ it must not carry the procedure the body holds.
 The **leading word** is the one the description shares with whatever the agent is working from: a
 prompt, or — for a skill that fires mid-task with no prompt — the work itself. That shared word is
 what fires the skill. Put it at the start when something in the prompt or the work names the
-artifact, and inside the clause that shows what the work looks like when nothing names it.
+artifact, and inside the opening's own examples — see *Choosing what opens it* — when nothing names
+it.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
-- **One word per branch**: a second word for the same branch is duplication.
+- **One word per branch the description must fire on cold**: a second near-synonym for one of
+  those is duplication, and a branch reached only after the skill has loaded is gated inside it
+  rather than named here.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for
   example, `SKILL.md`, `issue`, `PR`.
 
@@ -121,8 +124,8 @@ thing the overlap is intended: cutting either because the other carries it leave
 the two readers short.
 
 What overlaps is what the skill is for and what occasions it — the two the firing judgment runs
-on. The body's opening restates the first always, and the occasion where being in scope is not
-obvious from the description alone. The steps, the criteria and the argument stay in the body
+on. The body's opening restates the first always; the occasion gets its own short section where
+being in scope is not obvious from the description alone. The steps, the criteria and the argument stay in the body
 alone, because an agent handed those has what it needs to act and stops there.
 
 ## Measuring whether it fires
