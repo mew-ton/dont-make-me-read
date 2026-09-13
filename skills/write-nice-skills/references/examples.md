@@ -35,7 +35,7 @@ architecture doc, an issue body, a README, or API or library reference
 documentation.
 ```
 
-The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
+The occasion opens it and carries `SKILL.md`, the word the work supplies. The intent is
 one clause. The bound takes back the neighbouring artifacts the occasion would otherwise sweep in, and the
 reach clause names nobody.
 
@@ -52,7 +52,7 @@ differs. Use on any coding task.
 
 The argument for the rule is all here — what it costs to read such a module, and what to do instead — which is the body's. An agent with
 them acts on the summary; the body confirms what it already believes, if it loads at
-all. The occasion arrives last, in four words.
+all. The occasion arrives last, in a closing sentence.
 
 **Good**
 
@@ -66,7 +66,7 @@ when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
-The lead states what the skill forces, because no word in a diff names the rule itself. The words
+The opening states what the skill forces, because no word in a diff names the rule itself. The words
 a diff does carry stay — `from:`, `isDetailPage` — because those are what the work looks like, and
 those are what fires.
 Why it costs the reader anything is the body's.

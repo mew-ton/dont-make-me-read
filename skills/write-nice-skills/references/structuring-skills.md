@@ -11,11 +11,11 @@ once it has loaded, or whether to split one skill into two.
 - The body budget
   - Measuring it
 - The body's shape, and what opens it
-- Guard it three ways
 - Naming
 - Progressive disclosure: inline, disclosed, or unlinked
 - How a reference is reached
-- Comments in the frontmatter
+- Guard it three ways
+- The frontmatter
 - Leave out what changes nothing
 - When to split
 
@@ -57,13 +57,14 @@ both. A file inside its own limit can still put the activity over.
 
 So the set to check is the always-on skills you ship together, summed against the first figure,
 plus whichever one is reached for the artifact in hand against the second. Measure that set, not
-the file you happen to be editing.
+the file you happen to be editing. Both figures are standing ceilings this skill sets, not
+measurements of a model: what moves when the model changes is the byte proxy below, never the
+budget it stands in for.
 
 ### Measuring it
 
-Line count is a weak proxy: the same budget buys noticeably fewer lines in a non-Latin writing
-system such as Japanese or Chinese, so a body can look short by line count and still cost well
-over the budget. Measure it:
+Line count is a weak proxy for either figure — a body can look short by line count and still cost
+well over its budget — so measure tokens:
 
 ```bash
 # artifact-reached files, each against 5000
@@ -101,37 +102,8 @@ to tell from the description alone: a standing rule the work never names, or an 
 near neighbour. Where the next section is already the routing or the first step, that section has
 answered it, and adding one is a line the reader would have got through without.
 
-Everything else comes after: how to work, the rules, the `## Persistence` section if the skill is
-always-on, and the guards.
-
-## Guard it three ways
-
-A skill is talked out of before the work, cut during it, and declared done after it. One
-guard for each.
-
-| Section | What it catches | Shape |
-|---|---|---|
-| **Common Rationalizations** | the excuse, before the step is skipped | a table of `Rationalization` against `Reality` |
-| **Red Flags** | the symptom, once it is in the output | bullets, each naming one thing visible in the output |
-| **Verification** | whether the work is finished | a checklist, inline while every box is settled by looking at the artifact or by running one check against it |
-
-Fill Common Rationalizations from what the agent has actually said — add each excuse the
-first time you have to answer it. A Red Flag names something observable in the output — "a description with a step in it" —
-so the agent can look for it, where a restatement of the rule gives it nothing new to look
-at.
-
-**Two of the three stay inline.** Common Rationalizations is reached in the state where the
-agent is hunting for a reason to skip, and an agent in that state does not stop to open a
-file. Red Flags has to be in its head while it writes, which is before any review.
-
-**Verification may be disclosed** — moved out of `SKILL.md` behind a pointer, as *Progressive
-disclosure* below sets out — because "before calling the artifact done" is a condition an agent
-recognises, which is all such a pointer needs. Disclose it once running it takes more than
-reading the list — steps in a fixed order, an expected output to compare each against. Keep it
-inline while every box is answered by looking or by one command: three to five of those are
-cheaper to read where they are than to go and fetch.
-
-When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
+Everything else comes after: how to work, the condition that routes to each reference, the
+`## Persistence` section if the skill is always-on, and the guards.
 
 ## Naming
 
@@ -183,15 +155,59 @@ is read *partially* — the agent previews it with something like `head -100` in
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every file the
 agent loads links directly from `SKILL.md`, and is found that way; what it is called is
 settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
-headings**, so a reader who needs one of its sections can find it without reading the rest.
+headings**, so a reader who needs one of its sections can find it without reading the rest; a
+shorter one may carry the list too.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
 means". The reference loads only when the reader is in that case.
 
-## Comments in the frontmatter
+## Guard it three ways
 
-Write the frontmatter without comments. The frontmatter loads whenever the skill fires, and a field
+A skill is talked out of before the work, cut during it, and declared done after it. One
+guard for each.
+
+| Section | What it catches | Shape |
+|---|---|---|
+| **Common Rationalizations** | the excuse, before the step is skipped | a table of `Rationalization` against `Reality` |
+| **Red Flags** | the symptom, once it is in the output | bullets, each naming one thing visible in the output |
+| **Verification** | whether the work is finished | a checklist, inline while every box is settled by looking at the artifact or by running one check against it |
+
+Fill Common Rationalizations from what the agent has actually said — add each excuse the
+first time you have to answer it. A Red Flag names something observable in the output — "a description with a step in it" —
+so the agent can look for it, where a restatement of the rule gives it nothing new to look
+at.
+
+**Two of the three stay inline.** Common Rationalizations is reached in the state where the
+agent is hunting for a reason to skip, and an agent in that state does not stop to open a
+file. Red Flags has to be in its head while it writes, which is before any review.
+
+**Verification may be disclosed** — moved out of `SKILL.md` behind a pointer, as *Progressive
+disclosure* above sets out — because "before calling the artifact done" is a condition an agent
+recognises, which is all such a pointer needs. Disclose it once running it takes more than
+reading the list — steps in a fixed order, an expected output to compare each against. Keep it
+inline while every box is answered by looking or by one command: those are cheaper to read where
+they are than to go and fetch.
+
+When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
+
+## The frontmatter
+
+`name` and `description` are required, and they are the two the agent pre-loads. The rest is
+optional, and settles how the skill runs rather than whether it is found:
+
+| Field | What it settles |
+|---|---|
+| `user-invocable`, `disable-model-invocation` | which caller can reach it — a person's `/` menu, the model, or both |
+| `context`, `background`, `model`, `agent` | whether it runs as its own execution environment, and under what |
+| `allowed-tools`, `disallowed-tools` | what it may reach for |
+
+`allowed-tools` pre-approves what is already in reach, so an empty list grants nothing and withholds
+nothing — a restriction written there is not one. `disallowed-tools` is the field that takes a tool
+away. The execution-environment fields are what a skill invoked as another skill's phase turns on,
+and `SKILL.md` routes to the reference that settles them.
+
+Write all of it without comments. The frontmatter loads whenever the skill fires, and a field
 that needs explaining needs prose an author can argue with — the body — rather than a trailing `#`.
 
 ## Leave out what changes nothing
@@ -202,9 +218,7 @@ model-invoked skill, called during review by `write-nice-instructions-as-comment
 nothing the skill does, and it is wrong the day that skill is renamed.
 
 Leave out the no-op, too. It reads as thoroughness and costs a reader the same as a rule that
-changes something. `allowed-tools: []` is the frontmatter's version: an empty list pre-approves
-nothing rather than forbidding anything, so it reads as a restriction and is none. Where tools
-have to be taken away, `disallowed-tools` is the field that takes them.
+changes something.
 
 And leave out the argument that changes nothing. An argument that does change what the reader does
 belongs beside the rule it changes; one that does not belongs outside the body.
@@ -225,7 +239,8 @@ justify that:
    one skill, gate a separate reference).
 2. **By sequence** — a run of steps a caller should be able to reach as one unit, whose
    intermediate steps nothing after it needs to see. First give every step a completion
-   condition that is checkable and exhaustive: "the validator exits zero". A sequence that
+   condition that is checkable and leaves no part of the step unaccounted for: "the validator
+   exits zero". A sequence that
    looks like it needs a skill of its own usually has one vague condition instead, and the
    agent drifts past it rather than stopping.
 3. **By delegation** — a phase that should run in a *different execution

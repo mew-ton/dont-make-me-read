@@ -10,7 +10,7 @@ background: false
 
 ## Overview（概要）
 
-ここで決着するのは、スキルをどう書くかである。`description` は、エージェントがそもそもそのスキルに手を
+このスキルが決着させるのは、スキルをどう書くかである。`description` は、エージェントがそもそもそのスキルに手を
 伸ばすかどうかを決める。本文は、手を伸ばされたあとを生き延びなければならない。何にも到達されないスキルには
 効果がなく、到達されたうえで読み流されるスキルにも効果はない。
 
@@ -29,7 +29,7 @@ background: false
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 | `description` が何をしなければならないか、何を決してしてはならないか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がいくらまで許されるか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter にコメントを入れてよいか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations（よくある自己正当化）
@@ -51,13 +51,15 @@ background: false
 
 - reference を一つも開かずに、著者がスキルを仕上げられてしまう `SKILL.md`。
 - description が手順、適用する判定基準、あるいは他のスキルの名前を担っている。
+- description の頭がスラッシュ区切りのタグ列になっている。
 - reference が別の reference から到達されている。
 - 本文の最初の一文が、そのスキルが何をするかを述べていない。
 
 ## Verification（検証）
 
-- [ ] いま書いているスキルがロードするどのファイルに対しても、`count-tokens.sh` がゼロ終了する。
-- [ ] それと一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
+- [ ] いま書いているスキルがロードする成果物起動型のファイルすべてに対して、`count-tokens.sh` がゼロ終了する。
+- [ ] それが常時オンなら：それ自身と、一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
 - [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししている。
-- [ ] description が英語で書かれており、その本文のどこにも `<` も `>` も無い。
+- [ ] description が英語で書かれている — そのスキルが一つのチームから決して出ないのでない限り — かつその本文のどこにも `<` も `>` も無い。
+- [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態でして、していない状態ではしない。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。

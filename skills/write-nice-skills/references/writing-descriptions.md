@@ -36,7 +36,7 @@ it must not carry the procedure the body holds.
   will never leave one team may add the phrases that team really types.
 - **Add a reach clause** where another skill will need the rules this one holds: "also applies
   when another skill needs …", naming the need rather than the skill.
-- **Keep it inside 1024 characters, hard.** If the intent, the occasion and the bound will
+- **Keep it inside 1024 characters** — the field's own limit, so this one is hard. If the intent, the occasion and the bound will
   not fit, the skill is doing too much: split it rather than padding or truncating.
 
 ## DON'T
@@ -65,10 +65,12 @@ it must not carry the procedure the body holds.
 The **leading word** is the one the description shares with whatever the agent is working from: a
 prompt, or — for a skill that fires mid-task with no prompt — the work itself. That shared word is
 what fires the skill. Put it where the agent meets it: at the start when the prompt supplies it, and
-inside the clause that shows what the work looks like when the work supplies it.
+inside the clause that shows what the work looks like when the work supplies it. "Leading" is what
+the word does, and in that second case it does it from inside the clause.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
-- **One per branch**: synonyms that rename the same branch are duplication.
+- **One per branch**: two words for one branch are duplication; two the work really uses for
+  different parts of it are not — a skill, its `SKILL.md`, its `description`.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for
   example, `SKILL.md`, `issue`, `PR`.
 

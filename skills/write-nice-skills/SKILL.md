@@ -13,7 +13,7 @@ background: false
 
 ## Overview
 
-This settles how a skill is written: its `description`, which decides whether the agent reaches for
+This skill settles how a skill is written: its `description`, which decides whether the agent reaches for
 the skill at all, and its body, which has to survive being reached. A skill nothing reaches has no
 effect, and one that is reached and then skimmed past has none either.
 
@@ -32,7 +32,7 @@ effect, and one that is reached and then skimmed past has none either.
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 | What the `description` must do, must never do, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| What a body may cost, which sections it carries, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, whether its frontmatter may carry comments | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| What a body may cost and how to measure it, which sections it carries, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, what its frontmatter carries | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | Whether a phase should run as a child skill, what to call it, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations
@@ -54,13 +54,15 @@ The agent will look for reasons to skip this skill:
 
 - A `SKILL.md` an author could finish a skill from, with no reference opened.
 - A description carrying the steps, the criteria it applies, or another skill's name.
+- A description whose head is a slash-separated tag list.
 - A reference reached from another reference.
 - A body whose opening sentence does not say what the skill does.
 
 ## Verification
 
-- [ ] `count-tokens.sh` exits zero over every file the skill you are writing loads.
-- [ ] `count-tokens.sh` over every always-on `SKILL.md` it ships alongside, the counts added up, under 2000.
+- [ ] `count-tokens.sh` exits zero over every artifact-reached file the skill you are writing loads.
+- [ ] If it is always-on: `count-tokens.sh` over it and every always-on `SKILL.md` it ships alongside, the counts added up, under 2000.
 - [ ] The description names the intent — a verb that carries it counts — the occasion and the bound, in the third person, inside 1024 characters.
-- [ ] The description is in English, with no `<` or `>` anywhere in its text.
+- [ ] The description is in English, unless the skill will never leave one team, and carries no `<` or `>` in its text.
+- [ ] The description shares a word with the prompts or with the work, and the cases that should reach the skill do — with it installed, and not without.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition or question.

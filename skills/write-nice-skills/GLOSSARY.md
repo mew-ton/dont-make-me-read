@@ -31,10 +31,10 @@ the skill.
 (`context: fork`), returning what the parent needs.
 
 **Progressive disclosure** — keeping the always-loaded core small by moving material out of
-`SKILL.md` and behind a context pointer.
+`SKILL.md`: behind a context pointer, or unlinked entirely.
 
 **Context pointer** — a line in `SKILL.md` that names a file and the condition or question that
 reaches it: the reference is not loaded until the reader is in that case.
 
-**No-op** — an instruction the model already follows unprompted.
+**No-op** — an instruction the model already follows unprompted, or a setting that changes nothing.
 
