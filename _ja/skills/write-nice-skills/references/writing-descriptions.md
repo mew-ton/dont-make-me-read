@@ -41,10 +41,9 @@
   ある。作業そのものが使う語も残る。発火させるのはそれだからである。
 - **このスキルのものではない概念を説明すること** — callee とは何か、プルリクエストとは何か、なぜ結合が代償を
   伴うのか。ノイズである：エージェントは知っているし、その文字数は意図から差し引かれる。
-- **他のスキルを名指しすること。** 名指ししたくなるのは、たいていそれが振り分けだからである — どのスキルが
-  何を所有するかをエージェントに告げること。そしてルーティング表は本文のものである —
-  だからその名指しは、本文を description の外へ運び出す。そして「*この*成果物は自分のものか」をエージェント
-  に代わって答えてしまう。description がそもそも問わせるために存在する問いである。たとえば
+- **他のスキルを名指しすること。** その名前は他人のファイルへの依存である：相手が改名した日に壊れ、しかも
+  それを検査するものは何もない。さらに「*この*成果物は自分のものか」をエージェントに代わって答えてしまう。
+  description がそもそも問わせるために存在する問いである。たとえば
   `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`。到達節はその例外である。
   誰も名指ししないからである：「also applies when another skill needs …」。
 - **タグ列や、キーワードを詰めた依頼文を書くこと。** `Skill / SKILL.md / description —` は誰が打つものにも
@@ -81,25 +80,25 @@ an issue body, reference documentation, a tutorial, or a changelog.
 だから意図のための独立した節は要らない。
 
 **名指ししない → 何を強制するかを先頭に、`Forces …` で始める。** そのスキルが押し通すもの、そして押し
-のける相手があるならそれを。この種の規則そのものを名指しする語は作業の中に無い — 「caller knowledge」と言う
-プロンプトも無いし、そう言う diff 行も無い — だから先頭に置ける機会が無く、誰も名指ししない機会は、
-エージェントが diff の途中で忘れる機会である。作業が供給するのは、その規則が捕まえる**形**であり、その語は
+のける相手があるならそれを。この種の規則そのものを名指しする語は作業の中に無い：プロンプトは機能を求め、
+diff は関数を見せ、どちらもどの規則が当てはまるかを言わない — だから先頭に置ける機会が無く、誰も名指し
+しない機会は、エージェントが diff の途中で忘れる機会である。作業が供給するのは、その規則が捕まえる**形**であり、その語は
 先頭の中の実例に入る。ここでは先頭が来て、次に機会、最後に境界が来る：
 
 ```text
-Forces the caller-agnostic callee that takes what differs as data, named in the
-domain's own vocabulary, over one that branches on who called it — a shared
-fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag.
-Applies to any coding task: writing, refactoring, extracting, reviewing, or
-designing a function, a module, a component, or the interface between them.
-Does not apply when the subject is prose, or a comment that sends its reader
-elsewhere to be understood, or when the branch is on genuine domain data.
+Forces the text a stranger can go and check: the rationale a reader who was
+never in the room can still trace, never the conversation that produced it, the
+review feedback, the discarded alternatives, or a past state the current code
+no longer shows. Applies when writing an issue, a PR description, a code
+comment, an API or design doc, or any text or code that will be read later.
+Does not apply when the reader genuinely can reach the reference but should not
+have been sent to it, or when the text is an ephemeral chat reply.
 ```
 
-先頭の両半分がそろっている — 押し通す callee と、それが押しのけるほう — そして次に機会が、活動として
-名指しされる："any coding task: writing, refactoring, extracting, reviewing, or designing"。
-description はその活動を名指しする。残りのあいだスキルを効かせ続けるのは本文の仕事であり、呼び出し元で
-分岐することが何を払わせるのかについて、description は何も言っていない。
+先頭の両半分がそろっている — 押し通すテキストと、それが押しのける四種 — そして次に機会が、活動として
+名指しされる："writing an issue, a PR description, a code comment …"。description はその活動を名指しする。
+残りのあいだスキルを効かせ続けるのは本文の仕事であり、見知らぬ者が会話を再生できない*理由*について、
+description は何も言っていない。
 
 ## The description and the body serve different readers（description と本文は読み手が違う）
 

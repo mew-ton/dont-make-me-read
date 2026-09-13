@@ -104,10 +104,8 @@ to tell from the description alone: a standing rule the work never names, or an 
 near neighbour. Where the next section is already the routing or the first step, that section has
 answered it, and adding one is a line the reader would have got through without.
 
-How to work, the rules and the guards come after.
-
-Whatever argument does not fit those opening sentences either changes what the reader does — and
-belongs beside the rule it changes — or it does not, and does not belong in the body at all.
+Everything else comes after: how to work, the rules, the `## Persistence` section if the skill has
+one, and the guards.
 
 ## Guard it three ways
 
@@ -141,10 +139,12 @@ When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
 The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
 leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
-name. `anthropic` and `claude` are reserved and may not appear in it.
+name. `anthropic` and `claude` are reserved and may not appear in it. A skill invoked as another
+skill's phase carries a required prefix on top of these; `SKILL.md` routes to the reference that
+settles it.
 
-**Two files carry a standing role of the skill, and their names are fixed**, so every skill's
-sits at the same path and the set is greppable:
+**Two files carry a standing role of the skill, and their names are fixed**, so the same path holds
+each of them in every skill and one grep finds all of them:
 
 | File | What it holds |
 |---|---|
@@ -160,16 +160,24 @@ the skill's other folders already use, and spend no further thought on it.
 ## Progressive disclosure: inline, disclosed, or unlinked
 
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
-  condition that routes to each reference, and all three guards — Common Rationalizations, Red
-  Flags, and Verification while it is still a checklist. Leave the
+  condition that routes to each reference, the `## Persistence` section if the skill is always-on,
+  and all three guards — Common Rationalizations, Red Flags, and Verification while it is still a
+  checklist. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
   `SKILL.md` will not open the file it came from.
-- **Disclose** behind a context pointer what **only some branches reach**: deep
+- **Disclose** behind a pointer that names the condition reaching it what **only some branches reach**: deep
   detail, long examples, per-branch procedure.
 - **Leave unlinked** what no branch reaches: a file beside `SKILL.md` that
   nothing references is never loaded, so it costs the agent nothing at all — the design
   rationale, the skill explained to a person, where its rules came from. Whether such a file
   exists, and what it is called, belong to whoever writes it.
+
+Two things stay inline however little context the agent has to spare. **A fact that defies a
+reasonable assumption**, because an agent cannot recognise the condition that would have sent it
+to a file whose content it has no reason to expect. And **whatever part of a rule changes what the
+agent does** — the excuse it reaches for at the moment it is about to skip belongs in Common
+Rationalizations, where the answer arrives with it; in a file the agent never loads, that answer
+is advice nobody applies.
 
 ## How a reference is reached
 
@@ -185,15 +193,6 @@ A context pointer names the **condition or the question** that reaches the file:
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
 means". The reference loads only when the reader is in that case.
 
-A fact that defies a reasonable assumption stays inline as well: an agent cannot recognise the
-condition that would have sent it to a file whose content it has no reason to expect.
-
-Whatever part of a rule changes what the agent does stays inline, however little context it has
-to spare. The
-excuse an agent reaches for at the moment it is about to skip belongs in Common Rationalizations,
-where the answer arrives with it; in a file the agent never loads, that answer is advice nobody
-applies.
-
 ## Comments in the frontmatter
 
 Write the frontmatter without comments. All of the frontmatter loads on every fire, and a field that needs
@@ -204,11 +203,14 @@ future reader pays for.
 
 Leave out the sentence that restates what the frontmatter already sets — `context: fork`,
 `user-invocable: false` — or that names whichever skill happens to invoke this one — "this is a
-model-invoked skill, called during review by the skill that owns PR comments". It changes nothing
-the skill does, and it is wrong the day that skill is renamed.
+model-invoked skill, called during review by `write-nice-instructions-as-comment`". It changes
+nothing the skill does, and it is wrong the day that skill is renamed.
 
 Leave out the no-op, too. It reads as thoroughness and costs a reader the same as a rule that
 changes something.
+
+And leave out the argument that changes nothing. An argument that does change what the reader does
+belongs beside the rule it changes; one that does not belongs outside the body.
 
 ## When to split
 
@@ -217,7 +219,9 @@ further and one task loads several skills with instructions to reconcile against
 other, widen it and nothing activates it precisely. Querying a database and formatting the
 result is one unit; adding database administration makes it two.
 
-Then split only when the cut earns its cost. Three cuts justify it:
+Then split only when the cut earns its cost, and the cost is the one from the top of this file: a
+second skill pays a description on every turn, forever, for everyone who installs it. Three cuts
+justify that:
 
 1. **By leading word** — a distinct situation has its *own* leading word, one the prompt or
    the work actually supplies. That word can invoke a separate model-invoked skill (or, within
@@ -230,6 +234,8 @@ Then split only when the cut earns its cost. Three cuts justify it:
 3. **By delegation** — a phase that should run in a *different execution
    environment*: its own model, its own tool set, its own context. This cut settles which
    execution environment the phase runs in, where cut 2 settles which skill the steps live in.
+   Whether a given phase may be delegated at all is a further test, in a reference of its own;
+   `SKILL.md` routes to it.
 
 If no cut applies, keep it inline. Splitting for its own sake multiplies either
 context load (one more description on every turn) or cognitive load (more files an

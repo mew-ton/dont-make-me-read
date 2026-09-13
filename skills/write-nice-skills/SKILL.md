@@ -60,6 +60,7 @@ The agent will look for reasons to skip this skill:
 
 ## Verification
 
-- [ ] The token counts are inside the budgets in `references/structuring-skills.md`, for the skill you are writing and for the set it will stand alongside.
-- [ ] The description names the occasion and the bound, in the third person, inside 1024 characters.
+- [ ] Every file this skill loads is inside the per-file budget.
+- [ ] The always-on skills it ships alongside are inside their shared budget, summed.
+- [ ] The description names the intent, the occasion and the bound, in the third person, inside 1024 characters.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition or question.

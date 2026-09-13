@@ -34,8 +34,8 @@ description or for sizing a body. Does not apply when the artifact is not a
 skill.
 ```
 
-機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は機会を否定したもので、
-到達節は誰も名指ししていない。
+機会が先頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節。境界は、機会が放っておけば
+巻き込んでしまうものすべて — スキルのものでないドキュメント — を取り戻しており、到達節は誰も名指ししていない。
 
 ## 機会の前に論拠が来ている
 
@@ -71,20 +71,19 @@ diff の中にこの**規則そのもの**を名指しする語が無いので�
 **Bad**
 
 ```text
-DO NOT use for an architecture doc (that is write-nice-architecture-docs), a
-SKILL.md (that is write-nice-skills), an issue body (that is
-write-nice-issue-description), for reference documentation, a tutorial, or a
-changelog.
+DO NOT use for an issue body (that is write-nice-issue-description), a
+SKILL.md (that is write-nice-skills), a changelog, a tour of the code, or a
+record of who decided what when.
 ```
 
-維持すべき名前が三つ、待ち構える改名が三つ。そしてエージェントは、この成果物は自分のものかと問う代わりに表を
+維持すべき名前が二つ、待ち構える改名が二つ。そしてエージェントは、この成果物は自分のものかと問う代わりに表を
 読む。
 
 **Good**
 
 ```text
-Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
-body, reference documentation, a tutorial, or a changelog.
+Does not apply when the artifact is a GitHub issue body, a SKILL.md, a
+changelog, a tour of the code, or a record of who decided what when.
 ```
 
 条件は成果物である。どのスキルがどの成果物を所有するかは、それぞれのスキルが自分の description の中で決着させる。

@@ -35,7 +35,8 @@ skill.
 ```
 
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
-one clause. The bound is the occasion negated, and the reach clause names nobody.
+one clause. The bound takes back everything the occasion would otherwise sweep in — any
+documentation that is not a skill's — and the reach clause names nobody.
 
 ## The argument in front of the occasion
 
@@ -74,20 +75,19 @@ Why it costs the reader anything is the body's.
 **Bad**
 
 ```text
-DO NOT use for an architecture doc (that is write-nice-architecture-docs), a
-SKILL.md (that is write-nice-skills), an issue body (that is
-write-nice-issue-description), for reference documentation, a tutorial, or a
-changelog.
+DO NOT use for an issue body (that is write-nice-issue-description), a
+SKILL.md (that is write-nice-skills), a changelog, a tour of the code, or a
+record of who decided what when.
 ```
 
-Three names to maintain, three renames waiting, and an agent reading a table instead
+Two names to maintain, two renames waiting, and an agent reading a table instead
 of asking whether this artifact is the skill's.
 
 **Good**
 
 ```text
-Does not apply when the artifact is an architecture doc, a SKILL.md, an issue
-body, reference documentation, a tutorial, or a changelog.
+Does not apply when the artifact is a GitHub issue body, a SKILL.md, a
+changelog, a tour of the code, or a record of who decided what when.
 ```
 
 The artifact is the condition. Which skill owns which artifact is settled by each of

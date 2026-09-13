@@ -7,6 +7,11 @@ what the term means; the rule that uses it lives in the file that owns the rule.
 `description`: what a person types when they ask for it, or — for a skill that fires mid-task with
 no prompt — what the work itself already calls the thing.
 
+**The work** — whatever the agent is working from when the skill might fire: the prompt it was
+given, the diff or file in front of it, the activity it is part-way through.
+
+**Intent** — what the skill's author wanted enforced, in the terms they would use for it.
+
 **Occasion** — the artifact being written or the activity underway, named in the `description` as
 what brings the skill in.
 

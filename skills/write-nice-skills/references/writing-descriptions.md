@@ -47,13 +47,11 @@ it must not carry the procedure the body holds.
 - **Explain concepts that are not this skill's** — what a callee is, what a pull request
   is, why coupling costs anything. Noise: the agent knows, and the characters come out of
   the intent.
-- **Name another skill.** Wanting to name one usually means you are routing — telling the agent
-  which skill owns what — and a routing table is the body's to hold, so the name
-  carries the body out into the description. A name also reads as a routing table, which
-  stops the agent asking whether *this* artifact is the skill's: for example,
-  `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach
-  clause is the exception, since it names nobody: "also applies when another skill needs
-  …".
+- **Name another skill.** The name is a dependency on somebody else's file: it goes wrong the day
+  they rename it, and nothing checks that. It also answers "is *this* artifact the skill's?" for
+  the agent, which is the question the description exists to make it ask — for example,
+  `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`. A reach clause is
+  the exception, since it names nobody: "also applies when another skill needs …".
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —`
   matches nothing anyone types.
 - **Put an angle bracket in the description's text.** `<` and `>` are rejected outright there,
@@ -91,26 +89,26 @@ and revised, so no separate intent clause is needed.
 
 **It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
 and, where there is one, the thing that thing displaces. Nothing in the work names a rule like
-this — no prompt says "caller knowledge" and no diff line does either — so there is no occasion to
-lead with, and an occasion nobody names is one the agent forgets mid-diff. What the work *does*
-supply is the shape the rule catches, and those words go in the lead's own examples. Here the lead
+this: a prompt asks for a feature, a diff shows a function, and neither says which rule applies —
+so there is no occasion to lead with, and an occasion nobody names is one the agent forgets
+mid-diff. What the work *does* supply is the shape the rule catches, and those words go in the
+lead's own examples. Here the lead
 comes first, then the occasion, then the bound:
 
 ```text
-Forces the caller-agnostic callee that takes what differs as data, named in the
-domain's own vocabulary, over one that branches on who called it — a shared
-fetch taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag.
-Applies to any coding task: writing, refactoring, extracting, reviewing, or
-designing a function, a module, a component, or the interface between them.
-Does not apply when the subject is prose, or a comment that sends its reader
-elsewhere to be understood, or when the branch is on genuine domain data.
+Forces the text a stranger can go and check: the rationale a reader who was
+never in the room can still trace, never the conversation that produced it, the
+review feedback, the discarded alternatives, or a past state the current code
+no longer shows. Applies when writing an issue, a PR description, a code
+comment, an API or design doc, or any text or code that will be read later.
+Does not apply when the reader genuinely can reach the reference but should not
+have been sent to it, or when the text is an ephemeral chat reply.
 ```
 
-Both halves of the lead are there — the callee it insists on, and the one it displaces — and then
-the occasion, named as an activity: "any coding task: writing, refactoring, extracting,
-reviewing, or designing". The description names that activity; keeping the skill in force for the
-rest of it is the body's job, and the description says nothing about why branching on the caller
-costs anything.
+Both halves of the lead are there — the text it insists on, and the four kinds it displaces — and
+then the occasion, named as an activity: "writing an issue, a PR description, a code comment …".
+The description names that activity; keeping the skill in force for the rest of it is the body's
+job, and it says nothing about *why* a stranger cannot replay a conversation.
 
 ## The description and the body serve different readers
 

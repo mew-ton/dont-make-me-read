@@ -32,6 +32,10 @@ review the review.
 
 ## What the fork buys, and what `model` and `background` each case wants
 
+The motives below cut across those three verdicts: gathering is usually `Context`, a phase that
+produces an artifact is usually `Cleanliness`, and `Independence` is the case where a parent
+delegates the same phase twice and neither copy may see the other's answer.
+
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
