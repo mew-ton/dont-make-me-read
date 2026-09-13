@@ -6,11 +6,12 @@ file, and whether to split one skill into two.
 ## What this settles
 
 Every installed skill's `name` and `description` are pre-loaded, on every turn, whether or not the
-skill is ever used. A bundled file costs nothing until it is read.
+skill is ever used. A bundled file is not: it is read on the branch that needs it, and by nobody
+else.
 
-So the two cuts cost different things. Moving a branch into a file is free until the branch is
-taken. Moving it into a second skill pays a description on every turn, forever, for everyone who
-has it installed. This file settles which one a growing skill has earned.
+So the two cuts cost different things. A second skill pays a description on every turn, forever,
+for everyone who has it installed, where a file is paid for only by the reader who opens it. This
+file settles which one a growing skill has earned.
 
 ## The decision
 
@@ -18,7 +19,7 @@ has it installed. This file settles which one a growing skill has earned.
 Measure.
 ├ inside the budget                       → nothing to do
 └ over →
-    ├ only some branch needs the material → move it into a file (free)
+    ├ only some branch needs the material → split it into a file
     └ nothing left that only some branch needs →
         ├ one of the three cuts applies    → a second skill
         └ none applies                     → keep it as one skill
