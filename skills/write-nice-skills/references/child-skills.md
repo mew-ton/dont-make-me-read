@@ -3,14 +3,6 @@
 Read this when a phase of one skill should run somewhere else: its own model, its own
 tool set, its own context.
 
-## Contents
-
-- What may be delegated, and what may not
-- What the fork buys, and which `model` each case wants
-- Naming
-- The fields a child carries
-- Passing input
-
 ## What may be delegated, and what may not
 
 Delegation decides **whether a phase leaves this execution environment**. A delegated phase is
