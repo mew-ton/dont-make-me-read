@@ -30,7 +30,12 @@ and Red Flags are filled from what actually happened: one row per excuse you had
 bullet per defect you found in the output. A thick pair is a count of how often this skill has been
 talked out of, or got it wrong. Cutting rows deletes the record and leaves the cause, so the thing
 to look at is the skill: a scope too wide to hold at once, a rule whose cost is never stated, a
-description that fires it on work it does not cover. Verification is the one of the three that can
+description that fires it on work it does not cover.
+
+The commonest cause is a sequence you decided not to cut. A skill that runs one offers the agent a
+place to be talked out of at every step, so the table grows a row per step, and what looks like
+bulk is a tally of the steps. That is the sequence cut arriving as evidence rather than as a
+judgement: split the run, a skill per step. Verification is the one of the three guards that can
 simply move out.
 
 ## Measuring it, and the figures
