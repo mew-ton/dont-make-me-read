@@ -35,7 +35,8 @@ and how to split a body once it has grown. That buys three things:
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 | What the `description` must do, must never do, how to choose the word it fires on, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| What a body may cost and how to measure it, which sections it carries, which of Common Rationalizations, Red Flags and Verification it needs and which may move out, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, what its frontmatter carries | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| Which sections the body carries and in what order, what each has to hold, how a skill stays in force, and what to leave out of a body | [`references/write-body.md`](references/write-body.md) |
+| What a body may cost and how to measure it, what goes in a reference and which guard may move there, what to call the skill and its files, what its frontmatter carries, and when to split one skill into two | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | Whether a phase should run as a child skill, what to call it, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations

@@ -31,7 +31,8 @@ disable-model-invocation: false
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 | `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、Common Rationalizations・Red Flags・Verification のどれが必要でどれが外へ出せるか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| 本文がどの節をどの順で持つか、それぞれが何を担うか、スキルをどう効かせ続けるか、本文から何を落とすか | [`references/write-body.md`](references/write-body.md) |
+| 本文がいくらまで許されるか・それをどう測るか、何を reference に置くか・三つのガードのどれをそこへ出せるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか、いつ一つのスキルを二つに分けるか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations（よくある自己正当化）
