@@ -32,8 +32,9 @@ talked out of, or got it wrong. Cutting rows deletes the record and leaves the c
 to look at is the skill. What to split out, and what to cut, depends on what that skill holds: the
 table says something is wrong, not what.
 
-One worked case. A skill that reviewed a pull request ran a workflow, and its table grew a row for
-every step in the run. There the answer was a skill per step.
+One worked case. A skill that reviewed a pull request ran a workflow, and every step in that run
+had its own reason to be skipped. So the table had to take a step column, and a row closing off
+each step's reason, and that is what made it thick. The answer was a skill per step.
 
 Verification is the one of the three guards that can simply move out.
 
