@@ -1,14 +1,11 @@
 ---
 name: write-nice-skills
 description: >
-  スキル、`SKILL.md`、あるいはその description と frontmatter を書き、編集し、レビューする — スキルの
-  description と本文を、確実に発火し、かつ軽量であり続けるように書く方法。別のスキルが description の
-  書き方や本文のサイズ決めの規則を必要とするときにも適用される。対象がアーキテクチャドキュメント、issue 本文、README、リファレンスドキュメントであるときは適用しない。
+  スキル、`SKILL.md`、あるいはその description と frontmatter を書き、編集し、レビューする — スキルの description と本文を、確実に発火し、かつ軽量であり続けるように書く方法。別のスキルが description の書き方や本文のサイズ決めの規則を必要とするときにも適用される。対象がアーキテクチャドキュメント、issue 本文、README、API あるいはライブラリのリファレンスドキュメントであるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview（概要）
@@ -29,11 +26,11 @@ allowed-tools: []
 
 | 問い | 読むもの |
 |---|---|
-| `description` が何をしなければならないか、何を決してしてはならないか、どう先頭を決めるか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
+| `description` が何をしなければならないか、何を決してしてはならないか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
 | 本文がいくらまで許されるか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter にコメントを入れてよいか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
-| ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 
 ## Common Rationalizations（よくある自己正当化）
 
@@ -59,7 +56,8 @@ allowed-tools: []
 
 ## Verification（検証）
 
-- [ ] いま書いているスキルがロードするどのファイルも、1ファイルあたりの予算の内側にある。
-- [ ] それと一緒に出荷する常時オンのスキル群が、合計して共有の予算の内側にある。
-- [ ] description が意図と機会と境界を、三人称で、1024文字以内で名指ししている。
+- [ ] いま書いているスキルがロードするどのファイルに対しても、`count-tokens.sh` がゼロ終了する。
+- [ ] それと一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
+- [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししている。
+- [ ] description が英語で書かれており、その本文のどこにも `<` も `>` も無い。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。

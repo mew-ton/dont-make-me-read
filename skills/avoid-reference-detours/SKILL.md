@@ -9,7 +9,6 @@ description: >
   repeated twice inside one document, or when a module branches on which caller invoked it.
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
 ---
 
 ## Overview

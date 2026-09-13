@@ -34,7 +34,7 @@ A skill that has to be on for a whole activity is loaded once and then competes 
 everything that arrives after it. A body that never says it is still in force reads
 as advice already given, and the work drifts back to what it was doing.
 
-Say it in the body, in three parts: it is in force every response after the one that loaded it; it stays in force while you are unsure whether the case in front of you counts;
+Say it in the body, in a `## Persistence` section, in three parts: it is in force every response after the one that loaded it; it stays in force while you are unsure whether the case in front of you counts;
 it is released on an explicit condition — the work turning to something the skill does not
 cover, or being told to stop.
 
@@ -57,14 +57,13 @@ both. A file inside its own limit can still put the activity over.
 
 So the set to check is the always-on skills you ship together, summed against the first figure,
 plus whichever one is reached for the artifact in hand against the second. Measure that set, not
-the file you happen to be editing. What else a stranger installs beside them is not yours to
-measure.
+the file you happen to be editing.
 
 ### Measuring it
 
-Line count is a weak proxy: 5000 tokens buys around 250 lines of English prose but
-only around 150 in a non-Latin writing system such as Japanese or Chinese, so a body
-can look short by line count and still cost well over the budget. Measure it:
+Line count is a weak proxy: the same budget buys noticeably fewer lines in a non-Latin writing
+system such as Japanese or Chinese, so a body can look short by line count and still cost well
+over the budget. Measure it:
 
 ```bash
 # artifact-reached files, each against 5000
@@ -86,7 +85,7 @@ Resolve it from where you read this file: there is no one absolute path to hard-
 
 For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
 writing systems, where characters per token falls sharply between a Latin one and a non-Latin
-one — which is what puts the English figure above at 250 lines and the Japanese one at 150. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Work those two figures
+one — which is what moves the line count. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Work those two figures
 out again from the ratio the script reports whenever the default model changes, since a stale
 figure that is too low sends you splitting files that were never over budget.
 
@@ -102,8 +101,8 @@ to tell from the description alone: a standing rule the work never names, or an 
 near neighbour. Where the next section is already the routing or the first step, that section has
 answered it, and adding one is a line the reader would have got through without.
 
-Everything else comes after: how to work, the rules, the `## Persistence` section if the skill has
-one, and the guards.
+Everything else comes after: how to work, the rules, the `## Persistence` section if the skill is
+always-on, and the guards.
 
 ## Guard it three ways
 
@@ -114,7 +113,7 @@ guard for each.
 |---|---|---|
 | **Common Rationalizations** | the excuse, before the step is skipped | a table of `Rationalization` against `Reality` |
 | **Red Flags** | the symptom, once it is in the output | bullets, each naming one thing visible in the output |
-| **Verification** | whether the work is finished | a checklist whose every box is settled by looking at the artifact, or by running one check against it |
+| **Verification** | whether the work is finished | a checklist, inline while every box is settled by looking at the artifact or by running one check against it |
 
 Fill Common Rationalizations from what the agent has actually said — add each excuse the
 first time you have to answer it. A Red Flag names something observable in the output — "a description with a step in it" —
@@ -125,8 +124,9 @@ at.
 agent is hunting for a reason to skip, and an agent in that state does not stop to open a
 file. Red Flags has to be in its head while it writes, which is before any review.
 
-**Verification may be disclosed**, because "before calling the artifact done" is a condition an
-agent recognises, which is all the pointer that discloses it needs. Disclose it once running it takes more than
+**Verification may be disclosed** — moved out of `SKILL.md` behind a pointer, as *Progressive
+disclosure* below sets out — because "before calling the artifact done" is a condition an agent
+recognises, which is all such a pointer needs. Disclose it once running it takes more than
 reading the list — steps in a fixed order, an expected output to compare each against. Keep it
 inline while every box is answered by looking or by one command: three to five of those are
 cheaper to read where they are than to go and fetch.
@@ -158,7 +158,8 @@ the skill's other folders already use, and spend no further thought on it.
 ## Progressive disclosure: inline, disclosed, or unlinked
 
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
-  condition that routes to each reference, the `## Persistence` section if the skill is always-on,
+  condition that routes to each reference, the `## When it applies` section where the description
+  does not settle scope, the `## Persistence` section if the skill is always-on,
   and all three guards — Common Rationalizations, Red Flags, and Verification while it is still a
   checklist. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
@@ -167,8 +168,7 @@ the skill's other folders already use, and spend no further thought on it.
   detail, long examples, per-branch procedure.
 - **Leave unlinked** what no branch reaches: a file beside `SKILL.md` that
   nothing references is never loaded, so it costs the agent nothing at all — the design
-  rationale, the skill explained to a person, where its rules came from. Whether such a file
-  exists, and what it is called, belong to whoever writes it.
+  rationale, the skill explained to a person, where its rules came from.
 
 Two things stay inline however little context the agent has to spare. **A fact that defies a
 reasonable assumption**, because an agent cannot recognise the condition that would have sent it
@@ -191,9 +191,8 @@ means". The reference loads only when the reader is in that case.
 
 ## Comments in the frontmatter
 
-Write the frontmatter without comments. All of the frontmatter loads on every fire, and a field that needs
-explaining needs prose an author can argue with — the body — rather than a trailing `#` every
-future reader pays for.
+Write the frontmatter without comments. The frontmatter loads whenever the skill fires, and a field
+that needs explaining needs prose an author can argue with — the body — rather than a trailing `#`.
 
 ## Leave out what changes nothing
 
@@ -203,7 +202,9 @@ model-invoked skill, called during review by `write-nice-instructions-as-comment
 nothing the skill does, and it is wrong the day that skill is renamed.
 
 Leave out the no-op, too. It reads as thoroughness and costs a reader the same as a rule that
-changes something.
+changes something. `allowed-tools: []` is the frontmatter's version: an empty list pre-approves
+nothing rather than forbidding anything, so it reads as a restriction and is none. Where tools
+have to be taken away, `disallowed-tools` is the field that takes them.
 
 And leave out the argument that changes nothing. An argument that does change what the reader does
 belongs beside the rule it changes; one that does not belongs outside the body.

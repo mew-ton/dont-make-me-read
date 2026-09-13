@@ -7,7 +7,6 @@ description: >
   is a judgement of repo-groundedness, dependency closure, or scope.
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
 disallowed-tools:
   - Read
   - Grep

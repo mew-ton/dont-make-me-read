@@ -9,7 +9,6 @@ user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview

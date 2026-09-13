@@ -10,7 +10,6 @@ description: >
   be understood, or when the branch is on genuine domain data.
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
 ---
 
 ## Overview

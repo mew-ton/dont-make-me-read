@@ -25,7 +25,4 @@ issue がすでに存在するときに読むこと — 自分の下書きでも
 10. 下書きが一つの言語で書かれているか確認する — このリポジトリの issue がすでに使っている言語で —
     同じ内容の第二言語による言い直しがないこと（Gate 2）
 
-> 【訳注】手順11 の実行元である `write-nice-issue-description` は `context: fork` かつ
-> `allowed-tools: []`。スキル呼び出しは `Skill` ツール経由なので、構造上ここから
-> `review-nice-issues` を起動できない疑いがある。また `commands/write-issue.md:25` も同じ実行を
-> 指示しているため、改稿ルートでは二重になる。
+> 【訳注】`commands/write-issue.md:25` も手順11 と同じ実行を指示しているため、改稿ルートでは二重になる。

@@ -101,7 +101,8 @@ weak, same span: the link to the page — still resolving long after the two dis
 スキルは、使ってよいツールを frontmatter で宣言し、何をするかを本文で述べる。
 
 ```yaml
-allowed-tools: []
+allowed-tools:
+  - Bash(git log:*)
 ```
 
 ```markdown
@@ -114,15 +115,15 @@ allowed-tools: []
 （訳：候補を読み出す。`references/what-counts.md` — 依存が取る形と、強いものがどう表に出てくるか — を
 手にドキュメントを通す。）
 
-この宣言は、書かれた時点では真だった：パスは呼び出し元が渡したものだけを判定していた。そこにファイルを
-開くステップが加わり、同じファイルの先頭にある行は、それを偽にしたコミットの中で古びた。
+この宣言は、書かれた時点では真だった：パスは何が変わったかを git に尋ねるだけで、何も読んでいなかった。
+そこにファイルを開くステップが加わり、同じファイルの先頭にある行は、それを偽にしたコミットの中で古びた。
 
 **報告の形は一本の辺：**
 
 ```
 the body → the frontmatter   strong   allowed-tools
   fires on: a step being added that needs a tool the declaration does not list
-  span:     "allowed-tools: []"
+  span:     "allowed-tools"
 ```
 
 ファイル境界を何も越えていないので、外部の何もそれを指摘しない：古びたリンクはなく、差分を読むレビュアー

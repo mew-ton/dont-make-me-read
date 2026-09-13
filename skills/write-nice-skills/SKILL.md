@@ -4,12 +4,11 @@ description: >
   Writes, edits and reviews a skill, a SKILL.md, or its description and frontmatter — how to write a
   skill's description and body so it fires reliably and stays lean. Also applies when another skill
   needs the rules for writing a description or for sizing a body. Does not apply when the artifact
-  is an architecture doc, an issue body, a README, or reference documentation.
+  is an architecture doc, an issue body, a README, or API or library reference documentation.
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview
@@ -30,11 +29,11 @@ effect, and one that is reached and then skimmed past has none either.
 
 | The question | Read |
 |---|---|
-| What the `description` must do, must never do, how to lead it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
+| What the `description` must do, must never do, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
 | What a body may cost, which sections it carries, what to leave out, what goes in a reference, when to split, how a skill stays in force, what to call the skill and its files, whether its frontmatter may carry comments | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | Whether a phase should run as a child skill, what to call it, how to write one, and what goes in its frontmatter | [`references/child-skills.md`](references/child-skills.md) |
-| What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 
 ## Common Rationalizations
 
@@ -60,7 +59,8 @@ The agent will look for reasons to skip this skill:
 
 ## Verification
 
-- [ ] Every file the skill you are writing loads is inside the per-file budget.
-- [ ] The always-on skills it ships alongside are inside their shared budget, summed.
-- [ ] The description names the intent, the occasion and the bound, in the third person, inside 1024 characters.
+- [ ] `count-tokens.sh` exits zero over every file the skill you are writing loads.
+- [ ] `count-tokens.sh` over every always-on `SKILL.md` it ships alongside, the counts added up, under 2000.
+- [ ] The description names the intent — a verb that carries it counts — the occasion and the bound, in the third person, inside 1024 characters.
+- [ ] The description is in English, with no `<` or `>` anywhere in its text.
 - [ ] Every reference is reached directly from `SKILL.md`, under a stated condition or question.

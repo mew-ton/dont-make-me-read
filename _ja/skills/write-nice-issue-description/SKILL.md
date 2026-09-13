@@ -1,15 +1,11 @@
 ---
 name: write-nice-issue-description
 description: >
-  GitHub issue 本文を書き、改稿する —「issue を書いて」「この issue の下書きを整えて」「この既存の issue
-  を読めるようにして」— そしてタスクを複数の issue に分解する。成果物が PR レビューの指摘であるとき、問題が
-  永続ドキュメント一般の rationale と process の切り分けであるとき、あるいはその issue がすでに書かれていて
-  求められているのがその監査であるときは適用しない。
+  GitHub issue 本文を書き、改稿する —「issue を書いて」「この issue の下書きを整えて」「この既存の issue を読めるようにして」— そしてタスクを複数の issue に分解する。成果物が PR レビューの指摘であるとき、問題が永続ドキュメント一般の rationale と process の切り分けであるとき、あるいはその issue がすでに書かれていて求められているのがその監査であるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview（概要）

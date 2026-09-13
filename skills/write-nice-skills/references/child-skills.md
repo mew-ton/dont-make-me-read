@@ -39,7 +39,7 @@ gathering is usually `Context`, a phase that produces an artifact is usually `Cl
 | Motive | What the fork buys | `model` | `background` |
 |---|---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved | `false`, since the parent uses the conclusion in the same turn |
-| **Independence** — two children must not see each other's output | `context: fork` carries in no conversation history, so neither child can reach what the other produced | `sonnet`, since the work needs more than counting | leave unset — it defaults to `true` — so they run in parallel |
+| **Independence** — two children must not see each other's output | the same phase runs twice, and neither run can reach what the other produced | as the underlying case, `Context` or `Cleanliness` above | leave unset — it defaults to `true` — so they run in parallel |
 | **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own | `false`, since the caller shows the result in the same turn |
 
 ## Naming
@@ -62,11 +62,9 @@ context: fork
 says which. It defaults to `true`, so `Context` and `Cleanliness` both have to set it to `false`.
 
 Two optional fields narrow the child further. `model` trades cost against capability: set it
-from the table above. `agent` picks the tool set (`Explore` and `Plan` are read-only), and is the
-one to leave out unless you can say why. Narrowing is wrong for a fork that produces
-the artifact itself — a read-only tool set cannot write, and the cheapest model that can
-enumerate files is not the one you want drafting what a person will act on. Omit both and
-the fork inherits, which is right for the `Cleanliness` row.
+from the table above. `agent` picks the tool set from the agents the host defines, and is the one
+to leave out unless you can say why. Omit both and the fork inherits, which is right for the
+`Cleanliness` row.
 
 `disable-model-invocation: false` is what keeps the model's path into the child open, and the
 caller here **is** a model.
@@ -77,5 +75,5 @@ main conversation.
 
 ## Passing input
 
-Pass the whole input as **`$ARGUMENTS`**: a multi-line free-form brief survives there, and
-does not survive the shell-like quote parsing that indexed and named arguments go through.
+The child's body reads whatever the parent passed as **`$ARGUMENTS`**, so write the brief into
+that one placeholder: a multi-line free-form brief reaches the child intact there.

@@ -92,7 +92,8 @@ decide which place holds it.
 A skill declares the tools it may use in its frontmatter, and says what it does in its body.
 
 ```yaml
-allowed-tools: []
+allowed-tools:
+  - Bash(git log:*)
 ```
 
 ```markdown
@@ -102,7 +103,7 @@ allowed-tools: []
    shapes a dependency takes, and how the strong ones surface.
 ```
 
-The declaration was true when it was written: the pass judged only what the caller handed over.
+The declaration was true when it was written: the pass asked git what had changed and read nothing.
 Then a step was added that opens a file, and the line at the top of the same file went stale in the
 commit that made it false.
 
@@ -111,7 +112,7 @@ commit that made it false.
 ```
 the body → the frontmatter   strong   allowed-tools
   fires on: a step being added that needs a tool the declaration does not list
-  span:     "allowed-tools: []"
+  span:     "allowed-tools"
 ```
 
 Nothing crossed a file boundary, so nothing outside will ever flag it: no link went stale, and a

@@ -5,12 +5,11 @@ description: >
   still trace, never the conversation that produced it, the review feedback, the discarded
   alternatives, or a past state the current code no longer shows. Applies when writing an issue, a
   PR description, a code comment, an API or design doc, or any text or code that will be read
-  later. Does not apply when the reader genuinely can reach the reference but should not have been
-  sent to it, when the question is an issue body's sections and criteria, or when the text is an
-  ephemeral chat reply or a working note.
+  later. Does not apply when the material is reachable and what it costs is the trip to it, when the
+  question is an issue body's sections and criteria, or when the text is an ephemeral chat reply or
+  a working note.
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
 ---
 
 ## Overview

@@ -2,13 +2,12 @@
 name: write-nice-readme
 description: >
   Writes and revises a README, including adding a section to one that already exists. Does not apply
-  when the artifact is an architecture doc, a SKILL.md, an issue body, reference documentation, a
-  tutorial, or a changelog.
+  when the artifact is an architecture doc, a SKILL.md, an issue body, API or library reference
+  documentation, a tutorial, or a changelog.
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview

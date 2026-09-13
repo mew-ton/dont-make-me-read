@@ -11,8 +11,8 @@ it must not carry the procedure the body holds.
 
 - DO
 - DON'T
-- The word that fires it
-- Choosing the lead
+- The leading word
+- Choosing what opens it
 - The description and the body serve different readers
 - Measuring whether it fires
 
@@ -26,9 +26,10 @@ it must not carry the procedure the body holds.
   invoked it`. A verb that already carries it needs no separate clause: `Writes and revises a
   README` is the intent.
 - **Name the occasion**: the artifact being written, or the activity underway.
-- **State when it must not fire** — the **bound** — in the same person and the same shape every
-  time: `Does not apply when …`. It takes back whatever the occasion sweeps in and should not: a
-  neighbouring artifact, or a case inside the occasion that belongs to someone else.
+- **State when it must not fire** — the **bound** — in the same person, opening the same way every
+  time: `Does not apply …`. It takes back whatever the occasion sweeps in and should not: a
+  neighbouring artifact, a mode of use that is somebody else's entry point, or a case inside the
+  occasion that belongs to someone else.
 - **Write the `description` in English**, whatever language the body and the skill's output
   are in. English terms are the ones that survive into a prompt whatever language it is typed
   in, and a skill other people install cannot know which language its users type. A skill that
@@ -59,42 +60,41 @@ it must not carry the procedure the body holds.
   so a description carrying a tag or a `<placeholder>` does not load at all. The `>` that opens a
   YAML folded block is part of the frontmatter, not of the text, and is fine.
 
-## The word that fires it
+## The leading word
 
-The skill fires on a word shared between the description and whatever the agent is working
-from: a prompt, or — for a skill that fires mid-task with no prompt — the work itself. Put it where
-the agent meets it: at the start when the prompt supplies it, and inside the clause that shows what
-the work looks like when the work supplies it.
+The **leading word** is the one the description shares with whatever the agent is working from: a
+prompt, or — for a skill that fires mid-task with no prompt — the work itself. That shared word is
+what fires the skill. Put it where the agent meets it: at the start when the prompt supplies it, and
+inside the clause that shows what the work looks like when the work supplies it.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
 - **One per branch**: synonyms that rename the same branch are duplication.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for
   example, `SKILL.md`, `issue`, `PR`.
 
-## Choosing the lead
+## Choosing what opens it
 
 **Does the work name the artifact?**
 
-**It does → lead with the occasion.** The work says the word and the word fires the skill.
-For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. Here the lead *is* the
+**It does → open with the occasion.** The work says the word and the word fires the skill.
+For example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. Here the opening *is* the
 occasion, and the bound closes it:
 
 ```text
 Writes and revises a README, including adding a section to one that already
-exists. Does not apply when the artifact is an architecture doc, a SKILL.md,
-an issue body, reference documentation, a tutorial, or a changelog.
+exists. Does not apply when the artifact is an architecture doc, a SKILL.md, an
+issue body, API or library reference documentation, a tutorial, or a changelog.
 ```
 
 The verb carries the intent here: what its author wanted enforced *is* that a README gets written
 and revised, so no separate intent clause is needed.
 
-**It does not → lead with what the skill forces**, opening `Forces …`: the thing it insists on,
+**It does not → open with what the skill forces**, as `Forces …`: the thing it insists on,
 and, where there is one, the thing that thing displaces. Nothing in the work names a rule like
 this: a prompt asks for a feature, a diff shows a function, and neither says which rule applies —
-so there is no occasion to lead with, and an occasion nobody names is one the agent forgets
+so there is no occasion to open with, and an occasion nobody names is one the agent forgets
 mid-diff. What the work *does* supply is the shape the rule catches, and those words go in the
-lead's own examples. Here the lead
-comes first, then the occasion, then the bound:
+opening's own examples. Here that comes first, then the occasion, then the bound:
 
 ```text
 Forces the text a stranger can go and check: the rationale a reader who was
@@ -102,15 +102,16 @@ never in the room can still trace, never the conversation that produced it, the
 review feedback, the discarded alternatives, or a past state the current code
 no longer shows. Applies when writing an issue, a PR description, a code
 comment, an API or design doc, or any text or code that will be read later.
-Does not apply when the reader genuinely can reach the reference but should not
-have been sent to it, or when the text is an ephemeral chat reply.
+Does not apply when the material is reachable and what it costs is the trip to
+it, when the question is an issue body's sections and criteria, or when the text
+is an ephemeral chat reply or a working note.
 ```
 
-Both halves of the lead are there — the text it insists on, and the four kinds it displaces — and
-then the occasion, named as an activity: "writing an issue, a PR description, a code comment …".
-The bound then takes back two cases the occasion sweeps in: a reference the reader can actually
-reach, which is a different problem, and text nobody reads again. The description names the
-activity; keeping the skill in force for the rest of it is the body's job.
+Both halves of the opening are there — the text it insists on, and the four kinds it displaces —
+and then the occasion, named as an activity: "writing an issue, a PR description, a code comment
+…". The bound then takes back three cases the occasion sweeps in: material that is reachable,
+where the cost is the trip to it and not the checking; an issue body's sections and criteria,
+which are somebody else's; and text nobody reads again.
 
 ## The description and the body serve different readers
 

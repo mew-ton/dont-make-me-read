@@ -1,14 +1,11 @@
 ---
 name: write-nice-architecture-docs
 description: >
-  アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書き、改稿する。コードを読んで今しがた
-  下した判断が、次の貢献者も下し直すことになるものであるときも含む。成果物が GitHub issue 本文、
-  `SKILL.md`、変更履歴、コードの案内、誰がいつ何を決めたかの記録であるときは適用しない。
+  アーキテクチャドキュメント — ARCHITECTURE.md、ADR、決定記録 — を書き、改稿する。コードを読んで今しがた下した判断が、次の貢献者も下し直すことになるものであるときも含む。成果物が GitHub issue 本文、 `SKILL.md`、変更履歴、コードの案内、誰がいつ何を決めたかの記録であるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview（概要）

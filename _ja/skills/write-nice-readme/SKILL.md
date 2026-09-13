@@ -1,13 +1,11 @@
 ---
 name: write-nice-readme
 description: >
-  README を書き、改稿する。すでにある README に節を足すときも含む。成果物がアーキテクチャドキュメント、
-  `SKILL.md`、issue 本文、リファレンス、チュートリアル、変更履歴であるときは適用しない。
+  README を書き、改稿する。すでにある README に節を足すときも含む。成果物がアーキテクチャドキュメント、 `SKILL.md`、issue 本文、API あるいはライブラリのリファレンスドキュメント、チュートリアル、変更履歴であるときは適用しない。
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
 ## Overview（概要）

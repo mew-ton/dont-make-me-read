@@ -10,7 +10,6 @@ description: >
   list — nor when nobody acts on the text later: chat replies, scratchpads, working notes.
 user-invocable: false
 disable-model-invocation: false
-allowed-tools: []
 ---
 
 ## Overview

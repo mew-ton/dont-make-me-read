@@ -31,7 +31,8 @@ Writes, edits and reviews a skill, a SKILL.md, or its description and
 frontmatter — how to write a skill's description and body so it fires reliably
 and stays lean. Also applies when another skill needs the rules for writing a
 description or for sizing a body. Does not apply when the artifact is an
-architecture doc, an issue body, a README, or reference documentation.
+architecture doc, an issue body, a README, or API or library reference
+documentation.
 ```
 
 The occasion leads and carries `SKILL.md`, the word the work supplies. The intent is
