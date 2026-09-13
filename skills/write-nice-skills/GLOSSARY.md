@@ -1,7 +1,7 @@
 # Glossary — write-nice-skills
 
 The terms used precisely by this skill's `SKILL.md` and the files it routes to. Each entry says
-what the term means; the rule that uses it lives in the file that owns the rule.
+what the term means; `SKILL.md`'s table routes to the file that owns the rule using it.
 
 **Leading word** — the term that shows up when a skill is needed and also appears in its
 `description`: what a person types when they ask for it, or — for a skill that fires mid-task with

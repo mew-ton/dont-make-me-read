@@ -7,7 +7,7 @@
 - 何を委譲してよく、何をしてはならないか
 - fork が何を買うのか、そして場合ごとにどの `model` を求めるか
 - Naming（命名）
-- The four fields every child carries（どの子も持つ四つのフィールド）
+- The fields a child carries（子が持つフィールド）
 - Passing input（入力の渡し方）
 
 ## 何を委譲してよく、何をしてはならないか
@@ -37,16 +37,17 @@
 | 動機 | fork が買うもの | `model` |
 |---|---|---|
 | **Context** — 大量の収集をメインスレッドから外す | 生の材料が親の文脈に決して着地しない | それができる最安のモデル：純粋な収集と数え上げなら `haiku`、軽い正規化が絡むなら `sonnet` |
-| **Independence** — 二つの子が互いの出力を見てはならない | 同じフェーズが二回走り、どちらの走りも他方が生み出したものに届かない | 元になっているケースのとおり。上の `Context` か `Cleanliness` |
+| **Independence** — 二つの子が互いの出力を見てはならない | 同じフェーズが二回走り、どちらの走りも他方が生み出したものに届かない | 元になっているケースのとおり。`Context` か `Cleanliness` |
 | **Cleanliness** — ブリーフを生み出した会話が成果物に届いてはならない | 探索、中途半端な依頼、取得した材料が、成果物が書かれる文脈に決して入らない | 未設定のままにする。作業は成果物自身のものである |
 
 ## Naming（命名）
 
-`<parent-skill-name>-<role>`：親の名前、ハイフン、そして子が演じる役割 — `-change-inventory`、
-`-repo-grounding`、`-version-lookup`。この接頭辞が、ディレクトリ一覧で親子を隣に並べる。そして対の改名は、
-両方とも自分が所有する一回の編集である。
+`<parent-skill-name>-<role>`：親の名前、ハイフン、そして子が演じる役割 —
+`review-nice-issues-change-inventory`、`write-nice-architecture-docs-repo-grounding`。この接頭辞が、
+ディレクトリ一覧で親子を隣に並べる。そして改名が触るのは自分が所有するファイルだけである：ディレクトリと
+frontmatter の `name` を、それぞれの半分について。
 
-## The four fields every child carries（どの子も持つ四つのフィールド）
+## The fields a child carries（子が持つフィールド）
 
 ```yaml
 user-invocable: false
@@ -65,7 +66,8 @@ background: false
 `Cleanliness` の行にとって正しい。
 
 `disable-model-invocation: false` が、モデルから子への経路を開いたままにする。そしてここでの呼び出し元は
-**モデル**である。
+**モデル**である。このブロックの中で既定からの逸脱でない唯一の行であり、それでも書き出すのは、その経路が
+閉じた子には呼び出し元が一人もいないからである。
 
 `context: fork` こそが、子を親のターンの延長ではなく実行環境にするものである。それがないと、`model` は現在の
 ターンの残り — メインの会話 — に適用される。

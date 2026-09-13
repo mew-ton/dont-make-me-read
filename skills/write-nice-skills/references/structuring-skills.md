@@ -57,9 +57,7 @@ both. A file inside its own limit can still put the activity over.
 
 So the set to check is the always-on skills you ship together, summed against the first figure,
 plus whichever one is reached for the artifact in hand against the second. Measure that set, not
-the file you happen to be editing. Both figures are standing ceilings this skill sets, not
-measurements of a model: what moves when the model changes is the byte proxy below, never the
-budget it stands in for.
+the file you happen to be editing.
 
 ### Measuring it
 
@@ -103,13 +101,13 @@ near neighbour. Where the next section is already the routing or the first step,
 answered it, and adding one is a line the reader would have got through without.
 
 Everything else comes after: how to work, the condition that routes to each reference, the
-`## Persistence` section if the skill is always-on, and the guards.
+`## Persistence` section if the skill is always-on, and the three guards below.
 
 ## Naming
 
-The skill's own name: lowercase letters, digits and hyphens; at most 64 characters; no
-leading, trailing or consecutive hyphen; and the frontmatter `name` equal to the directory
-name. `anthropic` and `claude` are reserved and may not appear in it. A skill invoked as another
+The skill's own name, inside the platform's own limits on it: lowercase letters, digits and
+hyphens; at most 64 characters; no leading, trailing or consecutive hyphen; the frontmatter `name`
+equal to the directory name; and `anthropic` and `claude` reserved. A skill invoked as another
 skill's phase carries a further naming rule on top of these; `SKILL.md` routes to the reference
 that settles it.
 
@@ -132,8 +130,8 @@ the skill's other folders already use, and spend no further thought on it.
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
   condition that routes to each reference, the `## When it applies` section where the description
   does not settle scope, the `## Persistence` section if the skill is always-on,
-  and all three guards — Common Rationalizations, Red Flags, and Verification while it is still a
-  checklist. Leave the
+  and all three guards — Common Rationalizations, Red Flags, and Verification while every box is
+  answered by looking or by one command. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
   `SKILL.md` will not open the file it came from.
 - **Disclose** behind a pointer that names the condition reaching it what **only some branches reach**: deep
@@ -234,9 +232,9 @@ Then split only when the cut earns its cost, and the cost is the one from the to
 second skill pays a description on every turn, forever, for everyone who installs it. Three cuts
 justify that:
 
-1. **By leading word** — a distinct situation has its *own* leading word, one the prompt or
-   the work actually supplies. That word can invoke a separate model-invoked skill (or, within
-   one skill, gate a separate reference).
+1. **By leading word** — a situation has its *own* leading word, and arrives without this skill
+   having fired first. A word that only ever turns up once the skill is already loaded gates a
+   reference inside it, and buys nothing by becoming a second description on every turn.
 2. **By sequence** — a run of steps a caller should be able to reach as one unit, whose
    intermediate steps nothing after it needs to see. First give every step a completion
    condition that is checkable and leaves no part of the step unaccounted for: "the validator

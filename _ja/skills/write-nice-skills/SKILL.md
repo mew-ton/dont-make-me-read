@@ -18,8 +18,8 @@ background: false
 
 - **`description` は作業に照らして判断する。** 作業が供給する語で判断すること：スキルに何が書いてあるかを
   知っているのはあなたで、そこへ到達しなければならないエージェントは知らない。
-- **このスキルの `scripts/count-tokens.sh` でトークンを数える。** 行数は文字体系によってずれるので、
-  本文の予算はトークンで定められている。
+- **このスキルの `scripts/count-tokens.sh` でトークンを数える。** 短く見える本文が予算を大きく超えることが
+  あるので、予算はトークンで定められている。
 - **各規則は、それを所有する reference で決着させる** — 下の表のとおりに。
 
 ## Where each decision is settled（どの判断がどこで決着するか）
@@ -27,7 +27,7 @@ background: false
 | 問い | 読むもの |
 |---|---|
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
-| `description` が何をしなければならないか、何を決してしてはならないか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
 | 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
@@ -57,9 +57,10 @@ background: false
 
 ## Verification（検証）
 
-- [ ] いま書いているスキルがロードする成果物起動型のファイルすべてに対して、`count-tokens.sh` がゼロ終了する。
+- [ ] いま書いているスキルが一つの成果物または一つの枝のためにロードするファイルすべてに対して、`count-tokens.sh` がゼロ終了する。
 - [ ] それが常時オンなら：それ自身と、一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
-- [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししている。
-- [ ] description が英語で書かれている — そのスキルが一つのチームから決して出ないのでない限り — かつその本文のどこにも `<` も `>` も無い。
-- [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態でして、していない状態ではしない。
+- [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししており、別のスキルがこの規則を必要とするなら到達節を持っている。
+- [ ] description が英語で書かれている — 一つのチームから出ないスキルは、そのチームが実際に打つフレーズを足してよい — かつその本文のどこにも `<` も `>` も無い。
+- [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する。かつ同じケースをそれ無しで走らせると結果が悪くなり、description が何を買ったのかが見える。
+- [ ] 本文が、そのスキルが何をするかで始まり、三つのガードすべてを持ち、そのスキルが常時オンなら三部構成の `## Persistence` 節を持っている。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。

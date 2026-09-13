@@ -64,13 +64,12 @@ it must not carry the procedure the body holds.
 
 The **leading word** is the one the description shares with whatever the agent is working from: a
 prompt, or — for a skill that fires mid-task with no prompt — the work itself. That shared word is
-what fires the skill. Put it where the agent meets it: at the start when the prompt supplies it, and
-inside the clause that shows what the work looks like when the work supplies it. "Leading" is what
-the word does, and in that second case it does it from inside the clause.
+what fires the skill. Put it at the start when something in the prompt or the work names the
+artifact, and inside the clause that shows what the work looks like when nothing names it.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
-- **One per branch**: two words for one branch are duplication; two the work really uses for
-  different parts of it are not — a skill, its `SKILL.md`, its `description`.
+- **One word per branch**: a second word for the same branch is duplication. A skill, its
+  `SKILL.md` and its `description` are named separately by the work, so they are three branches.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for
   example, `SKILL.md`, `issue`, `PR`.
 
@@ -94,7 +93,7 @@ and revised, so no separate intent clause is needed.
 **It does not → open with what the skill forces**, as `Forces …`: the thing it insists on,
 and, where there is one, the thing that thing displaces. Nothing in the work names a rule like
 this: a prompt asks for a feature, a diff shows a function, and neither says which rule applies —
-so there is no occasion to open with, and an occasion nobody names is one the agent forgets
+so the occasion cannot open it, and an occasion nobody names is one the agent forgets
 mid-diff. What the work *does* supply is the shape the rule catches, and those words go in the
 opening's own examples. Here that comes first, then the occasion, then the bound:
 
@@ -123,7 +122,7 @@ thing the overlap is intended: cutting either because the other carries it leave
 the two readers short.
 
 What overlaps is what the skill is for and what occasions it — the two the firing judgment runs
-on, and the two the body opens with. The steps, the criteria and the argument stay in the body
+on, and the two the body's opening restates where being in scope is not obvious. The steps, the criteria and the argument stay in the body
 alone, because an agent handed those has what it needs to act and stops there.
 
 ## Measuring whether it fires
