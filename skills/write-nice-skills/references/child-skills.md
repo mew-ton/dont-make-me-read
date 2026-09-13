@@ -40,7 +40,7 @@ gathering is usually `Context`, a phase that produces an artifact is usually `Cl
 |---|---|---|
 | **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved |
 | **Independence** — two children must not see each other's output | the same phase runs twice, and neither run can reach what the other produced | as the underlying case, `Context` or `Cleanliness` |
-| **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the work is the artifact's own |
+| **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the child inherits the parent's |
 
 ## Naming
 
@@ -50,6 +50,8 @@ what keeps the pair together in a directory listing, and a rename touches only f
 directory and the frontmatter `name`, on each half.
 
 ## The fields a child carries
+
+Beyond the `name` and `description` every skill carries:
 
 ```yaml
 user-invocable: false
@@ -61,16 +63,14 @@ background: false
 `user-invocable: false` hides the child from the user's `/` menu.
 
 `background: false` is what keeps the parent's turn waiting for the answer. It defaults to `true`,
-which hands the parent back its turn before the child has produced anything — and every motive
-above wants the answer inside the turn that asked for it, the `Independence` pair included, since
-the parent is there to compare the two.
+which hands the parent back its turn before the child has produced anything, and every motive above
+wants the answer inside the turn that asked for it.
 
 `model` is the one field left to choose, and the table above chooses it. Omit it and the fork
 inherits the parent's, which is right for the `Cleanliness` row.
 
 `disable-model-invocation: false` keeps the model's path into the child open, and the caller here
-**is** a model. It is the one line in the block that is not a departure from the default, written
-out because a child with that path shut has no caller at all.
+**is** a model.
 
 `context: fork` is what makes the child an execution environment rather than a stretch of
 the parent's turn. Without it, `model` applies to the remainder of the current turn — the

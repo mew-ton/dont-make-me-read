@@ -81,8 +81,9 @@ SKILL.md (that is write-nice-skills), a changelog, a tour of the code, or a
 record of who decided what when.
 ```
 
-Two names to maintain, two renames waiting, and an agent reading a table instead
-of asking whether this artifact is the skill's.
+Two names to maintain, two renames waiting, an agent reading a table instead
+of asking whether this artifact is the skill's, and a bound that opens `DO NOT use`, in the second
+person, where every other bound opens `Does not apply`.
 
 **Good**
 

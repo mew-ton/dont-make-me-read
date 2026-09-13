@@ -29,7 +29,7 @@ background: false
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 | `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| 本文がいくらまで許されるか・それをどう測るか、どの章を持つか、三つのガードのどれが必要でどれが外へ出せるか、何を書かないか、何を reference に置くか、いつ分割するか、スキルをどう効かせ続けるか、そのスキルとそのファイルを何と呼ぶか、frontmatter が何を担うか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | ある段階を子スキルとして走らせるべきか、それを何と呼ぶか、その書き方、その frontmatter に何を置くか | [`references/child-skills.md`](references/child-skills.md) |
 
 ## Common Rationalizations（よくある自己正当化）
@@ -61,6 +61,7 @@ background: false
 - [ ] それが常時オンなら：それ自身と、一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
 - [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会と境界を、三人称で、1024文字以内で名指ししており、別のスキルがこの規則を必要とするなら到達節を持っている。
 - [ ] description が英語で書かれている — 一つのチームから出ないスキルは、そのチームが実際に打つフレーズを足してよい — かつその本文のどこにも `<` も `>` も無い。
-- [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する。かつ同じケースをそれ無しで走らせると結果が悪くなり、description が何を買ったのかが見える。
-- [ ] 本文が、そのスキルが何をするかで始まり、三つのガードすべてを持ち、そのスキルが常時オンなら三部構成の `## Persistence` 節を持っている。
+- [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
+- [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち、そのスキルが常時オンなら三部構成の `## Persistence` 節を持っている。
+- [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にあり、予約語をどちらも含まない。
 - [ ] どの reference も `SKILL.md` から直接、明示された条件または問いのもとで到達される。

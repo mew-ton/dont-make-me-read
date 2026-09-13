@@ -68,8 +68,7 @@ what fires the skill. Put it at the start when something in the prompt or the wo
 artifact, and inside the clause that shows what the work looks like when nothing names it.
 
 - **Real words**: the terms that show up in your prompts, docs, and code.
-- **One word per branch**: a second word for the same branch is duplication. A skill, its
-  `SKILL.md` and its `description` are named separately by the work, so they are three branches.
+- **One word per branch**: a second word for the same branch is duplication.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for
   example, `SKILL.md`, `issue`, `PR`.
 
@@ -122,7 +121,8 @@ thing the overlap is intended: cutting either because the other carries it leave
 the two readers short.
 
 What overlaps is what the skill is for and what occasions it — the two the firing judgment runs
-on, and the two the body's opening restates where being in scope is not obvious. The steps, the criteria and the argument stay in the body
+on. The body's opening restates the first always, and the occasion where being in scope is not
+obvious from the description alone. The steps, the criteria and the argument stay in the body
 alone, because an agent handed those has what it needs to act and stops there.
 
 ## Measuring whether it fires

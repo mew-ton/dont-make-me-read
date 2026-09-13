@@ -73,7 +73,7 @@ bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
 
 The script sends each file to whichever model is currently default and subtracts a baseline
 request without it, so the figure is that model's own count and stays correct as models change.
-Each file costs one round trip. It prints a count and a bytes-per-token ratio per file, and exits non-zero when any one file is
+It prints a count and a bytes-per-token ratio per file, and exits non-zero when any one file is
 over `TARGET` — an environment variable, defaulting to 5000 — so the first command checks an artifact-reached file
 outright. The always-on figure is a total, which no per-file exit code can test: run the
 second line and add the counts up yourself.
@@ -84,8 +84,8 @@ Resolve it from where you read this file: there is no one absolute path to hard-
 
 For a free pre-check, count bytes with `wc -c`: bytes per token barely move between
 writing systems, where characters per token falls sharply between a Latin one and a non-Latin
-one — which is what moves the line count. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Work those two figures
-out again from the ratio the script reports whenever the default model changes, since a stale
+one — which is what makes the same line count cost very different numbers of tokens. **Under about 15 KB stands in for 5000 tokens today, and 6 KB for 2000.** Work those two figures
+out again whenever the ratio the script reports differs from the 3 bytes per token they assume, since a stale
 figure that is too low sends you splitting files that were never over budget.
 
 
@@ -117,7 +117,7 @@ each of them in every skill and one grep finds all of them:
 | File | What it holds |
 |---|---|
 | `GLOSSARY.md` | the terms the rules use |
-| `VERIFICATION.md` | the checks, once they are disclosed |
+| `VERIFICATION.md` | the checks, once they are disclosed — see *Guard it three ways*, below |
 
 Neither is required. The name is fixed for a skill that has one.
 
@@ -130,8 +130,8 @@ the skill's other folders already use, and spend no further thought on it.
 - **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the
   condition that routes to each reference, the `## When it applies` section where the description
   does not settle scope, the `## Persistence` section if the skill is always-on,
-  and all three guards — Common Rationalizations, Red Flags, and Verification while every box is
-  answered by looking or by one command. Leave the
+  and all three guards — Common Rationalizations, Red Flags, and Verification on the condition its
+  own section sets. Leave the
   rules themselves to the reference that owns each — an author who can settle one from
   `SKILL.md` will not open the file it came from.
 - **Disclose** behind a pointer that names the condition reaching it what **only some branches reach**: deep
@@ -152,9 +152,9 @@ What the body points at sits **one level deep**. A reference reached from anothe
 is read *partially* — the agent previews it with something like `head -100` instead of
 reading it whole — so a rule on line 150 of that second hop is a rule nobody read. Every file the
 agent loads links directly from `SKILL.md`, and is found that way; what it is called is
-settled under [Naming](#naming). A reference over **100 lines opens with a list of its own
-headings**, so a reader who needs one of its sections can find it without reading the rest; a
-shorter one may carry the list too.
+settled under [Naming](#naming). A reference over **100 lines — past what that preview shows —
+opens with a list of its own headings**, so a reader who needs one of its sections can find it
+without reading the rest; a shorter one may carry the list too.
 
 A context pointer names the **condition or the question** that reaches the file: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code
@@ -185,7 +185,12 @@ disclosure* above sets out — because "before calling the artifact done" is a c
 recognises, which is all such a pointer needs. Disclose it once running it takes more than
 reading the list — steps in a fixed order, an expected output to compare each against. Keep it
 inline while every box is answered by looking or by one command: those are cheaper to read where
-they are than to go and fetch.
+they are than to go and fetch. A box run once for the whole skill rather than once per artifact
+stays inline too, procedure and all — the reader meets it once, and a pointer would cost as much.
+
+**A box earns its place when what it catches stops the skill working** — it does not load, or it
+never fires — or when it is a budget. The rest of the rules are met by reading them where they
+live, and a checklist that enumerates all of them has become the rule set.
 
 When it does move, it goes to **`VERIFICATION.md` beside `SKILL.md`**.
 
@@ -197,13 +202,13 @@ optional, and settles how the skill runs rather than whether it is found:
 | Field | What it settles |
 |---|---|
 | `user-invocable`, `disable-model-invocation` | which caller can reach it — a person's `/` menu, the model, or both |
-| `context`, `background`, `model`, `agent` | whether it runs as its own execution environment, and under what |
-| `allowed-tools`, `disallowed-tools` | what it may reach for |
+| `context`, `background`, `model` | whether it runs as its own execution environment, and under what |
+| `allowed-tools` | what is pre-approved without a prompt |
+| `disallowed-tools` | what it may not reach for |
 
-`allowed-tools` pre-approves what is already in reach, so an empty list grants nothing and withholds
-nothing — a restriction written there is not one. `disallowed-tools` is the field that takes a tool
-away. The execution-environment fields are what a skill invoked as another skill's phase turns on,
-and `SKILL.md` routes to the reference that settles them.
+`allowed-tools` pre-approves what is already in reach; `disallowed-tools` is the field that takes a
+tool away. The execution-environment fields are what a skill invoked as another skill's phase turns
+on, and `SKILL.md` routes to the reference that settles them.
 
 Write all of it without comments. The frontmatter loads whenever the skill fires, and a field
 that needs explaining needs prose an author can argue with — the body — rather than a trailing `#`.
@@ -236,11 +241,10 @@ justify that:
    having fired first. A word that only ever turns up once the skill is already loaded gates a
    reference inside it, and buys nothing by becoming a second description on every turn.
 2. **By sequence** — a run of steps a caller should be able to reach as one unit, whose
-   intermediate steps nothing after it needs to see. First give every step a completion
-   condition that is checkable and leaves no part of the step unaccounted for: "the validator
-   exits zero". A sequence that
-   looks like it needs a skill of its own usually has one vague condition instead, and the
-   agent drifts past it rather than stopping.
+   intermediate steps nothing after it needs to see. A sequence that looks like it needs a skill of
+   its own usually has one vague completion condition instead, and the agent drifts past it rather
+   than stopping — so sharpen each step's condition until it is checkable and leaves no part of the
+   step unaccounted for ("the validator exits zero"), and see whether the cut is still wanted.
 3. **By delegation** — a phase that should run in a *different execution
    environment*: its own model, its own tool set, its own context. This cut settles which
    execution environment the phase runs in, where cut 2 settles which skill the steps live in.
