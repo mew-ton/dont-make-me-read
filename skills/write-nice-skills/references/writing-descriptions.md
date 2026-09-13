@@ -4,8 +4,7 @@ Read this when writing or revising a skill's `description`, or when judging whet
 one will fire.
 
 A skill's `name` and `description` are all the agent has when it decides whether to fire: the body
-is not in context yet. So the `description` has to be judge-able on its own, and it must not carry
-the procedure the body holds.
+is not in context yet, so the `description` has to be judge-able on its own.
 
 ## Principles
 
@@ -32,7 +31,7 @@ the procedure the body holds.
 - **Name another skill.** The name is a dependency on somebody else's file: it goes wrong the day
   they rename it, and nothing checks that. It also answers "is *this* artifact the skill's?" for
   the agent, which is the question the description exists to make it ask — for example,
-  `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`.
+  `Does not apply when the artifact is an architecture doc (that is write-nice-architecture-docs)`.
 - **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —` matches
   nothing anyone types.
 - **Put an angle bracket in the description's text.** `<` and `>` are rejected outright there, so a
@@ -56,9 +55,11 @@ example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. Here the openin
 occasion, and the bound closes it:
 
 ```text
-Writes and revises a README, including adding a section to one that already
-exists. Does not apply when the artifact is an architecture doc, a SKILL.md, an
-issue body, API or library reference documentation, a tutorial, or a changelog.
+Runs a determinacy-and-duplication pass over the text of a GitHub issue body
+that is already written — someone else's, or the author's own draft. Does not
+apply as a general-purpose "review this issue" entry point, when the issue is
+still being written or revised, or when what is wanted is a judgement of
+repo-groundedness, dependency closure, or scope.
 ```
 
 **It does not → open with what the skill forces**, as `Forces …`: the thing it insists on, and,
@@ -116,7 +117,7 @@ routing table in prose, and the reader pays for each one.
 
 ## Reach clause
 
-"also applies when another skill needs …", naming the need rather than the skill. It admits a second
+`Also applies when another skill needs …`, naming the need rather than the skill. It admits a second
 way in, for the skill that needs these rules and would otherwise have to name this one.
 
 ## The description and the body serve different readers

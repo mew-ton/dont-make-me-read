@@ -3,8 +3,7 @@
 スキルの `description` を書く、あるいは書き直すとき、または既存のものが発火するかを判断するときに読むこと。
 
 エージェントがそのスキルを発火させるかどうかを決めるとき、手元にあるのはスキルの `name` と `description`
-だけである：本文はまだ文脈に無い。だから `description` はそれ単体で判断可能でなければならず、本文が持つ
-手順を担ってはならない。
+だけである：本文はまだ文脈に無い。だから `description` はそれ単体で判断可能でなければならない。
 
 ## Principles（原則）
 
@@ -28,7 +27,7 @@
 - **他のスキルを名指しすること。** その名前は他人のファイルへの依存である：相手が改名した日に壊れ、しかも
   それを検査するものは何もない。さらに「*この*成果物は自分のものか」をエージェントに代わって答えてしまう。
   description がそもそも問わせるために存在する問いである。たとえば
-  `DO NOT use for an architecture doc (that is write-nice-architecture-docs)`。
+  `Does not apply when the artifact is an architecture doc (that is write-nice-architecture-docs)`。
 - **タグ列や、キーワードを詰めた依頼文を書くこと。** `Skill / SKILL.md / description —` は誰が打つものにも
   一致しない。
 - **description の本文に山括弧を入れること。** そこでは `<` と `>` はそのまま拒否されるので、タグや
@@ -51,9 +50,11 @@ Does not apply …                            — 機会が巻き込むものが
 `ARCHITECTURE.md`、`SKILL.md`。ここでは冒頭がそのまま機会であり、境界がそれを閉じる：
 
 ```text
-Writes and revises a README, including adding a section to one that already
-exists. Does not apply when the artifact is an architecture doc, a SKILL.md, an
-issue body, API or library reference documentation, a tutorial, or a changelog.
+Runs a determinacy-and-duplication pass over the text of a GitHub issue body
+that is already written — someone else's, or the author's own draft. Does not
+apply as a general-purpose "review this issue" entry point, when the issue is
+still being written or revised, or when what is wanted is a judgement of
+repo-groundedness, dependency closure, or scope.
 ```
 
 **名指ししない → 何を強制するかを冒頭に、`Forces …` として置く。** そのスキルが押し通すもの、そして押し
@@ -106,7 +107,7 @@ README` がその意図である。
 
 ## Reach clause（到達節）
 
-「also applies when another skill needs …」。スキル名ではなく、その必要を名指しする。二つ目の入口を開ける
+`Also applies when another skill needs …`。スキル名ではなく、その必要を名指しする。二つ目の入口を開ける
 ものであり、この規則を必要とし、さもなければこのスキルを名指しせざるを得ないスキルのためにある。
 
 ## The description and the body serve different readers（description と本文は読み手が違う）
