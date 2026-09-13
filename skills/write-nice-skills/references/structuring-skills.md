@@ -20,10 +20,13 @@ Measure.
 ├ inside the budget                       → nothing to do
 └ over →
     ├ only some branch needs the material → split it into a file
-    └ nothing left that only some branch needs →
-        ├ one of the three cuts applies    → split it into a sub-skill
-        └ none applies                     → revisit the fixed sections of `SKILL.md`
+    ├ one of the three cuts applies       → split it into a sub-skill
+    └ neither                             → the guards are what is left:
+                                            move Verification out, and prune the other two
 ```
+
+The last branch is the one worth naming. Nothing to move and no cut to make means the weight is in
+the sections that have to stay inline, and those are the guards.
 
 ## Measuring it, and the figures
 
@@ -152,6 +155,10 @@ test, and `SKILL.md` routes to the file that settles it.
 
 A skill like any other: write it to the rules this one holds.
 
-If no cut applies, keep it as one skill and revisit what `SKILL.md` itself is carrying. Splitting
-for its own sake multiplies either context load (one more description on every turn) or cognitive
-load (more files an author must hold) and buys nothing.
+If no cut applies, keep it as one skill. What is left to shrink is the guards: Verification moves
+to `VERIFICATION.md`, and the other two thin out against their own tests — a Rationalization nobody
+has actually made, or a Red Flag that restates a rule instead of naming something visible in the
+output, is weight without a catch. `SKILL.md` routes to the file that sets both tests.
+
+Splitting for its own sake multiplies either context load (one more description on every turn) or
+cognitive load (more files an author must hold) and buys nothing.
