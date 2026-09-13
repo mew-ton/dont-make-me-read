@@ -40,9 +40,18 @@ The other two are reachability choices any skill makes: `user-invocable: false` 
 of the user's `/` menu, and `disable-model-invocation: false` lets the model in, which is the
 child's only caller.
 
-`model` trades cost against capability. Omit it and the fork inherits the parent's. A fork taken
-for its **tool set** narrows it with `allowed-tools` and `disallowed-tools`, the same two fields any
-skill uses.
+`model` trades cost against capability, and what the fork was taken for decides it. Gathering is
+usually `Context`; a phase that produces an artifact is usually `Cleanliness`; `Independence` is
+either of them run twice, where neither copy may see the other's answer.
+
+| Motive | What the fork buys | `model` |
+|---|---|---|
+| **Context** — keep bulk gathering off the main thread | the raw material never lands in the parent's context | the cheapest model that can do it: `haiku` for pure gathering and counting, `sonnet` once light normalization is involved |
+| **Independence** — two children must not see each other's output | the same phase runs twice, and neither run can reach what the other produced | as the underlying case, `Context` or `Cleanliness` |
+| **Cleanliness** — the conversation that produced the brief must not reach the artifact | the exploring, the half-formed asks and the fetched material never enter the context the artifact is written in | leave unset; the child inherits the parent's |
+
+A fork taken for its **tool set** narrows it with `allowed-tools` and `disallowed-tools`, the same
+two fields any skill uses.
 
 ## No comments
 

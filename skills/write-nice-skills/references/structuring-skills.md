@@ -24,19 +24,8 @@ Measure.
     └ neither                             → look at the skill itself
 ```
 
-The last branch is the one worth naming. Nothing to move and no cut to make means the weight is in
-the sections that have to stay inline, and that is mostly the guards — but Common Rationalizations
-and Red Flags are filled from what actually happened: one row per excuse you had to answer, one
-bullet per defect you found in the output. A thick pair is a count of how often this skill has been
-talked out of, or got it wrong. Cutting rows deletes the record and leaves the cause, so the thing
-to look at is the skill. What to split out, and what to cut, depends on what that skill holds: the
-table says something is wrong, not what.
-
-One worked case. A skill that reviewed a pull request ran a workflow, and every step in that run
-had its own reason to be skipped. So the table had to take a step column, and a row closing off
-each step's reason, and that is what made it thick. The answer was a skill per step.
-
-Verification is the one of the three guards that can simply move out.
+`Measure.` is the next chapter. Each of the three ways out has one of its own after it, in the
+order shown.
 
 ## Measuring it, and the figures
 
@@ -137,8 +126,9 @@ nothing activates it precisely. Querying a database and formatting the result is
 database administration makes it two.
 
 Then split only when the cut earns its cost, and the cost is the one at the top of this file: a
-second skill pays a description on every turn, forever, for everyone who installs it. Three cuts
-justify that.
+second skill pays a description on every turn, forever, for everyone who installs it. Splitting for
+its own sake multiplies either context load (one more description on every turn) or cognitive load
+(more files an author must hold) and buys nothing. Three cuts justify the cost.
 
 ### By leading word
 
@@ -158,14 +148,48 @@ validator exits zero"), and see whether the cut is still wanted.
 
 A phase that should run in a *different execution environment*: its own model, its own tool set, its
 own context. This cut settles which execution environment the phase runs in, where the sequence cut
-settles which skill the steps live in. Whether a given phase may be delegated at all is a further
-test, and `SKILL.md` routes to the file that settles it.
+settles which skill the steps live in.
+
+A delegated phase is still the parent's work; it runs somewhere cheaper and narrower, and hands
+back what the parent needs instead of the material that produced it. **The test is whether the
+caller receives everything it needs to check the work.**
+
+**Delegate mechanical, read-only gathering, enumeration, and parsing** — fetching a PR's comments,
+listing changed files, walking a package registry, grounding a design in the repository. It passes
+because the answer was all the parent wanted, and the answer comes back whole.
+
+**Delegate a phase that produces an artifact**, handing it a single written brief. It passes because
+the artifact comes back whole and the reader judges the thing itself.
+
+**Never delegate a phase whose only product is a verdict.** A review is the case: put its substance
+in a child and the verdicts come back without what each one rests on, so nobody can review the
+review.
+
+`SKILL.md` routes to the file that sets a child skill's frontmatter, and to the one that says where
+its body takes the brief.
 
 ### What the sub-skill is
 
 A skill like any other: write it to the rules this one holds.
 
-If no cut applies, keep it as one skill and read its guards as the measurement they are.
+One that only ever runs as a phase of its parent takes its name from it:
+`<parent-skill-name>-<role>` — `review-nice-issues-change-inventory`,
+`write-nice-architecture-docs-repo-grounding`. The prefix is what keeps the pair together in a
+directory listing, and a rename touches only files you own: the directory and the frontmatter
+`name` on each half, and the parent's body where it invokes the child by name.
 
-Splitting for its own sake multiplies either context load (one more description on every turn) or
-cognitive load (more files an author must hold) and buys nothing.
+## Looking at the skill itself
+
+Nothing to move and no cut to make means the weight is in the sections that have to stay inline,
+and that is mostly the guards — but Common Rationalizations and Red Flags are filled from what
+actually happened: one row per excuse you had to answer, one bullet per defect you found in the
+output. A thick pair is a count of how often this skill has been talked out of, or got it wrong.
+Cutting rows deletes the record and leaves the cause, so the thing to look at is the skill. What to
+split out, and what to cut, depends on what that skill holds: the table says something is wrong,
+not what.
+
+One worked case. A skill that reviewed a pull request ran a workflow, and every step in that run
+had its own reason to be skipped. So the table had to take a step column, and a row closing off
+each step's reason, and that is what made it thick. The answer was a skill per step.
+
+Verification is the one of the three guards that can simply move out.

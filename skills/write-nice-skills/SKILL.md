@@ -35,10 +35,9 @@ and how to split a body once it has grown. That buys three things:
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 | What the `description` must do, must never do, how to choose the word it fires on, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| Which sections the body carries and in what order, what each has to hold, how a skill stays in force, and what to leave out of a body | [`references/writing-body.md`](references/writing-body.md) |
-| What a skill may cost and how to measure it, what moves into a bundled file and which guard may move there, and when to split one skill into two | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| Which frontmatter fields to set, and what each settles | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
-| Whether a phase should run as a child skill, what a fork buys, and what to call it | [`references/child-skills.md`](references/child-skills.md) |
+| Which sections the body carries and in what order, what each has to hold, how a skill stays in force, what to leave out of a body, and where a child skill's body takes its input | [`references/writing-body.md`](references/writing-body.md) |
+| What a skill may cost and how to measure it, what moves into a bundled file and which guard may move there, when to split one skill into two, and whether a phase should run as a child skill | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| Which frontmatter fields to set, what each settles, and which a child skill carries | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
 
 ## Common Rationalizations
 

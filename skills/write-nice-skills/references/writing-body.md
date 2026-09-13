@@ -7,7 +7,7 @@ Read this when writing or revising the body of a `SKILL.md`.
 **DO**
 
 - **Open on what the skill does.** This reader is past the firing judgment and has to act.
-- **Settle each rule in the reference that owns it**, and give each section the shape set out below.
+- **Settle each rule in the file that owns it**, and give each section the shape set out below.
 - **Keep an argument beside the rule it changes.** One that changes what the reader does earns its
   place there; one that does not belongs outside the body.
 
@@ -51,7 +51,7 @@ Where the routing conditions themselves name which cases are in scope, they have
 ## How to work
 
 The posture the rules are applied with, a bullet at a time: what the author does when they sit down
-to the work. The rules each bullet applies stay in the reference that owns them.
+to the work. The rules each bullet applies stay in the file that owns them.
 
 ## The rules
 
@@ -59,7 +59,7 @@ A skill whose rules fit in the body carries them here, each with the cost of ign
 
 ## Routing
 
-A skill with references carries the condition or the question that reaches each file, and leaves
+A skill with bundled files carries the condition or the question that reaches each file, and leaves
 the rules to it — an author who can settle a rule from `SKILL.md` will not open the file it came
 from.
 
@@ -95,5 +95,10 @@ A checklist, settled by looking at the artifact or by running one check against 
 fires, or it is reached and skimmed past — or when it is a budget. The rest of the rules are met by
 reading them where they live, and a checklist that enumerates all of them has become the rule set.
 
-Verification is the one guard that may move out of `SKILL.md`. The condition it moves on is a
-progressive-disclosure decision, and `SKILL.md` routes to the reference that settles it.
+Verification is the one guard that may move out of `SKILL.md`. `SKILL.md` routes to the file that
+sets the condition it moves on.
+
+## A child skill's body
+
+A parent reaches a child the way it reaches any skill — by name, through the `Skill` tool — and
+passes the brief as one blob. Put **`$ARGUMENTS`** in the child's body where that brief should land.
