@@ -21,12 +21,17 @@ Measure.
 └ over →
     ├ only some branch needs the material → split it into a file
     ├ one of the three cuts applies       → split it into a sub-skill
-    └ neither                             → the guards are what is left:
-                                            move Verification out, and prune the other two
+    └ neither                             → look at the skill itself
 ```
 
 The last branch is the one worth naming. Nothing to move and no cut to make means the weight is in
-the sections that have to stay inline, and those are the guards.
+the sections that have to stay inline, and that is mostly the guards — but Common Rationalizations
+and Red Flags are filled from what actually happened: one row per excuse you had to answer, one
+bullet per defect you found in the output. A thick pair is a count of how often this skill has been
+talked out of, or got it wrong. Cutting rows deletes the record and leaves the cause, so the thing
+to look at is the skill: a scope too wide to hold at once, a rule whose cost is never stated, a
+description that fires it on work it does not cover. Verification is the one of the three that can
+simply move out.
 
 ## Measuring it, and the figures
 
@@ -155,10 +160,7 @@ test, and `SKILL.md` routes to the file that settles it.
 
 A skill like any other: write it to the rules this one holds.
 
-If no cut applies, keep it as one skill. What is left to shrink is the guards: Verification moves
-to `VERIFICATION.md`, and the other two thin out against their own tests — a Rationalization nobody
-has actually made, or a Red Flag that restates a rule instead of naming something visible in the
-output, is weight without a catch. `SKILL.md` routes to the file that sets both tests.
+If no cut applies, keep it as one skill and read its guards as the measurement they are.
 
 Splitting for its own sake multiplies either context load (one more description on every turn) or
 cognitive load (more files an author must hold) and buys nothing.
