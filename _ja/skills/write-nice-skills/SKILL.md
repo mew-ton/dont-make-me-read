@@ -31,7 +31,7 @@ disable-model-invocation: false
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 | `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がどの節をどの順で持つか、それぞれが何を担うか、スキルをどう効かせ続けるか、本文から何を落とすか | [`references/write-body.md`](references/write-body.md) |
+| 本文がどの節をどの順で持つか、それぞれが何を担うか、スキルをどう効かせ続けるか、本文から何を落とすか | [`references/writing-body.md`](references/writing-body.md) |
 | スキルがいくらまで許されるか・それをどう測るか、何を同梱ファイルへ出すか・三つのガードのどれをそこへ出せるか、いつ一つのスキルを二つに分けるか | [`references/structuring-skills.md`](references/structuring-skills.md) |
 | frontmatter のどのフィールドを設定するか、それぞれが何を決めるか | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
 | ある段階を子スキルとして走らせるべきか、fork が何を買うのか、それを何と呼ぶか | [`references/child-skills.md`](references/child-skills.md) |
