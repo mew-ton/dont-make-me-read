@@ -175,10 +175,9 @@ A skill like any other: write it to the rules this one holds. A cut by leading w
 sibling, reached on its own; a cut by sequence or by delegation leaves a phase its parent invokes.
 
 A sub-skill that only ever runs as a phase of its parent takes its name from it:
-`<parent-skill-name>-<role>` — `review-nice-issues-change-inventory`,
-`write-nice-architecture-docs-repo-grounding`. The prefix is what keeps the pair together in a
-directory listing, and a rename touches only files you own: the directory and the frontmatter
-`name` on each half, and the parent's body where it invokes the sub-skill by name.
+`<parent-skill-name>-<role>`. The prefix is what keeps the pair together in a directory listing,
+and a rename touches only files you own: the directory and the frontmatter `name` on each half,
+and the parent's body where it invokes the sub-skill by name.
 
 ## Looking at the skill itself
 

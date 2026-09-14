@@ -31,6 +31,16 @@ key and nothing is pinned to a model generation. It exits non-zero over `TARGET`
 tests the first line outright. The always-on figure is a total across the skills that stand
 together, which no per-file exit code can test — run the second line and add the counts up.
 
+`references/examples.md` quotes descriptions that ship, so editing any of those skills leaves it
+stale with nothing to say so:
+
+```bash
+bash scripts/check-examples.sh
+```
+
+It matches every Good block against the live `description`s, and exits non-zero printing what
+differs.
+
 ## Where the rest lives
 
 `SKILL.md` routes each decision to the file that settles it. Start there, not here: the table is in

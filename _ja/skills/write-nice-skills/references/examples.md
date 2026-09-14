@@ -50,16 +50,17 @@ differs. Use on any coding task.
 ```text
 Forces the caller-agnostic callee that takes what differs as data, named in the
 domain's own vocabulary, over one that branches on who called it — a shared fetch
-taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Applies to
-any coding task: writing, refactoring, extracting, reviewing, or designing a
+taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag, a
+component with a `variant` named after the screen it appears on. Applies to any
+coding task: writing, refactoring, extracting, reviewing, or designing a
 function, a module, a component, or the interface between them. Does not apply
 when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
 `Forces …` が冒頭に立つ。diff の中のどの語もこの規則そのものを名指ししないからである。diff が担っている語は
-その冒頭の中に残る — `from:`、`isDetailPage` — それが発火させるものである。機会は `Applies to …` として
-続く。それが読み手に何を払わせるのかは本文のものである。
+その冒頭の中に残り、それが発火させるものである。機会は `Applies to …` として続く。それが読み手に何を
+払わせるのかは本文のものである。
 
 ## Another skill's name in the bound, and the second person（境界の中の他スキル名と、二人称）
 

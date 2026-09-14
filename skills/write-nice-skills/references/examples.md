@@ -52,16 +52,17 @@ believes, if it loads at all. The occasion arrives last, in a closing sentence.
 ```text
 Forces the caller-agnostic callee that takes what differs as data, named in the
 domain's own vocabulary, over one that branches on who called it — a shared fetch
-taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag. Applies to
-any coding task: writing, refactoring, extracting, reviewing, or designing a
+taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag, a
+component with a `variant` named after the screen it appears on. Applies to any
+coding task: writing, refactoring, extracting, reviewing, or designing a
 function, a module, a component, or the interface between them. Does not apply
 when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
 `Forces …` opens it, because no word in a diff names the rule itself; the words a diff does carry
-stay inside that opening — `from:`, `isDetailPage` — and those are what fires. The occasion follows
-as `Applies to …`. Why it costs the reader anything is the body's.
+stay inside that opening, and those are what fires. The occasion follows as `Applies to …`. Why it
+costs the reader anything is the body's.
 
 ## Another skill's name in the bound, and the second person
 
