@@ -1,9 +1,8 @@
 ---
 name: write-nice-readme
 description: >
-  Writes and revises a README, including adding a section to one that already exists. Does not apply
-  when the artifact is an architecture doc, a SKILL.md, an issue body, API or library reference
-  documentation, a tutorial, or a changelog.
+  Writes and revises a README, including adding a section to one that already exists. Does not
+  apply to a private README with no reader but its author.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -12,14 +11,15 @@ background: false
 
 ## Overview
 
-A README is the standing answer to **"is this mine, and what do I do first"**. Every other
-document in a repository is read by someone who has already decided; this one is read while
-deciding.
+This skill writes and revises a README so that a reader who has decided nothing can settle whether
+the project is theirs and take the first step. A README is the standing answer to **"is this mine,
+and what do I do first"**: every other document in a repository is read by someone who has already
+decided, and this one is read while deciding.
 
-## Who reads it
+## When it applies
 
-*How much* has been decided is what varies, and it is what settles the file's shape. The
-conditions below are written for a published README; the other cases say what relaxes.
+*How much* the reader has already decided is what varies, and it is what settles the file's shape.
+The conditions below are written for a published README; the other cases say what relaxes.
 
 **Published.** The reader has agreed to nothing. They have not installed it, do not know whether
 it solves their problem, and will leave the moment the file stops answering that. Nothing about
@@ -35,18 +35,32 @@ for a day before finding out, where a stranger would have left at the download.
 **Private, read by nobody but its author.** Out of scope. There is no reader whose context you
 are guessing at, which is the premise this skill runs on.
 
-Wherever there is a reader at all, that reader sets the order: a maintainer looking up a flag can
-scroll, and someone deciding whether to keep reading cannot.
+A contributor deciding *how to build here* is deciding by a different document; this is the file a
+stranger decides *from*. Wherever there is a reader at all, that reader sets the order: a
+maintainer looking up a flag can scroll, and someone deciding whether to keep reading cannot.
+
+## How to work
+
+- **Settle who the reader is before writing a line** — published, or internal to a team — because
+  that is what says which of the conditions relax and which hold in full.
+- **Read the draft from the top down against the test below**, stopping where a reader could
+  decide. Everything above that point is what the file costs.
+- **Name the condition that failed** when reviewing, so a finding says which one and not merely
+  that the file reads badly.
+- **Run the commands you wrote, in the order you wrote them.** Prose about the way in is not the
+  way in.
 
 ## The test
-
-`dont-make-me-read`'s test, at this artifact's granularity:
 
 > **Can a reader who has not decided to use this settle that, and take the first step, without
 > reading further?**
 
 "Without reading further" is the whole condition. Anything that has to be held before the decision
 is paid for by everyone who arrives, including everyone who leaves.
+
+This is `dont-make-me-read`'s test at a README's granularity, and it carries that skill's premise:
+the writer is the one person who cannot feel the range they are asking for, because they read
+their own draft already knowing what the project is.
 
 ## What a README owes its reader
 
@@ -63,7 +77,7 @@ whatever convention put it there.
 What the project deliberately does not do belongs with the first: a boundary read before adoption
 saves the reader the whole trip, and read after it reads as an apology.
 
-## What this adds
+## The rules
 
 Conditions on how those are written. Name them when reviewing, so a finding says which failed.
 
@@ -109,12 +123,14 @@ A README describes things it does not own, which is exactly how it goes stale in
 is edited, the README is not, and nobody notices because nothing breaks.
 
 The direction test: **if the owner is reworded, does this file become wrong?** If yes, you copied
-what it owns. Name the thing and say what it is for — a name survives every rewording that matters,
-and survives the rename too, because search finds it.
+what it owns. Run `find-document-dependencies` over the file to draw those arrows rather than
+eyeballing them. Name the thing and say what it is for — a name survives every rewording that
+matters, and survives the rename too, because search finds it.
 
 That includes the project's own principles. If a document, a skill or a spec is where a rule lives,
-the README says what the reader gets, in the README's own words. Restating the rule verbatim makes
-this file a mirror that has to be updated whenever the original is sharpened.
+the README says what the reader gets, in the README's own words. Restating at the point of use is
+right; what you never copy is the owner's own definition, which makes this file a mirror that has
+to be updated whenever the original is sharpened.
 
 ### The way in is executable, and it is the real one
 
@@ -126,12 +142,11 @@ exactly the reader who had already said yes.
 If the easy path does not exist yet, give the one that does. A clumsy path that works beats an
 elegant one that does not.
 
-## Language
+### Write it in the language its readers already use
 
-Write it in the language its readers already use. A project whose users read one language has no
-reason to be read in another, and a project whose users are mixed has to choose rather than ship
-both — the same content in two languages is duplication, with two files to keep in step and no
-reader who needs both.
+A project whose users read one language has no reason to be read in another, and a project whose
+users are mixed has to choose rather than ship both — the same content in two languages is
+duplication, with two files to keep in step and no reader who needs both.
 
 ## Common Rationalizations
 
@@ -162,15 +177,3 @@ reader who needs both.
 - [ ] Every list is a choice, each entry written as the condition under which the reader picks it.
 - [ ] Nothing here becomes wrong when the file that owns it is reworded.
 - [ ] The commands were run, in the order they appear.
-
-## Related skills
-
-- `dont-make-me-read` — the test this one sharpens, and why the writer cannot feel the range they
-  are asking for.
-- `write-nice-architecture-docs` — the file a contributor decides *by*; this one is the file a
-  stranger decides *from*. The direction test above is that skill's staleness rule, pointed at a
-  file that cannot avoid describing what it does not own.
-- `avoid-reference-detours` — what may be restated at the point of use, which the second-copy
-  condition narrows to: the part the reader needs, in your words, never the owner's definition.
-- `find-document-dependencies` — draws the arrows, so the direction test can be run rather than
-  eyeballed.
