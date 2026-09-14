@@ -1,7 +1,7 @@
 # Bad → Good descriptions
 
 Read this when a description needs fixing and you want a worked pair to measure it against. Each
-pair fixes one thing, and each Good is a description that ships.
+pair names what it is fixing, and each Good is a description that ships.
 
 ## A tag list, a leaked step, and no occasion
 
@@ -27,9 +27,10 @@ it has. Also applies when another skill needs the rules for writing a
 description or for sizing a body.
 ```
 
-Occasion first — a skill's own files, carrying `SKILL.md`, the word the work supplies. The intent
-hangs off it on the dash: the notation and rules, and what they buy. Then the reach clause, naming
-the need and no skill. No bound, because the occasion reaches no neighbour to take back.
+The opening carries both: `Writes and edits` is the intent, and what it writes — a skill's own
+files, with `SKILL.md`, the word the work supplies — is the occasion. The dash adds what they are
+written to. Then the reach clause, naming the need and no skill. No bound, because the occasion
+reaches no neighbour to take back.
 
 ## The argument in front of the occasion
 
@@ -77,7 +78,7 @@ caller invoked it (that is avoid-caller-knowledge).
 
 Two names to maintain and two renames waiting, in a bound that also opens `DO NOT use`, in the
 second person, where every other bound opens `Does not apply`. The names answer "is this one mine?"
-so the agent stops asking, and that is the question the bound exists to make it ask.
+so the agent stops asking, and that is the question the description exists to make it ask.
 
 **Good**
 

@@ -38,10 +38,10 @@ in hand, and the reader pays for both. A file inside its own limit can still put
 | Reached for one artifact or one branch | **5000 tokens per file** | only the reader who needs it pays |
 
 So check the always-on skills you ship together — the ones you can measure — summed against the
-first figure, and each file reached for the artifact in hand against the second. That sum is what
-you can test. Someone else's always-on skill may be resident alongside yours, which nothing you
-ship can measure, so room left under the figure is the room their skill gets. Both figures are this
-skill's own.
+first figure, and each file reached for the artifact in hand against the second. **That sum is the
+test, and 2000 is where it fails.** Someone else's always-on skill may be resident alongside yours
+and nothing you ship can measure it, so a sum that passes at 1999 still puts the activity over.
+Passing is the floor, not the goal. Both figures are this skill's own.
 
 Line count is a weak proxy for either figure — a body can look short by line count and still cost
 well over its budget — so measure tokens:
@@ -50,7 +50,7 @@ well over its budget — so measure tokens:
 # files reached for one artifact or one branch, each against 5000
 bash <this skill's directory>/scripts/count-tokens.sh path/to/SKILL.md path/to/other-file.md
 # every always-on SKILL.md, to add up against 2000
-bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
+TARGET=2000 bash <this skill's directory>/scripts/count-tokens.sh <every always-on SKILL.md>
 ```
 
 The script sends each file to whichever model is currently default and subtracts a baseline request
@@ -62,10 +62,12 @@ and add the counts up yourself.
 
 For a free pre-check, count bytes with `wc -c`: bytes per token is the stable ratio, which is why a
 byte figure stands in for a token budget at all. **Under about 15 KB stands in for 5000 tokens, and
-6 KB for 2000.** The script prints that byte equivalent itself, for the model it has just measured
-on; the two figures here are that line, rounded. Read them off a fresh run once the default model
-has changed, since a stale figure that is too low sends you splitting files that were never over
-budget.
+6 KB for 2000.** Each figure here is a run of the script, rounded: it prints one byte equivalent,
+for the model it has just measured on and for the `TARGET` it ran under, so the first command above
+prints the 15 KB figure and the second the 6 KB one. Read each off a fresh run once the default
+model has changed, since a stale figure that is too low sends you splitting files that were never
+over budget. The second command's exit code is not the always-on test — that total is still yours
+to add up.
 
 ## Splitting the files
 
@@ -189,5 +191,8 @@ split out, and what to cut, depends on what that skill holds: the table says som
 not what.
 
 One worked case. A skill that reviewed a pull request ran a workflow, and every step in that run
-had its own reason to be skipped. So the table had to take a step column, and a row closing off
-each step's reason, and that is what made it thick. The answer was a skill per step.
+had its own reason to be skipped, so the table grew a column saying which step each row answered.
+That column was the finding: Rationalization against Reality has no room for a third axis, and
+needing one meant the rows belonged to several skills. The answer was a skill per step — the cut
+the measurement could not see, which is what this branch is for. Sharpening the steps' conditions
+would not have reached it, because none of them was vague; each excuse was about its own step.

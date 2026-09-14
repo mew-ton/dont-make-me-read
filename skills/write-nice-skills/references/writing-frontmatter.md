@@ -14,34 +14,39 @@ Every other field is optional and settles how the skill runs rather than whether
 | Field | What it settles |
 |---|---|
 | `user-invocable`, `disable-model-invocation` | which caller can reach it — a person's `/` menu, the model, or both. Set both on any skill whose reach is not both: a skill nothing is meant to type reads `user-invocable: false`, and one the model must be able to pick reads `disable-model-invocation: false` |
-| `context`, `background`, `model` | whether it runs as its own execution environment, and under what |
+| `context`, `background` | whether it runs as its own execution environment, and whether the caller waits for it |
+| `model` | which model runs it |
 | `allowed-tools` | what is pre-approved without a prompt, out of what is already in reach |
 | `disallowed-tools` | what it may not reach for — this is the field that takes a tool away |
 
 ## A sub-skill's fields
 
-A sub-skill a parent invokes to run one phase in its own execution environment carries, beyond
-`name` and `description`:
+Which fields a sub-skill carries follows from the cut that made it.
+
+**A sub-skill its parent invokes** — cut out by sequence or by delegation — keeps the parent as its
+only caller, beyond `name` and `description`:
 
 ```yaml
 user-invocable: false
 disable-model-invocation: false
+```
+
+Out of the user's `/` menu, in reach of the model.
+
+**A sub-skill cut out because it has a leading word of its own** is reached like any other skill,
+by whoever the word reaches, so it takes neither.
+
+**Delegation adds the environment**, on top of the pair above:
+
+```yaml
 context: fork
 background: false
 ```
 
-**`context: fork` is what gives it that environment.** It makes the sub-skill an execution
-environment of its own rather than a stretch of the parent's turn; without it, `model` applies to
-the remainder of the current turn — the main conversation.
-
-**`background: false` holds the parent's turn** until the answer is back. It defaults to `true`,
-which hands the parent back its turn before the sub-skill has produced anything.
-
-`user-invocable: false` and `disable-model-invocation: false` together keep the parent as the only
-caller: out of the user's `/` menu, in reach of the model.
-
-A sub-skill left where its own reader finds it — one cut out because it has a leading word of its
-own — takes none of this block. It belongs to the phase a parent runs.
+`context: fork` is what gives it that environment: the sub-skill becomes an execution environment
+of its own rather than a stretch of the parent's turn. `background: false` holds the parent's turn
+until the answer is back; it defaults to `true`, which hands the parent back its turn before the
+sub-skill has produced anything.
 
 `model` trades cost against capability, and what the fork was taken for decides it. Gathering is
 usually taken for **context**; a phase that produces an artifact, for **cleanliness**; a phase run

@@ -19,7 +19,8 @@ Read this when writing or revising the body of a `SKILL.md`.
   what this reader needs is when to apply it.
 - **Name whichever skill happens to invoke this one** — "called during review by
   `write-nice-instructions-as-comment`". It is wrong the day that skill is renamed, and nothing
-  checks it.
+  checks it. Naming a sub-skill this one invokes is the other direction: you own both halves, and a
+  parent has to name what it calls.
 - **Write the no-op.** It reads as thoroughness and costs a reader the same as a rule that changes
   something.
 
@@ -61,8 +62,7 @@ A skill whose rules fit in the body carries them here, each with the cost of ign
 ## Routing
 
 A skill with bundled files carries the condition or the question that reaches each file, and leaves
-the rules to it — an author who can settle a rule from `SKILL.md` will not open the file it came
-from.
+the rules to it.
 
 ## Persistence
 

@@ -39,7 +39,7 @@
 ```text
 <機会そのもの、あるいは Forces …>
 <意図>
-Applies when <機会>                         — 冒頭が `Forces …` のとき
+Applies to|when <機会>                      — 冒頭が `Forces …` のとき
 Also applies when another skill needs …     — 別のスキルがこの規則を必要とするとき
 Does not apply …                            — 機会が巻き込むものがあるとき
 ```
@@ -96,7 +96,8 @@ README` がその意図である。
 ## Occasion（機会）
 
 書かれつつある成果物か、進行中の活動か。作業がそれを名指しするなら description の冒頭に立ち、名指ししない
-なら `Forces …` の節に続けて `Applies when …` として置く。
+なら `Forces …` の節に続けて置く。固定なのは `Applies` の語であり、前置詞は機会そのものが取るものに従う —
+`Applies when writing an issue`、`Applies to any coding task`。
 
 ## Bound（境界）
 

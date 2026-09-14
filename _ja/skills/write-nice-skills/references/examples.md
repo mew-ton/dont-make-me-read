@@ -1,7 +1,7 @@
 # Bad → Good な description
 
-description を直す必要があり、それに照らして測る実例が欲しいときに読むこと。各対が直すのは一つであり、
-どの Good も実際に出荷されている description である。
+description を直す必要があり、それに照らして測る実例が欲しいときに読むこと。各対は自分が何を直しているかを
+名指ししており、どの Good も実際に出荷されている description である。
 
 ## A tag list, a leaked step, and no occasion（タグ列、漏れた手順、機会の不在）
 
@@ -26,9 +26,9 @@ it has. Also applies when another skill needs the rules for writing a
 description or for sizing a body.
 ```
 
-機会が先頭 — スキル自身のファイルであり、作業が供給する語 `SKILL.md` を担っている。意図はダッシュでそこに
-ぶら下がる：記法と規則、そしてそれが何を買うか。そのあとが到達節で、必要を名指しし、スキルは名指ししない。
-境界は無い。機会が取り戻すべき隣人に届いていないからである。
+冒頭が両方を担っている：`Writes and edits` が意図であり、それが何を書くか — スキル自身のファイル、作業が
+供給する語 `SKILL.md` 付き — が機会である。ダッシュが足すのは、それを何に沿って書くかである。そのあとが
+到達節で、必要を名指しし、スキルは名指ししない。境界は無い。機会が取り戻すべき隣人に届いていないからである。
 
 ## The argument in front of the occasion（機会の前に主張）
 
@@ -76,7 +76,7 @@ caller invoked it (that is avoid-caller-knowledge).
 
 維持すべき名前が二つ、待ち構える改名が二つ。しかもその境界は、他のどの境界も `Does not apply` で始めるところ
 を、二人称の `DO NOT use` で始めている。名前は「これは自分のものか」に答えてしまうので、エージェントは
-問うのをやめる。そしてそれこそ、境界が問わせるために存在する問いである。
+問うのをやめる。そしてそれこそ、description が問わせるために存在する問いである。
 
 **Good**
 

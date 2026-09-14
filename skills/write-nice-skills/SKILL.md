@@ -67,7 +67,7 @@ The agent will look for reasons to skip this skill:
 Each box is here because what it catches stops the skill working, or because it is a budget. The
 rules themselves are met by reading them where they live.
 
-- [ ] The frontmatter parses, and `name` matches the directory the skill is in — otherwise nothing loads.
+- [ ] The frontmatter parses, and `name` matches the directory the skill is in.
 - [ ] The description carries no `<` or `>` in its text — otherwise nothing loads.
 - [ ] The description is inside 1024 characters.
 - [ ] `count-tokens.sh` exits zero over every file the skill loads for one artifact or one branch.

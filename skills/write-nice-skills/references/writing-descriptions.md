@@ -43,7 +43,7 @@ is not in context yet, so the `description` has to be judge-able on its own.
 ```text
 <the occasion, or Forces …>
 <the intent>
-Applies when <the occasion>                 — where `Forces …` opened it
+Applies to|when <the occasion>               — where `Forces …` opened it
 Also applies when another skill needs …     — where another skill needs these rules
 Does not apply …                            — where the occasion sweeps something in
 ```
@@ -105,7 +105,9 @@ clause: `Writes and revises a README` is the intent.
 ## Occasion
 
 The artifact being written, or the activity underway. It opens the description where the work names
-it, and follows the `Forces …` clause as `Applies when …` where it does not.
+it, and follows the `Forces …` clause where it does not. `Applies` is the fixed word there; the
+preposition is whatever the occasion itself takes — `Applies when writing an issue`, `Applies to
+any coding task`.
 
 ## Bound
 

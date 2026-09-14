@@ -1,6 +1,6 @@
 # write-nice-skills
 
-スキルを書き、レビューする — その `description` を、作業が必要としたときに発火するように。そしてその本文を、
+スキルを書き、編集する — その `description` を、作業が必要としたときに発火するように。そしてその本文を、
 エージェントが規則を読み飛ばすのではなく読むように。
 
 スキルに到達する手段は `description` だけである：エージェントが判断する時点で、本文は文脈に入っていない。
@@ -8,31 +8,33 @@
 どう見えるかを感じ取れない。同じ失敗はもう一段下でも起きる — 自分の同梱ファイルを言い直す `SKILL.md` は、
 誰もそのファイルを開かない `SKILL.md` である。
 
-スキル以外のドキュメントはレビューしないし、リポジトリ全体のレビューパスでもない。
-
 ## The way in（入口）
 
 [ルートの README](../../README.md) が説明するとおりにプラグインをインストールする。そのうえで、どちらかを：
 
-- `/write-skill` と打ち、意図して書く・改訂する。あるいは
-- `SKILL.md` を編集して、スキル自身に発火させる。これは model-invoked である — その名前を打つことは決してない。
+- `/write-skill` と打ち、意図して書く・改訂する。このコマンドがそのスキルが何のためのものかを決着させ、
+  一つのブリーフにしてこのスキルへ手渡す。あるいは
+- `SKILL.md` を編集して、スキル自身に発火させる。
+
+どちらにせよ、このスキル自身の名前を打つことは無い：`user-invocable: false` が `/` メニューの外に置いており、
+そこへ到達するのはプラグインコマンド `/write-skill` である。
 
 スキルの費用を計測するには、このディレクトリから：
 
 ```bash
-bash scripts/count-tokens.sh path/to/SKILL.md              # 5000 トークン予算
-TARGET=2000 bash scripts/count-tokens.sh path/to/SKILL.md   # 常時オンのスキル
+bash scripts/count-tokens.sh path/to/SKILL.md                        # 一つの成果物・一つの枝：1ファイル5000
+TARGET=2000 bash scripts/count-tokens.sh <常時オンの SKILL.md すべて>   # 常時オン：合計で2000
 ```
 
 これは、現在デフォルトのモデルに対する入力側トークン数の差分を取る。だから API キーは要らず、モデル世代にも
-固定されない。予算超過なら非ゼロで終了する。
+固定されない。`TARGET` をファイル単位で超えると非ゼロで終了するので、一行目はそれだけで検査になる。常時オン
+の数字は同時に立つスキルにまたがる合計であり、ファイル単位の終了コードでは検査できない — 二行目を走らせ、
+自分で数を足すこと。
 
 ## Where the rest lives（残りはどこにあるか）
 
-`SKILL.md` が、各判断をそれを決着させるファイルへ振り分ける：`description` は
-`references/writing-descriptions.md`、Bad → Good の対は `references/examples.md`、本文のサイズと形および
-一つのスキルを二つに分割することは `references/structuring-skills.md`、それらが使う用語は `GLOSSARY.md`。
-ここではなく、そこから始めること。
+`SKILL.md` が、各判断をそれを決着させるファイルへ振り分ける。ここではなく、そこから始めること：表は
+`SKILL.md` にあり、その複製をこのファイルに置くことこそ、二つが乖離していく道である。
 
 ## Why the rules are not in SKILL.md（なぜ規則が SKILL.md に無いのか）
 
@@ -54,12 +56,16 @@ TARGET=2000 bash scripts/count-tokens.sh path/to/SKILL.md   # 常時オンのス
 routing は二度目のロードを要する。それは検討のうえで却下された：ここでの主題は規則を確実に効かせることで
 あって、ロード回数を最小化することではない。
 
-## The two rules that stay in SKILL.md anyway（それでも SKILL.md に残る二つの規則）
+## What stays in SKILL.md anyway（それでも SKILL.md に残るもの）
 
-- **frontmatter のコメント。** frontmatter は自分のファイルを持たず、規則は一文なので、それを述べることは
-  何かを要約することにならない。
-- **Common Rationalizations。** その表は読み飛ばしに対するガードである。ポインタの後ろにあれば、他のすべてと
-  一緒に飛ばされる。
+**Common Rationalizations と Red Flags。** これらは読み飛ばしに対するガードであり、サボる理由を探している
+エージェントはファイルを開くために立ち止まらない。ポインタの後ろにあれば、他のすべてと一緒に飛ばされる。
+三つ目のガードである Verification は、外に住んでよい唯一のものである：それが読まれるのは、考えている最中では
+なく、仕上がった成果物に照らして最後にである。
+
+**Verification のチェックリストそのもの。** ただし、スキルを機能させなくするもの — ロードされない、発火しない、
+到達されたうえで読み流される — と予算に限る。規則を列挙したチェックリストは規則そのものになってしまい、
+そうなればその先も何も開かれない。
 
 ## Where `## Scope` came from（`## Scope` はどこから来たのか）
 
@@ -67,5 +73,6 @@ routing は二度目のロードを要する。それは検討のうえで却下
 principles を簡潔に、そして Common Rationalizations のガード」と列挙しており、12 のスキルのうち 9 つが
 その一語から `## Scope` という見出しを生やした。それを無視した 3 つ — `dont-make-me-read`、
 `review-nice-issues`、`review-self-contained-docs` — は代わりに `## Why this exists` か `## Purpose` で
-始まっており、そしてそれが、そのスキルが何のためにあるかを本文が述べていた唯一の 3 つだった。いまその箇条書きが
-求めるのは why / how / routing である。
+始まっており、そしてそれが、そのスキルが何のためにあるかを本文が述べていた唯一の 3 つだった。いまはどの本文も
+`## Overview` で始まり、発端になった箇条書きが求めるのは、本文が持つ節そのものと、エージェントが頭に入れて
+おかねばならない二つのガードである。
