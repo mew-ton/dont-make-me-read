@@ -64,6 +64,9 @@ A skill whose rules fit in the body carries them here, each with the cost of ign
 A skill with bundled files carries the condition or the question that reaches each file, and leaves
 the rules to it.
 
+A skill that invokes another names it here too, on the step that invokes it. One that invokes
+nothing names no skill: a list of the neighbours changes nothing the author does next.
+
 ## Persistence
 
 A skill that has to be on for a whole activity is loaded once and then competes with everything

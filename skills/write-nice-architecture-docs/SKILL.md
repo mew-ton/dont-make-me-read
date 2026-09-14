@@ -3,8 +3,7 @@ name: write-nice-architecture-docs
 description: >
   Writes and revises an architecture doc — ARCHITECTURE.md, an ADR, a decision record — including
   when a decision just made by reading the code is one the next contributor will have to make again.
-  Does not apply when the artifact is a GitHub issue body, a SKILL.md, a changelog, a tour of the
-  code, or a record of who decided what when.
+  Does not apply when what is wanted is a tour of the code, or a record of who decided what when.
 user-invocable: false
 disable-model-invocation: false
 context: fork
@@ -13,32 +12,41 @@ background: false
 
 ## Overview
 
-An architecture doc is the standing answer to "how do I decide this here", read long after whoever
-wrote it has stopped being available. This extends **matklad's `ARCHITECTURE.md`** (Alex Kladov,
-2021) — his shape is settled, and the sections below are his — with the reader who is not
-navigating but *adding*: each section is written so it also **places a case the doc has never
-seen**.
+This skill writes and revises an architecture doc so that a contributor can settle a decision the
+doc has never seen, with the implementation closed. An architecture doc is the standing answer to
+**"how do I decide this here"**, read long after whoever wrote it has stopped being available, and
+read by someone who is not navigating the project but *adding* to it.
+
+## How to work
+
+- **Settle which decisions the doc has to place before writing a line.** A contributor arrives with
+  one question; a section that answers none of theirs is a section nobody reads.
+- **Judge every line with the implementation closed.** You have just read the code and your reader
+  has not, and that gap is the whole failure mode.
+- **Name the condition that failed** when reviewing, so a finding says which one and not merely
+  that the doc reads long.
+- **Draw the dependencies rather than eyeballing them.** Run `find-document-dependencies` over the
+  draft; every arrow it finds pointing into this file is a finding here.
 
 ## The test
 
-`dont-make-me-read`'s test, at this artifact's granularity:
-
 > **Could a reader settle their decision from this, with the implementation closed?**
 
-The code already shows what is there and git already shows when it changed. What neither shows is
-what would settle the next decision — which is why a section that narrates the current shape has no
-reader: everything in it is available faster somewhere else.
+This is `dont-make-me-read`'s test at an architecture doc's granularity. The code already shows what
+is there and git already shows when it changed. What neither shows is what would settle the next
+decision — which is why a section that narrates the current shape has no reader: everything in it is
+available faster somewhere else.
 
 The same test from the maintenance side: **nothing may oblige a fix in this file.** Write a
-dependency as an arrow — A → B means fixing A obliges fixing B — and every arrow this file is on
-has to leave it: it moves and the tree follows, never the reverse. It does not matter what the
-arrow comes from, the code or another document; an arrow pointing in has put this file downstream
-of what it governs, where it goes stale in silence and every contributor who trusted it was
-misplaced before anyone noticed.
+dependency as an arrow — A → B means fixing A obliges fixing B — and every arrow this file is on has
+to leave it: it moves and the tree follows, never the reverse. It does not matter what the arrow
+comes from, the code or another document; an arrow pointing in has put this file downstream of what
+it governs, where it goes stale in silence and every contributor who trusted it was misplaced before
+anyone noticed.
 
-## The shape, from matklad
+## What the doc owes its reader
 
-In this order.
+In this order. The sections are matklad's (Alex Kladov, `ARCHITECTURE.md`, 2021).
 
 | Section | What goes in it |
 |---|---|
@@ -46,44 +54,46 @@ In this order.
 | **Codemap** | The coarse-grained modules and how they relate — "a map of a country, not an atlas of maps of its states". It answers *where is the thing that does X* and *what does the thing I am looking at do*. |
 | **Cross-cutting concerns and invariants** | What holds across modules, and the boundaries between layers and systems. Its own section, not scattered through the other two. |
 
-Standing rules come with them, the first three matklad's:
+Writing the codemap is also the cheapest chance you get to notice that the physical structure of the
+code and its logical architecture have come apart.
 
-- **Keep it short, and specify only what is unlikely to change.** Every recurring contributor reads
-  it. Do not try to keep it synchronised with the code; revisit it a couple of times a year.
-- **Name important files, modules and types; do not link into them.** Links go stale, and a stale
-  link is worse than a name the reader can search for. Naming an entity and letting symbol search
-  find it survives every rename that matters.
-- **A criterion carries a reason only where the reason places a case the criterion alone does
-  not.** Stating the rule and then explaining it is how these files get long, and length is itself
-  the failure: the reader came for one decision and pays for the argument that convinced you.
-  Compress until every remaining sentence would change somebody's next move.
-- **Name roles, not instances.** An architectural role — the entry point, the thing that holds the
-  standard — is stable and worth naming. The component that currently fills it is not: name it and
-  every rename in the tree points an arrow back into this file.
-- **Never defer the substance to another document.** "The rest is in `README.md`" hands the reader
-  a trip in place of the thing they came for, and it is the failure `avoid-reference-detours`
-  exists to stop — so a doc that commits it has broken the rule its own project is built on. Naming
-  another file so the reader knows it exists is fine; making them go there to finish the sentence
-  in front of them is not. Keeping it short means writing less, never relocating what a contributor
-  needs.
+## The rules
 
-Writing the codemap is also the cheapest chance you get to notice that the physical structure of
-the code and its logical architecture have come apart.
+Conditions on how those sections are written, each one a finding can name.
 
-## What this adds
+### Keep it short, and specify only what is unlikely to change
 
-Conditions on *how* those sections are written. Name them when reviewing, so a finding says which
-one failed.
+Every recurring contributor reads it. Do not try to keep it synchronised with the code; revisit it a
+couple of times a year.
+
+A criterion carries a reason only where the reason places a case the criterion alone does not.
+Stating the rule and then explaining it is how these files get long, and length is itself the
+failure: the reader came for one decision and pays for the argument that convinced you. Compress
+until every remaining sentence would change somebody's next move.
+
+### Name roles, never link into the tree, never defer out of it
+
+Name important files, modules and types; do not link into them. Links go stale, and a stale link is
+worse than a name the reader can search for, which survives every rename that matters.
+
+Name roles, not instances. An architectural role — the entry point, the thing that holds the
+standard — is stable and worth naming. The component that currently fills it is not: name it and
+every rename in the tree points an arrow back into this file.
+
+Never defer the substance to another document. "The rest is in `README.md`" hands the reader a trip
+in place of the thing they came for. Naming another file so the reader knows it exists is fine;
+making them go there to finish the sentence in front of them is not. Keeping it short means writing
+less, never relocating what a contributor needs.
 
 ### Every section settles a decision somebody faces
 
 Start from the decisions, not from the parts. "Which layer does this belong in", "does this fork",
-"where does this entry point live" are decisions. "What the layers are" is a description, and
-earns a section when a decision needs it.
+"where does this entry point live" are decisions. "What the layers are" is a description, and earns
+a section when a decision needs it.
 
-The codemap is the section where this is easiest to lose: a list of directories with a sentence
-each is a description, and becomes a codemap the moment each entry says what belongs there — which
-is what lets a reader place a new file rather than only find an old one.
+The codemap is where this is easiest to lose: a list of directories with a sentence each is a
+description, and becomes a codemap the moment each entry says what belongs there — which is what
+lets a reader place a new file rather than only find an old one.
 
 **A count is the purest form of the failure.** "Nine modules do X and six do Y" settles nothing, is
 wrong the next time somebody adds one, and reads as authority while carrying none. Say what the
@@ -93,15 +103,13 @@ be right.
 ### Lead the invariants with the rule that generates them
 
 The top of that section is the **golden rule**: the thinking every other decision in the project
-follows from. Without it a reader has a list of constraints to obey; with it they can derive the
-one nobody wrote down. It is the highest-leverage sentence in the file, and it is the one matklad's
-"call out your invariants" leaves implicit — an invariant is worth far more when the reader can see
-what it is an instance of.
+follows from. Without it a reader has a list of constraints to obey; with it they can derive the one
+nobody wrote down. It is the highest-leverage sentence in the file, and an invariant is worth far
+more when the reader can see what it is an instance of.
 
-Then the invariants themselves. matklad is right that **invariants are often expressed as absence**,
-and that stating them is the highest-value part of the file — an absence is exactly what no amount
-of reading the code reveals. That is not the same as a doc built out of Don'ts, and the difference
-is testable:
+Then the invariants themselves. Invariants are often expressed as absence, and stating them is the
+highest-value part of the file — an absence is exactly what no amount of reading the code reveals.
+That is not the same as a doc built out of Don'ts, and the difference is testable:
 
 > **Does it place a case the doc has never seen?**
 
@@ -112,19 +120,23 @@ is testable:
 
 The second becomes the first by being raised to the rule it was an instance of.
 
-**A convention is not an invariant, and writing it down as one manufactures a constraint nobody
-imposed.** Before stating a rule, ask what happens to someone who breaks it. If the answer is
-"nothing — everyone just does it this way, because the examples did", it is a habit. Say so, or say
-nothing: a doc that promotes the habit to a rule has spent the reader's trust to make a choice they
-were free to make, and every later contributor pays a decision they did not owe. The requirement
-underneath is usually a sentence away and worth stating instead — what the platform actually
-enforces, or what this project would break without.
+### A convention is not an invariant
 
-**Where an absence cannot be raised, the level it may take is a list — never a section.** A flat
-*out of scope* list is worth its lines: it tells a contributor what the project deliberately does
-not do, the absence they would otherwise spend a day rediscovering. Turning the same content into
-chapters is what fails, because a chapter is where a criterion should have been and a reader
-reading the table of contents now sees a project defined by what it refuses.
+Writing one down as one manufactures a constraint nobody imposed. Before stating a rule, ask what
+happens to someone who breaks it. If the answer is "nothing — everyone just does it this way,
+because the examples did", it is a habit. Say so, or say nothing: a doc that promotes the habit to a
+rule has spent the reader's trust to make a choice they were free to make, and every later
+contributor pays a decision they did not owe. The requirement underneath is usually a sentence away
+and worth stating instead — what the platform actually enforces, or what this project would break
+without.
+
+### A refusal gets a list, never a section
+
+Where an absence cannot be raised, the level it may take is a list. A flat *out of scope* list is
+worth its lines: it tells a contributor what the project deliberately does not do, the absence they
+would otherwise spend a day rediscovering. Turning the same content into chapters is what fails,
+because a chapter is where a criterion should have been, and a reader reading the table of contents
+now sees a project defined by what it refuses.
 
 So: no single refusal gets a section of its own. One heading over a flat list is the level they are
 allowed, and the headings that remain go to the golden rule and the invariants. Counting negated
@@ -135,10 +147,9 @@ headings is the cheap check.
 When the doc partitions what exists — layers, kinds, categories — every existing thing lands in
 exactly one bucket, and a reader can place a new thing by the same partition.
 
-A table that names three of eight teaches the reader that the partition is unreliable, and they
-stop using it to decide. Either widen it until it is total, or narrow what it claims: a table of
-*three examples* is honest and useful; a table presented as *the layers* is not, unless it holds
-them all.
+A table that names three of eight teaches the reader that the partition is unreliable, and they stop
+using it to decide. Either widen it until it is total, or narrow what it claims: a table of *three
+examples* is honest and useful; a table presented as *the layers* is not, unless it holds them all.
 
 ### Restate what the decision needs; never re-derive a definition another file owns
 
@@ -148,8 +159,8 @@ arranged internally belongs to that artifact's own rules — a doc that says whi
 rules has already said enough.
 
 `avoid-reference-detours` already settles whether you may repeat something: bring the part **this
-reader needs in order to act**, in the shortest form that does the job. What this narrows is
-*which* part:
+reader needs in order to act**, in the shortest form that does the job. What this narrows is *which*
+part:
 
 | | Bring |
 |---|---|
@@ -157,21 +168,19 @@ reader needs in order to act**, in the shortest form that does the job. What thi
 | Another file defines the thing | the entity's name, not the enumeration — the script's own header lists which code means what |
 
 The direction test, narrowed to a definition: **if the other file changes, does this doc become
-wrong?** If yes, you copied a definition. If no, you restated an input. This is matklad's staleness
-rule one step in: a definition you copied goes stale exactly the way a link does.
+wrong?** If yes, you copied a definition. If no, you restated an input. A definition you copied goes
+stale exactly the way a link does.
 
-## Organising the file
+### Index by decision, not by component
 
-Inside the three sections, index by decision rather than by component. A contributor arrives with
-one question, and headings are what they scan to find it.
-
+Inside those sections, headings are what a contributor scans, and they arrive with one question.
 The file sits on the mandatory path for anyone changing the repository, so what is capped is **the
-distance to the decision they came for** — which is what "keep it short" is protecting. A file
-whose headings are decisions stays cheap as it grows; one that must be read end to end does not.
+distance to the decision they came for** — which is what "keep it short" is protecting. A file whose
+headings are decisions stays cheap as it grows; one that must be read end to end does not.
 
-## Language
+### Write it in the language its contributors already use
 
-Write it in the language its contributors already use — the repository's.
+The repository's.
 
 ## Common Rationalizations
 
@@ -192,6 +201,8 @@ Write it in the language its contributors already use — the repository's.
 
 - A section that narrates the current shape, which the code shows faster.
 - An invariant that places no case the doc has never seen.
+- A heading whose subject is something the project refuses.
+- A link into the tree, where the name would have survived the rename.
 - A definition re-derived from the file that owns it.
 - A classification with a case that falls outside every class it claims to cover.
 
@@ -200,15 +211,3 @@ Write it in the language its contributors already use — the repository's.
 - [ ] Every section settles a decision somebody faces, with the implementation closed.
 - [ ] Each invariant leads with the rule that generates it.
 - [ ] Nothing here becomes wrong when a file it describes is reworded.
-
-## Related skills
-
-- `dont-make-me-read` — the test this one sharpens, and the rule that a constraint is stated as the
-  wall the reader would walk into.
-- `avoid-unverifiable-context` — what keeps deliberation out while the rationale stays.
-- `avoid-reference-detours` — what to restate at the point of use, which the last condition above
-  narrows for the definitions another file owns.
-- `find-document-dependencies` — draws the arrows, so the test above can be run rather than
-  eyeballed. Every arrow it finds pointing into this file is a finding here.
-- `write-nice-skills` — a `SKILL.md` is an instruction to an agent, not an architecture doc; this
-  skill stops where that one starts.
