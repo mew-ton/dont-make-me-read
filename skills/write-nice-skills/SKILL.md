@@ -17,14 +17,14 @@ and how to split a body once it has grown. That buys:
 - a firing condition precise enough that the agent picks the right skill
 - instructions the agent carries out instead of skipping
 - fewer tokens spent loading the skill, so there is more room for the other skills and instructions
-  in context, and less chance of the model garbling them
+  in context
 
 ## How to work
 
 - **Write the description and the body to the notation this skill sets**, taking each from the
   file that owns it, per the table below.
 - **Measure what the skill itself costs, every time,** with this skill's `scripts/count-tokens.sh`,
-  and judge whether it has become heavy. Split a heavy one by the splitting rules.
+  and judge whether it has become heavy.
 - **Correct notation does not get the steps done.** Where the agent skips one anyway, keep the
   notation and improve what the text says.
 

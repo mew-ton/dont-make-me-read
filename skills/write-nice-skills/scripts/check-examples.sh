@@ -51,6 +51,21 @@ for i, g in enumerate(goods, 1):
         if s not in a:
             print(f"  examples only: {s[:100]}")
 
-print(f"{len(goods)} Good blocks checked, {bad} stale.")
+# Where a Bad is longer than its Good, the Bad is that Good with something added
+# and nothing else changed. Assert it, so editing one copy and not the other fails.
+pairs = re.findall(r"\*\*Bad\*\*\n\n```text\n(.*?)```.*?\*\*Good\*\*\n\n```text\n(.*?)```", text, re.S)
+added = 0
+for i, (b, g) in enumerate(pairs, 1):
+    b, g = norm(b), norm(g)
+    if len(b) <= len(g):
+        continue
+    added += 1
+    if not b.startswith(g):
+        print(f"pair {i}: the Bad is longer than its Good but no longer opens with it")
+        print(f"  Good: {g[:100]}")
+        print(f"  Bad:  {b[:100]}")
+        bad += 1
+
+print(f"{len(goods)} Good blocks and {added} added-to Bad blocks checked, {bad} stale.")
 sys.exit(1 if bad else 0)
 PY

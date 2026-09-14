@@ -18,8 +18,7 @@ is not in context yet, so the `description` has to be judge-able on its own.
   people install cannot know which language its users type. A skill that will never leave one team
   may add the phrases that team really types.
 - **Keep it inside 1024 characters** — the field's own limit, so it is enforced rather than
-  advisory. If the parts below will not fit, the skill's scope is too wide: narrow it, and let the
-  cuts that own splitting decide whether it becomes two.
+  advisory. If the parts below will not fit, the skill's scope is too wide.
 
 **DON'T**
 
@@ -91,8 +90,7 @@ examples when nothing names it.
 - **One word per branch the description must fire on cold**: a second near-synonym for one of those
   is duplication, and a branch reached only after the skill has loaded is gated inside it rather
   than named here. Which branches are this skill's at all is settled before the description is
-  written — a situation that arrives cold and is its own unit of work is a sub-skill, and the cuts
-  that own splitting decide that.
+  written.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for example,
   `SKILL.md`, `issue`, `PR`.
 
