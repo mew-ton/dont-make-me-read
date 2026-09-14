@@ -90,7 +90,9 @@ examples when nothing names it.
 - **Real words**: the terms that show up in your prompts, docs, and code.
 - **One word per branch the description must fire on cold**: a second near-synonym for one of those
   is duplication, and a branch reached only after the skill has loaded is gated inside it rather
-  than named here.
+  than named here. Which branches are this skill's at all is settled before the description is
+  written — a situation that arrives cold and is its own unit of work is a sub-skill, and the cuts
+  that own splitting decide that.
 - **Survives translation**: a file name, a tool name, a term of art typed as-is — for example,
   `SKILL.md`, `issue`, `PR`.
 

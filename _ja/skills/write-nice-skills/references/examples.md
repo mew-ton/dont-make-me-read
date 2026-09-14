@@ -1,9 +1,9 @@
 # Bad → Good な description
 
-description を直す必要があり、それを照らし合わせる実例が欲しいときに読むこと。それぞれの対が、何を
-直しているのかを述べる。
+description を直す必要があり、それに照らして測る実例が欲しいときに読むこと。各対が直すのは一つであり、
+どの Good も実際に出荷されている description である。
 
-## タグ列、漏れた手順、機会の不在
+## A tag list, a leaked step, and no occasion（タグ列、漏れた手順、機会の不在）
 
 **Bad**
 
@@ -12,25 +12,25 @@ Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
 each section, then check the frontmatter, for great skills and better writing.
 ```
 
-スラッシュ区切りの冒頭はタグ列として読まれ、タグ列は誰が書くものとも合致しない — 冒頭に並んでいる語自体は
-問題なく、その間の記号が問題である。"first read … then rewrite … then check" は
-手順なので、エージェントはそれに基づいて行動し、本文を決してロードしない。"great skills and better writing"
-はどの機会も名指ししていない。
+スラッシュ区切りの頭はタグ列に読め、タグ列は誰が書くものにも一致しない — 中の語は問題なく、あいだの約物が
+問題である。「first read … then rewrite … then check」は手順なので、エージェントはそれに従って動き、本文を
+決してロードしない。「great skills and better writing」は機会を何も名指ししていない。
 
 **Good**
 
 ```text
 Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
-its frontmatter. Applies the notation and rules that make the skill fire
-reliably when the model judges whether to use it, and that keep the agent from
-skipping steps once it has. Also applies when another skill needs the rules for
-writing a description or for sizing a body.
+its frontmatter — to the notation and rules that make it fire reliably when the
+model judges whether to use it, and that keep the agent from skipping steps once
+it has. Also applies when another skill needs the rules for writing a
+description or for sizing a body.
 ```
 
-機会が冒頭に立ち、作業が供給する語である `SKILL.md` を担っている。意図は一節で、到達節は誰も名指ししていない。
-境界は無い。機会 — スキル自身のファイル — が、取り戻すべき隣接成果物にそもそも届いていないからである。
+機会が先頭 — スキル自身のファイルであり、作業が供給する語 `SKILL.md` を担っている。意図はダッシュでそこに
+ぶら下がる：記法と規則、そしてそれが何を買うか。そのあとが到達節で、必要を名指しし、スキルは名指ししない。
+境界は無い。機会が取り戻すべき隣人に届いていないからである。
 
-## 機会の前に論拠が来ている
+## The argument in front of the occasion（機会の前に主張）
 
 **Bad**
 
@@ -41,8 +41,9 @@ time one is added. Take the knowledge out instead: the caller passes what
 differs. Use on any coding task.
 ```
 
-その規則を支える論がすべてここにある — そのようなモジュールを読むのに何がかかるのか、代わりに何をすべきか — それは本文のものである。それらを持ったエージェントは要約に基づいて
-行動し、本文はロードするとしても、すでに信じていることを追認するために読む。機会は最後に、締めの一文で来る。
+その規則への主張がここに全部ある — そういうモジュールを読むのに何がかかるか、代わりに何をすべきか — これは
+本文のものである。それを手にしたエージェントは要約から動く。本文はすでに信じていることを追認するだけで、
+そもそもロードされるかも怪しい。機会は最後に、締めの一文で到来する。
 
 **Good**
 
@@ -56,57 +57,78 @@ when the subject is prose, or a comment that sends its reader elsewhere to be
 understood, or when the branch is on genuine domain data.
 ```
 
-diff の中にこの**規則そのもの**を名指しする語が無いので、冒頭がそのスキルの強制するものを述べる。diff が
-実際に担っている語は残る — `from:`、`isDetailPage` — それが作業の見え方であり、発火させるものだからである。それが読み手に何を払わせるかは本文のもの。
+`Forces …` が冒頭に立つ。diff の中のどの語もこの規則そのものを名指ししないからである。diff が担っている語は
+その冒頭の中に残る — `from:`、`isDetailPage` — それが発火させるものである。機会は `Applies to …` として
+続く。それが読み手に何を払わせるのかは本文のものである。
 
-## 境界がルーティング表になっている、そして二人称である
+## Another skill's name in the bound, and the second person（境界の中の他スキル名と、二人称）
 
 **Bad**
 
 ```text
-DO NOT use for an issue body (that is write-nice-issue-description), a
-SKILL.md (that is write-nice-skills), a changelog, a tour of the code, or a
-record of who decided what when.
+Forces the fact restated at the point of use over the pointer that sends the
+reader away to get it. Applies when writing a code comment, a docstring, a PR
+description, or any text that points elsewhere to be understood. DO NOT use when
+the target cannot be reached at all, when the same content is repeated twice in
+one document (that is dont-make-me-read), or when a module branches on which
+caller invoked it (that is avoid-caller-knowledge).
 ```
 
-維持すべき名前が二つ、待ち構える改名が二つ。そしてエージェントは、この成果物は自分のものかと問う代わりに表を
-読む。さらに境界が、他のどの境界も `Does not apply` で始めるところを、二人称の `DO NOT use` で始めている。
+維持すべき名前が二つ、待ち構える改名が二つ。しかもその境界は、他のどの境界も `Does not apply` で始めるところ
+を、二人称の `DO NOT use` で始めている。名前は「これは自分のものか」に答えてしまうので、エージェントは
+問うのをやめる。そしてそれこそ、境界が問わせるために存在する問いである。
 
 **Good**
 
 ```text
-Does not apply when the artifact is a GitHub issue body, a SKILL.md, a
-changelog, a tour of the code, or a record of who decided what when.
+Forces the fact restated at the point of use over the pointer that sends the
+reader away to get it — "the format rules at the top of this file", "same as the
+config", a section that defers to another section — leaving the original where it
+is and authoritative. Applies when writing a code comment, a docstring, a PR
+description, or any text that points elsewhere to be understood. Does not apply
+when the target does not exist or cannot be reached at all, when the same content
+is repeated twice inside one document, or when a module branches on which caller
+invoked it.
 ```
 
-条件は成果物である。どのスキルがどの成果物を所有するかは、それぞれのスキルが自分の description の中で決着させる。
+境界のどの節も、機会が実際に届く場合である：他所を指して理解されるテキストという機会は、指す先の無い
+ポインタも、自分を繰り返すドキュメントも、呼び出し元を読むモジュールも覆う。条件は場合そのものであって、
+それが誰のものかではない。どのスキルがどの成果物を所有するかは、そのスキルが自分の description で決着させる。
 
-## 何も取り戻さない境界
+## A bound that takes nothing back（何も取り戻さない境界）
 
 **Bad**
 
 ```text
 Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
-its frontmatter. Does not apply when the artifact is an architecture doc, an
-issue body, a README, or API or library reference documentation.
+its frontmatter — to the notation and rules that make it fire reliably when the
+model judges whether to use it, and that keep the agent from skipping steps once
+it has. Also applies when another skill needs the rules for writing a
+description or for sizing a body. Does not apply when the artifact is an
+architecture doc, an issue body, a README, or API or library reference
+documentation.
 ```
 
-この境界にあるものは、どれも初めから手の届く範囲に無い：スキル自身のファイルを名指しした機会は、
-アーキテクチャドキュメントや README を巻き込まない。だからこの節は、費やした文字を一つも取り戻していない。
-これはスキル名を抜いたルーティング表であり、description がそもそも問わせるために存在する一つの問いに
-答える前に、四つの成果物を抱えて排除する作業をエージェントに渡している。
+その境界の中のどれも、そもそも射程に入っていなかった：スキル自身のファイルを名指しする機会は、アーキテクチャ
+ドキュメントも README も巻き込まない。だからこの節は、費やした文字を一つも取り戻さない。スキル名を抜いた
+ルーティング表であり、description がそもそも問わせるために存在するたった一つの問いに答える前に、抱えて
+排除すべき成果物をエージェントに手渡している。
 
 **Good**
 
 ```text
 Writes and edits a skill for a coding agent — its `SKILL.md`, its description,
-its frontmatter.
+its frontmatter — to the notation and rules that make it fire reliably when the
+model judges whether to use it, and that keep the agent from skipping steps once
+it has. Also applies when another skill needs the rules for writing a
+description or for sizing a body.
 ```
 
-取り戻すものが無いので、境界も無い。境界が文字数に見合うのは、機会が隣人に届くほど広いときであり —
-「any coding task」「text that will be read later」 — そのとき境界は、実際に届いている隣人を名指しする。
+その節を削っただけで、他は何も変えていない。境界が文字数に見合うのは、機会が隣人に届くほど広いときである —
+「any coding task」「text that will be read later」— そしてそのとき境界は、実際に届く隣人を名指しする。
+一つ上の対がそうしているように。
 
-## 判定基準を手渡してしまっている
+## The criteria, handed over（判定基準の手渡し）
 
 **Bad**
 
@@ -117,8 +139,8 @@ problem, checkable acceptance criteria, a clear out-of-scope boundary, no
 implementation method smuggled in, and no content duplicated across sections.
 ```
 
-判定基準が description に入ってしまい、それを握ったエージェントには、それを限定する本文をロードする理由が
-ない。
+判定基準が description に入ってしまっている。それを手にしたエージェントには、その基準を限定づける本文を
+ロードする理由が無い。
 
 **Good**
 
@@ -130,5 +152,5 @@ still being written or revised, or when what is wanted is a judgement of
 repo-groundedness, dependency closure, or scope.
 ```
 
-何に対するパスであるかであって、何を通すかではない。そして Bad には無かった境界が、入口としての使い方と、
-他のスキルのものである判定とを取り戻している。
+何に対するパスかであって、そのパスが何を通すかではない。境界が取り戻しているのは、別のスキルの入口である
+使われ方、書きかけで捕まった成果物、そして機会は届くがこのスキルは下さない判断である。

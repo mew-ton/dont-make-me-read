@@ -109,7 +109,7 @@ mechanical catches. Re-read the sources below before trusting a rule's attributi
   `ponytail`; the rule that derives which to use from whether the skill outlives its
   artifact is ours.
 - **`Does not apply when …`** as the bound's fixed shape: the occasion negated.
-- The split by **delegation**, and the child skill's frontmatter and naming.
+- The split by **delegation**, and the sub-skill's frontmatter and naming.
 - **Staying in force**, for a skill that has to survive the turn that loaded it.
 - The rule that the body carries the skill's own explanation even where the description
   says it too.

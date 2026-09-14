@@ -94,7 +94,7 @@
   `Writes and revises …` と `Applies when …` を置くこと。この形は Dietrich Gebert の `ponytail` のものだが、どちらを使うかを
   「そのスキルが成果物より長生きするか」から導く規則はうちのものである。
 - **`Does not apply when …`** という境界の固定形：機会を否定したもの。
-- **delegation** による切断、および子スキルの frontmatter と命名。
+- **delegation** による切断、およびサブスキルの frontmatter と命名。
 - **Staying in force** — 自分をロードしたターンを越えて生き延びる必要があるスキルのために。
 - description が同じことを言っていても、本文がそのスキル自身の説明を担うという規則。
 

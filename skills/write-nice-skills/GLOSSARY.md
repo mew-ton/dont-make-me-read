@@ -27,8 +27,9 @@ is resident for a whole activity rather than for one artifact.
 **Branch** — one distinct situation the skill handles. Different branches read different parts of
 the skill.
 
-**Child skill** — a skill a parent invokes to run one phase in its own execution environment
-(`context: fork`), returning what the parent needs.
+**Sub-skill** — a second skill a growing one was split into. One cut out because a situation names
+it itself stands alone; one cut out as a phase of its parent is invoked by that parent, and where
+the phase needs its own execution environment it carries `context: fork`.
 
 **No-op** — an instruction the model already follows unprompted, or a setting that changes nothing.
 

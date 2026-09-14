@@ -1,10 +1,10 @@
 ---
 name: write-nice-skills
 description: >
-  Writes and edits a skill for a coding agent — its `SKILL.md`, its description, its frontmatter.
-  Applies the notation and rules that make the skill fire reliably when the model judges whether to
-  use it, and that keep the agent from skipping steps once it has. Also applies when another skill
-  needs the rules for writing a description or for sizing a body.
+  Writes and edits a skill for a coding agent — its `SKILL.md`, its description, its frontmatter —
+  to the notation and rules that make it fire reliably when the model judges whether to use it, and
+  that keep the agent from skipping steps once it has. Also applies when another skill needs the
+  rules for writing a description or for sizing a body.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -12,7 +12,7 @@ disable-model-invocation: false
 ## Overview
 
 This skill settles the notation and rules a `SKILL.md` uses — in its frontmatter and in its body —
-and how to split a body once it has grown. That buys three things:
+and how to split a body once it has grown. That buys:
 
 - a firing condition precise enough that the agent picks the right skill
 - instructions the agent carries out instead of skipping
@@ -35,9 +35,9 @@ and how to split a body once it has grown. That buys three things:
 | What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
 | What the `description` must do, must never do, how to choose the word it fires on, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
-| Which sections the body carries and in what order, what each has to hold, how a skill stays in force, what to leave out of a body, and where a child skill's body takes its input | [`references/writing-body.md`](references/writing-body.md) |
-| What a skill may cost and how to measure it, what moves into a bundled file and which guard may move there, when to split one skill into two, and whether a phase should run as a child skill | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| Which frontmatter fields to set, what each settles, and which a child skill carries | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
+| Which sections the body carries and in what order, what each has to hold, how a skill stays in force, what to leave out of a body, and where a sub-skill's body takes its input | [`references/writing-body.md`](references/writing-body.md) |
+| What a skill may cost and how to measure it, what moves into a bundled file and which guard may move there, when to split one skill into a sub-skill, and whether a phase should run in its own execution environment | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| Which frontmatter fields to set, what each settles, and which a sub-skill carries | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
 
 ## Common Rationalizations
 
@@ -64,12 +64,14 @@ The agent will look for reasons to skip this skill:
 
 ## Verification
 
-- [ ] `count-tokens.sh` exits zero over every file the skill you are writing loads for one artifact or one branch.
+Each box is here because what it catches stops the skill working, or because it is a budget. The
+rules themselves are met by reading them where they live.
+
+- [ ] The frontmatter parses, and `name` matches the directory the skill is in — otherwise nothing loads.
+- [ ] The description carries no `<` or `>` in its text — otherwise nothing loads.
+- [ ] The description is inside 1024 characters.
+- [ ] `count-tokens.sh` exits zero over every file the skill loads for one artifact or one branch.
 - [ ] If it is always-on: `count-tokens.sh` over it and every always-on `SKILL.md` it ships alongside, the counts added up, under 2000.
-- [ ] The description names the intent — a verb that carries it counts — and the occasion, in the third person, inside 1024 characters, with a bound where the occasion sweeps something in and a reach clause where another skill will need these rules.
-- [ ] The description is in English (a single-team skill may add its team's own phrases).
-- [ ] The description carries no `<` or `>` in its text.
-- [ ] The description shares a word with the prompts or with the work, and the cases that should reach the skill do — run with it installed and without, so a case the description reached is told apart from one the model would have handled anyway.
-- [ ] The body opens on what the skill does and carries Common Rationalizations, Red Flags and Verification — the last inline, or in `VERIFICATION.md` behind a pointer — plus `## When it applies` where the description does not settle scope, and `## Persistence` in three parts if the skill is always-on.
-- [ ] The frontmatter `name` equals the directory name and is inside the platform's limits.
+- [ ] The cases that should reach the skill do — run them with it installed and without, so a case the description reached is told apart from one the model would have handled anyway.
+- [ ] Common Rationalizations and Red Flags are in `SKILL.md` itself, where the agent meets them without opening anything.
 - [ ] Every file the skill loads is pointed at directly from `SKILL.md`, under a stated condition or question.

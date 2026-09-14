@@ -25,18 +25,19 @@ Read this when writing or revising the body of a `SKILL.md`.
 
 ## The body's shape
 
-```md
+```text
 ## Overview
+## When it applies                      — where the description does not settle scope
 ## How to work
 ## <the rules, or the routing to them>
+## Persistence                          — where the skill stays in force
 ## Common Rationalizations
 ## Red Flags
 ## Verification
 ```
 
-`## Persistence` goes before the guards where the skill has to stay in force past the response that
-loaded it. The last three are the guards: a skill is talked out of before the work, cut during it,
-and declared done after it, and there is one for each.
+The guards close it: a skill is talked out of before the work, cut during it, and declared done
+after it, and there is one for each.
 
 ## Overview
 
@@ -69,7 +70,7 @@ A skill that has to be on for a whole activity is loaded once and then competes 
 that arrives after it. A body that never says it is still in force reads as advice already given,
 and the work drifts back to what it was doing.
 
-Say it in three parts: it is in force every response after the one that loaded it; it stays in
+Say it in these parts: it is in force every response after the one that loaded it; it stays in
 force while you are unsure whether the case in front of you counts; it is released on an explicit
 condition — the work turning to something the skill does not cover, or being told to stop.
 
@@ -95,10 +96,8 @@ A checklist, settled by looking at the artifact or by running one check against 
 fires, or it is reached and skimmed past — or when it is a budget. The rest of the rules are met by
 reading them where they live, and a checklist that enumerates all of them has become the rule set.
 
-Verification is the one guard that may move out of `SKILL.md`. `SKILL.md` routes to the file that
-sets the condition it moves on.
+## A sub-skill's body
 
-## A child skill's body
-
-A parent reaches a child the way it reaches any skill — by name, through the `Skill` tool — and
-passes the brief as one blob. Put **`$ARGUMENTS`** in the child's body where that brief should land.
+A parent reaches a sub-skill the way it reaches any skill — by name, through the `Skill` tool — and
+passes the brief as one blob. Put **`$ARGUMENTS`** in the sub-skill's body where the brief should
+land.

@@ -9,9 +9,9 @@ Every installed skill's `name` and `description` are pre-loaded, on every turn, 
 skill is ever used. A bundled file is not: it is read on the branch that needs it, and by nobody
 else.
 
-So the two cuts cost different things. A second skill pays a description on every turn, forever,
-for everyone who has it installed, where a file is paid for only by the reader who opens it. This
-file settles which one a growing skill has earned.
+So a sub-skill and a bundled file cost different things. A sub-skill pays a description on every
+turn, forever, for everyone who has it installed, where a file is paid for only by the reader who
+opens it. This file settles which one a growing skill has earned.
 
 ## The decision
 
@@ -20,12 +20,11 @@ Measure.
 ├ inside the budget                       → nothing to do
 └ over →
     ├ only some branch needs the material → split it into a file
-    ├ one of the three cuts applies       → split it into a sub-skill
+    ├ a cut earns its cost                → split it into a sub-skill
     └ neither                             → look at the skill itself
 ```
 
-`Measure.` is the next chapter. Each of the three ways out has one of its own after it, in the
-order shown.
+The chapters below run in this order: measuring first, then each way out as the flowchart lists it.
 
 ## Measuring it, and the figures
 
@@ -39,9 +38,10 @@ in hand, and the reader pays for both. A file inside its own limit can still put
 | Reached for one artifact or one branch | **5000 tokens per file** | only the reader who needs it pays |
 
 So check the always-on skills you ship together — the ones you can measure — summed against the
-first figure, and each file reached for the artifact in hand against the second. Someone else's
-always-on skill may be resident too, which is why the first figure is a ceiling to stay under rather
-than one to fill. Both figures are this skill's own, set against what a turn can afford to carry.
+first figure, and each file reached for the artifact in hand against the second. That sum is what
+you can test. Someone else's always-on skill may be resident alongside yours, which nothing you
+ship can measure, so room left under the figure is the room their skill gets. Both figures are this
+skill's own.
 
 Line count is a weak proxy for either figure — a body can look short by line count and still cost
 well over its budget — so measure tokens:
@@ -62,26 +62,25 @@ and add the counts up yourself.
 
 For a free pre-check, count bytes with `wc -c`: bytes per token is the stable ratio, which is why a
 byte figure stands in for a token budget at all. **Under about 15 KB stands in for 5000 tokens, and
-6 KB for 2000.** Both come from the ratio the script last reported here, rounded to 3 bytes per
-token. Work them out again whenever it reports a ratio more than about half a byte from that, since
-a stale figure that is too low sends you splitting files that were never over budget.
+6 KB for 2000.** The script prints that byte equivalent itself, for the model it has just measured
+on; the two figures here are that line, rounded. Read them off a fresh run once the default model
+has changed, since a stale figure that is too low sends you splitting files that were never over
+budget.
 
 ## Splitting the files
 
-Each piece of material goes to one of three places.
+Each piece of material goes to one of these places.
 
-- **Inline** in `SKILL.md` what **every path needs**: the overview, how to work, the condition that
-  routes to each file, the `## When it applies` section where the description does not settle
-  scope, the `## Persistence` section if the skill is always-on, and all three guards — Common
-  Rationalizations, Red Flags, and Verification.
+- **Inline** in `SKILL.md` what **every path needs**: the body's own sections, and of the guards the
+  two an agent has to have in its head — Common Rationalizations and Red Flags.
 - **Move out**, behind a pointer that names the condition reaching it, what **only some branches
   reach**: deep detail, long examples, per-branch procedure.
 - **Leave unlinked** what no branch reaches: a file beside `SKILL.md` that nothing points at is
   never loaded, so it costs the agent nothing at all — the design rationale, the skill explained to
   a person, where its rules came from.
 
-Two files carry a standing role of the skill and their names are fixed, both beside `SKILL.md`, so
-the same path holds each of them in every skill and one grep finds all of them:
+A file that carries a standing role of the skill has a fixed name, beside `SKILL.md`, so the same
+path holds it in every skill and one grep finds all of them:
 
 - **`GLOSSARY.md`** — the terms the rules use
 - **`VERIFICATION.md`** — the checks, once they are moved out
@@ -94,10 +93,10 @@ other folders already use, and spend no further thought on it.
 
 ## The principles of splitting a file
 
-**One level deep.** A file reached from another file is read *partially* — the agent previews it
-with something like `head -100` instead of reading it whole — so a rule on line 150 of that second
-hop is a rule nobody read. Every file the agent loads points directly from `SKILL.md`, and is read
-whole on the branch that needed it, so a rule anywhere in it is a rule that was read.
+**One level deep.** A file reached from another file is not reliably read whole — the agent may
+preview the top of it and move on — so a rule far down that second hop is a rule nobody can be
+counted on to have read. Every file the agent loads points directly from `SKILL.md`, and is read on
+the branch that needed it.
 
 **A pointer names the condition or the question that reaches the file**: "Read
 `references/api-errors.md` when the API returns a non-200 status", or "What an error code means".
@@ -106,17 +105,16 @@ The file loads only when the reader is in that case.
 **Leave the rules to the file that owns each.** An author who can settle a rule from `SKILL.md`
 will not open the file it came from.
 
-**Two things stay inline however little context the agent has to spare.** A fact that defies a
+**These stay inline however little context the agent has to spare.** A fact that defies a
 reasonable assumption, because an agent cannot recognise the condition that would have sent it to a
 file whose content it has no reason to expect. And the answer an agent needs at the very moment it
 is about to skip — the Common Rationalizations row, the Red Flag — because in a file it never loads,
 that answer is advice nobody applies.
 
-**Verification is the one guard that may move.** Move it once running it takes more than reading
-the list — steps in a fixed order, an expected output to compare each against — and it goes to
-`VERIFICATION.md`, reached by "before calling the artifact done". Keep it inline while every box is
-answered by looking or by one command, and keep a box run once for the whole skill rather than once
-per artifact inline too, procedure and all: the reader meets it once.
+**Verification is the guard that may move.** It is the one the agent does not need in its head: the
+other two have to catch it mid-thought, where this one is read at the end against a finished
+artifact. So there is no condition to meet — when `SKILL.md` is heavy, move the checklist to
+`VERIFICATION.md` and reach it by "before calling the artifact done".
 
 ## Splitting into a second skill, and its principles
 
@@ -126,9 +124,9 @@ nothing activates it precisely. Querying a database and formatting the result is
 database administration makes it two.
 
 Then split only when the cut earns its cost, and the cost is the one at the top of this file: a
-second skill pays a description on every turn, forever, for everyone who installs it. Splitting for
-its own sake multiplies either context load (one more description on every turn) or cognitive load
-(more files an author must hold) and buys nothing. Three cuts justify the cost.
+sub-skill pays a description on every turn, forever, for everyone who installs it. Splitting for its
+own sake multiplies either context load (one more description on every turn) or cognitive load (more
+files an author must hold) and buys nothing. These are the cuts that earn it.
 
 ### By leading word
 
@@ -162,21 +160,23 @@ because the answer was all the parent wanted, and the answer comes back whole.
 the artifact comes back whole and the reader judges the thing itself.
 
 **Never delegate a phase whose only product is a verdict.** A review is the case: put its substance
-in a child and the verdicts come back without what each one rests on, so nobody can review the
+in a sub-skill and the verdicts come back without what each one rests on, so nobody can review the
 review.
 
-`SKILL.md` routes to the file that sets a child skill's frontmatter, and to the one that says where
-its body takes the brief.
+This is the one cut that puts the sub-skill in its own execution environment, so it is the one whose
+frontmatter differs. `SKILL.md` routes to the file that sets those fields, and to the one that says
+where the sub-skill's body takes the brief.
 
 ### What the sub-skill is
 
-A skill like any other: write it to the rules this one holds.
+A skill like any other: write it to the rules this one holds. A cut by leading word leaves a
+sibling, reached on its own; a cut by sequence or by delegation leaves a phase its parent invokes.
 
-One that only ever runs as a phase of its parent takes its name from it:
+A sub-skill that only ever runs as a phase of its parent takes its name from it:
 `<parent-skill-name>-<role>` — `review-nice-issues-change-inventory`,
 `write-nice-architecture-docs-repo-grounding`. The prefix is what keeps the pair together in a
 directory listing, and a rename touches only files you own: the directory and the frontmatter
-`name` on each half, and the parent's body where it invokes the child by name.
+`name` on each half, and the parent's body where it invokes the sub-skill by name.
 
 ## Looking at the skill itself
 
@@ -191,5 +191,3 @@ not what.
 One worked case. A skill that reviewed a pull request ran a workflow, and every step in that run
 had its own reason to be skipped. So the table had to take a step column, and a row closing off
 each step's reason, and that is what made it thick. The answer was a skill per step.
-
-Verification is the one of the three guards that can simply move out.

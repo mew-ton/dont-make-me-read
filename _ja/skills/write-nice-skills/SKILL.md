@@ -1,7 +1,7 @@
 ---
 name: write-nice-skills
 description: >
-  このスキルはコーディングエージェント向けのスキルを作成・編集する時に使用する。LLMがスキルを使用するかどうか判断する際に、確実に発火させ、工程をサボること無く行わせるための記法、規則を適用する。別のスキルが description の書き方や本文のサイズ決めの規則を必要とするときにも適用される。
+  このスキルはコーディングエージェント向けのスキル — その `SKILL.md`、description、frontmatter — を、LLMがスキルを使用するかどうか判断する際に確実に発火させ、いったん発火したら工程をサボらせない記法と規則に沿って作成・編集する。別のスキルが description の書き方や本文のサイズ決めの規則を必要とするときにも適用される。
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -31,9 +31,9 @@ disable-model-invocation: false
 | ここでの用語が何を意味するか | [`GLOSSARY.md`](GLOSSARY.md) |
 | `description` が何をしなければならないか、何を決してしてはならないか、発火させる語をどう選ぶか、何を冒頭に置くか、本文とどう分担するか、発火するかをどう試すか | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
 | 直った description はどう見えるか — Bad → Good、各対が何を修復しているか付き | [`references/examples.md`](references/examples.md) |
-| 本文がどの節をどの順で持つか、それぞれが何を担うか、スキルをどう効かせ続けるか、本文から何を落とすか、子スキルの本文がどこで入力を受け取るか | [`references/writing-body.md`](references/writing-body.md) |
-| スキルがいくらまで許されるか・それをどう測るか、何を同梱ファイルへ出すか・三つのガードのどれをそこへ出せるか、いつ一つのスキルを二つに分けるか、ある段階を子スキルとして走らせるべきか | [`references/structuring-skills.md`](references/structuring-skills.md) |
-| frontmatter のどのフィールドを設定するか、それぞれが何を決めるか、子スキルがどれを持つか | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
+| 本文がどの節をどの順で持つか、それぞれが何を担うか、スキルをどう効かせ続けるか、本文から何を落とすか、サブスキルの本文がどこで入力を受け取るか | [`references/writing-body.md`](references/writing-body.md) |
+| スキルがいくらまで許されるか・それをどう測るか、何を同梱ファイルへ出すか・どのガードをそこへ出せるか、いつ一つのスキルをサブスキルに分けるか、ある段階を固有の実行環境で走らせるべきか | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| frontmatter のどのフィールドを設定するか、それぞれが何を決めるか、サブスキルがどれを持つか | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
 
 ## Common Rationalizations（よくある自己正当化）
 
@@ -60,12 +60,14 @@ disable-model-invocation: false
 
 ## Verification（検証）
 
-- [ ] いま書いているスキルが一つの成果物または一つの枝のためにロードするファイルすべてに対して、`count-tokens.sh` がゼロ終了する。
+各項目がここにあるのは、それが捕まえるものがスキルを機能させなくするか、あるいはそれが予算であるからである。
+規則そのものは、それが住んでいる場所で読まれることによって満たされる。
+
+- [ ] frontmatter が解析でき、`name` がそのスキルの置かれたディレクトリと一致する — さもなくば何もロードされない。
+- [ ] description の本文のどこにも `<` も `>` も無い — さもなくば何もロードされない。
+- [ ] description が1024文字以内である。
+- [ ] そのスキルが一つの成果物または一つの枝のためにロードするファイルすべてに対して、`count-tokens.sh` がゼロ終了する。
 - [ ] それが常時オンなら：それ自身と、一緒に出荷する常時オンの `SKILL.md` すべてに `count-tokens.sh` をかけ、数を足し合わせて2000未満。
-- [ ] description が意図 — 動詞がそれを担っていればそれで足りる — と機会を、三人称で、1024文字以内で名指ししており、機会が巻き込むものがあるなら境界を、別のスキルがこの規則を必要とするなら到達節を持っている。
-- [ ] description が英語で書かれている（一つのチームから出ないスキルは、そのチーム自身のフレーズを足してよい）。
-- [ ] description の本文のどこにも `<` も `>` も無い。
-- [ ] description がプロンプトまたは作業と語を共有しており、そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
-- [ ] 本文が、そのスキルが何をするかで始まり、Common Rationalizations・Red Flags・Verification を持ち（最後のものはインラインか、ポインタの後ろの `VERIFICATION.md`）、description が対象を決着させないなら `## When it applies` を、そのスキルが常時オンなら三部構成の `## Persistence` を持っている。
-- [ ] frontmatter の `name` がディレクトリ名と等しく、プラットフォームの制限の内側にある。
+- [ ] そのスキルに到達すべきケースが実際に到達する — インストールした状態と、していない状態の両方で走らせ、description が到達させたケースと、モデルが元から処理できたケースを区別する。
+- [ ] Common Rationalizations と Red Flags が `SKILL.md` そのものにあり、エージェントが何も開かずにそれに出会える。
 - [ ] そのスキルがロードするどのファイルも、`SKILL.md` から直接、明示された条件または問いのもとで指されている。
