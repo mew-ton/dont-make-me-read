@@ -9,16 +9,14 @@ where.
 no prompt — what the work itself already calls the thing.
 
 **The work** — the artifact and activity the agent is engaged in when the skill might fire: the
-diff or file in front of it, the task it is part-way through. The prompt it was given is separate,
-and either can supply the word a skill fires on.
+diff or file in front of it, the task it is part-way through. The prompt it was given is separate.
 
 **Intent** — what the skill's author wanted enforced, in the terms they would use for it.
 
 **Occasion** — the artifact being written or the activity underway, named in the `description` as
 what brings the skill in.
 
-**Bound** — the condition under which a skill must *not* fire, written only where the occasion
-sweeps in something it should not.
+**Bound** — the condition under which a skill must *not* fire.
 
 **Reach clause** — the part of a `description` that admits a second way in, by naming a need
 another skill has for the rules this one holds.
@@ -26,20 +24,17 @@ another skill has for the rules this one holds.
 **Always-on skill** — a skill whose body keeps it in force past the response that loaded it, so it
 is resident for a whole activity rather than for one artifact.
 
-**Branch** — one distinct situation the skill handles. Different branches read different parts of
-the skill.
+**Branch** — one distinct situation the skill handles.
 
-**Bundled file** — a file beside `SKILL.md` that the agent loads only on the branch reaching it,
-and never on the others.
+**Bundled file** — a file beside `SKILL.md` that the agent loads only on the branch reaching it.
 
 **Guard** — one of the sections that catch a skill being talked out of before the work, cut during
 it, or declared done after it: Common Rationalizations, Red Flags, Verification.
 
 **Cut** — a reason a growing skill has earned a sub-skill rather than another bundled file.
 
-**Sub-skill** — a second skill a growing one was split into. One cut out because a situation names
-it itself stands alone; one cut out as a phase of its parent is invoked by that parent, and where
-the phase needs its own execution environment it carries `context: fork`.
+**Sub-skill** — a second skill a growing one was split into: one that stands alone, or one its
+parent invokes as a phase.
 
 **No-op** — an instruction the model already follows unprompted, or a setting that changes nothing.
 
