@@ -56,7 +56,7 @@ The agent will look for reasons to skip this skill:
 
 ## Red Flags
 
-- A `SKILL.md` an author could finish a skill from, with no other file opened.
+- A `SKILL.md` that settles a rule one of its own bundled files owns, so nobody opens that file.
 - A description carrying the steps, the criteria it applies, or another skill's name.
 - A description whose head is a tag list or a run of keywords.
 - A bundled file reached from another bundled file.
