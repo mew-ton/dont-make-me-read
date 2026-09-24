@@ -1,9 +1,8 @@
 # Revising an existing draft
 
 Read this when the issue already exists — a draft of your own, or someone else's issue you are
-tightening. Revising is a different pass from drafting: instead of deciding what to write, you are
-hunting for what the draft already contains that should not be there, which is why it has its own
-order. Work the steps in sequence.
+tightening. Hunting for what should not be there has an order of its own; work the steps in
+sequence.
 
 1. Test each Background sentence: does the issue's necessity fail to hold without it? Delete what
    passes. For what remains, check the subject is a domain entity (flag `#\d+` or "this task" as
