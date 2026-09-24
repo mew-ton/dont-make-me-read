@@ -13,9 +13,9 @@ An architecture doc, describing where the code lives:
 The parsing layer is `lexer` and `parser`. The analysis layer is `resolver` and `typeck`.
 ```
 
-Every one of those four modules is now in a strong dependency with this file: rename one and the
-file is wrong. So is the fifth, the day somebody writes it — it will simply be missing, and the
-section will go on reading like a complete answer.
+Every module that section names is now in a strong dependency with this file: rename one and the
+file is wrong. So is the next one somebody writes — it will simply be missing, and the section will
+go on reading like a complete answer.
 
 Nothing here links, so nothing checks it. The sentence stays grammatical, stays confident, and
 gives no sign at all. The way it gets found is that a contributor believes it and puts something in
@@ -93,8 +93,8 @@ allowed-tools:
 ```markdown
 ## The pass
 
-1. **Read for candidates.** Work through the document with `references/what-counts.md` — the
-   shapes a dependency takes, and how the strong ones surface.
+1. **List what changed.** Ask git for the commits that touch the file.
+2. **Read each file they name.** Open it and work through the text.
 ```
 
 The declaration was true when it was written: the pass asked git what had changed and read nothing.
