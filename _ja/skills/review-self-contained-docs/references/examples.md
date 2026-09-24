@@ -1,9 +1,9 @@
-# 実例
+# Worked examples（実例）
 
-各条件についての Bad/Good の対、コメントがまったくない best case、そして差分がないと示せない二つの抽出の
-エッジケース。単位を判断していて、自分の考えを既知の良いケースに照らして確認したいときに読むこと。
+各条件についての Bad/Good の対 — 条件1には、一つの節で落ちる単位のための二つ目の Bad がある — と、コメントが
+まったくない best case。単位を判断していて、自分の考えを既知の良いケースに照らして確認したいときに読むこと。
 
-## 条件1: time-closure
+## Condition 1: time-closure（条件1: 時間の閉包）
 
 ### Bad: 完了した移行を語っている
 ```typescript
@@ -42,7 +42,7 @@ type RoleLevelFilter = {
 
 **Finding**：`roleLevel` のドキュメントは、コードにもはや存在しない以前の `number` 宣言を語っており、
 照合するものが何も残っていない — その歴史の節（「Was declared `number`...」）を削除せよ。現在形の理由づけは、
-それが他の二つの条件を独立に通る場合にのみ残す。
+それが他の条件を独立に通る場合にのみ残す。
 
 ### Good: 現在の制約を、過去形も込みで述べている
 ```typescript
@@ -59,7 +59,7 @@ export function fetchOrder(id: string): Promise<Order> {
 はコードに照らしてチェック可能であり、コードがそれを裏づける：素の同期的な `.get()`。このコメントが記述
 している時間は「今」である。findings なし。
 
-## 条件2: referenceability
+## Condition 2: referenceability（条件2: 参照可能性）
 
 ### Bad: 何を開けばよいか読み手に判別できないほど曖昧な参照
 ```typescript
@@ -89,7 +89,7 @@ export function applyDiscount(price: number, codes: string[]): number {
 短い `TODO(#456)` は、何をどこで読めばよいかを正確に名指ししている — この条件が許す唯一の例外。
 findings なし。
 
-## 条件3: reference-scope closure
+## Condition 3: reference-scope closure（条件3: 参照スコープの閉包）
 
 ### Bad: ファイル冒頭へ読み手を送る
 ```typescript
@@ -126,11 +126,12 @@ export function validateDiscountCode(code: string): boolean {
   return DISCOUNT_CODE_PATTERN.test(code);
 }
 ```
+（訳：コメント＝「割引コード：5〜8文字の大文字英数字、任意でキャンペーンタグの接頭辞。」）
 
 ルールは今や使われている場所に座っている。読み手はもう、パターンが何を受け付けるはずなのかを知るために
 この関数を離れる必要がない。findings なし。
 
-## Best: コメントがない。必要ないから
+## Best: no comment, because none is needed（コメントがない。必要ないから）
 
 ```typescript
 export function isEven(n: number): boolean {
@@ -138,76 +139,11 @@ export function isEven(n: number): boolean {
 }
 ```
 
-ここでは単位すら抽出されない — 手順2はコメントを始める行だけを引き出し、そのような行は存在しない。その不在は
+ここでは単位すら抽出されない — 抽出はコメントを始める行だけを引き出し、そのような行は存在しない。その不在は
 埋めるべき隙間ではない。それはこのスキルが目指す最良の結果である。`return n % 2 === 0` がすでに述べている
-ことを言い直すインラインコメント（`// return true if n is even`）は三つの条件すべてを通り、それでもないより
+ことを言い直すインラインコメント（`// return true if n is even`）はどの条件も通り、それでもないより
 悪い：読み手はそれを読むコストを払い、コードですでに見えていた以上のことを何も学ばない。**既存の**コメントが
 自己完結しているかを判断するのはこのスキルの仕事だが、そのようなインラインコメントがそもそも存在すべきかは
 別の問いであり、このスキルはそれに答えない。エクスポートされた関数の宣言レベルのドキュメントコメントは
 さらに別の問いである — 呼び出し元はソースを開く代わりにホバーでそれを読むので、そこではある程度の言い直しが
 正当化されうる。どちらにせよ findings なし。
-
-## 抽出のエッジケース1: 変更された行が、変更されていない行を誤誘導する
-
-上の三つの条件は素のコードとして示せるが、こちらは本質的に差分についてのもの — 何が変わったか、そして
-そのせいで変更されていない隣接行が今や何を意味するのか。
-
-**Diff (`src/analytics/types.ts`)**
-
-```diff
- /**
-- * The resolved path. **Query string is not included** (`resolvePath` drops it).
-+ * The resolved path and its query string. **Hash is not included.**
-+ *
-+ * The query is passed through `resolvePath` unchanged; only key order is stabilized.
-  * See the comment in this file for why.
-  */
- path: string;
-```
-（訳：削除行＝「解決済みのパス。**クエリ文字列は含まれない**（`resolvePath` が落とす）。」／追加行＝
-「解決済みのパスとそのクエリ文字列。**ハッシュは含まれない。**」「クエリは `resolvePath` を無変更で
-通過する。キー順序のみが安定化される。」／変更なしの行＝「理由についてはこのファイル内のコメントを見よ。」）
-
-**抽出される単位**：4行すべてを一つの段落として。「See the comment in this file for why.」は `+`/`-` の印を
-持たないので、差分だけを見るパスは飛ばしてしまう — しかしそれは、変更された行が開く段落の文法的な結びの文で
-あり、それが指し示すものも一緒に変わっている。
-
-条件1と2は通る — 段落は現在のフィールドを記述しており、「このファイル内のコメント」は到達可能に聞こえる。
-条件3は落ちる。しかも通常より悪い：このドキュメントが直接述べられる事実のために読み手を他所へ送ることが
-すでにスコープ違反であるうえに、ここではそのポインタ自体が誤っている — 実際の理由づけは
-`src/analytics/resolvePath.ts` という別のファイルにある。書かれたとおり字義どおりにポインタをたどった読み手は、
-そこで何も見つけられない。
-
-**二つの事実**（条件3のいつもの形。場所の誤りは (a) の問題の一部であって、別個の事実ではない）：
-
-(a) `types.ts` の `path` に対するドキュメントは、理由づけが「このファイル内」にあると述べているが、実際には
-`resolvePath.ts` にある — ポインタをたどった読み手は何も見つけられない。正しいファイルを名指しするよう
-ポインタを直すか、削除して理由（クエリは保持、ハッシュは削除）をここで直接述べよ。
-
-(b) `path` が何を含むかの契約が、その使用地点で表現されていない。修正は名指ししない。このフィールドの
-ドキュメントは、別のファイルをまったく開くことなく単体で読めるべきである — それが開いたままの隙間である。
-
-## 抽出のエッジケース2: docstring が、それが座っているのとは別の宣言を記述している
-
-これは条件3の違反ではない — 下のテキストのどこにも、読み手をどこかへ送るものはない。docstring は正確で、
-完全で、まさにそれがある場所で到達可能である。誤りはもっと早く、手順2で起きている：書いた者は
-`validateDiscountCode` を記述するつもりだったが、それが物理的に座っている行は別の宣言である。
-
-```typescript
-/** Discount codes are 5-8 uppercase alphanumeric characters, optional campaign-tag prefix. */
-const VALIDATE_CODE_REGEX = /^[A-Z0-9]{5,8}$/;
-
-export function validateDiscountCode(code: string): boolean {
-  return VALIDATE_CODE_REGEX.test(code);
-}
-```
-
-**抽出される単位**：手順2の既定ルール（物理的に座っている宣言）により、docstring ＋ `VALIDATE_CODE_REGEX`。
-その単位だけで判断すると、ここには三つの条件のいずれの違反もない — テキストは `VALIDATE_CODE_REGEX` の
-フォーマットについて真であり、それがある場所でローカルかつ到達可能である。findings は三つの条件からではなく、
-手順2の内容チェックから来る：この契約を必要とするのは `validateDiscountCode` の呼び出し元であり
-（エクスポートされているのはこちらの関数で、正規表現はその実装にすぎない）、その関数は固有のドキュメントを
-持たない — 関数の読み手は、上にある別名の宣言に気づいて、そちらを読まねばならなくなる。
-
-**Finding**：`validateDiscountCode` は固有のドキュメントを持たない。その契約はその上の宣言
-`VALIDATE_CODE_REGEX` にしか現れていない — docstring を `validateDiscountCode` へ移せ。

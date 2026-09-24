@@ -1,8 +1,8 @@
 # Worked examples
 
-Bad/Good pairs for each condition, a best case with no comment at all, and two extraction edge
-cases that need a diff to show. Read this when judging a unit and you want to check your
-reasoning against a known-good case.
+A Bad/Good pair for each condition — condition 1 gets a second Bad, for a unit that fails on one
+clause — and a best case with no comment at all. Read this when judging a
+unit and you want to check your reasoning against a known-good case.
 
 ## Condition 1: time-closure
 
@@ -125,80 +125,12 @@ export function isEven(n: number): boolean {
 }
 ```
 
-No unit is even extracted here — step 2 only pulls lines that start a comment, and there is none.
-That absence is not a gap to fill; it is the best outcome this skill judges toward. An inline
+No unit is even extracted here — extraction only pulls lines that start a comment, and there is
+none. That absence is not a gap to fill; it is the best outcome this skill judges toward. An inline
 comment restating what `return n % 2 === 0` already says (`// return true if n is even`) would
-pass all three conditions and still be worse than nothing: the reader pays to read it and learns
+pass every condition and still be worse than nothing: the reader pays to read it and learns
 nothing they didn't already see in the code. Judging whether an *existing* comment is
 self-contained is this skill's job; whether an inline comment like that should exist at all is a
 separate question, and this skill does not answer it. A declaration-level doc comment on an
 exported function is a separate question again — some restatement can be warranted there, since
 callers read it on hover instead of opening the source. No finding either way.
-
-## Extraction edge case 1: a changed line redirects an unchanged one
-
-The three conditions above can be shown as plain code, but this one is inherently about a diff —
-what changed, and what an unchanged neighboring line now means because of it.
-
-**Diff (`src/analytics/types.ts`)**
-
-```diff
- /**
-- * The resolved path. **Query string is not included** (`resolvePath` drops it).
-+ * The resolved path and its query string. **Hash is not included.**
-+ *
-+ * The query is passed through `resolvePath` unchanged; only key order is stabilized.
-  * See the comment in this file for why.
-  */
- path: string;
-```
-
-**Extracted unit**: all four lines, as one paragraph. "See the comment in this file for why."
-carries no `+`/`-` marker, so a diff-only pass would skip it — but it is grammatically the closing
-sentence of the paragraph the changed lines open, and what it points at has changed along with
-them.
-
-Condition 1 and 2 pass — the paragraph describes the current field, and "a comment in this file"
-sounds reachable. Condition 3 fails, and worse than usual: sending the reader elsewhere for a fact
-this doc could state directly is already a scope violation, and here the pointer is also wrong —
-the actual reasoning lives in `src/analytics/resolvePath.ts`, a different file. A reader who
-follows the pointer literally, as written, finds nothing there.
-
-**Two facts** (condition 3's usual shape; the location error is part of what's wrong with (a), not
-a separate fact):
-
-(a) `types.ts`'s doc for `path` says the reasoning is "in this file," but it is in
-`resolvePath.ts` — a reader following the pointer finds nothing. Fix the pointer to name the
-right file, or delete it and state the reason (query kept, hash dropped) here directly.
-
-(b) The contract for what `path` contains is not expressed at its own point of use. No fix is
-named; this field's doc should be readable on its own, without opening another file at all —
-that is the gap left open.
-
-## Extraction edge case 2: a docstring describes a different declaration than the one it sits on
-
-This is not a condition-3 violation — nothing in the text below sends the reader anywhere. The
-docstring is accurate, complete, and reachable exactly where it is. The mistake happened earlier,
-in step 2: whoever wrote it meant to document `validateDiscountCode`, but the physical line it
-sits on is a different declaration.
-
-```typescript
-/** Discount codes are 5-8 uppercase alphanumeric characters, optional campaign-tag prefix. */
-const VALIDATE_CODE_REGEX = /^[A-Z0-9]{5,8}$/;
-
-export function validateDiscountCode(code: string): boolean {
-  return VALIDATE_CODE_REGEX.test(code);
-}
-```
-
-**Extracted unit**: the docstring + `VALIDATE_CODE_REGEX`, by step 2's default rule (the
-declaration it physically sits on). Judged on that unit alone, nothing here violates any of the
-three conditions — the text is true of `VALIDATE_CODE_REGEX`'s format, and it's local and
-reachable right where it is. The finding comes from step 2's content check, not from the three
-conditions: `validateDiscountCode` is the declaration whose callers need this contract (it's the
-exported function; the regex is just how it's implemented), and it has no doc of its own — a
-reader of the function has to notice a separately-named declaration above it and read that one
-instead.
-
-**Finding**: `validateDiscountCode` has no doc of its own; its contract only shows up on
-`VALIDATE_CODE_REGEX`, the declaration above it — move the docstring to `validateDiscountCode`.
