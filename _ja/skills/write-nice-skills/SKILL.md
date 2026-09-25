@@ -24,7 +24,7 @@ disable-model-invocation: false
 - **記法が正しくても、それだけで手順が実行されるとは限らない。** AI がサボった場合は、記法に則ったうえで
   内容を改善する。
 
-## Which file to read（参照すべきファイル）
+## Which file to read（どのファイルを読むか）
 
 | 問い | 読むもの |
 |---|---|

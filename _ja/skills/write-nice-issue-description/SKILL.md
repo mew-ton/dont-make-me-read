@@ -145,7 +145,7 @@ Design / Approach、Out of scope、Verification はここではセクション�
 
 1つの issue、1つの言語。同じ内容の第二言語による言い直しは Gate 2 の重複である。
 
-## Which file to read（参照すべきファイル）
+## Which file to read（どのファイルを読むか）
 
 | 問い | 読むもの |
 |---|---|
