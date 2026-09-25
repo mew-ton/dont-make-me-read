@@ -14,12 +14,18 @@ disable-model-invocation: false
 
 ## Overview
 
-Text that persists is read by someone who was not there when it was written, and process only
-replays for participants: "as pointed out in review", "we originally went with X" rely on a
-timeline they cannot reconstruct. An unreachable reference fails the same way — the reader is
-equally stuck whether the target never existed or merely cannot be got at from here.
+This skill holds text that persists down to what a stranger can go and check. Process only replays
+for the people who were there: "as pointed out in review", "we originally went with X" rest on a
+timeline the reader cannot reconstruct, and an unreachable reference fails the same way — the reader
+is equally stuck whether the target never existed or merely cannot be got at from here.
 
-## The rule
+## When it applies
+
+To every artifact that persists, wherever it lives: a code comment, a commit message, a PR or issue
+description, an API or design doc, a Notion or docx page. Judge the artifact against this skill
+before you write it.
+
+## The test
 
 One question about the text: **can the reader go and check what it says?**
 
@@ -31,37 +37,43 @@ One question about the text: **can the reader go and check what it says?**
 Where the target *is* reachable and the reader should still not have been sent to it, nothing is
 deleted — the fact is restated at the point of use, which is a different finding.
 
-## Guidance
+## The rules
 
-1. **Keep the rationale, drop the process.** Why the spec or design exists is decision-making
-   material; "review feedback led to", "the policy changed", "originally we went with X" depend on
-   a timeline only participants can follow.
-2. **Watch contrastive phrasing.** "Not A but B", "A is deprecated", "A was removed" all assume the
-   reader knows A. If they do not, describe B on its own.
-3. **Confine cross-issue references to short `TODO(#123): ...` notes.** That names exactly what to
-   read and where, which is what makes it the one reachable form; "handled in another issue" is not.
-4. **Deprecation notes are fine while the implementation exists** — it is still part of the shape
-   the reader can observe. Once it is gone, the note refers to nothing and goes with it.
-5. **If the process must be kept, put it where process belongs.** A PR description's Background
-   section, or an ADR. Not source code, not user-facing docs, not an API reference.
-6. **Write in the reader's language** — the repository's for a code comment or PR description, the
-   tracker's for an issue. Never restate the same content in a second language: the translation
-   ages independently and no reader can tell which copy is current.
+- **Keep the rationale, drop the process.** Why the spec or design exists is decision-making
+  material; "review feedback led to", "the policy changed", "originally we went with X" depend on
+  a timeline only participants can follow.
+- **Describe the current shape on its own terms.** "Not A but B", "A is deprecated", "A was
+  removed" each assume the reader knows A, and a reader who does not cannot tell what the sentence
+  is ruling out.
+- **Confine cross-issue references to short `TODO(#123): ...` notes.** That names exactly what to
+  read and where, which is what makes it the one reachable form; "handled in another issue" is not.
+- **Keep a deprecation note only while the implementation still exists** — while it does, the note
+  describes part of the shape the reader can observe. Once the implementation is gone, the note
+  refers to nothing and goes with it.
+- **Put process you have to keep where process belongs** — a PR description's Background section, or
+  an ADR, never source code, user-facing docs, or an API reference, where every reader afterwards
+  pays to read material none of them can check.
+- **Write in the reader's language** — the repository's for a code comment or PR description, the
+  tracker's for an issue — and in that one language only: a second copy of the same content ages
+  independently, and no reader can tell which copy is current.
+
+## Which file to read
+
+| The question | Read |
+|---|---|
+| A worked Bad → Good pair for the artifact in hand — a code comment, an issue body, or a deprecation note whose implementation is gone | [`references/examples.md`](references/examples.md) |
 
 ## Persistence
 
 In force for every response once it is loaded, not only the one that loaded it. Still in force
 while you are unsure whether what you are writing will be read later. Released when the work turns
-to what nobody reads to act on, or when you are told to stop.
+to what nobody will read later, or when you are told to stop.
 
 ## Common Rationalizations
 
-The most common failure is not applying this at all, because the artifact did not feel like a
-"document." Close that off first, then the process-leak excuses:
-
 | Rationalization | Reality |
 |---|---|
-| "This is a code comment / commit message / issue / Notion page — not really a 'document,' so this doesn't apply." | It applies. The target is **every artifact that persists**, wherever it lives — code comments, commit messages, PR and issue descriptions, API and design docs, and Notion / docx pages all count. This is the failure that recurs; check the artifact against this skill *before* writing it, not only when the thing is labelled "doc." |
+| "This is a code comment / commit message / issue / Notion page — not really a 'document,' so this doesn't apply." | It applies. Whether the artifact persists is the test, not what it is called — a commit message and a Notion page outlive the thread they came out of exactly as an API doc does. This is the failure that recurs. |
 | "It reads fine to me." | You are supplying the intent the text is missing as you read it. Judge it as someone holding only the text — that is the whole failure mode. |
 | "Including the conversation history gives the reader helpful context." | The reader was never in the conversation, so the log is noise to them. Keep the *why*; drop the *how it came to be*. |
 | "The review asked for this change, so I'll record that." | Review feedback is process. State the resulting decision, not that a review requested it. |
@@ -78,17 +90,4 @@ The most common failure is not applying this at all, because the artifact did no
 ## Verification
 
 - [ ] Every claim is checkable from the current code, types, schemas, or a stated external rule.
-- [ ] No sentence depends on when it was written or who was in the room.
-- [ ] Cross-issue references are `TODO(#123): …`, naming what to read.
 - [ ] A reader with zero context meets no proper noun or premise that arrives unintroduced.
-
-## Examples
-
-Bad/Good pairs for a code comment, an issue body, and a deprecation note that outlived its
-implementation: [`references/examples.md`](references/examples.md).
-
-## Related skills
-
-- `avoid-reference-detours` — the other half of the same split: a target that *is* reachable, and
-  the reader was still sent to it.
-- `review-self-contained-docs` — audits written text against both, per unit, from the reader's side.
