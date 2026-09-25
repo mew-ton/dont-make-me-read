@@ -4,7 +4,7 @@ Read this when a strength row needs a worked example: the fix you can defend, th
 genuinely interchangeable, or the problem you can only register. The examples are in English because
 this file is — strength is a property of what you assert, not of the language you assert it in.
 
-## Row 1 — a fix you can defend
+## A fix you can defend
 
 **Bad: the fix is known, but written as a menu**
 
@@ -50,7 +50,7 @@ the new key string, so both need regression coverage.
 an alternative offered to the reader — it is the wall they would walk into on reaching for the obvious
 local fix. One asserted fix, plus the constraints that make it the fix.
 
-## Row 2 — options that are genuinely interchangeable
+## Options that are genuinely interchangeable
 
 **Good: flat, unweighted, and short**
 
@@ -61,8 +61,9 @@ local fix. One asserted fix, plus the constraints that make it the fix.
   summary line carrying the key count.
 ```
 
-If you would be mildly disappointed by one of the three, you are in row 1 and should say which. Row 2
-is for the case where you genuinely would not review the choice.
+If you would be mildly disappointed by any of the options you are about to list, you have a fix you
+can defend and should say which. A flat list is for the case where you genuinely would not review the
+choice.
 
 **Bad: the comment reads as correct, so the code is asserted as the thing to fix**
 
@@ -77,7 +78,7 @@ The comment reads as the more deliberate, more complete side, so it gets asserte
 but nothing here establishes that the retry is the missing half rather than a leftover description of
 a plan the code already moved past.
 
-**Good: the disclosure is what moves it to row 2**
+**Good: the disclosure is what makes the fixes interchangeable**
 
 ```markdown
 **major** — the header comment and the code it describes disagree about the retry behaviour
@@ -95,11 +96,11 @@ be an intentionally partial step toward it. Asserting "add the retry" would deci
 instead of reporting it.
 
 Two concrete fixes exist — implement the retry, or make the comment state the deferral — and either
-one resolves the contradiction, which is why this is row 2 and not row 3. It is not row 1 either:
-nothing here, no grep and no explicit statement, favors one side. Once something does (the PR body
-says outright "the comment is stale, ignore it"), name that fix and move to row 1.
+one resolves the contradiction, so this is not the case where no fix can be named. Nor is it a fix
+you can defend: nothing here, no grep and no explicit statement, favors one side. Once something does
+(the PR body says outright "the comment is stale, ignore it"), name that fix and assert it.
 
-## Row 3 — no fix you can name
+## No fix you can name
 
 The goal changes: you are no longer instructing a fix, you are **registering the problem** so it is
 not lost. Two shapes, by where you are writing.

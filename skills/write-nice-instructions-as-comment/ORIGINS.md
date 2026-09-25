@@ -17,9 +17,9 @@ skill.
 - `avoid-reference-detours` — whether the reader was sent somewhere to understand the finding, and
   what may be restated at the point of use instead.
 - `write-nice-issue-description` — a problem statement plus a completion condition, read by an
-  implementer who can read the repository. This skill stops where that one starts, which is why the
-  body names it on row 3's step: the issue a row-3 finding opens is written with that skill, not
-  with this template.
+  implementer who can read the repository. This skill stops where that one starts: the issue opened
+  by a finding with no nameable fix is written to that skill's rules, not to this template. The body
+  says the issue is not this template's job without naming the skill, since it does not invoke it.
 - `write-nice-instructions-as-rule` — the same demand where the instruction stays in force: a
   guideline, a convention, or the rules inside a skill body, read out of order by whoever the rule
   catches. The description's bound takes that case back without naming the skill.

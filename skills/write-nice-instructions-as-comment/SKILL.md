@@ -109,43 +109,46 @@ it is today. It is never the proposal's own negation.
 
 ### State the remedy as firmly as you can defend it, and no firmer
 
-Pick one row. This is the axis generated text gets wrong: it reaches for a flat menu of options
+Pick one of these. This is the axis generated text gets wrong: it reaches for a flat menu of options
 whichever row it is in, which reads as balanced and leaves the reader to do the deciding.
 
 | What you have | How to write it | What not to do |
 |---|---|---|
 | **A fix you can defend** | Assert it as the one to make: "fix it with `ValidationError`, as `path/to/validate.ts:22` does". A rejected option may appear **only as the constraint that rules it out** — the wall the reader would otherwise walk into — never as an option offered to them. | Do not present the alternatives you rejected as choices, and do not hedge the one you chose ("it might be worth considering…"). Both hand your decision back to the reader. |
-| **Several fixes, and any of them is genuinely fine** | List them flat, with no weighting. | Do not smuggle a preference in through ordering, length or wording. If you have a preference, you are in row 1 — say so. |
+| **Several fixes, and any of them is genuinely fine** | List them flat, with no weighting. | Do not smuggle a preference in through ordering, length or wording. If you have a preference, you have a fix you can defend — say so. |
 | **No fix you can name** | Switch the goal to **registering the problem**: open an issue and link it from a comment at that code. | Do not invent a vague suggestion to fill the slot, and do not drop the finding because you cannot solve it. |
 
-**A flat list is the last resort, not the default.** About to give three options, check row 1 first:
-if you can weight them at all, it is row 1 and one asserted fix. Row 2 is for options you genuinely
-would not review the choice between.
+**A flat list is the last resort, not the default.** About to offer a menu, ask first whether you can
+defend one of them: if you can weight them at all, you have a fix you can defend, and you assert that
+one. A flat list is for options you genuinely would not review the choice between.
 
 **Marking a fix as optional to adopt is not hedging it.** A nit can say outright that nothing is
 broken today and still assert one specific fix as the one to make if you act on it — the fix is
 stated with confidence, and only whether it is worth the effort now is left to the reader. That
 differs from "it might be worth considering…", which hedges the fix's correctness itself.
 
-**A contradiction between a comment (or spec, or AC) and the code is not automatically row 1.** That
+**A contradiction between a comment (or spec, or AC) and the code is not automatically a fix you can
+defend.** That
 a comment claims A while the code does B tells you the two disagree, not that A is right and B is the
 bug: prose reading as the more complete or deliberate side can as easily be a stale plan the code
 moved past. Absent evidence that actually favours one side — a grep showing the described behaviour
 has no remaining callers, an explicit statement that one side is stale, the same evidence any other
-row-1 fix cites — this is row 2: list both fixes flat ("bring the code up to what the comment says,
-or correct the comment to say what the code does") and let the author's own scope call pick. A
+asserted fix cites — the fixes are interchangeable: list both flat ("bring the code up to what the
+comment says, or correct the comment to say what the code does") and let the author's own scope call
+pick. A
 disclosed scope split — a follow-up ticket, a "not wired yet" note, a `TODO(#N)` — is the clearest
 case: it says the mismatch is intentional, not which side is wrong. Its absence is not evidence
-either, so an unexplained comment keeps the row-2 default until something favours a side.
+either, so an unexplained comment keeps the flat list until something favours a side.
 
 Strength is **orthogonal to severity**: `critical` / `major` / `minor` / `nit` says whether the
 finding blocks the merge, strength says how firmly the remedy is stated. A `major` can have no known
-fix (row 3), and a `nit` can have exactly one (row 1).
+fix to name, and a `nit` can have one you can defend.
 
-Row 3's issue is itself a decision issue: what has to be decided, and what would settle it, lands in
-that issue's own body, not in this template — while
-the finding carries the fact, the instruction to register it, and the reasons a fix cannot be named.
-"Investigation is needed", on its own, is not row 3; it is row 3 with the work left out.
+Where no fix can be named, the issue you open is itself a decision issue: what has to be decided, and
+what would settle it, lands in that issue's own body, not in this template — while the finding
+carries the fact, the instruction to register it, and the reasons a fix cannot be named.
+"Investigation is needed", on its own, does not register the problem; it is registering it with the
+work left out.
 
 ### Write it in the language its readers already use
 
@@ -183,7 +186,7 @@ applies the same way whichever language you post in. Two places a translated fin
 | "It reads fine to me." | You are supplying the intent the text is missing as you read it. Judge it as someone holding only the text — that is the whole failure mode. |
 | "I can turn any request into a fact by negating it." | Negating the request changes its grammar, not its content — "library `A` is not introduced" carries the same information as "introduce library `A`" and no more. The fact has to be upstream: the behaviour in the code that the request is a response to. |
 | "Naming the file in Title is more precise." | Precision at the wrong altitude reads as evidence, not a rule. A reader recognises the shape of the problem before they need its address — put the file in Summary's first bullet, and swap-test Title. |
-| "The comment/spec describes the intended behaviour, so making the code match it is the fix." | Reading as the more complete side is not evidence it is the current one; the comment can be the stale half. Asserting the code as the thing to fix also decides a scope question that belongs to the author. Row 2 unless a grep or an explicit statement favours a side. |
+| "The comment/spec describes the intended behaviour, so making the code match it is the fix." | Reading as the more complete side is not evidence it is the current one; the comment can be the stale half. Asserting the code as the thing to fix also decides a scope question that belongs to the author. The fixes stay interchangeable unless a grep or an explicit statement favours a side. |
 | "The examples in this skill are in English, so the finding should be too." | The examples are in English because the skill is. Post in the language the repository's reviews already use — the shape is what this skill fixes, not the language. |
 
 ## Red Flags
