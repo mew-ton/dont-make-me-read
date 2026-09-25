@@ -13,62 +13,47 @@ disable-model-invocation: false
 
 ## Overview
 
-A reference the reader can genuinely open is still a defect when following it was never optional:
-the round trip is what costs them, not the fact.
+This skill brings the fact a reader needs to the point where they use it, instead of sending them
+off to get it. A reference they can genuinely open is still a defect when following it was never
+optional: the round trip is what costs them, not the fact.
 
 ## When it applies
 
 To any sentence that cannot be understood without going somewhere else: a comment, a docstring, a
-PR description, a section that defers to another section.
+PR description, a section that defers to another section. It does not apply when:
 
-This skill starts from a target the reader can reach. Where it does not exist for them at all — a
-conversation, a removed declaration, a Slack thread — there is nothing to restate and the fix is to
-delete, which is `avoid-unverifiable-context`'s finding and is asked first. What remains here is
-the second question only: should the reader have had to leave to understand the sentence in front
-of them?
+- The target does not exist for this reader at all — a conversation, a removed declaration, a Slack
+  thread. There is nothing to restate; the fix is to delete, and that question is asked first.
+- The same content is stated twice inside one document. A reader reads a document in order, so the
+  second statement costs them a re-read rather than a trip, and only a trip is this skill's.
 
-## The rule
+## The rules
 
-State it where it is used. Keep the original where it is.
+- **State the fact at the point of use, and leave the original where it is.** The file-header
+  docstring, the schema, the spec, the config stays put and stays authoritative, which is why this
+  subtracts rather than adds: the reader stops making the trip, and the two lines that would have
+  described the trip go with it.
+- **Bring the part this reader needs in order to act, in the shortest form that does the job.** The
+  whole original copied to the point of use adds reading in place of the trip it removed.
+- **Restate only where it removes a trip.** Of each line you add, ask: **does this change what the
+  reader does next?** A line repeating what the code beside it already shows, or a background
+  paragraph the reader would never have gone looking for, adds reading and removes no trip — point
+  at `path:line` if the location needs naming at all.
+- **Write the restated line in the language the artifact's readers already use.** A line they
+  have to translate before they can act is the trip again, moved.
 
-The original — the file-header docstring, the schema, the spec, the config — stays put and stays
-authoritative. What comes to the point of use is **the part this reader needs in order to act**,
-in the shortest form that does the job. That is why this subtracts rather than
-adds: the reader stops making the trip, and the two lines that would have described the trip go
-with it.
+## Which file to read
 
-## Restating earns its line only by removing a trip
-
-Restating earns its line only when it removes a trip. Before adding, run the same test everything
-else in this set runs:
-
-> **Does this change what the reader does next?**
-
-A line repeating what the code beside it already shows adds reading and removes no trip — it fails.
-So does a background paragraph the reader would never have gone looking for. The two directions are
-one rule, not two:
-
-| Situation | What the reader pays | Write |
-|---|---|---|
-| The fact lives elsewhere and they must go get it | a round trip | the fact, here |
-| The fact is already in front of them (the diff, the code on the next line) | a re-read | nothing; point at `path:line` if it needs naming at all |
-
-## Where this ends and duplication begins
-
-Inside one document a reader reads in order, so a second statement of the same content is a
-re-read, which `write-nice-issue-description` owns. Across documents, files, or sections a
-reader has to travel, and the trip costs more than the restatement. This skill governs the second
-case only.
+| The question | Read |
+|---|---|
+| A worked Bad → Good pair for the case in hand — a doc comment deferring to its file header, or a cross-issue note in prose | [`references/examples.md`](references/examples.md) |
 
 ## Persistence
 
 In force for every response once it is loaded, not only the one that loaded it. Still in force
 while you are unsure whether the pointer you are about to write is one the reader could have done
-without. Released when the work turns to what nobody reads to act on, or when you are told to stop.
-
-## Language
-
-Write the restated line in the language the artifact's readers already use.
+without. Released when the work turns to text no reader comes to later, or when you are told to
+stop.
 
 ## Common Rationalizations
 
@@ -88,19 +73,4 @@ Write the restated line in the language the artifact's readers already use.
 ## Verification
 
 - [ ] Every remaining pointer is one the reader may decline to follow and still act.
-- [ ] Each restatement removes a trip, never a re-read.
 - [ ] The original is still in place and still authoritative.
-
-## Examples
-
-Bad/Good pairs for a doc comment deferring to its file header, and for a cross-issue note in
-prose: [`references/examples.md`](references/examples.md).
-
-## Related skills
-
-- `avoid-unverifiable-context` — the other half of the same split: the target does not exist for
-  this reader at all, so the fix is to delete rather than restate.
-- `avoid-caller-knowledge` — the same range failure in code, where restating is what creates the
-  dependency, so the fix inverts: the knowledge comes out.
-- `write-nice-issue-description` — Gate 2 owns repetition *inside* one document.
-- `review-self-contained-docs` — audits written text against both, per unit, from the reader's side.
