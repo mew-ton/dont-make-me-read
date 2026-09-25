@@ -31,14 +31,15 @@ TARGET=2000 bash scripts/count-tokens.sh <常時オンの SKILL.md すべて>   
 の数字は同時に立つスキルにまたがる合計であり、ファイル単位の終了コードでは検査できない — 二行目を走らせ、
 自分で数を足すこと。
 
-`references/examples.md` は出荷されている description を引用しているので、それらのスキルを直すと、何も告げ
-ないまま古くなる：
+`references/examples.md` と `references/writing-descriptions.md` はどちらも出荷されている description を
+引用しているので、それらのスキルを直すと、何も告げないまま古くなる：
 
 ```bash
 bash scripts/check-examples.sh
 ```
 
-Good のブロックを一つずつ live の `description` と突き合わせ、違っていれば差分を印字して非ゼロで終了する。
+引用されている description を一つずつ live のものと突き合わせ — Good のブロックと、worked opening の両方を —
+違っていれば差分を印字して非ゼロで終了する。
 
 ## Where the rest lives（残りはどこにあるか）
 

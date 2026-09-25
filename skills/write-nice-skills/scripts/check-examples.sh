@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Every Good block in references/examples.md claims to be a description that ships.
-# This asserts it: each one has to match some skill's live description, byte for byte.
+# Two reference files quote descriptions that ship: examples.md's Good blocks, and
+# writing-descriptions.md's worked openings. This asserts each one still matches its
+# skill's live description, byte for byte.
 #
 #   bash <this skill's directory>/scripts/check-examples.sh [skills-dir]
 #
@@ -9,9 +10,10 @@ set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 examples="$here/../references/examples.md"
+descriptions="$here/../references/writing-descriptions.md"
 skills="${1:-$here/../..}"
 
-python3 - "$examples" "$skills" <<'PY'
+python3 - "$examples" "$skills" "$descriptions" <<'PY'
 import re, sys, pathlib
 
 examples, skills = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
@@ -66,6 +68,25 @@ for i, (b, g) in enumerate(pairs, 1):
         print(f"  Bad:  {b[:100]}")
         bad += 1
 
-print(f"{len(goods)} Good blocks and {added} added-to Bad blocks checked, {bad} stale.")
+# writing-descriptions.md shows the description's shape once, in placeholders, and
+# then quotes live descriptions as the worked openings. The shape is the block with a
+# placeholder in it; every other one has to be a description that ships.
+descriptions = pathlib.Path(sys.argv[3])
+quoted = 0
+for i, blk in enumerate(re.findall(r"```text\n(.*?)```", descriptions.read_text(), re.S), 1):
+    n = norm(blk)
+    if "<" in n:
+        continue
+    quoted += 1
+    if n in live.values():
+        continue
+    bad += 1
+    owner = max(live, key=lambda k: len(set(live[k].split()) & set(n.split())))
+    print(f"{descriptions.name} block {i} matches no live description. Closest is {owner}:")
+    for t in n.split(". "):
+        if t not in live[owner].split(". "):
+            print(f"  quoted only: {t[:100]}")
+
+print(f"{len(goods)} Good blocks, {added} added-to Bad blocks and {quoted} worked openings checked, {bad} stale.")
 sys.exit(1 if bad else 0)
 PY

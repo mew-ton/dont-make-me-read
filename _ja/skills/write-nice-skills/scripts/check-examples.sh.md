@@ -4,9 +4,9 @@
 
 ## ファイル冒頭のヘッダ
 
-> `references/examples.md` の Good ブロックはどれも、出荷されている description であると主張している。
-> これはそれを検査する：一つずつ、どこかのスキルの live な description とバイト単位で一致しなければ
-> ならない。
+> 二つの reference ファイルが、出荷されている description を引用している：`examples.md` の Good ブロックと、
+> `writing-descriptions.md` の worked opening である。これは、その一つずつがいまもそのスキルの live な
+> description とバイト単位で一致することを検査する。
 >
 >   `bash <このスキルのディレクトリ>/scripts/check-examples.sh [skills-dir]`
 >
@@ -20,3 +20,9 @@
 
 > Bad がその Good より長い場合、その Bad は当の Good に何かを足しただけのもので、他は何も変えていない。
 > それを検査する。片方のコピーだけを編集したら落ちるように。
+
+## `descriptions` の上のコメント
+
+> `writing-descriptions.md` は description の形を一度だけ、プレースホルダで示し、そのあとは worked opening
+> として live な description を引用している。形のほうは、中にプレースホルダが入っているブロックである。
+> それ以外はどれも、出荷されている description でなければならない。
