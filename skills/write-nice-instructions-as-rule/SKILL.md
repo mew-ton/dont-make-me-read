@@ -13,9 +13,16 @@ background: false
 
 ## Overview
 
-A rule the reader can agree with without acting is not a rule, and its author cannot feel the
-difference — they already know which action they mean. Standing rules are also read out of order,
-so each entry has to work where the eye lands rather than where it was written.
+This skill writes and revises the rules a document keeps in force — a guideline, a convention, a
+policy, a checklist, the entries in a skill body — so that each one states an action its reader can
+carry out. A rule the reader can agree with without acting is not a rule, and its author is the one
+person who cannot feel the difference: they already know which action they mean.
+
+## How to work
+
+- **Ask of each entry what the reader does next, and answer it from that entry's own words alone.**
+- **Read each entry on its own, in the order the eye reaches it rather than the order you wrote
+  them in.**
 
 ## DO
 
@@ -66,22 +73,15 @@ so each entry has to work where the eye lands rather than where it was written.
 
 ## Red Flags
 
-- An entry that explains the constraint and leaves the action to be inferred.
-- A DO entry with a prohibition buried inside it.
-- Numbered rules in a list that will be inserted into.
-- An instruction whose second clause names something the reader was not about to do.
-- An entry nobody can fail.
+- A rule entry whose opening words are a noun phrase about the problem rather than a verb for the
+  reader.
+- A `never` or a `don't` inside an entry on the DO list.
+- Numbers in front of entries in a list that will be added to.
+- An entry whose closing clause names the option you discarded, or corrects a belief the document
+  never gave the reader.
+- An entry you cannot say what breaking would look like for.
 
 ## Verification
 
-- [ ] Every entry opens with an imperative.
-- [ ] Every constraint or exception sits on the line of the entry it narrows.
-- [ ] Every entry carries its cost, or the reader can see why it exists.
-- [ ] No entry corrects a belief this document never gave the reader.
-
-## Related skills
-
-- `dont-make-me-read` — the test this one sharpens: what the reader has to hold before they can
-  act on the rule.
-- `write-nice-instructions-as-comment` — the same demand for one instruction to one person about one change,
-  where the shape is a finding rather than a standing list.
+- [ ] A reader who lands on one entry, having read nothing above it, can act on it.
+- [ ] Every entry can be broken, and says in its own words what breaking it costs.
