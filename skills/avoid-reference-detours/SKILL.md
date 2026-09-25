@@ -23,7 +23,8 @@ To any sentence that cannot be understood without going somewhere else: a commen
 PR description, a section that defers to another section. It does not apply when:
 
 - The target does not exist for this reader at all — a conversation, a removed declaration, a Slack
-  thread. There is nothing to restate; the fix is to delete, and that question is asked first.
+  thread. There is nothing to restate and the fix is to delete, so settle whether the reader can
+  reach the target before asking whether they should have been sent to it.
 - The same content is stated twice inside one document. A reader reads a document in order, so the
   second statement costs them a re-read rather than a trip, and only a trip is this skill's.
 
