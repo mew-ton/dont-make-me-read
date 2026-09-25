@@ -36,6 +36,9 @@ is not in context yet, so the `description` has to be judge-able on its own.
 - **Put an angle bracket in the description's text.** `<` and `>` are rejected outright there, so a
   description carrying a tag or a `<placeholder>` does not load at all. The `>` that opens a YAML
   folded block is part of the frontmatter, not of the text, and is fine.
+- **Say that the skill stays in force.** What keeps it in force is the body's `## Persistence`, and
+  this reader is deciding whether to load the body at all. The clause spends characters on what
+  happens after the only judgment the description is read for.
 
 ## The description's shape
 

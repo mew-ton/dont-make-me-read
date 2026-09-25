@@ -29,7 +29,7 @@ Read this when writing or revising the body of a `SKILL.md`.
 ```text
 ## Overview
 ## When it applies                      — where the description does not settle scope
-## How to work
+## How to work                          — where the rules are not in the body
 ## <the rules, or the routing to them>
 ## Persistence                          — where the skill stays in force
 ## Common Rationalizations
@@ -54,6 +54,10 @@ Where the routing conditions themselves name which cases are in scope, they have
 
 The posture the rules are applied with, a bullet at a time: what the author does when they sit down
 to the work. The rules each bullet applies stay in the file that owns them.
+
+A skill that carries all of its rules inline has no posture to separate from them: every bullet
+would be a rule restated a few lines below it, which is the no-op this file rules out. Leave the
+section out there, and let the rules carry the posture.
 
 ## The rules
 
