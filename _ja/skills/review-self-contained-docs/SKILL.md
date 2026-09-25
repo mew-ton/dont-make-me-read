@@ -104,8 +104,10 @@ PR を含まないブリーフは、書き上げたばかりのテキストの�
     いないものがあり、そこから無理に二つ目の事実を捻り出すのは、存在しない設計上の隙間をでっち上げることに
     なる。
 
-> 【訳注】この節も `write-nice-instructions-as-comment` の起動を求めているが、`allowed-tools` に `Skill` は
-> 含まれていない。`review-nice-issues` の手順4と同じ構造上の疑い。
+> 【訳注】この節は `write-nice-instructions-as-comment` の起動を求めているが、`allowed-tools` に `Skill` は
+> 含まれていない。`ARCHITECTURE.md` がこれを決着させている：`allowed-tools` は事前承認だけで、そこに書かれて
+> いない道具を禁じはしない。禁じるのは `disallowed-tools` のほうであり、`review-nice-issues` も `Skill` を
+> そこに挙げていない。だから起動は妨げられず、承認プロンプトが出るだけである。
 
 ## Reporting（報告）
 
