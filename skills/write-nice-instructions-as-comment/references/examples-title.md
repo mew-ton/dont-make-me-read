@@ -121,5 +121,5 @@ grew a sub-heading per instruction.
 ```
 
 Filing them together hides the problem with no nameable fix under the one that has a fix: a reader
-who applies the rename
-sees the finding as resolved, and the coverage gap that was never addressed goes with it.
+who applies the rename sees the finding as resolved, and the coverage gap that was never addressed
+goes with it.

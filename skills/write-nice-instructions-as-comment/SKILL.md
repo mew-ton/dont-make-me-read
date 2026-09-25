@@ -115,7 +115,7 @@ whichever row it is in, which reads as balanced and leaves the reader to do the 
 | What you have | How to write it | What not to do |
 |---|---|---|
 | **A fix you can defend** | Assert it as the one to make: "fix it with `ValidationError`, as `path/to/validate.ts:22` does". A rejected option may appear **only as the constraint that rules it out** — the wall the reader would otherwise walk into — never as an option offered to them. | Do not present the alternatives you rejected as choices, and do not hedge the one you chose ("it might be worth considering…"). Both hand your decision back to the reader. |
-| **Several fixes, and any of them is genuinely fine** | List them flat, with no weighting. | Do not smuggle a preference in through ordering, length or wording. If you have a preference, you have a fix you can defend — say so. |
+| **Several fixes, and they are genuinely interchangeable** | List them flat, with no weighting. | Do not smuggle a preference in through ordering, length or wording. If you have a preference, you have a fix you can defend — say so. |
 | **No fix you can name** | Switch the goal to **registering the problem**: open an issue and link it from a comment at that code. | Do not invent a vague suggestion to fill the slot, and do not drop the finding because you cannot solve it. |
 
 **A flat list is the last resort, not the default.** About to offer a menu, ask first whether you can
@@ -128,17 +128,16 @@ stated with confidence, and only whether it is worth the effort now is left to t
 differs from "it might be worth considering…", which hedges the fix's correctness itself.
 
 **A contradiction between a comment (or spec, or AC) and the code is not automatically a fix you can
-defend.** That
-a comment claims A while the code does B tells you the two disagree, not that A is right and B is the
-bug: prose reading as the more complete or deliberate side can as easily be a stale plan the code
-moved past. Absent evidence that actually favours one side — a grep showing the described behaviour
-has no remaining callers, an explicit statement that one side is stale, the same evidence any other
-asserted fix cites — the fixes are interchangeable: list both flat ("bring the code up to what the
-comment says, or correct the comment to say what the code does") and let the author's own scope call
-pick. A
-disclosed scope split — a follow-up ticket, a "not wired yet" note, a `TODO(#N)` — is the clearest
-case: it says the mismatch is intentional, not which side is wrong. Its absence is not evidence
-either, so an unexplained comment keeps the flat list until something favours a side.
+defend.** That a comment claims A while the code does B tells you the two disagree, not that A is
+right and B is the bug: prose reading as the more complete or deliberate side can as easily be a
+stale plan the code moved past. Absent evidence that actually favours one side — a grep showing the
+described behaviour has no remaining callers, an explicit statement that one side is stale, the same
+evidence any other asserted fix cites — the fixes are interchangeable: list both flat ("bring the
+code up to what the comment says, or correct the comment to say what the code does") and let the
+author's own scope call pick. A disclosed scope split — a follow-up ticket, a "not wired yet" note, a
+`TODO(#N)` — is the clearest case: it says the mismatch is intentional, not which side is wrong. Its
+absence is not evidence either, so an unexplained comment keeps the flat list until something favours
+a side.
 
 Strength is **orthogonal to severity**: `critical` / `major` / `minor` / `nit` says whether the
 finding blocks the merge, strength says how firmly the remedy is stated. A `major` can have no known
