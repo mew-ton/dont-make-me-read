@@ -14,17 +14,17 @@ disable-model-invocation: false
 
 ## Overview
 
-Someone reading a function has to hold whatever it depends on before they can change it, and a
-function that decides what to do from *who called it* puts every caller inside that range — the
-next one included. Code is where restating does not repair that: a callee that takes on a caller's
-knowledge takes on a dependency, permanently.
+This skill holds a callee to what it can know on its own: whatever differs between callers arrives
+as data, named in the vocabulary of what the callee does. A function that decides what to do from
+*who called it* puts every caller inside the range a reader has to hold before they can change
+it — the next caller included — and code is where restating does not repair that, because a callee
+that takes on a caller's knowledge takes on a dependency, permanently.
 
 ## When it applies
 
 To any function, module or component with more than one caller — writing it, extracting it,
 reviewing it, or designing the interface between them. It does not apply when:
 
-- The difference **is** domain data, and the domain word for it exists. Pass that.
 - The two callers were never doing the same thing. Then the extraction is what to undo, not the
   parameter — two straightforward functions cost less to read than one that serves both.
 - The caller's identity is the subject matter: a logger's `source`, a metric's label, an audit
@@ -32,16 +32,13 @@ reviewing it, or designing the interface between them. It does not apply when:
 
 ## The rule
 
-**The knowledge goes out, not in.** What differs between callers is the callers' to state; the
-callee takes it as data and does not know who supplied it.
+**Push what differs out to the callers, not into the callee.** It is the callers' to state; the
+callee takes it as data and does not know who supplied it — otherwise the extraction that was meant
+to make the next change cheaper is edited again for every caller added.
 
-The symptom that confirms it: extracting the shared code was supposed to make a change cheaper,
-and instead the shared code is edited every time a caller is added.
-
-## The signal is in the name
-
-Try to rename the parameter in the vocabulary of what the function actually does. If it survives,
-it is the callee's own. If the only honest name is the caller's identity, the knowledge crossed.
+**Rename the parameter into the vocabulary of what the callee does.** If it survives, the parameter
+is the callee's own; if the only honest name is the caller's identity, the knowledge crossed. A
+callee may branch all it likes on facts it owns.
 
 | Parameter | Reads as | Verdict |
 |---|---|---|
@@ -50,9 +47,6 @@ it is the callee's own. If the only honest name is the caller's identity, the kn
 | `from: 'pageA' \| 'pageB'` | who is asking | crossed |
 | `isDetailPage: boolean` | where the caller lives | crossed |
 | `variant: 'list' \| 'detail'` | which screen renders it | crossed until renamed to what actually differs (`density`, `showsSummary`) |
-
-The test is the name, not the number of branches. A callee may branch all it likes on facts it
-owns.
 
 ## Persistence
 
@@ -81,9 +75,3 @@ turns to something other than code, or when you are told to stop.
 
 - [ ] Every parameter survives renaming into the vocabulary of what the callee does.
 - [ ] Adding a caller needs no edit inside the callee.
-- [ ] Each remaining branch is on domain data, not on who called.
-
-## Related skills
-
-- `avoid-reference-detours` — the same range failure in text, where the fix is to restate the fact
-  at the point of use rather than to remove it.
