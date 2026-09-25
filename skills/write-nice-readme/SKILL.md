@@ -58,9 +58,8 @@ maintainer looking up a flag can scroll, and someone deciding whether to keep re
 "Without reading further" is the whole condition. Anything that has to be held before the decision
 is paid for by everyone who arrives, including everyone who leaves.
 
-This is `dont-make-me-read`'s test at a README's granularity, and it carries that skill's premise:
-the writer is the one person who cannot feel the range they are asking for, because they read
-their own draft already knowing what the project is.
+The writer is the one person who cannot feel the range they are asking for, because they read their
+own draft already knowing what the project is.
 
 ## What a README owes its reader
 

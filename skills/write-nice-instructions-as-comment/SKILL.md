@@ -143,7 +143,7 @@ finding blocks the merge, strength says how firmly the remedy is stated. A `majo
 fix (row 3), and a `nit` can have exactly one (row 1).
 
 Row 3's issue is itself a decision issue: what has to be decided, and what would settle it, lands in
-that issue's own body — written with `write-nice-issue-description`, not with this template — while
+that issue's own body, not in this template — while
 the finding carries the fact, the instruction to register it, and the reasons a fix cannot be named.
 "Investigation is needed", on its own, is not row 3; it is row 3 with the work left out.
 

@@ -10,7 +10,7 @@ removing what does not change what the reader does:
 | Preamble and meta-narration ("I have reviewed this PR", "the following explains it in detail") | The reader knows what they opened. Start at the fact. |
 | Praise and cushioning | Carries no action, and dilutes the finding after it. |
 | Code, diffs, or issue text quoted back | The reader has it. Point at `path:line` instead. |
-| An inventory of what you checked | Process, not instruction (`avoid-unverifiable-context`). |
+| An inventory of what you checked | Process, not instruction. |
 | The same point in a summary, the details, and a closing line | Say it once, where the reader acts from. |
 | Vague quantifiers standing in for a spec ("appropriately", "as necessary") | They read as complete and specify nothing. |
 | The same finding restated in a second language | One finding, one language. A translation is a second copy, not a second point. |

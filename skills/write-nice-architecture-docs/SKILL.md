@@ -32,8 +32,7 @@ read by someone who is not navigating the project but *adding* to it.
 
 > **Could a reader settle their decision from this, with the implementation closed?**
 
-This is `dont-make-me-read`'s test at an architecture doc's granularity. The code already shows what
-is there and git already shows when it changed. What neither shows is what would settle the next
+The code already shows what is there and git already shows when it changed. What neither shows is what would settle the next
 decision — which is why a section that narrates the current shape has no reader: everything in it is
 available faster somewhere else.
 
@@ -158,9 +157,8 @@ parses them. The list of what exists belongs to the directory that holds it. And
 arranged internally belongs to that artifact's own rules — a doc that says which artifacts have
 rules has already said enough.
 
-`avoid-reference-detours` already settles whether you may repeat something: bring the part **this
-reader needs in order to act**, in the shortest form that does the job. What this narrows is *which*
-part:
+Repeat only the part **this reader needs in order to act**, in the shortest form that does the job.
+What this section narrows is *which* part:
 
 | | Bring |
 |---|---|
@@ -194,7 +192,7 @@ The repository's.
 | "matklad says to call out what is deliberately absent, so a list of absences is the doc." | He says an invariant is often an absence, not that an absence is always an invariant. "No layer imports upward" places everything; "the parser does not call the type checker" places nothing. Keep both, but only the first can carry a section. |
 | "The table only lists the interesting cases." | Then say so in the table's own words. Presented as the classification, a partial table teaches the reader it cannot be trusted to place anything — including the thing they came to place. |
 | "Linking the module is friendlier than naming it." | Until it moves. A name survives the rename and search finds it; the link becomes a lie nobody notices for a year. Name it. |
-| "Recording why we chose this over the alternative is useful history." | The rationale stays; the deliberation goes (`avoid-unverifiable-context`). Write the constraint that rules the alternative out, as a wall the reader would hit — not the account of the two of you weighing it. |
+| "Recording why we chose this over the alternative is useful history." | The rationale stays; the deliberation goes. Write the constraint that rules the alternative out, as a wall the reader would hit — not the account of the two of you weighing it. |
 | "It reads fine to me." | You are supplying the criteria you already hold. Judge it as someone who has the file open and the implementation closed — that is the whole failure mode. |
 
 ## Red Flags
