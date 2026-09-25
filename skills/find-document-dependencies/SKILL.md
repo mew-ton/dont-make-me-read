@@ -163,9 +163,6 @@ other dependencies" is claiming completeness it cannot have.
 
 ## Verification
 
-Each box is here because what it catches leaves the caller unable to act on the report or to check
-it. The rest of the rules are met by reading them where they live.
-
 - [ ] Every edge names which end has to move, and the opposite direction was checked too.
 - [ ] Every edge carries the span that creates it, quoted.
 - [ ] Strong edges come first, and nothing is claimed about what was not found.

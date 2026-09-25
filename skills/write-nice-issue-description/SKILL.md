@@ -191,9 +191,6 @@ route.
 
 ## Verification
 
-Each box is here because what it catches leaves the implementer unable to start or unable to stop.
-The rest of the rules are met by reading them where they live.
-
 - [ ] Every `Background` sentence is one the issue's necessity fails without.
 - [ ] Every acceptance criterion is a state to satisfy, checkable in the domain's vocabulary.
 - [ ] `Goal` reaches every acceptance criterion but the last lint / type-check / test item.

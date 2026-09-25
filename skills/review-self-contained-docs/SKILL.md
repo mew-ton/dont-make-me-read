@@ -154,9 +154,6 @@ as a language choice.
 
 ## Verification
 
-Each box is here because what it catches makes the pass unsound or posts something nobody asked
-for. The rest of the rules are met by reading them where they live.
-
 - [ ] Every unit was judged from its own text and the code attached to it.
 - [ ] Every surviving unit has a recorded verdict, and each failing one stops at its first failed
       condition.
