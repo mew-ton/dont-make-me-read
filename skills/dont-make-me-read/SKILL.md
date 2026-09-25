@@ -2,20 +2,20 @@
 name: dont-make-me-read
 description: >
   Forces the narrowest range a reader has to hold before they can act — the range its writer cannot
-  feel, since a writer reads their own draft while supplying what it is missing, so it reads small
-  to them and only to them. Applies while writing or revising anything another person or an agent
-  reads in order to act: drafting, documenting, commenting, specifying, explaining, reviewing, or
-  writing the code itself, and it stays in force for the rest of that work. Does not apply in place
-  of the rules that own the artifact in hand — it carries no template, no budget, and no section
-  list — nor when nobody acts on the text later: chat replies, scratchpads, working notes.
+  feel. Applies while writing or revising anything another person or an agent reads in order to act:
+  drafting, documenting, commenting, specifying, explaining, reviewing, or writing the code itself,
+  and it stays in force for the rest of that work. Does not apply in place of the rules that own the
+  artifact in hand — it carries no template, no budget, and no section list — nor when nobody acts
+  on the text later: chat replies, scratchpads, working notes.
 user-invocable: false
 disable-model-invocation: false
 ---
 
 ## Overview
 
-Nobody wants to hold a lot in their head to work out what to do, and the writer is the one person
-who cannot tell how much that is: you read your own draft while supplying what it leaves out.
+This skill holds anything written to be acted on down to the narrowest range its reader has to hold
+before they can act: nobody wants to hold a lot in their head to work out what to do, and the writer
+is the one person who cannot tell how much they are asking for.
 
 ## The range
 
@@ -23,18 +23,17 @@ The range is everything the reader has to hold in order to act on what is in fro
 not the length of what they are reading: a short paragraph that only means something once you have
 opened two other files has a wide range.
 
-It goes wrong in three ways.
-
 | What went wrong | What the reader pays | The fix |
 |---|---|---|
 | Something in the range does not bear on the decision | reads it, and decides confidently on it | cut it |
 | The range reaches something this reader cannot get to at all | a dead end | cut it |
 | The range reaches something they can get to, and they have to go | a round trip | state the part they need, here |
 
-The third inverts in code. Text can restate a fact and leave the original authoritative, because
-nothing executes: the reader stops travelling and the original stays where it is. A module that
-restates what its callers know copies nothing — it takes on a dependency on them, and every caller
-after that is inside its range. There the fix is to take the knowledge out, not to bring it in.
+In code, the round-trip fix inverts. Text can restate a fact and leave the original authoritative,
+because nothing executes: the reader stops travelling and the original stays where it is. A module
+that restates what its callers know copies nothing — it takes on a dependency on them, and every
+caller after that is inside its range. There the fix is to take the knowledge out, not to bring it
+in.
 
 ## The test
 
@@ -90,9 +89,9 @@ Released when the work turns to what nobody reads to act on, or when you are tol
 | Rationalization | Reality |
 |---|---|
 | "I have the principle now, so I can write this without the rules for the artifact." | The principle does not carry the section list, the budgets, or the gates. It says what to aim at, never what the artifact must contain. Having this in force is not a substitute for loading that. |
-| "Shorter is better, so cut it." | Shorter is a result, never the goal. A line the decision depends on stays however much it costs to read. |
-| "More context is safer." | Context the decision does not use is exactly what makes a reader confident about the wrong thing. Safety is the list above, not volume. |
-| "This is code, not text, so the range is not my problem." | Code is read before it is changed, by someone who has to hold whatever it depends on. The range is the same measure; only the third row's fix inverts. |
+| "Shorter is better, so cut it." | Cutting is one of the two outcomes; the other is adding what the decision needs and does not have. Ask which of those the line is, never which is shorter. |
+| "More context is safer." | Context the decision does not use is exactly what makes a reader confident about the wrong thing. Safety is the material the decision depends on, not volume. |
+| "This is code, not text, so the range is not my problem." | Code is read before it is changed, by someone who has to hold whatever it depends on. The range is the same measure there. |
 | "It reads fine to me." | You are supplying the intent the text is missing as you read it. Judge it as someone holding only the text — that is the whole failure mode. |
 | "This has been in force a while, so it has done its job." | It is retaken every response. The turn where it lapses is the turn you write the paragraph nobody can act on. |
 
@@ -100,7 +99,8 @@ Released when the work turns to what nobody reads to act on, or when you are tol
 
 - A sentence that only means something with another file open, and nothing brought the fact back.
 - A paragraph kept because it is true rather than because it changes what the reader does next.
-- A constraint offered as an option — "you could also…" — instead of as the wall they would walk into.
+- A constraint offered as an option — "you could also…" — instead of as the wall they would walk
+  into.
 - A draft that got shorter by losing the rationale, the constraint, or the fact that makes the ask
   defensible.
 
@@ -108,4 +108,3 @@ Released when the work turns to what nobody reads to act on, or when you are tol
 
 - [ ] Every section on the mandatory path changes what the reader does next.
 - [ ] Nothing the decision depends on, and the reader cannot reconstruct, was cut.
-- [ ] Backing material is reachable rather than inlined; only the mandatory path is capped.
