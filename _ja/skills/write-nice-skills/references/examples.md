@@ -35,44 +35,41 @@ description or for sizing a body.
 **Bad**
 
 ```text
-A module that branches on which caller invoked it is holding its callers'
-knowledge. Reading it means holding every caller, and it is edited again each
-time one is added. Take the knowledge out instead: the caller passes what
-differs. Use on any coding task.
+A reader pays for everything they have to hold before they can act, and the
+writer cannot feel it, because they supply what the draft leaves out as they
+read it. Cut what does not change what the reader does next, and add what the
+decision needs. Use when writing anything.
 ```
 
-その規則への主張がここに全部ある — そういうモジュールを読むのに何がかかるか、代わりに何をすべきか — これは
+その規則への主張がここに全部ある — 読み手に何がかかるか、書き手がなぜそれを見落とすか、代わりに何をすべきか — これは
 本文のものである。それを手にしたエージェントは要約から動く。本文はすでに信じていることを追認するだけで、
 そもそもロードされるかも怪しい。機会は最後に、締めの一文で到来する。
 
 **Good**
 
 ```text
-Forces the caller-agnostic callee that takes what differs as data, named in the
-domain's own vocabulary, over one that branches on who called it — a shared fetch
-taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag, a
-component with a `variant` named after the screen it appears on. Applies to any
-coding task: writing, refactoring, extracting, reviewing, or designing a
-function, a module, a component, or the interface between them. Does not apply
-when the subject is prose, or a comment that sends its reader elsewhere to be
-understood, or when the branch is on genuine domain data.
+Forces the narrowest range a reader has to hold before they can act — the range
+its writer cannot feel. Applies while writing or revising anything another
+person or an agent reads in order to act: drafting, documenting, commenting,
+specifying, explaining, reviewing, or writing, refactoring and designing the code
+itself. Does not apply in place of the rules that own the artifact in hand — it
+carries no template, no budget, and no section list — nor when nobody acts on the
+text later: chat replies, scratchpads, working notes.
 ```
 
-`Forces …` が冒頭に立つ。diff の中のどの語もこの規則そのものを名指ししないからである。diff が担っている語は
-その冒頭の中に残り、それが発火させるものである。機会は `Applies to …` として続く。それが読み手に何を
-払わせるのかは本文のものである。
+`Forces …` が冒頭に立つ。下書きの中のどの語もこの規則そのものを名指ししないからである。機会は
+`Applies while …` として続き、その動詞 — 下書き、コメント、レビュー、リファクタリング — が作業の実際に担う語で
+あり、それが発火させるものである。それが読み手に何を払わせるのかは本文のものである。
 
 ## Another skill's name in the bound, and the second person（境界の中の他スキル名と、二人称）
 
 **Bad**
 
 ```text
-Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it. Applies when writing a code comment, a docstring, a PR
-description, or any text that points elsewhere to be understood. DO NOT use when
-the target cannot be reached at all, when the same content is repeated twice in
-one document (that is dont-make-me-read), or when a module branches on which
-caller invoked it (that is avoid-caller-knowledge).
+Drafts and revises an instruction written as a comment: text one person reads,
+acts on, and can answer back to. DO NOT use for a standing rule the reader will
+meet again (that is write-nice-instructions-as-rule), or for the body of a
+GitHub issue (that is write-nice-issue-description).
 ```
 
 維持すべき名前が二つ、待ち構える改名が二つ。しかもその境界は、他のどの境界も `Does not apply` で始めるところ
@@ -82,18 +79,15 @@ caller invoked it (that is avoid-caller-knowledge).
 **Good**
 
 ```text
-Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it — "the format rules at the top of this file", "same as the
-config", a section that defers to another section — leaving the original where it
-is and authoritative. Applies when writing a code comment, a docstring, a PR
-description, or any text that points elsewhere to be understood. Does not apply
-when the target does not exist or cannot be reached at all, when the same content
-is repeated twice inside one document, or when a module branches on which caller
-invoked it.
+Drafts and revises an instruction written as a comment — a PR review finding, a
+reply proposing a change, a remark asking someone to fix something — text one
+person reads, acts on, and can answer back to. Does not apply when the
+instruction is a standing rule the reader will meet again rather than a remark
+they can answer, or when it is the body of a GitHub issue.
 ```
 
-境界のどの節も、機会が実際に届く場合である：他所を指して理解されるテキストという機会は、指す先の無い
-ポインタも、自分を繰り返すドキュメントも、呼び出し元を読むモジュールも覆う。条件は場合そのものであって、
+境界のどの節も、機会が実際に届く場合である：一人が読んで行動する指示という機会は、読み手がまた出会う場所に
+投稿された常設のルールも、issue の本文として手渡される問題も覆う。条件は場合そのものであって、
 それが誰のものかではない。どのスキルがどの成果物を所有するかは、そのスキルが自分の description で決着させる。
 
 ## A bound that takes nothing back（何も取り戻さない境界）

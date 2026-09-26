@@ -26,8 +26,8 @@
 
 - `dont-make-me-read` — このスキルが鋭くしているテスト。そして制約を「読み手がぶつかることになる壁として」
   述べるルールの出どころ。
-- `avoid-unverifiable-context` — 根拠を残しつつ審議を締め出すもの。
-- `avoid-reference-detours` — 使用地点で何を言い直してよいかを決着させるもの。このスキルはそれを、他の
+- `dont-make-me-read` の `rules/unverifiable-context.md` — 根拠を残しつつ審議を締め出すもの。
+- `dont-make-me-read` の `rules/reference-detours.md` — 使用地点で何を言い直してよいかを決着させるもの。このスキルはそれを、他の
   ファイルが所有する定義について狭めている。
 - `find-document-dependencies` — 矢印を引くもの。保守側のテストを目視ではなく実行できるようにする。
 - `write-nice-skills` — `SKILL.md` はエージェントへの指示であってアーキテクチャドキュメントではない。その

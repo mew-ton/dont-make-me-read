@@ -10,9 +10,9 @@
 他人のファイルへの依存であり、レビューの途中にいる読み手は、ある条件がどこで最初に書き下されたかを知っても
 何も違うことをしない。
 
-- `avoid-unverifiable-context` — 条件1と2の背後にある執筆時の規則。書き手の側から、より多くの実例とともに
+- `dont-make-me-read` の `rules/unverifiable-context.md` — 条件1と2の背後にある執筆時の規則。書き手の側から、より多くの実例とともに
   述べている。どちらかの条件の findings が分かりにくければ読むこと。
-- `avoid-reference-detours` — 条件3の背後にある執筆時の規則。その修正がなぜ削除ではなく言い直しなのかも
+- `dont-make-me-read` の `rules/reference-detours.md` — 条件3の背後にある執筆時の規則。その修正がなぜ削除ではなく言い直しなのかも
   含む。その非対称性こそ、ここで条件3が二つの事実を生み、他方が一つを生む理由である。
 
 `write-nice-instructions-as-comment` は例外で、本文に名指しされたまま残る：このスキルはすべての findings を
