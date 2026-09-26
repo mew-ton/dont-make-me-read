@@ -1,48 +1,46 @@
 ---
 name: write-nice-issue-description
 description: >
-  Write a GitHub issue body that an implementer can act on without needing to ask for anything
-  more: a determinable problem, checkable acceptance criteria, and an out-of-scope boundary, with
-  no implementation method smuggled in and no content duplicated across sections. Apply when
-  writing or revising an issue body — "write an issue", "polish this issue draft", "make this
-  existing issue readable" — or when breaking a task down into several issues. DO
-  NOT use for a PR review finding, for a persistent doc's general rationale-vs-process rule, or for
-  auditing an issue that is already written against these same conditions.
+  Writes and revises the body of a GitHub issue, and splits a task into several issues where it
+  holds more than one problem. Does not apply when the issue is already written and what is wanted
+  is an audit of it rather than a revision.
 user-invocable: false
 disable-model-invocation: false
 context: fork
 background: false
-allowed-tools: []
 ---
 
-## Scope
+## Overview
 
-An issue is not a design document; it is a problem statement plus a completion condition. Apply
-this once per issue body, whether drafting a new one or revising an existing one.
+This skill writes and revises a GitHub issue body so that an implementer who has this text and the
+repository, and was in no conversation about either, can start work and can tell when they are
+done. An issue is a **problem statement plus a completion condition**; the gates below decide
+what earns a place in it, and they govern every section on both routes — a new draft, and a draft
+being tightened.
 
-The reader is the implementer, and they can read the repository. So this issue does not need to
-explain project context the way `avoid-reference-detours` asks of persistent text generally —
-pointing at a location is enough where prose would otherwise explain it, and prose that explains it
-both grows the issue and encroaches on the implementer's own judgment.
+## How to work
 
-What `avoid-unverifiable-context` guards against still applies in full: no conversation log, no discarded
-alternatives, no residue that only the people in this session could reconstruct. Dropping the
-project-context explanation is not a license to let session/process context back in — if anything,
-an issue is exactly where that context is least excusable, since the reader is never a participant.
+- **Settle what the one problem is before writing a line.** More than one kind of problem under one
+  heading is more than one issue, and the split is cheapest before anything is written.
+- **Write the problem and the completion condition first**, and make every other section earn its
+  place against those two.
+- **Run both gates over every section, on both routes.** Drafting decides what to write; revising
+  hunts for what the draft already carries that should not be there.
+- **Read the repository for the values you would otherwise invent** — the verification commands, the
+  paths, the convention a constraint rests on.
+- **Judge the draft as someone who was not in this session.** You are supplying the problem from
+  memory as you read it, and that is the whole failure mode.
 
-Two gates below govern every section.
+## What the implementer already has
 
-## Language
+The reader can read the repository, so this issue does not have to explain project context the way
+persistent text generally must: point at a location where prose would otherwise explain it. Prose
+that explains it both grows the issue and encroaches on the implementer's own judgment.
 
-Write the issue in the language its implementer already reads — the language of the repository, its
-existing issues, and its code review. Both gates below are about the issue's **shape**, and the
-sections, the two gates, and the template apply the same way whichever language you write in. The
-examples here are in English because this skill is; they are not a request to file issues in
-English.
-
-One issue, one language. A second-language restatement of the same content is Gate 2 duplication,
-not accessibility — see the exception under Gate 2, which covers differing presentation forms and
-not differing languages.
+Session and process context is the opposite case and stays out in full — no conversation log, no
+discarded alternatives, no residue only the people in this session could reconstruct. Dropping the
+project-context explanation is not a licence to let it back in; an issue is where it is least
+excusable, since its reader is never a participant.
 
 ## Gate 1: determinacy
 
@@ -131,9 +129,8 @@ already has a destination, dropping the section is enough.
 Duplication also happens inside a single paragraph, not just across sections: a first sentence
 states a fact, and a following sentence only explains, exemplifies, or rephrases that same fact.
 After writing a paragraph, check whether it compresses to one sentence — if a later sentence adds
-no fact the first one didn't already state, compress it away. Background's opening reason sentence
-([`references/sections.md`](references/sections.md), when Background splits into chapters) is
-where this applies with the most force.
+no fact the first one didn't already state, compress it away. The sentence that opens a Background
+holding more than one problem is where this applies with the most force.
 
 ### Exception: readers differ
 
@@ -141,39 +138,37 @@ State the same content twice when the readers differ — a screenshot for a huma
 copy table for a reader who can only read text. When Goal points at an external reference, also
 give a text alternative.
 
-This exception is about differing presentation forms, not differing languages. Write the whole
-issue in one language; do not restate the same content in a second language.
+A second copy in another language is not a second presentation form; it is duplication.
 
-## Sections
-
-Use [`assets/issue-template.md`](assets/issue-template.md).
+## The sections
 
 The only sections are Refs / Background / Goal / Acceptance criteria / Affected areas /
 Dependencies. Design / Approach, Out of scope, and Verification are not sections here — a section
-that exists gets filled, so it stays out of the template too.
+that exists gets filled, so none of them is in the template either.
 
-### Per section
+Each section carries one kind of content and nothing else, which is what keeps Gate 1's
+implementation method and Gate 2's second copy from having anywhere to sit.
 
-| Section | What goes in it |
+## Write it in the language its implementer reads
+
+The language of the repository, its existing issues, and its code review. The gates, the sections
+and the template are about the issue's **shape**, and apply the same way whichever language you
+write in.
+
+One issue, one language. A second-language restatement of the same content is Gate 2 duplication.
+
+## Which file to read
+
+| The question | Read |
 |---|---|
-| **Background / Why** | The facts that make up the problem. Test each sentence: does the issue's necessity fail to hold without it? Subject a domain entity, never an issue number or "this task". |
-| **Goal** | What to conform to — a standard's semantics, the existing implementation, a screenshot. Never your own explanation of the fix, and never a verification means. |
-| **Acceptance criteria** | Checkboxes in the domain's own vocabulary. A constraint is written as a state to satisfy, with its reason in Background. Lint / type-check / test last. |
-| **Affected areas** | Paths that look suspicious right now — a hunch, not a boundary. The parenthetical names what is already there, never what to do to it. |
-| **Dependencies** | Only a dependency that blocks starting. Drop the section when nothing does. |
+| The skeleton to write the issue into | [`assets/issue-template.md`](assets/issue-template.md) |
+| What has to hold in the section you are about to fill, and the contrast that shows the failure | [`references/sections.md`](references/sections.md) |
+| The issue already exists, and you are hunting for what should not be there | [`references/revising.md`](references/revising.md) |
+| A worked Bad → Good pair for one part of a gate, or a full passing issue body | [`references/examples.md`](references/examples.md) |
 
-Read [`references/sections.md`](references/sections.md) before filling a section — it holds the
-per-section rules and one worked contrast each: Background's subject and when to chapter or
-tabulate it, Goal's coverage test, the set an "all" criterion ranges over, and what a parenthetical
-may say.
-
-## Revising an existing draft
-
-Revising is a different pass from drafting: instead of deciding what to write, you are hunting for
-what the draft already contains that should not be there. Read
-[`references/revising.md`](references/revising.md) — an ordered checklist of what to hunt for. It
-stops short of an audit on purpose: you wrote the draft with the problem already in your head, so
-the `review-nice-issues` run belongs to whoever called this skill, on either route.
+Revising stops short of an audit on purpose: you wrote the draft with the problem already in your
+head, so a reader's-eye pass over the finished body belongs to whoever called this skill, on either
+route.
 
 ## Common Rationalizations
 
@@ -186,19 +181,18 @@ the `review-nice-issues` run belongs to whoever called this skill, on either rou
 | "I should sketch a couple of implementation options so the reader has context." | Either one satisfies the acceptance criteria, which makes both a choice you should not have surfaced, or you have a real constraint — which belongs in Acceptance criteria with its reason in Background, not as a menu in the body. |
 | "These bullets are all about the same file or system, so they're one problem." | Sharing a subject is not sharing a problem — the test is how many kinds of problem the bullets sort into, not what they touch. If you can't write the one-sentence reason they belong together, split into separate issues instead of forcing a shared heading. |
 
-## Examples
+## Red Flags
 
-Worked examples of each gate, and a full passing issue body:
-[`references/examples.md`](references/examples.md).
+- `Background` whose subject is an issue number or "this task" rather than a domain entity.
+- `Goal` stating your own fix, or a means of verification.
+- Acceptance criteria in implementation vocabulary rather than the domain's.
+- `Affected areas` telling the implementer what to do to a path.
+- A `Design / Approach`, `Out of scope` or `Verification` heading in the draft at all.
 
-## Related skills
+## Verification
 
-- `review-nice-issues` — audits an already-drafted issue body against these same two gates,
-  from a reader's-eye view.
-- `write-nice-instructions` — the finding/instruction template and remedy strength; applies
-  to PR review comments, not issue bodies.
-- `avoid-unverifiable-context` — the rationale-vs-process rule this skill's Background guidance
-  draws its "keep the why" half from.
-- `avoid-reference-detours` — the same subtraction across documents, where Gate 2 covers repetition
-  inside one: a reader reads an issue in order, so a second copy is a re-read, while a fact kept in
-  another file costs them a trip.
+- [ ] Every `Background` sentence is one the issue's necessity fails without.
+- [ ] Every acceptance criterion is a state to satisfy, checkable in the domain's vocabulary.
+- [ ] `Goal` reaches every acceptance criterion but the last lint / type-check / test item.
+- [ ] No section repeats what another already settled.
+- [ ] `Dependencies` holds only what blocks starting, or is gone.

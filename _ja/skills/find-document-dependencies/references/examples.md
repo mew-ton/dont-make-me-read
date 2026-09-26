@@ -14,8 +14,8 @@ The parsing layer is `lexer` and `parser`. The analysis layer is `resolver` and 
 
 （訳：パース層は `lexer` と `parser`。解析層は `resolver` と `typeck`。）
 
-この四つのモジュールはいずれも、いまやこのファイルと強い依存関係にある：どれか一つを改名すればこの
-ファイルは誤りになる。五つ目も同様で、誰かがそれを書いた日に — それは単に欠けているだけであり、この節は
+その節が名指ししているモジュールはいずれも、いまやこのファイルと強い依存関係にある：どれか一つを改名すれば
+このファイルは誤りになる。次に誰かが書くモジュールも同様であり — それは単に欠けているだけであり、この節は
 完全な答えであるかのように読まれ続ける。
 
 ここには何もリンクがないので、何もチェックしない。その文は構文として通ったまま、自信に満ちたまま、
@@ -95,28 +95,29 @@ weak, same span: the link to the page — still resolving long after the two dis
 スキルは、使ってよいツールを frontmatter で宣言し、何をするかを本文で述べる。
 
 ```yaml
-allowed-tools: []
+allowed-tools:
+  - Bash(git log:*)
 ```
 
 ```markdown
 ## The pass
 
-1. **Read for candidates.** Work through the document with `references/what-counts.md` — the
-   shapes a dependency takes, and how the strong ones surface.
+1. **List what changed.** Ask git for the commits that touch the file.
+2. **Read each file they name.** Open it and work through the text.
 ```
 
-（訳：候補を読み出す。`references/what-counts.md` — 依存が取る形と、強いものがどう表に出てくるか — を
-手にドキュメントを通す。）
+（訳：1. 何が変わったかを挙げる。そのファイルに触れているコミットを git に尋ねる。2. 名前の挙がった
+ファイルをそれぞれ読む。開いて、そのテキストを通す。）
 
-この宣言は、書かれた時点では真だった：パスは呼び出し元が渡したものだけを判定していた。そこにファイルを
-開くステップが加わり、同じファイルの先頭にある行は、それを偽にしたコミットの中で古びた。
+この宣言は、書かれた時点では真だった：パスは何が変わったかを git に尋ねるだけで、何も読んでいなかった。
+そこにファイルを開くステップが加わり、同じファイルの先頭にある行は、それを偽にしたコミットの中で古びた。
 
 **報告の形は一本の辺：**
 
 ```
 the body → the frontmatter   strong   allowed-tools
   fires on: a step being added that needs a tool the declaration does not list
-  span:     "allowed-tools: []"
+  span:     "allowed-tools"
 ```
 
 ファイル境界を何も越えていないので、外部の何もそれを指摘しない：古びたリンクはなく、差分を読むレビュアー

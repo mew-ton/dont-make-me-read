@@ -1,116 +1,146 @@
 # Writing the description
 
-Read this when you are writing or reviewing a skill's `description` or frontmatter.
-The `description` is the only text loaded when the agent decides whether to fire the
-skill, so it must be judge-able on its own and must not leak the procedure. Four
-rules, a size limit, then one rule for the fields around it.
+Read this when writing or revising a skill's `description`, or when judging whether an existing
+one will fire.
 
-## 1. Third person, what + when
+A skill's `name` and `description` are all the agent has when it decides whether to fire: the body
+is not in context yet, so the `description` has to be judge-able on its own.
 
-Write in the third person and cover both **what the skill does** and **when to
-apply it**, so the agent can decide from the description alone. Add a reach clause
-("also applies when another skill needs …") only when another skill genuinely
-depends on this one.
+## Principles
 
-## 2. No procedure in the description
+**DO**
 
-Never put step-by-step instructions in the description. If the steps are there, the
-agent believes it can act straight from the description and never loads the body —
-so the instructions the skill exists to deliver are skipped. State *what* and
-*when*; keep *how* in the body.
+- **Write it in the third person**, as `Writes and revises a README`. It is injected into the
+  system prompt, where a point of view that shifts between skills costs accuracy in choosing among
+  them.
+- **Write it in English**, whatever language the body and the skill's output are in. English terms
+  are the ones that survive into a prompt whatever language it is typed in, and a skill other
+  people install cannot know which language its users type. A skill that will never leave one team
+  may add the phrases that team really types.
+- **Keep it inside 1024 characters** — the field's own limit, so it is enforced rather than
+  advisory. If the parts below will not fit, the skill's scope is too wide.
 
-**Which skill hands off to which is procedure.** "Run it as one axis of a larger
-review, or from the `/x` command" reads like context and is not: it tells the agent
-how this skill gets used, which is exactly the kind of line that makes the body look
-optional. Name the callers and the hand-offs in the body, where the steps that
-depend on them live. The reach clause in rule 1 is the one thing that stays — it
-says *when* this skill applies, never who runs it or in what order.
+**DON'T**
 
-## 3. Front-load the leading word
+- **Summarise the skill's implementation** — the steps, the criteria it applies, and the argument
+  the body makes for each: why the rule is right, what ignoring it costs, what the alternatives
+  were. Put them here and the agent reads them as the skill, skipping the body it took them from.
+- **Explain concepts that are not this skill's** — what a callee is, what a pull request is, why
+  coupling costs anything. Noise: the agent knows, and the characters come out of the intent.
+- **Name another skill.** The name is a dependency on somebody else's file: it goes wrong the day
+  they rename it, and nothing checks that. It also answers "is *this* artifact the skill's?" for
+  the agent, which is the question the description exists to make it ask — for example,
+  `Does not apply when the artifact is an architecture doc (that is write-nice-architecture-docs)`.
+- **Write a tag list or a keyword-stuffed sentence.** `Skill / SKILL.md / description —` matches
+  nothing anyone types.
+- **Put an angle bracket in the description's text.** `<` and `>` are rejected outright there, so a
+  description carrying a tag or a `<placeholder>` does not load at all. The `>` that opens a YAML
+  folded block is part of the frontmatter, not of the text, and is fine.
+- **Say that the skill stays in force.** What keeps it in force is the body's `## Persistence`, and
+  this reader is deciding whether to load the body at all. The clause spends characters on what
+  happens after the only judgment the description is read for.
 
-The skill fires when a word in the description matches a word in whatever the agent
-is working from. Sometimes that is a prompt. Often it is not: a skill hidden from the
-`/` menu (`user-invocable: false`) fires mid-task, and the only words available are
-the ones in the work itself — the file being edited, the artifact being written, the
-term the code already uses. So seed the description with the **leading word** — the
-term that shows up when this skill is needed, whatever produces it — and put it near
-the start, where it does its invocation work.
-
-- **Form**: a leading word inside a natural sentence. Not a slash-separated tag list
-  (`Skill / SKILL.md / description —`), and not a full request sentence dressed up
-  as a keyword.
-- **Real words, not plausible ones**: use terms that actually show up in your
-  prompts, docs, and code — not invented labels that merely *sound* like keywords.
-- **One trigger per branch**: name each distinct situation once; synonyms that
-  rename the same branch are duplication.
-- **Language of the trigger**: the description is English (rule 4), so the shared
-  word has to be one that survives into whatever the agent is reading, whichever
-  language that is in — a file name, a tool name, a proper noun, a term of art you type as-is
-  (`SKILL.md`, `issue`, `PR`, `description`). A skill that never leaves a
-  single-language team may *additionally* embed the phrases that team really types,
-  as quoted examples inside the English sentence. A skill you publish must not: it
-  cannot know which language its users prompt in, and a second-language keyword list
-  only bloats the description and drifts out of sync. That is why none of the
-  descriptions in this plugin carry one.
-- **Cut body identity**: keep the description to triggers plus a reach clause;
-  anything the body already explains does not belong here.
-
-### When the skill has to be on for a whole activity
-
-Some skills are not reached by a word at all. A rule that has to hold while someone
-writes code, or writes anything another person acts on, is needed most exactly when
-the work never names it — there is no leading word to share, because the work is a
-diff and a file, not a request. Name the **activity** as the `when` instead, in the
-verbs the work is done in ("writing, revising, reviewing, or designing code"), and
-bound it with what it is not ("DO NOT use for non-coding requests"): the bound is
-what stops an activity trigger from firing on everything.
-
-That gets the skill in once. Keeping it in for the rest of the activity is the
-body's job, and the body cannot do it unless it says so — see
-[`structuring-skills.md`](structuring-skills.md#staying-in-force).
-
-### Bad → Good
-
-**Bad** — tag list up front, invented keywords, and a step leaking in:
+## The description's shape
 
 ```text
-Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
-each section, then check the frontmatter, for great skills and better writing.
+<the occasion, or Forces …>
+<the intent>
+Applies to|when <the occasion>               — where `Forces …` opened it
+Also applies when another skill needs …     — where another skill needs these rules
+Does not apply …                            — where the occasion sweeps something in
 ```
 
-**Good** — leading word first, what + when, no steps:
+**Does the work name the artifact?**
+
+**It does → open with the occasion.** The work says the word and the word fires the skill. For
+example, an issue, a README, an `ARCHITECTURE.md`, a `SKILL.md`. Here the opening *is* the
+occasion, and the bound closes it:
 
 ```text
-SKILL.md authoring — write a skill's description and body so it fires reliably
-and stays lean. Use when writing, editing, or reviewing a skill, a SKILL.md, or
-its description.
+Runs a determinacy-and-duplication pass over the text of a GitHub issue body
+that is already written — someone else's, or the author's own draft. Does not
+apply as a general-purpose "review this issue" entry point, when the issue is
+still being written or revised, or when what is wanted is a judgement of
+repo-groundedness, dependency closure, or scope.
 ```
 
-## 4. English
+**It does not → open with what the skill forces**, as `Forces …`: the thing it insists on, and,
+where there is one, the thing that thing displaces. Nothing in the work names a rule like this: a
+prompt asks for a feature, a diff shows a function, and neither says which rule applies — so the
+occasion cannot open it, and an occasion nobody names is one the agent forgets mid-diff. What the
+work *does* supply is the shape the rule catches, and the words it uses for that shape go in the
+opening's own examples:
 
-Write the description in English, even when you prompt in another language. English
-terms are the ones that survive into a prompt regardless — file names, tool names,
-library names — and a published skill cannot know which language its users type in.
+```text
+Forces the text a stranger can go and check: the rationale a reader who was
+never in the room can still trace, never the conversation that produced it, the
+review feedback, the discarded alternatives, or a past state the current code
+no longer shows. Applies when writing an issue, a PR description, a code
+comment, an API or design doc, or any text or code that will be read later.
+Does not apply when the material is reachable and what it costs is the trip to
+it, when the question is an issue body's sections and criteria, or when the text
+is an ephemeral chat reply or a working note.
+```
 
-Three languages get decided separately, and only the first is settled here: the
-**description** (English, always), the **body** (English too for a skill that ships
-beyond one team, since the agent reads it), and the **output the skill produces** —
-an issue, a finding, a doc — which belongs in the language *its* readers already
-use. Each writing skill states that last rule for itself; do not carry this file's
-English down into what a skill tells the agent to write.
+## The leading word
 
-## Size
+The word the description shares with whatever the agent is working from — a prompt, or, for a
+skill that fires mid-task with no prompt, the work itself. It is what fires the skill. Put it at
+the start when something in the prompt or the work names the artifact, and inside the opening's own
+examples when nothing names it.
 
-The `description` has a hard budget of **1024 characters**. If what + when +
-triggers will not fit, the skill is usually doing too much — split it (see
-[`structuring-skills.md`](structuring-skills.md)) rather than padding or truncating
-the description.
+- **Real words**: the terms that show up in your prompts, docs, and code.
+- **One word per branch the description must fire on cold**: a second near-synonym for one of those
+  is duplication, and a branch reached only after the skill has loaded is gated inside it rather
+  than named here. Which branches are this skill's at all is settled before the description is
+  written.
+- **Survives translation**: a file name, a tool name, a term of art typed as-is — for example,
+  `SKILL.md`, `issue`, `PR`.
 
-## No comments in the frontmatter
+## Intent
 
-Frontmatter is the one part of a `SKILL.md` that is parsed rather than read, and all
-of it is loaded on every fire. A trailing `#` on `user-invocable: false` explains the
-field to nobody who was going to be confused by it, and every reader pays for it
-forever — the same size argument that pushes branch detail one level down, one
-level up. A field that genuinely needs explaining needs it in prose an author can
-argue with: the body, or the repository's own architecture doc.
+What the skill's author wanted enforced, in one clause and in their terms — for example, `keeps a
+callee from branching on which caller invoked it`. A verb that already carries it needs no separate
+clause: `Writes and revises a README` is the intent.
+
+## Occasion
+
+The artifact being written, or the activity underway. It opens the description where the work names
+it, and follows the `Forces …` clause where it does not. `Applies` is the fixed word there; the
+preposition is whatever the occasion itself takes — `Applies when writing an issue`, `Applies to
+any coding task`.
+
+## Bound
+
+`Does not apply …`, in the same person and opening the same way every time — written where the
+occasion sweeps in something it should not. What it takes back is a neighbouring artifact the
+occasion really does reach, a mode of use that is somebody else's entry point, a case inside the
+occasion that belongs to someone else, or a case where the rule has no purchase at all.
+
+An occasion narrow enough to sweep in nothing needs no bound: artifacts it never reached are a
+routing table in prose, and the reader pays for each one.
+
+## Reach clause
+
+`Also applies when another skill needs …`, naming the need rather than the skill. It admits a second
+way in, for the skill that needs these rules and would otherwise have to name this one.
+
+## The description and the body serve different readers
+
+The `description` is material for one judgment — whether to fire. The body explains the skill to
+whoever has to act once it has. Their purposes differ, so where they say the same thing the overlap
+is intended: cutting either because the other carries it leaves one of the two readers short.
+
+What overlaps is what the skill is for and what occasions it — the two the firing judgment runs on.
+The body's opening restates the first always; the occasion gets its own short section where being
+in scope is not obvious from the description alone. The steps, the criteria and the argument stay
+in the body alone, because an agent handed those has what it needs to act and stops there.
+
+## Measuring whether it fires
+
+Whether a skill is reached is its own measurement. Write the cases that should reach it — a handful
+of prompts a user would really send — and run them against the models it will run under, first with
+the skill installed and then without, so you can tell a case its `description` reached from one the
+model would have handled anyway. For a skill nothing in a prompt names, the cases are the work
+itself — a diff, a draft, a file — and the comparison is the same. A skill the cases do not reach
+has a `description` problem, and rewriting the body does not touch it.

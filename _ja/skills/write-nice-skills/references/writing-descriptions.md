@@ -1,101 +1,136 @@
 # description を書く
 
-スキルの `description` や frontmatter を書く／レビューするときに読むこと。`description` は、エージェントが
-そのスキルを発火させるかどうかを決めるときにロードされる唯一のテキストなので、それ単体で判断可能でなければ
-ならず、手順を漏らしてはならない。四つのルール、サイズ制限、それから周辺のフィールドについてのルールが
-一つ。
+スキルの `description` を書く、あるいは書き直すとき、または既存のものが発火するかを判断するときに読むこと。
 
-## 1. 三人称、what + when
+エージェントがそのスキルを発火させるかどうかを決めるとき、手元にあるのはスキルの `name` と `description`
+だけである：本文はまだ文脈に無い。だから `description` はそれ単体で判断可能でなければならない。
 
-三人称で書き、**スキルが何をするか**と**いつ適用するか**の両方をカバーして、エージェントが description
-だけから判断できるようにする。到達節（「also applies when another skill needs …」）は、別のスキルが本当に
-これに依存しているときにだけ足す。
+## Principles（原則）
 
-## 2. description に手順を書かない
+**DO**
 
-手順を追った指示を description に決して置かない。手順がそこにあると、エージェントは description からそのまま
-行動できると信じて本文を決してロードせず、そのスキルが届けるために存在する指示が飛ばされる。*what* と
-*when* を述べ、*how* は本文に留めよ。
+- **三人称で書くこと。** `Writes and revises a README` のように。description はシステムプロンプトに注入
+  されるので、スキルごとに視点が揺れると、その中から選ぶ精度を落とす。
+- **英語で書くこと。** 本文とスキルの出力が何語であろうと。英語の用語こそが、どの言語で打たれようとプロンプト
+  に生き残るものであり、他人がインストールするスキルは、利用者がどの言語を打つか知り得ない。一つのチームから
+  決して出ないスキルなら、そのチームが実際に打つフレーズを足してよい。
+- **1024文字以内に収めること** — フィールド自身の上限であり、助言ではなく強制される。下の部品が収まらない
+  なら、そのスキルのスコープが広すぎる。
 
-**どのスキルがどのスキルへ引き渡すかは手続きである。** 「より大きなレビューの一つの軸として、あるいは
-`/x` コマンドから走らせる」は文脈のように読めるが、そうではない — それはこのスキルが**どう使われるか**を
-エージェントに伝えており、まさに本文を任意のものに見せる類の行である。呼び出し元と引き渡しは本文で、
-それらに依存する手順が住んでいる場所で名指しせよ。ルール1の到達節だけは残る — それはこのスキルが
-**いつ**該当するかを述べるのであって、誰が走らせるか、どんな順序でかを述べない。
+**DON'T**
 
-## 3. leading word を前に出す
+- **スキルの実装を要約すること** — 手順、適用する判定基準、そして本文がそれぞれに与える論 — なぜその規則が
+  正しいのか、無視すると何を払うのか、代替案は何だったのか。ここに書くと、エージェントはそれをスキルそのもの
+  として読み、元になった本文を読み飛ばす。
+- **このスキルのものではない概念を説明すること** — callee とは何か、プルリクエストとは何か、なぜ結合が代償を
+  伴うのか。ノイズである：エージェントは知っているし、その文字数は意図から差し引かれる。
+- **他のスキルを名指しすること。** その名前は他人のファイルへの依存である：相手が改名した日に壊れ、しかも
+  それを検査するものは何もない。さらに「*この*成果物は自分のものか」をエージェントに代わって答えてしまう。
+  description がそもそも問わせるために存在する問いである。たとえば
+  `Does not apply when the artifact is an architecture doc (that is write-nice-architecture-docs)`。
+- **タグ列や、キーワードを詰めた依頼文を書くこと。** `Skill / SKILL.md / description —` は誰が打つものにも
+  一致しない。
+- **description の本文に山括弧を入れること。** そこでは `<` と `>` はそのまま拒否されるので、タグや
+  `<placeholder>` を担った description はそもそもロードされない。YAML の折りたたみブロックを開く `>` は
+  frontmatter の一部であって本文ではないので、問題ない。
+- **そのスキルが効力を持ち続けると述べること。** 効力を持ち続けさせるのは本文の `## Persistence` であり、
+  この読み手はそもそも本文をロードするかを決めている最中である。この節は、description が読まれるたった一つの
+  判断より後に起きることに文字を費やしている。
 
-スキルは、description の中の語が、エージェントが取り組んでいるものの中の語と合致したときに発火する。それが
-プロンプトであることもある。そうでないことも多い：`/` メニューから隠されたスキル（`user-invocable: false`）は
-作業の途中で発火し、利用できる語は作業そのものの中にあるもの — 編集中のファイル、書かれつつある成果物、
-コードがすでに使っている用語 — だけである。したがって description に **leading word** — このスキルが必要と
-されるときに現れる語、何がそれを生むにせよ — を仕込み、それが起動の仕事をする場所である先頭付近に置くこと。
-
-- **形式**：自然な文の中にある leading word。スラッシュ区切りのタグ列（`Skill / SKILL.md / description —`）
-  ではなく、キーワードとして飾り立てた依頼文でもない。
-- **もっともらしい語ではなく、実在の語**：自分のプロンプト、ドキュメント、コードに実際に現れる用語を使う —
-  キーワード*のように聞こえる*だけのでっち上げのラベルではない。
-- **枝ごとにトリガー一つ**：別個の状況をそれぞれ一度ずつ名指しする。同じ枝を言い換えただけの同義語は重複で
-  ある。
-- **トリガーの言語**：description は英語である（ルール4）ので、共有される語は、エージェントが読んでいる
-  ものが何語であれそこに生き残る語でなければならない — ファイル名、ツール名、固有名詞、そのまま打ち込む
-  専門用語（`SKILL.md`、`issue`、`PR`、`description`）。単一言語のチームから出ないスキルは、そのチームが
-  実際に打つフレーズを、英語の文の中の引用された例として*追加で*埋め込んでよい。公開するスキルはそうしては
-  ならない：利用者がどの言語でプロンプトを打つか知り得ず、第二言語のキーワード列は description を膨らませ、
-  同期がずれていくだけである。このプラグインのどの description もそれを持たないのは、そのためである。
-- **本文の素性を削る**：description はトリガーと到達節に留める。本文がすでに説明していることはここに属さない。
-
-### スキルがある活動のあいだ効き続けねばならない場合
-
-語では到達されないスキルもある。誰かがコードを書いているあいだ、あるいは誰かが行動の対象にする
-ものを書いているあいだ効いていなければならないルールは、まさにその作業がそれを名指ししないときに
-最も必要とされる — 共有すべき leading word が無い。作業は依頼ではなく、diff とファイルだからで
-ある。代わりに **活動** を `when` として、その作業が行われる動詞で名指しし（"writing, revising,
-reviewing, or designing code"）、それが何でないかで境界を引く（"DO NOT use for non-coding
-requests"）。活動のトリガーがあらゆるものに発火するのを止めるのは、この境界である。
-
-これで一度は中に入る。その活動のあいだ中に留め続けるのは本文の仕事であり、本文はそう述べない限り
-それができない — [`structuring-skills.md`](structuring-skills.md#staying-in-force) を参照。
-
-### Bad → Good
-
-**Bad** — 先頭にタグ列、でっち上げのキーワード、手順の漏れ：
+## The description's shape（description の形）
 
 ```text
-Skill authoring / SKILL.md / quality — first read the whole file, then rewrite
-each section, then check the frontmatter, for great skills and better writing.
+<機会そのもの、あるいは Forces …>
+<意図>
+Applies to|when <機会>                      — 冒頭が `Forces …` のとき
+Also applies when another skill needs …     — 別のスキルがこの規則を必要とするとき
+Does not apply …                            — 機会が巻き込むものがあるとき
 ```
 
-**Good** — leading word が先頭、what + when、手順なし：
+**作業はその成果物を名指しするか。**
+
+**名指しする → 機会を冒頭に。** 作業がその語を口にし、その語がスキルを発火させる。たとえば issue、README、
+`ARCHITECTURE.md`、`SKILL.md`。ここでは冒頭がそのまま機会であり、境界がそれを閉じる：
 
 ```text
-SKILL.md authoring — write a skill's description and body so it fires reliably
-and stays lean. Use when writing, editing, or reviewing a skill, a SKILL.md, or
-its description.
+Runs a determinacy-and-duplication pass over the text of a GitHub issue body
+that is already written — someone else's, or the author's own draft. Does not
+apply as a general-purpose "review this issue" entry point, when the issue is
+still being written or revised, or when what is wanted is a judgement of
+repo-groundedness, dependency closure, or scope.
 ```
 
-## 4. 英語
+**名指ししない → 何を強制するかを冒頭に、`Forces …` として置く。** そのスキルが押し通すもの、そして押し
+のける相手があるならそれを。この種の規則そのものを名指しする語は作業の中に無い：プロンプトは機能を求め、
+diff は関数を見せ、どちらもどの規則が当てはまるかを言わない — だから機会が冒頭に立てず、誰も名指ししない
+機会は、エージェントが diff の途中で忘れる機会である。作業が供給するのは、その規則が捕まえる**形**であり、
+作業がその形に使っている語が、冒頭の中の実例に入る：
 
-別の言語でプロンプトを打つときでも、description は英語で書く。英語の用語は、いずれにせよプロンプトに生き
-残るもの — ファイル名、ツール名、ライブラリ名 — であり、公開されたスキルは利用者がどの言語で打つか知り得
-ない。
+```text
+Forces the text a stranger can go and check: the rationale a reader who was
+never in the room can still trace, never the conversation that produced it, the
+review feedback, the discarded alternatives, or a past state the current code
+no longer shows. Applies when writing an issue, a PR description, a code
+comment, an API or design doc, or any text or code that will be read later.
+Does not apply when the material is reachable and what it costs is the trip to
+it, when the question is an issue body's sections and criteria, or when the text
+is an ephemeral chat reply or a working note.
+```
 
-三つの言語が別々に決まり、ここで決着するのは最初の一つだけである：**description**（常に英語）、**本文**
-（一つのチームを越えて出荷されるスキルではこれも英語。エージェントが読むので）、そして**そのスキルが生み
-出す出力** — issue、指摘、ドキュメント — これは*その*読者がすでに使っている言語に属する。最後のルールは各
-writing スキルが自分で述べる。このファイルの「英語」を、スキルがエージェントに何を書けと指示するかにまで
-持ち下ろさないこと。
+## The leading word（発火させる語）
 
-## Size（サイズ）
+description が、エージェントが手がかりにしているものと共有する語 — プロンプトか、プロンプト無しで作業の
+途中に発火するスキルなら作業そのものである。これがスキルを発火させる。プロンプトか作業の中の何かがその成果物
+を名指しするなら先頭に置き、何も名指ししないなら、冒頭の中の実例に置くこと。
 
-`description` には **1024 文字**のハード予算がある。what + when + トリガーが収まらないなら、そのスキルは
-たいてい仕事を抱えすぎている — description を水増ししたり切り詰めたりするのではなく、分割せよ
-（[`structuring-skills.md`](structuring-skills.md) を参照）。
+- **実在する語**：自分のプロンプト、ドキュメント、コードに実際に現れる用語。
+- **description が冷えた状態で発火しなければならない枝ごとに、語は一つ**：どの枝がそもそもこのスキルのもの
+  かは description を書く前に決着している。そのうちの一つに対する二つ目の近義語は重複であり、スキルが
+  ロードされたあとにしか到達しない枝は、ここで名指しせず内側でゲートする。
+- **翻訳を生き残る**：ファイル名、ツール名、そのまま打たれる術語 — たとえば `SKILL.md`、`issue`、`PR`。
 
-## frontmatter にコメントを書かない
+## Intent（意図）
 
-frontmatter は `SKILL.md` の中で唯一、読まれるのではなく**パースされる**部分であり、その全体が発火のたびに
-ロードされる。`user-invocable: false` の末尾に付けた `#` は、それで混乱したはずのない読み手に何も説明せず、
-すべての読み手が永遠にそのコストを払う — 枝固有の詳細を一段下へ押し出すのと同じサイズの議論が、
-一段上に当てはまっているだけである。本当に説明を要するフィールドは、著者が議論できる散文での説明を要する：
-本文か、そのリポジトリ自身のアーキテクチャドキュメントである。
+その著者が何を強制したかったのかを、一節で、著者の言葉で — たとえば `keeps a callee from branching on
+which caller invoked it`。すでに動詞がそれを担っているなら、独立した節は要らない：`Writes and revises a
+README` がその意図である。
+
+## Occasion（機会）
+
+書かれつつある成果物か、進行中の活動か。作業がそれを名指しするなら description の冒頭に立ち、名指ししない
+なら `Forces …` の節に続けて置く。固定なのは `Applies` の語であり、前置詞は機会そのものが取るものに従う —
+`Applies when writing an issue`、`Applies to any coding task`。
+
+## Bound（境界）
+
+`Does not apply …`。同じ人称で、毎回同じ語で始める。書くのは、機会が巻き込むべきでないものを巻き込むとき
+である。取り戻す対象は、機会が実際に届いてしまう隣接成果物、他の誰かの入口である使い方、機会の内側にあり
+ながら他の誰かに属するケース、あるいはそもそも規則が効きようのないケースである。
+
+何も巻き込まないほど狭い機会に境界は要らない：届いたことのない成果物を並べたものは散文のルーティング表で
+あり、読み手はその一つ一つに代金を払う。
+
+## Reach clause（到達節）
+
+`Also applies when another skill needs …`。スキル名ではなく、その必要を名指しする。二つ目の入口を開ける
+ものであり、この規則を必要とし、さもなければこのスキルを名指しせざるを得ないスキルのためにある。
+
+## The description and the body serve different readers（description と本文は読み手が違う）
+
+`description` は、たった一つの判断 — 発火させるか — のための材料である。本文は、発火したあとに動かなければ
+ならない相手にそのスキルを説明する。目的が異なるのだから、両者が同じことを言っている箇所の重なりは意図された
+ものである：もう一方が担っていることを理由にどちらかを削れば、二人の読み手の一方が足りなくなる。
+
+重なってよいのは、そのスキルが何のためのものかと、何がそれを呼び込むかである — 発火の判断が走るのはその
+二つである。本文の冒頭は一つ目をつねに言い直し、機会は、description だけからは対象の内にいるかが自明でない
+ときに、自分の短い節を持つ。手順と判定基準と論拠は本文だけに留まる。それらを手渡されたエージェントは、行動
+するのに必要なものを持ってしまい、そこで止まるからである。
+
+## Measuring whether it fires（そもそも発火するかを測る）
+
+スキルが到達されるかどうかは、それ自体が測定の対象である。到達すべきケースを書き — 利用者が実際に送る
+プロンプトをいくつか — そのスキルが走ることになるモデルに対して走らせること。まずインストールした状態で、
+次にしていない状態で。そうすれば、`description` が到達させたケースと、モデルが元から処理できたケースを
+区別できる。プロンプトの中の何もそれを名指ししないスキルなら、ケースは作業そのもの — diff、下書き、
+ファイル — であり、比較の仕方は同じである。ケースが到達しないスキルは `description` の問題を抱えており、
+本文を書き直してもそこには触れない。

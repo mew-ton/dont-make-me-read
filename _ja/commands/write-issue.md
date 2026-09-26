@@ -21,6 +21,3 @@ argument-hint: "[issue番号、下書き、または issue が何についてで
 その後、結果に対して `review-nice-issues` を走らせ、見つかったものを直してから見せること。
 
 $ARGUMENTS
-
-> 【訳注】この最終行と `write-nice-issue-description/references/revising.md` の手順11が、どちらも
-> `review-nice-issues` の実行を指示している。改稿ルートではこれが二重に走る。

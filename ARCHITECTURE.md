@@ -99,6 +99,11 @@ context: fork
 background: false
 ```
 
+The test is the pair at the top of this section, not whether a file comes out. `write-nice-skills`
+writes a `SKILL.md` and still stays in place: it judges a `description` against the work in front of
+the model, and it hands its rules to another skill that asks for them — neither survives being cut
+off from the session.
+
 `agent` and `model` are set only on a fork whose whole job is gathering. One that produces the
 artifact gets neither.
 
@@ -124,6 +129,13 @@ own.
 
 **What a contributor decides by goes here. What a reader of one artifact needs goes with that
 artifact, and that artifact's own rules say where within it.**
+
+**A skill published from here explains itself at its own root.** These go out as a plugin, so each
+skill is read, installed and maintained as a unit; the explanation a person needs before adopting
+one belongs beside its `SKILL.md`, not in this file and not in the root README, which would carry
+thirteen of them and go stale one skill at a time. Nothing references it, so it costs the agent
+nothing. `write-nice-skills` deliberately does not ask for one — that is a publishing decision
+about this repository, not a rule about how skills are written.
 
 ## When an activity earns rules of its own
 

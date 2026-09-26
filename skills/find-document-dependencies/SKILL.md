@@ -1,39 +1,39 @@
 ---
 name: find-document-dependencies
 description: >
-  A document depends on whatever it would have to be rewritten for, and a link is the least of it:
-  a name carried in prose, a count, a definition copied from the file that owns it, a claim about a
-  structure. Assembles them into a directed graph — which end has to move when the other changes,
-  one edge per direction — with each edge marked weak, a pointer a link checker already finds and
-  which often survives, or strong, which always has to be fixed and which nothing but reading
-  finds. Apply when reviewing or revising a document, and before writing a sentence that names
-  something you do not own. DO NOT expect a verdict on whether a dependency is stale, wrong, or
-  worth keeping — this reports what the text is pinned to and leaves the judgement to whoever
-  asked.
+  Reports what a document would have to be rewritten for — a link, a name carried in prose, a count,
+  a definition copied from the file that owns it, a claim about a structure — as a directed graph of
+  weak and strong edges. Applies when reviewing or revising a document, and before writing a
+  sentence that names something the writer does not own. Does not apply when what is wanted is a
+  verdict on whether a dependency is stale, wrong, or worth keeping, or a judgement of the document
+  itself.
 user-invocable: false
 disable-model-invocation: false
 allowed-tools:
   - Read
 ---
 
-## Scope
+## Overview
 
-Point this at a document and it returns everything that document would have to be rewritten for,
-assembled into a graph: what is pinned to what, which end has to move, and how loudly it breaks.
-Links are in it, and are the least of it — most of what pins a document is prose.
+This skill returns everything a document would have to be rewritten for as a graph — what is pinned
+to what, which end has to move, how loudly it breaks — and judges none of it. A dependency nobody
+drew is an edit somebody will be made to make, in a file they were not looking at.
 
-It does not judge. A dependency is not a defect; a document with none says nothing about anything.
-Whether one earns its upkeep is a question about what it buys, which the caller is holding and this
-skill is not.
+## How to work
 
-## Terms
+- **Spend the reading on the prose, not the pointers.** Whatever checks links is already better at
+  the weak half than you are: report the weak ones you pass, and do not go hunting for them.
+- **A span you are already reading gets both grades.** Only the hunting for weak ones was not worth
+  the time.
+- **Quote the span; never paraphrase it.** The caller has to weigh the actual sentence, and a
+  paraphrase is a second copy with its own dependency.
 
-### Dependency
+## What a dependency is
 
 Two texts are in a dependency when **fixing one obliges you to fix the other**, or they contradict.
-A link is one shape that takes; it is not the interesting one.
+A link is one shape it takes, and the cheapest one to find.
 
-### Direction
+## Direction
 
 Write it as an arrow: **A → B means fixing A obliges fixing B.** B is the end that has to move, and
 the shape of a span does not say which end that is.
@@ -52,7 +52,7 @@ Between two texts the arrow can run either way, or both.
 For a name, the arrow's direction is the whole difference between a role the document defines and
 the instance currently filling it. Same sentence, opposite upkeep.
 
-### Strength
+## Strength
 
 | | Weak | Strong |
 |---|---|---|
@@ -72,32 +72,72 @@ it, so the inconsistency sits there without being acted on. Strong has neither p
 needs the fix, and nobody notices, because the sentence still parses, still reads well, and still
 looks exactly as true as the day it was written.
 
+## The shapes on the page
+
+| The text | Is pinned to | Breaks when | Strength |
+|---|---|---|---|
+| A link, a path, a line number | the location | it moves | weak |
+| An issue, ticket, or PR number | that item | it is closed, moved, or renumbered | weak |
+| A citation of an external source | someone else's decision | they revise it, or it goes away | weak |
+| A name carried in the prose | that definition | it is renamed, removed, or its meaning moves | strong |
+| A count, or a set claimed to be complete | the membership | anything joins or leaves | strong |
+| A definition or plan copied from wherever it is owned | the owner | the owner changes and this copy does not | strong |
+| A claim about how something is arranged | that arrangement | it is restructured | strong |
+| A translation, mirror, or second copy | the whole original | any part of the original changes | strong |
+| A declaration about the file it sits in | what the rest of that file says | the body gains or loses something the declaration has to cover | strong |
+
+The list is not closed. A shape that is not here still counts if fixing the other end obliges a fix
+here — that definition is the test, and the table is only the part of it that recurs.
+
+### Spotting the strong ones
+
+They do not announce themselves, so read for the shape of the sentence rather than for a marker.
+
+- **Every proper noun is a question: who owns this name?** If the answer is somewhere else, the
+  sentence is pinned to that somewhere else.
+- **Every present-tense claim about something outside this file** — what it does, what it contains,
+  how it is put together — is a claim about that thing's current state, and it expires when the
+  state does.
+- **Every enumeration.** "A and B", "the three phases", "each of the modules": a set is a
+  membership claim whether or not it says how many.
+- **Every sentence you could only have written with the other thing open.** That is the tell for a
+  copied definition. If writing it required reading the source, keeping it true will too.
+- **Every "as described in", "per", "same as".** The pointer is weak; what the sentence asserts
+  around the pointer usually is not.
+- **Both ends can be in the same file.** A header declares, a body describes, and editing the body
+  can leave the header saying something the file no longer does. Nothing crossed a file boundary,
+  so nothing external will ever flag it — and the header is the part least likely to be re-read
+  while the body is being changed.
+
+### What is not a dependency
+
+- Vocabulary the whole field shares. Naming HTTP, or a merge conflict, pins nothing.
+- An example invented for the page, which nothing outside it owns — which is also why an example
+  written against the tree you are documenting is worth more scrutiny than one that is not.
+
 ## The pass
 
-1. **Read for candidates.** Work through the document with
-   [`references/what-counts.md`](references/what-counts.md) — the shapes a dependency takes, and
-   how the strong ones surface. Spend the reading there: whatever checks links is already better at
-   the weak half than you are. Report the weak ones you pass and do not go hunting for them; a span
-   you are already reading gets both grades, since it is the hunting that was not worth the time,
-   not the grading.
+1. **Read for candidates.** Work through the document against the shapes above, reading for the
+   strong ones, since nothing extracts those for you.
 2. **Settle each arrow.** Say which end has to move, and check the opposite direction too: an edge
    running back is its own entry, not a duplicate of the one you just wrote.
 3. **Assemble the graph.** Nodes are the things: this document, and each file, section, or outside
    source it touches. Edges are `A → B`, one per direction. An edge carries the spans that create
    it, the change that fires it, and its strength.
-4. **Report it, strong edges first.** Quote the spans rather than describing them: the caller has
-   to weigh the actual sentence, and a paraphrase is a second copy with its own dependency.
+4. **Report it, strong edges first.**
 
-Spans are the evidence; the graph is what the caller reads a shape off —
-which node everything points into, which pair points at each other, which node nothing points into
-at all. None of that is visible in a list of spans, and all of it is what decides the next move.
+Spans are the evidence; the graph is what the caller reads a shape off — which node everything
+points into, which pair points at each other, which node nothing points into at all. None of that
+is visible in a list of spans, and all of it is what decides the next move.
 
 Return the edges you found and say nothing about the ones you did not. A pass that reports "no
 other dependencies" is claiming completeness it cannot have.
 
-For worked examples — an arrow running into an architecture doc instead of away from it, and a
-both-ways pair split across two systems — see
-[`references/examples.md`](references/examples.md).
+## Which file to read
+
+| The question | Read |
+|---|---|
+| What a reported edge looks like written out — an arrow running into a document instead of away from it, a both-ways pair split across two systems, an edge with both ends inside one file | [`references/examples.md`](references/examples.md) |
 
 ## Common Rationalizations
 
@@ -113,9 +153,16 @@ both-ways pair split across two systems — see
 | "I will note that the rest of the document is clean." | You checked what you checked. A completeness claim is itself a dependency — on your own thoroughness, which nobody can verify later. |
 | "The spans are all there; drawing the arrows is presentation." | The arrows are the finding. A span says two texts touch; only the direction says which of them is about to be wrong, and a caller cannot derive that from a list they were handed instead. |
 
-## Related skills
+## Red Flags
 
-- `avoid-reference-detours` — the reader's side of a pointer: the trip they were made to take. This
-  skill is the maintainer's side: the edit somebody will be made to make.
-- `write-nice-architecture-docs` — the artifact where these dependencies cost the most, and which
-  states which ones an architecture doc may take.
+- A report that says "no other dependencies" — completeness it cannot have.
+- Spans paraphrased instead of quoted.
+- A verdict — "this is stale", "drop it" — where an edge belongs.
+- Links only, when most of what pins a document is prose.
+- A span reported without an arrow on it, or an arrow with neither end named as the one that moves.
+
+## Verification
+
+- [ ] Every edge names which end has to move, and the opposite direction was checked too.
+- [ ] Every edge carries the span that creates it, quoted.
+- [ ] Strong edges come first, and nothing is claimed about what was not found.

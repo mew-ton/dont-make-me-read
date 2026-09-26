@@ -1,8 +1,7 @@
 # Filling each section
 
-Read this before writing a section. `SKILL.md` carries what every section is for; this holds the
-rules for getting each one right, and the contrast that shows the failure. Worked examples of the
-gates and a full passing issue body are in [`examples.md`](examples.md).
+Read this before writing a section. It holds what has to hold in each one, and the contrast that
+shows the failure.
 
 ## Background / Why
 
@@ -37,9 +36,9 @@ makes the reader resolve which file it means; a path is already resolved.
 - Write: "The rules under `.claude/rules/backend/` say circular dependencies are disallowed."
 
 This states an existing fact about that entity — it is not an instruction to go look there. Telling
-the reader which file to open to find an answer is a different thing, an implementation step (see
-Decision vs. choice in [`SKILL.md`](../SKILL.md)), and only applies to an entity that stays put for
-the issue's lifetime — a standing rule set, a schema, a convention doc. Not a guess about where in
+the reader which file to open to find an answer is a different thing — an implementation step, which
+Gate 1 leaves out — and only applies to an entity that stays put for the issue's lifetime: a
+standing rule set, a schema, a convention doc. Not a guess about where in
 the code a fix will land; that guess is Affected areas' job, and its paths are expected to move
 before work starts.
 
@@ -63,16 +62,16 @@ heading per problem. If you cannot write that one sentence, the problems do not 
 issue — split into separate issues instead of chaptering a single Background; needing chapters is
 the symptom that the issue may be two, not something to fix by adding structure.
 
-The opening sentence stays one sentence, with no example or justification tacked onto it (Gate 2's
-paragraph-compression rule in [`SKILL.md`](../SKILL.md)).
+The opening sentence stays one sentence, with no example or justification tacked onto it — Gate 2's
+paragraph compression, caught before it is written.
 
 Tabulating is a separate axis from chaptering, and the two combine freely: chaptering asks how many
 kinds of problem this issue holds; tabulating asks how many requirements *one* kind of problem has,
 each with its own current and required state. When there is more than one such requirement, a
 sentence per requirement is Gate 2's paragraph-compression rule again, just spread across bullets —
-replace it with a table (a blank column, `Actual`, `Requirement`, one row per requirement; see
-[`examples.md`](examples.md)). With only one requirement, keep the sentence;
-a table buys nothing over it. A chapter's own requirements can still be tabulated.
+replace it with a table: a blank column, `Actual`, `Requirement`, one row per requirement. With only
+one requirement, keep the sentence; a table buys nothing over it. A chapter's own requirements can
+still be tabulated.
 
 ## Goal
 
@@ -117,11 +116,9 @@ table behind it cannot be checked, because no one can tell which set it ranges o
 - Write: "All architecture docs under `.claude/rules/backend/` and `backend/docs/` state the same
   dependency direction."
 
-When the implementation must be restricted, write it here as a state to satisfy, with no reason
-attached (the reason goes to Background). When that restriction is a shape a consumer already
-depends on — a response's fields, a `ViewModel` — write a short criterion pointing at it and give
-the shape its own block right here, rather than either omitting it as a "choice" or squeezing a
-multi-field interface into one checkbox line.
+A constraint that clears Gate 1 lands here, as a state to satisfy. Where it is a shape something
+outside the issue already depends on, the criterion points at the shape and the shape gets its own
+block directly beneath that criterion, not a squeeze into the checkbox line.
 
 Put lint / type-check / test as the last item, with the target directory named. The commands are
 whatever this repository actually runs — read them out of its own scripts or docs rather than

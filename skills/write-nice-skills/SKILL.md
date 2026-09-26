@@ -1,111 +1,74 @@
 ---
 name: write-nice-skills
 description: >
-  SKILL.md authoring — how to write a skill's description and body so it fires
-  reliably and stays lean. Use when writing, editing, or reviewing a skill, a
-  SKILL.md, or its description and frontmatter.
-  Also applies when another skill needs the description-writing or skill-length
-  rules. DO NOT use for non-skill documentation, or to run a general repo
-  review pass.
+  Writes and edits a skill for a coding agent — its `SKILL.md`, its description, its frontmatter —
+  to the notation and rules that make it fire reliably when the model judges whether to use it, and
+  that keep the agent from skipping steps once it has. Also applies when another skill needs the
+  rules for writing a description or for sizing a body.
 user-invocable: false
 disable-model-invocation: false
-context: fork
-background: false
-allowed-tools: []
 ---
 
-## Scope
+## Overview
 
-This skill is about **authoring a `SKILL.md`** — writing and reviewing a skill's
-`description` and body so the skill (a) fires when it should and (b) stays lean
-enough to be worth loading. It applies whether you are creating a new skill or
-editing an existing one.
+This skill settles the notation and rules a `SKILL.md` uses — in its frontmatter and in its body —
+and how to split a body once it has grown. That buys:
 
-It is **not** a general repo review pass — running a checklist over a PR is a
-separate job. It is **not** a publish/frontmatter policy document either. And
-it is not for non-skill documentation. This skill is the always-on authoring
-judgment that sits above those.
+- a firing condition precise enough that the agent picks the right skill
+- instructions the agent carries out instead of skipping
+- fewer tokens spent loading the skill, so there is more room for the other skills and instructions
+  in context
 
-The detail lives one level down (see [References](#references)); this file holds
-what every author needs no matter which branch they are on.
+## How to work
 
-## Why the description carries the weight
+- **Write the description and the body to the notation this skill sets**, taking each from the
+  file that owns it, per the table below.
+- **Measure what the skill itself costs, every time,** with this skill's `scripts/count-tokens.sh`,
+  and judge whether it has become heavy.
+- **Correct notation does not get the steps done.** Where the agent skips one anyway, keep the
+  notation and improve what the text says.
 
-When the agent decides whether to load a skill, the **only** text it reads is the
-`description`. The body is not in context yet — it loads *after* the skill fires.
-So the description does two load-bearing jobs at once:
+## Which file to read
 
-1. It must let the agent judge *whether this skill applies* from the description
-   alone.
-2. It must **not** leak the procedure. If the steps are in the description, the
-   agent believes it can act without loading the body, and skips the very
-   instructions the skill exists to deliver.
-
-Everything under "Writing the description" follows from this one fact.
-
-## Principles
-
-**Description** (details + Bad/Good examples:
-[`references/writing-descriptions.md`](references/writing-descriptions.md)):
-
-1. **Third person, what + when.** State what the skill does and when to apply it,
-   so it can be judged from the description alone.
-2. **No procedure.** Never put step-by-step instructions in the description; steps
-   live in the body.
-3. **Front-load the leading word.** Put the term that shows up when this skill is
-   needed near the start — the shared word between the description and whatever the
-   agent is working from is what links them and fires the skill. That is a prompt
-   when a person asks; for a skill hidden from the `/` menu it is the work itself.
-   Not a slash-separated tag list, not a dressed-up request sentence: a leading word
-   inside a natural sentence. One trigger per branch (no synonym padding); cut
-   identity the body already carries. A skill that has to be on for a whole activity
-   has no word to share — name the activity, and bound it with what it is not.
-4. **English.** Write the description in English, whichever language you prompt in,
-   and do not pad it with a second-language keyword list. What the skill *tells the
-   agent to write* is a separate question each writing skill answers for itself.
-
-**Body** (details + criteria:
-[`references/structuring-skills.md`](references/structuring-skills.md)):
-
-5. **Don't write everything.** Keep the body within the size budget — which belongs
-   to the set of skills that stand together, and is tightest for a skill that is on
-   for a whole activity — and push branch-specific detail one level down into a file
-   the body points at. Inline what every path needs; put behind a pointer what only
-   some branches reach.
-6. **Add Common Rationalizations.** For any skill an agent might cut corners on,
-   pre-empt the excuses (see the table below).
-7. **Say it stays in force, when it has to.** A skill that is on for a whole
-   activity is loaded once and then competes with everything after it; a body that
-   never says it is still in force reads as advice already given.
-8. **Leave out what the structure already settles.** A skill does not need to know
-   its own category, who calls it, or where it sits — the frontmatter and the
-   callers establish all of that, and a sentence saying it changes nothing the
-   skill does. It also makes the skill wrong the day a caller is renamed.
-
-Terms used above (leading word, trigger, branch, progressive disclosure, context
-pointer) are defined in [`GLOSSARY.md`](GLOSSARY.md).
+| The question | Read |
+|---|---|
+| What a term here means | [`GLOSSARY.md`](GLOSSARY.md) |
+| What the `description` must do, must never do, how to choose the word it fires on, what opens it, how it divides with the body, and how to test that it fires | [`references/writing-descriptions.md`](references/writing-descriptions.md) |
+| What a fixed description looks like — Bad → Good, each pair naming what it repairs | [`references/examples.md`](references/examples.md) |
+| Which sections the body carries and in what order, what each has to hold, how a skill stays in force, what to leave out of a body, and where a sub-skill's body takes its input | [`references/writing-body.md`](references/writing-body.md) |
+| What a skill may cost and how to measure it, what moves into a bundled file and which guard may move there, when to split one skill into a sub-skill, and whether a phase should run in its own execution environment | [`references/structuring-skills.md`](references/structuring-skills.md) |
+| Which frontmatter fields to set, what each settles, and which a sub-skill carries | [`references/writing-frontmatter.md`](references/writing-frontmatter.md) |
 
 ## Common Rationalizations
 
-The agent will look for reasons to skip this skill. Close them off:
+The agent will look for reasons to skip this skill:
 
 | Rationalization | Reality |
 |---|---|
-| "A shorter description fires more reliably." | It fires on a *shared word*, not on brevity. With no leading word the prompt shares, it never links — length is not the lever. |
-| "I'll put the steps in the description so it's self-explanatory." | Then the agent acts from the description and never loads the body — the steps you wrote get skipped. Keep procedure in the body. |
-| "One file is simpler than splitting." | A bloated `SKILL.md` is loaded *every* time the skill fires and drags the whole context. Push branch-only detail behind a pointer. |
-| "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. Cut to the budget as you write. |
-| "This description reads well to me." | You are not the trigger. Check it against the words a *user* types, not against your own summary. |
+| "A shorter description fires more reliably." | It fires on a word shared with the work — one a prompt supplies, or one the work itself already uses. With none, nothing links it to the task, whatever its length. |
+| "I'll put the steps in the description so it's self-explanatory." | Then the agent acts from the description and never loads the body — the steps you wrote get skipped. |
+| "The description should explain why the rule matters, or nobody will take it seriously." | What the skill forces belongs in the description; *why* forcing it is right — the argument, the cost, the alternatives — is the body's. An agent handed both acts from the description and never loads the body. |
+| "Stating when *not* to use it is negative and wastes budget." | A description that names only when it applies fires on every neighbouring artifact too, and each wrong fire costs the whole body. |
+| "Naming the skill that owns a neighbouring artifact helps the agent route." | It answers "is this artifact mine?" so the agent stops asking — and that is the one question the description exists to make it ask. It also puts another skill's name in your description, where renaming that skill silently makes yours wrong. |
+| "One file is simpler than several." | A bloated `SKILL.md` loads *every* time the skill fires and drags the whole context, where a bundled file is read only on the branch that needs it. |
+| "I'll write the full guide now and trim later." | You won't. Over-long skills ship over-long. |
+| "This reads well to me." | You are supplying the intent the text is missing as you read it. Check it against the words the work supplies and the number the script reports. |
 
-## References
+## Red Flags
 
-- Writing or fixing a **description / frontmatter** →
-  [`references/writing-descriptions.md`](references/writing-descriptions.md)
-- Deciding **body size, references, or when to split**, or **keeping a skill in
-  force** across an activity →
-  [`references/structuring-skills.md`](references/structuring-skills.md)
-- Measuring a file's real **token cost**, and the byte threshold to aim for →
-  [`references/structuring-skills.md`](references/structuring-skills.md#measuring-the-token-half-of-that-budget)
-  (runs [`scripts/count-tokens.sh`](scripts/count-tokens.sh))
-- Vocabulary (leading word / trigger / branch / progressive disclosure / context
-  pointer) → [`GLOSSARY.md`](GLOSSARY.md)
+- A `SKILL.md` that settles a rule one of its own bundled files owns, so nobody opens that file.
+- A description carrying the steps, the criteria it applies, or another skill's name.
+- A description whose head is a tag list or a run of keywords.
+- A bundled file reached from another bundled file.
+- A body whose opening sentence does not say what the skill does.
+
+## Verification
+
+- [ ] The frontmatter parses, and `name` matches the directory the skill is in.
+- [ ] The description carries no `<` or `>` in its text — otherwise nothing loads.
+- [ ] The description is inside 1024 characters.
+- [ ] `count-tokens.sh` exits zero over every file the skill loads for one artifact or one branch.
+- [ ] If it is always-on: `count-tokens.sh` over it and every always-on `SKILL.md` it ships alongside, the counts added up, under 2000.
+- [ ] The cases that should reach the skill do — run them with it installed and without, so a case the description reached is told apart from one the model would have handled anyway.
+- [ ] Common Rationalizations and Red Flags are in `SKILL.md` itself, where the agent meets them without opening anything.
+- [ ] Every file the skill loads is pointed at directly from `SKILL.md`, under a stated condition or question.

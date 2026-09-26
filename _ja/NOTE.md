@@ -20,17 +20,16 @@
 
 ## 対応表
 
+訳は `_ja/` の下の、**原文と同じパス**に置く。`skills/write-nice-skills/GLOSSARY.md` の訳は
+`_ja/skills/write-nice-skills/GLOSSARY.md` であり、`SKILL.md`、`references/*.md`、`ORIGINS.md`、
+`README.md`、`SOURCES.md`、`assets/*.md`、`commands/*.md` も同じ規則で置かれている。
+
+パスが一致しないのは、原文の拡張子が `.md` ではないときだけ。`.md` を足し、訳すのはコメント部だけに
+する：
+
 | 和訳 | 原文 |
 |---|---|
-| `_ja/README.md` | `README.md` |
-| `_ja/ARCHITECTURE.md` | `ARCHITECTURE.md` |
 | `_ja/.claude-plugin/plugin.json.md` | `.claude-plugin/plugin.json` |
-| `_ja/commands/*.md` | `commands/*.md` |
-| `_ja/skills/<name>/SKILL.md` | `skills/<name>/SKILL.md` |
-| `_ja/skills/<name>/references/*.md` | `skills/<name>/references/*.md` |
-| `_ja/skills/write-nice-instructions/rules/*.md` | `skills/write-nice-instructions/rules/*.md` |
-| `_ja/skills/write-nice-issue-description/assets/issue-template.md` | 同 `assets/issue-template.md` |
-| `_ja/skills/write-nice-skills/GLOSSARY.md` | `skills/write-nice-skills/GLOSSARY.md` |
-| `_ja/skills/write-nice-skills/scripts/count-tokens.sh.md` | `scripts/count-tokens.sh` のコメント部 |
+| `_ja/skills/write-nice-skills/scripts/*.sh.md` | 同 `scripts/*.sh` のコメント部 |
 
 `LICENSE` は訳していない。

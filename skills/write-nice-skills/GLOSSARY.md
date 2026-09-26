@@ -1,36 +1,40 @@
 # Glossary — write-nice-skills
 
-Shared vocabulary for talking about skill authoring. `SKILL.md` and both reference
-files use these terms precisely.
+The terms used precisely by this skill's `SKILL.md` and the files it routes to. Each entry says
+what the term means. The rules that use them are settled elsewhere, and `SKILL.md`'s table says
+where.
 
-**Leading word** — the term that shows up when a skill is needed, and which also
-appears in the skill's `description`: what a person types when they ask for it, or —
-for a skill that fires mid-task with no prompt — what the work itself already calls
-the thing. That shared word is what links the two and makes the skill fire, so it is
-front-loaded in the description. *Avoid:* "keyword" in the SEO sense (stuffing terms
-nobody uses), and slash-separated tag lists.
+**Leading word** — the term that shows up when a skill is needed and also appears in its
+`description`: what a person types when they ask for it, or — for a skill that fires mid-task with
+no prompt — what the work itself already calls the thing.
 
-**Trigger** — a condition that should invoke the skill, phrased as "use when …".
-One trigger per branch; synonyms that rename the same branch are duplication, not
-extra coverage.
+**The work** — the artifact and activity the agent is engaged in when the skill might fire: the
+diff or file in front of it, the task it is part-way through. The prompt it was given is separate.
 
-**Branch** — one distinct situation the skill handles. Different branches read
-different parts of the skill; that difference is what licenses splitting a
-reference off.
+**Intent** — what the skill's author wanted enforced, in the terms they would use for it.
 
-**Child skill** — a skill a parent skill invokes to run one phase in its own
-execution environment (`context: fork`), returning a conclusion rather than the
-material it gathered. Named `<parent-skill-name>-<role>`. *Avoid:* using it for a
-phase that decides good/bad — that is judgment, and it stays on the main thread.
+**Occasion** — the artifact being written or the activity underway, named in the `description` as
+what brings the skill in.
 
-**Progressive disclosure** — moving reference material *down* the hierarchy: out of
-`SKILL.md` and behind a context pointer, so the always-loaded core stays small.
-Inline what every path needs; disclose what only some branches reach.
+**Bound** — the condition under which a skill must *not* fire.
 
-**Context pointer** — a link in `SKILL.md` (e.g. "For X, see `references/x.md`")
-that tells the agent when and where to load a reference. The reference is not
-loaded until the pointer's condition is met.
+**Reach clause** — the part of a `description` that admits a second way in, by naming a need
+another skill has for the rules this one holds.
 
-**Common Rationalizations** — a table of the excuses an agent uses to skip a skill,
-each paired with the reality that refutes it. Kept inline in the core so it is
-always in context.
+**Always-on skill** — a skill whose body keeps it in force past the response that loaded it, so it
+is resident for a whole activity rather than for one artifact.
+
+**Branch** — one distinct situation the skill handles.
+
+**Bundled file** — a file beside `SKILL.md` that the agent loads only on the branch reaching it.
+
+**Guard** — one of the sections that catch a skill being talked out of before the work, cut during
+it, or declared done after it: Common Rationalizations, Red Flags, Verification.
+
+**Cut** — a reason a growing skill has earned a sub-skill rather than another bundled file.
+
+**Sub-skill** — a second skill a growing one was split into: one that stands alone, or one its
+parent invokes as a phase.
+
+**No-op** — an instruction the model already follows unprompted, or a setting that changes nothing.
+

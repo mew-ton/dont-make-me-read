@@ -4,7 +4,7 @@ argument-hint: "[<pr-url-or-number>] [--repo <owner/repo>] [--worktree <path>] [
 ---
 
 この対象に対して `review-self-contained-docs` スキルを走らせる。引数は与えられたまま素通しで渡すこと。
-それらの定義はそのスキルの Inputs 表にある。
+それぞれが何を意味するかは、そのスキルが決着させる。
 
 引数なしなら、現在のブランチのPRをレビューする。
 
