@@ -68,18 +68,17 @@ repo-groundedness, dependency closure, or scope.
 where there is one, the thing that thing displaces. Nothing in the work names a rule like this: a
 prompt asks for a feature, a diff shows a function, and neither says which rule applies — so the
 occasion cannot open it, and an occasion nobody names is one the agent forgets mid-diff. What the
-work *does* supply is the shape the rule catches, and the words it uses for that shape go in the
-opening's own examples:
+work *does* supply is the shape the rule catches, or the activity underway, and the words it uses
+for either go in the description — in the opening's own examples, or in the occasion that follows:
 
 ```text
-Forces the text a stranger can go and check: the rationale a reader who was
-never in the room can still trace, never the conversation that produced it, the
-review feedback, the discarded alternatives, or a past state the current code
-no longer shows. Applies when writing an issue, a PR description, a code
-comment, an API or design doc, or any text or code that will be read later.
-Does not apply when the material is reachable and what it costs is the trip to
-it, when the question is an issue body's sections and criteria, or when the text
-is an ephemeral chat reply or a working note.
+Forces the narrowest range a reader has to hold before they can act — the range
+its writer cannot feel. Applies while writing or revising anything another
+person or an agent reads in order to act: drafting, documenting, commenting,
+specifying, explaining, reviewing, or writing, refactoring and designing the code
+itself. Does not apply in place of the rules that own the artifact in hand — it
+carries no template, no budget, and no section list — nor when nobody acts on the
+text later: chat replies, scratchpads, working notes.
 ```
 
 ## The leading word
