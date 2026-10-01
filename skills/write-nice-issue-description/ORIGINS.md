@@ -17,14 +17,14 @@ here for whoever edits the skill.
 - `write-nice-instructions-as-comment` — the finding/instruction template and remedy strength, for
   text one person reads and can answer back to. Its own description already takes an issue body
   back, so this one spends no characters ruling a review comment out.
-- `avoid-unverifiable-context` — the rationale-versus-process rule, across any text read later.
-  "What the implementer already has" is that rule at an issue's granularity: the project context
-  goes because the reader can read the repository, and the session residue goes because the reader
-  was never a participant.
-- `avoid-reference-detours` — the same subtraction across documents, where Gate 2 covers repetition
-  inside one. A reader reads an issue in order, so a second copy is a re-read, while a fact kept in
-  another file costs them a trip. Gate 1's reference rule is the point the two meet: a reference may
-  stay when the next action is decided without resolving it.
+- `dont-make-me-read`'s `rules/unverifiable-context.md` — the rationale-versus-process rule, across
+  any text read later. "What the implementer already has" is that rule at an issue's granularity:
+  the project context goes because the reader can read the repository, and the session residue goes
+  because the reader was never a participant.
+- `dont-make-me-read`'s `rules/reference-detours.md` — the same subtraction across documents, where
+  Gate 2 covers repetition inside one. A reader reads an issue in order, so a second copy is a
+  re-read, while a fact kept in another file costs them a trip. Gate 1's reference rule is the point
+  the two meet: a reference may stay when the next action is decided without resolving it.
 - `dont-make-me-read` — the test underneath Gate 1, at an issue body's granularity: an implementer
   holding only this text and the repository can start, and can tell when they are done.
 

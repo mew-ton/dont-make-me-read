@@ -9,7 +9,8 @@ what it is missing. This plugin is the rules that follow, arranged to reach the 
 wait to be consulted.
 
 Two layers. The standing one is `dont-make-me-read` — the test, and the ways a range goes wrong —
-together with the rules that hold whatever is being written. It carries no inventory of what else
+together with the rules that hold whatever is being written, each in a file of its own that the
+standing `SKILL.md` routes to by the case that reaches it. It carries no inventory of what else
 exists, which is what holds it to a fixed size however many activities there are. On top of it, one
 skill per activity, carrying what that activity's range does that the test alone cannot supply.
 Several stand at once and nothing arbitrates between them, so their size is the only thing keeping
@@ -133,7 +134,7 @@ artifact, and that artifact's own rules say where within it.**
 **A skill published from here explains itself at its own root.** These go out as a plugin, so each
 skill is read, installed and maintained as a unit; the explanation a person needs before adopting
 one belongs beside its `SKILL.md`, not in this file and not in the root README, which would carry
-thirteen of them and go stale one skill at a time. Nothing references it, so it costs the agent
+ten of them and go stale one skill at a time. Nothing references it, so it costs the agent
 nothing. `write-nice-skills` deliberately does not ask for one — that is a publishing decision
 about this repository, not a rule about how skills are written.
 
@@ -145,6 +146,12 @@ loaded at a time and each new one was weighed against the menu it joined. What d
 now is whether someone doing this is doing something different, not whether what they produce has a
 template. Writing code and writing an issue break the range in opposite directions, so they are
 two, and the one with no template is not the one to drop.
+
+**A rule that holds whatever the activity is earns a file in the standing layer, never a skill.**
+It is one of the ways a range goes wrong, so its case only arises where `dont-make-me-read` is
+already in force. As a skill of its own it would stand beside every activity, resident on every
+turn of each; as a file it is read only where its case arises. What keeps the agent from missing
+that case — its Common Rationalizations row and its Red Flag — stays in the standing `SKILL.md`.
 
 ## Before a skill is committed
 

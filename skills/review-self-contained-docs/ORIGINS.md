@@ -10,11 +10,12 @@ The body no longer names the authoring skills it used to open on. A name in the 
 dependency on somebody else's file that nothing checks, and a reader part-way through a review does
 nothing differently for knowing where a condition was first written down.
 
-- `avoid-unverifiable-context` — the authoring-time rule behind conditions 1 and 2, stated from the
-  writer's side, with more examples. Read it if a finding on either condition is confusing.
-- `avoid-reference-detours` — the authoring-time rule behind condition 3, including why its fix
-  restates rather than deletes. That asymmetry is why condition 3 produces two facts here and the
-  other two produce one.
+- `dont-make-me-read`'s `rules/unverifiable-context.md` — the authoring-time rule behind conditions
+  1 and 2, stated from the writer's side, with more examples. Read it if a finding on either
+  condition is confusing.
+- `dont-make-me-read`'s `rules/reference-detours.md` — the authoring-time rule behind condition 3,
+  including why its fix restates rather than deletes. That asymmetry is why condition 3 produces two
+  facts here and the other two produce one.
 
 `write-nice-instructions-as-comment` is the exception and stays named in the body: this skill
 invokes it to render every finding, and a step that calls something has to say what it calls.

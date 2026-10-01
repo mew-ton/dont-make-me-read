@@ -11,9 +11,9 @@
 
 - `dont-make-me-read` — このスキルが研ぎ上げるテスト：指摘は、読み手が行動する前に抱えねばならないもので
   判定される。
-- `avoid-unverifiable-context` — 読み手が、その指摘の主張を確認できるか：根拠は残り、それが出てきた
+- `dont-make-me-read` の `rules/unverifiable-context.md` — 読み手が、その指摘の主張を確認できるか：根拠は残り、それが出てきた
   プロセスは落ちる。
-- `avoid-reference-detours` — 読み手がその指摘を理解するためにどこかへ送られたか、そして代わりに使用地点で
+- `dont-make-me-read` の `rules/reference-detours.md` — 読み手がその指摘を理解するためにどこかへ送られたか、そして代わりに使用地点で
   何を言い直してよいか。
 - `write-nice-issue-description` — 問題の記述＋完了条件であり、リポジトリを読める実装者に読まれるもの。
   このスキルはあちらが始まるところで終わる：名指しできる修正がない指摘が立てる issue は、このテンプレート

@@ -37,44 +37,41 @@ reaches no neighbour to take back.
 **Bad**
 
 ```text
-A module that branches on which caller invoked it is holding its callers'
-knowledge. Reading it means holding every caller, and it is edited again each
-time one is added. Take the knowledge out instead: the caller passes what
-differs. Use on any coding task.
+A reader pays for everything they have to hold before they can act, and the
+writer cannot feel it, because they supply what the draft leaves out as they
+read it. Cut what does not change what the reader does next, and add what the
+decision needs. Use when writing anything.
 ```
 
-The argument for the rule is all here — what it costs to read such a module, and what to do instead
-— which is the body's. An agent with them acts on the summary; the body confirms what it already
+The argument for the rule is all here — what it costs the reader, why the writer misses it, and
+what to do instead — which is the body's. An agent with them acts on the summary; the body confirms what it already
 believes, if it loads at all. The occasion arrives last, in a closing sentence.
 
 **Good**
 
 ```text
-Forces the caller-agnostic callee that takes what differs as data, named in the
-domain's own vocabulary, over one that branches on who called it — a shared fetch
-taking `from: 'pageA' | 'pageB'`, a helper with an `isDetailPage` flag, a
-component with a `variant` named after the screen it appears on. Applies to any
-coding task: writing, refactoring, extracting, reviewing, or designing a
-function, a module, a component, or the interface between them. Does not apply
-when the subject is prose, or a comment that sends its reader elsewhere to be
-understood, or when the branch is on genuine domain data.
+Forces the narrowest range a reader has to hold before they can act — the range
+its writer cannot feel. Applies while writing or revising anything another
+person or an agent reads in order to act: drafting, documenting, commenting,
+specifying, explaining, reviewing, or writing, refactoring and designing the code
+itself. Does not apply in place of the rules that own the artifact in hand — it
+carries no template, no budget, and no section list — nor when nobody acts on the
+text later: chat replies, scratchpads, working notes.
 ```
 
-`Forces …` opens it, because no word in a diff names the rule itself; the words a diff does carry
-stay inside that opening, and those are what fires. The occasion follows as `Applies to …`. Why it
-costs the reader anything is the body's.
+`Forces …` opens it, because no word in a draft names the rule itself. The occasion follows as
+`Applies while …`, and its verbs — drafting, commenting, reviewing, refactoring — are the words the
+work does carry, so those are what fires. Why it costs the reader anything is the body's.
 
 ## Another skill's name in the bound, and the second person
 
 **Bad**
 
 ```text
-Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it. Applies when writing a code comment, a docstring, a PR
-description, or any text that points elsewhere to be understood. DO NOT use when
-the target cannot be reached at all, when the same content is repeated twice in
-one document (that is dont-make-me-read), or when a module branches on which
-caller invoked it (that is avoid-caller-knowledge).
+Drafts and revises an instruction written as a comment: text one person reads,
+acts on, and can answer back to. DO NOT use for a standing rule the reader will
+meet again (that is write-nice-instructions-as-rule), or for the body of a
+GitHub issue (that is write-nice-issue-description).
 ```
 
 Two names to maintain and two renames waiting, in a bound that also opens `DO NOT use`, in the
@@ -84,18 +81,16 @@ so the agent stops asking, and that is the question the description exists to ma
 **Good**
 
 ```text
-Forces the fact restated at the point of use over the pointer that sends the
-reader away to get it — "the format rules at the top of this file", "same as the
-config", a section that defers to another section — leaving the original where it
-is and authoritative. Applies when writing a code comment, a docstring, a PR
-description, or any text that points elsewhere to be understood. Does not apply
-when the target does not exist or cannot be reached at all, when the same content
-is repeated twice inside one document, or when a module branches on which caller
-invoked it.
+Drafts and revises an instruction written as a comment — a PR review finding, a
+reply proposing a change, a remark asking someone to fix something — text one
+person reads, acts on, and can answer back to. Does not apply when the
+instruction is a standing rule the reader will meet again rather than a remark
+they can answer, or when it is the body of a GitHub issue.
 ```
 
-Each clause of the bound is a case the occasion really reaches: text that points elsewhere covers a
-pointer with no target, a document that repeats itself, and a module that reads its caller. The
+Each clause of the bound is a case the occasion really reaches: an instruction one person acts on
+covers a standing rule posted where they will meet it again, and a problem handed over as the body
+of an issue. The
 condition is the case, not who owns it — which skill owns which is settled by that skill, in its own
 description.
 

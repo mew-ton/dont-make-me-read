@@ -17,8 +17,9 @@ rather than for the one response that loaded it.
 
 ## Where the rest lives
 
-`SKILL.md` holds the range, the test that applies it, and the guards against skipping it. Start
-there, not here.
+`SKILL.md` holds the range, the test that applies it, and the guards against skipping it, and says
+when to read each file in `rules/` — one per case where a range goes wrong in a way the test alone
+does not settle. Start there, not here.
 
 ## The two propositions
 

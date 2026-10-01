@@ -28,9 +28,10 @@ author does. They are recorded here for whoever edits the skill next.
 
 - `dont-make-me-read` — the test this one sharpens, and the source of the rule that a constraint is
   stated as the wall the reader would walk into.
-- `avoid-unverifiable-context` — what keeps deliberation out of the doc while the rationale stays.
-- `avoid-reference-detours` — what settles whether you may restate something at the point of use;
-  this skill narrows it for the definitions another file owns.
+- `dont-make-me-read`'s `rules/unverifiable-context.md` — what keeps deliberation out of the doc
+  while the rationale stays.
+- `dont-make-me-read`'s `rules/reference-detours.md` — what settles whether you may restate
+  something at the point of use; this skill narrows it for the definitions another file owns.
 - `find-document-dependencies` — draws the arrows, so the maintenance-side test can be run rather
   than eyeballed.
 - `write-nice-skills` — a `SKILL.md` is an instruction to an agent, not an architecture doc. That

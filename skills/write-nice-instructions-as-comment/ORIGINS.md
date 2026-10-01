@@ -12,10 +12,10 @@ skill.
 
 - `dont-make-me-read` — the test this one sharpens: the finding is judged by what its reader has to
   hold before they can act.
-- `avoid-unverifiable-context` — whether the reader can check what the finding claims: the rationale
-  stays, the process it came out of goes.
-- `avoid-reference-detours` — whether the reader was sent somewhere to understand the finding, and
-  what may be restated at the point of use instead.
+- `dont-make-me-read`'s `rules/unverifiable-context.md` — whether the reader can check what the
+  finding claims: the rationale stays, the process it came out of goes.
+- `dont-make-me-read`'s `rules/reference-detours.md` — whether the reader was sent somewhere to
+  understand the finding, and what may be restated at the point of use instead.
 - `write-nice-issue-description` — a problem statement plus a completion condition, read by an
   implementer who can read the repository. This skill stops where that one starts: the issue opened
   by a finding with no nameable fix is written to that skill's rules, not to this template. The body

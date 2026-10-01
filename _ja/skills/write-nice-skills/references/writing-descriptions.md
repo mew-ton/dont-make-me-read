@@ -63,18 +63,17 @@ repo-groundedness, dependency closure, or scope.
 **名指ししない → 何を強制するかを冒頭に、`Forces …` として置く。** そのスキルが押し通すもの、そして押し
 のける相手があるならそれを。この種の規則そのものを名指しする語は作業の中に無い：プロンプトは機能を求め、
 diff は関数を見せ、どちらもどの規則が当てはまるかを言わない — だから機会が冒頭に立てず、誰も名指ししない
-機会は、エージェントが diff の途中で忘れる機会である。作業が供給するのは、その規則が捕まえる**形**であり、
-作業がその形に使っている語が、冒頭の中の実例に入る：
+機会は、エージェントが diff の途中で忘れる機会である。作業が供給するのは、その規則が捕まえる**形**か、進行中の
+活動であり、作業がそのどちらかに使っている語が description に入る — 冒頭の中の実例に、あるいはそれに続く機会に：
 
 ```text
-Forces the text a stranger can go and check: the rationale a reader who was
-never in the room can still trace, never the conversation that produced it, the
-review feedback, the discarded alternatives, or a past state the current code
-no longer shows. Applies when writing an issue, a PR description, a code
-comment, an API or design doc, or any text or code that will be read later.
-Does not apply when the material is reachable and what it costs is the trip to
-it, when the question is an issue body's sections and criteria, or when the text
-is an ephemeral chat reply or a working note.
+Forces the narrowest range a reader has to hold before they can act — the range
+its writer cannot feel. Applies while writing or revising anything another
+person or an agent reads in order to act: drafting, documenting, commenting,
+specifying, explaining, reviewing, or writing, refactoring and designing the code
+itself. Does not apply in place of the rules that own the artifact in hand — it
+carries no template, no budget, and no section list — nor when nobody acts on the
+text later: chat replies, scratchpads, working notes.
 ```
 
 ## The leading word（発火させる語）

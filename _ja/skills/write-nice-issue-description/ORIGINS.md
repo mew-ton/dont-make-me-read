@@ -15,10 +15,10 @@
 - `write-nice-instructions-as-comment` — 一人の読み手が読んで答え返せるテキストのための、指摘／指示の
   テンプレートと remedy strength。あちらの description がすでに issue 本文を取り戻しているので、こちらは
   レビューコメントを除外するために文字を費やさない。
-- `avoid-unverifiable-context` — あとから読まれるあらゆるテキストにまたがる、根拠 vs プロセスのルール。
+- `dont-make-me-read` の `rules/unverifiable-context.md` — あとから読まれるあらゆるテキストにまたがる、根拠 vs プロセスのルール。
   「実装者がすでに持っているもの」はそのルールを issue の粒度にしたものである：読み手はリポジトリを読める
   のでプロジェクトの文脈は落ち、読み手は参加者ではなかったのでセッションの残滓も落ちる。
-- `avoid-reference-detours` — 文書をまたぐ場合の同じ引き算。Gate 2 が一つの文書の内部の繰り返しを覆う。
+- `dont-make-me-read` の `rules/reference-detours.md` — 文書をまたぐ場合の同じ引き算。Gate 2 が一つの文書の内部の繰り返しを覆う。
   読み手は issue を順に読むので二つ目の写しは再読であり、別ファイルに置かれた事実は往復の代金になる。
   Gate 1 の参照ルールが両者の交わる点である：次の行動がそれを解決せずに決まるなら、参照は残ってよい。
 - `dont-make-me-read` — Gate 1 の下にあるテスト、issue 本文の粒度で：このテキストとリポジトリだけを持つ
