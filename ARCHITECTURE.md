@@ -5,37 +5,35 @@
 Anything someone reads in order to act — an issue, a review comment, a PR description, a doc, a
 `SKILL.md`, the code itself — costs its reader whatever they have to gather before they can act. The
 writer cannot feel that cost: they read their own draft while supplying what it leaves out. This
-plugin is the rules that correct for it, placed where the writing happens so nobody has to remember
-to apply them.
+plugin is the rule that corrects for it, placed where the writing happens so nobody has to remember
+to apply it.
 
-Three kinds of thing, and nothing else:
+One skill. Its `SKILL.md` holds the test every such piece of writing is held to and the ways it
+fails, and is resident while anything of the kind is being written. One supplement hangs off it:
+what the test works out to for each kind of artifact, written down once so it is not re-derived
+every time. The supplement is a derivation, not a second set of rules — every line in it can be
+traced back to the test, and a line that cannot is not allowed in.
 
-- **The standing skill** holds the one test every piece of such writing is held to, and the ways it
-  fails. It is resident while anything of the kind is being written, so it is held to the smallest
-  size of all.
-- **An artifact skill** holds what one kind of artifact needs that the test alone cannot supply — a
-  section list, a template, a budget. One exists only for an artifact that has already been written
-  badly with the standing skill alone.
-- **A command** is what a person types. It settles what is not yet settled, hands one brief to the
-  artifact skill, and shows what comes back.
+Commands are what a person types. One settles what is not yet settled, hands one brief to the
+skill, and shows what comes back. They are the whole typed surface and carry no rules of their own.
 
-The plugin's own tree is held to the same rule as the writing it governs: nothing in it may depend
-on a maintainer remembering to keep two places in agreement.
+The plugin's own tree is held to the same standard as the writing it governs: nothing in it may
+depend on a maintainer remembering to keep two places in agreement.
 
 ## Codemap
 
 ```
-.claude-plugin/plugin.json      the manifest
-skills/<name>/SKILL.md          the only file an agent loads for that skill
-skills/<name>/references/*.md   read on one branch, from one line in that SKILL.md
-commands/<name>.md              one per thing a person types
-scripts/check.sh                every check a commit has to pass; runs with no model call
-ARCHITECTURE.md                 what a contributor decides by
-README.md                       what a person decides from before installing
+.claude-plugin/plugin.json                    the manifest
+skills/dont-make-me-read/SKILL.md             the test, the failure modes, the one link below
+skills/dont-make-me-read/references/artifacts.md   what the test works out to, per kind of artifact
+commands/<name>.md                            one per thing a person types
+scripts/check.sh                              every check a commit has to pass; runs with no model call
+ARCHITECTURE.md                               what a contributor decides by
+README.md                                     what a person decides from before installing
 ```
 
-Nothing else: no per-skill README, provenance, glossary or verification file, and no translation of
-any of it. The reason each of those is absent is an invariant below.
+Nothing else: no second skill, no per-skill README, provenance, glossary or verification file, and
+no translation of any of it. The reason each of those is absent is an invariant below.
 
 ## The golden rule
 
@@ -50,20 +48,37 @@ does not go in this file.
 
 ## Invariants
 
+### One skill
+
+The rule for writing to be acted on is one rule, so it is one skill. What an issue needs that a
+review comment does not is not a second rule; it is the first rule applied to an issue. Giving each
+kind of artifact a skill of its own gave each one a copy of the derivation, cut off from what it was
+derived from, and every change to the thought had to be carried into every copy by hand. The
+previous tree had ten such copies and rebuilt each at least once.
+
+### The supplement is a derivation, and says so line by line
+
+`references/artifacts.md` holds one section per kind of artifact. Each line in a section states
+what the test works out to for that artifact and names the step of the test it follows from. A line
+that cannot name one is a preference, and preferences go in a command's brief or nowhere.
+
+This is what keeps the supplement from becoming the second set of rules it replaces. It is reached
+from one line of the `SKILL.md`, under one condition: the kind of artifact is known. The `SKILL.md`
+itself holds no list of kinds.
+
 ### One owner per fact
 
 Every rule, figure, term and name is stated in exactly one file. A file that needs it links to it by
-path and does not restate it. This is what removes the per-skill provenance and neighbourhood files:
-each one restated what another file owned, and each restatement was a place that could disagree.
+path and does not restate it. The test lives in the `SKILL.md`; the supplement applies it and does
+not repeat it; a command names what it hands over and nothing about how it is to be written.
 
 ### The tree is checked, not reviewed, for consistency
 
 `scripts/check.sh` fails when any of these holds:
 
 - a relative link's target does not exist
-- a file under `references/` is not linked from its skill's `SKILL.md`
-- a skill's directory name appears in any file outside that directory, other than a command
-- a `SKILL.md`'s frontmatter `name` differs from its directory
+- a file under `references/` is not linked from the `SKILL.md`
+- the frontmatter `name` differs from the skill's directory
 - a file is over its size limit
 
 A consistency the script cannot test is not promised anywhere. The check runs on every commit and
@@ -71,8 +86,8 @@ costs nothing, so there is no reason it is ever skipped.
 
 ### One language in the tree
 
-English, because a published plugin cannot know the language its users prompt in. What the skills
-tell a writer to *produce* is a separate question with the same answer each time: the language the
+English, because a published plugin cannot know the language its users prompt in. What the skill
+tells a writer to *produce* is a separate question with the same answer each time: the language the
 artifact's readers already use, and only one.
 
 A translation is made when someone needs one and is never committed. Two copies of a text cannot be
@@ -83,9 +98,9 @@ mirror this replaces was half the tree and a twin commit for every change.
 
 | File | Limit |
 |---|---|
-| the standing `SKILL.md` | 4 KB |
-| any other `SKILL.md` | 10 KB |
-| any file under `references/` | 12 KB |
+| `SKILL.md` | 4 KB |
+| `references/artifacts.md` | 12 KB |
+| a command | 2 KB |
 
 Bytes, because the check has to run on every commit with nothing to authenticate against; the
 bytes-per-token ratio is stable enough that a byte figure stands in for the cost that matters. The
@@ -93,31 +108,15 @@ figures are chosen with room under them: a file at the ceiling has nowhere to go
 arrives, and the previous standing skill measured within three tokens of its limit. A limit is a
 failing figure, not a target.
 
-### A skill is one file until a branch proves otherwise
+When the supplement outgrows its limit, it splits by kind of artifact into files under
+`references/`, each still reached from the `SKILL.md` under the condition that names its kind, and
+each still a derivation line by line. Nothing else about the shape changes.
 
-A skill is its `SKILL.md`. It gains a file under `references/` only for material that one branch of
-its work needs and the others never load, and that file is reached from one line of the `SKILL.md`
-that names the branch. A checklist, if the skill ends in one, is the last section of the `SKILL.md`.
+### Why a rule exists is not in the tree
 
-Why a rule exists, where it came from, and what it sits next to are not material the agent running
-the skill needs. They go in the commit and pull request that introduced the rule, where the history
-keeps them and nothing has to be kept in step with them.
-
-### An artifact earns a skill by a failure, not by existing
-
-An artifact skill is added when the standing skill alone produced a bad artifact of that kind, and
-the pull request adding the skill shows that artifact and what the skill would have changed. One
-per kind of artifact; none in advance.
-
-The rule this replaces granted a skill to every activity someone could name. It produced ten, each
-rebuilt at least once, before any had been shown to be needed.
-
-### The plugin does not govern its own files with a skill it ships
-
-The rules this tree's files follow are this document and `scripts/check.sh`. They are not also a
-shipped skill, because a skill that governs every file in the tree turns each change to it into a
-change to all of them: that cascade accounted for a fifth of the previous history. Whether a
-general skill for writing a `SKILL.md` belongs in this plugin at all is a decision left open below.
+Why a line of the supplement was derived the way it was, where it came from, and what it replaced
+are not material the agent needs. They go in the commit and pull request that introduced the line,
+where the history keeps them and nothing has to be kept in step with them.
 
 ### Only what the plugin controls is an invariant
 
@@ -126,23 +125,18 @@ forked context is not this plugin's to promise. Each such behaviour the design r
 under *What this design assumes of Claude Code* with how it was checked. A design that leans on one
 unchecked is one that can stop working without any file changing.
 
-### The standing skill holds no inventory
+### Production never sees the conversation that reached it
 
-No table of artifacts and the skills that own them. It would be a second place to update, and it
-grows with what it lists in the one file that has to stay small. An artifact skill is reached by its
-own description or not at all.
+When a command produces an artifact, the skill runs without the conversation. That keeps out both
+what a reader could not check — "as discussed", the review that happened in chat — and the
+session's pull on the standard: run inside the conversation that has been arguing about the
+artifact and the test bends toward what was just said. A command settles everything unsettled
+before the hand-off, and what crosses is one brief.
 
-### A skill that produces an artifact never sees the conversation that reached it
-
-That keeps out both what a reader could not check — "as discussed", the review that happened in
-chat — and the session's pull on the standard: run inside the conversation that has been arguing
-about the artifact and the rules bend toward what was just said. A command settles everything
-unsettled before the hand-off, and what crosses is one brief.
-
-### A skill judges its own axis
+### The skill judges its own axis
 
 Whether an artifact can be acted on from its text is the skill's question. Whether it is true of the
-repository, complete, or in scope is the caller's, and a skill never holds a tool that would let it
+repository, complete, or in scope is the caller's, and the skill never holds a tool that would let it
 answer those — a verdict about what a reader can see is sound only while the judge saw no more.
 
 ## What this design assumes of Claude Code
@@ -151,8 +145,8 @@ answer those — a verdict about what a reader can see is sound only while the j
 |---|---|---|
 | A skill with `disable-model-invocation: false` is loaded on the model's judgment, from its description alone | run the triggering case with the plugin installed and without | not yet |
 | A command body is sent as the prompt, with `$ARGUMENTS` substituted | run a command and read the transcript | not yet |
-| `context: fork` runs the skill without the conversation that invoked it | fork a skill that reports what it can see | not yet |
-| `allowed-tools` pre-approves; `disallowed-tools` removes | invoke a skill that lists one of each and attempt both | not yet |
+| `context: fork` runs the skill without the conversation that invoked it | fork the skill and have it report what it can see | not yet |
+| `allowed-tools` pre-approves; `disallowed-tools` removes | invoke the skill with one of each and attempt both | not yet |
 
 A row that fails on re-check is a design change, not a documentation fix.
 
@@ -167,15 +161,13 @@ A row that fails on re-check is a design change, not a documentation fix.
 
 To be settled before this section is deleted.
 
-1. **The first artifact skills.** The rule above says none in advance. The previous tree's commands
-   show which artifacts were reached for most: the issue and the review comment. Whether either
-   starts with a skill, or both wait for a failure, is the first case of the rule.
-2. **A skill for writing skills.** It is the one artifact the plugin's own maintainers write
-   constantly, and the one whose rules cascaded. Options: leave it out; ship it and exempt this
-   tree from it; ship it and accept the cascade.
-3. **The review commands.** The previous tree had two that audited an existing text. Under *earns a
-   skill by a failure* they have no skill to call yet.
-4. **The byte limits.** Chosen with headroom; nothing yet measured against them.
+1. **Which kinds of artifact the supplement covers first.** The previous commands show which were
+   reached for most: the issue and the review comment. Each section is a derivation, so the first
+   two also test whether the derivation rule can be kept.
+2. **Whether commands exist at all.** With one skill that loads on its own, a command adds only the
+   hand-off: settling, the brief, and running production outside the conversation. If that
+   isolation turns out not to need a command, the typed surface is empty.
+3. **The byte limits.** Chosen with headroom; nothing yet measured against them.
 
 ---
 
