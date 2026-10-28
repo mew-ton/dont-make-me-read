@@ -1,0 +1,51 @@
+# 05 · An observation that guesses its cause
+
+**Pattern.** A source document reaches forward into what would explain it. The observation now
+depends on a cause nobody has established, and every reader downstream inherits the guess as fact.
+
+## Files
+
+`docs/qa-report-142.md`
+
+```md
+**Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
+support".
+
+**Probably** the retry loop is running on the UI thread, since the whole page stops responding.
+```
+
+`issues/231.md`
+
+```md
+The retry loop is blocking the main thread.
+```
+
+## Graph
+
+| Node | Address | Source or derived |
+|---|---|---|
+| the observation | `docs/qa-report-142.md › Observed` | source |
+| the guessed cause | `docs/qa-report-142.md › Probably` | would be derived from the observation, but sits inside it |
+| the task's statement of cause | `issues/231.md` | derived from the guess, stated as fact |
+
+| From | To | Edge |
+|---|---|---|
+| `docs/qa-report-142.md › Observed` | `› Probably` | **reversed**: the observation leans on its own explanation |
+| `issues/231.md` | `docs/qa-report-142.md › Probably` | **hidden**: the guess is restated as a finding, source unnamed |
+
+## What is wrong
+
+A cause is an explanation of an observation and depends on it, never the other way round. Once the
+guess sits inside the report, the issue copies it without the "probably", and the engineer who
+reads the issue starts from a conclusion QA never had the means to reach.
+
+## What the rule says
+
+Rule 5: depend only on what you explain or reproduce, and say which you are. The report records
+what was seen. The cause, when someone establishes it, is its own paragraph with its own address,
+and it cites the report.
+
+```md
+**Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
+support". The whole page stops responding during the freeze.
+```
