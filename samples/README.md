@@ -12,12 +12,11 @@ showing one. The files are not on disk, so nothing here runs; the case is the gr
 
 Hand an agent the **Bad** blocks of one case, without the rest of the file, and run two steps.
 
-Step 1, in the first message. The task is to change the files, because the skill applies to
-writing, not to reading:
+Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 
-> Correct these files where they need it. Before you change anything, list the explanations in
-> them as nodes, each by its address, and every edge between them with its direction, saying
-> whether it is visible, hidden, missing or pointing the wrong way.
+> Review these files. List the explanations in them as nodes, each by its address, and every edge
+> between them with its direction, saying whether it is visible, hidden, missing or pointing the
+> wrong way. Then correct the files where they need it.
 
 Step 2, in the next message, without naming the skill:
 

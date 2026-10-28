@@ -1,16 +1,16 @@
 # dont-make-me-read (beta)
 
 A [Claude Code](https://claude.com/claude-code) plugin. It is one skill, loaded on the model's own
-judgment while it writes, with nothing for you to type.
+judgment while it writes or reviews, with nothing for you to type.
 
 ## What it does
 
 The skill's own description, quoted:
 
 > Keeps what a reader has to gather before they can act as small as it can be, and in one place.
-> Applies whenever writing or changing prose or code that someone else, a person or an agent, reads
-> in order to act: an issue, a review comment, a doc, a commit message, a declaration, a test. Does
-> not apply to text nobody acts on later: a chat reply, a scratch note.
+> Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
+> agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
+> a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
 
 The rule itself, and what its words mean in prose and in a program, is in
 [`skills/dont-make-me-read/SKILL.md`](skills/dont-make-me-read/SKILL.md).

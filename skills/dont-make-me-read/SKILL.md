@@ -2,9 +2,9 @@
 name: dont-make-me-read
 description: >
   Keeps what a reader has to gather before they can act as small as it can be, and in one place.
-  Applies whenever writing or changing prose or code that someone else, a person or an agent, reads
-  in order to act: an issue, a review comment, a doc, a commit message, a declaration, a test. Does
-  not apply to text nobody acts on later: a chat reply, a scratch note.
+  Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
+  agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
+  a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -40,7 +40,7 @@ is in the file the table below names.
 
 ## Which file to read
 
-| Writing | Read |
+| Writing or reviewing | Read |
 |---|---|
 | prose: a paragraph, a comment, a message | [`references/prose.md`](references/prose.md) |
 | a program: a declaration, a test | [`references/program.md`](references/program.md) |
@@ -48,4 +48,4 @@ is in the file the table below names.
 ## Persistence
 
 In force for every response after the one that loaded it, and while unsure whether what you are
-writing is read in order to act. Released when the work turns to what nobody acts on, or when told.
+writing or reviewing is read in order to act. Released when the work turns to what nobody acts on, or when told.
