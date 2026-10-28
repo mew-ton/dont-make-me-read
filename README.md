@@ -34,7 +34,8 @@ time: in the language the reader already uses, and in one language only.
 
 The skill is in force only if Claude Code behaves as the table says. Each row is checked by running
 the case with the plugin installed and without, so a case the skill reached is told apart from one
-the model would have handled anyway.
+the model would have handled anyway. The case is
+[`samples/dependency-extraction/`](samples/dependency-extraction/ANSWER.md), which carries its own answer key.
 
 | Assumption | Last checked |
 |---|---|
