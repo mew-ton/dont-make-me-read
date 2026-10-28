@@ -1,0 +1,75 @@
+# Prose
+
+What the words in `SKILL.md` mean when what you are writing is prose: a paragraph of a document,
+an issue, a review comment, a commit message, a comment in code.
+
+## The words
+
+| In `SKILL.md` | In prose |
+|---|---|
+| paragraph | a paragraph; a list item or a table row stands alone the same way |
+| claim | the one statement it makes, usually its first sentence |
+| explanation | the rest of it |
+| address | the heading above it; for a comment in code, the name of the declaration it sits on |
+| reader | a person reading from the top, and an agent landing on this paragraph by search |
+
+Reading order is not an address. The agent arrives mid-document, so a paragraph that needs the one
+before it leans on something that reader does not have.
+
+## Edges
+
+A visible edge is a path, a link, a heading named, or an identifier in backticks. The reader can
+follow it, and so can a script that checks the target exists.
+
+A hidden edge is any of these. Each is a red flag:
+
+- "see above", "below", "the previous section"
+- "as discussed", "we originally went with", "not A but B": a past only the participants hold
+- "the config", "the usual way", "same as the other one": a thing named by its role, not its address
+- a count, a name or a definition copied from the file that owns it, without naming that file
+- a sentence that only means something with another file open
+
+## Saying which you are
+
+A paragraph that explains something names it and says so: "This describes what `foo` does today."
+A paragraph that something reproduces is the source, and it does not list what reproduces it: the
+implementation cites the decision, the decision does not name its implementations. One clause
+settles it. A reader of the decision who wants the code searches for the decision's words, which
+the code carries.
+
+## Citing
+
+Name the owner by address, quote the words the reader needs in order to act, and only then
+translate into the reader's vocabulary if it differs. Keep the quote: a translation on its own
+cannot be searched for and cannot be checked against the owner.
+
+One instance. A task tracked in another tool, written up as an issue for an agent:
+
+> **Not this.** The whole task restated in the engineer's words, a guessed cause added, and from
+> then on edited here while the tracker is not.
+>
+> **This.** "Task: `<tracker link>`. Reported as 'the screen freezes after saving' (QA report,
+> `<report link>`). Reproduce by … Done when …". The parts the agent needs, in the reporters'
+> words, each with its owner, so an edit to the substance goes to the owner.
+
+## Placement
+
+- A decision reproduced by one declaration is that declaration's comment.
+- A decision reproduced across one module is in that module's document.
+- A decision reproduced across the whole tree is at the root.
+- Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's
+  own instructions. If they do not set it for this kind, say so; do not pick one.
+
+## What noise does
+
+Cutting is one of the two outcomes of rule 2; the other is adding what the decision needs. The
+rationale, the constraint stated as the wall the reader would walk into, and the fact that makes the
+ask defensible are never cut, because without them the reader decides with less than you had. What
+does get cut is what makes a reader confident about the wrong thing:
+
+| Noise | What the reader concludes |
+|---|---|
+| a menu of fixes you could have weighted yourself | that the choice is theirs, to make with less information than you had |
+| the paths you happened to sample, given as the fix | an agent: that those are the complete set to touch |
+| "handle this appropriately" | that the spec is complete |
+| the implementation method, in an issue | that the shape you saw while writing is still the shape today |

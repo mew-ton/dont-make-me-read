@@ -1,18 +1,19 @@
 # dont-make-me-read
 
-A [Claude Code](https://claude.com/claude-code) plugin for the writing other people have to read
-before they can act — a GitHub issue, a PR review finding, a doc, a `SKILL.md`, a code comment,
-the code itself.
+A [Claude Code](https://claude.com/claude-code) plugin. It is one skill, loaded on the model's own
+judgment while it writes, with nothing for you to type.
 
-The cost of that writing is not its length. It is how much the reader has to hold in their head
-before they know what to do, and you cannot feel it: you read your own draft while supplying
-everything it leaves out, so it reads clear to you and to nobody else. That is why this ships as
-rules that load while you write, rather than advice you would have to remember to apply. They
-reach the comment dashed off in the middle of some other task, which is the writing that needs
-them most and the writing nobody stops to review.
+## What it does
 
-The reader who pays is a person or an agent. Both collect the context, and both act on what they
-end up holding.
+The skill's own description, quoted:
+
+> Keeps what a reader has to gather before they can act as small as it can be, and in one place.
+> Applies whenever writing or changing prose or code that someone else, a person or an agent, reads
+> in order to act: an issue, a review comment, a doc, a commit message, a declaration, a test. Does
+> not apply to text nobody acts on later: a chat reply, a scratch note.
+
+The rule itself, and what its words mean in prose and in a program, is in
+[`skills/dont-make-me-read/SKILL.md`](skills/dont-make-me-read/SKILL.md).
 
 ## Install
 
@@ -23,44 +24,30 @@ git clone https://github.com/mew-ton/dont-make-me-read.git
 claude --plugin-dir ./dont-make-me-read
 ```
 
-## Commands
-
-Commands are the whole user-facing surface.
-
-| Command | Pick it when |
-|---|---|
-| `/write-issue` | you are handing a problem to someone else and they will have to act on it without you |
-| `/write-review-comment` | you found something in a PR and want the fix to land without a round trip |
-| `/write-skill` | you are writing or revising a `SKILL.md` |
-| `/write-architecture` | a decision you just made by reading the code is one the next contributor will have to make again |
-| `/write-readme` | someone will land on this project cold and has to work out whether it is theirs |
-| `/review-issue` | an issue is already written and you want to know whether it can be acted on as it stands |
-| `/review-text` | a PR is up and you want its description and the comments it changes read by someone with none of your context — optionally posted back as review comments |
-
-A writing command settles what is not yet settled — fetching the existing issue, asking what is
-still open, working out what the finding even is — and hands one brief to the skill that owns the
-artifact. Nothing of the back-and-forth that produced the brief ends up in what gets written.
-
-## Skills
-
-You never type a skill name. Skills load on the model's own judgment while it writes, and the
-commands above call the ones they need.
-
-One skill is the foundation and the rest support it. Between them they hold the best practice for
-writing each thing well, and the rules for not writing what does not need to be there.
-
 ## Language
 
-The skills are written in English, because a published plugin cannot know which language its users
-prompt in. What they tell you to *write* is a separate question, and they answer it the same way:
-produce the issue, the finding or the doc in the language its readers already use, and write it in
-one language only.
+The skill is written in English, because a published plugin cannot know which language its users
+prompt in. What it tells you to *write* is a separate question, and it answers it the same way every
+time: in the language the reader already uses, and in one language only.
 
-## Architecture
+## What it relies on Claude Code for
 
-What settles a decision about this plugin's own shape is in
-[`ARCHITECTURE.md`](ARCHITECTURE.md).
+The skill is in force only if Claude Code behaves as the table says. Each row is checked by running
+the case with the plugin installed and without, so a case the skill reached is told apart from one
+the model would have handled anyway. The cases are in [`samples/`](samples/README.md), each with
+its own graph.
+
+| Assumption | Last checked |
+|---|---|
+| A skill with `disable-model-invocation: false` is loaded on the model's judgment, from its description alone | not yet |
+| A skill that says it stays in force is still in force on the next response | not yet |
+
+A row that fails on re-check is a change to the skill, not to this table.
+
+## Contributing
+
+See [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).
