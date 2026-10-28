@@ -8,14 +8,15 @@ fixed; the comment is not. The comment is a derived explanation of the body that
 **Bad** `src/retry.ts`
 
 ```ts
-// FIXME(#231): this blocks the rendering thread while it waits; see the issue for the plan.
-export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetries): Promise<T> {
+// TODO(#231): this blocks the rendering thread while it waits; see the issue for the plan.
+/** Reproduces "Retries are bounded" (docs/architecture.md). */
+export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxAttempts): Promise<T> {
   for (let attempt = 1; ; attempt++) {
     try {
       return await fn();
     } catch (err) {
       if (attempt >= limit) throw err;
-      await yieldThen(backoff(attempt));
+      await delay(backoff(attempt));
     }
   }
 }
@@ -31,39 +32,38 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetri
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the body | `src/retry.ts › withRetry` | source for its comment |
-| the comment | the same address | derived: it explains the body, and no longer describes it |
+| the body | `src/retry.ts › withRetry` | source for its `TODO` |
+| the `TODO` | the same address | derived: it explains the body, and no longer describes it |
 | the issue | `https://github.com/example/orderly/issues/231` | closed |
 
 | From | To | Edge |
 |---|---|---|
-| the comment | the body | **stale**: it claims a defect the body no longer has |
-| the comment | `https://github.com/example/orderly/issues/231` | visible, by number, and therefore checkable: the issue is closed |
+| the `TODO` | the body | **stale**: it claims a defect the body no longer has |
+| the `TODO` | `https://github.com/example/orderly/issues/231` | visible, by number, and therefore checkable: the issue is closed |
 
 ### What is wrong
 
-A reader lands on `withRetry` and the first line tells them it blocks rendering. They either trust
-it and avoid the function, or distrust it and now distrust every other comment in the file. The
-body changed in a PR that cited the issue; the comment was two lines above the diff and nobody
+A reader lands on `withRetry` and the `TODO` above it tells them it blocks rendering. They either
+trust it and avoid the function, or distrust it and now distrust every other comment in the file.
+The body changed in a PR that cited the issue; the `TODO` was two lines above the diff and nobody
 re-read it, because a comment that describes the body has to be remembered, and rules that have to
 be remembered are broken.
 
 ## Good
 
-The comment has nothing to carry once the fix is in, so it goes.
+The `TODO` has nothing to carry once the fix is in, so it goes. The doc comment stays.
 
 **Good** `src/retry.ts`
 
 ```ts
-/** Reproduces "Retries are bounded" (docs/architecture.md). Yields to the event loop before
- *  each wait so a slow provider never blocks rendering. */
-export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetries): Promise<T> {
+/** Reproduces "Retries are bounded" (docs/architecture.md). */
+export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxAttempts): Promise<T> {
   for (let attempt = 1; ; attempt++) {
     try {
       return await fn();
     } catch (err) {
       if (attempt >= limit) throw err;
-      await yieldThen(backoff(attempt));
+      await delay(backoff(attempt));
     }
   }
 }
@@ -75,8 +75,8 @@ removal.
 **Good** `src/checkout.ts`, while #231 is open
 
 ```ts
-// Remove with #231: holds the Pay button in its loading state until the provider's
-// timeout lands, because the fix for the hang is not in yet.
+// TODO(#231): remove when #231 closes. Holds the Pay button in its loading state until the
+// provider's timeout lands, because the fix for the hang is not in yet.
 ```
 
 ### Why

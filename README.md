@@ -27,20 +27,19 @@ claude --plugin-dir ./dont-make-me-read
 ## Language
 
 The skill is written in English, because a published plugin cannot know which language its users
-prompt in. What it tells you to *write* is a separate question, and it answers it the same way every
-time: in the language the reader already uses, and in one language only.
+prompt in. It says nothing about which language to write in.
 
 ## What it relies on Claude Code for
 
-The skill is in force only if Claude Code behaves as the table says. Each row is checked by running
-the case with the plugin installed and without, so a case the skill reached is told apart from one
-the model would have handled anyway. The cases are in [`samples/`](samples/README.md), each with
-its own graph.
+The skill is in force only if Claude Code behaves as the table says. Each row is checked by hand,
+by running the cases in [`samples/`](samples/README.md) with the plugin installed and without, so a
+case the skill reached is told apart from one the model would have handled anyway. Which step of a
+case checks which row is in that file's *How to use a case*.
 
-| Assumption | Last checked |
-|---|---|
-| A skill with `disable-model-invocation: false` is loaded on the model's judgment, from its description alone | not yet |
-| A skill that says it stays in force is still in force on the next response | not yet |
+| Assumption | Checked by | Last checked |
+|---|---|---|
+| A skill with `disable-model-invocation: false` is loaded on the model's judgment, from its description alone | step 1 | not yet |
+| A skill that says it stays in force is still in force on the next response | step 2 | not yet |
 
 A row that fails on re-check is a change to the skill, not to this table.
 

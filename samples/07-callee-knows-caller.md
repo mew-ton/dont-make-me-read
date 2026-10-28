@@ -58,7 +58,7 @@ try {
   await withRetry(() => charge(orderId, amount));
   return "paid";
 } catch {
-  return "contact support";
+  return "contact-support";
 }
 ```
 

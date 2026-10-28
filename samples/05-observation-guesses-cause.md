@@ -8,10 +8,13 @@ depends on a cause nobody has established, and every reader downstream inherits 
 **Bad** `docs/qa-report-142.md`
 
 ```md
-**Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
-support".
+## Observed
 
-**Probably** the retry loop is running on the UI thread, since the whole page stops responding.
+The screen freezes for about ten seconds after pressing Pay, then shows "contact support".
+
+## Likely cause
+
+Probably the retry loop is running on the UI thread, since the whole page stops responding.
 ```
 
 **Bad** `https://github.com/example/orderly/issues/231`
@@ -25,13 +28,13 @@ The retry loop is blocking the main thread.
 | Node | Address | Source or derived |
 |---|---|---|
 | the observation | `docs/qa-report-142.md › Observed` | source |
-| the guessed cause | `docs/qa-report-142.md › Probably` | would be derived from the observation, but sits inside it |
+| the guessed cause | `docs/qa-report-142.md › Likely cause` | would be derived from the observation, but sits inside it |
 | the task's statement of cause | `https://github.com/example/orderly/issues/231` | derived from the guess, stated as fact |
 
 | From | To | Edge |
 |---|---|---|
-| `docs/qa-report-142.md › Observed` | `› Probably` | **reversed**: the observation leans on its own explanation |
-| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Probably` | **hidden**: the guess is restated as a finding, source unnamed |
+| `docs/qa-report-142.md` | `docs/qa-report-142.md › Likely cause` | **reversed**: the source carries what would explain it |
+| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Likely cause` | **hidden**: the guess is restated as a finding, source unnamed |
 
 ### What is wrong
 
@@ -44,8 +47,10 @@ reads the issue starts from a conclusion QA never had the means to reach.
 **Good** `docs/qa-report-142.md`
 
 ```md
-**Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
-support". The whole page stops responding during the freeze.
+## Observed
+
+The screen freezes for about ten seconds after pressing Pay, then shows "contact support". The
+whole page stops responding during the freeze.
 ```
 
 ### Why

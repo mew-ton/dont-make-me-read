@@ -10,8 +10,8 @@ knows the role can follow; the reader who does not, and every tool, cannot.
 ```md
 # Fix the checkout hang
 
-Fixes the issue QA reported. The retry loop now yields between attempts, and the usual retry
-config is read once at startup instead of on every call.
+Fixes the issue QA reported. The retry loop now waits on a timer between attempts, and the usual
+retry config is read once at startup instead of on every call.
 
 Files to look at: `src/retry.ts` and `src/checkout.ts`.
 ```
@@ -41,8 +41,8 @@ at" is read as "the files that changed", which the PR itself knows and the sente
 ```md
 # Fix the checkout hang
 
-Fixes #231. `withRetry` (`src/retry.ts`) now yields between attempts instead of blocking the
-rendering thread, and `config/retry.json` is read once at startup.
+Fixes #231. `withRetry` (`src/retry.ts`) now waits on a timer between attempts instead of blocking
+the rendering thread with `sleepSync`, and `config/retry.json` is read once at startup.
 ```
 
 ### Why

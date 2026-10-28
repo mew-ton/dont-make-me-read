@@ -22,7 +22,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 | Node | Address | Source or derived |
 |---|---|---|
 | the declaration | `src/retry.ts › withRetry` | source for its callers |
-| its comment | `src/retry.ts › withRetry` (same address: a comment's address is its declaration) | should explain the declaration |
+| its comment | `src/retry.ts › withRetry` (same address: a comment's address is its declaration) | derived: should say what the declaration cannot |
 
 | From | To | Edge |
 |---|---|---|
@@ -31,19 +31,15 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### What is wrong
 
-The comment makes no claim about `withRetry`. It says nothing about the bound, the backoff, or
-what is thrown. A reader learns who calls it today and who might tomorrow, which is what a search
-for the name would have told them, without the staleness.
+The comment makes no claim about `withRetry`. A reader learns who calls it today and who might
+tomorrow, which is what a search for the name would have told them, without the staleness. What it
+does is already said by its name, its signature and its body.
 
 ## Good
 
 **Good** `src/retry.ts`
 
 ```ts
-/**
- * Calls `fn` up to the configured limit, waiting twice as long before each try, and throws the
- * last error when the limit is hit.
- */
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
   // ...
 }
@@ -51,7 +47,8 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
-Rule 1: one claim under the address, and the comment is part of the paragraph under the name, so
-it says what the declaration claims. Rule 5: not who uses it; callers are found by search. Whether
-the comment should also cite a decision the declaration reproduces is case 06, and nothing in this
+Rule 5: a declaration does not depend on who uses it; callers are found by search. Rule 4: what the
+declaration does is owned by its name, signature and body, so a comment that said it again would be
+a second owner (case 16). With the callers gone nothing is left for the comment to carry, so it
+goes. A comment that cites a decision the declaration reproduces is case 06, and nothing in this
 case calls for one.

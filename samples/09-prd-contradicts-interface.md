@@ -11,11 +11,11 @@ nothing in either paragraph says which reproduces which, so the defect gets argu
 ```md
 ## Failed payments
 
-A payment that fails is retried up to three times. If every try fails, the user sees "Try again"
+A payment that fails is tried up to three times. If every try fails, the user sees "Try again"
 and the order stays open so they can.
 ```
 
-**Bad** `src/payment.ts`
+**Bad** `src/checkout.ts`
 
 ```ts
 export type PaymentOutcome = "paid" | "contact-support";
@@ -30,11 +30,11 @@ export async function pay(orderId: string, amount: number): Promise<PaymentOutco
 | Node | Address | Source or derived |
 |---|---|---|
 | the product requirement | `docs/prd-payment.md › Failed payments` | source |
-| the interface | `src/payment.ts › PaymentOutcome` | derived: it reproduces the requirement, and does not say so |
+| the interface | `src/checkout.ts › PaymentOutcome` | derived: it reproduces the requirement, and does not say so |
 
 | From | To | Edge |
 |---|---|---|
-| `src/payment.ts › PaymentOutcome` | `docs/prd-payment.md › Failed payments` | **missing**: the reproduction does not cite its source |
+| `src/checkout.ts › PaymentOutcome` | `docs/prd-payment.md › Failed payments` | **missing**: the reproduction does not cite its source |
 | the two paragraphs | each other | **contradiction**: "Try again" against `"contact-support"` |
 
 ### What is wrong
@@ -51,7 +51,7 @@ exist.
 
 ## Good
 
-**Good** `src/payment.ts`
+**Good** `src/checkout.ts`
 
 ```ts
 /** Reproduces "Failed payments" (docs/prd-payment.md). */

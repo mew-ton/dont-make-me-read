@@ -8,12 +8,17 @@ own words and drops the original, so the two can no longer be matched, by a read
 **Bad** `docs/qa-report-142.md`
 
 ```md
-**Steps.** Add any item, go to checkout, pay with the test card ending 0002.
+## Steps
 
-**Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
-support".
+Add any item, go to checkout, pay with the test card ending 0002.
 
-**Expected.** Either a quick failure with "try again", or a successful payment.
+## Observed
+
+The screen freezes for about ten seconds after pressing Pay, then shows "contact support".
+
+## Expected
+
+Either a quick failure with "try again", or a successful payment.
 ```
 
 **Bad** `https://github.com/example/orderly/issues/231`
@@ -47,11 +52,13 @@ report never reaches it.
 
 ```md
 QA report 142 (`docs/qa-report-142.md`), paying with "the test card ending 0002": "The screen
-freezes for about ten seconds after pressing Pay, then shows 'contact support'." In our terms: the
-retry loop blocks rendering, and the final message is the one checkout shows for exhausted retries.
+freezes for about ten seconds after pressing Pay, then shows 'contact support'." In our terms: card
+0002 is the provider's always-decline test card, and "contact support" is the text for the
+`"contact-support"` outcome of `pay` (`src/checkout.ts`).
 ```
 
 ### Why
 
 Rule 4 and the *Citing* section of `references/prose.md`: name the owner, quote the words the reader
-needs, then translate beside the quote if the reader's vocabulary differs. The report is unchanged.
+needs, then translate beside the quote if the reader's vocabulary differs. The translation maps
+words and adds no cause; a cause nobody has established is case 05. The report is unchanged.

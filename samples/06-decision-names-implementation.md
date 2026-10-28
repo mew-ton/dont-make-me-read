@@ -20,7 +20,7 @@ through `config/retry.json`.
 
 ```ts
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  const limit = config.maxRetries;
+  const limit = config.maxAttempts;
   // ...
 }
 ```
@@ -60,7 +60,7 @@ for one stuck order.
 ```ts
 /** Reproduces "Retries are bounded" (docs/architecture.md): the provider bills per attempt. */
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  const limit = config.maxRetries;
+  const limit = config.maxAttempts;
   // ...
 }
 ```

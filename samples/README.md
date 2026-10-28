@@ -3,21 +3,31 @@
 One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
 with its path or URL, then the graph of explanations they form and what is wrong with it. **Good**
 shows the files that have a correction, each labelled `**Good**`, then why, naming the rule in
-[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A file that did not
-change is not shown again, and a case whose correction depends on a decision it does not make
-says so instead of showing one. The files are not
-on disk, so nothing here runs; the case is the graph.
+[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A Good that adds a
+file the Bad did not have carries that file's graph too. A file that did not change is not shown
+again, and a case whose correction depends on a decision it does not make says so instead of
+showing one. The files are not on disk, so nothing here runs; the case is the graph.
 
 ## How to use a case
 
-Hand an agent the **Bad** blocks of one case, without the rest of the file, and ask:
+Hand an agent the **Bad** blocks of one case, without the rest of the file, and run two steps.
 
-> List the explanations in these files as nodes, each by its address. List every edge between
-> them with its direction, and say whether it is visible, hidden, missing or pointing the wrong
-> way. Then say what is wrong.
+Step 1, in the first message. The task is to change the files, because the skill applies to
+writing, not to reading:
 
-Run it with the plugin installed and without, and compare each run to the case's graph. A finding
-that appears only with the plugin is one the skill reached.
+> Correct these files where they need it. Before you change anything, list the explanations in
+> them as nodes, each by its address, and every edge between them with its direction, saying
+> whether it is visible, hidden, missing or pointing the wrong way.
+
+Step 2, in the next message, without naming the skill:
+
+> Write the commit message for that change.
+
+Run both steps with the plugin installed and without, and compare each run to the case. Step 1 is
+compared to the case's graph and its Good: a finding or a correction that appears only with the
+plugin is one the skill reached when it loaded from its description. Step 2 is compared to the
+rules: a commit message that names its dependencies by address only with the plugin is one written
+while the skill was still in force.
 
 ## Cases
 
@@ -34,7 +44,7 @@ that appears only with the plugin is one the skill reached.
 | [09 A PRD and an interface that contradict](09-prd-contradicts-interface.md) | a reproduction that contradicts its source |
 | [10 A precedence stated nowhere](10-ambient-state.md) | a claim with no address |
 | [11 State the interface does not declare](11-test-only-hook.md) | hidden edge |
-| [12 A default that hides the claim](12-test-setup-by-position.md) | a visible edge carrying the whole claim |
+| [12 A default that hides the claim](12-default-hides-the-claim.md) | a visible edge carrying the whole claim |
 | [13 Three tests, one claim](13-three-tests-one-claim.md) | duplicate nodes, no claim |
 | [14 A menu of fixes](14-menu-of-fixes.md) | noise |
 | [15 "The issue QA reported"](15-by-role-not-address.md) | hidden edge by role |

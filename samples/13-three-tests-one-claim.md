@@ -35,7 +35,7 @@ it("gives up after three tries", async () => {
 | From | To | Edge |
 |---|---|---|
 | each test | `src/retry.ts › withRetry` | visible, by import: correct |
-| `"gives up after three tries"` | `config/retry.json › maxRetries` | **missing**: restates the value `3`, so the name goes stale when the config changes |
+| `"gives up after three tries"` | `config/retry.json › maxAttempts` | **missing**: restates the value `3`, so the name goes stale when the config changes |
 
 ### What is wrong
 
@@ -57,4 +57,5 @@ it("throws the last error once the configured limit is reached", async () => {
 ### Why
 
 Rule 1: one claim under an address, and a name is the claim, so it has to be something that could
-be false. Rule 4: one owner; the other two go. The `3` is now passed in, so the test owns it.
+be false. Rule 6: a claim has one place; the other two go. The `3` is now passed in, so the test
+owns it.

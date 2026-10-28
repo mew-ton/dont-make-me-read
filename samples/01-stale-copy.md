@@ -8,7 +8,7 @@ changed; the document did not.
 **Bad** `config/retry.json`
 
 ```json
-{ "maxRetries": 3, "baseDelayMs": 200 }
+{ "maxAttempts": 3, "baseDelayMs": 200 }
 ```
 
 **Bad** `README.md`
@@ -16,7 +16,7 @@ changed; the document did not.
 ```md
 ## Retries
 
-Payment calls are retried up to five times before the order is marked failed. The wait between
+A payment call is tried up to five times before the order is marked failed. The wait between
 tries doubles each time.
 ```
 
@@ -24,12 +24,12 @@ tries doubles each time.
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the retry limit | `config/retry.json › maxRetries` | source |
+| the retry limit | `config/retry.json › maxAttempts` | source |
 | the README's account of retries | `README.md › Retries` | derived: it explains the service |
 
 | From | To | Edge |
 |---|---|---|
-| `README.md › Retries` | `config/retry.json › maxRetries` | **missing**: the value is restated, the owner is not named |
+| `README.md › Retries` | `config/retry.json › maxAttempts` | **missing**: the value is restated, the owner is not named |
 
 ### What is wrong
 
@@ -44,8 +44,8 @@ writer who changed the config that there was a first.
 ```md
 ## Retries
 
-A payment call is retried a fixed number of times (`maxRetries` in `config/retry.json`), waiting
-twice as long before each try, and then the order is marked failed.
+A payment call is tried at most a fixed number of times (`maxAttempts` in `config/retry.json`),
+waiting twice as long before each retry, and then the order is marked failed.
 ```
 
 ### Why

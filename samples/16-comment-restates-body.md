@@ -16,7 +16,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
     try {
       return await fn();
     } catch (err) {
-      if (attempt >= config.maxRetries) throw err;
+      if (attempt >= config.maxAttempts) throw err;
       await new Promise((r) => setTimeout(r, delay));
       delay *= 2;
     }
@@ -54,7 +54,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
     try {
       return await fn();
     } catch (err) {
-      if (attempt >= config.maxRetries) throw err;
+      if (attempt >= config.maxAttempts) throw err;
       await new Promise((r) => setTimeout(r, delay));
       delay *= 2;
     }
@@ -64,6 +64,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
-Rule 4: one owner. The *Edges* section of `references/program.md` lists this comment as a hidden
-duplicate. A comment on a declaration cites what the declaration reproduces, and says nothing the
-body already says.
+Rule 4: a claim that has an owner is cited, not restated, and what the declaration does is owned
+by its name, signature and body. The *Edges* section of `references/program.md` lists such a
+comment among the hidden edges: a second owner of the same claim. A comment on a declaration cites
+what the declaration reproduces, and says nothing the body already says.

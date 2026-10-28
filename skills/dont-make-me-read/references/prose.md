@@ -54,7 +54,7 @@ One instance. A task tracked in another tool, written up as an issue for an agen
 
 ## Placement
 
-- A decision reproduced by one declaration is that declaration's comment.
+- A decision reproduced by one declaration is that declaration's doc comment.
 - A decision reproduced across one module is in that module's document.
 - A decision reproduced across the whole tree is at the root.
 - Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's

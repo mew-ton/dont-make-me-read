@@ -10,7 +10,7 @@ reader of the config, the README or the function's signature can see says it exi
 **Bad** `config/retry.json`
 
 ```json
-{ "maxRetries": 3 }
+{ "maxAttempts": 3 }
 ```
 
 **Bad** `src/retry.ts`
@@ -19,7 +19,7 @@ reader of the config, the README or the function's signature can see says it exi
 import config from "../config/retry.json";
 
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  const limit = Number(process.env.RETRY_LIMIT ?? config.maxRetries);
+  const limit = Number(process.env.RETRY_LIMIT ?? config.maxAttempts);
   // ...
 }
 ```
@@ -34,7 +34,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the default limit | `config/retry.json › maxRetries` | source |
+| the default limit | `config/retry.json › maxAttempts` | source |
 | the override | `RETRY_LIMIT` | source, set per deployment |
 | the precedence, "the variable wins" | none: a line inside `withRetry`'s body | a claim with no address |
 | the implementation | `src/retry.ts › withRetry` | derived |
@@ -60,10 +60,10 @@ the one thing none of them can point at.
 ```ts
 import defaultConfig from "./retry.json";
 
-/** The retry settings. `RETRY_LIMIT` in the environment overrides `maxRetries` in retry.json,
+/** The retry settings. `RETRY_LIMIT` in the environment overrides `maxAttempts` in retry.json,
  *  so a deployment can set it without a rebuild. */
 export const retry = {
-  maxRetries: Number(process.env.RETRY_LIMIT ?? defaultConfig.maxRetries),
+  maxAttempts: Number(process.env.RETRY_LIMIT ?? defaultConfig.maxAttempts),
   baseDelayMs: defaultConfig.baseDelayMs,
 };
 ```
@@ -73,7 +73,7 @@ export const retry = {
 ```ts
 import { retry } from "../config/retry";
 
-export async function withRetry<T>(fn: () => Promise<T>, limit = retry.maxRetries): Promise<T> {
+export async function withRetry<T>(fn: () => Promise<T>, limit = retry.maxAttempts): Promise<T> {
   // ...
 }
 ```
@@ -81,7 +81,7 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = retry.maxRetrie
 **Good** `README.md`
 
 ```md
-`RETRY_LIMIT` overrides `maxRetries` in `config/retry.json`; the precedence is stated in
+`RETRY_LIMIT` overrides `maxAttempts` in `config/retry.json`; the precedence is stated in
 `config/retry.ts`.
 ```
 

@@ -61,27 +61,25 @@ function render(items: Item[], limit: number) {
 - A test is next to its subject: the same file or the same module, not a distant tree ordered by
   something else.
 - An interface is where every implementation imports it from.
-- A decision reproduced by one declaration is that declaration's doc comment; by many, it is at the
-  narrowest scope that holds them all.
 
 ## Direction
 
 The test depends on its subject, the implementation on its interface, the declaration on the
-decision it reproduces. The subject never depends on the test, the interface never names an
-implementation, the decision never lists what reproduces it.
+decision it reproduces. The subject never depends on the test, and the interface never names an
+implementation.
 
 One instance, a test whose setup is a hidden edge and one whose setup is named:
 
 ```ts
 // Not this: the claim cannot be read without the block above it.
-beforeEach(() => { store = makeStore({ items: three() }); });
+beforeEach(() => { store = makeStore({ items: fiveItems() }); });
 it("shows at most three items", () => {
   expect(render(store.items, 3)).toHaveLength(3);
 });
 
 // This: the body names what it leans on.
 it("shows at most three items", () => {
-  const items = threeItems();
+  const items = fiveItems();
   expect(render(items, 3)).toHaveLength(3);
 });
 ```
