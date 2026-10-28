@@ -40,9 +40,9 @@ From [`SKILL.md › What the reader pays`](skills/dont-make-me-read/SKILL.md#wha
 
 What decides that cost is where each piece of information lives and what form it takes. Keep every
 claim in its one right place, in a form that names what it leans on, and two things get better
-with it, without being aimed at. An agent that lands on a paragraph by search finds what it needs there, or the
-exact address of it. And the code and the documents stop contradicting each other, because each
-claim has one copy to keep right, and everything else points at it.
+with it, without being aimed at. An agent that lands on a paragraph by search finds what it needs
+there, or the exact address of it. And the code and the documents stop contradicting each other,
+because each claim has one copy to keep right, and everything else points at it.
 
 ## Before / after
 
