@@ -46,7 +46,7 @@ with no name at all.
 
 ```tsx
 const defaultProps = { src: "a.png" };
-const defaultExpects = { src: "a.png" };
+const defaultExpects = { src: expect.any(String) };
 
 it("setting `densities` sets `widths` to the width times each density", () => {
   expect(
@@ -59,5 +59,7 @@ it("setting `densities` sets `widths` to the width times each density", () => {
 
 Rule 1: the body reproduces the claim, so the part of the input the claim is about, and the part
 of the output it predicts, appear in the body. Rule 3: the defaults stay named and now carry only
-what the claim is not about. Every test in the file reads as a difference from the same base, and
-the base can change without changing what any of them proves.
+what the claim is not about. Rule 2: `defaultExpects` pins no value either, only that `src` is a
+string, because a value the test is not about is not something it should fail on. Every test in
+the file reads as a difference from the same base, and the base can change without changing what
+any of them proves.
