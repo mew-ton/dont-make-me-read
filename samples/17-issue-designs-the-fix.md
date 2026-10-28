@@ -1,16 +1,15 @@
 # 17 · An issue that designs the fix
 
 **Pattern.** To hand the work to an agent, the issue spells out the implementation. Some of that
-detail is a wall, derived from things that exist and will not move; some of it is a sketch, derived
-from nothing but the writer's guess at a shape. The two look alike on the page. The sketch is what
-goes stale: the implementation takes its own shape, and the issue is left claiming a design that
-nothing reproduces.
+design is part of what solving the problem requires; some of it is one way of solving it. The two
+look alike on the page. The second kind is what goes stale: the implementation takes its own shape,
+and the issue is left claiming a design that nothing reproduces.
 
-The test for each line is: what is this derived from? A line with an owner is cited and kept. A
-line with no owner is a choice, and a choice is made where the code is written or is given an
-address of its own first.
+The test for each line is: is it derived from the problem? Would the problem be unsolved without
+it? If so it is a requirement, however detailed, and it belongs. If not it is one shape the writer
+imagined, and the choice is made where the code is written.
 
-## Files: the sketch
+## Files: design the problem did not require
 
 `issues/231.md`
 
@@ -57,33 +56,35 @@ Fixes #231. No scheduler class: a one-line `yieldThen` was enough.
 |---|---|---|
 | the observation | `docs/qa-report-142.md` | source |
 | the problem | `issues/231.md` (title and first paragraph) | derived from the observation: correct |
-| the designed fix | `issues/231.md › Fix` | written as a source for the code; derived from nothing that exists |
+| the designed fix | `issues/231.md › Fix` | not derived from the problem: the problem is solved without any of it |
 | the code | `src/retry.ts › withRetry` | reproduces "Retries are bounded" and the problem, not `› Fix` |
 | the change | `pr/245.md` | derived from the problem |
 
 | From | To | Edge |
 |---|---|---|
-| `issues/231.md › Fix` | anything | **none**: no line of it can be cited from an existing paragraph |
+| `issues/231.md › Fix` | the problem | **none**: no line of it is something the problem requires |
 | `src/retry.ts › withRetry` | `issues/231.md › Fix` | **absent**: the code does not reproduce it, and says so only in a PR line the issue's reader never sees |
 | `pr/245.md` | `issues/231.md` | visible ("Fixes #231"), and now asserts a reproduction of `› Fix` that did not happen |
 
 ## What is wrong
 
-Ask of each line in `› Fix` what it is derived from. `RetryScheduler`: nothing; no caller needs a
-scheduler, no decision names one. `src/retry/scheduler.ts`: nothing. `schedule(fn, attempt)`:
-nothing. The macrotask hop: this one has an owner, the observation, since the hop is what keeps
-the page responsive, but it is stated as a mechanism rather than as the condition the observation
-sets. Nothing in the section is a wall. All of it is one shape the writer imagined, written with
-less in hand than the implementer had, and when the implementer found a smaller shape the section
-became a claim nobody reproduces. Six months later a search for the scheduler finds the issue and
-not the code.
+Ask of each line in `› Fix` whether the problem stays unsolved without it. A `RetryScheduler`
+class: no, the page can stay responsive without one. Its file, its method, its default instance,
+its test file: no. The macrotask hop is the one line close to a requirement, since yielding is
+what keeps the page responsive, but it is stated as a mechanism, and the requirement it stands
+for, "the page stays responsive while retries wait", is not stated at all. The section is one
+shape the writer imagined, with less in hand than the implementer had, and when the implementer
+found a smaller shape the section became a claim nobody reproduces. Six months later a search
+for the scheduler finds the issue and not the code.
 
 The detail was written so an agent could act without asking. It did, and produced something
-better. What it needed was the problem, the condition for being done, and the walls.
+better. What it needed was the problem, what solving it requires, and the walls.
 
-## Files: the wall
+## Files: design the problem requires
 
-The same amount of detail, derived from things that exist, is the done condition and belongs.
+Replacing a hand-rolled implementation with a standard one is a problem whose solution has to say
+where compatibility breaks and how it is kept. That design is a requirement, and it belongs in the
+issue, with its owners named where they exist.
 
 `issues/248.md`
 
@@ -92,55 +93,53 @@ The same amount of detail, derived from things that exist, is the done condition
 
 `withRetry` in `src/retry.ts` reimplements what `p-retry` provides. Replace it.
 
-Done when every line below holds. Each names what it is derived from.
+Done when every line below holds.
 
-- `withRetry(fn, limit?)` keeps its signature. Owner: its callers, `src/checkout.ts › pay` and
-  `src/refund.ts › refund`, which this change does not touch.
-- When every attempt fails, the error thrown is the last attempt's error. Owner: the test
-  "throws the last error once the configured limit is reached" in `src/retry.test.ts`, which
-  stays green unchanged.
-- Backoff timing is whatever `p-retry` defines for its `factor` and `minTimeout` options; our
-  `baseDelayMs` maps to `minTimeout`. Owner: `p-retry`'s README, section "Options".
-- An attempt that throws `AbortError` stops retrying. `p-retry` retries on any error, so the
-  wrapper has to map it. Owner: "Checkout owns the user-facing outcome" in
-  `docs/architecture.md`, which is what the abort exists for; pinned by the test
-  "stops at once on AbortError".
-- The bound on attempts stays. Owner: "Retries are bounded", `docs/architecture.md`.
-
-How the wrapper is written, and whether `withRetry` stays a function or becomes a thin module, is
-the implementer's.
+- `withRetry(fn, limit?)` keeps its signature; its callers, `src/checkout.ts › pay` and
+  `src/refund.ts › refund`, are not touched.
+- When every attempt fails, the error thrown is the last attempt's error, as the test "throws
+  the last error once the configured limit is reached" in `src/retry.test.ts` pins.
+- Backoff timing is whatever `p-retry` defines for `factor` and `minTimeout`; our `baseDelayMs`
+  maps to `minTimeout`.
+- Where compatibility breaks: `p-retry` retries on any error, and ours stops on `AbortError`
+  ("Checkout owns the user-facing outcome", `docs/architecture.md`). It is kept by a wrapper that
+  keeps the signature above and converts `AbortError` into `p-retry`'s own abort, so the caller
+  sees the same stop. The wrapper is the interface; its internals are the implementer's.
+- The bound on attempts stays ("Retries are bounded", `docs/architecture.md`).
 ```
 
 ## Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the done condition | `issues/248.md` | derived: every line cites its owner |
-| the signature | `src/checkout.ts › pay`, `src/refund.ts › refund` | sources: the callers own it |
-| the last-error rule | `src/retry.test.ts › "throws the last error…"` | source |
-| the timing | `p-retry` README › Options | source, outside the tree |
-| the abort rule | `docs/architecture.md › Checkout owns the user-facing outcome` | source |
-| the bound | `docs/architecture.md › Retries are bounded` | source |
+| the problem | `issues/248.md` (title and first paragraph) | source for the change |
+| the done condition | `issues/248.md` (the list) | derived from the problem: each line is something "replaced" cannot mean without |
+| the wrapper | `issues/248.md › fourth line` | a design decision, required by the problem, given its address here |
+| the signature, the last-error rule, the abort rule, the bound | their owners, named in each line | sources the condition cites |
 
 | From | To | Edge |
 |---|---|---|
-| each line of `issues/248.md` | its owner | visible, by address |
-| the code, when written | the same owners | will be visible: the issue has already named them |
+| each line of the condition | the problem | visible: "replaced" is not met if the line fails |
+| the lines that cite a caller, a test, a decision | those owners | visible, by address |
+| the code, when written | `issues/248.md › fourth line` | will be visible: the wrapper now has an address to cite |
 
-The issue is longer than 231's and nothing in it can go stale on its own, because nothing in it is
-its own. When a caller changes, the first line is wrong, and the line says where to look.
+The issue is longer than 231's and nothing in it is one way among several: drop any line and the
+replacement is not a replacement. The wrapper is new, so no earlier paragraph owns it; the issue
+is where it gets its address, and the code will cite it. What the issue does not say is how the
+wrapper is built, because the problem does not care.
 
 ## What the rule says
 
-Rule 5: a paragraph depends on what it explains or reproduces, and says which it is. Rule 4: a
-claim with an owner is cited. The done condition of an issue may be as detailed as its owners
-make it. A line with no owner is a sketch: the *What noise does* table in `references/prose.md`
-calls it the implementation method in an issue, and the reader concludes the shape you saw while
-writing is the shape today. If a shape has to be fixed before the code is written, it is a decision
-with its own address that the code will cite, so a divergence is a defect between two addressed
-paragraphs, as in case 09, and not a stale wish in a closed issue.
+Rule 5: a paragraph depends on what it explains, and an issue explains a problem, so each of its
+lines is derived from the problem or is not the issue's. That decides how much design an issue
+holds: as much as solving the problem requires, and no line of what merely solves it one way. The
+*What noise does* table in `references/prose.md` names the second kind: the implementation method
+in an issue, from which the reader concludes the shape you saw while writing is the shape today.
+Where a required design is new, the issue is its address, and the code cites it; where a shape has
+to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
+divergence is a defect between two addressed paragraphs, as in case 09.
 
-Issue 231, cut to what it owns and what it can cite:
+Issue 231, cut to what the problem requires:
 
 ```md
 # Checkout hangs when the payment provider is slow
