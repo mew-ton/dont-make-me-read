@@ -102,9 +102,26 @@ done
 # --- README quotes the description verbatim ----------------------------------
 
 squeeze() { tr -d ' \t\n>'; }
+squeeze_lines() { tr -d ' \t>'; }
 if ! squeeze < "$readme" | grep -qF "$(printf '%s' "$description" | squeeze)"; then
   problem "README.md does not quote the SKILL.md description verbatim"
 fi
+
+# --- README quotes SKILL.md, and only SKILL.md -------------------------------
+
+skill_squeezed=$(squeeze < "$skill")
+while IFS= read -r quote; do
+  [[ "$skill_squeezed" == *"$quote"* ]] \
+    || problem "README.md quotes text that is not in SKILL.md: ${quote:0:60}…"
+done < <(awk '
+  /^> / { sub(/^> /, ""); q = q $0; next }
+  q != "" { print q; q = "" }
+  END { if (q != "") print q }
+' "$readme" | squeeze_lines)
+
+while IFS= read -r rule; do
+  grep -qF "$rule" "$skill" || problem "README.md lists a rule SKILL.md does not have: $rule"
+done < <(grep -E '^[0-9]+\. \*\*.*\*\*$' "$readme" || true)
 
 # --- the manifest carries the description's first sentence -------------------
 
