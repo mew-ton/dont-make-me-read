@@ -48,15 +48,9 @@ reads the issue starts from a conclusion QA never had the means to reach.
 support". The whole page stops responding during the freeze.
 ```
 
-**Good** `https://github.com/example/orderly/issues/231`
-
-```md
-Cause, established by profiling the freeze: `withRetry` awaits its delays on the thread that
-renders checkout. Observation: QA report 142, `docs/qa-report-142.md`.
-```
-
 ### Why
 
 Rule 5: depend only on what you explain or reproduce, and say which you are. The report records
 what was seen; what the page did is an observation and stays. The cause, once someone establishes
-it, is its own paragraph with its own address, and it cites the report.
+it, is its own paragraph with its own address, and it cites the report. Nobody has established it
+in this case, so there is no corrected issue to show.

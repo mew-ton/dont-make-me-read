@@ -2,8 +2,10 @@
 
 One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
 with its path or URL, then the graph of explanations they form and what is wrong with it. **Good**
-shows the same files corrected, each labelled `**Good**`, then why, naming the rule in
-[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). The files are not
+shows the files that have a correction, each labelled `**Good**`, then why, naming the rule in
+[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A file that did not
+change is not shown again, and a case whose correction depends on a decision it does not make
+says so instead of showing one. The files are not
 on disk, so nothing here runs; the case is the graph.
 
 ## How to use a case

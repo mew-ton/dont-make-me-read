@@ -51,11 +51,7 @@ is set.
 
 ## Good
 
-**Good** `config/retry.json`
-
-```json
-{ "maxRetries": 3 }
-```
+Only the part that holds whichever way the second question goes.
 
 **Good** `src/retry.ts`
 
@@ -67,13 +63,10 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetri
 }
 ```
 
-**Good** `README.md`
-
-```md
-The retry limit is `maxRetries` in `config/retry.json`.
-```
-
 ### Why
 
-Rule 3: a state the body uses is named, as a parameter. Rule 6: a claim has one place. Either the
-override exists and the config is the one place that says so, or, as here, it does not exist.
+Rule 3: a state the body uses is named, as a parameter; where the limit comes from is then the
+caller's, and the body no longer reads the environment. Rule 6: a claim has one place. Whether
+the override survives is a decision this case does not make: either it exists and the config is
+the one place that says so, with the README citing that, or it does not exist and the README and
+the variable go. The corrected README depends on that decision, so it is not shown.

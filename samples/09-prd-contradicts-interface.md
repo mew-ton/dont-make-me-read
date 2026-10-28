@@ -48,16 +48,7 @@ fixes are cheap; the argument about which one is not.
 Either paragraph may be the source. Each pair below is one answer; the point is that one of them
 is declared.
 
-If the PRD is the source:
-
-**Good** `docs/prd-payment.md`
-
-```md
-## Failed payments
-
-A payment that fails is retried up to three times. If every try fails, the user sees "Try again"
-and the order stays open so they can.
-```
+If the PRD is the source, the PRD is unchanged and the interface moves:
 
 **Good** `src/payment.ts`
 
@@ -66,7 +57,7 @@ and the order stays open so they can.
 export type PaymentOutcome = "paid" | "try-again";
 ```
 
-If the interface is the source:
+If the interface is the source, the interface is unchanged and the PRD moves:
 
 **Good** `docs/prd-payment.md`
 
@@ -75,12 +66,6 @@ If the interface is the source:
 
 This describes what `pay` in `src/payment.ts` does today. A payment that fails is retried up to
 three times; if every try fails, the user sees "Contact support".
-```
-
-**Good** `src/payment.ts`
-
-```ts
-export type PaymentOutcome = "paid" | "contact-support";
 ```
 
 ### Why

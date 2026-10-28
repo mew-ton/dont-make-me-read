@@ -58,12 +58,6 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 }
 ```
 
-**Good** `src/retry.test.ts`
-
-```ts
-import { withRetry } from "./retry";
-```
-
 ### Why
 
 Rule 5: the subject never depends on the test. Remove the state the test had to reset, and the hook
