@@ -76,7 +76,7 @@ removal.
 
 ```ts
 // TODO(#231): remove when #231 closes. Holds the Pay button in its loading state until the
-// provider's timeout lands, because the fix for the hang is not in yet.
+// provider's timeout lands.
 ```
 
 ### Why

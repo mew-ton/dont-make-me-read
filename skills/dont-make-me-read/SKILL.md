@@ -12,14 +12,14 @@ disable-model-invocation: false
 ## What the reader pays
 
 The cost of writing is everything the reader has to reach, from where they landed, before they can
-act: the paragraph in front of them and every paragraph it leans on. The
-writer cannot feel that cost, because they read their own draft while supplying what it leaves out.
+act: the paragraph in front of them and every paragraph it leans on. The writer cannot feel that
+cost, because they read their own draft while supplying what it leaves out.
 
 ## The unit
 
 A paragraph makes one claim and carries its explanation. It has an address other paragraphs can
 name: a heading in prose, a name in a program. What those words mean in the thing you are writing
-is in the file the table below names.
+is in the file *Which file to read* names.
 
 ## Rules
 

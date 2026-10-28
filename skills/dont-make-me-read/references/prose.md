@@ -69,7 +69,7 @@ thing:
 
 | Noise | What the reader concludes |
 |---|---|
-| a menu of fixes you could have weighted yourself | that the choice is theirs, to make with less information than you had |
+| a menu of fixes you could have weighed yourself | that the choice is theirs, to make with less information than you had |
 | the paths you happened to sample, given as the fix | an agent: that those are the complete set to touch |
 | "handle this appropriately" | that the spec is complete |
 | the implementation method, in an issue | that the shape you saw while writing is still the shape today |

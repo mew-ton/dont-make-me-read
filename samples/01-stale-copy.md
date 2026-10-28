@@ -44,11 +44,12 @@ writer who changed the config that there was a first.
 ```md
 ## Retries
 
-A payment call is tried at most a fixed number of times (`maxAttempts` in `config/retry.json`),
-waiting twice as long before each retry, and then the order is marked failed.
+A payment call is tried at most `maxAttempts` times (`config/retry.json`), and then the order is
+marked failed.
 ```
 
 ### Why
 
 Rule 4: a claim that has an owner is cited, not restated. Restate only what the reader needs, in
-the owner's words, and name the owner. The config is unchanged; it was never the problem.
+the owner's words, and name the owner. How the wait grows between tries is the body of `withRetry`
+to say, so the README no longer says it either. The config is unchanged; it was never the problem.

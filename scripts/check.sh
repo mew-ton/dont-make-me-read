@@ -72,18 +72,28 @@ for f in "$skill_dir"/references/*.md; do
   fi
 done
 
-# --- every relative link resolves --------------------------------------------
+# --- every relative link resolves, heading included ---------------------------
+
+# slugs FILE: the anchor GitHub gives each heading in FILE, one per line.
+slugs() {
+  sed -n 's/^#\{1,6\} \(.*\)$/\1/p' "$1" \
+    | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 _-]//g; s/ /-/g'
+}
 
 while IFS= read -r file; do
   dir=$(dirname "$file")
   while IFS= read -r target; do
     case "$target" in ''|http://*|https://*|mailto:*|'#'*) continue ;; esac
     path=${target%%#*}
-    [ -e "$dir/$path" ] || problem "${file#"$root"/} links to $target, which does not exist"
+    if [ ! -e "$dir/$path" ]; then
+      problem "${file#"$root"/} links to $target, which does not exist"
+    elif [ "$path" != "$target" ] && ! slugs "$dir/$path" | grep -qxF "${target#*#}"; then
+      problem "${file#"$root"/} links to $target, whose file has no such heading"
+    fi
   done < <(grep -o '\]([^)]*)' "$file" | sed 's/^](//; s/)$//' || true)
 done < <(find "$root" -name '*.md' -not -path '*/.git/*')
 
-# --- samples cite rules and sections that exist -----------------------------
+# --- samples cite rules, sections and cases that exist -----------------------
 
 rule_count=$(grep -cE '^[0-9]+\. \*\*' "$skill")
 for f in "$root"/samples/*.md; do
@@ -97,6 +107,10 @@ for f in "$root"/samples/*.md; do
       || problem "${f#"$root"/} cites *$heading* in $ref, which has no such heading"
   done < <(grep -oE '\*[^*]+\* +(section|table) +(of|in) +`references/[a-z-]+\.md`' <<< "$text" \
              | sed -E 's/^\*([^*]+)\* +[a-z]+ +[a-z]+ +`([^`]+)`$/\1\t\2/' || true)
+  while IFS= read -r n; do
+    compgen -G "$root/samples/$n-*.md" > /dev/null \
+      || problem "${f#"$root"/} cites case $n, which does not exist"
+  done < <(grep -oiE '\bcases? +[0-9]{2}( +(and|to) +[0-9]{2})?' <<< "$text" | grep -oE '[0-9]{2}' || true)
 done
 
 # --- README quotes the description verbatim ----------------------------------

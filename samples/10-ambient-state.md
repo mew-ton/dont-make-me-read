@@ -10,7 +10,7 @@ reader of the config, the README or the function's signature can see says it exi
 **Bad** `config/retry.json`
 
 ```json
-{ "maxAttempts": 3 }
+{ "maxAttempts": 3, "baseDelayMs": 200 }
 ```
 
 **Bad** `src/retry.ts`
@@ -60,8 +60,7 @@ the one thing none of them can point at.
 ```ts
 import defaultConfig from "./retry.json";
 
-/** The retry settings. `RETRY_LIMIT` in the environment overrides `maxAttempts` in retry.json,
- *  so a deployment can set it without a rebuild. */
+/** Lets a deployment change the limit without a rebuild. */
 export const retry = {
   maxAttempts: Number(process.env.RETRY_LIMIT ?? defaultConfig.maxAttempts),
   baseDelayMs: defaultConfig.baseDelayMs,

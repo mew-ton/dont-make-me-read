@@ -18,12 +18,12 @@ Good engineers do not work that way with each other. They talk in source code: a
 a test, a path. The other one reads it and knows what was meant, with no meeting, no glossary, and
 no "let me give you some context". The code carries its own context, or names where it lives.
 
-This plugin makes your agent write everything that way, the prose included.
+This plugin is there to make your agent write everything that way, the prose included.
 
 ## What it does
 
-A [Claude Code](https://claude.com/claude-code) plugin with one skill, loaded on the model's own
-judgment while it writes or reviews, with nothing for you to type. The skill's own description,
+A [Claude Code](https://claude.com/claude-code) plugin with one skill, meant to load on the model's
+own judgment while it writes or reviews, with nothing for you to type. The skill's own description,
 quoted:
 
 > Keeps what a reader has to gather before they can act as small as it can be, and in one place.
@@ -58,8 +58,8 @@ The config says three. Nothing tells the reader there are two places, and nothin
 changed the config that the README existed. After:
 
 ```md
-A payment call is tried at most a fixed number of times (`maxAttempts` in `config/retry.json`),
-waiting twice as long before each retry, and then the order is marked failed.
+A payment call is tried at most `maxAttempts` times (`config/retry.json`), and then the order is
+marked failed.
 ```
 
 The README no longer holds the number, so it cannot drift from it.
@@ -93,7 +93,7 @@ carries its reason:
 
 - **Not a linter.** It is judgment, applied while writing. The only script here,
   [`scripts/check.sh`](scripts/check.sh), checks this repository and nothing of yours.
-- **Not a style guide.** It does not care about tone, grammar or which language you write in.
+- **Not a style guide.** It does not care about tone or grammar.
 
 ## Does it work?
 

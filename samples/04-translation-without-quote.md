@@ -52,9 +52,8 @@ report never reaches it.
 
 ```md
 QA report 142 (`docs/qa-report-142.md`), paying with "the test card ending 0002": "The screen
-freezes for about ten seconds after pressing Pay, then shows 'contact support'." In our terms: card
-0002 is the provider's always-decline test card, and "contact support" is the text for the
-`"contact-support"` outcome of `pay` (`src/checkout.ts`).
+freezes for about ten seconds after pressing Pay, then shows 'contact support'." In our terms:
+"contact support" is the text for the `"contact-support"` outcome of `pay` (`src/checkout.ts`).
 ```
 
 ### Why

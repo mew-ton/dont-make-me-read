@@ -47,7 +47,7 @@ empty. When the limit becomes four, one name is wrong, one is right, and one sti
 **Good** `src/retry.test.ts`
 
 ```ts
-it("throws the last error once the configured limit is reached", async () => {
+it("throws the last error once the limit is reached", async () => {
   const fn = countingFailure("declined");
   await expect(withRetry(fn, 3)).rejects.toThrow("declined");
   expect(fn.calls).toBe(3);
