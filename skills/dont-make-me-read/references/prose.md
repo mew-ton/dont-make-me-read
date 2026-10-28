@@ -62,10 +62,10 @@ One instance. A task tracked in another tool, written up as an issue for an agen
 
 ## What noise does
 
-Cutting is one of the two outcomes of rule 2; the other is adding what the decision needs. The
-rationale, the constraint stated as the wall the reader would walk into, and the fact that makes the
-ask defensible are never cut, because without them the reader decides with less than you had. What
-does get cut is what makes a reader confident about the wrong thing:
+The rationale, the constraint stated as the wall the reader would walk into, and the fact that
+makes the ask defensible change what the reader does, so rule 2 keeps them: without them the reader
+decides with less than you had. What rule 2 cuts is what makes a reader confident about the wrong
+thing:
 
 | Noise | What the reader concludes |
 |---|---|

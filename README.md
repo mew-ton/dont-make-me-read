@@ -35,14 +35,14 @@ quoted:
 
 From [`SKILL.md › What the reader pays`](skills/dont-make-me-read/SKILL.md#what-the-reader-pays):
 
-> The cost of writing is not its length. It is everything the reader has to reach, from where they
-> landed, before they can act: the paragraph in front of them and every paragraph it leans on.
+> The cost of writing is everything the reader has to reach, from where they landed, before they
+> can act: the paragraph in front of them and every paragraph it leans on.
 
-So length is not the measure, in either direction. A short paragraph that leans on a standup, a
-"see above", or a number copied from a file that has since changed is expensive however few words
-it has: the reader pays for it in tabs, and in the wrong decision they make when they give up
-searching. A long one is no better: every sentence in it that does not change what the reader does
-next is still one they have to read past.
+What decides that cost is where each piece of information lives and what form it takes. Keep every
+claim in its one right place, in a form that names what it leans on, and two things get better
+with it, without being aimed at. An agent that lands on a paragraph by search finds what it needs there, or the
+exact address of it. And the code and the documents stop contradicting each other, because each
+claim has one copy to keep right, and everything else points at it.
 
 ## Before / after
 
@@ -91,9 +91,6 @@ carries its reason:
 
 ## What it is not
 
-- **Not a length tool, either way.** It cuts what changes nothing for the reader, keeps what the
-  decision needs and the reader cannot reconstruct, and points at an owner instead of copying it.
-  How long the result is follows from that; it is never the aim.
 - **Not a linter.** It is judgment, applied while writing. The only script here,
   [`scripts/check.sh`](scripts/check.sh), checks this repository and nothing of yours.
 - **Not a style guide.** It does not care about tone, grammar or which language you write in.
@@ -130,11 +127,6 @@ The skill is written in English, because a published plugin cannot know which la
 prompt in. It says nothing about which language to write in.
 
 ## FAQ
-
-**Will my issues get longer?**
-Not by design. "As discussed" becomes the one decision the reader needs, or a link to where it is
-written down; the menu of options, the restated config and the history nobody acts on go. That
-costs the writer a minute and saves every reader the forty.
 
 **Why does it never write "see above"?**
 Because the next reader is often an agent that landed on this paragraph by search. For that reader

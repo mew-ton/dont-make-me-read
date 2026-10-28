@@ -11,8 +11,8 @@ disable-model-invocation: false
 
 ## What the reader pays
 
-The cost of writing is not its length. It is everything the reader has to reach, from where they
-landed, before they can act: the paragraph in front of them and every paragraph it leans on. The
+The cost of writing is everything the reader has to reach, from where they landed, before they can
+act: the paragraph in front of them and every paragraph it leans on. The
 writer cannot feel that cost, because they read their own draft while supplying what it leaves out.
 
 ## The unit
@@ -25,8 +25,7 @@ is in the file the table below names.
 
 1. **One claim per paragraph, under an address.** Two claims in one paragraph cannot be named,
    cited or corrected apart.
-2. **Everything in it changes what the reader does next.** What does not, goes. What the decision
-   needs and the reader cannot reconstruct stays, however long it is.
+2. **Everything in it changes what the reader does next.** What does not, goes.
 3. **A dependency is named by address.** A path, a heading, a name. Never "above", "as discussed",
    or a state the body uses without naming: for the reader who arrives by search, those are gone.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs

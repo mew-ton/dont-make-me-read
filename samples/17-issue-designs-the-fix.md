@@ -143,10 +143,10 @@ internals are the implementer's.
 | the last line of `› Done when` | `› Where compatibility breaks` | visible, by heading |
 | the code, when written | `https://github.com/example/orderly/issues/248 › Where compatibility breaks` | will be visible: the wrapper now has an address to cite |
 
-The issue is longer than 231's and nothing in it is one way among several: drop any line and the
-replacement is not a replacement. The wrapper is new, so no earlier paragraph owns it; the issue
-is where it gets its address, under its own heading, and the code will cite it. What the issue
-does not say is how the wrapper is built, because the problem does not care.
+Nothing in the issue is one way among several: drop any line and the replacement is not a
+replacement. The wrapper is new, so no earlier paragraph owns it; the issue is where it gets its
+address, under its own heading, and the code will cite it. What the issue does not say is how the
+wrapper is built, because the problem does not care.
 
 ### Why
 
