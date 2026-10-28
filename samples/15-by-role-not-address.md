@@ -5,7 +5,7 @@ knows the role can follow; the reader who does not, and every tool, cannot.
 
 ## Files
 
-`pr/245.md`
+`https://github.com/example/orderly/pull/245`
 
 ```md
 # Fix the checkout hang
@@ -20,13 +20,13 @@ Files to look at: `src/retry.ts` and `src/checkout.ts`.
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the change | `pr/245.md` | derived from a task |
+| the change | `https://github.com/example/orderly/pull/245` | derived from a task |
 
 | From | To | Edge |
 |---|---|---|
-| `pr/245.md` | the issue | **hidden by role**: "the issue QA reported" has no number |
-| `pr/245.md` | the config | **hidden by role**: "the usual retry config" has no path |
-| `pr/245.md` | the files changed | **noise**: two files offered as the set to look at; a reader takes it as complete |
+| `https://github.com/example/orderly/pull/245` | the issue | **hidden by role**: "the issue QA reported" has no number |
+| `https://github.com/example/orderly/pull/245` | the config | **hidden by role**: "the usual retry config" has no path |
+| `https://github.com/example/orderly/pull/245` | the files changed | **noise**: two files offered as the set to look at; a reader takes it as complete |
 
 ## What is wrong
 

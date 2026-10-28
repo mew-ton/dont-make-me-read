@@ -21,7 +21,7 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetri
 }
 ```
 
-`issues/231.md`
+`https://github.com/example/orderly/issues/231`
 
 ```md
 # Checkout hangs when the payment provider is slow   · closed, fixed by #245
@@ -33,12 +33,12 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetri
 |---|---|---|
 | the body | `src/retry.ts › withRetry` | source for its comment |
 | the comment | the same address | derived: it explains the body, and no longer describes it |
-| the issue | `issues/231.md` | closed |
+| the issue | `https://github.com/example/orderly/issues/231` | closed |
 
 | From | To | Edge |
 |---|---|---|
 | the comment | the body | **stale**: it claims a defect the body no longer has |
-| the comment | `issues/231.md` | visible, by number, and therefore checkable: the issue is closed |
+| the comment | `https://github.com/example/orderly/issues/231` | visible, by number, and therefore checkable: the issue is closed |
 
 ## What is wrong
 

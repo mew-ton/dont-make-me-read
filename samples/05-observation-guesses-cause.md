@@ -14,7 +14,7 @@ support".
 **Probably** the retry loop is running on the UI thread, since the whole page stops responding.
 ```
 
-`issues/231.md`
+`https://github.com/example/orderly/issues/231`
 
 ```md
 The retry loop is blocking the main thread.
@@ -26,12 +26,12 @@ The retry loop is blocking the main thread.
 |---|---|---|
 | the observation | `docs/qa-report-142.md › Observed` | source |
 | the guessed cause | `docs/qa-report-142.md › Probably` | would be derived from the observation, but sits inside it |
-| the task's statement of cause | `issues/231.md` | derived from the guess, stated as fact |
+| the task's statement of cause | `https://github.com/example/orderly/issues/231` | derived from the guess, stated as fact |
 
 | From | To | Edge |
 |---|---|---|
 | `docs/qa-report-142.md › Observed` | `› Probably` | **reversed**: the observation leans on its own explanation |
-| `issues/231.md` | `docs/qa-report-142.md › Probably` | **hidden**: the guess is restated as a finding, source unnamed |
+| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Probably` | **hidden**: the guess is restated as a finding, source unnamed |
 
 ## What is wrong
 

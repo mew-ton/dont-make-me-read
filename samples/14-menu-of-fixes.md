@@ -5,7 +5,7 @@ less. Nothing in the paragraph changes what the reader does next, except to make
 
 ## Files
 
-`issues/231.md`
+`https://github.com/example/orderly/issues/231`
 
 ```md
 Possible fixes:
@@ -22,7 +22,7 @@ Pick whichever is easiest. Handle the error states appropriately.
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the task | `issues/231.md` | derived from an observation |
+| the task | `https://github.com/example/orderly/issues/231` | derived from an observation |
 
 There are no edges in this paragraph, which is the problem: a fix is derived from a cause, and this
 paragraph names none.

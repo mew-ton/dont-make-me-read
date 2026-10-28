@@ -11,7 +11,7 @@ imagined, and the choice is made where the code is written.
 
 ## Files: design the problem did not require
 
-`issues/231.md`
+`https://github.com/example/orderly/issues/231`
 
 ```md
 # Checkout hangs when the payment provider is slow
@@ -44,7 +44,7 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetri
 }
 ```
 
-`pr/245.md`
+`https://github.com/example/orderly/pull/245`
 
 ```md
 Fixes #231. No scheduler class: a one-line `yieldThen` was enough.
@@ -55,16 +55,16 @@ Fixes #231. No scheduler class: a one-line `yieldThen` was enough.
 | Node | Address | Source or derived |
 |---|---|---|
 | the observation | `docs/qa-report-142.md` | source |
-| the problem | `issues/231.md` (title and first paragraph) | derived from the observation: correct |
-| the designed fix | `issues/231.md › Fix` | not derived from the problem: the problem is solved without any of it |
+| the problem | `https://github.com/example/orderly/issues/231` (title and first paragraph) | derived from the observation: correct |
+| the designed fix | `https://github.com/example/orderly/issues/231 › Fix` | not derived from the problem: the problem is solved without any of it |
 | the code | `src/retry.ts › withRetry` | reproduces "Retries are bounded" and the problem, not `› Fix` |
-| the change | `pr/245.md` | derived from the problem |
+| the change | `https://github.com/example/orderly/pull/245` | derived from the problem |
 
 | From | To | Edge |
 |---|---|---|
-| `issues/231.md › Fix` | the problem | **none**: no line of it is something the problem requires |
-| `src/retry.ts › withRetry` | `issues/231.md › Fix` | **absent**: the code does not reproduce it, and says so only in a PR line the issue's reader never sees |
-| `pr/245.md` | `issues/231.md` | visible ("Fixes #231"), and now asserts a reproduction of `› Fix` that did not happen |
+| `https://github.com/example/orderly/issues/231 › Fix` | the problem | **none**: no line of it is something the problem requires |
+| `src/retry.ts › withRetry` | `https://github.com/example/orderly/issues/231 › Fix` | **absent**: the code does not reproduce it, and says so only in a PR line the issue's reader never sees |
+| `https://github.com/example/orderly/pull/245` | `https://github.com/example/orderly/issues/231` | visible ("Fixes #231"), and now asserts a reproduction of `› Fix` that did not happen |
 
 ## What is wrong
 
@@ -86,7 +86,7 @@ Replacing a hand-rolled implementation with a standard one is a problem whose so
 where compatibility breaks and how it is kept. That design is a requirement, and it belongs in the
 issue, with its owners named where they exist.
 
-`issues/248.md`
+`https://github.com/example/orderly/issues/248`
 
 ```md
 # Replace the hand-rolled retry with `p-retry`
@@ -112,16 +112,16 @@ Done when every line below holds.
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the problem | `issues/248.md` (title and first paragraph) | source for the change |
-| the done condition | `issues/248.md` (the list) | derived from the problem: each line is something "replaced" cannot mean without |
-| the wrapper | `issues/248.md › fourth line` | a design decision, required by the problem, given its address here |
+| the problem | `https://github.com/example/orderly/issues/248` (title and first paragraph) | source for the change |
+| the done condition | `https://github.com/example/orderly/issues/248` (the list) | derived from the problem: each line is something "replaced" cannot mean without |
+| the wrapper | `https://github.com/example/orderly/issues/248 › fourth line` | a design decision, required by the problem, given its address here |
 | the signature, the last-error rule, the abort rule, the bound | their owners, named in each line | sources the condition cites |
 
 | From | To | Edge |
 |---|---|---|
 | each line of the condition | the problem | visible: "replaced" is not met if the line fails |
 | the lines that cite a caller, a test, a decision | those owners | visible, by address |
-| the code, when written | `issues/248.md › fourth line` | will be visible: the wrapper now has an address to cite |
+| the code, when written | `https://github.com/example/orderly/issues/248 › fourth line` | will be visible: the wrapper now has an address to cite |
 
 The issue is longer than 231's and nothing in it is one way among several: drop any line and the
 replacement is not a replacement. The wrapper is new, so no earlier paragraph owns it; the issue

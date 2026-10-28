@@ -4,7 +4,7 @@
 
 ## Files
 
-`issues/231.md`
+`https://github.com/example/orderly/issues/231`
 
 ```md
 # Checkout hangs when the payment provider is slow
@@ -17,12 +17,12 @@ seconds and then shows the wrong message.
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the task | `issues/231.md` | derived from an observation |
+| the task | `https://github.com/example/orderly/issues/231` | derived from an observation |
 | the standup | none | not a node: it has no address and no text |
 
 | From | To | Edge |
 |---|---|---|
-| `issues/231.md` | the standup | **dangling**: the target cannot be reached by anyone who was not there |
+| `https://github.com/example/orderly/issues/231` | the standup | **dangling**: the target cannot be reached by anyone who was not there |
 
 ## What is wrong
 

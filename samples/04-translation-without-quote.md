@@ -16,7 +16,7 @@ support".
 **Expected.** Either a quick failure with "try again", or a successful payment.
 ```
 
-`issues/231.md`
+`https://github.com/example/orderly/issues/231`
 
 ```md
 QA found that paying with a declining card locks the page for several seconds and then shows the
@@ -28,11 +28,11 @@ wrong message.
 | Node | Address | Source or derived |
 |---|---|---|
 | the observation | `docs/qa-report-142.md › Observed` | source |
-| the task | `issues/231.md` | derived from the observation |
+| the task | `https://github.com/example/orderly/issues/231` | derived from the observation |
 
 | From | To | Edge |
 |---|---|---|
-| `issues/231.md` | `docs/qa-report-142.md` | **missing**: not named; the content is translated instead |
+| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md` | **missing**: not named; the content is translated instead |
 
 ## What is wrong
 
