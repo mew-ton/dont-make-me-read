@@ -1,4 +1,4 @@
-# dont-make-me-read
+# dont-make-me-read (beta)
 
 A [Claude Code](https://claude.com/claude-code) plugin. It is one skill, loaded on the model's own
 judgment while it writes, with nothing for you to type.
