@@ -31,10 +31,10 @@ that appears only with the plugin is one the skill reached.
 | [06 A decision that names its implementation](06-decision-names-implementation.md) | reversed edge, missing edge |
 | [07 A callee that knows its caller](07-callee-knows-caller.md) | reversed edge |
 | [08 A doc comment that describes the caller](08-jsdoc-describes-caller.md) | reversed edge |
-| [09 A PRD and an interface that contradict](09-prd-contradicts-interface.md) | two sources, no declared direction |
-| [10 A limit set in two places](10-ambient-state.md) | hidden edge, second place |
-| [11 A hook only tests use](11-test-only-hook.md) | reversed edge |
-| [12 Setup that runs by position](12-test-setup-by-position.md) | hidden edge |
+| [09 A PRD and an interface that contradict](09-prd-contradicts-interface.md) | a reproduction that contradicts its source |
+| [10 A precedence stated nowhere](10-ambient-state.md) | a claim with no address |
+| [11 State the interface does not declare](11-test-only-hook.md) | hidden edge |
+| [12 A default that hides the claim](12-test-setup-by-position.md) | a visible edge carrying the whole claim |
 | [13 Three tests, one claim](13-three-tests-one-claim.md) | duplicate nodes, no claim |
 | [14 A menu of fixes](14-menu-of-fixes.md) | noise |
 | [15 "The issue QA reported"](15-by-role-not-address.md) | hidden edge by role |

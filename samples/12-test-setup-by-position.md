@@ -1,27 +1,20 @@
-# 12 · Setup that runs by position
+# 12 · A default that hides the claim
 
-**Pattern.** A test's body leans on a block that runs before it by convention, not by being named.
-The claim cannot be read from the test alone.
+**Pattern.** Shared defaults for a test file are a named node, so the edge to them is visible.
+The claim of one test is about a difference, and the body shows none: the input the claim is about
+and the output it produces both sit inside the defaults. The reader has to open the defaults to
+learn what the test proves, and a change to the defaults silently changes it.
 
 ## Bad
 
-**Bad** `src/retry.test.ts`
+**Bad** `src/img.test.tsx`
 
-```ts
-let calls: number;
-let failing: () => Promise<never>;
+```tsx
+const defaultProps = { src: "a.png", width: 320, densities: [2, 3, 4] };
+const defaultExpects = { src: "a.png", sizes: "640w, 960w, 1280w" };
 
-beforeEach(() => {
-  calls = 0;
-  failing = async () => {
-    calls++;
-    throw new Error("declined");
-  };
-});
-
-it("stops after the configured number of attempts", async () => {
-  await expect(withRetry(failing)).rejects.toThrow("declined");
-  expect(calls).toBe(3);
+it("setting `densities` sets `sizes` to the width times each density", () => {
+  expect(renderElement(defaultProps).imgElement().args).toMatch(defaultExpects);
 });
 ```
 
@@ -29,33 +22,39 @@ it("stops after the configured number of attempts", async () => {
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the claim | `src/retry.test.ts › "stops after the configured number of attempts"` | derived: explains `withRetry` |
-| the setup | `src/retry.test.ts › beforeEach` | no address: it has no name |
+| the claim | `src/img.test.tsx › "setting \`densities\` sets \`sizes\`…"` | derived: explains the component |
+| the defaults | `src/img.test.tsx › defaultProps`, `› defaultExpects` | named: shared by every test in the file |
 
 | From | To | Edge |
 |---|---|---|
-| the test body | `beforeEach` | **hidden**: `calls` and `failing` arrive by position |
+| the test body | `defaultProps`, `defaultExpects` | visible by name, and carrying the whole claim: `densities` and `sizes` appear only inside them |
 
 ### What is wrong
 
-The body says `failing` and `calls` and defines neither. A reader who landed on the test by its name
-has to scroll up to learn what `failing` does, and to learn that `calls` was zero. The claim's
-reproduction is split across two places and only one of them has an address.
+The name says the test is about `densities` and `sizes`. The body mentions neither. A reader who
+lands on the test by its name sees a render of some defaults matched against some defaults, and
+has to open both to find the two fields the claim is about, among the fields it is not. When
+someone edits `defaultProps` for another test's sake, this test's claim changes and nothing in it
+shows that it did.
+
+A `beforeEach` block is the cruder form of the same thing: setup the body leans on by position,
+with no name at all.
 
 ## Good
 
-**Good** `src/retry.test.ts`
+**Good** `src/img.test.tsx`
 
-```ts
-it("stops after the configured number of attempts", async () => {
-  const fn = countingFailure("declined");
-  await expect(withRetry(fn)).rejects.toThrow("declined");
-  expect(fn.calls).toBe(3);
+```tsx
+it("setting `densities` sets `sizes` to the width times each density", () => {
+  expect(
+    renderElement({ ...defaultProps, densities: [2, 3, 4] }).imgElement().args,
+  ).toMatch({ ...defaultExpects, sizes: "640w, 960w, 1280w" });
 });
 ```
 
 ### Why
 
-Rule 3: a state the body uses is named. The *Direction* section of `references/program.md` shows the
-shape: the body names what it leans on. `countingFailure` is a named helper, so the edge to it is
-visible and the reader can follow it or not.
+Rule 1: the body reproduces the claim, so the part of the input the claim is about, and the part
+of the output it predicts, appear in the body. Rule 3: the defaults stay named and carry only what
+the claim is not about. Every test in the file now reads as a difference from the same base, and
+the base can change without changing what any of them proves.

@@ -1,7 +1,9 @@
-# 10 · A limit set in two places
+# 10 · A precedence stated nowhere
 
-**Pattern.** A body reads state it does not name in its signature, and that state is a second place
-the same claim is set.
+**Pattern.** A value comes from either of two places, and one wins. That is a reasonable design:
+an environment variable over a config file is how a deployment overrides a build. What is wrong is
+that the rule deciding which wins has no address. It lives inside a function body, and nothing a
+reader of the config, the README or the function's signature can see says it exists.
 
 ## Bad
 
@@ -32,41 +34,60 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the retry limit | `config/retry.json › maxRetries` | source |
-| the environment variable | `RETRY_LIMIT` | a second source for the same claim |
+| the default limit | `config/retry.json › maxRetries` | source |
+| the override | `RETRY_LIMIT` | source, set per deployment |
+| the precedence, "the variable wins" | none: a line inside `withRetry`'s body | a claim with no address |
 | the implementation | `src/retry.ts › withRetry` | derived |
+| the README's line | `README.md` | derived |
 
 | From | To | Edge |
 |---|---|---|
-| `src/retry.ts › withRetry` | `config/retry.json` | visible, by import: correct |
 | `src/retry.ts › withRetry` | `RETRY_LIMIT` | **hidden**: read from the environment, not in the signature |
 | `README.md` | `config/retry.json` | **missing**: "the default" names the owner by role |
+| anything | the precedence | **impossible**: it has no address to cite |
 
 ### What is wrong
 
-A reader of `withRetry` cannot tell from its signature that the limit can come from outside. A
-reader of the config cannot tell that it can be overridden. A reader of the README cannot tell what
-the default is or where it lives. Three paragraphs, one claim, and no two of them agree on where it
-is set.
+A reader of `withRetry`'s signature cannot tell that the limit can come from outside. A reader of
+the config cannot tell that it can be overridden. A reader of the README cannot tell what the
+default is or where it lives. The rule that ties the three together is real and useful, and it is
+the one thing none of them can point at.
 
 ## Good
 
-Only the part that holds whichever way the second question goes.
+**Good** `config/retry.ts`
+
+```ts
+import file from "./retry.json";
+
+/** The retry settings. `RETRY_LIMIT` in the environment overrides `maxRetries` in retry.json,
+ *  so a deployment can set it without a rebuild. */
+export const retry = {
+  maxRetries: Number(process.env.RETRY_LIMIT ?? file.maxRetries),
+  baseDelayMs: file.baseDelayMs,
+};
+```
 
 **Good** `src/retry.ts`
 
 ```ts
-import config from "../config/retry.json";
+import { retry } from "../config/retry";
 
-export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetries): Promise<T> {
+export async function withRetry<T>(fn: () => Promise<T>, limit = retry.maxRetries): Promise<T> {
   // ...
 }
 ```
 
+**Good** `README.md`
+
+```md
+`RETRY_LIMIT` overrides `maxRetries` in `config/retry.json`; the precedence is stated in
+`config/retry.ts`.
+```
+
 ### Why
 
-Rule 3: a state the body uses is named, as a parameter; where the limit comes from is then the
-caller's, and the body no longer reads the environment. Rule 6: a claim has one place. Whether
-the override survives is a decision this case does not make: either it exists and the config is
-the one place that says so, with the README citing that, or it does not exist and the README and
-the variable go. The corrected README depends on that decision, so it is not shown.
+Rule 6: a claim has one place. The precedence now has an address, `config/retry.ts › retry`, and
+the README and the function both reach it. Rule 3: the body names its input as a parameter instead
+of reading the environment itself. The override is kept; only its rule moved to where it can be
+cited.

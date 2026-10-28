@@ -1,7 +1,8 @@
-# 11 · A hook only tests use
+# 11 · State the interface does not declare
 
-**Pattern.** Production code exports something that exists so a test can reach in. The subject now
-depends on what explains it.
+**Pattern.** A module keeps state that none of its names mention. A test discovers it, because the
+second test in a file sees what the first one left behind, and the module grows a hook so the test
+can reset it. The hook is the visible symptom; the hidden state is the claim nobody made.
 
 ## Bad
 
@@ -32,19 +33,21 @@ beforeEach(() => __resetForTests());
 | Node | Address | Source or derived |
 |---|---|---|
 | the subject | `src/retry.ts › withRetry` | source for its tests |
-| the hook | `src/retry.ts › __resetForTests` | exists for the test |
+| the state | `src/retry.ts › attemptsSeen` | a claim the module makes, with no address in its interface |
+| the hook | `src/retry.ts › __resetForTests` | exists only so the test can manage the state |
 | the test file | `src/retry.test.ts` | derived: it explains `withRetry` |
 
 | From | To | Edge |
 |---|---|---|
-| `src/retry.test.ts` | `src/retry.ts › withRetry` | visible, by import: correct |
-| `src/retry.ts › __resetForTests` | `src/retry.test.ts` | **reversed**: the subject holds a paragraph whose only reader is its test |
+| `src/retry.ts › withRetry` | `src/retry.ts › attemptsSeen` | **hidden**: the signature says `withRetry` is a function of `fn`; the body says it is also a function of every earlier call |
+| `src/retry.test.ts` | `src/retry.ts › __resetForTests` | visible, and the only reason the hook exists |
 
 ### What is wrong
 
-`attemptsSeen` is module state, which is why the test needs to reset it, which is why the hook
-exists. The hook is the symptom; the hidden state is the claim the module makes without saying so.
-Every reader of `retry.ts` pays for a declaration that means nothing in production.
+The signature claims `withRetry` depends on `fn`. The body also depends on what happened before,
+and nothing says so. The test is the first reader to find out, and the module pays with an export
+that means nothing in production. Every later reader of `retry.ts` meets `__resetForTests` before
+they meet the state it resets, and has to work backwards to the claim the signature left out.
 
 ## Good
 
@@ -60,5 +63,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
-Rule 5: the subject never depends on the test. Remove the state the test had to reset, and the hook
-has nothing to do.
+Rule 3: a state the body uses is named. Here nothing needed the counter, so it goes, and the hook
+with it. Where state is the point, a cache or a connection, it gets an address the signature shows:
+a parameter, or an object the caller and the test construct, so the test resets it by making a new
+one rather than through a door the module cut for it.

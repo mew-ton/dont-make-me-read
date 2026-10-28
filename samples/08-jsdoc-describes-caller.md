@@ -41,8 +41,8 @@ for the name would have told them, without the staleness.
 
 ```ts
 /**
- * Reproduces "Retries are bounded" (docs/architecture.md). Calls `fn` up to the configured
- * limit, waiting twice as long before each try, and throws the last error when the limit is hit.
+ * Calls `fn` up to the configured limit, waiting twice as long before each try, and throws the
+ * last error when the limit is hit.
  */
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
   // ...
@@ -51,6 +51,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
-Rule 1: one claim under the address, and the comment is part of the paragraph under the name. Rule
-5: the comment cites what the declaration reproduces, not who reproduces the declaration. Callers
-are found by search.
+Rule 1: one claim under the address, and the comment is part of the paragraph under the name, so
+it says what the declaration claims. Rule 5: not who uses it; callers are found by search. Whether
+the comment should also cite a decision the declaration reproduces is case 06, and nothing in this
+case calls for one.
