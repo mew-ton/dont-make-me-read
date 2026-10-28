@@ -36,3 +36,5 @@ that appears only with the plugin is one the skill reached.
 | [14 A menu of fixes](14-menu-of-fixes.md) | noise |
 | [15 "The issue QA reported"](15-by-role-not-address.md) | hidden edge by role |
 | [16 A comment that restates the body](16-comment-restates-body.md) | duplicate node |
+| [17 An issue that designs the fix](17-issue-designs-the-fix.md) | a source that nothing reproduces |
+| [18 A TODO that outlived its fix](18-todo-that-outlived-its-fix.md) | stale derived explanation |
