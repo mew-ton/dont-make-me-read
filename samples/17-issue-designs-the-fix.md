@@ -59,16 +59,14 @@ Fixes #231. No scheduler class: awaiting a one-line `delay` instead of `sleepSyn
 |---|---|---|
 | the observation | `docs/qa-report-142.md` | source |
 | the problem | `https://github.com/example/orderly/issues/231` (title and the paragraphs before `› Fix`) | derived from the observation, with its cause: correct |
-| the designed fix | `https://github.com/example/orderly/issues/231 › Fix` | not derived from the problem: the problem is solved without any of it |
+| the designed fix | `https://github.com/example/orderly/issues/231 › Fix` | **noise**: not derived from the problem, which is solved without any of it |
 | the code | `src/retry.ts › withRetry` | reproduces "Retries are bounded" and the problem, not `› Fix` |
 | the change | `https://github.com/example/orderly/pull/245` | derived from the problem |
 
 | From | To | Edge |
 |---|---|---|
 | `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md` | visible, by path: correct |
-| `https://github.com/example/orderly/issues/231 › Fix` | the problem | **none**: no line of it is something the problem requires |
-| `src/retry.ts › withRetry` | `https://github.com/example/orderly/issues/231 › Fix` | **absent**: the code does not reproduce it, and says so only in a PR line the issue's reader never sees |
-| `https://github.com/example/orderly/pull/245` | `https://github.com/example/orderly/issues/231` | visible ("Fixes #231"), and now asserts a reproduction of `› Fix` that did not happen |
+| `https://github.com/example/orderly/pull/245` | `https://github.com/example/orderly/issues/231 › Fix` | **contradiction**: "No scheduler class" against a section that still asks for one, in a line the issue's reader never sees |
 
 ### What is wrong
 
@@ -104,8 +102,9 @@ retries is unchanged ("Retries are bounded", `docs/architecture.md`: the provide
 attempt).
 ```
 
-A different problem, whose solution has to say where compatibility breaks and how it is kept.
-That design is a requirement, and it belongs in the issue, with its owners named where they exist.
+A different problem, whose solution has to say where compatibility breaks and how it is kept. That
+design is a requirement. This project's instructions (`CONTRIBUTING.md › Issues`) put a design the
+problem requires in the issue that requires it, with its owners named where they exist.
 
 **Good** `https://github.com/example/orderly/issues/248`
 
@@ -127,10 +126,10 @@ That design is a requirement, and it belongs in the issue, with its owners named
 
 ## Where compatibility breaks
 
-`p-retry`'s `retries` counts the tries after the first; our `limit` counts every try
-(`maxAttempts` in `config/retry.json`). It is kept by a wrapper that keeps the signature above, so
-a caller that passes 3 still gets at most three calls of `fn`. The wrapper is the interface; its
-internals are the implementer's.
+`p-retry`'s `retries` counts the tries after the first; our `limit` counts every try (`maxAttempts`
+in `config/retry.json`). It is kept by a wrapper with the signature in *Done when*, so a caller that
+passes 3 still gets at most three calls of `fn`. The wrapper is the interface; its internals are the
+implementer's.
 ```
 
 ### Graph
@@ -150,9 +149,9 @@ internals are the implementer's.
 | the code, when written | `https://github.com/example/orderly/issues/248 › Where compatibility breaks` | will be visible: the wrapper now has an address to cite |
 
 Nothing in the issue is one way among several: drop any line and the replacement is not a
-replacement. The wrapper is new, so no earlier paragraph owns it; the issue is where it gets its
-address, under its own heading, and the code will cite it. What the issue does not say is how the
-wrapper is built, because the problem does not care.
+replacement. The wrapper is new, so no earlier paragraph owns it; the project's instructions put it
+in the issue, under its own heading, and the code will cite it. What the issue does not say is how
+the wrapper is built, because the problem does not care.
 
 ### Why
 
@@ -161,6 +160,7 @@ lines is derived from the problem or is not the issue's. That decides how much d
 holds: as much as solving the problem requires, and no line of what merely solves it one way. The
 *What noise does* table in `references/prose.md` names the second kind: the implementation method
 in an issue, from which the reader concludes the shape you saw while writing is the shape today.
-Where a required design is new, the issue is its address, and the code cites it; where a shape has
+Where a required design is new, it goes where the project's instructions put it, here the issue,
+and the code cites it; where they set no place, rule 6 says to say so and stop. Where a shape has
 to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
 divergence is a defect between two addressed paragraphs, as in case 09.

@@ -59,7 +59,7 @@ One instance. A task tracked in another tool, written up as an issue for an agen
 - A decision that readers reach from elsewhere too, an issue, another module, a product document,
   is in the narrowest document all of them reach, and each declaration's doc comment cites it.
 - Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's
-  own instructions. If they do not set it for this kind, say so; do not pick one.
+  own instructions. Where they set nothing for this kind, rule 6 in `SKILL.md` applies.
 
 ## What noise does
 

@@ -23,6 +23,7 @@ Pick whichever is easiest. Handle the error states appropriately.
 | Node | Address | Source or derived |
 |---|---|---|
 | the task | `https://github.com/example/orderly/issues/231` | derived from an observation |
+| the list of fixes | `https://github.com/example/orderly/issues/231` (the list) | **noise**: it hands the reader a choice and changes nothing else they do |
 
 There are no edges in this paragraph, which is the problem: a fix is derived from a cause, and this
 paragraph names none.

@@ -28,7 +28,7 @@ it("gives up after three tries", async () => {
 
 | Node | Address | Source or derived |
 |---|---|---|
-| `"works correctly"` | that string | no claim: the name says nothing that could be false |
+| `"works correctly"` | that string | **noise**: the name says nothing that could be false |
 | `"stops after the configured number of attempts"` | that string | derived: explains `withRetry` |
 | `"gives up after three tries"` | that string | **duplicate** of the one above |
 
@@ -56,6 +56,6 @@ it("throws the last error once the limit is reached", async () => {
 
 ### Why
 
-Rule 1: one claim under an address, and a name is the claim, so it has to be something that could
-be false. Rule 6: a claim has one place; the other two go. The `3` is now passed in, so the test
+Rule 2: a test's name is its claim, and a name that could not be false changes nothing the reader
+does. Rule 6: a claim has one place; the other two go. The `3` is now passed in, so the test
 owns it.

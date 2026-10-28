@@ -44,7 +44,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 |---|---|---|
 | `src/retry.ts › withRetry` | `RETRY_LIMIT` | **hidden**: read from the environment, not in the signature |
 | `README.md` | `config/retry.json` | **missing**: "the default" names the owner by role |
-| anything | the precedence | **impossible**: it has no address to cite |
+| anything | the precedence | **dangling**: it has no address to cite |
 
 ### What is wrong
 
@@ -80,9 +80,20 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = retry.maxAttemp
 **Good** `README.md`
 
 ```md
-`RETRY_LIMIT` overrides `maxAttempts` in `config/retry.json`; the precedence is stated in
-`config/retry.ts`.
+How the retry limit is chosen: `config/retry.ts › retry`.
 ```
+
+### Graph of the added file
+
+| Node | Address | Source or derived |
+|---|---|---|
+| the precedence | `config/retry.ts › retry` | source: the one place it is stated |
+
+| From | To | Edge |
+|---|---|---|
+| `src/retry.ts › withRetry` | `config/retry.ts › retry` | visible, by import |
+| `README.md` | `config/retry.ts › retry` | visible, by address |
+| `config/retry.ts › retry` | `config/retry.json › maxAttempts` | visible, by import |
 
 ### Why
 

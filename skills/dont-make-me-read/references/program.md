@@ -32,6 +32,22 @@ A hidden edge is any of these. Each is a red flag:
 - an interface satisfied structurally, with nothing in the implementation saying so
 - a comment that says what the body does in other words: a second owner of the same claim
 
+One instance, a test whose setup is a hidden edge and one whose setup is named:
+
+```ts
+// Not this: the claim cannot be read without the block above it.
+beforeEach(() => { store = makeStore({ items: fiveItems() }); });
+it("shows at most three items", () => {
+  expect(render(store.items, 3)).toHaveLength(3);
+});
+
+// This: the body names what it leans on.
+it("shows at most three items", () => {
+  const items = fiveItems();
+  expect(render(items, 3)).toHaveLength(3);
+});
+```
+
 ## Saying which you are
 
 A reproduction cites its source. A doc comment names the decision's heading, in the decision's
@@ -65,22 +81,5 @@ function render(items: Item[], limit: number) {
 
 ## Direction
 
-The test depends on its subject, the implementation on its interface, the declaration on the
-decision it reproduces. The subject never depends on the test, and the interface never names an
-implementation.
-
-One instance, a test whose setup is a hidden edge and one whose setup is named:
-
-```ts
-// Not this: the claim cannot be read without the block above it.
-beforeEach(() => { store = makeStore({ items: fiveItems() }); });
-it("shows at most three items", () => {
-  expect(render(store.items, 3)).toHaveLength(3);
-});
-
-// This: the body names what it leans on.
-it("shows at most three items", () => {
-  const items = fiveItems();
-  expect(render(items, 3)).toHaveLength(3);
-});
-```
+The test depends on its subject and never the other way: production code holds nothing that exists
+only for a test.

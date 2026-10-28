@@ -25,7 +25,7 @@ tries doubles each time.
 | Node | Address | Source or derived |
 |---|---|---|
 | the retry limit | `config/retry.json › maxAttempts` | source |
-| the README's account of retries | `README.md › Retries` | derived: it explains the service |
+| the README's account of retries | `README.md › Retries` | **duplicate**: a second place for the retry limit |
 
 | From | To | Edge |
 |---|---|---|

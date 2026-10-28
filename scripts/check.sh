@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #
-# Every consistency in this tree that can be checked without a model, checked.
-# No model call, no network. What needs a model, the cases in samples/, is run
-# by hand as README.md says; any other consistency this script does not check
-# is not promised anywhere.
+# Checks the form of this tree: the skill's frontmatter, the size limits,
+# links and the headings they name, that README.md quotes SKILL.md, and that
+# samples cite rules, sections and cases that exist. No model call, no network.
+# Whether what the tree says holds together is a review's job, as
+# ARCHITECTURE.md › Reviewing says, not this script's.
 #
 # Usage:  bash scripts/check.sh
 # Exit:   0 when every check passes, 1 otherwise. Each failure is one line on stderr.
@@ -62,7 +63,7 @@ check_size() {
 check_size "$skill" "$limit_skill"
 for f in "$skill_dir"/references/*.md; do check_size "$f" "$limit_reference"; done
 
-# --- references: reached from SKILL.md, and from nowhere else ----------------
+# --- references: reached from SKILL.md, and not from each other --------------
 
 for f in "$skill_dir"/references/*.md; do
   rel="references/$(basename "$f")"

@@ -34,7 +34,7 @@ The retry loop is blocking the main thread.
 | From | To | Edge |
 |---|---|---|
 | `docs/qa-report-142.md` | `docs/qa-report-142.md › Likely cause` | **reversed**: the source carries what would explain it |
-| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Likely cause` | **hidden**: the guess is restated as a finding, source unnamed |
+| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Likely cause` | **missing**: the guess is restated as a finding, source unnamed |
 
 ### What is wrong
 

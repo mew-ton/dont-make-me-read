@@ -22,12 +22,12 @@ it("setting `densities` sets `widths` to the width times each density", () => {
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the claim | `src/img.test.tsx › "setting \`densities\` sets \`widths\`…"` | derived: explains the component |
+| the claim | `` src/img.test.tsx › "setting `densities` sets `widths`…" `` | derived: explains the component |
 | the defaults | `src/img.test.tsx › defaultProps`, `› defaultExpects` | named: shared by every test in the file |
 
 | From | To | Edge |
 |---|---|---|
-| the test body | `defaultProps`, `defaultExpects` | visible by name, and carrying the whole claim: `width`, `densities` and `widths` appear only inside them |
+| the test body | `defaultProps`, `defaultExpects` | **hidden**: named, yet the body means something only with the defaults open, because `width`, `densities` and `widths` appear only inside them |
 
 ### What is wrong
 
@@ -57,9 +57,9 @@ it("setting `densities` sets `widths` to the width times each density", () => {
 
 ### Why
 
-Rule 1: the body reproduces the claim, so the part of the input the claim is about, and the part
-of the output it predicts, appear in the body. Rule 3: the defaults stay named and now carry only
-what the claim is not about. Rule 2: `defaultExpects` pins no value either, only that `src` is a
-string, because a value the test is not about is not something it should fail on. Every test in
-the file reads as a difference from the same base, and the base can change without changing what
-any of them proves.
+The *The words* section of `references/program.md`: a test's body reproduces its claim, so the part
+of the input the claim is about, and the part of the output it predicts, appear in the body. Rule 3:
+the defaults stay named and now carry only what the claim is not about. Rule 2: `defaultExpects`
+pins no value either, only that `src` is a string, because a value the test is not about is not
+something it should fail on. Every test in the file reads as a difference from the same base, and
+the base can change without changing what any of them proves.

@@ -47,6 +47,6 @@ is in the file *Which file to read* names.
 
 ## Persistence
 
-In force for every response after the one that loaded it, and while unsure whether what you are
+In force from the response that loaded it onward, and while unsure whether what you are
 writing or reviewing is read in order to act. Released when the work turns to what nobody acts on,
 or when told.

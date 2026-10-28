@@ -38,7 +38,7 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxAttem
 
 | From | To | Edge |
 |---|---|---|
-| the `TODO` | the body | **stale**: it claims a defect the body no longer has |
+| the `TODO` | the body | **contradiction**: it claims a defect the body no longer has |
 | the `TODO` | `https://github.com/example/orderly/issues/231` | visible, by number, and therefore checkable: the issue is closed |
 
 ### What is wrong
@@ -78,6 +78,16 @@ removal.
 // TODO(#231): remove when #231 closes. Holds the Pay button in its loading state until the
 // provider's timeout lands.
 ```
+
+### Graph of the added file
+
+| Node | Address | Source or derived |
+|---|---|---|
+| the workaround's `TODO` | `src/checkout.ts` | derived: it explains a workaround |
+
+| From | To | Edge |
+|---|---|---|
+| the `TODO` | `https://github.com/example/orderly/issues/231` | visible, by number, and checkable: the comment goes when the issue closes |
 
 ### Why
 

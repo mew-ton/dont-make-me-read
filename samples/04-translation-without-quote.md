@@ -37,7 +37,7 @@ wrong message.
 
 | From | To | Edge |
 |---|---|---|
-| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md` | **missing**: not named; the content is translated instead |
+| `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Observed` | **missing**: not named; the content is translated instead |
 
 ### What is wrong
 

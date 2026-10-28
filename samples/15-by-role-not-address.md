@@ -21,12 +21,12 @@ Files to look at: `src/retry.ts` and `src/checkout.ts`.
 | Node | Address | Source or derived |
 |---|---|---|
 | the change | `https://github.com/example/orderly/pull/245` | derived from a task |
+| the file list | `https://github.com/example/orderly/pull/245` (last line) | **noise**: two files offered as the set to look at; a reader takes it as complete |
 
 | From | To | Edge |
 |---|---|---|
-| `https://github.com/example/orderly/pull/245` | the issue | **hidden by role**: "the issue QA reported" has no number |
-| `https://github.com/example/orderly/pull/245` | the config | **hidden by role**: "the usual retry config" has no path |
-| `https://github.com/example/orderly/pull/245` | the files changed | **noise**: two files offered as the set to look at; a reader takes it as complete |
+| `https://github.com/example/orderly/pull/245` | the issue | **hidden**, by role: "the issue QA reported" has no number |
+| `https://github.com/example/orderly/pull/245` | the config | **hidden**, by role: "the usual retry config" has no path |
 
 ### What is wrong
 

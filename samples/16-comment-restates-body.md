@@ -33,7 +33,6 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 | From | To | Edge |
 |---|---|---|
-| the comment | the body | none: it restates rather than cites |
 | the declaration | the decision it reproduces | **missing**: the comment had room for it and spent it on a paraphrase |
 
 ### What is wrong

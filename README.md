@@ -54,8 +54,8 @@ A payment call is tried up to five times before the order is marked failed. The 
 tries doubles each time.
 ```
 
-The config says three. Nothing tells the reader there are two places, and nothing told whoever
-changed the config that the README existed. After:
+`config/retry.json` says `"maxAttempts": 3`. Nothing tells the reader there are two places, and
+nothing told whoever changed `config/retry.json` that the README existed. After:
 
 ```md
 A payment call is tried at most `maxAttempts` times (`config/retry.json`), and then the order is
@@ -97,13 +97,13 @@ carries its reason:
 
 ## Does it work?
 
-Not measured yet. There are no numbers here because none have been taken. How they will be: run
-each case in [`samples/`](samples/README.md) with the plugin installed and without, and keep what
-appears only with it.
+Not measured yet: there are no numbers here because none have been taken. How they will be taken
+is in [`samples/README.md › How to use a case`](samples/README.md#how-to-use-a-case).
 
-The skill is in force only if Claude Code behaves as the table says. Each row is checked by hand
-that way. Which step of a case checks which row is in
-[`samples/README.md › How to use a case`](samples/README.md#how-to-use-a-case).
+### What it relies on Claude Code for
+
+The skill is in force only if each row of this table holds. Each row is checked by hand, by the
+step of a case it names.
 
 | Assumption | Checked by | Last checked |
 |---|---|---|
