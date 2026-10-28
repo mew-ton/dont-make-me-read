@@ -58,13 +58,13 @@ the one thing none of them can point at.
 **Good** `config/retry.ts`
 
 ```ts
-import file from "./retry.json";
+import defaultConfig from "./retry.json";
 
 /** The retry settings. `RETRY_LIMIT` in the environment overrides `maxRetries` in retry.json,
  *  so a deployment can set it without a rebuild. */
 export const retry = {
-  maxRetries: Number(process.env.RETRY_LIMIT ?? file.maxRetries),
-  baseDelayMs: file.baseDelayMs,
+  maxRetries: Number(process.env.RETRY_LIMIT ?? defaultConfig.maxRetries),
+  baseDelayMs: defaultConfig.baseDelayMs,
 };
 ```
 
