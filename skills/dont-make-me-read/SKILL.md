@@ -25,7 +25,8 @@ is in the file *Which file to read* names.
 
 1. **One claim per paragraph, under an address.** Two claims in one paragraph cannot be named,
    cited or corrected apart.
-2. **Everything in it changes what the reader does next.** What does not, goes.
+2. **Everything in it changes what the reader does next.** What does not, goes: the reader pays to
+   read it and acts no differently.
 3. **A dependency is named by address.** A path, a heading, a name. Never "above", "as discussed",
    or a state the body uses without naming: for the reader who arrives by search, those are gone.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs

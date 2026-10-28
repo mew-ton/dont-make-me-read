@@ -1,7 +1,7 @@
 # Prose
 
-What the words in `SKILL.md` mean when what you are writing is prose: a paragraph of a document,
-an issue, a review comment, a commit message, a comment in code.
+What the words in `SKILL.md` mean when what you are writing or reviewing is prose: a paragraph of
+a document, an issue, a review comment, a commit message, a comment in code.
 
 ## The words
 
@@ -54,9 +54,10 @@ One instance. A task tracked in another tool, written up as an issue for an agen
 
 ## Placement
 
-- A decision reproduced by one declaration is that declaration's doc comment.
-- A decision reproduced across one module is in that module's document.
-- A decision reproduced across the whole tree is at the root.
+- A decision reproduced by one declaration, and read only by readers of that declaration, is that
+  declaration's doc comment.
+- A decision that readers reach from elsewhere too, an issue, another module, a product document,
+  is in the narrowest document all of them reach, and each declaration's doc comment cites it.
 - Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's
   own instructions. If they do not set it for this kind, say so; do not pick one.
 

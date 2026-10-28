@@ -17,8 +17,10 @@ imagined, and the choice is made where the code is written.
 # Checkout hangs when the payment provider is slow
 
 Paying with the test card ending 0002 freezes the page for about ten seconds (QA report 142,
-`docs/qa-report-142.md`). Cause: `withRetry` (`src/retry.ts`) waits between attempts with
-`sleepSync`, a busy wait that blocks the thread that renders checkout.
+`docs/qa-report-142.md`).
+
+Cause: `withRetry` (`src/retry.ts`) waits between attempts with `sleepSync`, a busy wait that
+blocks the thread that renders checkout.
 
 ## Fix
 
@@ -56,7 +58,7 @@ Fixes #231. No scheduler class: awaiting a one-line `delay` instead of `sleepSyn
 | Node | Address | Source or derived |
 |---|---|---|
 | the observation | `docs/qa-report-142.md` | source |
-| the problem | `https://github.com/example/orderly/issues/231` (title and first paragraph) | derived from the observation, with its cause: correct |
+| the problem | `https://github.com/example/orderly/issues/231` (title and the paragraphs before `› Fix`) | derived from the observation, with its cause: correct |
 | the designed fix | `https://github.com/example/orderly/issues/231 › Fix` | not derived from the problem: the problem is solved without any of it |
 | the code | `src/retry.ts › withRetry` | reproduces "Retries are bounded" and the problem, not `› Fix` |
 | the change | `https://github.com/example/orderly/pull/245` | derived from the problem |
@@ -92,8 +94,10 @@ Issue 231, cut to what the problem requires. The merged code and the PR are unch
 # Checkout hangs when the payment provider is slow
 
 Paying with the test card ending 0002 freezes the page for about ten seconds (QA report 142,
-`docs/qa-report-142.md`). Cause: `withRetry` (`src/retry.ts`) waits between attempts with
-`sleepSync`, a busy wait that blocks the thread that renders checkout.
+`docs/qa-report-142.md`).
+
+Cause: `withRetry` (`src/retry.ts`) waits between attempts with `sleepSync`, a busy wait that
+blocks the thread that renders checkout.
 
 Done when: the page stays responsive while `withRetry` waits between attempts, and the bound on
 retries is unchanged ("Retries are bounded", `docs/architecture.md`: the provider bills per

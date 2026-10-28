@@ -1,7 +1,8 @@
 # Program
 
-What the words in `SKILL.md` mean when what you are writing is a program: a declaration, its body,
-a test. Stated without any language's syntax; where an example uses one, it is one instance.
+What the words in `SKILL.md` mean when what you are writing or reviewing is a program: a
+declaration, its body, a test. Stated without any language's syntax; where an example uses one, it
+is one instance.
 
 ## The words
 

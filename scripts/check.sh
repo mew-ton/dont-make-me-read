@@ -74,10 +74,18 @@ done
 
 # --- every relative link resolves, heading included ---------------------------
 
-# slugs FILE: the anchor GitHub gives each heading in FILE, one per line.
+# slugs FILE: the anchor GitHub gives each heading in FILE, one per line. Lines
+# inside fenced code blocks are not headings, and a repeated slug gets -1, -2.
 slugs() {
-  sed -n 's/^#\{1,6\} \(.*\)$/\1/p' "$1" \
-    | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 _-]//g; s/ /-/g'
+  awk '
+    /^```/ { fenced = !fenced; next }
+    fenced || !/^#{1,6} / { next }
+    {
+      s = tolower($0); sub(/^#+ /, "", s)
+      gsub(/[^a-z0-9 _-]/, "", s); gsub(/ /, "-", s)
+      print (seen[s]++ ? s "-" (seen[s] - 1) : s)
+    }
+  ' "$1"
 }
 
 while IFS= read -r file; do
@@ -136,6 +144,10 @@ done < <(awk '
 while IFS= read -r rule; do
   grep -qF "$rule" "$skill" || problem "README.md lists a rule SKILL.md does not have: $rule"
 done < <(grep -E '^[0-9]+\. \*\*.*\*\*$' "$readme" || true)
+
+while IFS= read -r rule; do
+  grep -qxF "$rule" "$readme" || problem "README.md does not list the rule: $rule"
+done < <(grep -oE '^[0-9]+\. \*\*[^*]+\*\*' "$skill" || true)
 
 # --- the manifest carries the description's first sentence -------------------
 

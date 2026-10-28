@@ -91,7 +91,7 @@ carries its reason:
 
 ## What it is not
 
-- **Not a linter.** It is judgment, applied while writing. The only script here,
+- **Not a linter.** It is judgment, applied while writing or reviewing. The only script here,
   [`scripts/check.sh`](scripts/check.sh), checks this repository and nothing of yours.
 - **Not a style guide.** It does not care about tone or grammar.
 
