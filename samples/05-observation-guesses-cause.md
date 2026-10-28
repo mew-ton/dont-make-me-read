@@ -3,9 +3,9 @@
 **Pattern.** A source document reaches forward into what would explain it. The observation now
 depends on a cause nobody has established, and every reader downstream inherits the guess as fact.
 
-## Files
+## Bad
 
-`docs/qa-report-142.md`
+**Bad** `docs/qa-report-142.md`
 
 ```md
 **Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
@@ -14,13 +14,13 @@ support".
 **Probably** the retry loop is running on the UI thread, since the whole page stops responding.
 ```
 
-`https://github.com/example/orderly/issues/231`
+**Bad** `https://github.com/example/orderly/issues/231`
 
 ```md
 The retry loop is blocking the main thread.
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -33,19 +33,30 @@ The retry loop is blocking the main thread.
 | `docs/qa-report-142.md › Observed` | `› Probably` | **reversed**: the observation leans on its own explanation |
 | `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Probably` | **hidden**: the guess is restated as a finding, source unnamed |
 
-## What is wrong
+### What is wrong
 
 A cause is an explanation of an observation and depends on it, never the other way round. Once the
 guess sits inside the report, the issue copies it without the "probably", and the engineer who
 reads the issue starts from a conclusion QA never had the means to reach.
 
-## What the rule says
+## Good
 
-Rule 5: depend only on what you explain or reproduce, and say which you are. The report records
-what was seen. The cause, when someone establishes it, is its own paragraph with its own address,
-and it cites the report.
+**Good** `docs/qa-report-142.md`
 
 ```md
 **Observed.** The screen freezes for about ten seconds after pressing Pay, then shows "contact
 support". The whole page stops responding during the freeze.
 ```
+
+**Good** `https://github.com/example/orderly/issues/231`
+
+```md
+Cause, established by profiling the freeze: `withRetry` awaits its delays on the thread that
+renders checkout. Observation: QA report 142, `docs/qa-report-142.md`.
+```
+
+### Why
+
+Rule 5: depend only on what you explain or reproduce, and say which you are. The report records
+what was seen; what the page did is an observation and stays. The cause, once someone establishes
+it, is its own paragraph with its own address, and it cites the report.

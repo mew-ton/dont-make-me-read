@@ -9,9 +9,9 @@ The test for each line is: is it derived from the problem? Would the problem be 
 it? If so it is a requirement, however detailed, and it belongs. If not it is one shape the writer
 imagined, and the choice is made where the code is written.
 
-## Files: design the problem did not require
+## Bad
 
-`https://github.com/example/orderly/issues/231`
+**Bad** `https://github.com/example/orderly/issues/231`
 
 ```md
 # Checkout hangs when the payment provider is slow
@@ -27,7 +27,7 @@ as its second argument, defaulting to a module-level `defaultScheduler`. Add
 `defaultScheduler` explicitly.
 ```
 
-`src/retry.ts`, as merged
+**Bad** `src/retry.ts`, as merged
 
 ```ts
 /** Reproduces "Retries are bounded" (docs/architecture.md). Yields to the event loop before
@@ -44,13 +44,13 @@ export async function withRetry<T>(fn: () => Promise<T>, limit = config.maxRetri
 }
 ```
 
-`https://github.com/example/orderly/pull/245`
+**Bad** `https://github.com/example/orderly/pull/245`
 
 ```md
 Fixes #231. No scheduler class: a one-line `yieldThen` was enough.
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -66,7 +66,7 @@ Fixes #231. No scheduler class: a one-line `yieldThen` was enough.
 | `src/retry.ts › withRetry` | `https://github.com/example/orderly/issues/231 › Fix` | **absent**: the code does not reproduce it, and says so only in a PR line the issue's reader never sees |
 | `https://github.com/example/orderly/pull/245` | `https://github.com/example/orderly/issues/231` | visible ("Fixes #231"), and now asserts a reproduction of `› Fix` that did not happen |
 
-## What is wrong
+### What is wrong
 
 Ask of each line in `› Fix` whether the problem stays unsolved without it. A `RetryScheduler`
 class: no, the page can stay responsive without one. Its file, its method, its default instance,
@@ -80,13 +80,26 @@ for the scheduler finds the issue and not the code.
 The detail was written so an agent could act without asking. It did, and produced something
 better. What it needed was the problem, what solving it requires, and the walls.
 
-## Files: design the problem requires
+## Good
 
-Replacing a hand-rolled implementation with a standard one is a problem whose solution has to say
-where compatibility breaks and how it is kept. That design is a requirement, and it belongs in the
-issue, with its owners named where they exist.
+Issue 231, cut to what the problem requires. The merged code and the PR are unchanged.
 
-`https://github.com/example/orderly/issues/248`
+**Good** `https://github.com/example/orderly/issues/231`
+
+```md
+# Checkout hangs when the payment provider is slow
+
+Paying with the test card ending 0002 freezes the page for about ten seconds (QA report 142).
+
+Done when: the page stays responsive while `withRetry` waits between attempts, and the bound on
+retries is unchanged ("Retries are bounded", `docs/architecture.md`: the provider bills per
+attempt).
+```
+
+A different problem, whose solution has to say where compatibility breaks and how it is kept.
+That design is a requirement, and it belongs in the issue, with its owners named where they exist.
+
+**Good** `https://github.com/example/orderly/issues/248`
 
 ```md
 # Replace the hand-rolled retry with `p-retry`
@@ -108,7 +121,7 @@ Done when every line below holds.
 - The bound on attempts stays ("Retries are bounded", `docs/architecture.md`).
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -128,7 +141,7 @@ replacement is not a replacement. The wrapper is new, so no earlier paragraph ow
 is where it gets its address, and the code will cite it. What the issue does not say is how the
 wrapper is built, because the problem does not care.
 
-## What the rule says
+### Why
 
 Rule 5: a paragraph depends on what it explains, and an issue explains a problem, so each of its
 lines is derived from the problem or is not the issue's. That decides how much design an issue
@@ -138,15 +151,3 @@ in an issue, from which the reader concludes the shape you saw while writing is 
 Where a required design is new, the issue is its address, and the code cites it; where a shape has
 to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
 divergence is a defect between two addressed paragraphs, as in case 09.
-
-Issue 231, cut to what the problem requires:
-
-```md
-# Checkout hangs when the payment provider is slow
-
-Paying with the test card ending 0002 freezes the page for about ten seconds (QA report 142).
-
-Done when: the page stays responsive while `withRetry` waits between attempts, and the bound on
-retries is unchanged ("Retries are bounded", `docs/architecture.md`: the provider bills per
-attempt).
-```

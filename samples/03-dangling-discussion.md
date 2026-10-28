@@ -2,9 +2,9 @@
 
 **Pattern.** An explanation depends on something no reader can reach: a conversation.
 
-## Files
+## Bad
 
-`https://github.com/example/orderly/issues/231`
+**Bad** `https://github.com/example/orderly/issues/231`
 
 ```md
 # Checkout hangs when the payment provider is slow
@@ -13,7 +13,7 @@ As discussed in standup, QA found that paying with a declining card locks the pa
 seconds and then shows the wrong message.
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -24,16 +24,15 @@ seconds and then shows the wrong message.
 |---|---|---|
 | `https://github.com/example/orderly/issues/231` | the standup | **dangling**: the target cannot be reached by anyone who was not there |
 
-## What is wrong
+### What is wrong
 
 Whatever was settled in standup is what the issue leans on, and it is not written anywhere. The
 reader either reconstructs it, wrongly, or asks, which is the round trip the issue was meant to
 save.
 
-## What the rule says
+## Good
 
-Rule 3: never "as discussed". Rule 4: state the part the reader needs, and name the owner. If the
-standup produced a decision, the decision now needs an address; the issue is where it gets one.
+**Good** `https://github.com/example/orderly/issues/231`
 
 ```md
 # Checkout hangs when the payment provider is slow
@@ -42,3 +41,8 @@ QA report 142 (`docs/qa-report-142.md`): "The screen freezes for about ten secon
 Pay, then shows 'contact support'." We decided (here, 2026-10-27) to treat this as a defect in the
 retry layer rather than in the provider.
 ```
+
+### Why
+
+Rule 3: never "as discussed". Rule 4: state the part the reader needs, and name the owner. If the
+standup produced a decision, the decision now needs an address; the issue is where it gets one.

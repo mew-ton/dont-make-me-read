@@ -3,9 +3,9 @@
 **Pattern.** A test's body leans on a block that runs before it by convention, not by being named.
 The claim cannot be read from the test alone.
 
-## Files
+## Bad
 
-`src/retry.test.ts`
+**Bad** `src/retry.test.ts`
 
 ```ts
 let calls: number;
@@ -25,7 +25,7 @@ it("stops after the configured number of attempts", async () => {
 });
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -36,16 +36,15 @@ it("stops after the configured number of attempts", async () => {
 |---|---|---|
 | the test body | `beforeEach` | **hidden**: `calls` and `failing` arrive by position |
 
-## What is wrong
+### What is wrong
 
 The body says `failing` and `calls` and defines neither. A reader who landed on the test by its name
 has to scroll up to learn what `failing` does, and to learn that `calls` was zero. The claim's
 reproduction is split across two places and only one of them has an address.
 
-## What the rule says
+## Good
 
-Rule 3: a state the body uses is named. The *Direction* section of `references/program.md` shows the
-shape: the body names what it leans on.
+**Good** `src/retry.test.ts`
 
 ```ts
 it("stops after the configured number of attempts", async () => {
@@ -54,3 +53,9 @@ it("stops after the configured number of attempts", async () => {
   expect(fn.calls).toBe(3);
 });
 ```
+
+### Why
+
+Rule 3: a state the body uses is named. The *Direction* section of `references/program.md` shows the
+shape: the body names what it leans on. `countingFailure` is a named helper, so the edge to it is
+visible and the reader can follow it or not.

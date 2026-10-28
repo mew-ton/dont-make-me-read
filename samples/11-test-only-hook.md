@@ -3,9 +3,9 @@
 **Pattern.** Production code exports something that exists so a test can reach in. The subject now
 depends on what explains it.
 
-## Files
+## Bad
 
-`src/retry.ts`
+**Bad** `src/retry.ts`
 
 ```ts
 let attemptsSeen = 0;
@@ -19,7 +19,7 @@ export function __resetForTests() {
 }
 ```
 
-`src/retry.test.ts`
+**Bad** `src/retry.test.ts`
 
 ```ts
 import { withRetry, __resetForTests } from "./retry";
@@ -27,7 +27,7 @@ import { withRetry, __resetForTests } from "./retry";
 beforeEach(() => __resetForTests());
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -40,16 +40,15 @@ beforeEach(() => __resetForTests());
 | `src/retry.test.ts` | `src/retry.ts › withRetry` | visible, by import: correct |
 | `src/retry.ts › __resetForTests` | `src/retry.test.ts` | **reversed**: the subject holds a paragraph whose only reader is its test |
 
-## What is wrong
+### What is wrong
 
 `attemptsSeen` is module state, which is why the test needs to reset it, which is why the hook
 exists. The hook is the symptom; the hidden state is the claim the module makes without saying so.
 Every reader of `retry.ts` pays for a declaration that means nothing in production.
 
-## What the rule says
+## Good
 
-Rule 5: the subject never depends on the test. Remove the state the test had to reset, and the hook
-has nothing to do.
+**Good** `src/retry.ts`
 
 ```ts
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
@@ -58,3 +57,14 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
   }
 }
 ```
+
+**Good** `src/retry.test.ts`
+
+```ts
+import { withRetry } from "./retry";
+```
+
+### Why
+
+Rule 5: the subject never depends on the test. Remove the state the test had to reset, and the hook
+has nothing to do.

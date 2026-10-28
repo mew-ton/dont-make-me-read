@@ -3,9 +3,9 @@
 **Pattern.** The source lists what reproduces it, and the reproduction does not cite the source.
 Both edges point the wrong way.
 
-## Files
+## Bad
 
-`docs/architecture.md`
+**Bad** `docs/architecture.md`
 
 ```md
 ## Retries are bounded
@@ -16,7 +16,7 @@ for one stuck order. The bound is implemented in `src/retry.ts` by `withRetry`, 
 through `config/retry.json`.
 ```
 
-`src/retry.ts`
+**Bad** `src/retry.ts`
 
 ```ts
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
@@ -25,7 +25,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 }
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -37,16 +37,15 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 | `docs/architecture.md › Retries are bounded` | `src/retry.ts › withRetry` | **reversed**: a source naming its reproduction; goes stale on the next rename |
 | `src/retry.ts › withRetry` | `docs/architecture.md › Retries are bounded` | **missing**: the code does not say what it reproduces |
 
-## What is wrong
+### What is wrong
 
 Rename `withRetry` and the decision is wrong. Add a second place that bounds retries and the
 decision is incomplete. Meanwhile a reader of the code has no way to learn that the bound is about
 billing, so the next person to "simplify" it removes the bound.
 
-## What the rule says
+## Good
 
-Rule 5: the reproduction cites the source, in the source's words; the source does not list its
-reproductions. The reverse direction is a search for the decision's words, which the code carries.
+**Good** `docs/architecture.md`
 
 ```md
 ## Retries are bounded
@@ -56,7 +55,17 @@ because the provider bills per attempt, and an unbounded retry once produced a f
 for one stuck order.
 ```
 
+**Good** `src/retry.ts`
+
 ```ts
 /** Reproduces "Retries are bounded" (docs/architecture.md): the provider bills per attempt. */
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
+  const limit = config.maxRetries;
+  // ...
+}
 ```
+
+### Why
+
+Rule 5: the reproduction cites the source, in the source's words; the source does not list its
+reproductions. The reverse direction is a search for the decision's words, which the code carries.

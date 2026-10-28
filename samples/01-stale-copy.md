@@ -3,15 +3,15 @@
 **Pattern.** A number has an owner, and a document restates it instead of citing it. The owner
 changed; the document did not.
 
-## Files
+## Bad
 
-`config/retry.json`
+**Bad** `config/retry.json`
 
 ```json
 { "maxRetries": 3, "baseDelayMs": 200 }
 ```
 
-`README.md`
+**Bad** `README.md`
 
 ```md
 ## Retries
@@ -20,7 +20,7 @@ Payment calls are retried up to five times before the order is marked failed. Th
 tries doubles each time.
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -31,16 +31,15 @@ tries doubles each time.
 |---|---|---|
 | `README.md › Retries` | `config/retry.json › maxRetries` | **missing**: the value is restated, the owner is not named |
 
-## What is wrong
+### What is wrong
 
 Two paragraphs make the same claim and only one of them is checked by anything. A reader who finds
 the README decides on five. Nothing tells them there is a second place, and nothing told the
 writer who changed the config that there was a first.
 
-## What the rule says
+## Good
 
-Rule 4: a claim that has an owner is cited, not restated. Restate only what the reader needs, in
-the owner's words, and name the owner.
+**Good** `README.md`
 
 ```md
 ## Retries
@@ -48,3 +47,8 @@ the owner's words, and name the owner.
 A payment call is retried a fixed number of times (`maxRetries` in `config/retry.json`), waiting
 twice as long before each try, and then the order is marked failed.
 ```
+
+### Why
+
+Rule 4: a claim that has an owner is cited, not restated. Restate only what the reader needs, in
+the owner's words, and name the owner. The config is unchanged; it was never the problem.

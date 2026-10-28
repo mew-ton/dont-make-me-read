@@ -1,13 +1,14 @@
 # Samples
 
-One file per case. Each case is a few files shown as code blocks, the graph of explanations they
-form, what is wrong with it, and what the rule in
-[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md) says to do. The files
-are not on disk, so nothing here runs; the case is the graph.
+One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
+with its path or URL, then the graph of explanations they form and what is wrong with it. **Good**
+shows the same files corrected, each labelled `**Good**`, then why, naming the rule in
+[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). The files are not
+on disk, so nothing here runs; the case is the graph.
 
 ## How to use a case
 
-Hand an agent the code blocks of one case, without the rest of the file, and ask:
+Hand an agent the **Bad** blocks of one case, without the rest of the file, and ask:
 
 > List the explanations in these files as nodes, each by its address. List every edge between
 > them with its direction, and say whether it is visible, hidden, missing or pointing the wrong

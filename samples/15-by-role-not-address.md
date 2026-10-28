@@ -3,9 +3,9 @@
 **Pattern.** A paragraph names what it depends on by its role, not its address. The reader who
 knows the role can follow; the reader who does not, and every tool, cannot.
 
-## Files
+## Bad
 
-`https://github.com/example/orderly/pull/245`
+**Bad** `https://github.com/example/orderly/pull/245`
 
 ```md
 # Fix the checkout hang
@@ -16,7 +16,7 @@ config is read once at startup instead of on every call.
 Files to look at: `src/retry.ts` and `src/checkout.ts`.
 ```
 
-## Graph
+### Graph
 
 | Node | Address | Source or derived |
 |---|---|---|
@@ -28,16 +28,15 @@ Files to look at: `src/retry.ts` and `src/checkout.ts`.
 | `https://github.com/example/orderly/pull/245` | the config | **hidden by role**: "the usual retry config" has no path |
 | `https://github.com/example/orderly/pull/245` | the files changed | **noise**: two files offered as the set to look at; a reader takes it as complete |
 
-## What is wrong
+### What is wrong
 
 A reviewer who was not in the team last week cannot find the issue. An agent cannot find it at all.
 "The usual retry config" is a file the writer has open and the reader does not. And "files to look
 at" is read as "the files that changed", which the PR itself knows and the sentence does not say.
 
-## What the rule says
+## Good
 
-Rule 3: by address. Rule 2: the diff already lists its files; a sentence that lists two of them
-narrows the reader's attention without saying it has.
+**Good** `https://github.com/example/orderly/pull/245`
 
 ```md
 # Fix the checkout hang
@@ -45,3 +44,8 @@ narrows the reader's attention without saying it has.
 Fixes #231. `withRetry` (`src/retry.ts`) now yields between attempts instead of blocking the
 rendering thread, and `config/retry.json` is read once at startup.
 ```
+
+### Why
+
+Rule 3: by address. Rule 2: the diff already lists its files; a sentence that lists two of them
+narrows the reader's attention without saying it has.
