@@ -53,15 +53,20 @@ Of an edge from A to B, where A depends on B:
 | visible | a reader can reach both ends: A names B by an address that holds for A's readers |
 | missing | a reader cannot reach one end, or both: A names B by nothing, by a position, a role or a conversation, or by a name that is not an address for A's readers, or an end has no address |
 | contradiction | what A holds of B's information disagrees with B as it is now |
-| reversed | it runs from a source to a claim derived from it |
 
-A reversed edge is converging or diverging:
+Every edge also converges or diverges, by what adding another claim like B does to A:
 
-- **converging**: it points at whatever the source's scope holds, so a new derived claim leaves the
-  source as it is. Set-up that every test in its scope depends on is one. It is not a defect.
-- **diverging**: it points at one derived claim in particular, so each new one changes the source.
-  The source names that claim, holds it in its own place, or sits in a scope wider than the claims
-  that depend on it. It is a defect.
+- **converging**: A stays as it is. A points at whatever a scope holds: set-up that every test in
+  its scope depends on, a router that serves whatever the pages directory holds.
+- **diverging**: A has to be rewritten. A names each such claim one by one, or sits in a scope
+  wider than the claims that depend on it: a route table with a line per page, a parameter per
+  caller, a decision that lists its implementations. It is a defect.
+
+To find diverging edges, ask which existing claims have to be rewritten to add a claim, one that
+is only planned included. The edges from those to the new one diverge.
+
+An edge from a source to a claim derived from it is **reversed**. That says which way it runs; it
+is a defect only when it diverges.
 
 ## Node judgments
 

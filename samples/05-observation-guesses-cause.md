@@ -27,13 +27,13 @@ The retry loop is blocking the main thread.
 
 | Node | Address | Source or derived |
 |---|---|---|
+| the report | `docs/qa-report-142.md` | **two claims**: what QA saw, and a cause QA had no means to establish, cited together as QA's report |
 | the observation | `docs/qa-report-142.md › Observed` | source |
 | the guessed cause | `docs/qa-report-142.md › Likely cause` | would be derived from the observation, but sits inside it |
 | the task's statement of cause | `https://github.com/example/orderly/issues/231` | derived from the guess, stated as fact |
 
 | From | To | Edge |
 |---|---|---|
-| `docs/qa-report-142.md` | `docs/qa-report-142.md › Likely cause` | **reversed**, diverging: the source carries what would explain it |
 | `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Likely cause` | **missing**: the guess is restated as a finding, source unnamed |
 
 ### What is wrong

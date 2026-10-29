@@ -34,7 +34,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 | From | To | Edge |
 |---|---|---|
-| `docs/architecture.md › Retries are bounded` | `src/retry.ts › withRetry` | **reversed**, diverging: a source naming its reproduction; goes stale on the next rename |
+| `docs/architecture.md › Retries are bounded` | `src/retry.ts › withRetry` | **diverging**, and reversed: a source naming its reproduction; goes stale on the next rename |
 | `src/retry.ts › withRetry` | `docs/architecture.md › Retries are bounded` | **missing**: the code does not say what it reproduces |
 
 ### What is wrong

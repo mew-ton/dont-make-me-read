@@ -33,8 +33,10 @@ A missing edge (`glossary.md › Edge judgments`) shows as any of these. Each is
   reach it.
 - an interface satisfied structurally, with nothing in the implementation saying so
 
-A diverging reversed edge shows as any of these. Each is a red flag:
+A diverging edge shows as any of these. Each is a red flag:
 
+- a list that names its members one by one where they could be found by a convention, such as a
+  route table with a line per page
 - a name that carries a caller's knowledge: a parameter or a branch named after who calls it
 - a hook that production code holds only so a test can reach in
 - shared set-up, such as a before-each block, a fixture file or a test's main, holding what only

@@ -28,7 +28,7 @@ it("setting `densities` sets `widths` to the width times each density", () => {
 | From | To | Edge |
 |---|---|---|
 | the test body | `defaultProps`, `defaultExpects` | visible: named by identifier |
-| `defaultProps`, `defaultExpects` | the test | **reversed**, diverging: the defaults hold `width`, `densities` and `widths` for this test alone, in a scope every test in the file shares |
+| `defaultProps`, `defaultExpects` | the test | **diverging**, and reversed: the defaults hold `width`, `densities` and `widths` for this test alone, in a scope every test in the file shares |
 
 ### What is wrong
 

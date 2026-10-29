@@ -18,9 +18,9 @@ the rest of the file, and run two steps.
 Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 
 > Review these files. List the claims in them as nodes, each by its address, and every edge
-> between them with its direction. Judge each edge as visible, missing, a contradiction or
-> reversed, each reversed edge as converging or diverging, and say of each node whether it is a
-> duplicate, noise, or two claims in one.
+> between them with its direction. Judge each edge as visible, missing or a contradiction, and as
+> converging or diverging, and say of each node whether it is a duplicate, noise, or two claims in
+> one.
 > Then correct the files where they need it.
 
 Step 2, in the next message, without naming the skill:
@@ -47,14 +47,14 @@ Every graph in a case uses the judgments in
 | [02 "See the section below"](02-reading-order.md) | missing edge: a position |
 | [03 "As discussed in standup"](03-as-discussed.md) | missing edge: a conversation nobody else can open |
 | [04 A report retold in other words](04-translation-without-quote.md) | missing edge: a translation without the quote |
-| [05 An observation that guesses its cause](05-observation-guesses-cause.md) | diverging reversed edge |
-| [06 A decision that names its implementation](06-decision-names-implementation.md) | diverging reversed edge, missing edge |
-| [07 A callee that knows its caller](07-callee-knows-caller.md) | diverging reversed edge |
-| [08 A doc comment that describes the caller](08-jsdoc-describes-caller.md) | diverging reversed edge |
+| [05 An observation that guesses its cause](05-observation-guesses-cause.md) | two claims: an observation and a guess, cited as one report |
+| [06 A decision that names its implementation](06-decision-names-implementation.md) | diverging edge, missing edge |
+| [07 A callee that knows its caller](07-callee-knows-caller.md) | diverging edge |
+| [08 A doc comment that describes the caller](08-jsdoc-describes-caller.md) | diverging edge |
 | [09 A PRD and an interface that contradict](09-prd-contradicts-interface.md) | contradiction, missing edge |
 | [10 A precedence stated nowhere](10-ambient-state.md) | missing edge: a claim with no address |
 | [11 State the interface does not declare](11-test-only-hook.md) | missing edge: state the signature does not declare |
-| [12 A default that hides the claim](12-default-hides-the-claim.md) | diverging reversed edge: shared defaults that hold one test's claim |
+| [12 A default that hides the claim](12-default-hides-the-claim.md) | diverging edge: shared defaults that hold one test's claim |
 | [13 Three tests, one claim](13-three-tests-one-claim.md) | duplicate node, noise |
 | [14 A menu of fixes](14-menu-of-fixes.md) | noise |
 | [15 "The issue QA reported"](15-by-role-not-address.md) | missing edge: a role, noise |

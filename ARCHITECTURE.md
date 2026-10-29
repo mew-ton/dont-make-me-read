@@ -25,7 +25,8 @@ in
 [`glossary.md › Edge judgments`](skills/dont-make-me-read/references/glossary.md#edge-judgments)
 and
 [`glossary.md › Node judgments`](skills/dont-make-me-read/references/glossary.md#node-judgments)
-other than *visible* and a *converging* reversed edge.
+other than *visible*, *converging* and *reversed*, which say how an edge runs and are not defects
+on their own.
 
 ### Scope
 
