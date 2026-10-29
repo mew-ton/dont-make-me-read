@@ -19,14 +19,16 @@ before it leans on something that reader does not have.
 ## Edges
 
 A visible edge is a path, a link, a heading named, or an identifier in backticks. The reader can
-follow it, and so can a script that checks the target exists.
+follow it, and so can a script that checks the target exists. An address counts only if this
+paragraph's readers can open it: one the writer can open and the reader cannot, a chat session, a
+private channel, a file on the writer's disk, is dangling for that reader, however exact its URL.
 
 A hidden edge is any of these. Each is a red flag:
 
 - "see above", "below", "the previous section"
 - "as discussed", "we originally went with", "not A but B": a past only the participants hold
-- "as requested", "I flagged earlier", "you said": the conversation that produced this text, which
-  its reader was not in, and whose "you" is somebody else
+- "as requested", "you said", an instruction with nothing in front of it: the conversation that
+  produced this text, which its reader was not in
 - "the config", "the usual way", "same as the other one": a thing named by its role, not its address
 - a count, a name or a definition copied from the file that owns it, without naming that file
 - a sentence that only means something with another file open
