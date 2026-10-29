@@ -21,8 +21,7 @@ and outside that scope it is not an address:
 - an identifier in a program: where it resolves, inside its own scope, and outside it once exported
 - an issue or a pull request: its number inside its repository, and `owner/repo#number` or its URL
   outside it
-- a page in another tool, such as Figma or Notion: its URL, down to the node or block where the
-  tool has one
+- a page in another tool, such as Figma or Notion: its URL
 - a heading: inside its file, and with the file's path outside it
 
 A URL holds only for the readers who can open it. One the writer can open and the reader cannot, a
