@@ -15,7 +15,8 @@ is one instance.
 
 The name, with what it declares to take and to give back, is a claim of its own: it summarises
 the body. So it depends on the body, since a change to what the body does means checking the name
-again. It is not a duplicate, because the name is the address, which the body does not hold.
+again. It is not a duplicate (`glossary.md › Duplicate`), because the name is the address, which
+the body does not hold.
 
 A test is a named unit like any other: its name summarises its body. Whether the name is a string
 or an identifier is the framework's business, not this file's.

@@ -18,9 +18,8 @@ before it leans on something that reader does not have.
 ## Edges
 
 A visible edge is a path, a link, a heading named, or an identifier in backticks. The reader can
-follow it, and so can a script that checks the target exists. An address counts only if this
-paragraph's readers can open it: one the writer can open and the reader cannot, a chat session, a
-private channel, a file on the writer's disk, is dangling for that reader, however exact its URL.
+follow it, and so can a script that checks the target exists. A target this paragraph's readers
+cannot open is not an address for them (`glossary.md › Address`), and the edge to it is dangling.
 
 A hidden edge is any of these. Each is a red flag:
 

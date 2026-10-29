@@ -44,7 +44,7 @@ Every graph in a case uses these words and no others, and so does step 1.
 | an edge | reversed | a source names what reproduces it, or a callee names its caller |
 | an edge | dangling | the target has no address this paragraph's readers can open |
 | an edge | contradiction | the two ends say different things about the same claim |
-| a node | duplicate | it holds no information the claims it depends on do not already hold, as [`SKILL.md › Dependencies`](../skills/dont-make-me-read/SKILL.md#dependencies) says |
+| a node | duplicate | it holds no information the claims it depends on do not already hold, as [`glossary.md › Duplicate`](../skills/dont-make-me-read/references/glossary.md#duplicate) says |
 | a node | noise | it changes nothing the reader does next |
 | a node | two claims | it makes more than one claim, so they cannot be cited or corrected apart |
 
