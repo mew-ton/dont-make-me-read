@@ -6,11 +6,14 @@ shows the files that have a correction, each labelled `**Good**`, then why, nami
 [`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A Good that adds a
 file the Bad did not have carries that file's graph too. A file that did not change is not shown
 again, and a case whose correction depends on a decision it does not make says so instead of
-showing one. The files are not on disk, so nothing here runs; the case is the graph.
+showing one. A file the Bad leans on and the case does not judge, such as the conversation a
+comment came from, is labelled `**Context**`; it has no Good. The files are not on disk, so
+nothing here runs; the case is the graph.
 
 ## How to use a case
 
-Hand an agent the **Bad** blocks of one case, without the rest of the file, and run two steps.
+Hand an agent the **Bad** blocks of one case, and its **Context** blocks if it has any, without
+the rest of the file, and run two steps.
 
 Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 

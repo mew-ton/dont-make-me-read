@@ -9,8 +9,8 @@ chat is the common case, and so is a person reviewing from a call.
 
 ## Bad
 
-**Bad** `https://claude.ai/code/session_7f3a` (the chat that produced the comment; its operator
-and the reviewer can open it, the author cannot)
+**Context** `https://claude.ai/code/session_7f3a` (the chat that produced the comment; its
+operator and the reviewer can open it, the author cannot)
 
 ```
 Operator: The change adds an N+1: one request per line item. A backend endpoint is the permanent
