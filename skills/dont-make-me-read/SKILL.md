@@ -17,9 +17,19 @@ cost, because they read their own draft while supplying what it leaves out.
 
 ## The unit
 
-A paragraph makes one claim and carries its explanation. It has an address other paragraphs can
-name: a heading in prose, a name in a program. What those words mean in the thing you are writing
-is in the file *Which file to read* names.
+An explanation is anything a reader takes in to act on: an agreement, a subject, a supplement, a
+trap, a reason, a summary, a proposal, a principle, a program, and the list is not closed. A claim
+is the unit explanations come in: the smallest part that can be cited on its own and rewritten on
+its own. A paragraph makes one claim. It has an address other paragraphs can name: a heading in
+prose, a name in a program. What those words mean in the thing you are writing is in the file
+*Which file to read* names.
+
+## Dependencies
+
+A claim depends on another when a change to the other means the claim has to be checked again.
+A claim that holds no information the claims it depends on do not already hold is a duplicate. An
+address is information: a name says what to call the thing it names, which that thing does not
+say.
 
 ## Rules
 

@@ -9,13 +9,16 @@ is one instance.
 | In `SKILL.md` | In a program |
 |---|---|
 | paragraph | a named unit: a function, a type, a constant, a module, a test case |
-| claim | its name, with what it declares to take and to give back |
-| explanation | its body |
+| claim | its body, which explains what it does |
 | address | its name |
 | reader | the person reading the file, and an agent landing on the declaration by search |
 
-A test is a named unit like any other. Its name is the claim and its body reproduces the claim.
-Whether the name is a string or an identifier is the framework's business, not this file's.
+The name, with what it declares to take and to give back, is a claim of its own: it summarises
+the body. So it depends on the body, since a change to what the body does means checking the name
+again. It is not a duplicate, because the name is the address, which the body does not hold.
+
+A test is a named unit like any other: its name summarises its body. Whether the name is a string
+or an identifier is the framework's business, not this file's.
 
 ## Edges
 

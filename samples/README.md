@@ -1,7 +1,7 @@
 # Samples
 
 One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
-with its path or URL, then the graph of explanations they form and what is wrong with it. **Good**
+with its path or URL, then the graph of claims they form and what is wrong with it. **Good**
 shows the files that have a correction, each labelled `**Good**`, then why, naming the rule in
 [`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A Good that adds a
 file the Bad did not have carries that file's graph too. A file that did not change is not shown
@@ -17,7 +17,7 @@ the rest of the file, and run two steps.
 
 Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 
-> Review these files. List the explanations in them as nodes, each by its address, and every edge
+> Review these files. List the claims in them as nodes, each by its address, and every edge
 > between them with its direction. Judge each edge as visible, hidden, missing, reversed, dangling
 > or a contradiction, and say of each node whether it is a duplicate, noise, or two claims in one.
 > Then correct the files where they need it.
@@ -44,7 +44,7 @@ Every graph in a case uses these words and no others, and so does step 1.
 | an edge | reversed | a source names what reproduces it, or a callee names its caller |
 | an edge | dangling | the target has no address this paragraph's readers can open |
 | an edge | contradiction | the two ends say different things about the same claim |
-| a node | duplicate | a second place for a claim that already has one |
+| a node | duplicate | it holds no information the claims it depends on do not already hold, as [`SKILL.md › Dependencies`](../skills/dont-make-me-read/SKILL.md#dependencies) says |
 | a node | noise | it changes nothing the reader does next |
 | a node | two claims | it makes more than one claim, so they cannot be cited or corrected apart |
 

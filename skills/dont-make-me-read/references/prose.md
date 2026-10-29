@@ -8,8 +8,7 @@ a document, an issue, a review comment, a commit message, a comment in code.
 | In `SKILL.md` | In prose |
 |---|---|
 | paragraph | a paragraph; a list item or a table row stands alone the same way |
-| claim | the one statement it makes, usually its first sentence |
-| explanation | the rest of it |
+| claim | what the paragraph says, as one thing to cite or rewrite |
 | address | the heading above it; for a comment in code, the name of the declaration it sits on |
 | reader | a person reading from the top, and an agent landing on this paragraph by search |
 
