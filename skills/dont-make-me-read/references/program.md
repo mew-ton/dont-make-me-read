@@ -26,29 +26,45 @@ or an identifier is the framework's business, not this file's.
 A visible edge is a parameter, an import, a call by name, or an explicit statement that a type
 implements an interface. The reader can follow it, and so can the toolchain.
 
-A hidden edge is any of these. Each is a red flag:
+A missing edge (`glossary.md › Edge judgments`) shows as any of these. Each is a red flag:
 
-- state the body uses without naming: a global, an environment variable, module state, setup that
-  runs by position rather than by being called, such as a before-each block, a fixture file or a
-  test's main
+- state the body uses and the signature does not declare: a global, an environment variable,
+  module state. The body names it, and a caller, who reads only the name and the signature, cannot
+  reach it.
+- an interface satisfied structurally, with nothing in the implementation saying so
+
+A diverging reversed edge shows as any of these. Each is a red flag:
+
 - a name that carries a caller's knowledge: a parameter or a branch named after who calls it
 - a hook that production code holds only so a test can reach in
-- an interface satisfied structurally, with nothing in the implementation saying so
-- a comment that says what the body does in other words: a second owner of the same claim
+- shared set-up, such as a before-each block, a fixture file or a test's main, holding what only
+  some of the tests in its scope depend on. Set-up that every test in its scope depends on is a
+  converging edge, and not a red flag.
 
-One instance, a test whose setup is a hidden edge and one whose setup is named:
+A comment that says what the body does in other words is a duplicate (`glossary.md › Duplicate`):
+a second owner of the same claim.
+
+One instance, set-up that holds what only one of its tests depends on, and the same tests with
+that test holding it itself:
 
 ```ts
-// Not this: the claim cannot be read without the block above it.
+// Not this: only the first test depends on there being five items.
 beforeEach(() => { store = makeStore({ items: fiveItems() }); });
 it("shows at most three items", () => {
   expect(render(store.items, 3)).toHaveLength(3);
 });
+it("shows the store's name", () => {
+  expect(renderName(store)).toBe("Shop");
+});
 
-// This: the body names what it leans on.
+// This: the set-up holds what every test depends on, and the test holds the rest.
+beforeEach(() => { store = makeStore(); });
 it("shows at most three items", () => {
   const items = fiveItems();
   expect(render(items, 3)).toHaveLength(3);
+});
+it("shows the store's name", () => {
+  expect(renderName(store)).toBe("Shop");
 });
 ```
 

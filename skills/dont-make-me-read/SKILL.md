@@ -17,8 +17,8 @@ cost, because they read their own draft while supplying what it leaves out.
 
 ## The unit
 
-A paragraph makes one claim, under an address other paragraphs can name it by. What explanation,
-claim, address, dependency and duplicate mean is in
+A paragraph makes one claim, under an address other paragraphs can name it by. What those words
+mean, with the rest of the words a review uses, is in
 [`references/glossary.md`](references/glossary.md), for prose and a program alike. Where to find
 them in the thing you are writing is in the file *Which file to read* names.
 

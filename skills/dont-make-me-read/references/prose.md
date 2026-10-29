@@ -17,19 +17,25 @@ before it leans on something that reader does not have.
 
 ## Edges
 
-A visible edge is a path, a link, a heading named, or an identifier in backticks. The reader can
-follow it, and so can a script that checks the target exists. A target this paragraph's readers
-cannot open is not an address for them (`glossary.md › Address`), and the edge to it is dangling.
+A visible edge is a path, a link, a heading named, or an identifier in backticks, leading to
+something this paragraph's readers can open. The reader can follow it, and so can a script that
+checks the target exists.
 
-A hidden edge is any of these. Each is a red flag:
+A missing edge (`glossary.md › Edge judgments`) shows as any of these. Each is a red flag, and
+each names what to do instead:
 
-- "see above", "below", "the previous section"
-- "as discussed", "we originally went with", "not A but B": a past only the participants hold
+- "see above", "below", "the previous section": a position. Name the heading.
+- "as discussed", "we originally went with", "not A but B": a past only the participants hold.
+  Write down what was settled where the reader can open it, and name that.
 - "as requested", "you said", an instruction with nothing in front of it: the conversation that
-  produced this text, which its reader was not in
-- "the config", "the usual way", "same as the other one": a thing named by its role, not its address
-- a count, a name or a definition copied from the file that owns it, without naming that file
-- a sentence that only means something with another file open
+  produced this text, which its reader was not in. The same.
+- "the config", "the usual way", "same as the other one": a thing named by its role. Name its
+  address.
+- a count, a name or a definition copied from the file that owns it, without naming that file.
+  Name the owner.
+- a sentence that only means something with another file open. Name the file.
+- an address this paragraph's readers cannot open: a chat session, a private channel, a file on
+  the writer's disk. Put the claim where they can open it, and name that.
 
 ## Saying which you are
 

@@ -42,9 +42,9 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 | From | To | Edge |
 |---|---|---|
-| `src/retry.ts › withRetry` | `RETRY_LIMIT` | **hidden**: read from the environment, not in the signature |
+| `src/retry.ts › withRetry` | `RETRY_LIMIT` | **missing**: the body reads it, and the signature, which is all a caller reads, does not name it |
 | `README.md` | `config/retry.json` | **missing**: "the default" names the owner by role |
-| anything | the precedence | **dangling**: it has no address to cite |
+| anything | the precedence | **missing**: it has no address to cite |
 
 ### What is wrong
 

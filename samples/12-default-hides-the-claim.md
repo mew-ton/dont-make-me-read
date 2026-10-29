@@ -27,7 +27,8 @@ it("setting `densities` sets `widths` to the width times each density", () => {
 
 | From | To | Edge |
 |---|---|---|
-| the test body | `defaultProps`, `defaultExpects` | **hidden**: named, yet the body means something only with the defaults open, because `width`, `densities` and `widths` appear only inside them |
+| the test body | `defaultProps`, `defaultExpects` | visible: named by identifier |
+| `defaultProps`, `defaultExpects` | the test | **reversed**, diverging: the defaults hold `width`, `densities` and `widths` for this test alone, in a scope every test in the file shares |
 
 ### What is wrong
 
@@ -37,8 +38,8 @@ has to open both to find the three fields the claim is about, among the fields i
 someone edits `defaultProps` for another test's sake, this test's claim changes and nothing in it
 shows that it did.
 
-A `beforeEach` block is the cruder form of the same thing: setup the body leans on by position,
-with no name at all.
+A `beforeEach` block that holds what only some of the tests in its scope depend on is the same
+edge again.
 
 ## Good
 

@@ -65,5 +65,5 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 Rule 4: a claim that has an owner is cited, not restated, and what the declaration does is owned
 by its name, signature and body. The *Edges* section of `references/program.md` lists such a
-comment among the hidden edges: a second owner of the same claim. A comment on a declaration cites
+comment as a duplicate: a second owner of the same claim. A comment on a declaration cites
 what the declaration reproduces, and says nothing the body already says.

@@ -21,9 +21,11 @@ Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a 
 ## Reviewing
 
 A review finds defects in the graph of claims, and nothing else. A finding is one of the judgments
-in [`samples/README.md › Judgments`](samples/README.md#judgments) other than *visible*: an edge that
-is hidden, missing, reversed, dangling or a contradiction, or a node that is a duplicate, noise, or
-two claims in one.
+in
+[`glossary.md › Edge judgments`](skills/dont-make-me-read/references/glossary.md#edge-judgments)
+and
+[`glossary.md › Node judgments`](skills/dont-make-me-read/references/glossary.md#node-judgments)
+other than *visible* and a *converging* reversed edge.
 
 ### Scope
 

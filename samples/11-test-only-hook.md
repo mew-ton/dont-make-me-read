@@ -2,7 +2,7 @@
 
 **Pattern.** A module keeps state that none of its names mention. A test discovers it, because the
 second test in a file sees what the first one left behind, and the module grows a hook so the test
-can reset it. The hook is the visible symptom; the hidden state is the claim nobody made.
+can reset it. The hook is the visible symptom; the undeclared state is the claim nobody made.
 
 ## Bad
 
@@ -39,7 +39,7 @@ beforeEach(() => __resetForTests());
 
 | From | To | Edge |
 |---|---|---|
-| `src/retry.ts › withRetry` | `src/retry.ts › attemptsSeen` | **hidden**: the signature says `withRetry` is a function of `fn`; the body says it is also a function of every earlier call |
+| `src/retry.ts › withRetry` | `src/retry.ts › attemptsSeen` | **missing**: the signature says `withRetry` is a function of `fn`; the body says it is also a function of every earlier call |
 | `src/retry.test.ts` | `src/retry.ts › __resetForTests` | visible, and the only reason the hook exists |
 
 ### What is wrong

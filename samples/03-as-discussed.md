@@ -22,7 +22,7 @@ seconds and then shows the wrong message.
 
 | From | To | Edge |
 |---|---|---|
-| `https://github.com/example/orderly/issues/231` | the standup | **dangling**: the target cannot be reached by anyone who was not there |
+| `https://github.com/example/orderly/issues/231` | the standup | **missing**: the target cannot be reached by anyone who was not there |
 
 ### What is wrong
 

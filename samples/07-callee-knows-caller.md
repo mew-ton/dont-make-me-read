@@ -33,7 +33,7 @@ await withRetry(() => charge(orderId, amount), true);
 | From | To | Edge |
 |---|---|---|
 | `src/checkout.ts › pay` | `src/retry.ts › withRetry` | visible, by import: correct |
-| `src/retry.ts › withRetry` | `src/checkout.ts › pay` | **reversed**: `fromCheckout` is checkout's knowledge inside the callee |
+| `src/retry.ts › withRetry` | `src/checkout.ts › pay` | **reversed**, diverging: `fromCheckout` is checkout's knowledge inside the callee |
 
 ### What is wrong
 

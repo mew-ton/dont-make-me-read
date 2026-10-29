@@ -38,3 +38,35 @@ A claim depends on another when a change to the other means the claim has to be 
 ## Duplicate
 
 A claim that holds no information the claims it depends on do not already hold.
+
+## Source and derived
+
+Of two claims, the one that explains, reproduces or uses the other is derived from it, and the
+other is its source.
+
+## Edge judgments
+
+Of an edge from A to B, where A depends on B:
+
+| Judgment | Meaning |
+|---|---|
+| visible | a reader can reach both ends: A names B by an address that holds for A's readers |
+| missing | a reader cannot reach one end, or both: A names B by nothing, by a position, a role or a conversation, or by a name that is not an address for A's readers, or an end has no address |
+| contradiction | what A holds of B's information disagrees with B as it is now |
+| reversed | it runs from a source to a claim derived from it |
+
+A reversed edge is converging or diverging:
+
+- **converging**: it points at whatever the source's scope holds, so a new derived claim leaves the
+  source as it is. Set-up that every test in its scope depends on is one. It is not a defect.
+- **diverging**: it points at one derived claim in particular, so each new one changes the source.
+  The source names that claim, holds it in its own place, or sits in a scope wider than the claims
+  that depend on it. It is a defect.
+
+## Node judgments
+
+| Judgment | Meaning |
+|---|---|
+| duplicate | as *Duplicate* says |
+| two claims | a part of it can be cited or rewritten on its own, so it is more than one claim |
+| noise | it changes nothing its reader does next; judged against the reader, not read off the graph |
