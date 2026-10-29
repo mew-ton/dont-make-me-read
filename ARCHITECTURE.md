@@ -20,13 +20,8 @@ Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a 
 
 ## Reviewing
 
-A review finds defects in the graph of claims, and nothing else. A finding is one of the judgments
-in
-[`glossary.md › Edge judgments`](skills/dont-make-me-read/references/glossary.md#edge-judgments)
-and
-[`glossary.md › Node judgments`](skills/dont-make-me-read/references/glossary.md#node-judgments)
-other than *visible*, *converging* and *reversed*, which say how an edge runs and are not defects
-on their own.
+A review finds defects in the graph of claims, and nothing else: the findings
+[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) names.
 
 ### Scope
 
@@ -39,11 +34,9 @@ on their own.
 
 ### Steps
 
-1. List the claims in scope as nodes, each by its address, and say whether it is a source or what
-   it is derived from.
-2. List the edges between them with their direction, and judge each edge and each node.
-3. Report each judgment other than *visible*, with the address it sits at and the rule in
-   `SKILL.md` it breaks.
+The steps in [`analysis.md › Steps`](skills/dont-make-me-read/references/analysis.md#steps), over
+the scope above, reported as
+[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) says.
 
 ### When it is done
 

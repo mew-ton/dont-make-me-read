@@ -45,6 +45,7 @@ them in the thing you are writing is in the file *Which file to read* names.
 |---|---|
 | prose: a paragraph, a comment, a message | [`references/prose.md`](references/prose.md) |
 | a program: a declaration, a test | [`references/program.md`](references/program.md) |
+| the steps of finding what is wrong, in either | [`references/analysis.md`](references/analysis.md) |
 
 ## Persistence
 
