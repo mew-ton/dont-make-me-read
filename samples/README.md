@@ -6,11 +6,14 @@ shows the files that have a correction, each labelled `**Good**`, then why, nami
 [`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A Good that adds a
 file the Bad did not have carries that file's graph too. A file that did not change is not shown
 again, and a case whose correction depends on a decision it does not make says so instead of
-showing one. The files are not on disk, so nothing here runs; the case is the graph.
+showing one. A file the Bad leans on and the case does not judge, such as the conversation a
+comment came from, is labelled `**Context**`; it has no Good. The files are not on disk, so
+nothing here runs; the case is the graph.
 
 ## How to use a case
 
-Hand an agent the **Bad** blocks of one case, without the rest of the file, and run two steps.
+Hand an agent the **Bad** blocks of one case, and its **Context** blocks if it has any, without
+the rest of the file, and run two steps.
 
 Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 
@@ -39,7 +42,7 @@ Every graph in a case uses these words and no others, and so does step 1.
 | an edge | hidden | there, but named by position or by role, or meaning something only with another file open |
 | an edge | missing | the dependency is real and nothing names it |
 | an edge | reversed | a source names what reproduces it, or a callee names its caller |
-| an edge | dangling | the target has no address anyone can reach |
+| an edge | dangling | the target has no address this paragraph's readers can open |
 | an edge | contradiction | the two ends say different things about the same claim |
 | a node | duplicate | a second place for a claim that already has one |
 | a node | noise | it changes nothing the reader does next |
@@ -67,3 +70,4 @@ Every graph in a case uses these words and no others, and so does step 1.
 | [16 A comment that restates the body](16-comment-restates-body.md) | duplicate node |
 | [17 An issue that designs the fix](17-issue-designs-the-fix.md) | noise: design the problem did not require |
 | [18 A TODO that outlived its fix](18-todo-that-outlived-its-fix.md) | contradiction: a derived explanation nobody re-derived |
+| [19 The last line of a conversation](19-last-line-of-a-conversation.md) | dangling edge: an address the reader cannot open, a name coined in the chat; missing edge: the observation the ask is derived from |
