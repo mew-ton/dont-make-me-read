@@ -25,6 +25,8 @@ A hidden edge is any of these. Each is a red flag:
 
 - "see above", "below", "the previous section"
 - "as discussed", "we originally went with", "not A but B": a past only the participants hold
+- "as requested", "I flagged earlier", "you said": the conversation that produced this text, which
+  its reader was not in, and whose "you" is somebody else
 - "the config", "the usual way", "same as the other one": a thing named by its role, not its address
 - a count, a name or a definition copied from the file that owns it, without naming that file
 - a sentence that only means something with another file open

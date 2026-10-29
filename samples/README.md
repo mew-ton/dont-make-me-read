@@ -67,3 +67,4 @@ Every graph in a case uses these words and no others, and so does step 1.
 | [16 A comment that restates the body](16-comment-restates-body.md) | duplicate node |
 | [17 An issue that designs the fix](17-issue-designs-the-fix.md) | noise: design the problem did not require |
 | [18 A TODO that outlived its fix](18-todo-that-outlived-its-fix.md) | contradiction: a derived explanation nobody re-derived |
+| [19 "You said that was intentional"](19-review-leans-on-the-chat.md) | dangling edge: a chat only the writer was in; hidden edge by role |
