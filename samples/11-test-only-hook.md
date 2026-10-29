@@ -34,7 +34,7 @@ beforeEach(() => __resetForTests());
 |---|---|---|
 | the subject | `src/retry.ts › withRetry` | source for its tests |
 | the state | `src/retry.ts › attemptsSeen` | a claim the module makes, with no address in its interface |
-| the hook | `src/retry.ts › __resetForTests` | exists only so the test can manage the state |
+| the hook | `src/retry.ts › __resetForTests` | **noise** to every production reader: it exists only so the test can manage the state |
 | the test file | `src/retry.test.ts` | derived: it explains `withRetry` |
 
 | From | To | Edge |
@@ -61,9 +61,15 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 }
 ```
 
+**Good** `src/retry.test.ts`
+
+```ts
+import { withRetry } from "./retry";
+```
+
 ### Why
 
 Rule 3: a state the body uses is named. Here nothing needed the counter, so it goes, and the hook
-with it. Where state is the point, a cache or a connection, it gets an address the signature shows:
-a parameter, or an object the caller and the test construct, so the test resets it by making a new
-one rather than through a door the module cut for it.
+with it, and the test no longer resets anything. Where state is the point, a cache or a connection,
+it gets an address the signature shows: a parameter, or an object the caller and the test construct,
+so the test resets it by making a new one rather than through a door the module cut for it.

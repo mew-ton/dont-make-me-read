@@ -1,7 +1,7 @@
 # Prose
 
-What the words in `SKILL.md` mean when what you are writing is prose: a paragraph of a document,
-an issue, a review comment, a commit message, a comment in code.
+What the words in `SKILL.md` mean when what you are writing or reviewing is prose: a paragraph of
+a document, an issue, a review comment, a commit message, a comment in code.
 
 ## The words
 
@@ -54,22 +54,23 @@ One instance. A task tracked in another tool, written up as an issue for an agen
 
 ## Placement
 
-- A decision reproduced by one declaration is that declaration's comment.
-- A decision reproduced across one module is in that module's document.
-- A decision reproduced across the whole tree is at the root.
+- A decision reproduced by one declaration, and read only by readers of that declaration, is that
+  declaration's doc comment.
+- A decision that readers reach from elsewhere too, an issue, another module, a product document,
+  is in the narrowest document all of them reach, and each declaration's doc comment cites it.
 - Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's
-  own instructions. If they do not set it for this kind, say so; do not pick one.
+  own instructions. Where they set nothing for this kind, rule 6 in `SKILL.md` applies.
 
 ## What noise does
 
-Cutting is one of the two outcomes of rule 2; the other is adding what the decision needs. The
-rationale, the constraint stated as the wall the reader would walk into, and the fact that makes the
-ask defensible are never cut, because without them the reader decides with less than you had. What
-does get cut is what makes a reader confident about the wrong thing:
+The rationale, the constraint stated as the wall the reader would walk into, and the fact that
+makes the ask defensible change what the reader does, so rule 2 keeps them: without them the reader
+decides with less than you had. What rule 2 cuts is what makes a reader confident about the wrong
+thing:
 
 | Noise | What the reader concludes |
 |---|---|
-| a menu of fixes you could have weighted yourself | that the choice is theirs, to make with less information than you had |
+| a menu of fixes you could have weighed yourself | that the choice is theirs, to make with less information than you had |
 | the paths you happened to sample, given as the fix | an agent: that those are the complete set to touch |
 | "handle this appropriately" | that the spec is complete |
 | the implementation method, in an issue | that the shape you saw while writing is still the shape today |

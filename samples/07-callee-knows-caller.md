@@ -47,7 +47,7 @@ user-facing message, which belongs to checkout, has moved into the retry layer.
 
 ```ts
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  // ... throws the last error when the limit is reached
+  // ...
 }
 ```
 
@@ -58,7 +58,7 @@ try {
   await withRetry(() => charge(orderId, amount));
   return "paid";
 } catch {
-  return "contact support";
+  return "contact-support";
 }
 ```
 

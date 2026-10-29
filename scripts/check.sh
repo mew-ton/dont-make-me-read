@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 #
-# Every consistency this tree promises, checked. No model call, no network.
-# A consistency this script does not check is not promised anywhere.
+# Checks the form of this tree: the skill's frontmatter, the size limits,
+# links and the headings they name, that README.md quotes SKILL.md, and that
+# samples cite rules, sections and cases that exist. No model call, no network.
+# Whether what the tree says holds together is a review's job, as
+# ARCHITECTURE.md › Reviewing says, not this script's.
 #
 # Usage:  bash scripts/check.sh
 # Exit:   0 when every check passes, 1 otherwise. Each failure is one line on stderr.
@@ -22,8 +25,9 @@ limit_reference=8192
 status=0
 problem() { echo "check: $*" >&2; status=1; }
 
-# frontmatter_field FIELD: the value of a frontmatter field. A folded scalar
-# (`field: >`) is joined into one line with single spaces.
+# frontmatter_field FIELD: the value of a frontmatter field. A block scalar
+# (`field: >` or `field: |`, with or without a chomping indicator) is joined
+# into one line with single spaces.
 frontmatter_field() {
   awk -v field="$1" '
     /^---[ \t]*$/ { fence++; next }
@@ -32,7 +36,7 @@ frontmatter_field() {
     on { sub(/^[ \t]+/, ""); out = out (out == "" ? "" : " ") $0; next }
     $0 ~ "^" field ":" {
       v = $0; sub("^" field ":[ \t]*", "", v)
-      if (v == ">" || v == "|") { on = 1 } else { out = v }
+      if (v ~ /^[>|][-+]?$/) { on = 1 } else { out = v }
     }
     END { print out }
   ' "$skill"
@@ -59,31 +63,92 @@ check_size() {
 check_size "$skill" "$limit_skill"
 for f in "$skill_dir"/references/*.md; do check_size "$f" "$limit_reference"; done
 
-# --- references: reached from SKILL.md, and from nowhere else ----------------
+# --- references: reached from SKILL.md, and not from each other --------------
 
 for f in "$skill_dir"/references/*.md; do
   rel="references/$(basename "$f")"
   grep -q "]($rel)" "$skill" || problem "$rel is not linked from SKILL.md"
-  if grep -q '](references/' "$f"; then problem "$rel links to another reference"; fi
+  if grep -qE '\]\((\./)?[^/)#]+\.md(#[^)]*)?\)|\]\(\.\./references/' "$f"; then
+    problem "$rel links to another reference"
+  fi
 done
 
-# --- every relative link resolves --------------------------------------------
+# --- every relative link resolves, heading included ---------------------------
+
+# slugs FILE: the anchor GitHub gives each heading in FILE, one per line. Lines
+# inside fenced code blocks are not headings, and a repeated slug gets -1, -2.
+slugs() {
+  awk '
+    /^```/ { fenced = !fenced; next }
+    fenced || !/^#{1,6} / { next }
+    {
+      s = tolower($0); sub(/^#+ /, "", s)
+      gsub(/[^a-z0-9 _-]/, "", s); gsub(/ /, "-", s)
+      print (seen[s]++ ? s "-" (seen[s] - 1) : s)
+    }
+  ' "$1"
+}
 
 while IFS= read -r file; do
   dir=$(dirname "$file")
   while IFS= read -r target; do
     case "$target" in ''|http://*|https://*|mailto:*|'#'*) continue ;; esac
     path=${target%%#*}
-    [ -e "$dir/$path" ] || problem "${file#"$root"/} links to $target, which does not exist"
+    if [ ! -e "$dir/$path" ]; then
+      problem "${file#"$root"/} links to $target, which does not exist"
+    elif [ "$path" != "$target" ] && ! slugs "$dir/$path" | grep -qxF "${target#*#}"; then
+      problem "${file#"$root"/} links to $target, whose file has no such heading"
+    fi
   done < <(grep -o '\]([^)]*)' "$file" | sed 's/^](//; s/)$//' || true)
 done < <(find "$root" -name '*.md' -not -path '*/.git/*')
+
+# --- samples cite rules, sections and cases that exist -----------------------
+
+rule_count=$(grep -cE '^[0-9]+\. \*\*' "$skill")
+for f in "$root"/samples/*.md; do
+  text=$(tr '\n' ' ' < "$f")
+  while IFS= read -r n; do
+    [ "$n" -ge 1 ] && [ "$n" -le "$rule_count" ] \
+      || problem "${f#"$root"/} cites rule $n; SKILL.md has $rule_count"
+  done < <(grep -oiE '\brule +[0-9]+' <<< "$text" | grep -oE '[0-9]+' || true)
+  while IFS=$'\t' read -r heading ref; do
+    grep -qxF "## $heading" "$skill_dir/$ref" \
+      || problem "${f#"$root"/} cites *$heading* in $ref, which has no such heading"
+  done < <(grep -oE '\*[^*]+\* +(section|table) +(of|in) +`references/[a-z-]+\.md`' <<< "$text" \
+             | sed -E 's/^\*([^*]+)\* +[a-z]+ +[a-z]+ +`([^`]+)`$/\1\t\2/' || true)
+  while IFS= read -r n; do
+    compgen -G "$root/samples/$n-*.md" > /dev/null \
+      || problem "${f#"$root"/} cites case $n, which does not exist"
+  done < <(grep -oiE '\bcases? +[0-9]{2}( +(and|to) +[0-9]{2})?' <<< "$text" | grep -oE '[0-9]{2}' || true)
+done
 
 # --- README quotes the description verbatim ----------------------------------
 
 squeeze() { tr -d ' \t\n>'; }
+squeeze_lines() { tr -d ' \t>'; }
 if ! squeeze < "$readme" | grep -qF "$(printf '%s' "$description" | squeeze)"; then
   problem "README.md does not quote the SKILL.md description verbatim"
 fi
+
+# --- README quotes SKILL.md, and only SKILL.md -------------------------------
+
+skill_squeezed=$(squeeze < "$skill")
+while IFS= read -r quote; do
+  [[ "$skill_squeezed" == *"$quote"* ]] \
+    || problem "README.md quotes text that is not in SKILL.md: ${quote:0:60}…"
+done < <(awk '
+  /^> / { sub(/^> /, ""); q = q $0; next }
+  q != "" { print q; q = "" }
+  END { if (q != "") print q }
+' "$readme" | squeeze_lines)
+
+while IFS= read -r rule; do
+  grep -qF "$rule" "$skill" || problem "README.md lists a rule SKILL.md does not have: $rule"
+done < <(grep -E '^[0-9]+\. \*\*.*\*\*$' "$readme" || true)
+
+while IFS= read -r rule; do
+  grep -qxF "$rule" "$readme" || problem "README.md does not list the rule: $rule"
+done < <(grep -oE '^[0-9]+\. \*\*[^*]+\*\*' "$skill" || true)
 
 # --- the manifest carries the description's first sentence -------------------
 

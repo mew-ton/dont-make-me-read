@@ -10,7 +10,7 @@ Both edges point the wrong way.
 ```md
 ## Retries are bounded
 
-A payment call is retried a fixed number of times and then the order fails. The bound exists
+A payment call is tried at most a fixed number of times and then the order fails. The bound exists
 because the provider bills per attempt, and an unbounded retry once produced a four-figure invoice
 for one stuck order. The bound is implemented in `src/retry.ts` by `withRetry`, and configured
 through `config/retry.json`.
@@ -20,7 +20,7 @@ through `config/retry.json`.
 
 ```ts
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  const limit = config.maxRetries;
+  const limit = config.maxAttempts;
   // ...
 }
 ```
@@ -50,7 +50,7 @@ billing, so the next person to "simplify" it removes the bound.
 ```md
 ## Retries are bounded
 
-A payment call is retried a fixed number of times and then the order fails. The bound exists
+A payment call is tried at most a fixed number of times and then the order fails. The bound exists
 because the provider bills per attempt, and an unbounded retry once produced a four-figure invoice
 for one stuck order.
 ```
@@ -60,7 +60,7 @@ for one stuck order.
 ```ts
 /** Reproduces "Retries are bounded" (docs/architecture.md): the provider bills per attempt. */
 export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  const limit = config.maxRetries;
+  const limit = config.maxAttempts;
   // ...
 }
 ```

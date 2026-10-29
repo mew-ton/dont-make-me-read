@@ -1,7 +1,8 @@
 # Program
 
-What the words in `SKILL.md` mean when what you are writing is a program: a declaration, its body,
-a test. Stated without any language's syntax; where an example uses one, it is one instance.
+What the words in `SKILL.md` mean when what you are writing or reviewing is a program: a
+declaration, its body, a test. Stated without any language's syntax; where an example uses one, it
+is one instance.
 
 ## The words
 
@@ -30,6 +31,22 @@ A hidden edge is any of these. Each is a red flag:
 - a hook that production code holds only so a test can reach in
 - an interface satisfied structurally, with nothing in the implementation saying so
 - a comment that says what the body does in other words: a second owner of the same claim
+
+One instance, a test whose setup is a hidden edge and one whose setup is named:
+
+```ts
+// Not this: the claim cannot be read without the block above it.
+beforeEach(() => { store = makeStore({ items: fiveItems() }); });
+it("shows at most three items", () => {
+  expect(render(store.items, 3)).toHaveLength(3);
+});
+
+// This: the body names what it leans on.
+it("shows at most three items", () => {
+  const items = fiveItems();
+  expect(render(items, 3)).toHaveLength(3);
+});
+```
 
 ## Saying which you are
 
@@ -61,27 +78,8 @@ function render(items: Item[], limit: number) {
 - A test is next to its subject: the same file or the same module, not a distant tree ordered by
   something else.
 - An interface is where every implementation imports it from.
-- A decision reproduced by one declaration is that declaration's doc comment; by many, it is at the
-  narrowest scope that holds them all.
 
 ## Direction
 
-The test depends on its subject, the implementation on its interface, the declaration on the
-decision it reproduces. The subject never depends on the test, the interface never names an
-implementation, the decision never lists what reproduces it.
-
-One instance, a test whose setup is a hidden edge and one whose setup is named:
-
-```ts
-// Not this: the claim cannot be read without the block above it.
-beforeEach(() => { store = makeStore({ items: three() }); });
-it("shows at most three items", () => {
-  expect(render(store.items, 3)).toHaveLength(3);
-});
-
-// This: the body names what it leans on.
-it("shows at most three items", () => {
-  const items = threeItems();
-  expect(render(items, 3)).toHaveLength(3);
-});
-```
+The test depends on its subject and never the other way: production code holds nothing that exists
+only for a test.

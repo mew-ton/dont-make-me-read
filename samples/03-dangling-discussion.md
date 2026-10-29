@@ -38,11 +38,13 @@ save.
 # Checkout hangs when the payment provider is slow
 
 QA report 142 (`docs/qa-report-142.md`): "The screen freezes for about ten seconds after pressing
-Pay, then shows 'contact support'." We decided (here, 2026-10-27) to treat this as a defect in the
-retry layer rather than in the provider.
+Pay, then shows 'contact support'." We decided (here, 2026-10-27) that the defect is in the retry
+layer: `withRetry` in `src/retry.ts`.
 ```
 
 ### Why
 
 Rule 3: never "as discussed". Rule 4: state the part the reader needs, and name the owner. If the
-standup produced a decision, the decision now needs an address; the issue is where it gets one.
+standup produced a decision, the decision now needs an address. This project's instructions
+(`CONTRIBUTING.md › Decisions`) put a decision about one task in that task's issue, so it goes
+here; where they set no place, rule 6 says to say so and stop.

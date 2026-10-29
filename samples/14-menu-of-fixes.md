@@ -23,6 +23,7 @@ Pick whichever is easiest. Handle the error states appropriately.
 | Node | Address | Source or derived |
 |---|---|---|
 | the task | `https://github.com/example/orderly/issues/231` | derived from an observation |
+| the list of fixes | `https://github.com/example/orderly/issues/231` (the list) | **noise**: it hands the reader a choice and changes nothing else they do |
 
 There are no edges in this paragraph, which is the problem: a fix is derived from a cause, and this
 paragraph names none.
@@ -39,13 +40,17 @@ appropriately" tells the reader the spec is complete when it is not.
 **Good** `https://github.com/example/orderly/issues/231`
 
 ```md
-Cause: `withRetry` awaits its delays on the thread that renders checkout. Fix: run the retry off
-that thread. Constraint: the bound on retries stays (see "Retries are bounded" in
-`docs/architecture.md`); the provider bills per attempt.
+Cause: `withRetry` (`src/retry.ts`) waits between attempts with `sleepSync`, a busy wait that
+blocks the thread that renders checkout.
+
+Done when: the page stays responsive while `withRetry` waits between attempts, and the bound on
+retries is unchanged ("Retries are bounded", `docs/architecture.md`: the provider bills per
+attempt).
 ```
 
 ### Why
 
 Rule 2: everything in the paragraph changes what the reader does next. The *What noise does* table
-in `references/prose.md` names both of these. State the cause, the one fix, and the constraint as
-the wall the reader would walk into.
+in `references/prose.md` names the menu of fixes and "handle this appropriately". State the cause,
+and what done means with the constraint in it as the wall the reader would walk into. Choosing the
+cause is the writer's; how to stop blocking is the implementer's, for the reason case 17 gives.
