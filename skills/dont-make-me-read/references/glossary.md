@@ -208,6 +208,10 @@ A claim that holds no information the claims it depends on do not already hold, 
 a claim nothing another claim depending on it does not already say. What is compared is what each
 says of the claim they depend on; their own addresses are not part of it.
 
+It is not a bug in itself; it is a tendency, each copy one more place to keep right, and a signal
+to fix. Where readers who cannot open each other's place each need the same words of an owner,
+each quotes them and names the owner, as rule 4 in `SKILL.md` allows.
+
 - Duplicates: a comment that says what the body does in other words, such as
   `// print the text to the console` over `console.log(text)`; `// checks 2 + 3 is 5` inside a
   test named "adding 2 and 3 gives 5"; a README sentence that says "three times" where
