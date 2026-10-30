@@ -14,7 +14,9 @@ The skill is meant to load while you do. Whether it does is a row of
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
 what the tree says holds together is not its job; that is the job of *Reviewing*.
 
-The size limits are stated in `scripts/check.sh` and nowhere else.
+The sizes of `SKILL.md` and the references are not capped. They are recorded in
+`scripts/sizes.snapshot`, and a change to one is recorded with `bash scripts/check.sh --update`, so
+a change shows in its diff how much each read grows.
 
 Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a change.
 
