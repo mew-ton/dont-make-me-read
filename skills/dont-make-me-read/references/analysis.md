@@ -3,7 +3,8 @@
 How to find the claims in what you are writing or reviewing, the edges between them, and what is
 wrong with them, in prose and in a program alike. The words are as `glossary.md` defines them.
 What an edge looks like in prose or in a program is in the *Edges* section of `prose.md` and of
-`program.md`.
+`program.md`. Each word a step judges by, the judgments included, has instances under its heading
+in `glossary.md`: read them before judging, and judge a new case by the instance nearest it.
 
 ## Steps
 
@@ -24,20 +25,6 @@ What an edge looks like in prose or in a program is in the *Edges* section of `p
    another claim like this one, a planned one included. The edges from those to it diverge; the
    others converge.
 6. **Check what each claim changes.** One that changes nothing its reader does next is noise.
-
-## Cutting, by instance
-
-- "Checkout times out after 30 seconds when the provider is slow. It is 30 because the provider's
-  SLA is 25. Please raise it to 60.": three claims, an observation, a reason and a request. Each
-  can be cited or rewritten alone; the request depends on the observation.
-- A commit message "Fix the checkout timeout and rename `fmt` to `formatPrice`": two claims. Each
-  can be reverted alone.
-- A function that rejects an empty order and then saves it: two claims. The rule can change while
-  saving stays.
-- A test named "adds an item" that also checks the total: two claims, and the name summarises one.
-- "A payment call is tried at most `maxAttempts` times, and then the order is marked failed": two
-  claims. What happens when the tries run out can change while the limit stays.
-- `const MAX_ATTEMPTS = 3`: one claim. No part of it can change alone.
 
 ## Reporting
 
