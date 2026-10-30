@@ -28,9 +28,9 @@ it("gives up after three tries", async () => {
 
 | Node | Address | Source or derived |
 |---|---|---|
-| `"works correctly"` | that string | **noise**: the name says nothing that could be false |
+| `"works correctly"` | that string | **noise**: the name says nothing that could be false; and a **duplicate**: its body asserts of `withRetry` what the next test already asserts |
 | `"stops after the configured number of attempts"` | that string | derived: explains `withRetry` |
-| `"gives up after three tries"` | that string | **duplicate** of the one above |
+| `"gives up after three tries"` | that string | **duplicate**: it asserts of `withRetry` what the one above already asserts |
 
 | From | To | Edge |
 |---|---|---|

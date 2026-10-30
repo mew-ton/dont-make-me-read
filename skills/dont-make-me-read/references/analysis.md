@@ -19,7 +19,8 @@ prose and in a program: read them before judging, and judge a new case by the in
    the starting claim again; how far that goes is the task's to decide.
 3. **Check that each edge can be followed.** It is visible or missing.
 4. **Check what a claim holds of what it depends on.** Where it restates part of it, the two agree,
-   or the edge is a contradiction. Where it holds nothing they do not, it is a duplicate.
+   or the edge is a contradiction. Where it holds nothing they do not, or says of one of them
+   nothing another claim depending on it does not already say, it is a duplicate.
 5. **Check what adding one more does.** Ask which existing claims have to be rewritten to add
    another claim like this one, a planned one included. The edges from those to it diverge; the
    others converge.

@@ -204,12 +204,15 @@ something to fix only when it also diverges.
 
 ### Duplicate
 
-A claim that holds no information the claims it depends on do not already hold.
+A claim that holds no information the claims it depends on do not already hold, or that says of
+a claim nothing another claim depending on it does not already say. What is compared is what each
+says of the claim they depend on; their own addresses are not part of it.
 
 - Duplicates: a comment that says what the body does in other words, such as
   `// print the text to the console` over `console.log(text)`; `// checks 2 + 3 is 5` inside a
   test named "adding 2 and 3 gives 5"; a README sentence that says "three times" where
-  `config/retry.json` says `3`, naming no owner.
+  `config/retry.json` says `3`, naming no owner; a second test that asserts of its subject what
+  another test already asserts, under a different name.
 - Not duplicates, because an address is information (*Address*): a function's name over its body,
   or a test's name over its body; a quote in the owner's words that names the owner.
 - Not a duplicate, because it holds what the body cannot show: a comment such as "stdout is
