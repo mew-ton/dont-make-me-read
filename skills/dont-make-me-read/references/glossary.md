@@ -116,6 +116,10 @@ A reader can reach both ends: A names B by an address that holds for A's readers
 A reader cannot reach one end, or both: A names B by nothing, or by something that is not an
 address for A's readers, or an end has no address.
 
+Which places a reader can open, a repository, a Figma file, a Notion page, depends on the access a
+team gives. Whether an edge missing for that reason is fixed by moving the claim or by giving the
+access is the team's to decide.
+
 In prose it shows as any of these, each with what to do instead:
 
 - "see above", "below", "the previous section": a position. Name the heading.
@@ -156,10 +160,9 @@ nothing to fix.
 ### Diverging
 
 Adding another claim like B means rewriting A, because A names each such claim one by one, or sits
-in a scope wider than the claims that depend on it. It is not a bug in itself; it is a tendency
-that makes each new claim cost a change elsewhere, and a signal to fix. To find one, ask which
-existing claims have to be rewritten to add a claim, one that is only planned included; the edges
-from those to the new one diverge.
+in a scope wider than the claims that depend on it, so each new claim costs a change elsewhere. To
+find one, ask which existing claims have to be rewritten to add a claim, one that is only planned
+included; the edges from those to the new one diverge.
 
 - In prose: a decision that lists the declarations implementing it.
 - In a program: a list that names its members one by one where they could be found by a
@@ -208,9 +211,9 @@ A claim that holds no information the claims it depends on do not already hold, 
 a claim nothing another claim depending on it does not already say. What is compared is what each
 says of the claim they depend on; their own addresses are not part of it.
 
-It is not a bug in itself; it is a tendency, each copy one more place to keep right, and a signal
-to fix. Where readers who cannot open each other's place each need the same words of an owner,
-each quotes them and names the owner, as rule 4 in `SKILL.md` allows.
+Each copy is one more place to keep right. Where readers who cannot open each other's place each
+need the same words of an owner, each quotes them and names the owner, as rule 4 in `SKILL.md`
+allows.
 
 - Duplicates: a comment that says what the body does in other words, such as
   `// print the text to the console` over `console.log(text)`; `// checks 2 + 3 is 5` inside a
@@ -229,8 +232,7 @@ It is not one claim, as *Claim* defines one; the instances are under *Claim*.
 ### Noise
 
 It changes nothing its reader does next. It is judged against the reader, not read off the graph.
-It is not a bug in itself; it is a tendency, each line one more thing the reader pays to read and
-may act on wrongly, and a signal to fix.
+Each such line is one more thing the reader pays to read and may act on wrongly.
 
 Not noise: the reason for a decision, the constraint stated as the wall the reader would walk into,
 the fact that makes an ask defensible. Without them the reader decides with less than the writer
