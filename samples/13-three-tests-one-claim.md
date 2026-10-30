@@ -56,6 +56,6 @@ it("throws the last error once the limit is reached", async () => {
 
 ### Why
 
-Rule 2: a test's name is its claim, and a name that could not be false changes nothing the reader
-does. Rule 6: a claim has one place; the other two go. The `3` is now passed in, so the test
+Rule 2: a test's name summarises its body, and a name that could not be false changes nothing the
+reader does. Rule 6: a claim has one place; the other two go. The `3` is now passed in, so the test
 owns it.
