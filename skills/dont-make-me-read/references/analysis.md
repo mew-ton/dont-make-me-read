@@ -1,10 +1,9 @@
 # Analysis
 
 How to find the claims in what you are writing or reviewing, the edges between them, and what is
-wrong with them, in prose and in a program alike. The words are as `glossary.md` defines them.
-What an edge looks like in prose or in a program is in the *Edges* section of `prose.md` and of
-`program.md`. Each word a step judges by, the judgments included, has instances under its heading
-in `glossary.md`: read them before judging, and judge a new case by the instance nearest it.
+wrong with them, in prose and in a program alike. The words are as `glossary.md` defines them, and
+each word a step judges by, the judgments included, has instances there under its heading, in
+prose and in a program: read them before judging, and judge a new case by the instance nearest it.
 
 ## Steps
 

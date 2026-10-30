@@ -69,8 +69,8 @@ fix, and nothing records that yet.
 
 ### Why
 
-Rule 3: a dependency is named by address, and the *Edges* section of `references/prose.md` says
-an address counts only if this paragraph's readers can open it; the chat's URL is exact and the
+Rule 3: a dependency is named by address, and the *Address* section of `references/glossary.md`
+says a URL holds only for the readers who can open it; the chat's URL is exact and the
 author cannot open it, so what the comment leans on is said here instead. A name is an address
 only once the thing exists, so the endpoint is described and said not to exist, and naming it is
 left to the issue. Rule 5: the ask is derived from an observation and a judgment, so the comment

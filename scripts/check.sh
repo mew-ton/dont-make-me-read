@@ -122,7 +122,7 @@ for f in "$root"/samples/*.md; do
       || problem "${f#"$root"/} cites rule $n; SKILL.md has $rule_count"
   done < <(grep -oiE '\brule +[0-9]+' <<< "$text" | grep -oE '[0-9]+' || true)
   while IFS=$'\t' read -r heading ref; do
-    grep -qxF "## $heading" "$skill_dir/$ref" \
+    grep -qxF -e "## $heading" -e "### $heading" "$skill_dir/$ref" \
       || problem "${f#"$root"/} cites *$heading* in $ref, which has no such heading"
   done < <(grep -oE '\*[^*]+\* +(section|table) +(of|in) +`references/[a-z-]+\.md`' <<< "$text" \
              | sed -E 's/^\*([^*]+)\* +[a-z]+ +[a-z]+ +`([^`]+)`$/\1\t\2/' || true)

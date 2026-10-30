@@ -158,7 +158,7 @@ the wrapper is built, because the problem does not care.
 Rule 5: a paragraph depends on what it explains, and an issue explains a problem, so each of its
 lines is derived from the problem or is not the issue's. That decides how much design an issue
 holds: as much as solving the problem requires, and no line of what merely solves it one way. The
-*What noise does* table in `references/prose.md` names the second kind: the implementation method
+*Noise* table in `references/glossary.md` names the second kind: the implementation method
 in an issue, from which the reader concludes the shape you saw while writing is the shape today.
 Where a required design is new, it goes where the project's instructions put it, here the issue,
 and the code cites it; where they set no place, rule 6 says to say so and stop. Where a shape has
