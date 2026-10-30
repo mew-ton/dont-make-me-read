@@ -27,13 +27,13 @@ The retry loop is blocking the main thread.
 
 | Node | Address | Source or derived |
 |---|---|---|
+| the report | `docs/qa-report-142.md` | **two claims**: what QA saw, and a cause QA had no means to establish, cited together as QA's report |
 | the observation | `docs/qa-report-142.md › Observed` | source |
 | the guessed cause | `docs/qa-report-142.md › Likely cause` | would be derived from the observation, but sits inside it |
 | the task's statement of cause | `https://github.com/example/orderly/issues/231` | derived from the guess, stated as fact |
 
 | From | To | Edge |
 |---|---|---|
-| `docs/qa-report-142.md` | `docs/qa-report-142.md › Likely cause` | **reversed**: the source carries what would explain it |
 | `https://github.com/example/orderly/issues/231` | `docs/qa-report-142.md › Likely cause` | **missing**: the guess is restated as a finding, source unnamed |
 
 ### What is wrong
@@ -55,7 +55,8 @@ whole page stops responding during the freeze.
 
 ### Why
 
-Rule 5: depend only on what you explain or reproduce, and say which you are. The report records
-what was seen; what the page did is an observation and stays. The cause, once someone establishes
-it, is its own paragraph with its own address, and it cites the report. Nobody has established it
-in this case, so there is no corrected issue to show.
+Rule 1: one claim under an address. The issue cites the report as one thing, so a guess inside it
+is read as QA's observation. The report records what was seen; what the page did is an observation
+and stays. The cause, once someone establishes it, is its own paragraph with its own address, and
+it cites the report. Nobody has established it in this case, so there is no corrected issue to
+show.

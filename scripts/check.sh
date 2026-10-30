@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 #
-# Checks the form of this tree: the skill's frontmatter, the size limits,
-# links and the headings they name, that README.md quotes SKILL.md, and that
-# samples cite rules, sections and cases that exist. No model call, no network.
+# Checks the form of this tree: the skill's frontmatter, the sizes of what
+# the skill reads against their snapshot, links and the headings they name,
+# that README.md quotes SKILL.md, and that samples cite rules, sections and
+# cases that exist. No model call, no network.
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #
-# Usage:  bash scripts/check.sh
+# Usage:  bash scripts/check.sh            check
+#         bash scripts/check.sh --update   rewrite the size snapshot, then check
 # Exit:   0 when every check passes, 1 otherwise. Each failure is one line on stderr.
 
 set -euo pipefail
@@ -17,10 +19,12 @@ skill="$skill_dir/SKILL.md"
 readme="$root/README.md"
 manifest="$root/.claude-plugin/plugin.json"
 
-# The size limits. This is the one place they are stated; a document that
-# wants to say what they are links here.
-limit_skill=4096
-limit_reference=8192
+# The sizes of SKILL.md and the references, which the skill reads into the
+# model's context. A size is not capped: a change to it is recorded here by
+# --update, so the diff of a change shows how much each read grew or shrank.
+snapshot="$root/scripts/sizes.snapshot"
+update=0
+[ "${1:-}" = "--update" ] && update=1
 
 status=0
 problem() { echo "check: $*" >&2; status=1; }
@@ -55,13 +59,20 @@ case "$description" in *'<'*|*'>'*) problem "SKILL.md description contains < or 
 
 # --- sizes --------------------------------------------------------------------
 
-check_size() {
-  local file=$1 limit=$2 bytes
-  bytes=$(wc -c < "$file")
-  [ "$bytes" -le "$limit" ] || problem "${file#"$root"/} is $bytes bytes, over $limit"
+sizes() {
+  for f in "$skill" "$skill_dir"/references/*.md; do
+    printf '%s %s\n' "$(wc -c < "$f" | tr -d ' ')" "${f#"$root"/}"
+  done
 }
-check_size "$skill" "$limit_skill"
-for f in "$skill_dir"/references/*.md; do check_size "$f" "$limit_reference"; done
+[ "$update" = 1 ] && sizes > "$snapshot"
+if [ ! -f "$snapshot" ]; then
+  problem "scripts/sizes.snapshot is missing; run bash scripts/check.sh --update"
+elif ! diff -q <(sizes) "$snapshot" > /dev/null; then
+  while IFS= read -r line; do problem "size changed: $line; run bash scripts/check.sh --update"; done \
+    < <(diff <(sizes) "$snapshot" | sed -n 's/^< //p')
+  while IFS= read -r line; do problem "size snapshot has a stale entry: $line"; done \
+    < <(diff <(sizes) "$snapshot" | sed -n 's/^> //p' | grep -vF -f <(sizes | cut -d' ' -f2) || true)
+fi
 
 # --- references: reached from SKILL.md, and not from each other --------------
 
@@ -112,7 +123,7 @@ for f in "$root"/samples/*.md; do
       || problem "${f#"$root"/} cites rule $n; SKILL.md has $rule_count"
   done < <(grep -oiE '\brule +[0-9]+' <<< "$text" | grep -oE '[0-9]+' || true)
   while IFS=$'\t' read -r heading ref; do
-    grep -qxF "## $heading" "$skill_dir/$ref" \
+    grep -qxF -e "## $heading" -e "### $heading" "$skill_dir/$ref" \
       || problem "${f#"$root"/} cites *$heading* in $ref, which has no such heading"
   done < <(grep -oE '\*[^*]+\* +(section|table) +(of|in) +`references/[a-z-]+\.md`' <<< "$text" \
              | sed -E 's/^\*([^*]+)\* +[a-z]+ +[a-z]+ +`([^`]+)`$/\1\t\2/' || true)

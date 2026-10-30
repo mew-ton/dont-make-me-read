@@ -58,8 +58,7 @@ tries doubles each time.
 nothing told whoever changed `config/retry.json` that the README existed. After:
 
 ```md
-A payment call is tried at most `maxAttempts` times (`config/retry.json`), and then the order is
-marked failed.
+A payment call is tried at most `maxAttempts` times (`config/retry.json`).
 ```
 
 The README no longer holds the number, so it cannot drift from it.
@@ -86,7 +85,7 @@ carries its reason:
 2. **Everything in it changes what the reader does next.**
 3. **A dependency is named by address.**
 4. **A claim that has an owner is cited, not restated.**
-5. **Depend only on what you explain or reproduce.**
+5. **Depend only on what you explain, reproduce or use, and converge.**
 6. **A claim has one place.**
 
 ## What it is not

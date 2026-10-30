@@ -1,7 +1,7 @@
 # Samples
 
 One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
-with its path or URL, then the graph of explanations they form and what is wrong with it. **Good**
+with its path or URL, then the graph of claims they form and what is wrong with it. **Good**
 shows the files that have a correction, each labelled `**Good**`, then why, naming the rule in
 [`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A Good that adds a
 file the Bad did not have carries that file's graph too. A file that did not change is not shown
@@ -17,9 +17,10 @@ the rest of the file, and run two steps.
 
 Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 
-> Review these files. List the explanations in them as nodes, each by its address, and every edge
-> between them with its direction. Judge each edge as visible, hidden, missing, reversed, dangling
-> or a contradiction, and say of each node whether it is a duplicate, noise, or two claims in one.
+> Review these files. List the claims in them as nodes, each by its address, and every edge
+> between them with its direction. Judge each edge as visible, missing or a contradiction, and as
+> converging or diverging, and say of each node whether it is a duplicate, noise, or two claims in
+> one.
 > Then correct the files where they need it.
 
 Step 2, in the next message, without naming the skill:
@@ -34,40 +35,30 @@ while the skill was still in force.
 
 ## Judgments
 
-Every graph in a case uses these words and no others, and so does step 1.
-
-| Of | Judgment | Meaning |
-|---|---|---|
-| an edge | visible | named by address, and pointing from what is derived to its source |
-| an edge | hidden | there, but named by position or by role, or meaning something only with another file open |
-| an edge | missing | the dependency is real and nothing names it |
-| an edge | reversed | a source names what reproduces it, or a callee names its caller |
-| an edge | dangling | the target has no address this paragraph's readers can open |
-| an edge | contradiction | the two ends say different things about the same claim |
-| a node | duplicate | a second place for a claim that already has one |
-| a node | noise | it changes nothing the reader does next |
-| a node | two claims | it makes more than one claim, so they cannot be cited or corrected apart |
+Every graph in a case uses the judgments in
+[`glossary.md › Edge judgments`](../skills/dont-make-me-read/references/glossary.md#edge-judgments) and
+[`glossary.md › Node judgments`](../skills/dont-make-me-read/references/glossary.md#node-judgments), and no others, and so does step 1.
 
 ## Cases
 
 | Case | Pathology |
 |---|---|
-| [01 A copy that went stale](01-stale-copy.md) | duplicate node |
-| [02 "See the section below"](02-reading-order.md) | hidden edge by position |
-| [03 "As discussed in standup"](03-dangling-discussion.md) | dangling edge |
+| [01 A copy that went stale](01-stale-copy.md) | contradiction and missing edge: a restated value its owner has since changed |
+| [02 "See the section below"](02-reading-order.md) | missing edge: a position |
+| [03 "As discussed in standup"](03-as-discussed.md) | missing edge: a conversation nobody else can open |
 | [04 A report retold in other words](04-translation-without-quote.md) | missing edge: a translation without the quote |
-| [05 An observation that guesses its cause](05-observation-guesses-cause.md) | reversed edge |
-| [06 A decision that names its implementation](06-decision-names-implementation.md) | reversed edge, missing edge |
-| [07 A callee that knows its caller](07-callee-knows-caller.md) | reversed edge |
-| [08 A doc comment that describes the caller](08-jsdoc-describes-caller.md) | reversed edge |
+| [05 An observation that guesses its cause](05-observation-guesses-cause.md) | two claims: an observation and a guess, cited as one report |
+| [06 A decision that names its implementation](06-decision-names-implementation.md) | diverging edge, missing edge |
+| [07 A callee that knows its caller](07-callee-knows-caller.md) | diverging edge |
+| [08 A doc comment that describes the caller](08-jsdoc-describes-caller.md) | diverging edge |
 | [09 A PRD and an interface that contradict](09-prd-contradicts-interface.md) | contradiction, missing edge |
-| [10 A precedence stated nowhere](10-ambient-state.md) | dangling edge: a claim with no address |
-| [11 State the interface does not declare](11-test-only-hook.md) | hidden edge |
-| [12 A default that hides the claim](12-default-hides-the-claim.md) | hidden edge: a name that carries the whole claim |
+| [10 A precedence stated nowhere](10-ambient-state.md) | missing edge: a claim with no address |
+| [11 State the interface does not declare](11-test-only-hook.md) | missing edge: state the signature does not declare |
+| [12 A default that hides the claim](12-default-hides-the-claim.md) | diverging edge: shared defaults that hold one test's claim |
 | [13 Three tests, one claim](13-three-tests-one-claim.md) | duplicate node, noise |
 | [14 A menu of fixes](14-menu-of-fixes.md) | noise |
-| [15 "The issue QA reported"](15-by-role-not-address.md) | hidden edge by role, noise |
+| [15 "The issue QA reported"](15-by-role-not-address.md) | missing edge: a role, noise |
 | [16 A comment that restates the body](16-comment-restates-body.md) | duplicate node |
 | [17 An issue that designs the fix](17-issue-designs-the-fix.md) | noise: design the problem did not require |
 | [18 A TODO that outlived its fix](18-todo-that-outlived-its-fix.md) | contradiction: a derived explanation nobody re-derived |
-| [19 The last line of a conversation](19-last-line-of-a-conversation.md) | dangling edge: an address the reader cannot open, a name coined in the chat; missing edge: the observation the ask is derived from |
+| [19 The last line of a conversation](19-last-line-of-a-conversation.md) | missing edge: an address the reader cannot open, a name coined in the chat, the observation the ask is derived from |

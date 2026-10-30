@@ -17,9 +17,10 @@ cost, because they read their own draft while supplying what it leaves out.
 
 ## The unit
 
-A paragraph makes one claim and carries its explanation. It has an address other paragraphs can
-name: a heading in prose, a name in a program. What those words mean in the thing you are writing
-is in the file *Which file to read* names.
+A paragraph makes one claim, under an address other paragraphs can name it by. What those words
+mean, with the rest of the words a review uses, is in
+[`references/glossary.md`](references/glossary.md), with instances in prose and in a program. How
+to write under these rules is in the file *Which file to read* names.
 
 ## Rules
 
@@ -31,9 +32,10 @@ is in the file *Which file to read* names.
    or a state the body uses without naming: for the reader who arrives by search, those are gone.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs
    in order to act, in the owner's words, and name the owner.
-5. **Depend only on what you explain or reproduce.** Never on what explains or reproduces you, and
-   say which you are. The reverse direction comes from an index, backlinks or search, so keep the
-   source's words.
+5. **Depend only on what you explain, reproduce or use, and converge.** Converging means that
+   adding another claim like the one you depend on leaves you as you are. A claim that has to be
+   rewritten each time one is added diverges, which is a signal to fix. Say which you are, and keep
+   the source's words: the reverse direction comes from an index, backlinks or search.
 6. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
    set by the structure of the code or by the project's own instructions. If no place is set for
    this kind of claim, say so and stop rather than make a second one.
@@ -44,6 +46,7 @@ is in the file *Which file to read* names.
 |---|---|
 | prose: a paragraph, a comment, a message | [`references/prose.md`](references/prose.md) |
 | a program: a declaration, a test | [`references/program.md`](references/program.md) |
+| the steps of finding what is wrong, in either | [`references/analysis.md`](references/analysis.md) |
 
 ## Persistence
 

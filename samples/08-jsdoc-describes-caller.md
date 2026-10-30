@@ -26,8 +26,8 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 | From | To | Edge |
 |---|---|---|
-| the comment | the checkout page | **reversed**: the callee's explanation depends on a caller |
-| the comment | the admin refund screen | **dangling**: a caller that does not exist yet |
+| the comment | the checkout page | **diverging**, and reversed: the callee's explanation depends on a caller |
+| the comment | the admin refund screen | **missing**: a caller that does not exist yet |
 
 ### What is wrong
 

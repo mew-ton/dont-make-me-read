@@ -14,33 +14,32 @@ The skill is meant to load while you do. Whether it does is a row of
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
 what the tree says holds together is not its job; that is the job of *Reviewing*.
 
-The size limits are stated in `scripts/check.sh` and nowhere else.
+The sizes of `SKILL.md` and the references are not capped. They are recorded in
+`scripts/sizes.snapshot`, and a change to one is recorded with `bash scripts/check.sh --update`, so
+a change shows in its diff how much each read grows.
 
 Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a change.
 
 ## Reviewing
 
-A review finds defects in the graph of claims, and nothing else. A finding is one of the judgments
-in [`samples/README.md › Judgments`](samples/README.md#judgments) other than *visible*: an edge that
-is hidden, missing, reversed, dangling or a contradiction, or a node that is a duplicate, noise, or
-two claims in one.
+A review finds in the graph of claims the findings
+[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) names, and
+nothing else.
 
 ### Scope
 
 - The skill, its references, and this tree's own documents: `README.md`, this file,
   `samples/README.md`, and the comments in `scripts/check.sh`. Every claim in them is in scope.
 - Each case in `samples/`, on its own. Three questions only: does the Good fix what *What is wrong*
-  names; does the Good bring in a defect of its own; do the graph and *Why* match the case's files.
+  names; does the Good bring in a finding of its own; do the graph and *Why* match the case's files.
 - Out of scope: the logic of sample code, agreement between cases, and anything a judgment does not
   name. The code in a case has no owner; it is there to carry the case's graph.
 
 ### Steps
 
-1. List the claims in scope as nodes, each by its address, and say whether it is a source or what
-   it is derived from.
-2. List the edges between them with their direction, and judge each edge and each node.
-3. Report each judgment other than *visible*, with the address it sits at and the rule in
-   `SKILL.md` it breaks.
+The steps in [`analysis.md › Steps`](skills/dont-make-me-read/references/analysis.md#steps), over
+the scope above, reported as
+[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) says.
 
 ### When it is done
 

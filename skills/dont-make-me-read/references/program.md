@@ -1,52 +1,8 @@
 # Program
 
-What the words in `SKILL.md` mean when what you are writing or reviewing is a program: a
-declaration, its body, a test. Stated without any language's syntax; where an example uses one, it
-is one instance.
-
-## The words
-
-| In `SKILL.md` | In a program |
-|---|---|
-| paragraph | a named unit: a function, a type, a constant, a module, a test case |
-| claim | its name, with what it declares to take and to give back |
-| explanation | its body |
-| address | its name |
-| reader | the person reading the file, and an agent landing on the declaration by search |
-
-A test is a named unit like any other. Its name is the claim and its body reproduces the claim.
-Whether the name is a string or an identifier is the framework's business, not this file's.
-
-## Edges
-
-A visible edge is a parameter, an import, a call by name, or an explicit statement that a type
-implements an interface. The reader can follow it, and so can the toolchain.
-
-A hidden edge is any of these. Each is a red flag:
-
-- state the body uses without naming: a global, an environment variable, module state, setup that
-  runs by position rather than by being called, such as a before-each block, a fixture file or a
-  test's main
-- a name that carries a caller's knowledge: a parameter or a branch named after who calls it
-- a hook that production code holds only so a test can reach in
-- an interface satisfied structurally, with nothing in the implementation saying so
-- a comment that says what the body does in other words: a second owner of the same claim
-
-One instance, a test whose setup is a hidden edge and one whose setup is named:
-
-```ts
-// Not this: the claim cannot be read without the block above it.
-beforeEach(() => { store = makeStore({ items: fiveItems() }); });
-it("shows at most three items", () => {
-  expect(render(store.items, 3)).toHaveLength(3);
-});
-
-// This: the body names what it leans on.
-it("shows at most three items", () => {
-  const items = fiveItems();
-  expect(render(items, 3)).toHaveLength(3);
-});
-```
+How to write a program under the rules in `SKILL.md`: a declaration, its body, a test. Stated
+without any language's syntax; where an example uses one, it is one instance. What the words mean,
+with instances, is in `glossary.md`.
 
 ## Saying which you are
 

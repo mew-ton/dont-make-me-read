@@ -26,7 +26,7 @@ Set the environment as described in the section below, then run `npm start`.
 
 | From | To | Edge |
 |---|---|---|
-| `README.md › Running it` | `README.md › Environment` | **hidden**: "the section below" is a position, not an address |
+| `README.md › Running it` | `README.md › Environment` | **missing**: "the section below" is a position, not an address |
 
 ### What is wrong
 

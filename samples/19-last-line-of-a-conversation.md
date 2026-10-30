@@ -38,10 +38,10 @@ Please open an issue to implement the products API.
 
 | From | To | Edge |
 |---|---|---|
-| the comment | the chat | **dangling**: the address exists and the author cannot open it |
+| the comment | the chat | **missing**: the address exists and the author cannot open it |
 | the comment | the observation | **missing**: the ask is derived from an N+1 the comment never names |
 | the comment | the judgment | **missing**: the author cannot tell whether the comment blocks the PR |
-| the comment | the permanent fix | **dangling**: "the products API" names nothing; to the author it reads as an existing API they do not know |
+| the comment | the permanent fix | **missing**: "the products API" names nothing; to the author it reads as an existing API they do not know |
 
 ### What is wrong
 
@@ -69,8 +69,8 @@ fix, and nothing records that yet.
 
 ### Why
 
-Rule 3: a dependency is named by address, and the *Edges* section of `references/prose.md` says
-an address counts only if this paragraph's readers can open it; the chat's URL is exact and the
+Rule 3: a dependency is named by address, and the *Address* section of `references/glossary.md`
+says a URL holds only for the readers who can open it; the chat's URL is exact and the
 author cannot open it, so what the comment leans on is said here instead. A name is an address
 only once the thing exists, so the endpoint is described and said not to exist, and naming it is
 left to the issue. Rule 5: the ask is derived from an observation and a judgment, so the comment

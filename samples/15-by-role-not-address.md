@@ -25,8 +25,8 @@ Files to look at: `src/retry.ts` and `src/checkout.ts`.
 
 | From | To | Edge |
 |---|---|---|
-| `https://github.com/example/orderly/pull/245` | the issue | **hidden**, by role: "the issue QA reported" has no number |
-| `https://github.com/example/orderly/pull/245` | the config | **hidden**, by role: "the usual retry config" has no path |
+| `https://github.com/example/orderly/pull/245` | the issue | **missing**, by role: "the issue QA reported" has no number |
+| `https://github.com/example/orderly/pull/245` | the config | **missing**, by role: "the usual retry config" has no path |
 
 ### What is wrong
 
