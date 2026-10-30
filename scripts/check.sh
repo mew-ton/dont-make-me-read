@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 #
 # Checks the form of this tree: the skill's frontmatter, the sizes of what
-# the skill reads against their snapshot, links and the headings they name, that README.md quotes SKILL.md, and that
-# samples cite rules, sections and cases that exist. No model call, no network.
+# the skill reads against their snapshot, links and the headings they name,
+# that README.md quotes SKILL.md, and that samples cite rules, sections and
+# cases that exist. No model call, no network.
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #

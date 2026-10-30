@@ -163,4 +163,4 @@ in an issue, from which the reader concludes the shape you saw while writing is 
 Where a required design is new, it goes where the project's instructions put it, here the issue,
 and the code cites it; where they set no place, rule 6 says to say so and stop. Where a shape has
 to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
-divergence is a defect between two addressed paragraphs, as in case 09.
+disagreement is a contradiction between two addressed paragraphs, as in case 09.
