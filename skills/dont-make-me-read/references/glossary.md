@@ -229,6 +229,8 @@ It is not one claim, as *Claim* defines one; the instances are under *Claim*.
 ### Noise
 
 It changes nothing its reader does next. It is judged against the reader, not read off the graph.
+It is not a bug in itself; it is a tendency, each line one more thing the reader pays to read and
+may act on wrongly, and a signal to fix.
 
 Not noise: the reason for a decision, the constraint stated as the wall the reader would walk into,
 the fact that makes an ask defensible. Without them the reader decides with less than the writer
