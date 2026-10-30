@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 #
-# Checks the form of this tree: the skill's frontmatter, the sizes of what
-# the skill reads against their snapshot, links and the headings they name,
-# that README.md quotes SKILL.md, and that samples cite rules, sections and
-# cases that exist. No model call, no network.
+# Checks the form of this tree: the frontmatter of every skill and agent, that
+# each agent loads one sub-skill and can neither delegate nor load another
+# skill, that what a sub-skill reads names no step it does not run, the sizes
+# of what the skills and agents read against their snapshot, links and the
+# headings they name, that README.md quotes SKILL.md, and that samples cite
+# rules, sections and cases that exist. No model call, no network.
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #
@@ -16,11 +18,14 @@ set -euo pipefail
 root=$(cd "$(dirname "$0")/.." && pwd)
 skill_dir="$root/skills/dont-make-me-read"
 skill="$skill_dir/SKILL.md"
+glossary="$skill_dir/references/glossary.md"
+# A sub-skill runs one step of an analysis for the agent of the same name.
+sub_prefix="$(basename "$skill_dir")--"
 readme="$root/README.md"
 manifest="$root/.claude-plugin/plugin.json"
 
-# The sizes of SKILL.md and the references, which the skill reads into the
-# model's context. A size is not capped: a change to it is recorded here by
+# The sizes of every SKILL.md, the references and the agents, which are read
+# into a model's context. A size is not capped: a change to it is recorded here by
 # --update, so the diff of a change shows how much each read grew or shrank.
 snapshot="$root/scripts/sizes.snapshot"
 update=0
@@ -29,9 +34,9 @@ update=0
 status=0
 problem() { echo "check: $*" >&2; status=1; }
 
-# frontmatter_field FIELD: the value of a frontmatter field. A block scalar
-# (`field: >` or `field: |`, with or without a chomping indicator) is joined
-# into one line with single spaces.
+# frontmatter_field FIELD [FILE]: the value of a frontmatter field of FILE,
+# SKILL.md by default. A block scalar (`field: >` or `field: |`, with or
+# without a chomping indicator) is joined into one line with single spaces.
 frontmatter_field() {
   awk -v field="$1" '
     /^---[ \t]*$/ { fence++; next }
@@ -43,24 +48,73 @@ frontmatter_field() {
       if (v ~ /^[>|][-+]?$/) { on = 1 } else { out = v }
     }
     END { print out }
-  ' "$skill"
+  ' "${2:-$skill}"
 }
 
-# --- the skill's frontmatter ------------------------------------------------
+# list_field FIELD FILE: the items of a frontmatter field written as a flow
+# list or a comma-separated string, one per line.
+list_field() {
+  frontmatter_field "$1" "$2" | tr -d '[]' | tr ',' '\n' | sed 's/^[ \t]*//; s/[ \t]*$//' | grep -v '^$' || true
+}
 
-name=$(frontmatter_field name)
-[ "$name" = "$(basename "$skill_dir")" ] \
-  || problem "SKILL.md name '$name' is not its directory '$(basename "$skill_dir")'"
+# --- the skills' frontmatter -------------------------------------------------
+
+for f in "$root"/skills/*/SKILL.md; do
+  rel=${f#"$root"/}
+  dir=$(basename "$(dirname "$f")")
+  n=$(frontmatter_field name "$f")
+  [ "$n" = "$dir" ] || problem "$rel name '$n' is not its directory '$dir'"
+  d=$(frontmatter_field description "$f")
+  [ -n "$d" ] || problem "$rel has no description"
+  case "$d" in *'<'*|*'>'*) problem "$rel description contains < or >, so it will not load" ;; esac
+  [ "${#d}" -le 1024 ] || problem "$rel description is ${#d} characters, over 1024"
+  [ "$f" = "$skill" ] && continue
+  case "$dir" in "$sub_prefix"*) ;; *) problem "$rel is not named $sub_prefix…" ;; esac
+  [ "$(frontmatter_field user-invocable "$f")" = false ] \
+    || problem "$rel does not set user-invocable: false"
+  # An agent can preload only a skill the model can invoke.
+  [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
+    || problem "$rel does not set disable-model-invocation: false"
+  [ -f "$root/agents/$dir.md" ] || problem "$rel has no agent agents/$dir.md"
+done
 
 description=$(frontmatter_field description)
-[ -n "$description" ] || problem "SKILL.md has no description"
-case "$description" in *'<'*|*'>'*) problem "SKILL.md description contains < or >, so it will not load" ;; esac
-[ "${#description}" -le 1024 ] || problem "SKILL.md description is ${#description} characters, over 1024"
+
+# --- the agents: one sub-skill each, no delegating, no loading -------------------
+
+for f in "$root"/agents/*.md; do
+  [ -e "$f" ] || continue
+  rel=${f#"$root"/}
+  base=$(basename "$f" .md)
+  n=$(frontmatter_field name "$f")
+  [ "$n" = "$base" ] || problem "$rel name '$n' is not its file name '$base'"
+  [ -n "$(frontmatter_field description "$f")" ] || problem "$rel has no description"
+  [ "$(list_field skills "$f")" = "$base" ] \
+    || problem "$rel does not load exactly the skill $base"
+  [ -f "$root/skills/$base/SKILL.md" ] || problem "$rel names skills/$base, which does not exist"
+  tools=$(list_field tools "$f")
+  [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
+  for t in Agent Task Skill; do
+    grep -qxF "$t" <<< "$tools" && problem "$rel has the tool $t"
+  done
+done
+
+# --- what a sub-skill reads names no step it does not run ---------------------
+
+# A sub-skill reads itself and the glossary. Neither names the analysis, where
+# the other steps and the delegating are, nor SKILL.md's references beyond the
+# glossary.
+for f in "$root"/skills/"$sub_prefix"*/SKILL.md "$glossary"; do
+  [ -e "$f" ] || continue
+  grep -qE 'analysis\.md|references/(prose|program)\.md' "$f" \
+    && problem "${f#"$root"/} names what a sub-skill does not run"
+done
 
 # --- sizes --------------------------------------------------------------------
 
 sizes() {
-  for f in "$skill" "$skill_dir"/references/*.md; do
+  for f in "$root"/skills/*/SKILL.md "$skill_dir"/references/*.md "$root"/agents/*.md; do
+    [ -e "$f" ] || continue
     printf '%s %s\n' "$(wc -c < "$f" | tr -d ' ')" "${f#"$root"/}"
   done
 }

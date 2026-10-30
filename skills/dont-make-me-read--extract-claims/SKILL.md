@@ -1,0 +1,54 @@
+---
+name: dont-make-me-read--extract-claims
+description: >
+  Cuts one file into claims, as dont-make-me-read defines a claim, and returns them as one JSON
+  record. Step 1 of a dont-make-me-read analysis.
+user-invocable: false
+disable-model-invocation: false
+---
+
+## What it does
+
+Cuts the file the task names into claims, and returns them as one record. The words are as
+`${CLAUDE_SKILL_DIR}/../dont-make-me-read/references/glossary.md` defines them: read its
+*Paragraph*, *Claim* and *Address*, with their instances, before cutting.
+
+## Steps
+
+1. **Read the whole file.**
+2. **Cut it into claims.** Ask whether a part can be cited or rewritten on its own. If it can, it
+   is a claim of its own, and the unit that held both is two claims.
+3. **Give each claim its address.** The heading it sits under in prose; the name, with what it
+   declares to take and to give back, in a program. Several claims can share one.
+4. **Account for every other line.** A non-blank line in no claim and no address goes in
+   `uncovered`, with why.
+
+## Record
+
+The answer is the record and nothing else: one JSON object, with no text and no code fence around
+it.
+
+```json
+{
+  "unit": "README.md",
+  "claims": [
+    {
+      "at": "README.md:5-6",
+      "address": { "at": "README.md:3-3", "text": "## Retries" },
+      "quote": "A payment call is tried up to five times before the order is marked failed."
+    }
+  ],
+  "uncovered": [
+    { "at": "README.md:1-1", "why": "the file's title, which no claim sits under" }
+  ]
+}
+```
+
+- `unit`: the file's path, as the task gave it.
+- `claims`: one entry per claim, in the file's order.
+  - `at`: `path:first-last`, the claim's lines, 1-based and inclusive, its address left out.
+  - `address`: the address's `at` and its `text` verbatim, or `null` when the claim has none.
+  - `quote`: the claim's first sentence in prose, or its first line in a program, verbatim.
+- `uncovered`: each range of non-blank lines in no claim and no address, with its `at` and `why`.
+
+Every non-blank line of the file is in exactly one claim, one address or one `uncovered` range.

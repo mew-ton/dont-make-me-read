@@ -14,7 +14,7 @@ The skill is meant to load while you do. Whether it does is a row of
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
 what the tree says holds together is not its job; that is the job of *Reviewing*.
 
-The sizes of `SKILL.md` and the references are not capped. They are recorded in
+The sizes of every `SKILL.md`, the references and the agents are not capped. They are recorded in
 `scripts/sizes.snapshot`, and a change to one is recorded with `bash scripts/check.sh --update`, so
 a change shows in its diff how much each read grows.
 
@@ -28,7 +28,7 @@ nothing else.
 
 ### Scope
 
-- The skill, its references, and this tree's own documents: `README.md`, this file,
+- The skills, the references, the agents, and this tree's own documents: `README.md`, this file,
   `samples/README.md`, and the comments in `scripts/check.sh`. Every claim in them is in scope.
 - Each case in `samples/`, on its own. Three questions only: does the Good fix what *What is wrong*
   names; does the Good bring in a finding of its own; do the graph and *Why* match the case's files.
