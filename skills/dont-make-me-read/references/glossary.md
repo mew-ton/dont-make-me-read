@@ -1,8 +1,8 @@
 # Glossary
 
-What the words in `SKILL.md` mean, in prose and in a program alike, each with instances. Where to
-find each of them in the thing you are writing is in the file `SKILL.md › Which file to read`
-names for it.
+What the words of `SKILL.md` and of a review mean, in prose and in a program alike, each with
+instances. Where to find each of them in the thing you are writing is in the file
+`SKILL.md › Which file to read` names for it.
 
 ## Explanation
 
@@ -60,18 +60,6 @@ A claim depends on another when a change to the other means the claim has to be 
   word; two functions that happen to look alike, when a change to one does not mean checking the
   other.
 
-## Duplicate
-
-A claim that holds no information the claims it depends on do not already hold.
-
-- Duplicates: `// print the text to the console` over `console.log(text)`; `// checks 2 + 3 is 5`
-  inside a test named "adding 2 and 3 gives 5"; a README sentence that says "three times" where
-  `config/retry.json` says `3`, naming no owner.
-- Not duplicates: a function's name over its body, or a test's name over its body, since the name
-  is the address; a quote in the owner's words that names the owner, since the address it gives is
-  information the owner does not hold; a comment that warns of what the body cannot show, such as
-  "stdout is buffered: flush before exit".
-
 ## Source and derived
 
 Of two claims, the one that explains, reproduces or uses the other is derived from it, and the
@@ -80,45 +68,81 @@ interface, a caller from what it calls, a test from its subject, a name from its
 
 ## Edge judgments
 
-Of an edge from A to B, where A depends on B:
+Each judges an edge from A to B, where A depends on B. An edge is visible, missing or a
+contradiction, and it also converges or diverges.
 
-| Judgment | Meaning |
-|---|---|
-| visible | a reader can reach both ends: A names B by an address that holds for A's readers |
-| missing | a reader cannot reach one end, or both: A names B by nothing, by a position, a role or a conversation, or by a name that is not an address for A's readers, or an end has no address |
-| contradiction | what A holds of B's information disagrees with B as it is now |
+### Visible
 
-- Visible: a README that names `config/retry.json`; a doc comment that names
+A reader can reach both ends: A names B by an address that holds for A's readers.
+
+- A README that names `config/retry.json`; a doc comment that names
   `docs/architecture.md › Retries are bounded`; a body that calls a `withRetry` it imports.
-- Missing: "see the section below"; "as discussed in standup"; "the usual retry config"; `#231` in
-  a chat message; a value copied from `config/retry.json` without naming it; the edge from a caller
-  of `formatPrice` to module state that `formatPrice` reads and its signature does not declare.
-- Contradiction: a README that says five where the config says `3`; a doc comment that says "returns
-  null when not found" over a body that throws.
 
-Every edge also converges or diverges, by what adding another claim like B does to A:
+### Missing
 
-- **converging**: A stays as it is. A points at whatever a scope holds: set-up that every test in
-  its scope depends on, a router that serves whatever the pages directory holds.
-- **diverging**: A has to be rewritten. A names each such claim one by one, or sits in a scope
-  wider than the claims that depend on it: a route table with a line per page, a parameter per
-  caller, a decision that lists its implementations. It is a defect.
+A reader cannot reach one end, or both: A names B by nothing, or by something that is not an
+address for A's readers, or an end has no address.
 
-To find diverging edges, ask which existing claims have to be rewritten to add a claim, one that
-is only planned included. The edges from those to the new one diverge.
+- "see the section below"; "as discussed in standup"; "the usual retry config"; `#231` in a chat
+  message; a value copied from `config/retry.json` without naming it; the edge from a caller of
+  `formatPrice` to module state that `formatPrice` reads and its signature does not declare.
 
-An edge from a source to a claim derived from it is **reversed**. That says which way it runs; it
-is a defect only when it diverges.
+### Contradiction
+
+What A holds of B's information disagrees with B as it is now.
+
+- A README that says five where the config says `3`; a doc comment that says "returns null when
+  not found" over a body that throws.
+
+### Converging
+
+Adding another claim like B leaves A as it is, because A points at whatever a scope holds. It is
+not a defect.
+
+- Set-up that every test in its scope depends on; a router that serves whatever the pages
+  directory holds.
+
+### Diverging
+
+Adding another claim like B means rewriting A, because A names each such claim one by one, or sits
+in a scope wider than the claims that depend on it. It is a defect. To find one, ask which existing
+claims have to be rewritten to add a claim, one that is only planned included; the edges from those
+to the new one diverge.
+
+- A route table with a line per page; a parameter per caller; a decision that lists its
+  implementations; set-up holding what only one of its tests depends on.
+
+### Reversed
+
+The edge runs from a source to a claim derived from it. That says which way it runs; it is a defect
+only when it also diverges.
+
+- Set-up that every test in its scope depends on, which is converging; a callee with a parameter
+  named after its caller, which is diverging.
 
 ## Node judgments
 
-| Judgment | Meaning |
-|---|---|
-| duplicate | as *Duplicate* says |
-| two claims | a part of it can be cited or rewritten on its own, so it is more than one claim; instances are under *Claim* |
-| noise | it changes nothing its reader does next; judged against the reader, not read off the graph |
+### Duplicate
 
-- Noise: an export that production code holds only for a test to reset it; a block of code left in
-  as a comment. Instances in prose are in `prose.md › What noise does`.
+A claim that holds no information the claims it depends on do not already hold.
+
+- Duplicates: `// print the text to the console` over `console.log(text)`; `// checks 2 + 3 is 5`
+  inside a test named "adding 2 and 3 gives 5"; a README sentence that says "three times" where
+  `config/retry.json` says `3`, naming no owner.
+- Not duplicates, because an address is information (*Address*): a function's name over its body,
+  or a test's name over its body; a quote in the owner's words that names the owner.
+- Not a duplicate, because it holds what the body cannot show: a comment such as "stdout is
+  buffered: flush before exit".
+
+### Two claims
+
+It is not one claim, as *Claim* defines one; the instances are under *Claim*.
+
+### Noise
+
+It changes nothing its reader does next. It is judged against the reader, not read off the graph.
+
+- An export that production code holds only for a test to reset it; a block of code left in as a
+  comment. Instances in prose are in `prose.md › What noise does`.
 - Not noise: the reason for a decision, the constraint the reader would otherwise walk into, the
   fact that makes an ask defensible. Each changes what the reader decides.

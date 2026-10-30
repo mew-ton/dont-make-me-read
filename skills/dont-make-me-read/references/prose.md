@@ -21,8 +21,8 @@ A visible edge is a path, a link, a heading named, or an identifier in backticks
 something this paragraph's readers can open. The reader can follow it, and so can a script that
 checks the target exists.
 
-A missing edge (`glossary.md › Edge judgments`) shows as any of these. Each is a red flag, and
-each names what to do instead:
+A missing edge (`glossary.md › Missing`) shows as any of these. Each is a red flag, and each
+names what to do instead:
 
 - "see above", "below", "the previous section": a position. Name the heading.
 - "as discussed", "we originally went with", "not A but B": a past only the participants hold.

@@ -26,14 +26,14 @@ or an identifier is the framework's business, not this file's.
 A visible edge is a parameter, an import, a call by name, or an explicit statement that a type
 implements an interface. The reader can follow it, and so can the toolchain.
 
-A missing edge (`glossary.md › Edge judgments`) shows as any of these. Each is a red flag:
+A missing edge (`glossary.md › Missing`) shows as any of these. Each is a red flag:
 
 - state the body uses and the signature does not declare: a global, an environment variable,
   module state. The body names it, and a caller, who reads only the name and the signature, cannot
   reach it.
 - an interface satisfied structurally, with nothing in the implementation saying so
 
-A diverging edge shows as any of these. Each is a red flag:
+A diverging edge (`glossary.md › Diverging`) shows as any of these. Each is a red flag:
 
 - a list that names its members one by one where they could be found by a convention, such as a
   route table with a line per page
