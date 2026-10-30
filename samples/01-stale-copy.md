@@ -25,11 +25,11 @@ tries doubles each time.
 | Node | Address | Source or derived |
 |---|---|---|
 | the retry limit | `config/retry.json › maxAttempts` | source |
-| the README's account of retries | `README.md › Retries` | **duplicate**: a second place for the retry limit |
+| the README's account of retries | `README.md › Retries` | **two claims**, three in fact: the limit, what happens when it runs out, and how the wait grows |
 
 | From | To | Edge |
 |---|---|---|
-| `README.md › Retries` | `config/retry.json › maxAttempts` | **missing**: the value is restated, the owner is not named |
+| `README.md › Retries` | `config/retry.json › maxAttempts` | **missing** and a **contradiction**: the value is restated as five where the owner says 3, and the owner is not named |
 
 ### What is wrong
 
@@ -44,12 +44,18 @@ writer who changed the config that there was a first.
 ```md
 ## Retries
 
-A payment call is tried at most `maxAttempts` times (`config/retry.json`), and then the order is
-marked failed.
+A payment call is tried at most `maxAttempts` times (`config/retry.json`).
+
+## Failed payments
+
+An order is marked failed when its payment call has been tried `maxAttempts` times without
+success.
 ```
 
 ### Why
 
 Rule 4: a claim that has an owner is cited, not restated. Restate only what the reader needs, in
-the owner's words, and name the owner. How the wait grows between tries is the body of `withRetry`
-to say, so the README no longer says it either. The config is unchanged; it was never the problem.
+the owner's words, and name the owner. Rule 1: the limit and what happens when it runs out can
+each change while the other stays, so each is a paragraph under its own heading. How the wait
+grows between tries is the body of `withRetry` to say, so the README no longer says it either. The
+config is unchanged; it was never the problem.

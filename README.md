@@ -58,8 +58,7 @@ tries doubles each time.
 nothing told whoever changed `config/retry.json` that the README existed. After:
 
 ```md
-A payment call is tried at most `maxAttempts` times (`config/retry.json`), and then the order is
-marked failed.
+A payment call is tried at most `maxAttempts` times (`config/retry.json`).
 ```
 
 The README no longer holds the number, so it cannot drift from it.

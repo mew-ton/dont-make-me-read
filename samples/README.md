@@ -43,7 +43,7 @@ Every graph in a case uses the judgments in
 
 | Case | Pathology |
 |---|---|
-| [01 A copy that went stale](01-stale-copy.md) | duplicate node |
+| [01 A copy that went stale](01-stale-copy.md) | contradiction and missing edge: a restated value its owner has since changed |
 | [02 "See the section below"](02-reading-order.md) | missing edge: a position |
 | [03 "As discussed in standup"](03-as-discussed.md) | missing edge: a conversation nobody else can open |
 | [04 A report retold in other words](04-translation-without-quote.md) | missing edge: a translation without the quote |
