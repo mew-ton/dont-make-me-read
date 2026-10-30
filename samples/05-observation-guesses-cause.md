@@ -55,7 +55,8 @@ whole page stops responding during the freeze.
 
 ### Why
 
-Rule 5: depend only on what you explain or reproduce, and say which you are. The report records
-what was seen; what the page did is an observation and stays. The cause, once someone establishes
-it, is its own paragraph with its own address, and it cites the report. Nobody has established it
-in this case, so there is no corrected issue to show.
+Rule 1: one claim under an address. The issue cites the report as one thing, so a guess inside it
+is read as QA's observation. The report records what was seen; what the page did is an observation
+and stays. The cause, once someone establishes it, is its own paragraph with its own address, and
+it cites the report. Nobody has established it in this case, so there is no corrected issue to
+show.

@@ -85,7 +85,7 @@ carries its reason:
 2. **Everything in it changes what the reader does next.**
 3. **A dependency is named by address.**
 4. **A claim that has an owner is cited, not restated.**
-5. **Depend only on what you explain or reproduce.**
+5. **Depend only on what you explain, reproduce or use, and converge.**
 6. **A claim has one place.**
 
 ## What it is not

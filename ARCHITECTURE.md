@@ -22,15 +22,16 @@ Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a 
 
 ## Reviewing
 
-A review finds defects in the graph of claims, and nothing else: the findings
-[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) names.
+A review finds in the graph of claims the findings
+[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) names, and
+nothing else.
 
 ### Scope
 
 - The skill, its references, and this tree's own documents: `README.md`, this file,
   `samples/README.md`, and the comments in `scripts/check.sh`. Every claim in them is in scope.
 - Each case in `samples/`, on its own. Three questions only: does the Good fix what *What is wrong*
-  names; does the Good bring in a defect of its own; do the graph and *Why* match the case's files.
+  names; does the Good bring in a finding of its own; do the graph and *Why* match the case's files.
 - Out of scope: the logic of sample code, agreement between cases, and anything a judgment does not
   name. The code in a case has no owner; it is there to carry the case's graph.
 

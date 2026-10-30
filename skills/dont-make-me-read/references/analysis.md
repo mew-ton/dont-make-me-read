@@ -28,5 +28,6 @@ prose and in a program: read them before judging, and judge a new case by the in
 ## Reporting
 
 A finding is a judgment other than visible, converging and reversed, which say how an edge runs
-and are not defects on their own. Report each finding with the address it sits at, the judgment,
-and the rule in `SKILL.md` it breaks.
+and leave nothing to fix on their own. A diverging edge is reported as a signal to fix, not as a
+bug. Report each finding with the address it sits at, the judgment, and the rule in `SKILL.md` it
+breaks.

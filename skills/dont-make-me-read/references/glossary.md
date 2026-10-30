@@ -23,10 +23,12 @@ The unit explanations come in: the smallest part that can be cited on its own an
 own. Each claim is a node, and each dependency an edge.
 
 - In prose: what the paragraph says, as one thing to cite or rewrite.
-- In a program: the body of a named unit, which explains what it does. The name, with what it
-  declares to take and to give back, is a claim of its own: it summarises the body, so it depends
-  on the body. A test is a named unit like any other, and its name summarises its body; whether
-  the name is a string or an identifier is the framework's business.
+- In a program: the body of a named unit, which explains what it does. A test is a named unit
+  like any other; whether its name is a string or an identifier is the framework's business.
+
+The address of a paragraph summarises the paragraph and is a claim of its own, which depends on
+what it summarises: a heading in prose, and in a program the name, with what it declares to take
+and to give back. It is not counted as a second claim of the paragraph.
 
 Instances:
 
@@ -145,8 +147,8 @@ What A holds of B's information disagrees with B as it is now.
 
 ### Converging
 
-Adding another claim like B leaves A as it is, because A points at whatever a scope holds. It is
-not a defect.
+Adding another claim like B leaves A as it is, because A points at whatever a scope holds. There is
+nothing to fix.
 
 - Set-up that every test in its scope depends on; a router that serves whatever the pages
   directory holds.
@@ -154,9 +156,10 @@ not a defect.
 ### Diverging
 
 Adding another claim like B means rewriting A, because A names each such claim one by one, or sits
-in a scope wider than the claims that depend on it. It is a defect. To find one, ask which existing
-claims have to be rewritten to add a claim, one that is only planned included; the edges from those
-to the new one diverge.
+in a scope wider than the claims that depend on it. It is not a bug in itself; it is a tendency
+that makes each new claim cost a change elsewhere, and a signal to fix. To find one, ask which
+existing claims have to be rewritten to add a claim, one that is only planned included; the edges
+from those to the new one diverge.
 
 - In prose: a decision that lists the declarations implementing it.
 - In a program: a list that names its members one by one where they could be found by a
@@ -191,8 +194,8 @@ it("shows the store's name", () => {
 
 ### Reversed
 
-The edge runs from a source to a claim derived from it. That says which way it runs; it is a defect
-only when it also diverges.
+The edge runs from a source to a claim derived from it. That says which way it runs; it signals
+something to fix only when it also diverges.
 
 - Set-up that every test in its scope depends on, which is converging; a callee with a parameter
   named after its caller, which is diverging.
