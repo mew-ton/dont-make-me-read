@@ -5,7 +5,8 @@ description: >
   Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
   agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
   a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
-user-invocable: false
+user-invocable: true
+argument-hint: "[path, diff or pull request]"
 disable-model-invocation: false
 ---
 
@@ -96,6 +97,13 @@ A finding is a judgment other than visible, converging and reversed, as `dont-ma
 defines them: those say how an edge runs and leave nothing to fix on their own. Every finding is a
 signal to fix, not a bug in itself: whether to fix it, and how, is for the people who own the text
 to decide. Report each finding with the address it sits at, the judgment, and the rule it breaks.
+
+## Invoking
+
+Typed as `/dont-make-me-read:dont-make-me-read <scope>`, this skill runs *Analysis* with the scope
+of step 0 set to what follows it: a path, a diff, or a pull request; with nothing after it, the
+uncommitted change in the working tree. Loaded on the model's judgment instead, it is in force as
+*Persistence* says, and *Analysis* runs when writing or reviewing calls for it.
 
 ## Persistence
 
