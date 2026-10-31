@@ -12,10 +12,11 @@ disable-model-invocation: false
 
 Judges each edge and each claim of the graph that the records of
 `dont-make-me-read--extract-claims`, `dont-make-me-read--extract-dependencies` and
-`dont-make-me-read--extract-dependents` form, for the readers the task gives. The fields are as each skill's *Record* lists them, and the words as
-`dont-make-me-read--glossary` defines them. The judgments are defined here, each with instances
-under its heading or named there: read them before judging, and judge a new case by the instance
-nearest it.
+`dont-make-me-read--extract-dependents` form, for the readers the task gives. The fields are as
+each skill's *Record* lists them, and the words as `dont-make-me-read--glossary` defines them. The
+judgments are defined here, each with instances under its heading or named there: read them before
+judging, and judge a new case by the instance nearest it. What to do instead of each finding is
+*Reporting* in the skill `dont-make-me-read`.
 
 ## Steps
 
