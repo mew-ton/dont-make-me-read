@@ -38,7 +38,7 @@ while the skill was still in force.
 Every graph in a case uses the judgments in
 [`dont-make-me-read--judge › Edge judgments`](../skills/dont-make-me-read--judge/SKILL.md#edge-judgments)
 and [`dont-make-me-read--judge › Node judgments`](../skills/dont-make-me-read--judge/SKILL.md#node-judgments),
-and no others, and so does step 1.
+and no others, and so does step 1 of [How to use a case](#how-to-use-a-case).
 
 ## Cases
 
