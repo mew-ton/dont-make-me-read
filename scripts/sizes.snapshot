@@ -1,8 +1,9 @@
 1970 skills/dont-make-me-read--extract-claims/SKILL.md
 2350 skills/dont-make-me-read--extract-dependencies/SKILL.md
-4327 skills/dont-make-me-read--glossary/SKILL.md
-7193 skills/dont-make-me-read--judge/SKILL.md
-5360 skills/dont-make-me-read/SKILL.md
+2309 skills/dont-make-me-read--extract-dependents/SKILL.md
+4379 skills/dont-make-me-read--glossary/SKILL.md
+7385 skills/dont-make-me-read--judge/SKILL.md
+5692 skills/dont-make-me-read/SKILL.md
 662 skills/dont-make-me-read--glossary/references/address.md
 841 skills/dont-make-me-read--glossary/references/claim.md
 1553 skills/dont-make-me-read--glossary/references/dependency.md
@@ -10,3 +11,4 @@
 1848 skills/dont-make-me-read/references/prose.md
 332 agents/dont-make-me-read--extract-claims.md
 356 agents/dont-make-me-read--extract-dependencies.md
+348 agents/dont-make-me-read--extract-dependents.md

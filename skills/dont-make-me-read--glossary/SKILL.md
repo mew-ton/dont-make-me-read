@@ -80,7 +80,8 @@ Instances: [`references/address.md`](references/address.md).
 ## Dependency
 
 A claim depends on another when a change to the other means the claim has to be checked again.
-Whether the claim names the other by an address is apart from whether it depends on it.
+Whether the claim names the other by an address is apart from whether it depends on it. The claim
+that depends is a dependent of the other.
 
 Instances: [`references/dependency.md`](references/dependency.md).
 
