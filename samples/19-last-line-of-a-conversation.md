@@ -69,13 +69,13 @@ fix, and nothing records that yet.
 
 ### Why
 
-Rule 3: a dependency is named by address, and the *Address* section of `references/glossary.md`
-says a URL holds only for the readers who can open it; the chat's URL is exact and the
-author cannot open it, so what the comment leans on is said here instead. A name is an address
-only once the thing exists, so the endpoint is described and said not to exist, and naming it is
-left to the issue. Rule 5: the ask is derived from an observation and a judgment, so the comment
-names both, by line, and says which is which. Rule 1: the observation and the ask are two claims,
-so they are two paragraphs. Rule 6: the decision that this PR is provisional needs a place; the
-issue the author opens is that place, and the comment says so rather than leaving the decision in
-the chat. Case 03 is the neighbour: there the conversation has no address at all; here it has one,
-for the wrong reader.
+Rule 3: a dependency is named by address, and the *Address* section of the skill
+`dont-make-me-read--glossary` says a URL holds only for the readers who can open it; the chat's URL
+is exact and the author cannot open it, so what the comment leans on is said here instead. A name is
+an address only once the thing exists, so the endpoint is described and said not to exist, and
+naming it is left to the issue. Rule 5: the ask is derived from an observation and a judgment, so
+the comment names both, by line, and says which is which. Rule 1: the observation and the ask are
+two claims, so they are two paragraphs. Rule 6: the decision that this PR is provisional needs a
+place; the issue the author opens is that place, and the comment says so rather than leaving the
+decision in the chat. Case 03 is the neighbour: there the conversation has no address at all; here
+it has one, for the wrong reader.

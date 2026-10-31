@@ -14,21 +14,18 @@ The skill is meant to load while you do. Whether it does is a row of
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
 what the tree says holds together is not its job; that is the job of *Reviewing*.
 
-The sizes of `SKILL.md` and the references are not capped. They are recorded in
-`scripts/sizes.snapshot`, and a change to one is recorded with `bash scripts/check.sh --update`, so
-a change shows in its diff how much each read grows.
+How the sizes are recorded is the comment on `snapshot` in `scripts/check.sh`.
 
 Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a change.
 
 ## Reviewing
 
 A review finds in the graph of claims the findings
-[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) names, and
-nothing else.
+[`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) names.
 
 ### Scope
 
-- The skill, its references, and this tree's own documents: `README.md`, this file,
+- The skills, the references, the agents, and this tree's own documents: `README.md`, this file,
   `samples/README.md`, and the comments in `scripts/check.sh`. Every claim in them is in scope.
 - Each case in `samples/`, on its own. Three questions only: does the Good fix what *What is wrong*
   names; does the Good bring in a finding of its own; do the graph and *Why* match the case's files.
@@ -37,9 +34,12 @@ nothing else.
 
 ### Steps
 
-The steps in [`analysis.md › Steps`](skills/dont-make-me-read/references/analysis.md#steps), over
-the scope above, reported as
-[`analysis.md › Reporting`](skills/dont-make-me-read/references/analysis.md#reporting) says.
+The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over *Scope*,
+reported as [`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) says.
+
+A review also checks, in the transcripts its steps leave, each row of
+[`README.md › What it relies on Claude Code for`](README.md#what-it-relies-on-claude-code-for)
+that names a review of this tree, and dates the row it checked.
 
 ### When it is done
 
