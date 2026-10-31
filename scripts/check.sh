@@ -7,8 +7,10 @@
 # the sizes of every SKILL.md, reference and agent against their snapshot; that
 # each reference is linked from its own SKILL.md and from no reference beside it;
 # links and the headings they name; that README.md quotes SKILL.md; that
-# plugin.json carries the first sentence of the SKILL.md description; and that
-# samples cite rules, sections, skills and cases that exist. No model call, no
+# plugin.json carries the first sentence of the SKILL.md description; that
+# .claude-plugin/marketplace.json lists this one plugin, by plugin.json's name,
+# from the repository root; and that samples cite rules, sections, skills and
+# cases that exist. No model call, no
 # network.
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
@@ -77,7 +79,7 @@ for f in "$root"/skills/*/SKILL.md; do
   [ "$(frontmatter_field user-invocable "$f")" = false ] \
     || problem "$rel does not set user-invocable: false"
   # An agent can preload only a skill the model can invoke, as a row of
-  # README.md › What it relies on Claude Code for says.
+  # README.md › What it relies on Claude for says.
   [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
     || problem "$rel does not set disable-model-invocation: false"
 done
@@ -127,7 +129,7 @@ for f in "$root"/agents/*.md; do
   done
   tools=$(list_field tools "$f")
   # An agent with no tools has every tool, as a row of README.md › What it
-  # relies on Claude Code for says.
+  # relies on Claude for says.
   [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
   for t in Agent Task Skill; do
     grep -qxF "$t" <<< "$tools" && problem "$rel has the tool $t"
@@ -264,5 +266,20 @@ first_sentence="${description%%. *}."
 manifest_description=$(sed -n 's/^[ \t]*"description":[ \t]*"\(.*\)",\{0,1\}[ \t]*$/\1/p' "$manifest")
 [ "$manifest_description" = "$first_sentence" ] \
   || problem "plugin.json description is not the first sentence of the SKILL.md description"
+
+# --- the marketplace lists this plugin, by its name, from the root -----------
+
+# The entry is written on one line, so that this grep can read it. It carries
+# no description: the plugin's own is in plugin.json.
+marketplace="$root/.claude-plugin/marketplace.json"
+plugin_name=$(sed -n 's/^[ \t]*"name":[ \t]*"\([^"]*\)".*/\1/p' "$manifest" | head -n 1)
+if [ ! -f "$marketplace" ]; then
+  problem ".claude-plugin/marketplace.json is missing"
+else
+  [ "$(grep -c '"source"' "$marketplace")" = 1 ] \
+    || problem ".claude-plugin/marketplace.json does not list exactly one plugin"
+  grep -qE "^[[:space:]]*\{ *\"name\": *\"$plugin_name\", *\"source\": *\"\./\" *\}" "$marketplace" \
+    || problem ".claude-plugin/marketplace.json does not list $plugin_name from ./ on one line"
+fi
 
 exit "$status"
