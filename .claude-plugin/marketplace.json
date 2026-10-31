@@ -1,6 +1,7 @@
 {
   "name": "dont-make-me-read",
-  "owner": { "name": "mew-ton" },
+  "description": "The marketplace of the Don't Make Me Read plugin.",
+  "owner": { "name": "mew-ton", "url": "https://github.com/mew-ton" },
   "plugins": [
     { "name": "dont-make-me-read", "source": "./" }
   ]
