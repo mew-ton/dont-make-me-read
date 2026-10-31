@@ -23,8 +23,11 @@ This plugin is there to make your agent write everything that way, the prose inc
 ## What it does
 
 A plugin for [Claude Code](https://claude.com/claude-code) and claude.ai, built on one skill, meant
-to load on the model's own judgment while it writes or reviews, with nothing for you to type. The skill's own description,
-quoted:
+to load on the model's own judgment while it writes or reviews, with nothing for you to type. To
+ask for an analysis of a scope you name, in Claude Code type
+`/dont-make-me-read:dont-make-me-read <scope>`, as
+[`SKILL.md › Invoking`](skills/dont-make-me-read/SKILL.md#invoking) says; on claude.ai, ask in
+words. The skill's own description, quoted:
 
 > Keeps what a reader has to gather before they can act as small as it can be, and in one place.
 > Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
