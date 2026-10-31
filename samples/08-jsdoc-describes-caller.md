@@ -47,7 +47,7 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
-Rule 5: a declaration does not depend on who uses it; callers are found by search. Rule 4: what the
+Rule 5 and rule 6: a declaration does not depend on who uses it; callers are found by search. Rule 4: what the
 declaration does is owned by its name, signature and body, so a comment that said it again would be
 a second owner (case 16). With the callers gone nothing is left for the comment to carry, so it
 goes. A comment that cites a decision the declaration reproduces is case 06, and nothing in this

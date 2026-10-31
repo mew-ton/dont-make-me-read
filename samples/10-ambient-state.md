@@ -97,7 +97,7 @@ How the retry limit is chosen: `config/retry.ts › retry`.
 
 ### Why
 
-Rule 6: a claim has one place. The precedence now has an address, `config/retry.ts › retry`, and
+Rule 7: a claim has one place. The precedence now has an address, `config/retry.ts › retry`, and
 the README and the function both reach it. Rule 3: the body names its input as a parameter instead
 of reading the environment itself. The override is kept; only its rule moved to where it can be
 cited.
