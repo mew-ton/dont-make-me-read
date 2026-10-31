@@ -2,7 +2,7 @@
   "name": "dont-make-me-read",
   "displayName": "Don't Make Me Read",
   "description": "Keeps what a reader has to gather before they can act as small as it can be, and in one place.",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "author": { "name": "mew-ton", "url": "https://github.com/mew-ton" },
   "repository": "https://github.com/mew-ton/dont-make-me-read",
   "license": "MIT",
