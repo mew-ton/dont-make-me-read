@@ -22,9 +22,8 @@ A paragraph makes one claim, under an address other paragraphs can name it by.
 ## Words
 
 What *paragraph*, *claim* and *address* mean, with the rest of the words these rules use, is the
-skill `dont-make-me-read--glossary`, and what the judgments mean, converging and diverging among
-them, is the skill `dont-make-me-read--judge`: load both before writing or reviewing under these
-rules.
+skill `dont-make-me-read--glossary`, and what the judgments mean is the skill
+`dont-make-me-read--judge`: load both before writing or reviewing under these rules.
 
 ## Rules
 

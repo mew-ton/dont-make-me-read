@@ -4,7 +4,7 @@
 # each agent loads its own sub-skill and the glossary and can neither delegate
 # nor load another skill; that neither what an agent loads nor the glossary
 # names another sub-skill, SKILL.md, prose.md, program.md or a rule;
-# the sizes of what the skills and agents read against their snapshot; that
+# the sizes of every SKILL.md, reference and agent against their snapshot; that
 # each reference is linked from its own SKILL.md and from no reference beside it;
 # links and the headings they name; that README.md quotes SKILL.md; that
 # plugin.json carries the first sentence of the SKILL.md description; and that

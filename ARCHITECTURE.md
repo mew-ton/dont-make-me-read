@@ -14,8 +14,7 @@ The skill is meant to load while you do. Whether it does is a row of
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
 what the tree says holds together is not its job; that is the job of *Reviewing*.
 
-The sizes of what the skills and agents read are recorded rather than capped, as the comment on
-`snapshot` in `scripts/check.sh` says.
+How the sizes are recorded is the comment on `snapshot` in `scripts/check.sh`.
 
 Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a change.
 
@@ -37,6 +36,10 @@ A review finds in the graph of claims the findings
 
 The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over *Scope*,
 reported as [`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) says.
+
+A review also checks, in the transcripts its steps leave, each row of
+[`README.md › What it relies on Claude Code for`](README.md#what-it-relies-on-claude-code-for)
+that names a review of this tree, and dates the row it checked.
 
 ### When it is done
 

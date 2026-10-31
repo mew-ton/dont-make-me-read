@@ -25,8 +25,7 @@ nearest it.
 
 ## Edge judgments
 
-Each judges an edge from A to B, where A depends on B. An edge is visible or missing, may also be
-a contradiction, and converges or diverges.
+Each judges an edge from A to B, where A depends on B.
 
 ### Visible
 
