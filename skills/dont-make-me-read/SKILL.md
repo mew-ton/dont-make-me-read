@@ -70,7 +70,11 @@ as *Delegating* says on what the steps before it produced.
    of the records, an address included. Follow a dependency further only while a change to it would
    still mean checking the starting claim again: run steps 1 and 2 on where it is. How far that goes
    is the task's to decide.
-3. **Judge the graph.** Run `dont-make-me-read--judge` on the records of steps 1 and 2, for the
+3. **List what depends on each claim.** Run `dont-make-me-read--extract-dependents` on each claim
+   of the records of step 1, and on each claim a diff in the scope removed, by the words it had.
+   Each dependent found is one more edge into the scope, from a claim step 1 did not cut: these are
+   the edges rule 6 leaves to search.
+4. **Judge the graph.** Run `dont-make-me-read--judge` on the records of steps 1 to 3, for the
    readers set in step 0.
 
 ### Delegating
