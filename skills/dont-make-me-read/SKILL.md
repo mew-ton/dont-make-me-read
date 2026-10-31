@@ -59,8 +59,12 @@ as *Delegating* says on what the steps before it produced.
 ### Steps
 
 0. **Set the scope and the readers.** The task sets where to start: the claims a diff touches, one
-   document, a whole tree. The readers are as *Reader* in `dont-make-me-read--glossary` defines
-   them. A claim nothing depends on and nobody reads is not a starting point.
+   document, a whole tree. A diff touches a claim when one of its hunks shares a line with the
+   claim's location or its address's location, as *Location* in `dont-make-me-read--glossary`
+   defines one, in the file as the diff leaves it; step 1 runs over each file the diff touches, and
+   a claim it finds there that the diff does not touch is out of scope. The readers are as *Reader*
+   in `dont-make-me-read--glossary` defines them. A claim nothing depends on and nobody reads is
+   not a starting point.
 1. **Cut into claims.** Run `dont-make-me-read--extract-claims` over the scope.
 2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each claim
    of the records, an address included. Follow a dependency further only while a change to it would
