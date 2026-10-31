@@ -33,7 +33,7 @@ quoted:
 
 That skill holds the rules and the steps of an analysis. Each step after setting the scope is a
 sub-skill of its own, the last of them `dont-make-me-read--judge`, and the words they share are the
-sub-skill `dont-make-me-read--glossary`. The two steps that read whole
+sub-skill `dont-make-me-read--glossary`. The two steps that read the
 files, cutting into claims and listing what each depends on, also have an agent of the same name,
 which runs the step in a session of its own and answers with a JSON record. The conversation that
 asked for the analysis then holds the records and not the files they were read from. When they are

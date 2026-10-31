@@ -14,20 +14,14 @@ Judges each edge and each claim of the graph that the records of
 `dont-make-me-read--extract-claims` and `dont-make-me-read--extract-dependencies` form, for the
 readers the task gives. The fields are as each skill's *Record* lists them, and the words as
 `dont-make-me-read--glossary` defines them. The judgments are defined here, each with instances
-under its heading: read them before judging, and judge a new case by the instance nearest it.
+under its heading or named there: read them before judging, and judge a new case by the instance
+nearest it.
 
 ## Steps
 
-1. **Check that each edge can be followed.** It is visible or missing.
-2. **Check what a claim holds of what it depends on.** Where it restates part of it, the two agree,
-   or the edge is a contradiction. Where it holds nothing they do not, or says of one of them
-   nothing another claim depending on it does not already say, it is a duplicate.
-3. **Check what adding one more does.** Ask which existing claims have to be rewritten to add
-   another claim like this one, a planned one included. The edges from those to it diverge; the
-   others converge.
-4. **Check that each paragraph is one claim.** Claims of the record that share a `paragraph` are
-   two claims.
-5. **Check what each claim changes.** One that changes nothing its reader does next is noise.
+1. **Judge each edge** as visible, missing or a contradiction.
+2. **Judge each edge again** as converging or diverging, and say whether it is reversed.
+3. **Judge each claim** as a duplicate, two claims or noise, where it is one.
 
 ## Edge judgments
 
@@ -53,16 +47,9 @@ team gives. Whether an edge missing for that reason is fixed by moving the claim
 access is the team's to decide.
 
 It shows as a dependency named by something other than an address, as the instances of
-*Dependency* in `dont-make-me-read--glossary` list them. What to do instead, by what names it:
-
-- a position: name the heading.
-- a past only its participants hold, or the conversation that produced the text: write down what
-  was settled where the reader can open it, and name that.
-- a role: name its address.
-- nothing: name the file that owns it, or the file it only means something with.
-- an address its readers cannot open: put the claim where they can open it, and name that.
-- in a program, nothing a caller reads: the body names the state, and a caller, who reads only the
-  name and the signature, cannot reach it.
+*Dependency* in `dont-make-me-read--glossary` list them. What to do instead is the same for each:
+put what it leans on where its readers can open it, if it is not there already, and name it by an
+address.
 
 ### Contradiction
 
@@ -73,8 +60,7 @@ What A holds of B's information disagrees with B as it is now.
 
 ### Converging
 
-Adding another claim like B leaves A as it is, because A points at whatever a scope holds. There is
-nothing to fix.
+Adding another claim like B leaves A as it is, because A points at whatever a scope holds.
 
 - Set-up that every test in its scope depends on; a router that serves whatever the pages
   directory holds.
@@ -119,8 +105,7 @@ it("shows the store's name", () => {
 
 ### Reversed
 
-The edge runs from a source to a claim derived from it. That says which way it runs; it signals
-something to fix only when it also diverges.
+The edge runs from a source to a claim derived from it. That says which way it runs.
 
 - Set-up that every test in its scope depends on, which is converging; a callee with a parameter
   named after its caller, which is diverging.
@@ -149,7 +134,7 @@ Each copy is one more place to keep right.
 ### Two claims
 
 It is not one claim, as *Claim* in `dont-make-me-read--glossary` defines one, with its
-instances.
+instances. In the records, it is claims that share a `paragraph`.
 
 ### Noise
 

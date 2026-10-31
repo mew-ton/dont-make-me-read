@@ -1,8 +1,7 @@
 # Prose
 
-How to write prose under the rules in `SKILL.md`: a paragraph of a document, an issue, a review
-comment, a commit message, a comment in code. What the words mean, with instances, is the
-skill `dont-make-me-read--glossary`.
+How to write prose, as `dont-make-me-read--glossary` › *Reading it* says what prose is, under the
+rules in `SKILL.md`. What the words mean, with instances, is that skill too.
 
 ## Saying which you are
 

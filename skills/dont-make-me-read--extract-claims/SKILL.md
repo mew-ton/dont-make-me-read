@@ -18,8 +18,7 @@ Cuts the file the task names into claims, and returns them as one record. The wo
 1. **Read the whole file.**
 2. **Cut it into claims.** Ask whether a part can be cited or rewritten on its own. If it can, it
    is a claim of its own, even where it shares a paragraph with another.
-3. **Give each claim its address.** The heading it sits under in prose; the name, with what it
-   declares to take and to give back, in a program. Several claims can share one.
+3. **Give each claim its address,** as *Address* says what it is. Several claims can share one.
 4. **Account for every other line.** A non-blank line in no claim and no address goes in
    `uncovered`, with why.
 
@@ -30,7 +29,7 @@ it.
 
 ```json
 {
-  "unit": "README.md",
+  "file": "README.md",
   "claims": [
     {
       "at": "README.md:5-6",
@@ -45,7 +44,7 @@ it.
 }
 ```
 
-- `unit`: the file's path, as the task gave it.
+- `file`: the file's path, as the task gave it.
 - `claims`: one entry per claim, in the file's order.
   - `at`: the claim's location, its address left out.
   - `paragraph`: the location of the paragraph the claim is written in, which claims written in

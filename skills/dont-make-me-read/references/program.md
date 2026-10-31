@@ -1,8 +1,7 @@
 # Program
 
-How to write a program under the rules in `SKILL.md`: a declaration, its body, a test. Stated
-without any language's syntax; where an example uses one, it is one instance. What the words mean,
-with instances, is the skill `dont-make-me-read--glossary`.
+How to write a program, as `dont-make-me-read--glossary` › *Reading it* says what a program is,
+under the rules in `SKILL.md`. What the words mean, with instances, is that skill too.
 
 ## Saying which you are
 

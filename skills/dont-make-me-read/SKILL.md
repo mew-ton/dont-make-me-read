@@ -17,12 +17,14 @@ cost, because they read their own draft while supplying what it leaves out.
 
 ## The unit
 
-A paragraph makes one claim, under an address other paragraphs can name it by. What those words
-mean, with the rest of the words these rules use, is the skill `dont-make-me-read--glossary`, and
-what the judgments mean is the skill `dont-make-me-read--judge`, each with instances in prose and
-in a program: load the glossary before writing or reviewing under these rules. How to
-write under them is in the file *Which file to read* names, and how to find what is wrong with
-what is written is *Analysis*.
+A paragraph makes one claim, under an address other paragraphs can name it by.
+
+What those words mean, with the rest of the words these rules use, is the skill
+`dont-make-me-read--glossary`: load it before writing or reviewing under these rules. What the
+judgments of a review mean is the skill `dont-make-me-read--judge`.
+
+How to write under these rules is in the file *Which file to read* names, and how to find what is
+wrong with what is written is *Analysis*.
 
 ## Rules
 
@@ -35,9 +37,8 @@ what is written is *Analysis*.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs
    in order to act, in the owner's words, and name the owner.
 5. **Depend only on what you explain, reproduce or use, and converge.** Whether a dependency
-   converges or diverges is as the skill `dont-make-me-read--judge` defines it, and one that
-   diverges is a signal to fix. Say which you are, and keep the source's words: the reverse
-   direction comes from an index, backlinks or search.
+   converges or diverges is as the skill `dont-make-me-read--judge` defines it. Say which you are,
+   and keep the source's words: the reverse direction comes from an index, backlinks or search.
 6. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
    set by the structure of the code or by the project's own instructions. If no place is set for
    this kind of claim, say so and stop rather than make a second one.
@@ -58,23 +59,24 @@ it and run it, or delegate it as *Delegating* says, on what the steps before it 
 ### Steps
 
 0. **Set the scope and the readers.** The task sets where to start: the claims a diff touches, one
-   document, a whole tree. A claim's readers are the people and agents who can open the place it
-   sits in. A claim nothing depends on and nobody reads is not a starting point.
+   document, a whole tree. The readers are as *Reader* in the glossary defines them. A claim
+   nothing depends on and nobody reads is not a starting point.
 1. **Cut into claims.** Run `dont-make-me-read--extract-claims` over the scope.
-2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each
-   claim. Follow a dependency further only while a change to it would still mean checking the
-   starting claim again: run steps 1 and 2 on where it is. How far that goes is the task's to
-   decide.
+2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each claim
+   of the records, an address included. Follow a dependency further only while a change to it would
+   still mean checking the starting claim again: run steps 1 and 2 on where it is. How far that goes
+   is the task's to decide.
 3. **Judge the graph.** Run `dont-make-me-read--judge` on the records of steps 1 and 2, for the
    readers set in step 0.
 
 ### Delegating
 
 A step whose skill has an agent of the same name runs in that agent when the scope set in step 0
-is more than the text you are writing: one session per unit the skill takes, as many at once as
-can run. Otherwise, and for a step with no such agent, load the skill and run it yourself.
+is more than the text you are writing: one session for each thing the skill's *What it does*
+says it takes, as many at once as can run. Otherwise, and for a step with no such agent, load the
+skill and run it yourself.
 
-The task given to a session names its unit and nothing else. It carries none of the conversation,
+The task given to a session names that thing and nothing else. It carries none of the conversation,
 so the session reads the unit as a reader who lands on it by search does.
 
 A record is checked as its skill's *Record* says before it is used, and a record that fails is run

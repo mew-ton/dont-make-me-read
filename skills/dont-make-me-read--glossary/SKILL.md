@@ -38,16 +38,16 @@ own. Each claim is a node, and each dependency an edge.
 - In a program: the body of a named unit, which explains what it does. A test is a named unit
   like any other; whether its name is a string or an identifier is the framework's business.
 
-The address of a paragraph summarises the paragraph and is a claim of its own, which depends on
-what it summarises: a heading in prose, and in a program the name, with what it declares to take
-and to give back. It is not counted as a second claim of the paragraph.
+The address of a paragraph, as *Address* says what it is, summarises the paragraph and is a claim
+of its own, which depends on what it summarises. It is not counted as a second claim of the
+paragraph.
 
 Instances: [`references/claim.md`](references/claim.md).
 
 ## Reader
 
-Whoever acts on a claim. There are always two: one who reads in order, and an agent that lands on
-the claim by search.
+Whoever acts on a claim: the people and agents who can open the place it sits in. There are
+always two kinds: one who reads in order, and an agent that lands on the claim by search.
 
 - In prose: a person reading from the top, and an agent landing on the paragraph by search.
 - In a program: the person reading the file, and an agent landing on the declaration by search.
@@ -73,7 +73,7 @@ say.
 - In prose: the heading above the paragraph; for a comment in code, the name of the declaration it
   sits on. Reading order is not an address: the agent arrives mid-document, so a paragraph that
   needs the one before it leans on something that reader does not have.
-- In a program: the name of the unit.
+- In a program: the name of the unit, with what it declares to take and to give back.
 
 Instances: [`references/address.md`](references/address.md).
 
