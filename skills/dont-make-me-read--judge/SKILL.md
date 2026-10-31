@@ -105,10 +105,12 @@ it("shows the store's name", () => {
 
 ### Reversed
 
-The edge runs from a source to a claim derived from it. That says which way it runs.
+The edge runs from a source to a claim derived from it, as *Source and derived* in
+`dont-make-me-read--glossary` defines them. That says which way it runs.
 
-- Set-up that every test in its scope depends on, which is converging; a callee with a parameter
-  named after its caller, which is diverging.
+- The edge from shared set-up to the tests whose needs it holds, which is converging when every
+  test in its scope depends on it; the edge from a callee to the caller its parameter is named
+  after, which is diverging. In both, what is used leans on what uses it.
 
 ## Node judgments
 
