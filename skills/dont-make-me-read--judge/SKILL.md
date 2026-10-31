@@ -2,8 +2,8 @@
 name: dont-make-me-read--judge
 description: >
   Judges each edge and each claim of the graph that the records of
-  dont-make-me-read--extract-claims and dont-make-me-read--extract-dependencies form, and defines
-  each judgment it makes.
+  dont-make-me-read--extract-claims, dont-make-me-read--extract-dependencies and
+  dont-make-me-read--extract-dependents form, and defines each judgment it makes.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -11,8 +11,8 @@ disable-model-invocation: false
 ## What it does
 
 Judges each edge and each claim of the graph that the records of
-`dont-make-me-read--extract-claims` and `dont-make-me-read--extract-dependencies` form, for the
-readers the task gives. The fields are as each skill's *Record* lists them, and the words as
+`dont-make-me-read--extract-claims`, `dont-make-me-read--extract-dependencies` and
+`dont-make-me-read--extract-dependents` form, for the readers the task gives. The fields are as each skill's *Record* lists them, and the words as
 `dont-make-me-read--glossary` defines them. The judgments are defined here, each with instances
 under its heading or named there: read them before judging, and judge a new case by the instance
 nearest it.
@@ -26,7 +26,8 @@ nearest it.
 
 ## Edge judgments
 
-Each judges an edge from A to B, where A depends on B.
+Each judges an edge from A to B, where A depends on B. A record of dependencies gives the edges
+from its claim; a record of dependents gives the edges into its claim.
 
 ### Visible
 
