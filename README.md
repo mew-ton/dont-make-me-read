@@ -22,8 +22,8 @@ This plugin is there to make your agent write everything that way, the prose inc
 
 ## What it does
 
-A [Claude Code](https://claude.com/claude-code) plugin built on one skill, meant to load on the model's
-own judgment while it writes or reviews, with nothing for you to type. The skill's own description,
+A plugin for [Claude Code](https://claude.com/claude-code) and claude.ai, built on one skill, meant
+to load on the model's own judgment while it writes or reviews, with nothing for you to type. The skill's own description,
 quoted:
 
 > Keeps what a reader has to gather before they can act as small as it can be, and in one place.
@@ -107,7 +107,7 @@ carries its reason:
 Not measured yet: there are no numbers here because none have been taken. How they will be taken
 is in [`samples/README.md › How to use a case`](samples/README.md#how-to-use-a-case).
 
-### What it relies on Claude Code for
+### What it relies on Claude for
 
 The skills and agents work as this file says only if each row of this table holds. Each row is
 checked by hand, as its *Checked by* says. A step there is a step of
@@ -124,12 +124,30 @@ the agents as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#dele
 | An agent's session starts without the conversation that started it | a review of this tree, in the agent's transcript | not yet |
 | An agent's `skills` cannot preload a skill with `disable-model-invocation: true` | [sub-agents](https://code.claude.com/docs/en/sub-agents) | 2026-10-30 |
 | An agent with no `tools` has every tool, `Agent` and `Skill` included | [sub-agents](https://code.claude.com/docs/en/sub-agents) | 2026-10-30 |
+| Chat on claude.ai loads a plugin's skills and skips its agents | [platform support](https://claude.com/docs/plugins/platform-support) | 2026-10-31 |
+| Chat on claude.ai loads a skill whose frontmatter has fields only Claude Code reads, such as `user-invocable` | adding the marketplace on claude.ai, then asking a chat which skills it has from plugins | not yet |
 
 A row that fails on re-check is a change to the skills or agents, not to this table.
 
 ## Install
 
-There is no marketplace entry yet. Clone the repository and point Claude Code at the checkout:
+This repository is a marketplace that lists this one plugin.
+
+On claude.ai or in the Claude desktop app, open **Customize › Plugins**, choose **Add › Add
+marketplace**, enter `mew-ton/dont-make-me-read`, and add **dont-make-me-read** from it. It is then
+on your account, and Claude Code signed in to the same account loads it as a synced plugin.
+
+In Claude Code:
+
+```text
+/plugin install dont-make-me-read --marketplace mew-ton/dont-make-me-read
+```
+
+Chat on claude.ai does not load the agents, so there every step of an analysis runs in the
+conversation, as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating) says for a
+step with no agent.
+
+To try a checkout without installing it:
 
 ```bash
 git clone https://github.com/mew-ton/dont-make-me-read.git
