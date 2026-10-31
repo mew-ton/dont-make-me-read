@@ -1,7 +1,7 @@
 # Prose
 
 How to write prose, as `dont-make-me-read--glossary` › *Reading it* says what prose is, under the
-rules in `SKILL.md`. What the words mean, with instances, is that skill too.
+rules in `SKILL.md`.
 
 ## Saying which you are
 

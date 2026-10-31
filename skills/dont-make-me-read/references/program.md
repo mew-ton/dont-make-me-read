@@ -1,7 +1,7 @@
 # Program
 
 How to write a program, as `dont-make-me-read--glossary` › *Reading it* says what a program is,
-under the rules in `SKILL.md`. What the words mean, with instances, is that skill too.
+under the rules in `SKILL.md`.
 
 ## Saying which you are
 

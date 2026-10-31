@@ -22,9 +22,8 @@ A paragraph makes one claim, under an address other paragraphs can name it by.
 ## Words
 
 What those words mean, with the rest of the words these rules use, is the skill
-`dont-make-me-read--glossary`: load it before writing or reviewing under these rules.
-
-What the judgments of a review mean is the skill `dont-make-me-read--judge`.
+`dont-make-me-read--glossary`, and what the judgments mean, converging and diverging among them, is
+the skill `dont-make-me-read--judge`: load both before writing or reviewing under these rules.
 
 ## Rules
 
@@ -59,8 +58,8 @@ as *Delegating* says on what the steps before it produced.
 ### Steps
 
 0. **Set the scope and the readers.** The task sets where to start: the claims a diff touches, one
-   document, a whole tree. The readers are as *Reader* in the glossary defines them. A claim
-   nothing depends on and nobody reads is not a starting point.
+   document, a whole tree. The readers are as *Reader* in `dont-make-me-read--glossary` defines
+   them. A claim nothing depends on and nobody reads is not a starting point.
 1. **Cut into claims.** Run `dont-make-me-read--extract-claims` over the scope.
 2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each claim
    of the records, an address included. Follow a dependency further only while a change to it would
@@ -72,9 +71,9 @@ as *Delegating* says on what the steps before it produced.
 ### Delegating
 
 A step whose skill has an agent of the same name runs in that agent when the scope set in step 0
-is more than the text you are writing: one session for each thing the skill's *What it does*
-says it takes, as many at once as can run. Otherwise, and for a step with no such agent, load the
-skill and run it yourself.
+is more than the text you are writing and is on disk, where the agent can read it: one session for
+each thing the skill's *What it does* says it takes, as many at once as can run. Otherwise, and for
+a step with no such agent, load the skill and run it yourself.
 
 The task given to a session names that thing and nothing else. It carries none of the conversation,
 so the session reads the unit as a reader who lands on it by search does.

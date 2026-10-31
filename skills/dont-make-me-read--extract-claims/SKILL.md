@@ -11,7 +11,7 @@ disable-model-invocation: false
 
 Cuts the file the task names into claims, and returns them as one record. The words are as
 `dont-make-me-read--glossary` defines them: read its *Paragraph*, *Claim*, *Address* and
-*Location*, with their instances, before cutting.
+*Location* before cutting.
 
 ## Steps
 

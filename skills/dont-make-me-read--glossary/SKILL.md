@@ -1,8 +1,8 @@
 ---
 name: dont-make-me-read--glossary
 description: >
-  What the words explanation, paragraph, claim, reader, address, dependency, source and derived,
-  and location mean, in prose and in a program alike.
+  Defines the words used to write and review text so that a reader can act on it, each in prose
+  and in a program, with instances.
 user-invocable: false
 disable-model-invocation: false
 ---

@@ -11,7 +11,7 @@ disable-model-invocation: false
 
 Lists what the claim the task names depends on, and returns it as one record. The words are as
 `dont-make-me-read--glossary` defines them: read its *Claim*, *Address*, *Dependency* and
-*Location*, with their instances, before listing.
+*Location* before listing.
 
 ## Steps
 

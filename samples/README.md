@@ -18,9 +18,9 @@ the rest of the file, and run two steps.
 Step 1, in the first message, a review that ends in a correction, since the skill applies to both:
 
 > Review these files. List the claims in them as nodes, each by its address, and every edge
-> between them with its direction. Judge each edge as visible, missing or a contradiction, and as
-> converging or diverging, and say of each node whether it is a duplicate, noise, or two claims in
-> one.
+> between them with its direction. Judge each edge as visible or missing, whether it is a
+> contradiction, and as converging or diverging, and say of each node whether it is a duplicate,
+> noise, or two claims in one.
 > Then correct the files where they need it.
 
 Step 2, in the next message, without naming the skill:

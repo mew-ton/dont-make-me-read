@@ -98,7 +98,7 @@ skill_files() {
 names_beyond() {
   local file=$1; shift
   { grep -oE "${sub_prefix}[a-z-]*[a-z]" "$file" | grep -vxF -f <(printf '%s\n' "$@") || true
-    grep -oE '\bSKILL\.md|references/(prose|program)\.md|\b[Rr]ule +[0-9]+' "$file" || true; } | sort -u
+    grep -oE '\bSKILL\.md|\b(prose|program)\.md|\b[Rr]ule +[0-9]+' "$file" || true; } | sort -u
 }
 
 # --- the agents: their own sub-skill and the glossary, no delegating, no loading
@@ -114,7 +114,8 @@ for f in "$root"/agents/*.md; do
   [ "$(list_field skills "$f" | sort)" = "$(printf '%s\n' "$base" "$glossary_name" | sort)" ] \
     || problem "$rel does not load exactly the skills $base and $glossary_name"
   [ -f "$root/skills/$base/SKILL.md" ] || problem "$rel names skills/$base, which does not exist"
-  # What the agent loads names nothing it does not load.
+  # What the agent loads names no sub-skill it does not load, SKILL.md, prose.md,
+  # program.md or a rule.
   for s in "$base" "$glossary_name"; do
     while IFS= read -r g; do
       while IFS= read -r name; do
