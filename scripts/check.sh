@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 #
 # Checks the form of this tree: the frontmatter of every skill and agent, that
-# each agent loads one sub-skill and can neither delegate nor load another
-# skill, that what a sub-skill reads names no step it does not run, the sizes
-# of what the skills and agents read against their snapshot, links and the
-# headings they name, that README.md quotes SKILL.md, and that samples cite
-# rules, sections and cases that exist. No model call, no network.
+# each agent loads its own sub-skill and the glossary and can neither delegate
+# nor load another skill, that the glossary names no other skill and what an
+# agent loads names nothing it does not load, the sizes of what the skills and
+# agents read against their snapshot, links and the headings they name, that
+# README.md quotes SKILL.md, and that samples cite rules, sections, skills and
+# cases that exist. No model call, no network.
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #
@@ -18,13 +19,13 @@ set -euo pipefail
 root=$(cd "$(dirname "$0")/.." && pwd)
 skill_dir="$root/skills/dont-make-me-read"
 skill="$skill_dir/SKILL.md"
-glossary="$skill_dir/references/glossary.md"
-# A sub-skill runs one step of an analysis for the agent of the same name.
+# A sub-skill is a step of an analysis, or the words the steps share.
 sub_prefix="$(basename "$skill_dir")--"
+glossary_name="${sub_prefix}glossary"
 readme="$root/README.md"
 manifest="$root/.claude-plugin/plugin.json"
 
-# The sizes of every SKILL.md, the references and the agents, which are read
+# The sizes of every SKILL.md, every reference and every agent, which are read
 # into a model's context. A size is not capped: a change to it is recorded here by
 # --update, so the diff of a change shows how much each read grew or shrank.
 snapshot="$root/scripts/sizes.snapshot"
@@ -75,12 +76,30 @@ for f in "$root"/skills/*/SKILL.md; do
   # An agent can preload only a skill the model can invoke.
   [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
     || problem "$rel does not set disable-model-invocation: false"
-  [ -f "$root/agents/$dir.md" ] || problem "$rel has no agent agents/$dir.md"
 done
+[ -f "$root/skills/$glossary_name/SKILL.md" ] || problem "skills/$glossary_name/SKILL.md is missing"
 
 description=$(frontmatter_field description)
 
-# --- the agents: one sub-skill each, no delegating, no loading -------------------
+# rules: the lines of SKILL.md › Rules, where the numbered rules are.
+rules() { awk '/^## /{ on = ($0 == "## Rules") ; next } on' "$skill"; }
+
+# skill_files NAME: the files of the skill NAME, its SKILL.md and its references.
+skill_files() {
+  for f in "$root/skills/$1/SKILL.md" "$root/skills/$1"/references/*.md; do
+    [ -e "$f" ] && echo "$f"
+  done
+}
+
+# names_beyond FILE ALLOWED...: the sub-skills FILE names other than ALLOWED, and
+# any reference of the root skill or rule of SKILL.md it names, one per line.
+names_beyond() {
+  local file=$1; shift
+  { grep -oE "${sub_prefix}[a-z-]*[a-z]" "$file" | grep -vxF -f <(printf '%s\n' "$@") || true
+    grep -oE 'references/(prose|program)\.md|\b[Rr]ule +[0-9]+' "$file" || true; } | sort -u
+}
+
+# --- the agents: their own sub-skill and the glossary, no delegating, no loading
 
 for f in "$root"/agents/*.md; do
   [ -e "$f" ] || continue
@@ -89,9 +108,18 @@ for f in "$root"/agents/*.md; do
   n=$(frontmatter_field name "$f")
   [ "$n" = "$base" ] || problem "$rel name '$n' is not its file name '$base'"
   [ -n "$(frontmatter_field description "$f")" ] || problem "$rel has no description"
-  [ "$(list_field skills "$f")" = "$base" ] \
-    || problem "$rel does not load exactly the skill $base"
+  [ "$base" != "$glossary_name" ] || problem "$rel is an agent for the glossary, which is no step"
+  [ "$(list_field skills "$f" | sort)" = "$(printf '%s\n' "$base" "$glossary_name" | sort)" ] \
+    || problem "$rel does not load exactly the skills $base and $glossary_name"
   [ -f "$root/skills/$base/SKILL.md" ] || problem "$rel names skills/$base, which does not exist"
+  # What the agent loads names nothing it does not load.
+  for s in "$base" "$glossary_name"; do
+    while IFS= read -r g; do
+      while IFS= read -r name; do
+        problem "${g#"$root"/}, loaded by $rel, names $name"
+      done < <(names_beyond "$g" "$base" "$glossary_name")
+    done < <(skill_files "$s")
+  done
   tools=$(list_field tools "$f")
   [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
   for t in Agent Task Skill; do
@@ -99,21 +127,19 @@ for f in "$root"/agents/*.md; do
   done
 done
 
-# --- what a sub-skill reads names no step it does not run ---------------------
+# --- the glossary names no other skill ---------------------------------------
 
-# A sub-skill reads itself and the glossary. Neither names the analysis, where
-# the other steps and the delegating are, nor SKILL.md's references beyond the
-# glossary.
-for f in "$root"/skills/"$sub_prefix"*/SKILL.md "$glossary"; do
-  [ -e "$f" ] || continue
-  grep -qE 'analysis\.md|references/(prose|program)\.md' "$f" \
-    && problem "${f#"$root"/} names what a sub-skill does not run"
-done
+# Every skill depends on the glossary, so it depends on none of them.
+while IFS= read -r g; do
+  while IFS= read -r name; do
+    problem "${g#"$root"/} names $name; the glossary names no other skill"
+  done < <(names_beyond "$g" "$glossary_name")
+done < <(skill_files "$glossary_name")
 
 # --- sizes --------------------------------------------------------------------
 
 sizes() {
-  for f in "$root"/skills/*/SKILL.md "$skill_dir"/references/*.md "$root"/agents/*.md; do
+  for f in "$root"/skills/*/SKILL.md "$root"/skills/*/references/*.md "$root"/agents/*.md; do
     [ -e "$f" ] || continue
     printf '%s %s\n' "$(wc -c < "$f" | tr -d ' ')" "${f#"$root"/}"
   done
@@ -128,13 +154,15 @@ elif ! diff -q <(sizes) "$snapshot" > /dev/null; then
     < <(diff <(sizes) "$snapshot" | sed -n 's/^> //p' | grep -vF -f <(sizes | cut -d' ' -f2) || true)
 fi
 
-# --- references: reached from SKILL.md, and not from each other --------------
+# --- references: reached from their SKILL.md, and not from each other --------
 
-for f in "$skill_dir"/references/*.md; do
+for f in "$root"/skills/*/references/*.md; do
+  [ -e "$f" ] || continue
   rel="references/$(basename "$f")"
-  grep -q "]($rel)" "$skill" || problem "$rel is not linked from SKILL.md"
+  owner="$(dirname "$(dirname "$f")")/SKILL.md"
+  grep -q "]($rel)" "$owner" || problem "${f#"$root"/} is not linked from its SKILL.md"
   if grep -qE '\]\((\./)?[^/)#]+\.md(#[^)]*)?\)|\]\(\.\./references/' "$f"; then
-    problem "$rel links to another reference"
+    problem "${f#"$root"/} links to another reference"
   fi
 done
 
@@ -167,9 +195,9 @@ while IFS= read -r file; do
   done < <(grep -o '\]([^)]*)' "$file" | sed 's/^](//; s/)$//' || true)
 done < <(find "$root" -name '*.md' -not -path '*/.git/*')
 
-# --- samples cite rules, sections and cases that exist -----------------------
+# --- samples cite rules, sections, skills and cases that exist ---------------
 
-rule_count=$(grep -cE '^[0-9]+\. \*\*' "$skill")
+rule_count=$(rules | grep -cE '^[0-9]+\. \*\*')
 for f in "$root"/samples/*.md; do
   text=$(tr '\n' ' ' < "$f")
   while IFS= read -r n; do
@@ -181,6 +209,14 @@ for f in "$root"/samples/*.md; do
       || problem "${f#"$root"/} cites *$heading* in $ref, which has no such heading"
   done < <(grep -oE '\*[^*]+\* +(section|table) +(of|in) +`references/[a-z-]+\.md`' <<< "$text" \
              | sed -E 's/^\*([^*]+)\* +[a-z]+ +[a-z]+ +`([^`]+)`$/\1\t\2/' || true)
+  while IFS=$'\t' read -r heading name; do
+    if [ ! -f "$root/skills/$name/SKILL.md" ]; then
+      problem "${f#"$root"/} cites the skill $name, which does not exist"
+    elif ! grep -qxF -e "## $heading" -e "### $heading" "$root/skills/$name/SKILL.md"; then
+      problem "${f#"$root"/} cites *$heading* in the skill $name, which has no such heading"
+    fi
+  done < <(grep -oE '\*[^*]+\* +(section|table) +(of|in) +the +skill +`[a-z-]+`' <<< "$text" \
+             | sed -E 's/^\*([^*]+)\* +[a-z]+ +[a-z]+ +the +skill +`([^`]+)`$/\1\t\2/' || true)
   while IFS= read -r n; do
     compgen -G "$root/samples/$n-*.md" > /dev/null \
       || problem "${f#"$root"/} cites case $n, which does not exist"
@@ -208,12 +244,12 @@ done < <(awk '
 ' "$readme" | squeeze_lines)
 
 while IFS= read -r rule; do
-  grep -qF "$rule" "$skill" || problem "README.md lists a rule SKILL.md does not have: $rule"
+  rules | grep -qF "$rule" || problem "README.md lists a rule SKILL.md does not have: $rule"
 done < <(grep -E '^[0-9]+\. \*\*.*\*\*$' "$readme" || true)
 
 while IFS= read -r rule; do
   grep -qxF "$rule" "$readme" || problem "README.md does not list the rule: $rule"
-done < <(grep -oE '^[0-9]+\. \*\*[^*]+\*\*' "$skill" || true)
+done < <(rules | grep -oE '^[0-9]+\. \*\*[^*]+\*\*' || true)
 
 # --- the manifest carries the description's first sentence -------------------
 

@@ -158,9 +158,9 @@ the wrapper is built, because the problem does not care.
 Rule 5: a paragraph depends on what it explains, and an issue explains a problem, so each of its
 lines is derived from the problem or is not the issue's. That decides how much design an issue
 holds: as much as solving the problem requires, and no line of what merely solves it one way. The
-*Noise* table in `references/glossary.md` names the second kind: the implementation method
-in an issue, from which the reader concludes the shape you saw while writing is the shape today.
-Where a required design is new, it goes where the project's instructions put it, here the issue,
-and the code cites it; where they set no place, rule 6 says to say so and stop. Where a shape has
-to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
+*Noise* table in the skill `dont-make-me-read--judge` names the second kind: the implementation
+method in an issue, from which the reader concludes the shape you saw while writing is the shape
+today. Where a required design is new, it goes where the project's instructions put it, here the
+issue, and the code cites it; where they set no place, rule 6 says to say so and stop. Where a shape
+has to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
 disagreement is a contradiction between two addressed paragraphs, as in case 09.

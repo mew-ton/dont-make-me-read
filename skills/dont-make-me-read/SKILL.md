@@ -18,9 +18,10 @@ cost, because they read their own draft while supplying what it leaves out.
 ## The unit
 
 A paragraph makes one claim, under an address other paragraphs can name it by. What those words
-mean, with the rest of the words a review uses, is in
-[`references/glossary.md`](references/glossary.md), with instances in prose and in a program. How
-to write under these rules is in the file *Which file to read* names.
+mean, with the rest of the words these rules use, is the skill `dont-make-me-read--glossary`, with
+instances in prose and in a program: load it before writing or reviewing under these rules. How to
+write under them is in the file *Which file to read* names, and how to find what is wrong with
+what is written is *Analysis*.
 
 ## Rules
 
@@ -32,10 +33,10 @@ to write under these rules is in the file *Which file to read* names.
    or a state the body uses without naming: for the reader who arrives by search, those are gone.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs
    in order to act, in the owner's words, and name the owner.
-5. **Depend only on what you explain, reproduce or use, and converge.** Converging means that
-   adding another claim like the one you depend on leaves you as you are. A claim that has to be
-   rewritten each time one is added diverges, which is a signal to fix. Say which you are, and keep
-   the source's words: the reverse direction comes from an index, backlinks or search.
+5. **Depend only on what you explain, reproduce or use, and converge.** Whether a dependency
+   converges or diverges is as the skill `dont-make-me-read--judge` defines it, and one that
+   diverges is a signal to fix. Say which you are, and keep the source's words: the reverse
+   direction comes from an index, backlinks or search.
 6. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
    set by the structure of the code or by the project's own instructions. If no place is set for
    this kind of claim, say so and stop rather than make a second one.
@@ -46,7 +47,44 @@ to write under these rules is in the file *Which file to read* names.
 |---|---|
 | prose: a paragraph, a comment, a message | [`references/prose.md`](references/prose.md) |
 | a program: a declaration, a test | [`references/program.md`](references/program.md) |
-| the steps of finding what is wrong, in either | [`references/analysis.md`](references/analysis.md) |
+
+## Analysis
+
+How to find the claims in what you are writing or reviewing, the edges between them, and what is
+wrong with them, in prose and in a program alike. Each step from 1 on is a skill of its own: load
+it and run it, or delegate it as *Delegating* says, on what the steps before it produced.
+
+### Steps
+
+0. **Set the scope and the readers.** The task sets where to start: the claims a diff touches, one
+   document, a whole tree. A claim's readers are the people and agents who can open the place it
+   sits in. A claim nothing depends on and nobody reads is not a starting point.
+1. **Cut into claims.** Run `dont-make-me-read--extract-claims` on each file in the scope.
+2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each
+   claim. Follow a dependency further only while a change to it would still mean checking the
+   starting claim again: run steps 1 and 2 on where it is. How far that goes is the task's to
+   decide.
+3. **Judge the graph.** Run `dont-make-me-read--judge` on the records of steps 1 and 2, for the
+   readers set in step 0.
+
+### Delegating
+
+A step whose skill has an agent of the same name runs in that agent when the scope set in step 0
+is more than the text you are writing: one session per unit the skill takes, as many at once as
+can run. Otherwise, and for a step with no such agent, load the skill and run it yourself.
+
+The task given to a session names its unit and nothing else. It carries none of the conversation,
+so the session reads the unit as a reader who lands on it by search does.
+
+A record is checked as its skill's *Record* says before it is used, and a record that fails is run
+again.
+
+### Reporting
+
+A finding is a judgment other than visible, converging and reversed, as `dont-make-me-read--judge`
+defines them: those say how an edge runs and leave nothing to fix on their own. Every finding is a
+signal to fix, not a bug in itself: whether to fix it, and how, is for the people who own the text
+to decide. Report each finding with the address it sits at, the judgment, and the rule it breaks.
 
 ## Persistence
 

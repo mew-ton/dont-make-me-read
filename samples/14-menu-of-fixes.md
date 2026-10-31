@@ -50,7 +50,8 @@ attempt).
 
 ### Why
 
-Rule 2: everything in the paragraph changes what the reader does next. The *Noise* table in
-`references/glossary.md` names the menu of fixes and "handle this appropriately". State the cause,
-and what done means with the constraint in it as the wall the reader would walk into. Choosing the
-cause is the writer's; how to stop blocking is the implementer's, for the reason case 17 gives.
+Rule 2: everything in the paragraph changes what the reader does next. The *Noise* table in the
+skill `dont-make-me-read--judge` names the menu of fixes and "handle this appropriately". State the
+cause, and what done means with the constraint in it as the wall the reader would walk into.
+Choosing the cause is the writer's; how to stop blocking is the implementer's, for the reason case
+17 gives.

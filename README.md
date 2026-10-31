@@ -31,11 +31,12 @@ quoted:
 > agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
 > a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
 
-Two steps of an analysis, cutting into claims and listing what each depends on, are each a
-sub-skill with an agent of the same name, which runs it in a session of its own and answers with a
-JSON record. The conversation that asked for the analysis then holds the records and not the files
-they were read from. When they are used is in
-[`analysis.md › Delegating`](skills/dont-make-me-read/references/analysis.md#delegating).
+That skill holds the rules and the steps of an analysis. Each step is a sub-skill of its own, and
+the words they share are the sub-skill `dont-make-me-read--glossary`. The two steps that read whole
+files, cutting into claims and listing what each depends on, also have an agent of the same name,
+which runs the step in a session of its own and answers with a JSON record. The conversation that
+asked for the analysis then holds the records and not the files they were read from. When they are
+used is in [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating).
 
 Every sub-skill and agent is named `dont-make-me-read--…`, so that it shares no name with another
 plugin's skill or agent.
@@ -110,14 +111,15 @@ is in [`samples/README.md › How to use a case`](samples/README.md#how-to-use-a
 
 ### What it relies on Claude Code for
 
-The skills and agents work as this file says only if each row of this table holds. Each row is checked by hand, by the
-step of a case it names.
+The skills and agents work as this file says only if each row of this table holds. Each row is
+checked by hand, by the step of a case it names.
 
 | Assumption | Checked by | Last checked |
 |---|---|---|
 | A skill with `disable-model-invocation: false` is loaded on the model's judgment, from its description alone | step 1 | not yet |
 | A skill that says it stays in force is still in force on the next response | step 2 | not yet |
-| An agent's `skills` loads that skill into the agent's session, with `${CLAUDE_SKILL_DIR}` replaced by the skill's directory | step 1 | not yet |
+| An agent's `skills` loads each skill it lists into the agent's session, and the agent can read that skill's references | step 1 | not yet |
+| A model that has loaded a skill loads another skill the first one names, when told to | step 1 | not yet |
 | An agent's session starts without the conversation that started it | step 1 | not yet |
 
 A row that fails on re-check is a change to the skill, not to this table.

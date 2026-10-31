@@ -36,8 +36,9 @@ while the skill was still in force.
 ## Judgments
 
 Every graph in a case uses the judgments in
-[`glossary.md › Edge judgments`](../skills/dont-make-me-read/references/glossary.md#edge-judgments) and
-[`glossary.md › Node judgments`](../skills/dont-make-me-read/references/glossary.md#node-judgments), and no others, and so does step 1.
+[`dont-make-me-read--judge › Edge judgments`](../skills/dont-make-me-read--judge/SKILL.md#edge-judgments)
+and [`dont-make-me-read--judge › Node judgments`](../skills/dont-make-me-read--judge/SKILL.md#node-judgments),
+and no others, and so does step 1.
 
 ## Cases
 

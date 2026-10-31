@@ -10,8 +10,8 @@ disable-model-invocation: false
 ## What it does
 
 Cuts the file the task names into claims, and returns them as one record. The words are as
-`${CLAUDE_SKILL_DIR}/../dont-make-me-read/references/glossary.md` defines them: read its
-*Paragraph*, *Claim* and *Address*, with their instances, before cutting.
+`dont-make-me-read--glossary` defines them: read its *Paragraph*, *Claim*, *Address* and
+*Location*, with their instances, before cutting.
 
 ## Steps
 
@@ -46,7 +46,7 @@ it.
 
 - `unit`: the file's path, as the task gave it.
 - `claims`: one entry per claim, in the file's order.
-  - `at`: `path:first-last`, the claim's lines, 1-based and inclusive, its address left out.
+  - `at`: the claim's location, its address left out.
   - `address`: the address's `at` and its `text` verbatim, or `null` when the claim has none.
   - `quote`: the claim's first sentence in prose, or its first line in a program, verbatim.
 - `uncovered`: each range of non-blank lines in no claim and no address, with its `at` and `why`.
