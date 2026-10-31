@@ -111,17 +111,20 @@ is in [`samples/README.md › How to use a case`](samples/README.md#how-to-use-a
 
 The skills and agents work as this file says only if each row of this table holds. Each row is
 checked by hand, by the step of a case it names, or by a review of this tree as
-[`ARCHITECTURE.md › Reviewing`](ARCHITECTURE.md#reviewing) defines one.
+[`ARCHITECTURE.md › Reviewing`](ARCHITECTURE.md#reviewing) defines one, whose steps start the agents
+as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating) says.
 
 | Assumption | Checked by | Last checked |
 |---|---|---|
 | A skill with `disable-model-invocation: false` is loaded on the model's judgment, from its description alone | step 1 | not yet |
 | A skill that says it stays in force is still in force on the next response | step 2 | not yet |
 | An agent's `skills` loads each skill it lists into the agent's session, and the agent can read that skill's references | a review of this tree, in the agent's transcript | not yet |
-| A model that has loaded a skill loads another skill the first one names, when told to | a review of this tree, in the transcript | not yet |
+| A model that has loaded a skill loads another skill the first one names, when told to | a review of this tree, in the reviewing session's transcript | not yet |
 | An agent's session starts without the conversation that started it | a review of this tree, in the agent's transcript | not yet |
+| An agent's `skills` cannot preload a skill with `disable-model-invocation: true` | [sub-agents](https://code.claude.com/docs/en/sub-agents) | 2026-10-30 |
+| An agent with no `tools` has every tool, `Agent` and `Skill` included | [sub-agents](https://code.claude.com/docs/en/sub-agents) | 2026-10-30 |
 
-A row that fails on re-check is a change to the skill, not to this table.
+A row that fails on re-check is a change to the skills or agents, not to this table.
 
 ## Install
 

@@ -7,8 +7,9 @@
 # the sizes of what the skills and agents read against their snapshot; that
 # each reference is linked from its own SKILL.md and from no reference beside it;
 # links and the headings they name; that README.md quotes SKILL.md; that
-# plugin.json carries the first sentence of its description; and that samples
-# cite rules, sections, skills and cases that exist. No model call, no network.
+# plugin.json carries the first sentence of the SKILL.md description; and that
+# samples cite rules, sections, skills and cases that exist. No model call, no
+# network.
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #
@@ -75,7 +76,8 @@ for f in "$root"/skills/*/SKILL.md; do
   case "$dir" in "$sub_prefix"*) ;; *) problem "$rel is not named $sub_prefix…" ;; esac
   [ "$(frontmatter_field user-invocable "$f")" = false ] \
     || problem "$rel does not set user-invocable: false"
-  # An agent can preload only a skill the model can invoke.
+  # An agent can preload only a skill the model can invoke, as a row of
+  # README.md › What it relies on Claude Code for says.
   [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
     || problem "$rel does not set disable-model-invocation: false"
 done
@@ -124,6 +126,8 @@ for f in "$root"/agents/*.md; do
     done < <(skill_files "$s")
   done
   tools=$(list_field tools "$f")
+  # An agent with no tools has every tool, as a row of README.md › What it
+  # relies on Claude Code for says.
   [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
   for t in Agent Task Skill; do
     grep -qxF "$t" <<< "$tools" && problem "$rel has the tool $t"
