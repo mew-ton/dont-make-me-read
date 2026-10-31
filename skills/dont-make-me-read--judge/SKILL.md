@@ -3,7 +3,7 @@ name: dont-make-me-read--judge
 description: >
   Judges each edge and each claim of the graph that the records of
   dont-make-me-read--extract-claims and dont-make-me-read--extract-dependencies form, and defines
-  the judgments of a dont-make-me-read review.
+  each judgment it makes.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -25,7 +25,7 @@ under its heading: read them before judging, and judge a new case by the instanc
 3. **Check what adding one more does.** Ask which existing claims have to be rewritten to add
    another claim like this one, a planned one included. The edges from those to it diverge; the
    others converge.
-4. **Check that each paragraph is one claim.** One that holds more than one claim of the record is
+4. **Check that each paragraph is one claim.** Claims of the record that share a `paragraph` are
    two claims.
 5. **Check what each claim changes.** One that changes nothing its reader does next is noise.
 

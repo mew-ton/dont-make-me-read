@@ -18,8 +18,9 @@ cost, because they read their own draft while supplying what it leaves out.
 ## The unit
 
 A paragraph makes one claim, under an address other paragraphs can name it by. What those words
-mean, with the rest of the words these rules use, is the skill `dont-make-me-read--glossary`, with
-instances in prose and in a program: load it before writing or reviewing under these rules. How to
+mean, with the rest of the words these rules use, is the skill `dont-make-me-read--glossary`, and
+what the judgments mean is the skill `dont-make-me-read--judge`, each with instances in prose and
+in a program: load the glossary before writing or reviewing under these rules. How to
 write under them is in the file *Which file to read* names, and how to find what is wrong with
 what is written is *Analysis*.
 
@@ -59,7 +60,7 @@ it and run it, or delegate it as *Delegating* says, on what the steps before it 
 0. **Set the scope and the readers.** The task sets where to start: the claims a diff touches, one
    document, a whole tree. A claim's readers are the people and agents who can open the place it
    sits in. A claim nothing depends on and nobody reads is not a starting point.
-1. **Cut into claims.** Run `dont-make-me-read--extract-claims` on each file in the scope.
+1. **Cut into claims.** Run `dont-make-me-read--extract-claims` over the scope.
 2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each
    claim. Follow a dependency further only while a change to it would still mean checking the
    starting claim again: run steps 1 and 2 on where it is. How far that goes is the task's to

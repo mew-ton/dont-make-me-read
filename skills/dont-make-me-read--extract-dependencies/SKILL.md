@@ -1,8 +1,8 @@
 ---
 name: dont-make-me-read--extract-dependencies
 description: >
-  Lists what one claim depends on, as dont-make-me-read defines a dependency, and returns it as one
-  JSON record. Step 2 of a dont-make-me-read analysis.
+  Lists what one claim depends on, as dont-make-me-read--glossary defines a dependency, and
+  returns it as one JSON record.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -16,8 +16,8 @@ Lists what the claim the task names depends on, and returns it as one record. Th
 ## Steps
 
 1. **Read the claim and its address.** The task names the claim by its location. Read the rest
-   of its file only to find what the claim depends on, the way a reader who landed on the claim by
-   search would have to.
+   of its file only to find the address and what the claim depends on, the way a reader who landed
+   on the claim by search would have to.
 2. **List what it depends on.** Ask what change elsewhere would mean checking this claim again.
    Look for a word or an identifier it uses and does not define, a value or a behaviour whose
    owner is elsewhere, the reason it holds, and a word that points by position, by role or at a
@@ -55,7 +55,7 @@ it.
 - `claim`: the claim's location, as the task gave it.
 - `dependencies`: one entry per dependency.
   - `on`: its location, or `null` when it cannot be found.
-  - `kind`: what step 2 found it as: `word`, a word or an identifier the claim does not define;
+  - `kind`: what *List what it depends on* found it as: `word`, a word or an identifier the claim does not define;
     `value`, a value or a behaviour whose owner is elsewhere; `reason`, the reason the claim holds;
     `pointer`, a word that points by position, by role or at a conversation.
   - `named_as`: the claim's own words that name it, verbatim, or `null` when nothing in the claim

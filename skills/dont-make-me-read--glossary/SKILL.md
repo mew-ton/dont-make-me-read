@@ -1,8 +1,8 @@
 ---
 name: dont-make-me-read--glossary
 description: >
-  What the words of dont-make-me-read mean, in prose and in a program alike: explanation,
-  paragraph, claim, reader, address, dependency, source and derived, location.
+  What the words explanation, paragraph, claim, reader, address, dependency, source and derived,
+  and location mean, in prose and in a program alike.
 user-invocable: false
 disable-model-invocation: false
 ---
