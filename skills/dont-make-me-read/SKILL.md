@@ -98,6 +98,18 @@ defines them: those say how an edge runs and leave nothing to fix on their own. 
 signal to fix, not a bug in itself: whether to fix it, and how, is for the people who own the text
 to decide. Report each finding with the address it sits at, the judgment, and the rule it breaks.
 
+What to do instead of each finding is the rule it breaks and, where one says how, a section of the
+files *Which file to read* names:
+
+| Finding | Rule | How to write it instead |
+|---|---|---|
+| missing | 3 | *Citing* in `references/prose.md`; *Saying which you are* in `references/program.md` |
+| contradiction | 4 | *Citing* in `references/prose.md`; which side is right is the owner's to say |
+| diverging | 5 and 6 | *Saying which you are* in each file; *Placement* and *Direction* in `references/program.md` |
+| duplicate | 4 | *Citing* in `references/prose.md`: the owner's copy stays, the other cites it or goes |
+| two claims | 1 | one paragraph for each, under its own address |
+| noise | 2 | it goes |
+
 ## Invoking
 
 Typed as `/dont-make-me-read:dont-make-me-read <scope>`, this skill runs *Analysis* with the scope
