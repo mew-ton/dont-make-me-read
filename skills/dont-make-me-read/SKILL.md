@@ -110,6 +110,15 @@ files *Which file to read* names:
 | two claims | 1 | one paragraph for each, under its own address |
 | noise | 2 | it goes |
 
+Where the report goes is set by what step 0 took as the scope:
+
+- A pull request: one review comment per finding, on the line its address names in the diff. A
+  finding at a line the diff does not show goes in the review's body, with its address.
+- A document or a tree on disk: one list in the conversation, one line per finding, each with the
+  address, the judgment and the rule.
+- The text being written: no report. The finding is fixed before the text is sent, and one whose
+  fix is in a text the writer does not own is one line in the conversation, with its address.
+
 ## Invoking
 
 Typed as `/dont-make-me-read:dont-make-me-read <scope>`, this skill runs *Analysis* with the scope
