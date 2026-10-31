@@ -46,7 +46,7 @@ search to learn that the code disagrees. Until someone does, both stand, and whi
 finds first is the one they believe.
 
 If the PRD was in fact written after the code to describe it, it is not a requirement, and the fix
-is one sentence in the PRD saying so; see rule 5. That is the exception, and it has to be stated to
+is one sentence in the PRD saying so; see rule 6. That is the exception, and it has to be stated to
 exist.
 
 ## Good
@@ -64,6 +64,6 @@ export async function pay(orderId: string, amount: number): Promise<PaymentOutco
 
 ### Why
 
-Rule 5: a paragraph depends on what it reproduces and says so. The interface now names its source,
+Rule 5 and rule 6: a paragraph depends on what it reproduces and says so. The interface now names its source,
 in the source's words, and agrees with it. The PRD is unchanged. The next disagreement between them
 is a defect in one known place, and a search for the PRD's heading finds it.

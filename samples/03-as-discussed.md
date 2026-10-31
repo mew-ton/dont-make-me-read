@@ -47,4 +47,4 @@ layer: `withRetry` in `src/retry.ts`.
 Rule 3: never "as discussed". Rule 4: state the part the reader needs, and name the owner. If the
 standup produced a decision, the decision now needs an address. This project's instructions
 (`CONTRIBUTING.md › Decisions`) put a decision about one task in that task's issue, so it goes
-here; where they set no place, rule 6 says to say so and stop.
+here; where they set no place, rule 7 says to say so and stop.

@@ -67,5 +67,5 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
-Rule 5: the reproduction cites the source, in the source's words; the source does not list its
+Rule 6: the reproduction cites the source, in the source's words; the source does not list its
 reproductions. The reverse direction is a search for the decision's words, which the code carries.
