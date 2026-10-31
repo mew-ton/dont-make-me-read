@@ -110,9 +110,10 @@ is in [`samples/README.md › How to use a case`](samples/README.md#how-to-use-a
 ### What it relies on Claude Code for
 
 The skills and agents work as this file says only if each row of this table holds. Each row is
-checked by hand, by the step of a case it names, or by a review of this tree as
-[`ARCHITECTURE.md › Reviewing`](ARCHITECTURE.md#reviewing) defines one, whose steps start the agents
-as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating) says.
+checked by hand, as its *Checked by* says. A step there is a step of
+[`samples/README.md › How to use a case`](samples/README.md#how-to-use-a-case), and a review of this
+tree is one as [`ARCHITECTURE.md › Reviewing`](ARCHITECTURE.md#reviewing) defines, whose steps start
+the agents as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating) says.
 
 | Assumption | Checked by | Last checked |
 |---|---|---|

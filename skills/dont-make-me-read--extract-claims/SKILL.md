@@ -16,8 +16,8 @@ Cuts the file the task names into claims, and returns them as one record. The wo
 ## Steps
 
 1. **Read the whole file.**
-2. **Cut it into claims.** Ask whether a part can be cited or rewritten on its own. If it can, it
-   is a claim of its own, even where it shares a paragraph with another.
+2. **Cut it into claims,** as *Claim* says what one is, even where one shares a paragraph with
+   another.
 3. **Give each claim its address,** as *Address* says what it is. Several claims can share one.
 4. **Account for every other line,** as *Record* says.
 

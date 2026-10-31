@@ -76,7 +76,7 @@ each thing the skill's *What it does* says it takes, as many at once as can run.
 a step with no such agent, load the skill and run it yourself.
 
 The task given to a session names that thing and nothing else. It carries none of the conversation,
-so the session reads the unit as a reader who lands on it by search does.
+so the session reads that thing as a reader who lands on it by search does.
 
 A record is checked as its skill's *Record* says before it is used, and a record that fails is run
 again.

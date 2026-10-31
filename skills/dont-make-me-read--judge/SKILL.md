@@ -21,7 +21,8 @@ nearest it.
 
 1. **Judge each edge** as visible or missing, and whether it is a contradiction.
 2. **Judge each edge again** as converging or diverging, and say whether it is reversed.
-3. **Judge each claim** as a duplicate, two claims or noise, where it is one.
+3. **Judge each claim** as a duplicate or noise, and each paragraph as two claims, where it is
+   one.
 
 ## Edge judgments
 
@@ -132,8 +133,9 @@ Each copy is one more place to keep right.
 
 ### Two claims
 
-It is not one claim, as *Claim* in `dont-make-me-read--glossary` defines one, with its
-instances. In the records, claims that share a `paragraph` show it.
+A paragraph, or anything cited as one, that holds more than one claim, as *Claim* in
+`dont-make-me-read--glossary` defines one, with its instances. In the records, claims that share a
+`paragraph` show it.
 
 ### Noise
 
