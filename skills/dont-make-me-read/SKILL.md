@@ -19,12 +19,12 @@ cost, because they read their own draft while supplying what it leaves out.
 
 A paragraph makes one claim, under an address other paragraphs can name it by.
 
-What those words mean, with the rest of the words these rules use, is the skill
-`dont-make-me-read--glossary`: load it before writing or reviewing under these rules. What the
-judgments of a review mean is the skill `dont-make-me-read--judge`.
+## Words
 
-How to write under these rules is in the file *Which file to read* names, and how to find what is
-wrong with what is written is *Analysis*.
+What those words mean, with the rest of the words these rules use, is the skill
+`dont-make-me-read--glossary`: load it before writing or reviewing under these rules.
+
+What the judgments of a review mean is the skill `dont-make-me-read--judge`.
 
 ## Rules
 
@@ -53,8 +53,8 @@ wrong with what is written is *Analysis*.
 ## Analysis
 
 How to find the claims in what you are writing or reviewing, the edges between them, and what is
-wrong with them, in prose and in a program alike. Each step from 1 on is a skill of its own: load
-it and run it, or delegate it as *Delegating* says, on what the steps before it produced.
+wrong with them, in prose and in a program alike. Each step from 1 on is a skill of its own, run
+as *Delegating* says on what the steps before it produced.
 
 ### Steps
 

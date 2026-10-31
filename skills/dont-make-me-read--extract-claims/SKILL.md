@@ -53,4 +53,5 @@ it.
   - `quote`: the claim's first sentence in prose, or its first line in a program, verbatim.
 - `uncovered`: each range of non-blank lines in no claim and no address, with its `at` and `why`.
 
-Every non-blank line of the file is in exactly one claim, one address or one `uncovered` range.
+Every non-blank line of the file is in a claim, an address or an `uncovered` range, and in no more
+than one address or `uncovered` range.

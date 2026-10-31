@@ -19,14 +19,14 @@ nearest it.
 
 ## Steps
 
-1. **Judge each edge** as visible, missing or a contradiction.
+1. **Judge each edge** as visible or missing, and whether it is a contradiction.
 2. **Judge each edge again** as converging or diverging, and say whether it is reversed.
 3. **Judge each claim** as a duplicate, two claims or noise, where it is one.
 
 ## Edge judgments
 
-Each judges an edge from A to B, where A depends on B. An edge is visible, missing or a
-contradiction, and it also converges or diverges.
+Each judges an edge from A to B, where A depends on B. An edge is visible or missing, may also be
+a contradiction, and converges or diverges.
 
 ### Visible
 
@@ -134,7 +134,7 @@ Each copy is one more place to keep right.
 ### Two claims
 
 It is not one claim, as *Claim* in `dont-make-me-read--glossary` defines one, with its
-instances. In the records, it is claims that share a `paragraph`.
+instances. In the records, claims that share a `paragraph` show it.
 
 ### Noise
 

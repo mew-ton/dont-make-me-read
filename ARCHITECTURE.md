@@ -22,7 +22,7 @@ Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a 
 ## Reviewing
 
 A review finds in the graph of claims the findings
-[`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) names, and nothing else.
+[`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) names.
 
 ### Scope
 
@@ -35,7 +35,7 @@ A review finds in the graph of claims the findings
 
 ### Steps
 
-The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over the scope above,
+The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over *Scope*,
 reported as [`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) says.
 
 ### When it is done

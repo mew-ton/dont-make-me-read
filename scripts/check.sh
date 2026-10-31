@@ -3,9 +3,9 @@
 # Checks the form of this tree: the frontmatter of every skill and agent; that
 # each agent loads its own sub-skill and the glossary and can neither delegate
 # nor load another skill; that neither what an agent loads nor the glossary
-# names another sub-skill, SKILL.md, a reference of the root skill or a rule;
+# names another sub-skill, SKILL.md, prose.md, program.md or a rule;
 # the sizes of what the skills and agents read against their snapshot; that
-# each reference is linked from its own SKILL.md and from no other reference;
+# each reference is linked from its own SKILL.md and from no reference beside it;
 # links and the headings they name; that README.md quotes SKILL.md; that
 # plugin.json carries the first sentence of its description; and that samples
 # cite rules, sections, skills and cases that exist. No model call, no network.
@@ -94,7 +94,7 @@ skill_files() {
 }
 
 # names_beyond FILE ALLOWED...: the sub-skills FILE names other than ALLOWED, and
-# any SKILL.md, reference of the root skill or rule it names, one per line.
+# any SKILL.md, prose.md, program.md or rule it names, one per line.
 names_beyond() {
   local file=$1; shift
   { grep -oE "${sub_prefix}[a-z-]*[a-z]" "$file" | grep -vxF -f <(printf '%s\n' "$@") || true
