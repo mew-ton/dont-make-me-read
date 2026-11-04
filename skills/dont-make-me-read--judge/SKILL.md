@@ -16,7 +16,7 @@ Judges each edge and each claim of the graph that the records of
 each skill's *Record* lists them, and the words as `dont-make-me-read--glossary` defines them. The
 judgments are defined here, each with instances under its heading or named there: read them before
 judging, and judge a new case by the instance nearest it. What to do instead of each finding is
-*Reporting* in the skill `dont-make-me-read`.
+*What to do instead* in the skill `dont-make-me-read`.
 
 ## Steps
 
@@ -49,9 +49,7 @@ team gives. Whether an edge missing for that reason is fixed by moving the claim
 access is the team's to decide.
 
 It shows as a dependency named by something other than an address, as the instances of
-*Dependency* in `dont-make-me-read--glossary` list them. What to do instead is the same for each:
-put what it leans on where its readers can open it, if it is not there already, and name it by an
-address.
+*Dependency* in `dont-make-me-read--glossary` list them.
 
 ### Contradiction
 
