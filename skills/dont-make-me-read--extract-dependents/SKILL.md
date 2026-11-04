@@ -17,11 +17,11 @@ one record. The words are as `dont-make-me-read--glossary` defines them: read it
 
 1. **Read the claim and its address.** The task names the claim by its location, or, for a claim a
    change removed, by the words it had. Read the rest of its file only to find the address.
-2. **Search for what names it.** A dependent names the claim by its address or by its words: an
-   identifier it declares, its heading, its file's path, a value it holds, a phrase of its body.
-   Search the repository for each, and for the inflections of each word, `retry`, `retries`,
-   `tried`: a dependent that restates the claim in other words is found by its subject, not by its
-   value.
+2. **Search for its address and its words.** A dependent shows itself by the claim's address or by
+   the claim's words, whether or not it names the claim: an identifier the claim declares, its
+   heading, its file's path, a value it holds, a phrase of its body. Search the repository for each,
+   and for the words its readers would use instead, `attempts`, `tries`, `tried` for `maxAttempts`:
+   a dependent that restates the claim in other words is found by its subject, not by its value.
 3. **Keep what depends.** A hit depends on the claim when a change to the claim would mean checking
    the hit again, as *Dependency* says. A hit that uses a word as everyone uses it does not.
 4. **Stop there.** What a dependent depends on beyond this claim, and what depends on the
@@ -40,7 +40,7 @@ it.
       "at": "README.md:5-6",
       "named_as": null,
       "restated": "up to five times",
-      "found_by": "retr"
+      "found_by": "tried"
     }
   ]
 }
