@@ -104,6 +104,16 @@ defines them: those say how an edge runs and leave nothing to fix on their own. 
 signal to fix, not a bug in itself: whether to fix it, and how, is for the people who own the text
 to decide. Report each finding with the address it sits at, the judgment, and the rule it breaks.
 
+Where the report goes is set by what step 0 took as the scope:
+
+- A pull request: one review comment per finding, on a line of its location the diff shows, as
+  *Location* in `dont-make-me-read--glossary` defines one. A finding none of whose lines the diff
+  shows goes in the review's body, with its address.
+- A document, a tree, or a diff in no pull request, such as the uncommitted change: one list in the
+  conversation, one line per finding, each with the address, the judgment and the rule.
+- The text being written: no report. The finding is fixed before the text is sent, and one whose
+  fix is in a text the writer does not own is one line in the conversation, with its address.
+
 ### What to do instead
 
 What to do instead of each finding is the rule it breaks and, where one says how, a section of the
@@ -117,15 +127,6 @@ files *Which file to read* names:
 | duplicate | 4 | *Citing* in `references/prose.md`: the owner's copy stays, the other cites it or goes |
 | two claims | 1 | one paragraph for each, under its own address |
 | noise | 2 | it goes |
-
-Where the report goes is set by what step 0 took as the scope:
-
-- A pull request: one review comment per finding, on the line its address names in the diff. A
-  finding at a line the diff does not show goes in the review's body, with its address.
-- A document or a tree on disk: one list in the conversation, one line per finding, each with the
-  address, the judgment and the rule.
-- The text being written: no report. The finding is fixed before the text is sent, and one whose
-  fix is in a text the writer does not own is one line in the conversation, with its address.
 
 ## Invoking
 
