@@ -64,6 +64,6 @@ export async function pay(orderId: string, amount: number): Promise<PaymentOutco
 
 ### Why
 
-Rule 5 and rule 6: a paragraph depends on what it reproduces and says so. The interface now names its source,
-in the source's words, and agrees with it. The PRD is unchanged. The next disagreement between them
-is a defect in one known place, and a search for the PRD's heading finds it.
+Rule 5 and rule 6: a paragraph depends on what it reproduces and says so. The interface now names
+its source, in the source's words, and agrees with it. The PRD is unchanged. The next disagreement
+between them is a defect in one known place, and a search for the PRD's heading finds it.

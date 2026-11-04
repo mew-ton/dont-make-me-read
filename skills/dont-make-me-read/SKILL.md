@@ -35,10 +35,12 @@ skill `dont-make-me-read--glossary`, and what the judgments mean is the skill
    or a state the body uses without naming: for the reader who arrives by search, those are gone.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs
    in order to act, in the owner's words, and name the owner.
-5. **Depend only on what you explain, reproduce or use, and converge.** Whether a dependency
-   converges or diverges is as the skill `dont-make-me-read--judge` defines it.
-6. **The derived names its source, and the source does not name it.** Say whether you explain or
-   reproduce it, and keep its words: the reverse direction comes from an index, backlinks or search.
+5. **Depend only on what you explain, reproduce or use, and converge.** Any other dependency is
+   one more change that means checking this claim again, for nothing it gives the reader. Whether a
+   dependency converges or diverges is as the skill `dont-make-me-read--judge` defines it.
+6. **The derived names its source, and the source does not name it.** Say whether you explain,
+   reproduce or use it, and keep its words: the reverse direction comes from an index, backlinks or
+   search.
 7. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
    set by the structure of the code or by the project's own instructions. If no place is set for
    this kind of claim, say so and stop rather than make a second one.
