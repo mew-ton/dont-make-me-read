@@ -108,8 +108,7 @@ to decide. Report each finding with the address it sits at, the judgment, and th
 
 Typed as `/dont-make-me-read:dont-make-me-read <scope>`, this skill runs *Analysis* with the scope
 of step 0 set to what follows it: a path, a diff, or a pull request; with nothing after it, the
-uncommitted change in the working tree. Loaded on the model's judgment instead, it is in force as
-*Persistence* says, and *Analysis* runs when writing or reviewing calls for it.
+uncommitted change in the working tree.
 
 ## Persistence
 
