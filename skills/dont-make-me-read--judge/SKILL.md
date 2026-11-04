@@ -110,7 +110,7 @@ The edge runs from a source to a claim derived from it, as *Source and derived* 
 
 - The edge from shared set-up to the tests whose needs it holds, which is converging when every
   test in its scope depends on it; the edge from a callee to the caller its parameter is named
-  after, which is diverging. In both, what is used leans on what uses it.
+  after, which is diverging.
 
 ## Node judgments
 
