@@ -1,4 +1,4 @@
-# dont-make-me-read (beta)
+# dont-make-me-read
 
 *No more detective work. Every paragraph carries what you need to act on it, or names exactly
 where it is.*
