@@ -64,6 +64,7 @@ try {
 
 ### Why
 
-Rule 5, and the *Saying which you are* section of `references/program.md`: a declaration never
-names what calls it. What the body would need to know about the caller crosses as a value the body
-does not interpret, or, as here, stays with the caller.
+Rule 5 and rule 6, with the *Saying which you are* section of `references/program.md`: a
+declaration uses nothing of its caller, so it depends on nothing there and never names it. What the
+body would need to know about the caller crosses as a value the body does not interpret, or, as
+here, stays with the caller.

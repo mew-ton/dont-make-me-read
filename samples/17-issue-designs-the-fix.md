@@ -161,6 +161,6 @@ holds: as much as solving the problem requires, and no line of what merely solve
 *Noise* table in the skill `dont-make-me-read--judge` names the second kind: the implementation
 method in an issue, from which the reader concludes the shape you saw while writing is the shape
 today. Where a required design is new, it goes where the project's instructions put it, here the
-issue, and the code cites it; where they set no place, rule 6 says to say so and stop. Where a shape
+issue, and the code cites it; where they set no place, rule 7 says to say so and stop. Where a shape
 has to be fixed for reasons outside the problem, it is a decision with an address of its own, so a
 disagreement is a contradiction between two addressed paragraphs, as in case 09.

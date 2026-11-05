@@ -2,8 +2,8 @@
 name: dont-make-me-read--judge
 description: >
   Judges each edge and each claim of the graph that the records of
-  dont-make-me-read--extract-claims and dont-make-me-read--extract-dependencies form, and defines
-  each judgment it makes.
+  dont-make-me-read--extract-claims, dont-make-me-read--extract-dependencies and
+  dont-make-me-read--extract-dependents form, and defines each judgment it makes.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -11,11 +11,12 @@ disable-model-invocation: false
 ## What it does
 
 Judges each edge and each claim of the graph that the records of
-`dont-make-me-read--extract-claims` and `dont-make-me-read--extract-dependencies` form, for the
-readers the task gives. The fields are as each skill's *Record* lists them, and the words as
-`dont-make-me-read--glossary` defines them. The judgments are defined here, each with instances
-under its heading or named there: read them before judging, and judge a new case by the instance
-nearest it.
+`dont-make-me-read--extract-claims`, `dont-make-me-read--extract-dependencies` and
+`dont-make-me-read--extract-dependents` form, for the readers the task gives. The fields are as
+each skill's *Record* lists them, and the words as `dont-make-me-read--glossary` defines them. The
+judgments are defined here, each with instances under its heading or named there: read them before
+judging, and judge a new case by the instance nearest it. What to do instead of each finding is
+*What to do instead* in the skill `dont-make-me-read`.
 
 ## Steps
 
@@ -26,7 +27,8 @@ nearest it.
 
 ## Edge judgments
 
-Each judges an edge from A to B, where A depends on B.
+Each judges an edge from A to B, where A depends on B. A record of dependencies gives the edges
+from its claim; a record of dependents gives the edges into its claim.
 
 ### Visible
 
@@ -47,9 +49,7 @@ team gives. Whether an edge missing for that reason is fixed by moving the claim
 access is the team's to decide.
 
 It shows as a dependency named by something other than an address, as the instances of
-*Dependency* in `dont-make-me-read--glossary` list them. What to do instead is the same for each:
-put what it leans on where its readers can open it, if it is not there already, and name it by an
-address.
+*Dependency* in `dont-make-me-read--glossary` list them.
 
 ### Contradiction
 
@@ -105,10 +105,12 @@ it("shows the store's name", () => {
 
 ### Reversed
 
-The edge runs from a source to a claim derived from it. That says which way it runs.
+The edge runs from a source to a claim derived from it, as *Source and derived* in
+`dont-make-me-read--glossary` defines them. That says which way it runs.
 
-- Set-up that every test in its scope depends on, which is converging; a callee with a parameter
-  named after its caller, which is diverging.
+- The edge from shared set-up to the tests whose needs it holds, which is converging when every
+  test in its scope depends on it; the edge from a callee to the caller its parameter is named
+  after, which is diverging.
 
 ## Node judgments
 

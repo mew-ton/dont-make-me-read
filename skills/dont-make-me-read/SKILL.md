@@ -5,7 +5,8 @@ description: >
   Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
   agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
   a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
-user-invocable: false
+user-invocable: true
+argument-hint: "[path, diff or pull request]"
 disable-model-invocation: false
 ---
 
@@ -35,10 +36,13 @@ skill `dont-make-me-read--glossary`, and what the judgments mean is the skill
    or a state the body uses without naming: for the reader who arrives by search, those are gone.
 4. **A claim that has an owner is cited, not restated.** Restate only the part this reader needs
    in order to act, in the owner's words, and name the owner.
-5. **Depend only on what you explain, reproduce or use, and converge.** Whether a dependency
-   converges or diverges is as the skill `dont-make-me-read--judge` defines it. Say which you are,
-   and keep the source's words: the reverse direction comes from an index, backlinks or search.
-6. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
+5. **Depend only on what you explain, reproduce or use, and converge.** Any other dependency is
+   one more change that means checking this claim again, for nothing it gives the reader. Whether a
+   dependency converges or diverges is as the skill `dont-make-me-read--judge` defines it.
+6. **The derived names its source, and the source does not name it.** Say whether you explain,
+   reproduce or use it, and keep its words: the reverse direction comes from an index, backlinks or
+   search.
+7. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
    set by the structure of the code or by the project's own instructions. If no place is set for
    this kind of claim, say so and stop rather than make a second one.
 
@@ -57,16 +61,28 @@ as *Delegating* says on what the steps before it produced.
 
 ### Steps
 
-0. **Set the scope and the readers.** The task sets where to start: the claims a diff touches, one
-   document, a whole tree. The readers are as *Reader* in `dont-make-me-read--glossary` defines
-   them. A claim nothing depends on and nobody reads is not a starting point.
+0. **Set the scope and the readers.** The task sets where to start: one document, a whole tree, or
+   the claims a diff touches, as *What a diff touches* says. The readers are as *Reader* in
+   `dont-make-me-read--glossary` defines them. A claim nothing depends on and nobody reads is not a
+   starting point.
 1. **Cut into claims.** Run `dont-make-me-read--extract-claims` over the scope.
 2. **List what each claim depends on.** Run `dont-make-me-read--extract-dependencies` on each claim
    of the records, an address included. Follow a dependency further only while a change to it would
    still mean checking the starting claim again: run steps 1 and 2 on where it is. How far that goes
    is the task's to decide.
-3. **Judge the graph.** Run `dont-make-me-read--judge` on the records of steps 1 and 2, for the
+3. **List what depends on each claim.** Run `dont-make-me-read--extract-dependents` on each claim
+   of the records of step 1 and, when a diff sets the scope, on each claim it removed, by the words
+   it had. Each dependent found is an edge into that claim, wherever the dependent is: these are the
+   edges rule 6 leaves to search.
+4. **Judge the graph.** Run `dont-make-me-read--judge` on the records of steps 1 to 3, for the
    readers set in step 0.
+
+### What a diff touches
+
+A diff touches a claim when one of its hunks adds or removes a line within the claim's location or
+within its address's location, as *Location* in `dont-make-me-read--glossary` defines one, in the
+file as the diff leaves it. Step 1 runs over each file the diff touches, and a claim it finds there
+that the diff does not touch is out of scope.
 
 ### Delegating
 
@@ -87,6 +103,36 @@ A finding is a judgment other than visible, converging and reversed, as `dont-ma
 defines them: those say how an edge runs and leave nothing to fix on their own. Every finding is a
 signal to fix, not a bug in itself: whether to fix it, and how, is for the people who own the text
 to decide. Report each finding with the address it sits at, the judgment, and the rule it breaks.
+
+Where the report goes is set by what step 0 took as the scope:
+
+- A pull request: one review comment per finding, on a line of its location the diff shows, as
+  *Location* in `dont-make-me-read--glossary` defines one. A finding none of whose lines the diff
+  shows goes in the review's body, with its address.
+- A document, a tree, or a diff in no pull request, such as the uncommitted change: one list in the
+  conversation, one line per finding, each with the address, the judgment and the rule.
+- The text being written: no report. The finding is fixed before the text is sent, and one whose
+  fix is in a text the writer does not own is one line in the conversation, with its address.
+
+### What to do instead
+
+What to do instead of each finding is the rule it breaks and, where one says how, a section of the
+files *Which file to read* names:
+
+| Finding | Rule | How to write it instead |
+|---|---|---|
+| missing | 3 | put what it leans on where its readers can open it, if it is not there already, and name it by an address: *Citing* in `references/prose.md`; *Saying which you are* in `references/program.md` |
+| contradiction | 4 | *Citing* in `references/prose.md`; which side is right is the owner's to say |
+| diverging | 5 and 6 | *Saying which you are* in each file; *Placement* and *Direction* in `references/program.md` |
+| duplicate | 4 | *Citing* in `references/prose.md`: the owner's copy stays, the other cites it or goes |
+| two claims | 1 | one paragraph for each, under its own address |
+| noise | 2 | it goes |
+
+## Invoking
+
+Typed as `/dont-make-me-read:dont-make-me-read <scope>`, this skill runs *Analysis* with the scope
+of step 0 set to what follows it: a path, a diff, or a pull request; with nothing after it, the
+uncommitted change in the working tree.
 
 ## Persistence
 
