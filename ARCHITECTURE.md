@@ -18,6 +18,13 @@ How the sizes are recorded is the comment on `snapshot` in `scripts/check.sh`.
 
 Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a change.
 
+## Releasing
+
+A release is a change to `version` in
+[`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), proposed in a pull request like any
+other. Once it is on `main`, [`.github/workflows/release.yml`](.github/workflows/release.yml) tags
+and publishes it, as its steps say.
+
 ## Reviewing
 
 A review finds in the graph of claims the findings
