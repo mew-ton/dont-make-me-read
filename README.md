@@ -27,19 +27,19 @@ How well it does this is not measured yet, as [*Does it work?*](#does-it-work) s
 ## Before / after
 
 ```diff
-- A payment call is tried up to five times before the order is marked failed.
-+ A payment call is tried at most `maxAttempts` times (`config/retry.json`).
+- Payments are retried up to 5 times.
++ Payments are retried up to `maxAttempts` times (`config/retry.json`).
 ```
 
-The README no longer copies a number that `config/retry.json` owns.
-[Case 01](samples/01-stale-copy.md).
+The config said 3. Now the number lives in one place. Simplified from
+[case 01](samples/01-stale-copy.md).
 
 ```diff
-- As discussed in standup, QA found that paying with a declining card locks the page for several seconds and then shows the wrong message.
-+ QA report 142 (`docs/qa-report-142.md`): "The screen freezes for about ten seconds after pressing Pay, then shows 'contact support'."
+- As discussed in standup, checkout hangs.
++ Checkout hangs: QA report 142 (`docs/qa-report-142.md`).
 ```
 
-A reader who was not at standup gets the report itself. [Case 03](samples/03-as-discussed.md).
+Nobody has to have been at standup. Simplified from [case 03](samples/03-as-discussed.md).
 
 More cases: [`samples/`](samples/README.md).
 
