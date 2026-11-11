@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # Checks the form of this tree: that every skill's description has no < or >
-# and is at most 1024 characters; that neither what an agent loads nor the
+# and is at most 1024 characters; that every sub-skill is named
+# dont-make-me-read--…; that neither what an agent loads nor the
 # glossary names another sub-skill, SKILL.md, prose.md, program.md or a rule;
 # the sizes of every SKILL.md, reference and agent against their snapshot; that
 # each reference is linked from its own SKILL.md; links and the headings they
@@ -80,6 +81,16 @@ names_beyond() {
   { grep -oE "${sub_prefix}[a-z-]*[a-z]" "$file" | grep -vxF -f <(printf '%s\n' "$@") || true
     grep -oE '\bSKILL\.md|\b(prose|program)\.md|\b[Rr]ule +[0-9]+' "$file" || true; } | sort -u
 }
+
+# --- every sub-skill is named by the prefix ----------------------------------
+
+# names_beyond finds a sub-skill only by sub_prefix, so a sub-skill named
+# without it goes unseen there.
+for f in "$root"/skills/*/SKILL.md; do
+  [ "$f" = "$skill" ] && continue
+  dir=$(basename "$(dirname "$f")")
+  case "$dir" in "$sub_prefix"*) ;; *) problem "${f#"$root"/} is not named $sub_prefix…" ;; esac
+done
 
 # --- what an agent loads names nothing it does not load ----------------------
 
