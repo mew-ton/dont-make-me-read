@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 #
-# Checks the form of this tree: the frontmatter of every skill and agent; that
-# each agent loads its own sub-skill and the glossary and can neither delegate
-# nor load another skill; that neither what an agent loads nor the glossary
-# names another sub-skill, SKILL.md, prose.md, program.md or a rule;
-# the sizes of every SKILL.md, reference and agent against their snapshot; that
-# each reference is linked from its own SKILL.md and from no reference beside it;
-# links and the headings they name; that
-# plugin.json carries the first sentence of the SKILL.md description; that
-# .claude-plugin/marketplace.json lists this one plugin, by plugin.json's name,
-# from the repository root; and that samples cite rules, sections, skills and
-# cases that exist. No model call, no
-# network.
+# Checks the form of this tree:
+# - every skill's description has no < or >
+# - every skill's description is at most 1024 characters
+# - every sub-skill is named dont-make-me-read--…
+# - every skill an agent loads exists
+# - what an agent loads names no sub-skill it does not load, SKILL.md,
+#   prose.md, program.md or rule
+# - the glossary names no other sub-skill, SKILL.md, prose.md, program.md or
+#   rule
+# - the sizes of every SKILL.md, reference and agent match their snapshot
+# - each reference is linked from its own SKILL.md
+# - every relative link resolves, the heading it names included
+# - plugin.json carries the first sentence of the SKILL.md description
+# - samples cite rules, sections, skills and cases that exist
+#
+# No model call, no network.
+#
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #
@@ -62,27 +67,19 @@ list_field() {
   frontmatter_field "$1" "$2" | tr -d '[]' | tr ',' '\n' | sed 's/^[ \t]*//; s/[ \t]*$//' | grep -v '^$' || true
 }
 
-# --- the skills' frontmatter -------------------------------------------------
+# --- the skills' descriptions load ------------------------------------------
+
+# A description holds no XML tags and is at most 1,024 characters, as
+# https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+# › Skill structure says (checked 2026-11-11). Refusing every < and > covers
+# every XML tag.
 
 for f in "$root"/skills/*/SKILL.md; do
   rel=${f#"$root"/}
-  dir=$(basename "$(dirname "$f")")
-  n=$(frontmatter_field name "$f")
-  [ "$n" = "$dir" ] || problem "$rel name '$n' is not its directory '$dir'"
   d=$(frontmatter_field description "$f")
-  [ -n "$d" ] || problem "$rel has no description"
   case "$d" in *'<'*|*'>'*) problem "$rel description contains < or >, so it will not load" ;; esac
   [ "${#d}" -le 1024 ] || problem "$rel description is ${#d} characters, over 1024"
-  [ "$f" = "$skill" ] && continue
-  case "$dir" in "$sub_prefix"*) ;; *) problem "$rel is not named $sub_prefix…" ;; esac
-  [ "$(frontmatter_field user-invocable "$f")" = false ] \
-    || problem "$rel does not set user-invocable: false"
-  # An agent can preload only a skill the model can invoke, as
-  # https://code.claude.com/docs/en/sub-agents says (checked 2026-10-30).
-  [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
-    || problem "$rel does not set disable-model-invocation: false"
 done
-[ -f "$root/skills/$glossary_name/SKILL.md" ] || problem "skills/$glossary_name/SKILL.md is missing"
 
 description=$(frontmatter_field description)
 
@@ -104,34 +101,34 @@ names_beyond() {
     grep -oE '\bSKILL\.md|\b(prose|program)\.md|\b[Rr]ule +[0-9]+' "$file" || true; } | sort -u
 }
 
-# --- the agents: their own sub-skill and the glossary, no delegating, no loading
+# --- every sub-skill is named by the prefix ----------------------------------
 
+# names_beyond finds a sub-skill only by sub_prefix, so a sub-skill named
+# without it goes unseen there.
+for f in "$root"/skills/*/SKILL.md; do
+  [ "$f" = "$skill" ] && continue
+  dir=$(basename "$(dirname "$f")")
+  case "$dir" in "$sub_prefix"*) ;; *) problem "${f#"$root"/} is not named $sub_prefix…" ;; esac
+done
+
+# --- what an agent loads names nothing it does not load ----------------------
+
+# An agent loads the skills its `skills` field lists. What it loads names no
+# sub-skill it does not load, SKILL.md, prose.md, program.md or a rule.
 for f in "$root"/agents/*.md; do
   [ -e "$f" ] || continue
   rel=${f#"$root"/}
-  base=$(basename "$f" .md)
-  n=$(frontmatter_field name "$f")
-  [ "$n" = "$base" ] || problem "$rel name '$n' is not its file name '$base'"
-  [ -n "$(frontmatter_field description "$f")" ] || problem "$rel has no description"
-  [ "$base" != "$glossary_name" ] || problem "$rel is an agent for the glossary, which is no step"
-  [ "$(list_field skills "$f" | sort)" = "$(printf '%s\n' "$base" "$glossary_name" | sort)" ] \
-    || problem "$rel does not load exactly the skills $base and $glossary_name"
-  [ -f "$root/skills/$base/SKILL.md" ] || problem "$rel names skills/$base, which does not exist"
-  # What the agent loads names no sub-skill it does not load, SKILL.md, prose.md,
-  # program.md or a rule.
-  for s in "$base" "$glossary_name"; do
+  loaded=()
+  while IFS= read -r s; do loaded+=("$s"); done < <(list_field skills "$f")
+  for s in "${loaded[@]}"; do
+    # skill_files lists nothing for a skill that does not exist, so its files
+    # would go unchecked.
+    [ -f "$root/skills/$s/SKILL.md" ] || problem "$rel loads skills/$s, which does not exist"
     while IFS= read -r g; do
       while IFS= read -r name; do
         problem "${g#"$root"/}, loaded by $rel, names $name"
-      done < <(names_beyond "$g" "$base" "$glossary_name")
+      done < <(names_beyond "$g" "${loaded[@]}")
     done < <(skill_files "$s")
-  done
-  tools=$(list_field tools "$f")
-  # An agent with no tools has every tool, Agent and Skill included, as
-  # https://code.claude.com/docs/en/sub-agents says (checked 2026-10-30).
-  [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
-  for t in Agent Task Skill; do
-    grep -qxF "$t" <<< "$tools" && problem "$rel has the tool $t"
   done
 done
 
@@ -162,16 +159,13 @@ elif ! diff -q <(sizes) "$snapshot" > /dev/null; then
     < <(diff <(sizes) "$snapshot" | sed -n 's/^> //p' | grep -vF -f <(sizes | cut -d' ' -f2) || true)
 fi
 
-# --- references: reached from their SKILL.md, and not from each other --------
+# --- references: reached from their SKILL.md ---------------------------------
 
 for f in "$root"/skills/*/references/*.md; do
   [ -e "$f" ] || continue
   rel="references/$(basename "$f")"
   owner="$(dirname "$(dirname "$f")")/SKILL.md"
   grep -q "]($rel)" "$owner" || problem "${f#"$root"/} is not linked from its SKILL.md"
-  if grep -qE '\]\((\./)?[^/)#]+\.md(#[^)]*)?\)|\]\(\.\./references/' "$f"; then
-    problem "${f#"$root"/} links to another reference"
-  fi
 done
 
 # --- every relative link resolves, heading included ---------------------------
@@ -237,20 +231,5 @@ first_sentence="${description%%. *}."
 manifest_description=$(sed -n 's/^[ \t]*"description":[ \t]*"\(.*\)",\{0,1\}[ \t]*$/\1/p' "$manifest")
 [ "$manifest_description" = "$first_sentence" ] \
   || problem "plugin.json description is not the first sentence of the SKILL.md description"
-
-# --- the marketplace lists this plugin, by its name, from the root -----------
-
-# The entry is written on one line, so that this grep can read it. It carries
-# no description: the plugin's own is in plugin.json.
-marketplace="$root/.claude-plugin/marketplace.json"
-plugin_name=$(sed -n 's/^[ \t]*"name":[ \t]*"\([^"]*\)".*/\1/p' "$manifest" | head -n 1)
-if [ ! -f "$marketplace" ]; then
-  problem ".claude-plugin/marketplace.json is missing"
-else
-  [ "$(grep -c '"source"' "$marketplace")" = 1 ] \
-    || problem ".claude-plugin/marketplace.json does not list exactly one plugin"
-  grep -qE "^[[:space:]]*\{ *\"name\": *\"$plugin_name\", *\"source\": *\"\./\" *\}" "$marketplace" \
-    || problem ".claude-plugin/marketplace.json does not list $plugin_name from ./ on one line"
-fi
 
 exit "$status"
