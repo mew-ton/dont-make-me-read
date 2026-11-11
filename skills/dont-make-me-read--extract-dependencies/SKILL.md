@@ -18,7 +18,7 @@ words are as
 ## Steps
 
 1. **Read the claims and their address.** The task names each claim by its location. Read the
-   rest of its file only to find the address and what each claim depends on, the way a reader who
+   rest of their file only to find the address and what each claim depends on, the way a reader who
    landed on the address by search would have to.
 2. **List what each one depends on.** Ask what change elsewhere would mean checking this claim again.
    Look for a word or an identifier it uses and does not define, a value or a behaviour whose

@@ -17,7 +17,7 @@ file that have no address, or the claims a change removed from under one address
 ## Steps
 
 1. **Read the claims and their address.** The task names each claim by its location, or, for a
-   claim a change removed, by the words it had. Read the rest of its file only to find the address.
+   claim a change removed, by the words it had. Read the rest of their file only to find the address.
 2. **Search for each claim's address and its words.** A dependent shows itself by the claim's address or by
    the claim's words, whether or not it names the claim: an identifier the claim declares, its
    heading, its file's path, a value it holds, a phrase of its body. Search the repository for each,
