@@ -3,59 +3,26 @@
 *No more detective work. Every paragraph carries what you need to act on it, or names exactly
 where it is.*
 
----
+A plugin for [Claude Code](https://claude.com/claude-code) and claude.ai. It changes how Claude
+writes and reviews what someone reads in order to act, such as an issue, a review comment, a doc
+or a commit message, as the description in [*How it works*](#how-it-works) says.
 
-You open an issue. It says "as discussed". You find the thread; it links a doc. The doc says "see
-the section below", and the section below gives a number the config file disagrees with. Forty
-minutes later you know what the issue meant, and you have not written a line.
+## Why install it
 
-That is not reading. It is detective work: tracing claims across five tabs, checking which copy is
-the current one, reconstructing a meeting you were not in. Nobody was hired to do it, and everybody
-does it, every day, because the writer could not feel the gap they left. They were carrying the
-missing part in their head.
+Text written without its reader in mind sends them hunting: "as discussed" points at a meeting
+they were not in, and the number in the README is not the one in the config file. With this
+plugin, Claude writes so that:
 
-Good engineers do not work that way with each other. They talk in source code: a name, a signature,
-a test, a path. The other one reads it and knows what was meant, with no meeting, no glossary, and
-no "let me give you some context". The code carries its own context, or names where it lives.
+- **A paragraph can be acted on where it is read.** What it leans on is named by a file path, a
+  heading or a name, never by "see above", so a teammate, or an agent that landed there by search,
+  opens exactly that and nothing more. This is rule 3 in [*The rules*](#the-rules).
+- **Docs do not drift from the code.** A value that a file owns is cited from that file, not
+  copied, so there is no second copy to go stale. This is rule 4.
+- **A review shows where a reader would get lost**, and what to write instead, as
+  [`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) says, when you ask for one
+  as [*Using it*](#using-it) says.
 
-This plugin is there to make your agent write everything that way, the prose included.
-
-## What it does
-
-A plugin for [Claude Code](https://claude.com/claude-code) and claude.ai, built on one skill, meant
-to load on the model's own judgment while it writes or reviews, with nothing for you to type. The
-skill's own description, quoted:
-
-> Keeps what a reader has to gather before they can act as small as it can be, and in one place.
-> Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
-> agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
-> a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
-
-You can also ask for an analysis of a scope you name: in Claude Code, type
-`/dont-make-me-read:dont-make-me-read <scope>`, as
-[`SKILL.md › Invoking`](skills/dont-make-me-read/SKILL.md#invoking) says; on claude.ai, ask in
-words.
-
-The skill's analysis is split into sub-skills, some of which an agent in `agents/` runs in a session
-of its own, as [`SKILL.md › Analysis`](skills/dont-make-me-read/SKILL.md#analysis) says. The
-conversation that asked for the analysis then holds what those sessions answer, and opens only what
-judging it needs.
-
-Every sub-skill and agent is named `dont-make-me-read--…`, so that it shares no name with another
-plugin's skill or agent.
-
-## The idea
-
-From [`SKILL.md › What the reader pays`](skills/dont-make-me-read/SKILL.md#what-the-reader-pays):
-
-> The cost of writing is everything the reader has to reach, from where they landed, before they
-> can act: the paragraph in front of them and every paragraph it leans on.
-
-What decides that cost is where each piece of information lives and what form it takes. Keep every
-claim in its one right place, in a form that names what it leans on, and two things get better
-with it, without being aimed at. An agent that lands on a paragraph by search finds what it needs
-there, or the exact address of it. And the code and the documents stop contradicting each other,
-because each claim has one copy to keep right, and everything else points at it.
+How well it does this is not measured yet, as [*Does it work?*](#does-it-work) says.
 
 ## Before / after
 
@@ -89,6 +56,73 @@ only `fn`.
 The rest of the cases, each with the graph of what depends on what, are in
 [`samples/`](samples/README.md).
 
+## What it is not
+
+- **Not a linter.** It is judgment, applied while writing or reviewing. The only script here,
+  [`scripts/check.sh`](scripts/check.sh), checks this repository and nothing of yours.
+- **Not a style guide.** It does not care about tone or grammar.
+
+## Install
+
+This repository is a marketplace that lists this one plugin.
+
+On claude.ai or in the Claude desktop app, open **Customize › Plugins**, choose **Add › Add
+marketplace**, enter `mew-ton/dont-make-me-read`, and add **dont-make-me-read** from it. It is then
+on your account, and Claude Code signed in to the same account loads it as a synced plugin.
+
+In Claude Code:
+
+```text
+/plugin install dont-make-me-read --marketplace mew-ton/dont-make-me-read
+```
+
+Chat on claude.ai does not load the agents, so there every step of an analysis runs in the
+conversation, as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating) says for a
+step with no agent.
+
+To try a checkout without installing it:
+
+```bash
+git clone https://github.com/mew-ton/dont-make-me-read.git
+claude --plugin-dir ./dont-make-me-read
+```
+
+## Using it
+
+There is nothing to type. The skill is meant to load on Claude's own judgment while it writes or
+reviews; whether it does is a row of [*What it relies on Claude for*](#what-it-relies-on-claude-for).
+
+To review something on purpose, type `/dont-make-me-read:dont-make-me-read <scope>` in Claude
+Code. The scope is "a path, a diff, or a pull request; with nothing after it, the uncommitted
+change in the working tree", as [`SKILL.md › Invoking`](skills/dont-make-me-read/SKILL.md#invoking)
+says. On claude.ai, ask in
+words.
+
+## How it works
+
+The plugin is built on one skill. Its description, quoted:
+
+> Keeps what a reader has to gather before they can act as small as it can be, and in one place.
+> Applies whenever writing, changing or reviewing prose or code that someone else, a person or an
+> agent, reads in order to act: an issue, a review comment, a doc, a commit message, a declaration,
+> a test. Does not apply to text nobody acts on later: a chat reply, a scratch note.
+
+From [`SKILL.md › What the reader pays`](skills/dont-make-me-read/SKILL.md#what-the-reader-pays):
+
+> The cost of writing is everything the reader has to reach, from where they landed, before they
+> can act: the paragraph in front of them and every paragraph it leans on.
+
+What decides that cost is where each piece of information lives and what form it takes, which is
+what [*The rules*](#the-rules) set.
+
+The skill's analysis is split into sub-skills, some of which an agent in `agents/` runs in a session
+of its own, as [`SKILL.md › Analysis`](skills/dont-make-me-read/SKILL.md#analysis) says. The
+conversation that asked for the analysis then holds what those sessions answer, and opens only what
+judging it needs.
+
+Every sub-skill and agent is named `dont-make-me-read--…`, so that it shares no name with another
+plugin's skill or agent.
+
 ## The rules
 
 Quoted from [`SKILL.md › Rules`](skills/dont-make-me-read/SKILL.md#rules), where each one
@@ -101,12 +135,6 @@ carries its reason:
 5. **Depend only on what you explain, reproduce or use, and converge.**
 6. **The derived names its source, and the source does not name it.**
 7. **A claim has one place.**
-
-## What it is not
-
-- **Not a linter.** It is judgment, applied while writing or reviewing. The only script here,
-  [`scripts/check.sh`](scripts/check.sh), checks this repository and nothing of yours.
-- **Not a style guide.** It does not care about tone or grammar.
 
 ## Does it work?
 
@@ -133,31 +161,6 @@ what the agents do.
 | Chat on claude.ai loads a skill whose frontmatter has fields only Claude Code reads, such as `user-invocable` | adding the marketplace on claude.ai, then asking a chat which skills it has from plugins | not yet |
 
 A row that fails on re-check is a change to the skills or agents, not to this table.
-
-## Install
-
-This repository is a marketplace that lists this one plugin.
-
-On claude.ai or in the Claude desktop app, open **Customize › Plugins**, choose **Add › Add
-marketplace**, enter `mew-ton/dont-make-me-read`, and add **dont-make-me-read** from it. It is then
-on your account, and Claude Code signed in to the same account loads it as a synced plugin.
-
-In Claude Code:
-
-```text
-/plugin install dont-make-me-read --marketplace mew-ton/dont-make-me-read
-```
-
-Chat on claude.ai does not load the agents, so there every step of an analysis runs in the
-conversation, as [`SKILL.md › Delegating`](skills/dont-make-me-read/SKILL.md#delegating) says for a
-step with no agent.
-
-To try a checkout without installing it:
-
-```bash
-git clone https://github.com/mew-ton/dont-make-me-read.git
-claude --plugin-dir ./dont-make-me-read
-```
 
 ## Language
 
