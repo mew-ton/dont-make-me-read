@@ -35,11 +35,11 @@ The README no longer copies a number that `config/retry.json` owns.
 [Case 01](samples/01-stale-copy.md).
 
 ```diff
-- export async function withRetry<T>(fn: () => Promise<T>, fromCheckout: boolean): Promise<T> {
-+ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
+- As discussed in standup, QA found that paying with a declining card locks the page for several seconds and then shows the wrong message.
++ QA report 142 (`docs/qa-report-142.md`): "The screen freezes for about ten seconds after pressing Pay, then shows 'contact support'."
 ```
 
-The retry layer no longer knows who calls it. [Case 07](samples/07-callee-knows-caller.md).
+A reader who was not at standup gets the report itself. [Case 03](samples/03-as-discussed.md).
 
 More cases: [`samples/`](samples/README.md).
 
