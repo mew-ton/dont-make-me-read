@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 #
-# Checks the form of this tree: that every skill's description has no < or >
-# and is at most 1024 characters; that every sub-skill is named
-# dont-make-me-read--…; that every skill an agent loads exists; that neither
-# what an agent loads nor the glossary names another sub-skill, SKILL.md,
-# prose.md, program.md or a rule;
-# the sizes of every SKILL.md, reference and agent against their snapshot; that
-# each reference is linked from its own SKILL.md; links and the headings they
-# name; that plugin.json carries the first sentence of the SKILL.md
-# description; and that samples cite rules, sections, skills and cases that
-# exist. No model call, no network.
+# Checks the form of this tree:
+# - every skill's description has no < or >
+# - every skill's description is at most 1024 characters
+# - every sub-skill is named dont-make-me-read--…
+# - every skill an agent loads exists
+# - what an agent loads names no sub-skill it does not load, SKILL.md,
+#   prose.md, program.md or rule
+# - the glossary names no other sub-skill, SKILL.md, prose.md, program.md or
+#   rule
+# - the sizes of every SKILL.md, reference and agent match their snapshot
+# - each reference is linked from its own SKILL.md
+# - every relative link resolves, the heading it names included
+# - plugin.json carries the first sentence of the SKILL.md description
+# - samples cite rules, sections, skills and cases that exist
+#
+# No model call, no network.
+#
 # Whether what the tree says holds together is a review's job, as
 # ARCHITECTURE.md › Reviewing says, not this script's.
 #
@@ -61,6 +68,11 @@ list_field() {
 }
 
 # --- the skills' descriptions load ------------------------------------------
+
+# A description holds no XML tags and is at most 1,024 characters, as
+# https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+# › Skill structure says (checked 2026-11-11). Refusing every < and > covers
+# every XML tag.
 
 for f in "$root"/skills/*/SKILL.md; do
   rel=${f#"$root"/}
