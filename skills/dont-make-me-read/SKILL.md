@@ -61,8 +61,10 @@ as *Delegating* says on what the steps before it produced.
 
 ### Steps
 
-0. **Set the scope and the readers.** The task sets where to start: one document, a whole tree, or
-   the claims a diff touches, as *What a diff touches* says. The readers are as *Reader* in
+0. **Set the scope and the readers.** While writing, the scope is the paragraph or declaration
+   being written or changed, and steps 1 to 4 run on it before the next one is written. A task
+   that asks for a review sets where to start instead: one document, a whole tree, or the claims a
+   diff touches, as *What a diff touches* says. The readers are as *Reader* in
    `dont-make-me-read--glossary` defines them. A claim nothing depends on and nobody reads is not a
    starting point.
 1. **Cut into claims.** Run `dont-make-me-read--extract-claims` over the scope.
