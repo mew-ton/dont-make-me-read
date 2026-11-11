@@ -41,6 +41,15 @@ The config said 3. Now the number lives in one place. Simplified from
 
 Nobody has to have been at standup. Simplified from [case 03](samples/03-as-discussed.md).
 
+```diff
+- // Retries until it succeeds or the limit is reached.
++ // Bounded because the provider bills per attempt (docs/architecture.md).
+  export async function withRetry(fn) {
+```
+
+The comment no longer repeats the code. It says why, and where that is decided. Simplified from
+[case 16](samples/16-comment-restates-body.md).
+
 More cases: [`samples/`](samples/README.md).
 
 ## What it is not
