@@ -31,25 +31,23 @@ How well it does this is not measured yet, as [*Does it work?*](#does-it-work) s
 + Payments are retried up to `maxAttempts` times (`config/retry.json`).
 ```
 
-The config said 3. Now the number lives in one place. Simplified from
-[case 01](samples/01-stale-copy.md).
+The docs cannot disagree with the config.
 
 ```diff
 - As discussed in standup, checkout hangs.
 + Checkout hangs: QA report 142 (`docs/qa-report-142.md`).
 ```
 
-Nobody has to have been at standup. Simplified from [case 03](samples/03-as-discussed.md).
+Someone who was not at standup can act on it.
 
 ```diff
 - // Add one to the count.
   count += 1;
 ```
 
-The comment only repeated the code, and would drift from it. The pattern of
-[case 16](samples/16-comment-restates-body.md).
+Less to read, and nothing to fall out of date.
 
-More cases: [`samples/`](samples/README.md).
+More examples: [`samples/`](samples/README.md).
 
 ## What it is not
 
