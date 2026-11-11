@@ -10,8 +10,9 @@ disable-model-invocation: false
 ## What it does
 
 Finds, in the repository, the claims that depend on each claim the task names, and returns one
-record for each. The task names the claims under one address of one file, or the claims of one
-file that have no address, or the claims a change removed from under one address. The words are as `dont-make-me-read--glossary` defines them: read its *Claim*,
+record for each. The task names one or more claims, all under one address of one file, or all
+among the claims of one file that have no address, or all among the claims a change removed from
+under one address. The words are as `dont-make-me-read--glossary` defines them: read its *Claim*,
 *Address*, *Dependency* and *Location* before searching.
 
 ## Steps

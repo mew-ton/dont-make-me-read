@@ -10,10 +10,9 @@ disable-model-invocation: false
 ## What it does
 
 Lists what each claim the task names depends on, and returns one record for each. The task names
-the claims under one address of one file, or the claims of one file that have no address. The
-words are as
-`dont-make-me-read--glossary` defines them: read its *Claim*, *Address*, *Dependency* and
-*Location* before listing.
+one or more claims, all under one address of one file, or all among the claims of one file that
+have no address. The words are as `dont-make-me-read--glossary` defines them: read its *Claim*,
+*Address*, *Dependency* and *Location* before listing.
 
 ## Steps
 
