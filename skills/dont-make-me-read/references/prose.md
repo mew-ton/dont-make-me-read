@@ -32,5 +32,8 @@ One instance. A task tracked in another tool, written up as an issue for an agen
   declaration's doc comment.
 - A decision that readers reach from elsewhere too, an issue, another module, a product document,
   is in the narrowest document all of them reach, and each declaration's doc comment cites it.
+- An account of a change, what it removed, moved or replaced and why, is in its commit message or
+  its pull request description, which are read with the diff. A file read for what it says now
+  says only that.
 - Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's
   own instructions. Where they set nothing for this kind, rule 7 in `SKILL.md` applies.

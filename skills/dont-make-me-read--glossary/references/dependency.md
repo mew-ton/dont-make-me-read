@@ -17,8 +17,7 @@ In prose, a dependency named by:
 - a position: "see above", "below", "the previous section".
 - a past only its participants hold: "as discussed", "we originally went with", "not A but B".
 - the diff that produced the text, which a reader of the text as it stands does not have:
-  "removed", "moved to", "no longer", "used to be", "until #48". An account of a change belongs
-  in its commit message or its pull request description, which are read with the diff.
+  "removed", "moved to", "no longer", "used to be", "until #48".
 - the conversation that produced the text, which its reader was not in: "as requested", "you
   said", an instruction with nothing in front of it.
 - a role: "the config", "the usual way", "same as the other one".

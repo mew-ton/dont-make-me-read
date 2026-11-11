@@ -66,7 +66,9 @@ A payment call is tried at most `maxAttempts` times (`config/retry.json`).
 
 The test goes: a call to an export that does not exist already fails the type check.
 
-The account of the change is in the commit message, which is read with the diff it describes.
+The account of the change is in the commit message, as the *Placement* section of
+`references/prose.md` says: "An account of a change, what it removed, moved or replaced and why, is
+in its commit message or its pull request description, which are read with the diff."
 
 **Good** the commit that made the change
 
