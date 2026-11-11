@@ -29,7 +29,7 @@ A review finds in the graph of claims the findings
 
 ### Scope
 
-- The skills, the references, the agents, and this tree's own documents: `README.md`, this file,
+- The skills, the references, the agents, the commands, and this tree's own documents: `README.md`, this file,
   `samples/README.md`, and the comments in `scripts/check.sh`. Every claim in them is in scope.
 - Each case in `samples/`, on its own. Three questions only: does the Good fix what *What is wrong*
   names; does the Good bring in a finding of its own; do the graph and *Why* match the case's files.
@@ -38,8 +38,8 @@ A review finds in the graph of claims the findings
 
 ### Steps
 
-The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over *Scope*,
-reported as [`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) says.
+The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over *Scope*, run
+and reported as [`dont-make-me-read--review`](skills/dont-make-me-read--review/SKILL.md) says.
 
 ### When it is done
 
