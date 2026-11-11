@@ -48,13 +48,10 @@ More examples: [`samples/`](samples/README.md).
 
 ## What it is not
 
-- **Not a linter.** It is judgment, applied while writing or reviewing. The only script here,
-  [`scripts/check.sh`](scripts/check.sh), checks this repository and nothing of yours.
+- **Not a linter.** It is judgment, applied while writing or reviewing.
 - **Not a style guide.** It does not care about tone or grammar.
 
 ## Install
-
-This repository is a marketplace that lists this one plugin.
 
 On claude.ai or in the Claude desktop app, open **Customize › Plugins**, choose **Add › Add
 marketplace**, enter `mew-ton/dont-make-me-read`, and add **dont-make-me-read** from it. It is then
@@ -64,13 +61,6 @@ In Claude Code:
 
 ```text
 /plugin install dont-make-me-read --marketplace mew-ton/dont-make-me-read
-```
-
-To try a checkout without installing it:
-
-```bash
-git clone https://github.com/mew-ton/dont-make-me-read.git
-claude --plugin-dir ./dont-make-me-read
 ```
 
 ## Using it
@@ -85,16 +75,11 @@ claude.ai, ask in words.
 
 ## Does it work?
 
-Not measured yet: there are no numbers here because none have been taken. How they will be taken
-is in [`samples/README.md › How to use a case`](samples/README.md#how-to-use-a-case).
+Not measured yet: there are no numbers here because none have been taken.
 
 ## Language
 
-The skill is written in English, and says nothing about which language to write in.
-
-## Contributing
-
-See [`ARCHITECTURE.md`](ARCHITECTURE.md).
+The skill says nothing about which language to write in.
 
 ## License
 
