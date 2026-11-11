@@ -15,6 +15,15 @@ How the sizes are recorded is the comment on `snapshot` in `scripts/check.sh`.
 
 Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a change.
 
+## Trying a checkout
+
+To load a checkout without installing it:
+
+```bash
+git clone https://github.com/mew-ton/dont-make-me-read.git
+claude --plugin-dir ./dont-make-me-read
+```
+
 ## Releasing
 
 A release is a change to `version` in
