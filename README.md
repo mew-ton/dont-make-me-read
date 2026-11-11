@@ -18,8 +18,8 @@ that:
   restates part of it, it uses the owner's words and names the owner, so the copy can be checked.
 
 A review you ask for shows where a reader will get lost, and what to write instead, as
-[`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) and
-[*What to do instead*](skills/dont-make-me-read/SKILL.md#what-to-do-instead) say.
+[`dont-make-me-read--review › Reporting`](skills/dont-make-me-read--review/SKILL.md#reporting) and
+[`SKILL.md › What to do instead`](skills/dont-make-me-read/SKILL.md#what-to-do-instead) say.
 
 ## Before / after
 
@@ -68,10 +68,10 @@ In Claude Code:
 There is nothing to type: it is meant to apply on its own whenever Claude writes or reviews such
 text.
 
-To ask for a review, type `/dont-make-me-read:dont-make-me-read <scope>` in Claude Code. The scope
-is, as [`SKILL.md › Invoking`](skills/dont-make-me-read/SKILL.md#invoking) says, "a path, a diff,
-or a pull request; with nothing after it, the uncommitted change in the working tree". On
-claude.ai, ask in words.
+To ask for a review, type `/dont-make-me-read:review <scope>` in Claude Code. The scope is, as
+[`dont-make-me-read--review › Scope`](skills/dont-make-me-read--review/SKILL.md#scope) says, "a
+path, a diff, or a pull request; with nothing named, the uncommitted change in the working tree".
+On claude.ai, ask in words.
 
 ## Does it work?
 
