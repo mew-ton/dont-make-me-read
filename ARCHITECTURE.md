@@ -6,9 +6,6 @@ This tree is written under the rules in
 [`skills/dont-make-me-read/SKILL.md`](skills/dont-make-me-read/SKILL.md). Contribute to it the way
 that skill says to write anything.
 
-The skill is meant to load while you do. Whether it does is a row of
-[`README.md › What it relies on Claude for`](README.md#what-it-relies-on-claude-for).
-
 ## What check.sh checks
 
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
@@ -43,10 +40,6 @@ A review finds in the graph of claims the findings
 
 The steps in [`SKILL.md › Steps`](skills/dont-make-me-read/SKILL.md#steps), over *Scope*,
 reported as [`SKILL.md › Reporting`](skills/dont-make-me-read/SKILL.md#reporting) says.
-
-A review also checks, in the transcripts its steps leave, each row of
-[`README.md › What it relies on Claude for`](README.md#what-it-relies-on-claude-for)
-that names a review of this tree, and dates the row it checked.
 
 ### When it is done
 

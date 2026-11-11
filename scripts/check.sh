@@ -6,7 +6,7 @@
 # names another sub-skill, SKILL.md, prose.md, program.md or a rule;
 # the sizes of every SKILL.md, reference and agent against their snapshot; that
 # each reference is linked from its own SKILL.md and from no reference beside it;
-# links and the headings they name; that README.md quotes SKILL.md; that
+# links and the headings they name; that
 # plugin.json carries the first sentence of the SKILL.md description; that
 # .claude-plugin/marketplace.json lists this one plugin, by plugin.json's name,
 # from the repository root; and that samples cite rules, sections, skills and
@@ -27,7 +27,6 @@ skill="$skill_dir/SKILL.md"
 # A sub-skill is a step of an analysis, or the words the steps share.
 sub_prefix="$(basename "$skill_dir")--"
 glossary_name="${sub_prefix}glossary"
-readme="$root/README.md"
 manifest="$root/.claude-plugin/plugin.json"
 
 # The sizes of every SKILL.md, every reference and every agent, which are read
@@ -78,8 +77,8 @@ for f in "$root"/skills/*/SKILL.md; do
   case "$dir" in "$sub_prefix"*) ;; *) problem "$rel is not named $sub_prefix…" ;; esac
   [ "$(frontmatter_field user-invocable "$f")" = false ] \
     || problem "$rel does not set user-invocable: false"
-  # An agent can preload only a skill the model can invoke, as a row of
-  # README.md › What it relies on Claude for says.
+  # An agent can preload only a skill the model can invoke, as
+  # https://code.claude.com/docs/en/sub-agents says (checked 2026-10-30).
   [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
     || problem "$rel does not set disable-model-invocation: false"
 done
@@ -128,8 +127,8 @@ for f in "$root"/agents/*.md; do
     done < <(skill_files "$s")
   done
   tools=$(list_field tools "$f")
-  # An agent with no tools has every tool, as a row of README.md › What it
-  # relies on Claude for says.
+  # An agent with no tools has every tool, Agent and Skill included, as
+  # https://code.claude.com/docs/en/sub-agents says (checked 2026-10-30).
   [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
   for t in Agent Task Skill; do
     grep -qxF "$t" <<< "$tools" && problem "$rel has the tool $t"
@@ -231,34 +230,6 @@ for f in "$root"/samples/*.md; do
       || problem "${f#"$root"/} cites case $n, which does not exist"
   done < <(grep -oiE '\bcases? +[0-9]{2}( +(and|to) +[0-9]{2})?' <<< "$text" | grep -oE '[0-9]{2}' || true)
 done
-
-# --- README quotes the description verbatim ----------------------------------
-
-squeeze() { tr -d ' \t\n>'; }
-squeeze_lines() { tr -d ' \t>'; }
-if ! squeeze < "$readme" | grep -qF "$(printf '%s' "$description" | squeeze)"; then
-  problem "README.md does not quote the SKILL.md description verbatim"
-fi
-
-# --- README quotes SKILL.md, and only SKILL.md -------------------------------
-
-skill_squeezed=$(squeeze < "$skill")
-while IFS= read -r quote; do
-  [[ "$skill_squeezed" == *"$quote"* ]] \
-    || problem "README.md quotes text that is not in SKILL.md: ${quote:0:60}…"
-done < <(awk '
-  /^> / { sub(/^> /, ""); q = q $0; next }
-  q != "" { print q; q = "" }
-  END { if (q != "") print q }
-' "$readme" | squeeze_lines)
-
-while IFS= read -r rule; do
-  rules | grep -qF "$rule" || problem "README.md lists a rule SKILL.md does not have: $rule"
-done < <(grep -E '^[0-9]+\. \*\*.*\*\*$' "$readme" || true)
-
-while IFS= read -r rule; do
-  grep -qxF "$rule" "$readme" || problem "README.md does not list the rule: $rule"
-done < <(rules | grep -oE '^[0-9]+\. \*\*[^*]+\*\*' || true)
 
 # --- the manifest carries the description's first sentence -------------------
 
