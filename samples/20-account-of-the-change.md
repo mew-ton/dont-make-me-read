@@ -10,8 +10,8 @@ removed, where it moved, what no longer holds. It leans on the diff, which its r
 ```md
 ## Retries
 
-A payment call is tried at most `maxAttempts` times (`config/retry.json`). The table of
-per-provider limits that was here moved to #312, and the 30-second timeout no longer applies.
+A payment call is tried at most `maxAttempts` times (`config/retry.json`). The per-provider
+limits that used to be listed here no longer apply.
 ```
 
 **Bad** `src/cache.test.ts`
@@ -29,13 +29,13 @@ it("no longer exports resetCache", () => {
 | Node | Address | Source or derived |
 |---|---|---|
 | the retry limit | `docs/operations.md › Retries` | derived from `config/retry.json` |
-| the account of the change | the same address | derived from the diff that removed the table and the timeout |
+| the account of the change | the same address | derived from the diff that replaced the per-provider limits |
 | the test | `src/cache.test.ts › no longer exports resetCache` | derived from the diff that removed `resetCache` |
 
 | From | To | Edge |
 |---|---|---|
 | the retry limit | `config/retry.json` | visible |
-| the account of the change | the diff that removed the table and the timeout | **missing**: "was here", "moved to" and "no longer" name a diff by nothing its reader can open |
+| the account of the change | the diff that replaced the per-provider limits | **missing**: "used to be" and "no longer" name a diff by nothing its reader can open |
 | the test | the diff that removed `resetCache` | **missing**: the reason it went was given in that change, and nothing names it |
 
 `docs/operations.md › Retries` holds both the retry limit and the account of the change: **two
@@ -43,10 +43,10 @@ claims** in one paragraph.
 
 ### What is wrong
 
-A reader opens `docs/operations.md` to find how retries behave now. "No longer applies" names a
-30-second timeout they can find in neither the file nor `config/retry.json`, and "moved to #312"
-sends them to a table they did not need. Each one says what the diff did, and only the diff gives
-it a subject.
+A reader opens `docs/operations.md` to find how retries behave now. "No longer apply" names
+per-provider limits they can find in neither the file nor `config/retry.json`, and "used to be
+listed here" points at a version of the file they do not have. Both say what the diff did, and only
+the diff gives them a subject.
 
 A reader of `src/cache.test.ts` finds a test whose subject exists nowhere in the tree. Why
 `resetCache` went was said in the change that removed it, which the test does not name, so the
@@ -66,30 +66,39 @@ A payment call is tried at most `maxAttempts` times (`config/retry.json`).
 
 The test goes: a call to an export that does not exist already fails the type check.
 
-The account of the change is in the commit message, as the *Placement* section of
+The account of each change is in its own commit message, as the *Placement* section of
 `references/prose.md` says: "An account of a change, what it removed, moved or replaced and why, is
 in its commit message or its pull request description, which are read with the diff."
 
-**Good** the commit that made the change
+**Good** the commit that replaced the per-provider limits
 
 ```text
-Remove resetCache and the per-provider retry table
+Replace the per-provider retry limits with one limit
 
-resetCache had no callers left after #298. The per-provider limits
-are tracked in #312, which replaces them with one limit. The
-30-second timeout went with the old client in #305.
+As #312 asks: one maxAttempts in config/retry.json, and the
+per-provider table in docs/operations.md goes.
 ```
 
-### Graph of the added file
+**Good** the commit that removed `resetCache`
+
+```text
+Remove resetCache
+
+It had no callers left after #298.
+```
+
+### Graph of the added files
 
 | Node | Address | Source or derived |
 |---|---|---|
-| the commit message | the commit | derived from its diff |
+| the first commit message | its commit | derived from its diff |
+| the second commit message | its commit | derived from its diff |
 
 | From | To | Edge |
 |---|---|---|
-| the commit message | its diff | visible: the message is attached to the diff it describes |
-| the commit message | #298, #305 and #312 | visible, by number |
+| each commit message | its own diff | visible: the message is attached to the diff it describes |
+| the first commit message | #312 | visible, by number |
+| the second commit message | #298 | visible, by number |
 
 ### Why
 
