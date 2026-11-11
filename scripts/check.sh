@@ -2,8 +2,9 @@
 #
 # Checks the form of this tree: that every skill's description has no < or >
 # and is at most 1024 characters; that every sub-skill is named
-# dont-make-me-read--…; that neither what an agent loads nor the
-# glossary names another sub-skill, SKILL.md, prose.md, program.md or a rule;
+# dont-make-me-read--…; that every skill an agent loads exists; that neither
+# what an agent loads nor the glossary names another sub-skill, SKILL.md,
+# prose.md, program.md or a rule;
 # the sizes of every SKILL.md, reference and agent against their snapshot; that
 # each reference is linked from its own SKILL.md; links and the headings they
 # name; that plugin.json carries the first sentence of the SKILL.md
@@ -53,6 +54,12 @@ frontmatter_field() {
   ' "${2:-$skill}"
 }
 
+# list_field FIELD FILE: the items of a frontmatter field written as a flow
+# list or a comma-separated string, one per line.
+list_field() {
+  frontmatter_field "$1" "$2" | tr -d '[]' | tr ',' '\n' | sed 's/^[ \t]*//; s/[ \t]*$//' | grep -v '^$' || true
+}
+
 # --- the skills' descriptions load ------------------------------------------
 
 for f in "$root"/skills/*/SKILL.md; do
@@ -94,17 +101,21 @@ done
 
 # --- what an agent loads names nothing it does not load ----------------------
 
-# An agent loads its own sub-skill and the glossary. What it loads names no
+# An agent loads the skills its `skills` field lists. What it loads names no
 # sub-skill it does not load, SKILL.md, prose.md, program.md or a rule.
 for f in "$root"/agents/*.md; do
   [ -e "$f" ] || continue
   rel=${f#"$root"/}
-  base=$(basename "$f" .md)
-  for s in "$base" "$glossary_name"; do
+  loaded=()
+  while IFS= read -r s; do loaded+=("$s"); done < <(list_field skills "$f")
+  for s in "${loaded[@]}"; do
+    # skill_files lists nothing for a skill that does not exist, so its files
+    # would go unchecked.
+    [ -f "$root/skills/$s/SKILL.md" ] || problem "$rel loads skills/$s, which does not exist"
     while IFS= read -r g; do
       while IFS= read -r name; do
         problem "${g#"$root"/}, loaded by $rel, names $name"
-      done < <(names_beyond "$g" "$base" "$glossary_name")
+      done < <(names_beyond "$g" "${loaded[@]}")
     done < <(skill_files "$s")
   done
 done
