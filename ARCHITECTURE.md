@@ -29,8 +29,9 @@ A review finds in the graph of claims the findings
 
 ### Scope
 
-- The skills, the references, the agents, the commands, and this tree's own documents: `README.md`, this file,
-  `samples/README.md`, and the comments in `scripts/check.sh`. Every claim in them is in scope.
+- The skills, the references, the agents, the commands, and this tree's own documents:
+  `README.md`, this file, `samples/README.md`, and the comments in `scripts/check.sh`. Every claim
+  in them is in scope.
 - Each case in `samples/`, on its own. Three questions only: does the Good fix what *What is wrong*
   names; does the Good bring in a finding of its own; do the graph and *Why* match the case's files.
 - Out of scope: the logic of sample code, agreement between cases, and anything a judgment does not
