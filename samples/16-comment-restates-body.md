@@ -38,8 +38,10 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 ### What is wrong
 
 The body is the claim, and the name summarises it. A comment that tells the claim again adds a
-third telling that drifts the first time someone changes the backoff and forgets the comment. What
-the comment could have carried, and the body cannot, is *why*: the decision this reproduces.
+third telling that drifts the first time someone changes the backoff and forgets the comment.
+
+The declaration reproduces a decision, "Retries are bounded" in `docs/architecture.md`, and
+nothing on it names that decision. The comment had room for it and spent it on a paraphrase.
 
 ## Good
 
@@ -63,7 +65,17 @@ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 
 ### Why
 
+The two findings are fixed apart, and each fix holds without the other.
+
 Rule 4: a claim that has an owner is cited, not restated, and what the declaration does is owned by
 its name, signature and body. The *Duplicate* section of the skill `dont-make-me-read--judge` lists
-such a comment as a duplicate: a second owner of the same claim. A comment on a declaration cites
-what the declaration reproduces, and says nothing the body already says.
+such a comment as a duplicate: a second owner of the same claim. The paraphrase goes, as the
+*What to do instead* table in the skill `dont-make-me-read` says for a duplicate: "the owner's copy
+stays, the other cites it or goes".
+
+Rule 3: the edge to the decision is missing, and the doc comment in the Good names the decision by
+its heading and file, with the reason the body cannot show. The same *Duplicate* section counts
+such a comment as no duplicate: "Not a duplicate, because it holds what the body cannot show".
+
+Had the declaration reproduced no decision, and held nothing else the body cannot show, the Good
+would carry no comment at all.
