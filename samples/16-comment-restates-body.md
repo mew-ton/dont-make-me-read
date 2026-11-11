@@ -74,8 +74,9 @@ such a comment as a duplicate: a second owner of the same claim. The paraphrase 
 stays, the other cites it or goes".
 
 Rule 3: the edge to the decision is missing, and the doc comment in the Good names the decision by
-its heading and file, with the reason the body cannot show. The same *Duplicate* section counts
-such a comment as no duplicate: "Not a duplicate, because it holds what the body cannot show".
+its heading and file, with the reason the body cannot show. The *Duplicate* section of the skill
+`dont-make-me-read--judge` counts such a comment as no duplicate: "Not a duplicate, because it
+holds what the body cannot show".
 
 Had the declaration reproduced no decision, and held nothing else the body cannot show, the Good
 would carry no comment at all.
