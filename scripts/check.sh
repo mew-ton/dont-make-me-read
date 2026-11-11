@@ -77,8 +77,8 @@ for f in "$root"/skills/*/SKILL.md; do
   case "$dir" in "$sub_prefix"*) ;; *) problem "$rel is not named $sub_prefix…" ;; esac
   [ "$(frontmatter_field user-invocable "$f")" = false ] \
     || problem "$rel does not set user-invocable: false"
-  # An agent can preload only a skill the model can invoke, as a row of
-  # ARCHITECTURE.md › What it relies on Claude for says.
+  # An agent can preload only a skill the model can invoke, as
+  # https://code.claude.com/docs/en/sub-agents says (checked 2026-10-30).
   [ "$(frontmatter_field disable-model-invocation "$f")" = false ] \
     || problem "$rel does not set disable-model-invocation: false"
 done
@@ -127,8 +127,8 @@ for f in "$root"/agents/*.md; do
     done < <(skill_files "$s")
   done
   tools=$(list_field tools "$f")
-  # An agent with no tools has every tool, as a row of ARCHITECTURE.md › What
-  # it relies on Claude for says.
+  # An agent with no tools has every tool, Agent and Skill included, as
+  # https://code.claude.com/docs/en/sub-agents says (checked 2026-10-30).
   [ -n "$tools" ] || problem "$rel lists no tools, so it inherits Agent and Skill"
   for t in Agent Task Skill; do
     grep -qxF "$t" <<< "$tools" && problem "$rel has the tool $t"
