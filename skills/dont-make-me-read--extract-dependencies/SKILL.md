@@ -60,7 +60,7 @@ task names, in the task's order, and no text and no code fence around it.
 - `claim`: the claim's location, as the task gave it.
 - `dependencies`: one entry per dependency.
   - `on`: its location, or `null` when it cannot be found.
-  - `kind`: `word`, `value`, `reason` or `summary`, the four things *List what it depends on*
+  - `kind`: `word`, `value`, `reason` or `summary`, the four things *List what each one depends on*
     looks for, in its order.
   - `named_as`: the claim's own words that name it, verbatim, or `null` when nothing in the claim
     names it.
