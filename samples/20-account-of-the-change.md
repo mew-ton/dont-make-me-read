@@ -36,7 +36,7 @@ it("no longer exports resetCache", () => {
 |---|---|---|
 | the retry limit | `config/retry.json` | visible |
 | the account of the change | the diff that removed the table and the timeout | **missing**: "was here", "moved to" and "no longer" name a diff by nothing its reader can open |
-| the test | the diff that removed `resetCache` | **missing**: the reason it must stay gone was given in that change, and nothing names it |
+| the test | the diff that removed `resetCache` | **missing**: the reason it went was given in that change, and nothing names it |
 
 `docs/operations.md › Retries` holds both the retry limit and the account of the change: **two
 claims** in one paragraph.
@@ -49,8 +49,8 @@ sends them to a table they did not need. Each one says what the diff did, and on
 it a subject.
 
 A reader of `src/cache.test.ts` finds a test whose subject exists nowhere in the tree. Why
-`resetCache` must not come back was said in the change that removed it, which the test does not
-name, so the reader can neither keep the test for a reason nor drop it for one.
+`resetCache` went was said in the change that removed it, which the test does not name, so the
+reader can neither keep the test for a reason nor drop it for one.
 
 ## Good
 
