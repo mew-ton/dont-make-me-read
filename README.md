@@ -42,11 +42,11 @@ The config said 3. Now the number lives in one place. Simplified from
 Nobody has to have been at standup. Simplified from [case 03](samples/03-as-discussed.md).
 
 ```diff
-- // Retries until it succeeds or the limit is reached.
-  export async function withRetry(fn) {
+- // Add one to the count.
+  count += 1;
 ```
 
-The comment only repeated the code, and would drift from it. Simplified from
+The comment only repeated the code, and would drift from it. The pattern of
 [case 16](samples/16-comment-restates-body.md).
 
 More cases: [`samples/`](samples/README.md).
