@@ -26,35 +26,21 @@ How well it does this is not measured yet, as [*Does it work?*](#does-it-work) s
 
 ## Before / after
 
-A README that restates a value it does not own. From
-[case 01](samples/01-stale-copy.md):
-
-```md
-A payment call is tried up to five times before the order is marked failed. The wait between
-tries doubles each time.
+```diff
+- A payment call is tried up to five times before the order is marked failed.
++ A payment call is tried at most `maxAttempts` times (`config/retry.json`).
 ```
 
-`config/retry.json` says `"maxAttempts": 3`. Nothing tells the reader there are two places, and
-nothing told whoever changed `config/retry.json` that the README existed. After:
+The README no longer copies a number that `config/retry.json` owns. [Case 01](samples/01-stale-copy.md).
 
-```md
-A payment call is tried at most `maxAttempts` times (`config/retry.json`).
+```diff
+- export async function withRetry<T>(fn: () => Promise<T>, fromCheckout: boolean): Promise<T> {
++ export async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
 ```
 
-The README no longer holds the number, so it cannot drift from it.
+The retry layer no longer knows who calls it. [Case 07](samples/07-callee-knows-caller.md).
 
-A function that knows who calls it. From [case 07](samples/07-callee-knows-caller.md):
-
-```ts
-export async function withRetry<T>(fn: () => Promise<T>, fromCheckout: boolean): Promise<T> {
-```
-
-To read the retry layer, you now have to know what checkout is, and the next caller adds a
-`fromAdmin`. After, checkout catches the error and picks its own message, and `withRetry` takes
-only `fn`.
-
-The rest of the cases, each with the graph of what depends on what, are in
-[`samples/`](samples/README.md).
+More cases: [`samples/`](samples/README.md).
 
 ## What it is not
 
