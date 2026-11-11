@@ -16,6 +16,9 @@ In prose, a dependency named by:
 
 - a position: "see above", "below", "the previous section".
 - a past only its participants hold: "as discussed", "we originally went with", "not A but B".
+- the diff that produced the text, which a reader of the text as it stands does not have:
+  "removed", "moved to", "no longer", "used to be", "until #48". An account of a change belongs
+  in its commit message or its pull request description, which are read with the diff.
 - the conversation that produced the text, which its reader was not in: "as requested", "you
   said", an instruction with nothing in front of it.
 - a role: "the config", "the usual way", "same as the other one".
@@ -30,3 +33,5 @@ In a program, a dependency named by:
   environment variable, module state.
 - nothing at all: an interface satisfied structurally, with nothing in the implementation saying
   so.
+- the diff that removed something: a test that asserts a removed declaration, flag or file is
+  gone, which only the change that removed it gives a reason for.
