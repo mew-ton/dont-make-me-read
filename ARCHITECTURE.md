@@ -6,9 +6,6 @@ This tree is written under the rules in
 [`skills/dont-make-me-read/SKILL.md`](skills/dont-make-me-read/SKILL.md). Contribute to it the way
 that skill says to write anything.
 
-The skill is meant to load while you do. Whether it does is not checked yet:
-[#50](https://github.com/mew-ton/dont-make-me-read/issues/50).
-
 ## What check.sh checks
 
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether
