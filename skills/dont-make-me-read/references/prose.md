@@ -34,6 +34,7 @@ One instance. A task tracked in another tool, written up as an issue for an agen
   is in the narrowest document all of them reach, and each declaration's doc comment cites it.
 - An account of a change, what it removed, moved or replaced and why, is in its commit message or
   its pull request description, which are read with the diff. A file read for what it says now
-  says only that.
+  says only that: its reader has the file, not the diff, as rule 3 in `SKILL.md` asks of every
+  dependency.
 - Which tool holds which kind of claim, an observation, a task, a decision, is set by the project's
   own instructions. Where they set nothing for this kind, rule 7 in `SKILL.md` applies.
