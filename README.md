@@ -31,7 +31,8 @@ How well it does this is not measured yet, as [*Does it work?*](#does-it-work) s
 + A payment call is tried at most `maxAttempts` times (`config/retry.json`).
 ```
 
-The README no longer copies a number that `config/retry.json` owns. [Case 01](samples/01-stale-copy.md).
+The README no longer copies a number that `config/retry.json` owns.
+[Case 01](samples/01-stale-copy.md).
 
 ```diff
 - export async function withRetry<T>(fn: () => Promise<T>, fromCheckout: boolean): Promise<T> {
