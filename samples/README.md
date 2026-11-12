@@ -3,7 +3,8 @@
 One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
 with its path or URL, then the graph of claims they form and what is wrong with it. **Good**
 shows the files that have a correction, each labelled `**Good**`, then why, naming the rule in
-[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A Good that adds a
+[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A case whose
+pathology is a change shows that change as a diff, in Bad and in Good alike. A Good that adds a
 file the Bad did not have carries that file's graph too. A file that did not change is not shown
 again, and a case whose correction depends on a decision it does not make says so instead of
 showing one. A file the Bad leans on and the case does not judge, such as the conversation a
@@ -64,4 +65,4 @@ and no others, and so does step 1 of [How to use a case](#how-to-use-a-case).
 | [18 A TODO that outlived its fix](18-todo-that-outlived-its-fix.md) | contradiction: a derived explanation nobody re-derived |
 | [19 The last line of a conversation](19-last-line-of-a-conversation.md) | missing edge: an address the reader cannot open, a name coined in the chat, the observation the ask is derived from |
 | [20 An account of the change, left in the file](20-account-of-the-change.md) | missing edge: a diff its reader does not have, two claims |
-| [21 "Each one" in the next step](21-each-one-in-the-next-step.md) | missing edge: one word, two positions, two meanings |
+| [21 "Each one" in the next step](21-each-one-in-the-next-step.md) | missing edge: a position that a change to the item before it gives a second reading |
