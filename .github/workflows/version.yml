@@ -1,0 +1,36 @@
+name: Version
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fail unless plugin.json changes the version on main to one not tagged
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          file=.claude-plugin/plugin.json
+          version=$(jq -r '.version // empty' "$file")
+          if [ -z "$version" ]; then
+            echo "::error file=$file::no version"
+            exit 1
+          fi
+          git fetch --depth=1 origin "$BASE_SHA"
+          base_version=$(git show "$BASE_SHA:$file" | jq -r '.version // empty')
+          if [ "$version" = "$base_version" ]; then
+            echo "::error file=$file::version is $version, as it is on main; change it"
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/v$version" > /dev/null; then
+            echo "::error file=$file::v$version is already tagged; choose another version"
+            exit 1
+          fi
+          echo "version changes from $base_version to $version"
