@@ -14,7 +14,8 @@ something other than an address.
 
 In prose, a dependency named by:
 
-- a position: "see above", "below", "the previous section".
+- a position: "see above", "below", "the previous section", or a word whose referent is in
+  another paragraph, such as "it" or "each one" in a list item that means the item before it.
 - a past only its participants hold: "as discussed", "we originally went with", "not A but B".
 - the diff that produced the text, which a reader of the text as it stands does not have:
   "removed", "moved to", "no longer", "used to be".
