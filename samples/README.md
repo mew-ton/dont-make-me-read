@@ -1,15 +1,15 @@
 # Samples
 
 One file per case, in two halves. **Bad** shows the files as code blocks, each labelled `**Bad**`
-with its path or URL, then the graph of claims they form and what is wrong with it. **Good**
-shows the files that have a correction, each labelled `**Good**`, then why, naming the rule in
-[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A case whose
-pathology is a change shows that change as a diff, in Bad and in Good alike. A Good that adds a
-file the Bad did not have carries that file's graph too. A file that did not change is not shown
-again, and a case whose correction depends on a decision it does not make says so instead of
-showing one. A file the Bad leans on and the case does not judge, such as the conversation a
-comment came from, is labelled `**Context**`; it has no Good. The files are not on disk, so
-nothing here runs; the case is the graph.
+with its path or URL, then the graph of claims they form and what is wrong with it. **Good** shows
+the files that have a correction, each labelled `**Good**`, then why, naming the rule in
+[`skills/dont-make-me-read/SKILL.md`](../skills/dont-make-me-read/SKILL.md). A case whose pathology
+is which lines a change touches and which it leaves shows that change as a diff, in Bad and in Good
+alike. A Good that adds a file the Bad did not have carries that file's graph too. A file that did
+not change is not shown again, and a case whose correction depends on a decision it does not make
+says so instead of showing one. A file the Bad leans on and the case does not judge, such as the
+conversation a comment came from, is labelled `**Context**`; it has no Good. The files are not on
+disk, so nothing here runs; the case is the graph.
 
 ## How to use a case
 

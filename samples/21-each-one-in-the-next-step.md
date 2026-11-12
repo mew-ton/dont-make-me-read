@@ -53,8 +53,8 @@ Steps` says.
 
  1. **List the packages that changed.** Compare each package's files with the last tag.
 -2. **Check each one.** Run `eslint` on it.
-+2. **List the files each package changed.** Compare the package's files with the last tag, one
-+   by one.
++2. **List the files each package changed.** For each package *List the packages that changed*
++   lists, compare its files with the last tag, one by one.
 +3. **Lint the packages.** Run `eslint` on each package *List the packages that changed* lists.
 ```
 
@@ -63,9 +63,11 @@ Steps` says.
 Rule 3: a dependency is named by address. A list item stands alone as a paragraph does, as
 *Paragraph* in `dont-make-me-read--glossary` says, and the heading of the item it leans on is the
 address. *Address* in `dont-make-me-read--glossary` says an address leads to exactly one claim, and
-"each one" led to one only while nothing stood between the two items. The instances of
-*Dependency* in `dont-make-me-read--glossary` list this way of naming: "a word whose referent is in
-another paragraph, such as "it" or "each one" in a list item that means the item before it".
+"each one" in *Check each one* led to one only while nothing stood between it and *List the packages
+that changed*. The instances of *Dependency* in `dont-make-me-read--glossary` list this way of
+naming: "a word whose referent is in another paragraph, such as "it" or "each one" in a list item
+that means the item before it".
 
-With the dependency named, an item inserted between the two leaves *Lint the packages* meaning what
-it meant, and a search for the heading it names finds it.
+With the dependency named, an item inserted between *List the packages that changed* and *Lint the
+packages* leaves *Lint the packages* meaning what it meant, and a search for the heading it names
+finds it.
