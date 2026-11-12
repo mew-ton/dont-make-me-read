@@ -18,16 +18,28 @@ under one address. The words are as `dont-make-me-read--glossary` defines them: 
 ## Steps
 
 1. **Read the claims and their address.** The task names each claim by its location, or, for a
-   claim a change removed, by the words it had. Read the rest of their file only to find the address.
+   claim a change removed, by the words it had. Read the rest of their file only to find the
+   address, and for what *Read the claim's file for what points at it* looks for.
 2. **Search for each claim's address and its words.** A dependent shows itself by the claim's address or by
    the claim's words, whether or not it names the claim: an identifier the claim declares, its
    heading, its file's path, a value it holds, a phrase of its body. Search the repository for each,
-   and for the words its readers would use instead, `attempts`, `tries`, `tried` for `maxAttempts`:
-   a dependent that restates the claim in other words is found by its subject, not by its value.
-3. **Keep what depends.** A hit depends on the claim when a change to the claim would mean checking
-   the hit again, as *Dependency* says. A hit that uses a word as everyone uses it does not.
-4. **Stop there.** What a dependent depends on beyond this claim, and what depends on the
-   dependent, are its own records.
+   and for the words its readers would use instead: `attempts`, `tries`, `tried` for `maxAttempts`,
+   or a role it plays, `the retry config` for `config/retry.json`. A dependent that restates the
+   claim in other words is found by its subject, not by its value.
+3. **Read the claim's file for what points at it.** A dependent that names the claim by its
+   position, as the instances of *Dependency* list, holds neither the claim's address nor its
+   words, so no search finds it. A position holds only within what a reader reads in one sequence,
+   usually one file: read the claim's file, and any file read in sequence with it, for a word that
+   points by position, "above", "the previous step", "each one", that a reader could take to mean
+   the claim. A word that stands for one thing in one paragraph and for another in the next, such
+   as "each one" meaning a claim in one list item and a dependency in the item after it, is one a
+   reader could take either way.
+4. **Keep what depends.** What *Search for each claim's address and its words* and *Read the
+   claim's file for what points at it* find depends on the claim when a change to the claim would
+   mean checking it again, as *Dependency* says. A find that uses a word as everyone uses it does
+   not.
+5. **Stop at the claim's own dependents.** What a dependent depends on beyond this claim, and what
+   depends on the dependent, are its own records.
 
 ## Record
 
@@ -58,4 +70,5 @@ task names, in the task's order, and no text and no code fence around it.
     it names the claim.
   - `restated`: the dependent's own words that restate part of the claim, verbatim, or `null` when
     it restates nothing.
-  - `found_by`: the search term that found it.
+  - `found_by`: the search term that found it, or `null` when *Read the claim's file for what
+    points at it* found it.

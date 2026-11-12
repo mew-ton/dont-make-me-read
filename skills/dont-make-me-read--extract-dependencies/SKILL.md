@@ -27,7 +27,8 @@ have no address. The words are as `dont-make-me-read--glossary` defines them: re
 3. **Find where each dependency is.** Search the repository, and open what the claim names there.
    Keep the claim's words for a dependency apart from where you found it: the words go in
    `named_as`, the place in `on`.
-4. **Stop there.** What the place you found depends on is that place's own record.
+4. **Stop at the claim's own dependencies.** What a place *Find where each dependency is* finds
+   depends on is that place's own record.
 
 ## Record
 
