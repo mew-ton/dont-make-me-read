@@ -65,4 +65,4 @@ and no others, and so does step 1 of [How to use a case](#how-to-use-a-case).
 | [18 A TODO that outlived its fix](18-todo-that-outlived-its-fix.md) | contradiction: a derived explanation nobody re-derived |
 | [19 The last line of a conversation](19-last-line-of-a-conversation.md) | missing edge: an address the reader cannot open, a name coined in the chat, the observation the ask is derived from |
 | [20 An account of the change, left in the file](20-account-of-the-change.md) | missing edge: a diff its reader does not have, two claims |
-| [21 "Each one" in the next step](21-each-one-in-the-next-step.md) | missing edge: a position that a change to the item before it gives a second reading |
+| [21 "Each one" in the next step](21-each-one-in-the-next-step.md) | missing edge: a position that an inserted item points at something else |
