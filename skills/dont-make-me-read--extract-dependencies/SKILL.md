@@ -19,14 +19,14 @@ have no address. The words are as `dont-make-me-read--glossary` defines them: re
 1. **Read the claims and their address.** The task names each claim by its location. Read the
    rest of their file only to find the address and what each claim depends on, the way a reader who
    landed on the address by search would have to.
-2. **List what each one depends on.** Ask what change elsewhere would mean checking this claim again.
-   Look for a word or an identifier it uses and does not define, a value or a behaviour whose
-   owner is elsewhere, the reason it holds, and, for an address, what it summarises. A word that
-   points at one of these instead of naming it, as the instances of *Dependency* list, is a sign
-   of one.
-3. **Find where each one is.** Search the repository, and open what the claim names in it. Keep what
-   the claim says to name it apart from where you found it: the first goes in `named_as`, the second
-   in `on`.
+2. **List what each claim depends on.** Ask what change elsewhere would mean checking the claim
+   again. Look for a word or an identifier it uses and does not define, a value or a behaviour
+   whose owner is elsewhere, the reason it holds, and, for an address, what it summarises. A word
+   that points at a dependency instead of naming it, as the instances of *Dependency* list, is a
+   sign of one.
+3. **Find where each dependency is.** Search the repository, and open what the claim names there.
+   Keep the claim's words for a dependency apart from where you found it: the words go in
+   `named_as`, the place in `on`.
 4. **Stop there.** What the place you found depends on is that place's own record.
 
 ## Record
@@ -59,9 +59,9 @@ task names, in the task's order, and no text and no code fence around it.
 - `claim`: the claim's location, as the task gave it.
 - `dependencies`: one entry per dependency.
   - `on`: its location, or `null` when it cannot be found.
-  - `kind`: `word`, `value`, `reason` or `summary`, the four things *List what each one depends on*
-    looks for, in its order.
-  - `named_as`: the claim's own words that name it, verbatim, or `null` when nothing in the claim
-    names it.
-  - `restated`: the claim's own words that restate part of it, verbatim, or `null` when it
-    restates nothing.
+  - `kind`: `word`, `value`, `reason` or `summary`, the four things *List what each claim depends
+    on* looks for, in its order.
+  - `named_as`: the claim's own words that name the dependency, verbatim, or `null` when nothing in
+    the claim names it.
+  - `restated`: the claim's own words that restate part of the dependency, verbatim, or `null` when
+    the claim restates nothing.
