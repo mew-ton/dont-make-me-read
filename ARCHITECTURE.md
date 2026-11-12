@@ -17,10 +17,16 @@ Nothing runs the script for you. Run `bash scripts/check.sh` before proposing a 
 
 ## Releasing
 
-A release is a change to `version` in
-[`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), proposed in a pull request like any
-other. Once it is on `main`, [`.github/workflows/release.yml`](.github/workflows/release.yml) tags
-and publishes it, as its steps say.
+Every pull request is a release: it changes `version` in
+[`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) to one that is not tagged yet. One that
+does not is not merged.
+
+[`.github/workflows/version.yml`](.github/workflows/version.yml) fails on a pull request to `main`
+that does not, as its steps say. It blocks the merge where the branch protection of `main` requires
+its check, `version`.
+
+Once it is on `main`, [`.github/workflows/release.yml`](.github/workflows/release.yml) tags and
+publishes it, as its steps say.
 
 ## Reviewing
 
