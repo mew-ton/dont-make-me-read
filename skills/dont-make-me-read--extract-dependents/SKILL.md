@@ -28,9 +28,12 @@ under one address. The words are as `dont-make-me-read--glossary` defines them: 
    claim in other words is found by its subject, not by its value.
 3. **Read the claim's file for what points at it.** A dependent that names the claim by its
    position, as the instances of *Dependency* list, holds neither the claim's address nor its
-   words, so no search finds it. A position holds only within one file, so such a dependent is in
-   the claim's file: read the file for a word that points by position, "above", "the previous
-   step", "each one", and keep every such word whose referent is the claim.
+   words, so no search finds it. A position holds only within what a reader reads in one sequence,
+   usually one file: read the claim's file, and any file read in sequence with it, for a word that
+   points by position, "above", "the previous step", "each one", and keep every such word a reader
+   could take to mean the claim. A word that stands for one thing in one paragraph and for another
+   in the next, such as "each one" meaning a claim in one list item and a dependency in the item
+   after it, is one a reader could take either way.
 4. **Keep what depends.** A hit depends on the claim when a change to the claim would mean checking
    the hit again, as *Dependency* says. A hit that uses a word as everyone uses it does not.
 5. **Stop there.** What a dependent depends on beyond this claim, and what depends on the
