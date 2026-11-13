@@ -6,6 +6,21 @@ This tree is written under the rules in
 [`skills/dont-make-me-read/SKILL.md`](skills/dont-make-me-read/SKILL.md). Contribute to it the way
 that skill says to write anything.
 
+## What each part is for
+
+| Path | What it is, and for whom |
+|---|---|
+| `README.md` | the plugin's front page, for someone deciding whether to install it, and then using it |
+| `ARCHITECTURE.md` | how this tree is made, for an agent or person changing it |
+| `skills/` | the plugin's skills, for the model the plugin runs in |
+| `agents/` | the agents that run a step of an analysis in a session of its own, for Claude Code |
+| `commands/` | the plugin's slash commands, for someone typing one |
+| `samples/` | cases to check the skills against, for whoever checks that the skills still work |
+| `scripts/` | the check of the tree's form, for an agent or person changing the tree |
+| `.claude-plugin/` | the plugin's manifest, for Claude Code and the marketplace |
+| `.github/workflows/` | the version check and the release, for GitHub |
+| `LICENSE` | the terms of use, for anyone using or copying the tree |
+
 ## What check.sh checks
 
 [`scripts/check.sh`](scripts/check.sh) checks the form of the tree, as its header lists. Whether

@@ -44,8 +44,10 @@ skill `dont-make-me-read--glossary`, and what the judgments mean is the skill
    reproduce or use it, and keep its words: the reverse direction comes from an index, backlinks or
    search.
 7. **A claim has one place.** The narrowest scope that holds every reproduction and every reader,
-   set by the structure of the code or by the project's own instructions. If no place is set for
-   this kind of claim, say so and stop rather than make a second one.
+   set by the structure of the code or by the project's own instructions, which include what the
+   project's `ARCHITECTURE.md` says each part of it is for. A link's label, or what a file already
+   holds, sets none. If no place is set for this kind of claim, say so and stop rather than make a
+   second one.
 
 ## Which file to read
 
