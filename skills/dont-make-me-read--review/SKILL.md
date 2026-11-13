@@ -1,9 +1,10 @@
 ---
 name: dont-make-me-read--review
 description: >
-  Reviews a path, a diff or a pull request under the rules of the skill dont-make-me-read, and
-  reports where a reader will have to gather more than they need and what to write instead. Applies
-  when asked to review such text, or when typed as /dont-make-me-read:review.
+  Reviews text under the rules of the skill dont-make-me-read, and reports where a reader will
+  have to gather more than they need and what to write instead: a path, a diff, a pull request, or
+  text given in the conversation. Applies whenever asked to review such text, its claims, or the
+  edges between them, or when typed as /dont-make-me-read:review.
 user-invocable: false
 disable-model-invocation: false
 ---
@@ -16,8 +17,8 @@ its *Words* names.
 
 ## Scope
 
-The scope is what the task names: a path, a diff, or a pull request; with nothing named, the
-uncommitted change in the working tree. It takes the place of the scope that step 0 of *Steps* in
+The scope is what the task names: a path, a diff, a pull request, or text given in the
+conversation; with nothing named, the uncommitted change in the working tree. It takes the place of the scope that step 0 of *Steps* in
 `dont-make-me-read` sets, and the readers are as that step says.
 
 ### What a diff touches
@@ -42,5 +43,6 @@ finding is, is *Reporting* in `dont-make-me-read`. Where the report goes is set 
 - A pull request: one review comment per finding, on a line of its location the diff shows, as
   *Location* in `dont-make-me-read--glossary` defines one. A finding none of whose lines the diff
   shows goes in the review's body, with its address.
-- A document, a tree, or a diff in no pull request, such as the uncommitted change: one list in the
-  conversation, one line per finding, each with the address, the judgment and the rule.
+- A document, a tree, a diff in no pull request, such as the uncommitted change, or text given in
+  the conversation: one list in the conversation, one line per finding, each with the address, the
+  judgment and the rule.
