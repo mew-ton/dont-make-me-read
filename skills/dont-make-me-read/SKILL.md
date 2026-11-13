@@ -114,7 +114,7 @@ files *Which file to read* names:
 | diverging | 5 and 6 | *Saying which you are* in each file; *Placement* and *Direction* in `references/program.md` |
 | duplicate | 4 | *Citing* in `references/prose.md`: the owner's copy stays, the other cites it or goes |
 | two claims | 1 | one paragraph for each, under its own address |
-| noise | 2 | it goes, unless a reader who acts on it exists at another place: then it moves there, to the place rule 7 chooses |
+| noise | 2 | it goes |
 
 ## Persistence
 
